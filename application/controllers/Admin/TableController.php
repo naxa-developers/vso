@@ -24,7 +24,7 @@ $table_name=base64_decode($this->input->get('tbl'));
     if(isset($_POST['submit'])){
 
 
-      $fields=$this->db->list_fields('river');
+      $fields=$this->db->list_fields($table_name);
       unset($fields[0]);
       $field_name=implode(",",$fields);
       //(a0,a1,a2,);
@@ -39,7 +39,7 @@ $table_name=base64_decode($this->input->get('tbl'));
 
 
 
-      $c=$this->Table_model->table_copy($path,$filename,$field_name,'river');
+      $c=$this->Table_model->table_copy($path,$filename,$field_name,$table_name);
 
 
       if($c==1){

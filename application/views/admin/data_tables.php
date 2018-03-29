@@ -96,7 +96,7 @@
                <span class="tools pull-center">
                    <div class="panel-body">
                      <p> Click below csv button to downlaod the empty table format to add data  </p>
-                 <table class="table table-hover" id="tb2" >
+                 <table class="table table-hover" id="tb2" style="display:none;">
 
                    <thead>
 
