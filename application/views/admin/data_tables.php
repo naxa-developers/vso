@@ -106,9 +106,9 @@
 
                    <tr>
 
-                     <?php foreach($data_nep as $key => $value){
+                     <?php foreach($data_nep as $value){
 
-                  if($key=='idd'){}else{
+
 
                        ?>
 
@@ -117,11 +117,11 @@
                        <td>
 
                          <?php
-                        echo($value['eng_lang'])
+                        echo($value['nepali_lang'])
                          ?>
 
                        </td>
-                     <?php  }} ?>
+                     <?php  } ?>
 
                    </tr>
 
