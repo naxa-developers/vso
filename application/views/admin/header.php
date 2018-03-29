@@ -47,6 +47,10 @@
     section#wizard-p-0 {
         overflow-y: scroll;
     }
+    .panel-body {
+  
+    overflow: auto;
+}
     </style>
 </head>
 <body>
