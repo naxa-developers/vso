@@ -48,8 +48,13 @@
         overflow-y: scroll;
     }
     .panel-body {
-  
+
     overflow: auto;
+}
+
+.form-control {
+  
+    color: #110000;
 }
     </style>
 </head>

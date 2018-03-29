@@ -55,7 +55,7 @@
 
                             <div class="form-group">
                               <label for="pwd">Column Name:</label>
-                              <input type="text" class="form-control" id="pwd" placeholder="Enter Column Name" name="c_name[]" required>
+                          <font color="red"> <input  type="text" class="form-control" id="pwd" placeholder="Enter Column Name" name="c_name[]" required> </font>
                             </div>
                             <div class="form-group">
                               <label for="pwd">Column Length:</label>
