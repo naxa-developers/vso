@@ -25,6 +25,8 @@ $UPLOAD_SCHEMA = "shapefile";
 //code
 if(@$_POST["proj"]){
 
+  $UPLOAD_SCHEMA = $_POST['f_name'];
+
 
   //Creando la carpeta temporal para descomprimir el archivo
   $tempdir=tempnam(sys_get_temp_dir(),'');

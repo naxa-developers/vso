@@ -26,6 +26,12 @@
                                   ?>
 
                                   <div class="form-group">
+                                      <label for="exampleInputFile">File name</label>
+                                      <input type="text" name="f_name" class="form-control" placeholder="Enter a name"  id="exampleInputFile">
+
+                                  </div>
+
+                                  <div class="form-group">
                                       <label for="exampleInputFile">File input</label>
                                       <input type="file" name="uploadedfile"  id="exampleInputFile">
 
@@ -34,9 +40,7 @@
                                   <div class="form-group">
                                       <label for="exampleInputFile">File Type</label>
                                     <select name="proj">
-                                      <option value="32719">UTM ZONA 19</option>
-                                      <option value="32720">UTM ZONA 20</option>
-                                      <option value="32721">UTM ZONA 21</option>
+
                                       <option value="4326">GEO WGS84</option>
                                     </select>
                                       </div>
