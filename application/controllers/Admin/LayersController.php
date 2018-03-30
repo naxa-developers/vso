@@ -20,12 +20,14 @@ $this->load->view("admin/layers_upload");
 $this->load->view("admin/footer");
 
 
-$UPLOAD_SCHEMA = "shapefile";
+
 
 //code
 if(@$_POST["proj"]){
 
-  $UPLOAD_SCHEMA = $_POST['f_name'];
+  // $tble_name=strtolower(str_replace(" ","_",$_POST['f_name']));
+
+  $UPLOAD_SCHEMA = strtolower(str_replace(" ","_",$_POST['f_name']));
 
 
   //Creando la carpeta temporal para descomprimir el archivo
@@ -113,13 +115,16 @@ if(@$_POST["proj"]){
 
   $handle = fopen($filename, "r");
 
-  	$query = fread($handle, filesize($filename));
+  	$queryy = fread($handle, filesize($filename));
+    $query=$this->db->query($queryy);
 
     if (!$query) {
       echo "The table $tablename could not be created in the DB.";
     }else{
 
-    echo "The table $UPLOAD_SCHEMA. $tablename was created successfully!";
+
+    $this->session->set_flashdata('msg','The table '.$UPLOAD_SCHEMA.' table was sucessfully deleted');
+    redirect('add_layers');
   }
 
 
