@@ -17,7 +17,7 @@
                               <?php
                                 $error=	$this->session->flashdata('msg');
                                  if($error){ ?>
-                                   <div class="alert alert-danger alert-dismissible">
+                                   <div class="alert alert-info alert-dismissible">
                           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                           <strong>Message!!!!</strong> <?php echo $error ; ?>
                                         </div>

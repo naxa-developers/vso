@@ -123,7 +123,7 @@ if(@$_POST["proj"]){
     }else{
 
 
-    $this->session->set_flashdata('msg','The table '.$UPLOAD_SCHEMA.' table was sucessfully deleted');
+    $this->session->set_flashdata('msg','The table '.$UPLOAD_SCHEMA.' table was sucessfully created');
     redirect('add_layers');
   }
 
