@@ -35,7 +35,7 @@
                                   <br> <br>
                             <div class="form-group">
                               <label for="pwd">Column Name:</label>
-                              <input type="text" class="form-control" id="pwd" placeholder="Enter Column Name" name="c_name[]" required>
+                              <input type="text" class="form-control" id="pwd" value="Latitude" name="c_name[]" required>
                             </div>
                             <div class="form-group">
                               <label for="pwd">Column Length:</label>
@@ -45,8 +45,8 @@
                              <div class="form-group">
                                  <label for="pwd">Column Type:</label>
                               <select class="form-control" name="c_type[]">
-                                <option value="varchar">varchar</option>
-                                <option value="int">int</option>
+                                <option value="varchar">long</option>
+
                             </select>
                             </div>
                             <br>
@@ -55,7 +55,7 @@
 
                             <div class="form-group">
                               <label for="pwd">Column Name:</label>
-                          <font color="red"> <input  type="text" class="form-control" id="pwd" placeholder="Enter Column Name" name="c_name[]" required> </font>
+                          <font color="red"> <input  type="text" class="form-control" id="pwd" value="Longitude" name="c_name[]" required> </font>
                             </div>
                             <div class="form-group">
                               <label for="pwd">Column Length:</label>
@@ -64,8 +64,8 @@
                             <div class="form-group">
                                 <label for="pwd">Column Type:</label>
                              <select class="form-control" name="c_type[]">
-                               <option value="varchar">varchar</option>
-                               <option value="int">int</option>
+                               <option value="varchar">long</option>
+
                            </select>
                            </div>
 
