@@ -14,7 +14,6 @@
   
   
    
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/leaflet.label.css">
  <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
@@ -38,7 +37,7 @@
  
  
   <div id="map" style="width:100%; height:90%; "> </div>
-  <script>
+ <!--  <script>
   // this var geo is done to convert the php version of $geo data into js version as geo from $geo
 
   var geo = '<?php echo $geo; ?>';
@@ -59,7 +58,7 @@
   var geojson= JSON.parse(geo);
   //console.log(geojson);
 </script>
-
+ -->
 
 <script>
 

@@ -27,17 +27,48 @@
   <!-- Custom styles for this template -->
   <link href="<?php echo base_url();?>assets/css/landing-page.min.css" rel="stylesheet">
 
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
+ <link rel="stylesheet" href="<?php echo base_url();?>assets/css/leaflet.label.css">
+
 
 <link href="https://fonts.googleapis.com/css?family=Dosis|Open+Sans+Condensed:300|Raleway|Simonetta|Wire+One" rel="stylesheet">
 
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/new.css">
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
+ <link rel="stylesheet" href="<?php echo base_url();?>assets/css/leaflet.label.css">
+ <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+ <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
+ <script type="text/javascript" src="<?php echo base_url();?>assets/js/leaflet.label.js"></script>
+ <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <!-- Bootstrap core JavaScript -->
-  <script src="<?php echo base_url();?>assets/vendor/jquery/jquery.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+  <!-- <script src="<?php echo base_url();?>assets/vendor/jquery/jquery.min.js"></script> -->
   <script src="<?php echo base_url();?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- map -->
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/sitemapstyler.js"></script>
   <!-- map -->
+  
+ 
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/leaflet.label.js"></script>
+
+  
+  
+  
+   
+  
+ <!-- div is created to keep the map in its certain area whichever amount of area is located to display the map -->
   <style type="text/css">
+
+
+
+  .leaflet-popup-content {
+   
+    overflow: auto;
+  }
+  
+  div#map {
+    margin-top: 44px ;
+}
 
   ::-webkit-scrollbar {
     width: 10px;
@@ -55,7 +86,7 @@
   #load{
     width:100%;
     height:100%;
-    position:fixed;
+    position:relative;
     z-index:9999;
     background:url("img/loader.gif") no-repeat center center rgba(0,0,0,0.25)
   }

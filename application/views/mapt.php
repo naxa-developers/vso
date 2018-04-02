@@ -6,12 +6,9 @@
 
 
 
-<div id="wrapper">
-	<div id="google_map">
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56519.75819502671!2d85.40168926468694!3d27.70231139509421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1b2c1cbcb295%3A0x67ba8bca0c5ec26f!2sChangunarayan!5e0!3m2!1sen!2snp!4v1520431975332" width="100%" height="550" frameborder="0" style="border:0" allowfullscreen></iframe>
-	</div>
-
-	<div id="over_map">
+	
+		  
+	
 		<!--sub-menu-->
 		<div class="icon-bar icon">
 			<a class="active" href="mapt.php"><i class="fa fa-map"></i> Maps</a>
@@ -32,9 +29,9 @@
 		</div>
 
 		<!--ends sub-menu-->
-
-		<button class="layer-toggle"><i class="fa fa-chevron-left" style="color: white";></i></button>
-
+		<div id="over_map">
+		<!-- <button class="layer-toggle" style="position:absolute;"><i class="fa fa-chevron-left" style="color: white";></i></button>
+ -->
 		<div class="panel panel-success">
 
 
@@ -206,13 +203,14 @@
 
 				</div>
 			</div>
-
-
+<!-- 
+<div id="over_map">
+		<button class="layer-toggle" style="position:absolute;"><i class="fa fa-chevron-left" style="color: white";></i></button>
+ -->
 
 
 		</div>
 	</div>
-
 
 
 	<script>
