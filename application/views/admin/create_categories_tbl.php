@@ -27,7 +27,7 @@
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Table Name</label>
-                                <input readonly type="text" class="form-control" value="<?php echo $tbl;?>" name="tbl_name" id="exampleInputEmail1"  required>
+                                <input  type="text" class="form-control" value="<?php echo $tbl;?>" name="tbl_name" id="exampleInputEmail1"  required>
                             </div>
 
 

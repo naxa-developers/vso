@@ -53,7 +53,7 @@
 }
 
 .form-control {
-  
+
     color: #110000;
 }
     </style>
@@ -124,12 +124,12 @@
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-laptop"></i>
-                        <span>Project Partners</span>
+                        <span>Home Page</span>
                     </a>
                     <ul class="sub">
 
-                        <li><a href="horizontal_menu.html">View Project Partners</a></li>
-                        <li><a href="<?php echo base_url()?>add_proj">ADD Project Partners</a></li>
+                      
+                        <li><a href="<?php echo base_url()?>add_proj">Project Partners</a></li>
                     </ul>
                 </li>
 
