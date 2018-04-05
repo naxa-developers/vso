@@ -34,6 +34,7 @@
 <link href="https://fonts.googleapis.com/css?family=Dosis|Open+Sans+Condensed:300|Raleway|Simonetta|Wire+One" rel="stylesheet">
 
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/new.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/styles.css">
    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/leaflet.label.css">
  <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
@@ -44,28 +45,28 @@
 <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
   <!-- <script src="<?php echo base_url();?>assets/vendor/jquery/jquery.min.js"></script> -->
   <script src="<?php echo base_url();?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?php echo base_url();?>assets/js/carousels.js"></script>
   <!-- map -->
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/sitemapstyler.js"></script>
   <!-- map -->
-  
- 
-  <script type="text/javascript" src="<?php echo base_url();?>assets/js/leaflet.label.js"></script>
 
-  
-  
-  
-   
-  
+
+
+
+
+
+
+
  <!-- div is created to keep the map in its certain area whichever amount of area is located to display the map -->
   <style type="text/css">
 
 
 
   .leaflet-popup-content {
-   
+
     overflow: auto;
   }
-  
+
   div#map {
     margin-top: 44px ;
 }
@@ -96,7 +97,12 @@
 
 
 }
-
+#over_map {
+    position: absolute;
+    top: 117px;
+    left: 12px;
+    z-index: 999;
+}
 
 </style>
 </head>
@@ -109,17 +115,32 @@
   <!-- Navigation -->
   <nav class="navbar navbar-light bg-light static-top">
     <div class="container">
-      <a class="navbar-brand" href="<?php echo base_url();?>main"><img src="<?php echo base_url();?>assets/img/ng.png" class="img-responsive"> Changunarayan Municipality
-        <br> <div class="sub"> <h6>     Municipal GIS </h6> </div>
+      <a class="navbar-brand" href="index.php" style="font-weight:bold;"><img src="./assets/img/ng.png" class="img-responsive"> Shankharapur Municipality
+        <br> <div class="sub"> <h6 style="font-size:12px"> Disaster Information Management Platform </h6> </div>
       </a>
-      <div class="header">
+      <div class="header" style="font-weight:bold;">
        <div class="header-right">
-        <a class="active" href="<?php echo base_url();?>main"><i class="fa fa-home"></i></a>
-        <a href="<?php echo base_url();?>datasets">Datasets</a>
-        <a href="<?php echo base_url();?>map">Map</a>
-        <a href="<?php echo base_url();?>about">About</a>
+        <a class="active" href="index.php"><i class="fa fa-home"></i></a>
+        <a href="<?php echo base_url()?>datasets">Datasets</a>
+        <a href="<?php echo base_url()?>map">Map</a>
+        <a href="<?php echo base_url()?>about">About</a>
+        <a href="contact.php">ER Inventory</a>
+        <a href="report.php">Reports</a>
+        <div class="dropdown">
+    <button class="dropbtn" style="font-weight:bold;">Visit Websites
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="http://www.changunarayanmun.gov.np/en">Municipal Website</a>
+      <a href="http://neoc.gov.np/en/">NEOC</a>
 
-        <a href="#website">Municipal Website</a>
+    </div>
+  </div>
+
+        <!--<a href="http://www.changunarayanmun.gov.np/en">Municipal Website</a>-->
+        <!-- <a href="http://neoc.gov.np/en/">National Emergency Operation Centre(NEOC)</a>-->
+         <!--<a><img src="img/ng.png" class="img-responsive ng">
+      </a>-->
 
       </div>
     </div>

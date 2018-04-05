@@ -8,6 +8,7 @@ class MainController extends CI_Controller
 
     $this->load->helper('url');
     $this->load->model('Main_model');
+    $this->load->model('Upload_model');
   }
 
 
@@ -43,6 +44,9 @@ public function map_page(){
     //echo base_url();
     $tbl='categories_tbl';
    $this->body['data_cat']=$this->Main_model->get_cat($tbl);
+   $this->body['proj_data']=$this->Main_model->get_proj_data();
+   $this->body['background_img']=$this->Main_model->get_bck_img();
+   $this->body['emerg_contact']=$this->Upload_model->get_emergency_con();
 
     $this->load->view('header');
     $this->load->view('main',$this->body);

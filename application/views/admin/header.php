@@ -128,22 +128,13 @@
                     </a>
                     <ul class="sub">
 
-                      
-                        <li><a href="<?php echo base_url()?>add_proj">Project Partners</a></li>
+                        <li><a href="<?php echo base_url();?>categories_tbl">Categories</a></li>
+                        <li><a href="<?php echo base_url()?>view_proj">Project Partners</a></li>
+                        <li><a href="<?php echo base_url()?>emergency_contact">Emergency Contact</a></li>
+                        <li><a href="<?php echo base_url()?>background">Background Image</a></li>
                     </ul>
                 </li>
 
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-laptop"></i>
-                        <span>Emergency Contacts</span>
-                    </a>
-                    <ul class="sub">
-
-                        <li><a href="horizontal_menu.html">Project Partners</a></li>
-                        <li><a href="language_switch.html">Emergency Contact</a></li>
-                    </ul>
-                </li>
 
 
                 <li class="sub-menu">
@@ -152,10 +143,10 @@
                         <span>Categories Operation</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="<?php echo base_url()?>create_categories">Create Categories</a></li>
-                        <!-- <li><a href="<?php echo base_url();?>create_categories_tbl">Create Database Tables</a></li>
-                        <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
-                        <li><a href="<?php echo base_url();?>categories_tbl">View Categories Tables</a></li>
+
+                        <li><a href="<?php echo base_url();?>create_categories_tbl">Create Database Tables</a></li>
+                        <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li>
+
                     </ul>
                 </li>
 

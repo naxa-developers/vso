@@ -254,13 +254,20 @@ public function test_arr(){
 
 
 $tbl=array(
- 'aa','aba','ccc',
+ 'article','project_tbl','categories_tbl',
 
 );
 
+
+
 for($i=0;$i<sizeof($tbl);$i++){
 
-$this->body[$tbl[$i]]=$tbl[$i];
+
+  $data=$this->Project_model->get_proj($tbl[$i]);
+
+  var_dump($dsta.'<br>');
+
+
 
 }
 $this->load->view('admin/arr.php',$this->body);

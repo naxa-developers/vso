@@ -1,5 +1,3 @@
-
-<!-- Masthead -->
 <header class="masthead text-white text-center">
   <div class="overlay"></div>
 
@@ -30,30 +28,39 @@
               <div class="row">
                 <div class="col-6"><div class="form-group">
 
-                  <input type="text" class="form-control" id="tt1" placeholder="Title1">
+                  <input type="text" class="form-control" id="tt1" placeholder="Ward">
                 </div></div>
                 <div class="col-6"><div class="form-group">
 
-                  <input type="text" class="form-control" id="tt2" placeholder="Title2">
+                  <input type="text" class="form-control" id="tt2" placeholder="Data">
                 </div></div>
               </div>
               <div class="row">
                 <div class="col-6"> <div class="form-group">
 
                   <select class="form-control" id="sel1" >
-                    <option>Select Value </option>
+                    <option>Select Ward </option>
+                    <option>1</option>
                     <option>2</option>
                     <option>3</option>
                     <option>4</option>
-                  </select>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                </select>
                 </div></div>
                 <div class="col-6"> <div class="form-group">
 
                   <select class="form-control" id="sel1">
-                    <option>Select Value</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
+                    <option>Select Data</option>
+                    <option>Risk and Hazards</option>
+                    <option>Households</option>
+                    <option>Schools</option>
+                    <option>Health Facilities</option>
+                    <option>Government Offices</option>
+                    <option>Open Spaces</option>
                   </select>
                 </div>
 
@@ -67,98 +74,98 @@
 
       </form>
     </div>
-  <div class="container">
-  <div class="row">
-    <div class="col-sm" >
-     <a href="#" class="map-list"> Insfrastucture Map <i class="fa fa-chevron-right" style="margin-left: 15px"></i></a>
-    </div>
-    <div class="col-sm" >
-     <a href="#" class="map-list"> Household Map <i class="fa fa-chevron-right" style="margin-left: 15px"></i></a>
-    </div>
-    <div class="col-sm">
-    <a href="#" class="map-list"> Risk & Hazards <i class="fa fa-chevron-right" style="margin-left: 15px"s></i> </a>
-    </div>
-  </div>
+
 </div>
 </div>
 </header>
-
-<div class="container">
-  <div class="row">
-
-<div class="grid-container col-md-10">
-  <div class="item1"> <h5> Browse Datasets By Category</h5>
+<div class="grid-container">
+  <div class="item1"> <h5> Browse  By Category</h5>
     <hr width="40%">
-    <br>
+
     <div class="row">
 
-      <?php //var_dump($data_cat);
+<?php foreach($data_cat as $data){ ?>
 
-      foreach($data_cat as $v){ ?>
-      <div class="col-lg-3">
-                <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+      <div class="col-lg-3 text-center">
+       <a href="category.php"> <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
           <div class="features-icons-icon d-flex">
-            <img src="<?php echo $v->cat_photo; ?>" class="img-responsive center-block">
-          </div>
-          <h6 class="text-center"><?php echo $v->cat_name; ?></h6>
+           <img src="<?php echo $data['category_photo']?>" class="img-responsive center-block">
+         </div>
+         <h6><?php echo ucwords($data['category_name'])?></h6>
 
-        </div>
+       </div></a>
+     </div>
 
-      </div>
-    <?php }?>
+   <?php } ?>
 
-
-</div>
 
 </div>
-</div>
 
-<div class="item2 col-md-2"><h5>Overview</h5>
+</div>
+<div class="item2"><h5>Emergency Contacts</h5>
   <hr width="40%">
+<!-- <h6> Roads Completed </h6>-->
+<!--<div class="progress">-->
+<!--  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>-->
+<!--</div>-->
+<!--<br>-->
+<!-- <h6> Literacy </h6>-->
+<!--<div class="progress">-->
+<!--  <div class="progress-bar bg-success" role="progressbar" style="width: 55%;" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">55%</div>-->
+<!--</div>-->
+<!--<br>-->
+<!--<h6> Ongoing Projects </h6>-->
+<!--<div class="progress">-->
+<!--  <div class="progress-bar bg-info" role="progressbar" style="width: 35%;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">35%</div>-->
+<!--</div>-->
 
-<div class="counter text-left">
-<h6><span class="count">1000</span> Flood</h6>
-<h6><span class="count">853</span> Landslide</h6>
-<h6><span class="count">154</span> Fire</h6>
-<h6><span class="count">10</span> Crime</h6>
+<!--<br>-->
+<!--<h6> Earthquake Affected Area </h6>-->
+<!--<div class="progress">-->
+<!--  <div class="progress-bar bg-danger" role="progressbar" style="width: 15%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">15%</div>-->
+<!--</div>-->
 
+<table class="table">
+      <thead>
+        <tr>
+
+          <th>Name</th>
+           <th>Address</th>
+          <th>Contact NO</th>
+
+        </tr>
+      </thead>
+      <tbody>
+
+     <?php foreach($emerg_contact as $emrg_data) {?>
+
+        <tr class="active">
+
+          <td><?php echo $emrg_data['name']  ?></td>
+          <td><?php echo $emrg_data['address']  ?></td>
+          <td><?php echo $emrg_data['contact_number']  ?></td>
+        </tr>
+      <?php } ?>
+
+      </tbody>
+    </table>
+    <span class="pull-right"><a href="contact.php" class="view">View all</a></span>
 </div>
 </div>
-
-</div>
-</div>
-
 
 
 
     <!-- Testimonials -->
-    <section class="testimonials text-center bg-light">
-      <div class="container">
-        <h4 class="mb-5">Project Partners</h4>
+    <div id="clients">
+        <h3 class="proj text-center">Project Partners</h3>
+        <br>
+        <div class="clients-wrap text-center">
+          <ul id="clients-list" class="clearfix">
+            <?php foreach ($proj_data as $data){?>
+            <li class="logos"><img src="<?php echo $data['project_pic'];  ?>" alt="euro"></li>
 
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-              <img class="img-fluid rounded-circle mb-3" src="<?php echo base_url();?>assets/img/ng.png" alt="">
-              <h5>Consortium of DCA</h5>
-              <p class="font-weight-light mb-0">"Dan Church Aid"</p>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="testimonial-item mx-auto mb-5 mb-lg-0" >
-              <img class="img-fluid rounded-circle mb-3" src="<?php echo base_url();?>assets/img/adra.png" alt="">
-              <h5>ADRA Nepal</h5>
-              <p class="font-weight-light mb-0">"Adventist Development and Relief Agency "</p>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-              <img class="img-fluid rounded-circle mb-3" src="<?php echo base_url();?>assets/img/vso.gif" alt="">
-              <h5>VSO</h5>
-              <p class="font-weight-light mb-0">"Volunteering in Nepal"</p>
-            </div>
-          </div>
+          <?php } ?>
 
-        </div>
-      </div>
-    </section>
+          </ul>
+        </div><!-- @end .clients-wrap -->
+      </div><!-- @end #clients -->

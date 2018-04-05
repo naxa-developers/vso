@@ -2,13 +2,21 @@
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
+
+
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/leaflet.label.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+<!-- Bootstrap core JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.2/randomColor.js"></script>
+<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
 
 
 
 
-	
-		  
-	
+
+
 		<!--sub-menu-->
 		<div class="icon-bar icon">
 			<a class="active" href="mapt.php"><i class="fa fa-map"></i> Maps</a>
@@ -46,6 +54,8 @@
 
 					<!-- Tab panes -->
 					<div class="tab-content">
+
+</script>
 						<div role="tabpanel" class="tab-pane active" id="layers">
 							<div id="layers">
 
@@ -57,16 +67,16 @@
 
 
 
-										<li><a><input type="checkbox" name="1"> Administrative Layers</a>
+										<li><a><input type="checkbox" name="1" checked > Administrative Layers </a>
 											<ul>
-												<li><a ><input type="checkbox" name="1"> Municipal Boundary</a></li>
-												<li><a><input type="checkbox" name="1"> Ward Boundary</a></li>
+												<li><a ><input type="checkbox" name="1" value= "mun_changu" class="CheckBox" checked> Municipal Boundary</a></li>
+												<li><a><input type="checkbox" name="1" value= "wards_changu" class="CheckBox" checked> Ward Boundary</a></li>
 												<li><a><input type="checkbox" name="1"> Old VDCs</a></li>
 												<li><a ><input type="checkbox" name="1"> Old ward Layers</a></li>
 
 											</ul>
 										</li>
-										<li><a><input type="checkbox" name="1"> Settlement Layers</a>
+										<li><a><input type="checkbox" name="1" value= "waterways_changu"  class="CheckBox" checked > River</a>
 											<ul>
 												<li><a><input type="checkbox" name="1"> Settlement Clusters</a></li>
 												<li><a><input type="checkbox" name="1"> Households</a></li>
@@ -75,7 +85,7 @@
 											</ul>
 										</li>
 
-										<li><a><input type="checkbox" name="1"> Risks and Hazards</a>
+										<li><a><input type="checkbox" name="1" value="road_changu" class="CheckBox" checked> Road</a>
 											<ul>
 												<li><a><input type="checkbox" name="1"> Sublayer 1</a></li>
 												<li><a><input type="checkbox" name="1"> Sublayer 2</a></li>
@@ -84,7 +94,7 @@
 											</ul>
 										</li>
 
-										<li><a><input type="checkbox" name="1"> Open Spaces / Safe locations</a>
+										<li><a><input type="checkbox" name="1" value="bus_park" class="CheckBox" checked> Open Spaces / Safe locations</a>
 											<ul>
 												<li><a><input type="checkbox" name="1"> Grounds</a></li>
 												<li><a><input type="checkbox" name="1"> Parks</a></li>
@@ -203,14 +213,14 @@
 
 				</div>
 			</div>
-<!-- 
+<!--
 <div id="over_map">
 		<button class="layer-toggle" style="position:absolute;"><i class="fa fa-chevron-left" style="color: white";></i></button>
  -->
 
 
 		</div>
-	</div>
+
 
 
 	<script>
@@ -218,7 +228,8 @@
 		$(document).ready(function(){
 			$(".layer-toggle").click(function(){
 				$(".panel.panel-success").toggle(1000);
-				$(".layer-toggle i").toggleClass("fa-chevron-right");
+				$(".layer-toggle [i]").toggleClass("fa-chevron-right");
+
 			});
 
 		});

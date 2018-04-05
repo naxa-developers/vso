@@ -334,7 +334,7 @@ redirect('view_cat_tables');
 
 
       }else{
-        $this->session->set_flashdata('table', 'Table Already Exists !! Try Again');
+        $this->session->set_flashdata('msg', 'Table Already Exists !! Try Again');
         redirect('create_categories_tbl');
 
       }
@@ -357,7 +357,8 @@ redirect('view_cat_tables');
     if(isset($_POST['submit_cat'])){
 
       $cat_name=$this->input->post('cat_name');
-      $cat_table=$this->input->post('cat_table');
+
+      $cat_table=strtolower(str_replace(" ","_",$cat_name));
 
       $file_name = $_FILES['cat_pic']['name'];
 
@@ -371,9 +372,9 @@ redirect('view_cat_tables');
         $image_path=base_url() . 'uploads/categories/'.$cat_table.'.'.$ext ;
 
         $data=array(
-          'cat_name'=>$cat_name,
-          'cat_table'=>$cat_table,
-          'cat_photo'=>$image_path
+          'category_name'=>$cat_name,
+          'category_table'=>$cat_table,
+          'category_photo'=>$image_path
 
         );
 

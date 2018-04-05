@@ -9,7 +9,7 @@
                   <header class="panel-heading">
                       Hover Table
                       <span class="tools pull-right">
-                        <a href="<?php echo base_url()?>create_categories"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Category</button></a>
+                        <a href="<?php echo base_url()?>create_categories"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Emergency Contact</button></a>
                        </span>
                   </header>
                   <div class="panel-body">
@@ -29,7 +29,7 @@
                       <h4> NO Data   </h4>
 
                     <?php }else{ ?>
-                      <table class="table table-hover">
+                      <table class="table table-hover" id='tb1'>
                           <thead>
 
 
@@ -72,9 +72,9 @@
                                   ?>
                               <td><?php echo $value;?></td>
                             <?php }  ?>
-                              <td><a href="<?php echo base_url()?>data_tables?tbl_name=<?php echo base64_encode($v['category_table']);?>">View</a> /
-                                <a href="<?php echo base_url()?>edit_categories?id=<?php echo base64_encode($v['id']);?>&& tbl=<?php echo base64_encode($tbl_name);?>">Edit</a> /
-                                <a href="<?php echo base_url()?>delete_data?id=<?php echo  $v['id'];?> && tbl=<?php echo ($tbl_name);?>">Delete</a></td>
+                              <td>
+                                <a href="<?php echo base_url()?>edit_categories?id=<?php echo base64_encode($v['id']);?>">Edit</a> /
+                                <a href="<?php echo base_url()?>delete_emergency?id=<?php echo $v['id'];?>">Delete</a></td>
 
 
 

@@ -64,6 +64,7 @@ $route['map'] ='MainController/map_page';
 // Admin routes
 
 $route['admin'] = 'Admin/LoginController';
+
 $route['table_create'] = 'Admin/TableController/create_table';
 $route['dashboard'] = 'Admin/CategoriesController';
 $route['data_tables'] = 'Admin/CategoriesController/data_tables';
@@ -77,9 +78,17 @@ $route['categories_tbl'] = 'Admin/CategoriesController/categories_tbl';
 $route['edit_categories'] = 'Admin/CategoriesController/edit_categories';
 $route['drop_cat_table'] = 'Admin/CategoriesController/drop_cat_table';
 $route['delete_data'] = 'Admin/CategoriesController/delete_data';
+
 $route['proj/delete_data'] = 'Admin/ProjectController/delete_data';
 $route['proj/edit_proj'] = 'Admin/ProjectController/edit_proj';
 $route['add_proj'] = 'Admin/ProjectController/add_proj';
 $route['view_proj'] = 'Admin/ProjectController/view_proj';
+
 $route['csv_upload'] = 'Admin/TableController/copy_table';
+
 $route['add_layers'] = 'Admin/LayersController/add_layers';
+
+
+$route['background'] = 'Admin/UploadController/bck_img';
+$route['emergency_contact'] = 'Admin/UploadController/emergency_contact';
+$route['delete_emergency'] = 'Admin/UploadController/delete_emerg';

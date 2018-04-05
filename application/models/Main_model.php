@@ -29,14 +29,29 @@ class Main_model extends CI_Model {
     return $query->result_array();
   }
 
+
+  public function get_proj_data(){
+
+    $this->db->select('*');
+    $query=$this->db->get('project_tbl');
+    return $query->result_array();
+  }
+
   public function get_cat($tbl){
 
     $this->db->select('*');
+    $this->db->order_by('ordering','ASC');
     $query=$this->db->get($tbl);
-    return $query->result();
+    return $query->result_array();
   }
 
+public function get_bck_img(){
 
+
+
+
+
+}
 
 
 
