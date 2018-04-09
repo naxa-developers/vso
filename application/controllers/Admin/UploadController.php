@@ -179,6 +179,14 @@ $this->body['e_data']=$this->Upload_model->e_data(base64_decode($this->input->ge
 
 }
 
+public function add_emergency(){
+
+$this->load->view('admin/header');
+$this->load->view('admin/add_emergency');
+$this->load->view('admin/footer');
+
+
+}
 
 
 

@@ -93,3 +93,4 @@ $route['background'] = 'Admin/UploadController/bck_img';
 $route['emergency_contact'] = 'Admin/UploadController/emergency_contact';
 $route['delete_emergency'] = 'Admin/UploadController/delete_emerg';
 $route['edit_emergency'] = 'Admin/UploadController/edit_emerg';
+$route['add_emergency'] = 'Admin/UploadController/add_emergency';

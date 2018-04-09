@@ -9,7 +9,7 @@
                   <header class="panel-heading">
                       Hover Table
                       <span class="tools pull-right">
-                        <a href="<?php echo base_url()?>create_categories"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Emergency Contact</button></a>
+                        <a href="<?php echo base_url()?>add_emergency"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Emergency Contact</button></a>
                        </span>
                   </header>
                   <div class="panel-body">
