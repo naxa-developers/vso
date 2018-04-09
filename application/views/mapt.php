@@ -94,7 +94,7 @@
 											</ul>
 										</li>
 
-										<li><a><input type="checkbox" name="1" value="bus_park" class="CheckBox" checked> Open Spaces / Safe locations</a>
+										<li><a><input type="checkbox" name="1" value="bus_park" class="CheckBox" checked> Open Spaces/Safe locations</a>
 											<ul>
 												<li><a><input type="checkbox" name="1"> Grounds</a></li>
 												<li><a><input type="checkbox" name="1"> Parks</a></li>
@@ -143,7 +143,7 @@
 
 											<li><a><input type="checkbox" name="1">Educational Institutions</a>
 												<ul>
-													<li><a><input type="checkbox" name="1"> Schools</a></li>
+													<li><a><input type="checkbox"  value= "school" class="CheckBox"  name="1" checked> Schools</a></li>
 													<li><a><input type="checkbox" name="1"> Colleges</a></li>
 													<li><a><input type="checkbox" name="1"> Training Centers</a></li>
 

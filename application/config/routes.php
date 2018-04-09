@@ -92,3 +92,4 @@ $route['add_layers'] = 'Admin/LayersController/add_layers';
 $route['background'] = 'Admin/UploadController/bck_img';
 $route['emergency_contact'] = 'Admin/UploadController/emergency_contact';
 $route['delete_emergency'] = 'Admin/UploadController/delete_emerg';
+$route['edit_emergency'] = 'Admin/UploadController/edit_emerg';

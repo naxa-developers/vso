@@ -7,18 +7,20 @@
 
 var layer_array = '<?php echo $layer_name; ?>';
 var geo_array = '<?php echo $geo; ?>';
+var cat_layer = '<?php echo $cat_map_layer; ?>';
 
 
 
 layer_name = JSON.parse(layer_array);
 geojson = JSON.parse(geo_array);
+cat_layer = JSON.parse(cat_layer);
 
-console.log(layer_name);
-console.log(geojson);
+// console.log(layer_name);
+//console.log(cat_layer);
 
 $(document).ready(function(){
 
- var map = L.map('map').setView([27.701871, 85.315297], 12);
+ var map = L.map('map').setView([27.701871, 85.315297], 13);
 // map.scrollWheelZoom.disable();
 map.options.maxBounds;  // remove the maxBounds object from the map options
 map.options.minZoom = 12;
@@ -65,14 +67,14 @@ window[''+layer_name[i]] = new L.GeoJSON(geojson[i],
 {
 
 
- pointToLayer: function(feature,Latlng)
- {
-   icons=L.icon({
-   iconUrl: "https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon.png"
- });
- var marker = L.marker(Latlng,{icon: icons});
-
-},
+//  pointToLayer: function(feature,Latlng)
+//  {
+//    icons=L.icon({
+//    iconUrl: "https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon.png"
+//  });
+//  var marker = L.marker(Latlng,{icon: icons});
+//
+// },
 // with onEachFeature the task is carried out on Each of the point of coordinates or other properties Like( Creating table in each point of cordinates and etc)
 
 onEachFeature: function(feature,layer){
@@ -107,9 +109,44 @@ onEachFeature: function(feature,layer){
 
 }
 
+
+//cat map load
+window['school']= new L.GeoJSON(cat_layer,
+{
+
+  pointToLayer: function(feature,Latlng)
+   {
+     icons=L.icon({
+     iconUrl: "https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon.png"
+   });
+   var marker = L.marker(Latlng,{icon: icons});
+       return marker;
+
+  },
+onEachFeature: function(feature,layer){
+var s =feature.properties.length;
+console.log(s);
+layer.bindPopup(s);
+
+
+},
+
+
+
+}).addTo(map);
+
+//cat map end
+
+
+
+
+
+
+
+
 $( ".CheckBox" ).click(function( event ) {
      layerClicked = window[event.target.value];
- //console.log(event);
+ //console.log(layerClicked);
          if (map.hasLayer(layerClicked)) {
              map.removeLayer(layerClicked);
          }

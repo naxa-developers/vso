@@ -73,7 +73,7 @@
                               <td><?php echo $value;?></td>
                             <?php }  ?>
                               <td>
-                                <a href="<?php echo base_url()?>edit_categories?id=<?php echo base64_encode($v['id']);?>">Edit</a> /
+                                <a href="<?php echo base_url()?>edit_emergency?id=<?php echo base64_encode($v['id']);?>">Edit</a> /
                                 <a href="<?php echo base_url()?>delete_emergency?id=<?php echo $v['id'];?>">Delete</a></td>
 
 

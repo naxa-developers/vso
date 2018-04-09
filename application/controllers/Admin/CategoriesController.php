@@ -255,7 +255,7 @@ redirect('view_cat_tables');
 
        $data_array=array(
 
-      'cat_table'=>$tbl,
+      'category_table'=>$tbl,
 
 
        );

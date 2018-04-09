@@ -54,7 +54,7 @@
        '</div>'+
        '<div class="form-group">'+
          '<label for="pwd">column length:</label>'+
-         '<input type="text" class="form-control" id="pwd" placeholder="Provide Length" name="c_length[]" required>'+
+         '<input type="text" class="form-control" id="pwd" placeholder="Provide Length" name="c_length[]" >'+
        '</div>'+
 
         '<div class="form-group">'+

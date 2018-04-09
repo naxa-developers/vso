@@ -67,8 +67,23 @@ return $this->db->delete('emergency_contact');
   }
 
 
+public function e_data($id){
+
+$this->db->select('*');
+$this->db->where('id',$id);
+$query=$this->db->get('emergency_contact');
+return $query->row_array();
 
 
+}
+
+public function update_emerg($id,$data){
+
+  $this->db->where('id',$id);
+  return $this->db->update('emergency_contact',$data);
+
+
+}
 
 
 }

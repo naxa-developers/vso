@@ -13,13 +13,15 @@ class MapController extends CI_Controller
 
 public function map_page(){
 
+  //administrative laayer start
+
 $tbl=array(
 
             'waterways_changu',
-            'mun_changu',
+           'mun_changu',
            'wards_changu',
            'road_changu',
-           'bus_park'
+
 
 );
 
@@ -31,9 +33,9 @@ for($i=0; $i<sizeof($tbl); $i++){
 
 $get_map=$this->Map_model->get($tbl[$i]);
 //var_dump($get_map);$
-$fields=$this->db->list_fields($tbl[$i]);
+//$fields=$this->db->list_fields($tbl[$i]);
 if (isset($features)){
-  
+
       $features = array();
     }
 foreach ($get_map as $data) {
@@ -68,10 +70,57 @@ $a = $tbl[$i];
 
 
 }
- // var_dump(json_encode($array_geojson, JSON_NUMERIC_CHECK));
+
+
+
+
+
+
     $this->body['layer_name']= json_encode($tbl, JSON_NUMERIC_CHECK);
  $this->body['geo']= json_encode($array_geojson, JSON_NUMERIC_CHECK);
-  //var_dump($this->body['layer_name']);
+
+
+ // layer --ends
+
+ //category layer start
+
+$get_map=$this->Map_model->get_cat_map('school');
+$this->Map_model->get_nep('tbl_lang');
+$fields=$this->db->list_fields('school');
+unset($fields[0]);
+$this->body['field']=$fields;
+
+
+
+foreach($get_map as $cat_data){
+
+  $features_cat[]= array(
+   "type" =>"Feature",
+   "properties"=>$cat_data,
+   "geometry"=>array(
+
+     'type'=>'Point',
+     'coordinates'=>array(
+      $cat_data['a0'],
+      $cat_data['a1'],
+         1.0
+     ),
+   ),
+  );
+
+
+}
+
+$map_cat= array(
+   'type' => 'FeatureCollection',
+   'features' => $features_cat,
+ );
+
+
+  $this->body['cat_map_layer']= json_encode($map_cat, JSON_NUMERIC_CHECK);
+// var_dump($map_cat);
+ //end cat layer
+
    $this->load->view('header');
  $this->load->view('mapt');
    $this->load->view('map/map',$this->body);

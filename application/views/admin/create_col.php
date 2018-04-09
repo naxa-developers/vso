@@ -35,11 +35,11 @@
                                   <br> <br>
                             <div class="form-group">
                               <label for="pwd">Column Name:</label>
-                              <input type="text" class="form-control" id="pwd" value="Latitude" name="c_name[]" required>
+                              <input type="text" class="form-control" id="pwd" value="Longitude" name="c_name[]" required>
                             </div>
                             <div class="form-group">
                               <label for="pwd">Column Length:</label>
-                              <input type="text" class="form-control" id="pwd" placeholder="Provide Length" name="c_length[]" required>
+                              <input type="text" class="form-control" id="pwd" placeholder="Provide Length" name="c_length[]" >
                             </div>
 
                              <div class="form-group">
@@ -55,11 +55,11 @@
 
                             <div class="form-group">
                               <label for="pwd">Column Name:</label>
-                          <font color="red"> <input  type="text" class="form-control" id="pwd" value="Longitude" name="c_name[]" required> </font>
+                          <font color="red"> <input  type="text" class="form-control" id="pwd" value="Latitude" name="c_name[]" required> </font>
                             </div>
                             <div class="form-group">
                               <label for="pwd">Column Length:</label>
-                              <input type="text" class="form-control" id="pwd" placeholder="Provide Length" name="c_length[]" required>
+                              <input type="text" class="form-control" id="pwd" placeholder="Provide Length" name="c_length[]" >
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Column Type:</label>
@@ -79,7 +79,7 @@
                             </div>
                             <div class="form-group">
                               <label for="pwd">Column Length:</label>
-                              <input type="text" class="form-control" id="pwd" placeholder="Provide Length" name="c_length[]" required>
+                              <input type="text" class="form-control" id="pwd" placeholder="Provide Length" name="c_length[]" >
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Column Type:</label>
