@@ -8,13 +8,18 @@
 var layer_array = '<?php echo $layer_name; ?>';
 var geo_array = '<?php echo $geo; ?>';
 var cat_layer = '<?php echo $cat_map_layer; ?>';
+var nep = '<?php echo $nep; ?>';
+
+
 
 
 
 layer_name = JSON.parse(layer_array);
 geojson = JSON.parse(geo_array);
 cat_layer = JSON.parse(cat_layer);
+nep = JSON.parse(nep);
 
+//console.log(nep);
 // console.log(layer_name);
 //console.log(cat_layer);
 
@@ -110,6 +115,7 @@ onEachFeature: function(feature,layer){
 }
 
 
+
 //cat map load
 window['school']= new L.GeoJSON(cat_layer,
 {
@@ -123,10 +129,46 @@ window['school']= new L.GeoJSON(cat_layer,
        return marker;
 
   },
+
+
+
+
 onEachFeature: function(feature,layer){
-var s =feature.properties.length;
-console.log(s);
-layer.bindPopup(s);
+
+console.log(feature.properties);
+var pop='';
+
+pop +='<table class="table-bordered">';
+pop +='<thead><tr>';
+
+for(i=0;i<nep.length;i++){
+
+  // console.log(nep[i].nepali_lang);
+pop += '<td>'+nep[i].nepali_lang+'</td>';
+
+
+
+
+}
+pop +='</tr></thead>';
+
+
+pop +='<tbody><tr>';
+
+for(i=0;i<nep.length;i++){
+
+      pop +='<td>'+ feature.properties['a'+i] +'</td>';
+
+
+
+}
+
+ pop +='</tr></tbody>';
+
+  pop +='</table>';
+
+//console.log(pop);
+layer.bindPopup(pop);
 
 
 },

@@ -18,10 +18,24 @@ $this->db->select('*');
 
 
         $this->db->select('*');
-    
+
       $query=$this->db->get($tbl);
       return $query->result_array();
     }
 
+
+public function get_nep($tbl,$typ){
+
+  $this->db->select('*');
+  $this->db->order_by('id','ASC');
+  $this->db->where('tbl_name',$typ);
+  $q=$this->db->get($tbl);
+return  $q->result_array();
+
+
+
+
+
+}
 
 }
