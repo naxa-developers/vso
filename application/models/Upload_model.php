@@ -85,5 +85,9 @@ public function update_emerg($id,$data){
 
 }
 
+public function insert_emrg($data){
+
+return  $this->db->insert('emergency_contact',$data);
+}
 
 }

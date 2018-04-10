@@ -181,9 +181,42 @@ $this->body['e_data']=$this->Upload_model->e_data(base64_decode($this->input->ge
 
 public function add_emergency(){
 
-$this->load->view('admin/header');
-$this->load->view('admin/add_emergency');
-$this->load->view('admin/footer');
+if(isset($_POST['submit'])){
+
+  $data=array(
+
+  'name'=>$this->input->post('name'),
+  'address'=>$this->input->post('address'),
+  'contact_number'=>$this->input->post('contact_number'),
+
+
+  );
+
+
+  $insert=$this->Upload_model->insert_emrg($data);
+  if($insert){
+
+    $this->session->set_flashdata('msg','Emergency Contact Added successfully');
+    redirect('emergency_contact');
+
+
+  }else{
+
+    //db error
+  }
+
+}else{
+
+  $this->load->view('admin/header');
+  $this->load->view('admin/add_emergency');
+  $this->load->view('admin/footer');
+
+}
+
+
+
+
+
 
 
 }

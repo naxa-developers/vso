@@ -74,7 +74,7 @@ public function drop_cat_table(){
 
   $drop_tbl=$this->dbforge->drop_table($tbl_name);
   var_dump($drop_tbl);
-  if($drop_tbl==true){
+  if($drop_tbl){
 
 $this->session->set_flashdata('msg',$tbl_name.' table was sucessfully deleted');
 
@@ -83,7 +83,7 @@ redirect('view_cat_tables');
 
   }else{
 
-
+//db error
   }
 
 
@@ -450,6 +450,8 @@ public function delete_data(){
 
   $id=$this->input->get('id');
   $tbl_name=$this->input->get('tbl');
+  $cat_tbl=$this->input->get('cat_tbl');
+//  echo $cat_tbl;
 
   $this->Dash_model->delete_data($id,$tbl_name);
 

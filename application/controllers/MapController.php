@@ -85,7 +85,7 @@ $a = $tbl[$i];
  //category layer start
 
 $get_map=$this->Map_model->get_cat_map('school');
-$this->Map_model->get_nep('tbl_lang');
+//$this->Map_model->get_nep('tbl_lang');
 $fields=$this->db->list_fields('school');
 unset($fields[0]);
 $this->body['field']=$fields;
