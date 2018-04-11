@@ -25,10 +25,10 @@ nep = JSON.parse(nep);
 
 $(document).ready(function(){
 
- var map = L.map('map').setView([27.701871, 85.315297], 13);
+ var map = L.map('map').setView([27.701871, 85.315297], 12);
 // map.scrollWheelZoom.disable();
 map.options.maxBounds;  // remove the maxBounds object from the map options
-map.options.minZoom = 12;
+//map.options.minZoom = 9;
 
  //map.options.minZoom = 14;
  //console.log("adfasfsadfasfasdfasfdasdfsafasdfsafasfasfsafsa");

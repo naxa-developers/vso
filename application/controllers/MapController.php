@@ -132,4 +132,18 @@ $map_cat= array(
 }
 
 
+public function  category_map(){
+
+$this->load->view('header');
+$this->load->view('footer');
+
+
+
+}
+
+
+
+
+
+
 }//end
