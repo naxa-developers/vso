@@ -58,7 +58,8 @@ $route['translate_uri_dashes'] = FALSE;
 $route['main'] ='MainController/default_page';
 $route['datasets'] ='MainController/dataset_page';
 $route['about'] ='MainController/about_page';
-$route['map'] ='MainController/map_page';
+
+$route['map'] ='MapController/map_page';
 
 
 // Admin routes
@@ -87,6 +88,9 @@ $route['view_proj'] = 'Admin/ProjectController/view_proj';
 $route['csv_upload'] = 'Admin/TableController/copy_table';
 
 $route['add_layers'] = 'Admin/LayersController/add_layers';
+$route['layers_view'] = 'Admin/LayersController/layers_view';
+$route['layers_detail'] = 'Admin/LayersController/layers_detail';
+$route['layers_edit'] = 'Admin/LayersController/layers_edit';
 
 
 $route['background'] = 'Admin/UploadController/bck_img';

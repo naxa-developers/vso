@@ -165,7 +165,7 @@ if(isset($_POST['submit'])){
 
   }else{
 
-
+$proj_name=$this->input->post('project_name');
     $file_name = $_FILES['proj_pic']['name'];
 
     $ext = pathinfo($file_name, PATHINFO_EXTENSION);

@@ -5,6 +5,8 @@ class LayersController extends CI_Controller
   function __construct()
   {
     parent::__construct();
+
+      $this->load->model('Layers_model');
   }
 
 
@@ -124,29 +126,70 @@ if(@$_POST["proj"]){
 
 
     $this->session->set_flashdata('msg','The table '.$UPLOAD_SCHEMA.' table was sucessfully created');
+
+    $data=array(
+   'layer_name'=>$_POST['f_name'],
+   'layer_table'=>$UPLOAD_SCHEMA,
+
+
+    );
+    $this->layers_model->insert_layer($data);
     redirect('add_layers');
   }
 
+}//post end
 
 
+
+}
+
+public function layers_view(){
+
+//$layers=$this->Layers_model->get_layers();
+$tbl='layers_tbl';
+$this->body['data']=$this->Layers_model->get_layers($tbl);
+$this->body['tbl_name']='layers_tbl';
+
+$this->load->view('admin/header');
+$this->load->view('admin/layers_tbl',$this->body);
+$this->load->view('admin/footer');
 
 
 
 
 
 }
-//code
 
+public function layers_detail(){
 
+  $tbl=base64_decode($this->input->get('tbl_name'));
+
+  $this->body['data']=$this->Layers_model->get_layers($tbl);
+  $this->body['tbl_name']=$tbl;
+
+  $this->load->view('admin/header');
+  $this->load->view('admin/layers_details',$this->body);
+  $this->load->view('admin/footer');
 
 
 
 
 }
 
+public function layers_edit(){
+
+  
+  $tbl=base64_decode($this->input->get('tbl'));
+  $id=base64_decode($this->input->get('id'));
+  echo $tbl;
+  $this->body['data']=$this->Layers_model->get_edit_layers($tbl,$id);
+  $this->load->view('admin/header');
+  $this->load->view('admin/layers_edit',$this->body);
+  $this->load->view('admin/footer');
 
 
 
+}
 
 
 

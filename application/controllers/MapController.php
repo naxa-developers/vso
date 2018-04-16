@@ -141,7 +141,16 @@ $this->load->view('footer');
 
 }
 
+public function test1(){
 
+  $b='ada';
+  $$b='adad';
+  var_dump($b);
+  var_dump($$b);
+
+
+
+}
 
 
 

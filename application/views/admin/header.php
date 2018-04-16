@@ -157,7 +157,7 @@
                         <span>Layers</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="<?php echo base_url();?>add_layers">Add Layers</a></li>
+                        <li><a href="<?php echo base_url();?>layers_view">Layers</a></li>
                         <!-- <li><a href="chartjs.html">Chartjs</a></li>
                         <li><a href="flot_chart.html">Flot Charts</a></li>
                         <li><a href="c3_chart.html">C3 Chart</a></li> -->
