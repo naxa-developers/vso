@@ -69,11 +69,13 @@
 
 										<li><a><input type="checkbox" name="1" checked > Administrative Layers </a>
 											<ul>
-												<li><a ><input type="checkbox" name="1" value= "mun_changu" class="CheckBox" checked> Municipal Boundary</a></li>
-												<li><a><input type="checkbox" name="1" value= "wards_changu" class="CheckBox" checked> Ward Boundary</a></li>
-												<li><a><input type="checkbox" name="1"> Old VDCs</a></li>
-												<li><a ><input type="checkbox" name="1"> Old ward Layers</a></li>
+                       <?php  foreach($admin_layer as $l){ ?>
 
+												<!-- <li><a ><input type="checkbox" name="1" value= "mun_changu" class="CheckBox" checked> Municipal Boundary</a></li>
+												<li><a><input type="checkbox" name="1" value= "wards_changu" class="CheckBox" checked> Ward Boundary</a></li> -->
+												<li><a><input type="checkbox" name="1" value="<?php echo $l['layer_table'];?>" class="CheckBox" checked><?php echo $l['layer_name'];?></a></li>
+
+											<?php  } ?>
 											</ul>
 										</li>
 										<li><a><input type="checkbox" name="1" value= "waterways_changu"  class="CheckBox" checked > River</a>

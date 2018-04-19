@@ -14,18 +14,24 @@ class MapController extends CI_Controller
 public function map_page(){
 
   //administrative laayer start
+$layers=$this->Map_model->get_layer('layers_tbl');
+$this->body['admin_layer']=$layers;
 
-$tbl=array(
-
-            'waterways_changu',
-           'mun_changu',
-           'wards_changu',
-           'road_changu',
+//var_dump($this->body['admin_layer']);
+foreach($layers as $l){
 
 
-);
+  $tbl[]=$l['layer_table'];
+}
+// $tbl=array(
+//            'waterways_changu',
+//            'mun_changu',
+//            'wards_changu',
+//            'road_changu',
 
-// var_dump($tbl);
+
+//);
+//var_dump($tbl);
 
 $array_geojson = array();
 
@@ -84,6 +90,9 @@ $a = $tbl[$i];
 
  //category layer start
 
+
+
+
 $get_map=$this->Map_model->get_cat_map('school');
 $this->body['nep']=json_encode($this->Map_model->get_nep('tbl_lang','school'));
 
@@ -124,7 +133,7 @@ $map_cat= array(
  //end cat layer
 
    $this->load->view('header');
- $this->load->view('mapt');
+ $this->load->view('mapt',$this->body);
    $this->load->view('map/map',$this->body);
    $this->load->view('footer');
 

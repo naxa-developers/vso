@@ -60,6 +60,7 @@ $route['datasets'] ='MainController/dataset_page';
 $route['about'] ='MainController/about_page';
 
 $route['map'] ='MapController/map_page';
+$route['report_page'] ='ReportController/report_page';
 
 
 // Admin routes
@@ -86,6 +87,7 @@ $route['add_proj'] = 'Admin/ProjectController/add_proj';
 $route['view_proj'] = 'Admin/ProjectController/view_proj';
 
 $route['csv_upload'] = 'Admin/TableController/copy_table';
+$route['csv_tbl'] = 'Admin/TableController/csv_tbl';
 
 $route['add_layers'] = 'Admin/LayersController/add_layers';
 $route['layers_view'] = 'Admin/LayersController/layers_view';

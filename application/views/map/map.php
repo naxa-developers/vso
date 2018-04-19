@@ -16,6 +16,8 @@ var nep = '<?php echo $nep; ?>';
 
 layer_name = JSON.parse(layer_array);
 geojson = JSON.parse(geo_array);
+
+
 cat_layer = JSON.parse(cat_layer);
 nep = JSON.parse(nep);
 

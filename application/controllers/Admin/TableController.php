@@ -8,6 +8,7 @@ class TableController extends CI_Controller
 
     $this->load->helper('url');
     $this->load->model('Table_model');
+    $this->load->model('Dash_model');
       $this->load->dbforge();
   }
 
@@ -100,7 +101,160 @@ $table_name=base64_decode($this->input->get('tbl'));
 
 }
 
+public function csv_tbl(){
 
+
+
+
+if(isset($_POST['submit'])){
+
+$file=$_FILES ["fileToUpload"];
+
+$tbl_name=strstr($file['name'], '.', true);
+$tbl_name=strtolower($tbl_name);
+
+
+
+$csv_file=$file['tmp_name'];
+$fp = fopen($csv_file, 'r');
+$frow = fgetcsv($fp);
+var_dump($frow);
+
+if(in_array("Latitude",$frow,TRUE)){
+
+
+
+if(in_array('Longitude',$frow,TRUE)){
+
+
+
+
+if($frow[0]=='Longitude' || $frow[1]=='Latitude'  ){
+
+
+  if( $this->db->table_exists($tbl_name) == FALSE ){
+
+    $this->dbforge->add_field('id');
+    $create=$this->dbforge->create_table($tbl_name, FALSE);
+
+var_dump($create);
+
+if($create==true){
+
+  for($i=0;$i<sizeof($frow);$i++){
+
+    $fields =
+    array(
+
+      'a'.$i=> array(
+        'type' =>'varchar',
+
+      ),
+    );
+
+    $add_column=$this->dbforge->add_column($tbl_name,$fields);
+
+// inserting corresponding nepali and englis column name in table
+
+   $data_lang=array(
+
+   'eng_lang'=>'a'.$i,
+   'nepali_lang'=>$frow[$i],
+   'tbl_name'=>$tbl_name,
+
+
+   );
+
+     $lang_insert=$this->Dash_model->insert_lang('tbl_lang',$data_lang);
+
+
+
+  }
+
+  if($add_column==true){
+
+
+
+     $fields=$this->db->list_fields($tbl_name);
+     unset($fields[0]);
+     $field_name=implode(",",$fields);
+
+
+
+     $filename=$file['name'];
+
+
+
+
+     $c=$this->Table_model->table_copy($csv_file,$filename,$field_name,$tbl_name);
+     
+     $this->session->set_flashdata('msg',$tbl_name.' table with '.sizeof($frow).' Columns Successfully Added');
+      redirect('csv_tbl');
+
+
+  }else{
+
+  //table not created
+
+  }
+
+
+
+} else{
+
+  echo 'table not created';
+}
+}else{
+
+
+  //table exist
+}
+
+}else{
+
+
+
+
+$this->session->set_flashdata('msg',' Order of latitude and longitude not correct in csv. 1st column shold be longitude and 2nd latitude');
+redirect('csv_tbl');
+
+}
+
+
+
+}else{
+
+
+$this->session->set_flashdata('msg','Column name Longitude not found in csv_upload');
+redirect('csv_tbl');
+
+}
+
+
+
+}else{
+
+
+  $this->session->set_flashdata('msg','Column name Latitude not found in CSV');
+   redirect('csv_tbl');
+
+}
+
+}else{
+$this->load->view('admin/header');
+$this->load->view('admin/csv_file');
+$this->load->view('admin/footer');
+
+
+
+}
+
+
+
+
+
+
+}
 
 
 

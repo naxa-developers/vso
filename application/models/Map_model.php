@@ -15,13 +15,17 @@ $this->db->select('*');
 
 
   public function get_cat_map($tbl){
-
-
-        $this->db->select('*');
-
+      $this->db->select('*');
       $query=$this->db->get($tbl);
       return $query->result_array();
     }
+
+
+    public function get_layer($tbl){
+        $this->db->select('*');
+        $query=$this->db->get($tbl);
+        return $query->result_array();
+      }
 
 
 public function get_nep($tbl,$typ){
