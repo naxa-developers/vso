@@ -125,7 +125,7 @@
         <a href="<?php echo base_url()?>map">Map</a>
         <a href="<?php echo base_url()?>about">About</a>
         <a href="contact.php">ER Inventory</a>
-        <a href="report.php">Reports</a>
+        <a href="<?php echo base_url()?>report_page">Reports</a>
         <div class="dropdown">
     <button class="dropbtn" style="font-weight:bold;">Visit Websites
       <i class="fa fa-caret-down"></i>
