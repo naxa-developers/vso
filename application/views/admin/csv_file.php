@@ -8,7 +8,11 @@
                 <section class="panel">
                     <header class="panel-heading">
                         Basic Formss
+                      <span class="tools pull-right">
+                       <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Csv Format Example</button>
+                         </span>
                     </header>
+
                     <div class="panel-body">
 
                       <?php
@@ -46,7 +50,7 @@
            <div class="container">
   <h2></h2>
   <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Csv Format Example</button>
+
 
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">

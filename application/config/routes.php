@@ -80,6 +80,7 @@ $route['categories_tbl'] = 'Admin/CategoriesController/categories_tbl';
 $route['edit_categories'] = 'Admin/CategoriesController/edit_categories';
 $route['drop_cat_table'] = 'Admin/CategoriesController/drop_cat_table';
 $route['delete_data'] = 'Admin/CategoriesController/delete_data';
+$route['csv_data_tbl'] = 'Admin/CategoriesController/csv_data_tbl';
 
 $route['proj/delete_data'] = 'Admin/ProjectController/delete_data';
 $route['proj/edit_proj'] = 'Admin/ProjectController/edit_proj';

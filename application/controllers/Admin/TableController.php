@@ -104,32 +104,45 @@ $table_name=base64_decode($this->input->get('tbl'));
 public function csv_tbl(){
 
 
+$tbl_name=base64_decode($this->input->get('tbl')) ;
 
 
 if(isset($_POST['submit'])){
 
+
 $file=$_FILES ["fileToUpload"];
 
-$tbl_name=strstr($file['name'], '.', true);
-$tbl_name=strtolower($tbl_name);
+// $tbl_name=strstr($file['name'], '.', true);
+// $tbl_name=strtolower($tbl_name);
 
-
+//svar_dump($file);
 
 $csv_file=$file['tmp_name'];
 $fp = fopen($csv_file, 'r');
 $frow = fgetcsv($fp);
-var_dump($frow);
+//$frow=trim($frow," ");
+//var_dump($frow);
+//exit();
+   $n=sizeof($frow);
+   $row=array();
+for($i=0;$i<$n;$i++){
+//echo $frow[$i];
+  array_push($row,trim($frow[$i]," "));
+}
 
-if(in_array("Latitude",$frow,TRUE)){
+// 
+// var_dump($row);
+// exit();
+if(in_array("Latitude",$row,TRUE)){
 
 
 
-if(in_array('Longitude',$frow,TRUE)){
+if(in_array('Longitude',$row,TRUE)){
 
 
 
 
-if($frow[0]=='Longitude' || $frow[1]=='Latitude'  ){
+if($row[0]=='Longitude' || $row[1]=='Latitude'  ){
 
 
   if( $this->db->table_exists($tbl_name) == FALSE ){
@@ -141,7 +154,7 @@ var_dump($create);
 
 if($create==true){
 
-  for($i=0;$i<sizeof($frow);$i++){
+  for($i=0;$i<sizeof($row);$i++){
 
     $fields =
     array(
@@ -159,7 +172,7 @@ if($create==true){
    $data_lang=array(
 
    'eng_lang'=>'a'.$i,
-   'nepali_lang'=>$frow[$i],
+   'nepali_lang'=>$row[$i],
    'tbl_name'=>$tbl_name,
 
 
@@ -187,8 +200,10 @@ if($create==true){
 
 
      $c=$this->Table_model->table_copy($csv_file,$filename,$field_name,$tbl_name);
-     
-     $this->session->set_flashdata('msg',$tbl_name.' table with '.sizeof($frow).' Columns Successfully Added');
+
+     $this->session->set_flashdata('msg',$tbl_name.' table with '.sizeof($row).' Columns Successfully Added');
+
+
       redirect('csv_tbl');
 
 
@@ -225,7 +240,7 @@ redirect('csv_tbl');
 }else{
 
 
-$this->session->set_flashdata('msg','Column name Longitude not found in csv_upload');
+$this->session->set_flashdata('msg','Column name Longitude not found in Csv');
 redirect('csv_tbl');
 
 }
@@ -236,6 +251,9 @@ redirect('csv_tbl');
 
 
   $this->session->set_flashdata('msg','Column name Latitude not found in CSV');
+
+// $update_cat=$this->Table_model->insert_tbl($data,$id);
+
    redirect('csv_tbl');
 
 }

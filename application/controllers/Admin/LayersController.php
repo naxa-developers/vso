@@ -133,7 +133,7 @@ if(@$_POST["proj"]){
 
 
     );
-    $this->layers_model->insert_layer($data);
+    $this->Layers_model->insert_layer($data);
     redirect('add_layers');
   }
 

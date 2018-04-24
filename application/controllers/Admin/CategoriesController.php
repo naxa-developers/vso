@@ -388,7 +388,8 @@ redirect('view_cat_tables');
           // $this->load->view('admin/create_categories',$this->body);
           // $this->load->view('admin/footer');
           $this->session->set_flashdata('msg','Important!!!Create Table for the category '.$cat_name);
-          redirect('create_categories_tbl?tbl='.base64_encode($cat_name).'&& id='.base64_encode($insert));
+        //  redirect('create_categories_tbl?tbl='.base64_encode($cat_name).'&& id='.base64_encode($insert));
+         redirect('csv_data_tbl?tbl='.base64_encode($cat_name).'&& id='.base64_encode($insert).'&& tbl_name='.base64_encode($cat_table));
 
 
         }else{
@@ -469,6 +470,19 @@ public function delete_data(){
 }
 
 
+public function csv_data_tbl(){
+
+ // echo base64_decode($this->input->get('tbl'));
+ // echo base64_decode($this->input->get('id'));
+
+$this->body['tbl']=$this->input->get('tbl_name');
+$this->body['id']=$this->input->get('id');
+
+$this->load->view('admin/header');
+$this->load->view('admin/csv_data_tbl',$this->body);
+$this->load->view('admin/footer');
+
+}
 
 
 }//controller end

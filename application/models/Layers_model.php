@@ -3,7 +3,7 @@ class Layers_model extends CI_Model {
 
 
 
-public function insert_layer(){
+public function insert_layer($data){
 
 
 return $this->db->insert('layers_tbl',$data);

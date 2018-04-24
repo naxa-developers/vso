@@ -91,17 +91,36 @@ $a = $tbl[$i];
  //category layer start
 
 
+ // $this->body['nep']=json_encode($this->Map_model->get_nep('tbl_lang','school')); nep
+ //
+ // $fields=$this->db->list_fields('school');
+ // unset($fields[0]);
+ // $this->body['field']=$fields; nep
+
+$cat_tbl=$this->Map_model->get_layer('categories_tbl');
+$this->body['category_name']=$cat_tbl;
+
+foreach($cat_tbl as $tbl){
 
 
-$get_map=$this->Map_model->get_cat_map('school');
-$this->body['nep']=json_encode($this->Map_model->get_nep('tbl_lang','school'));
+  $cat_tbles[]=$tbl['category_table'];
+}
+//var_dump($cat_tbles);
 
-$fields=$this->db->list_fields('school');
-unset($fields[0]);
-$this->body['field']=$fields;
-//var_dump($this->body['field']);
+$category_data = array();
 
 
+for($i=0; $i<sizeof($cat_tbles); $i++){
+
+
+
+
+$get_map=$this->Map_model->get_cat_map($cat_tbles[$i]);
+//var_dump($get_map);
+if (isset($features_cat)){
+
+      $features_cat = array();
+    }
 
 foreach($get_map as $cat_data){
 
@@ -122,13 +141,29 @@ foreach($get_map as $cat_data){
 
 }
 
-$map_cat= array(
+$category= $cat_tbles[$i];
+
+$$category= array(
    'type' => 'FeatureCollection',
    'features' => $features_cat,
  );
 
+//var_dump($$category);
+array_push($category_data,$$category);
 
-  $this->body['cat_map_layer']= json_encode($map_cat, JSON_NUMERIC_CHECK);
+}
+
+
+
+//var_dump($this->body['field']);
+
+
+
+
+
+
+  $this->body['cat_map_layer']= json_encode($category_data, JSON_NUMERIC_CHECK);
+  $this->body['category_tbl']= json_encode($cat_tbles, JSON_NUMERIC_CHECK);
 // var_dump($map_cat);
  //end cat layer
 
@@ -143,8 +178,9 @@ $map_cat= array(
 
 public function  category_map(){
 
-$this->load->view('header');
-$this->load->view('footer');
+$this->load->view('admin/header');
+$this->load->view('admin/csv_data_tbl');
+$this->load->view('admin/footer');
 
 
 

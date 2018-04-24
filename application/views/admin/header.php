@@ -66,7 +66,7 @@
 <div class="brand">
 
     <a href="index.html" class="logo">
-        <img src="assets/admin/images/logo.png" alt="">
+        <img src="aassets/admin/images/logo.png" alt="">
     </a>
     <div class="sidebar-toggle-box">
         <div class="fa fa-bars"></div>
@@ -88,8 +88,8 @@
         <!-- user login dropdown start-->
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <img alt="" src="assets/admin/images/avatar1_small.jpg">
-                <span class="username">John Doe</span>
+                <img alt="" src="aassets/admin/images/avatar1_small.jpg">
+                <span class="username">Admin</span>
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
@@ -128,10 +128,94 @@
                     </a>
                     <ul class="sub">
 
-                        <li><a href="<?php echo base_url();?>categories_tbl">Categories</a></li>
+
                         <li><a href="<?php echo base_url()?>view_proj">Project Partners</a></li>
                         <li><a href="<?php echo base_url()?>emergency_contact">Emergency Contact</a></li>
                         <li><a href="<?php echo base_url()?>background">Background Image</a></li>
+                    </ul>
+                </li>
+
+
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-laptop"></i>
+                        <span>Categorie Management</span>
+                    </a>
+                    <ul class="sub">
+
+                        <li><a href="<?php echo base_url();?>categories_tbl">Categories</a></li>
+
+                    </ul>
+                </li>
+
+
+
+
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-th"></i>
+                        <span>Emergency Contact Management</span>
+                    </a>
+                    <ul class="sub">
+
+                        <!-- <li><a href="<?php echo base_url();?>create_categories_tbl">Create Database Tables</a></li>
+                        <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
+
+                    </ul>
+                </li>
+
+
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-th"></i>
+                        <span>Report Management</span>
+                    </a>
+                    <ul class="sub">
+
+                        <!-- <li><a href="<?php echo base_url();?>create_categories_tbl">Create Database Tables</a></li>
+                        <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
+
+                    </ul>
+                </li>
+
+
+                  <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-th"></i>
+                        <span>Publication Management</span>
+                    </a>
+                    <ul class="sub">
+
+                        <!-- <li><a href="<?php echo base_url();?>create_categories_tbl">Create Database Tables</a></li>
+                        <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
+
+                    </ul>
+                </li>
+
+
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-th"></i>
+                        <span>Datasets</span>
+                    </a>
+                    <ul class="sub">
+
+                        <!-- <li><a href="<?php echo base_url();?>create_categories_tbl">Create Database Tables</a></li>
+                        <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
+
+                    </ul>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-th"></i>
+                        <span>Municipal Map</span>
+                    </a>
+                    <ul class="sub">
+
+                        <!-- <li><a href="<?php echo base_url();?>create_categories_tbl">Create Database Tables</a></li>
+                        <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
+
                     </ul>
                 </li>
 
@@ -140,16 +224,15 @@
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-th"></i>
-                        <span>Categories Operation</span>
+                        <span>About Us</span>
                     </a>
                     <ul class="sub">
 
-                        <li><a href="<?php echo base_url();?>create_categories_tbl">Create Database Tables</a></li>
-                        <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li>
+                        <!-- <li><a href="<?php echo base_url();?>create_categories_tbl">Create Database Tables</a></li>
+                        <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
 
                     </ul>
                 </li>
-
 
                 <li class="sub-menu">
                     <a href="javascript:;">
