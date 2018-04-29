@@ -73,7 +73,7 @@ public function drop_cat_table(){
   $tbl_name=base64_decode($this->input->get('tbl_name'));
 
   $drop_tbl=$this->dbforge->drop_table($tbl_name);
-  var_dump($drop_tbl);
+  //var_dump($drop_tbl);
   if($drop_tbl){
 
 $this->session->set_flashdata('msg',$tbl_name.' table was sucessfully deleted');
@@ -366,10 +366,11 @@ redirect('view_cat_tables');
 
 
       $img_upload=$this->Dash_model->do_upload($file_name,$cat_table);
-
+      var_dump ($img_upload);
       if($img_upload==1){
 
         $image_path=base_url() . 'uploads/categories/'.$cat_table.'.'.$ext ;
+        var_dump ($image_path);
 
         $data=array(
           'category_name'=>$cat_name,

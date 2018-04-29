@@ -116,13 +116,18 @@ $file=$_FILES ["fileToUpload"];
 // $tbl_name=strtolower($tbl_name);
 
 //svar_dump($file);
-
+ //var_dump($file);
+     
 $csv_file=$file['tmp_name'];
+ //var_dump($csv_file);
+     // exit();
+chmod($csv_file, 0777); 
+
 $fp = fopen($csv_file, 'r');
 $frow = fgetcsv($fp);
 //$frow=trim($frow," ");
-//var_dump($frow);
-//exit();
+// var_dump($frow);
+// exit();
    $n=sizeof($frow);
    $row=array();
 for($i=0;$i<$n;$i++){
@@ -131,8 +136,8 @@ for($i=0;$i<$n;$i++){
 }
 
 // 
-// var_dump($row);
-// exit();
+ // var_dump($row);
+ // exit();
 if(in_array("Latitude",$row,TRUE)){
 
 
@@ -146,11 +151,12 @@ if($row[0]=='Longitude' || $row[1]=='Latitude'  ){
 
 
   if( $this->db->table_exists($tbl_name) == FALSE ){
-
+//echo "4";
     $this->dbforge->add_field('id');
     $create=$this->dbforge->create_table($tbl_name, FALSE);
 
-var_dump($create);
+// var_dump($create);
+// exit();
 
 if($create==true){
 
@@ -186,7 +192,7 @@ if($create==true){
 
   if($add_column==true){
 
-
+    //echo "true column";
 
      $fields=$this->db->list_fields($tbl_name);
      unset($fields[0]);
@@ -200,7 +206,8 @@ if($create==true){
 
 
      $c=$this->Table_model->table_copy($csv_file,$filename,$field_name,$tbl_name);
-
+// var_dump($c);
+// exit();
      $this->session->set_flashdata('msg',$tbl_name.' table with '.sizeof($row).' Columns Successfully Added');
 
 

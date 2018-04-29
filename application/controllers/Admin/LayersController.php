@@ -32,8 +32,20 @@ if(@$_POST["proj"]){
   $UPLOAD_SCHEMA = strtolower(str_replace(" ","_",$_POST['f_name']));
 
 
+
+  //empty directory first
+  $directory_temp = '/tmp/shp2pgsql_tmp/';
+    foreach(glob($directory_temp.'*') as $v){
+        foreach(scandir($v) as $file) {
+            if ('.' === $file || '..' === $file) continue;
+            //if (is_dir("$v/$file")) rmdir_recursive("$v/$file");
+            //else 
+            unlink("$v/$file");
+        }
+        rmdir($v);
+  }
   //Creando la carpeta temporal para descomprimir el archivo
-  $tempdir=tempnam(sys_get_temp_dir(),'');
+  $tempdir=tempnam(sys_get_temp_dir()."/shp2pgsql_tmp/",'');
   if (file_exists($tempdir)) { unlink($tempdir); }
   mkdir($tempdir);
   if (!is_dir($tempdir)) {
