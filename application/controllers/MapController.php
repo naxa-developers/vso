@@ -112,11 +112,13 @@ $category_data = array();
 
 for($i=0; $i<sizeof($cat_tbles); $i++){
 
+$nep=$cat_tbles[$i];
 
-
+$$nep=json_encode($this->Map_model->get_nep('tbl_lang',$cat_tbles[$i]));
+//var_dump($latlong);
 
 $get_map=$this->Map_model->get_cat_map($cat_tbles[$i]);
-//var_dump($get_map);
+
 if (isset($features_cat)){
 
       $features_cat = array();
