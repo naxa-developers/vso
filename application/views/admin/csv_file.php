@@ -39,6 +39,7 @@
 
 
                             <button type="submit" name="submit" class="btn btn-info">Upload</button>
+
                         </form>
                         </div>
 
@@ -65,40 +66,35 @@
         <div class="modal-body">
 
 
-          <p>Csv format should be as given in the exanple table. </p>
-          <p>Csv table should not contain multiheaders </p>
-          <p>S.n / id  such kind of column is not needed .</p>
+
 
          <!-- table start -->
+         <form method="POST" action="">
+        <div class="form-group">
+                       <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Select Latitude or X</label>
 
-          <table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>Longitude</th>
-      <th>Latitude</th>
-      <th>other column</th>
-      <th>other column</th>
-      <th>other column</th>
-      <th>other column</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1st column should be Longitude</td>
-      <td>2nd column should be latitude</td>
-      <td>other data</td>
-      <td>other data</td>
-      <td>other data</td>
-      <td>other data</td>
-    </tr>
+                           <select name="lat" class="form-control m-bot15">
+                               <option value=""></option>
 
-</table>
+                           </select>
+
+                           <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Select Lobgitude or Y</label>
+
+                               <select class="form-control m-bot15">
+                                   <option>1</option>
+
+
+                               </select>
+
+                   </div>
+
 
 <!-- table end -->
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" name="submit" class="btn btn-default" data-dismiss="modal">Close</button>
+        </form>
         </div>
       </div>
 

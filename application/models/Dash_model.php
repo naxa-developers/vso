@@ -3,6 +3,30 @@ class Dash_model extends CI_Model {
 
 
 
+public function delete_lang($tbl){
+
+$this->db->where('tbl_name',$tbl);
+$this->db->delete('tbl_lang');
+
+
+}
+
+  public function create_geom($long,$lat,$tbl){
+
+  $query= "UPDATE $tbl SET the_geom =  ST_PointFromText('POINT(' || $long || ' ' || $lat || ')', 27700)";
+  $this->db->query($query);
+
+  }
+
+  public function get($tbl){
+
+
+  $this->db->select('*');
+      $this->db->select('ST_AsGeoJSON(the_geom)');
+      $query=$this->db->get($tbl);
+      return $query->result_array();
+    }
+
   // create categories
   public function do_upload($filename,$name)
   {

@@ -451,16 +451,20 @@ public function add_data_categories_tbl(){
 public function delete_data(){
 
   $id=$this->input->get('id');
-  $tbl_name=$this->input->get('tbl');
+  $tbl_name=trim($this->input->get('tbl'));
   $cat_tbl=$this->input->get('cat_tbl');
-//  echo $cat_tbl;
 
-  $this->Dash_model->delete_data($id,$tbl_name);
+
+ $this->Dash_model->delete_data($id,$tbl_name);
 
   if($tbl_name=="categories_tbl"){
 
+      $drop_tbl=$this->dbforge->drop_table($cat_tbl);
+
+      $this->Dash_model->delete_lang($cat_tbl);
+
   $this->session->set_flashdata('msg','Id number '.$id.' row data was deleted successfully');
-  redirect('categories_tbl?tbl_name='.base64_encode($tbl_name));
+ redirect('categories_tbl?tbl_name='.base64_encode($tbl_name));
 }else{
 
   $this->session->set_flashdata('msg','Id number '.$id.' row data was deleted successfully');

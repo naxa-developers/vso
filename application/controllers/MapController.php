@@ -8,6 +8,7 @@ class MapController extends CI_Controller
 
     $this->load->helper('url');
     $this->load->model('Map_model');
+    $this->load->model('Dash_model');
   }
 
 
@@ -115,7 +116,7 @@ for($i=0; $i<sizeof($cat_tbles); $i++){
 
 
 
-$get_map=$this->Map_model->get_cat_map($cat_tbles[$i]);
+$get_map=$this->Dash_model->get($cat_tbles[$i]);
 //var_dump($get_map);
 if (isset($features_cat)){
 
@@ -124,18 +125,14 @@ if (isset($features_cat)){
 
 foreach($get_map as $cat_data){
 
-  $features_cat[]= array(
-   "type" =>"Feature",
-   "properties"=>$cat_data,
-   "geometry"=>array(
+  $cat_ddata=$cat_data ;
+  unset($cat_data['st_asgeojson']);
 
-     'type'=>'Point',
-     'coordinates'=>array(
-      $cat_data['a0'],
-      $cat_data['a1'],
-         1.0
-     ),
-   ),
+  $features_cat[]= array(
+   'type' =>'Feature',
+   'properties'=>$cat_data,
+   'geometry'=>json_decode($cat_ddata['st_asgeojson'],JSON_NUMERIC_CHECK)
+
   );
 
 
@@ -178,24 +175,17 @@ array_push($category_data,$$category);
 
 public function  category_map(){
 
-$this->load->view('admin/header');
-$this->load->view('admin/csv_data_tbl');
-$this->load->view('admin/footer');
+$this->body['data']=$this->Dash_model->get_tables_data('categories_tbl');
+
+$this->load->view('header');
+$this->load->view('category.php',$this->body);
+$this->load->view('footer');
 
 
 
 }
 
-public function test1(){
 
-  $b='ada';
-  $$b='adad';
-  var_dump($b);
-  var_dump($$b);
-
-
-
-}
 
 
 

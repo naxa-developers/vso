@@ -39,14 +39,7 @@ class Table_model extends CI_Model {
 
 	/* $query="COPY survey(name_of_surveyor,name_of_district,name_of_municipality,ward_no,address,latitude,longitude)
    FROM 'C:\Users\munchen\Downloads\home_survey.csv' DELIMITER ',' CSV HEADER"; */
-   var_dump($p);
-   echo "    se    ";
-   var_dump($f);
-   echo "    se    ";
-   var_dump($f_n);
-   echo "    se    ";
-   var_dump($tbl);
-   echo "    se    ";
+  
    $query="COPY $tbl($f_n)FROM '$p' DELIMITER ',' CSV HEADER";
 	 return $this->db->query($query);
 

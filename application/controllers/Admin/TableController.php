@@ -18,8 +18,8 @@ class TableController extends CI_Controller
 
   public function copy_table(){
 
-$table_name=base64_decode($this->input->get('tbl'));
-
+//$table_name=base64_decode($this->input->get('tbl'));
+$table_name='test_test';
 
 
     if(isset($_POST['submit'])){
@@ -28,9 +28,9 @@ $table_name=base64_decode($this->input->get('tbl'));
       $fields=$this->db->list_fields($table_name);
       unset($fields[0]);
       $field_name=implode(",",$fields);
-      //(a0,a1,a2,);
+    var_dump($field_name);
 
-
+      $field_name=('lat,long,name');
 
 
       $f=($_FILES["fileToUpload"]);
@@ -46,12 +46,12 @@ $table_name=base64_decode($this->input->get('tbl'));
       if($c==1){
 
         $this->session->set_flashdata('msg','Data Was successfully Added');
-        redirect('data_tables?tbl_name='.base64_encode($table_name));
+        //redirect('data_tables?tbl_name='.base64_encode($table_name));
 
       }else{
 
         $this->session->set_flashdata('msg','Id number '.$id.' row data was deleted successfully');
-        redirect('data_tables?tbl_name='.base64_encode($table_name));
+        //redirect('data_tables?tbl_name='.base64_encode($table_name));
 
       }
 
@@ -116,12 +116,12 @@ $file=$_FILES ["fileToUpload"];
 // $tbl_name=strtolower($tbl_name);
 
 //svar_dump($file);
- //var_dump($file);
-     
+
+
 $csv_file=$file['tmp_name'];
  //var_dump($csv_file);
      // exit();
-chmod($csv_file, 0777); 
+chmod($csv_file, 0777);
 
 $fp = fopen($csv_file, 'r');
 $frow = fgetcsv($fp);
@@ -135,135 +135,102 @@ for($i=0;$i<$n;$i++){
   array_push($row,trim($frow[$i]," "));
 }
 
-// 
- // var_dump($row);
- // exit();
-if(in_array("Latitude",$row,TRUE)){
+if( $this->db->table_exists($tbl_name) == FALSE ){
+
+  $this->dbforge->add_field('id');
+
+  $create=$this->dbforge->create_table($tbl_name, FALSE);
+
+  if($create==true){
+
+    for($i=0;$i<sizeof($row);$i++){
+
+      $fields =
+      array(
+
+        'a'.$i=> array(
+          'type' =>'varchar',
+
+        ),
+      );
+
+      $add_column=$this->dbforge->add_column($tbl_name,$fields);
+
+  // inserting corresponding nepali and englis column name in table
+
+     $data_lang=array(
+
+     'eng_lang'=>'a'.$i,
+     'nepali_lang'=>$row[$i],
+     'tbl_name'=>$tbl_name,
+
+
+     );
+
+       $lang_insert=$this->Dash_model->insert_lang('tbl_lang',$data_lang);
 
 
 
-if(in_array('Longitude',$row,TRUE)){
+    }
+
+$geom_index=sizeof($row)+1;
+
+    $data_lang=array(
+
+    'eng_lang'=>'the_geom',
+    'nepali_lang'=>'the_geom',
+    'tbl_name'=>$tbl_name,
 
 
-
-
-if($row[0]=='Longitude' || $row[1]=='Latitude'  ){
-
-
-  if( $this->db->table_exists($tbl_name) == FALSE ){
-//echo "4";
-    $this->dbforge->add_field('id');
-    $create=$this->dbforge->create_table($tbl_name, FALSE);
-
-// var_dump($create);
-// exit();
-
-if($create==true){
-
-  for($i=0;$i<sizeof($row);$i++){
-
-    $fields =
-    array(
-
-      'a'.$i=> array(
-        'type' =>'varchar',
-
-      ),
     );
 
-    $add_column=$this->dbforge->add_column($tbl_name,$fields);
-
-// inserting corresponding nepali and englis column name in table
-
-   $data_lang=array(
-
-   'eng_lang'=>'a'.$i,
-   'nepali_lang'=>$row[$i],
-   'tbl_name'=>$tbl_name,
+      $lang_insert=$this->Dash_model->insert_lang('tbl_lang',$data_lang);
 
 
-   );
+          $filename=$file['name'];
+         $fields=$this->db->list_fields($tbl_name);
+         unset($fields[0]);
+         $field_name=implode(",",$fields);
+        $c=$this->Table_model->table_copy($csv_file,$filename,$field_name,$tbl_name);
 
-     $lang_insert=$this->Dash_model->insert_lang('tbl_lang',$data_lang);
-
-
-
-  }
-
-  if($add_column==true){
-
-    //echo "true column";
-
-     $fields=$this->db->list_fields($tbl_name);
-     unset($fields[0]);
-     $field_name=implode(",",$fields);
-
-
-
-     $filename=$file['name'];
-
-
-
-
-     $c=$this->Table_model->table_copy($csv_file,$filename,$field_name,$tbl_name);
-// var_dump($c);
-// exit();
-     $this->session->set_flashdata('msg',$tbl_name.' table with '.sizeof($row).' Columns Successfully Added');
-
-
-      redirect('csv_tbl');
-
-
-  }else{
-
-  //table not created
-
-  }
-
-
-
-} else{
-
-  echo 'table not created';
-}
 }else{
-
-
-  //table exist
+  echo 'not craete table';
 }
 
 }else{
 
-
-
-
-$this->session->set_flashdata('msg',' Order of latitude and longitude not correct in csv. 1st column shold be longitude and 2nd latitude');
-redirect('csv_tbl');
-
+echo 'table';
 }
 
+ $this->body['csv_file']=$csv_file;
+ $this->body['row']=$row;
 
 
-}else{
-
-
-$this->session->set_flashdata('msg','Column name Longitude not found in Csv');
-redirect('csv_tbl');
-
-}
+ $this->load->view('admin/header');
+ $this->load->view('admin/csv_row',$this->body);
+ $this->load->view('admin/footer');
 
 
 
-}else{
+
+}elseif(isset($_POST['submit_row'])){
+
+var_dump($_POST);
+$fields = array(
+    'the_geom' => array('type' => 'geometry')
+);
+$this->dbforge->add_column($tbl_name, $fields);
+$lo=$_POST['long'];
+$la=$_POST['lat'];
+$long='a'.$lo;
+$lat='a'.$la;
+
+$this->Dash_model->create_geom($long,$lat,$tbl_name);
+//$data=$this->Dash_model->get();
+redirect('categories_tbl');
 
 
-  $this->session->set_flashdata('msg','Column name Latitude not found in CSV');
 
-// $update_cat=$this->Table_model->insert_tbl($data,$id);
-
-   redirect('csv_tbl');
-
-}
 
 }else{
 $this->load->view('admin/header');
@@ -274,14 +241,7 @@ $this->load->view('admin/footer');
 
 }
 
-
-
-
-
-
 }
 
 
-
-
-}
+}//main

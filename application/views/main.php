@@ -87,7 +87,7 @@
 <?php foreach($data_cat as $data){ ?>
 
       <div class="col-lg-3 text-center">
-       <a href="category.php"> <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+       <a href="category?tbl=<?php echo $data['category_table'] ?>"> <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
           <div class="features-icons-icon d-flex">
            <img src="<?php echo $data['category_photo']?>" class="img-responsive center-block">
          </div>

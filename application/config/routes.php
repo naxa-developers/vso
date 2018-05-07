@@ -60,6 +60,8 @@ $route['datasets'] ='MainController/dataset_page';
 $route['about'] ='MainController/about_page';
 
 $route['map'] ='MapController/map_page';
+$route['category'] ='MapController/category_map';
+
 $route['report_page'] ='ReportController/report_page';
 
 
