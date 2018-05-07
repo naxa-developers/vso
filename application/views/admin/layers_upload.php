@@ -25,11 +25,7 @@
                                  }
                                   ?>
 
-                                  <div class="form-group">
-                                      <label for="exampleInputFile">File name</label>
-                                      <input type="text" name="f_name" class="form-control" placeholder="Enter a name"  id="exampleInputFile">
-
-                                  </div>
+                              
 
                                   <div class="form-group">
                                       <label for="exampleInputFile">File input</label>

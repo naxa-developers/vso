@@ -292,30 +292,7 @@ redirect('view_cat_tables');
         $this->dbforge->add_field('id');
         $create=$this->dbforge->create_table($tbl, FALSE);
 
-        // create different table for different lang column name
 
-
-        // $this->dbforge->add_field('id');
-        //
-        // $colum=array(
-        //   'eng_lang'=>array(
-        //     'type' => 'VARCHAR',
-        //     'constraint' => '555',
-        //
-        //   ),
-        //
-        //   'nepali_lang'=>array(
-        //
-        //     'type' => 'VARCHAR',
-        //     'constraint' => '555',
-        //   ),
-        //
-        //
-        // );
-        // $this->dbforge->add_field($colum);
-        // $create_lang=$this->dbforge->create_table($tbl.'_lang', FALSE);
-
-        //end lang table
 
 
         if($create==true){
@@ -357,7 +334,8 @@ redirect('view_cat_tables');
     if(isset($_POST['submit_cat'])){
 
       $cat_name=$this->input->post('cat_name');
-
+      $cat_type=$this->input->post('category_type');
+      $upload_type=$this->input->post('upload_type');
       $cat_table=strtolower(str_replace(" ","_",$cat_name));
 
       $file_name = $_FILES['cat_pic']['name'];
@@ -366,31 +344,37 @@ redirect('view_cat_tables');
 
 
       $img_upload=$this->Dash_model->do_upload($file_name,$cat_table);
-      var_dump ($img_upload);
+      //var_dump ($img_upload);
       if($img_upload==1){
 
         $image_path=base_url() . 'uploads/categories/'.$cat_table.'.'.$ext ;
-        var_dump ($image_path);
+      //  var_dump ($image_path);
 
         $data=array(
           'category_name'=>$cat_name,
           'category_table'=>$cat_table,
-          'category_photo'=>$image_path
+          'category_photo'=>$image_path,
+          'category_type'=>$cat_type,
+          'uplaod_type'=>$upload_type
 
         );
 
         $insert=$this->Dash_model->insert_cat('categories_tbl',$data);
         if($insert!=""){
 
-          // $table_name=$this->uri->segment(4);
-          // $this->body['id']=insert;
-          // $this->body['error']="New category ".$cat_name." created";
-          // $this->load->view('admin/header');
-          // $this->load->view('admin/create_categories',$this->body);
-          // $this->load->view('admin/footer');
-          $this->session->set_flashdata('msg','Important!!!Create Table for the category '.$cat_name);
-        //  redirect('create_categories_tbl?tbl='.base64_encode($cat_name).'&& id='.base64_encode($insert));
-         redirect('csv_data_tbl?tbl='.base64_encode($cat_name).'&& id='.base64_encode($insert).'&& tbl_name='.base64_encode($cat_table));
+
+
+
+
+if($upload_type=='csv'){
+    $this->session->set_flashdata('msg','Important!!!Create Table for the category '.$cat_name);
+redirect('csv_data_tbl?tbl='.base64_encode($cat_name).'&& id='.base64_encode($insert).'&& tbl_name='.base64_encode($cat_table));
+
+}else{
+  $this->session->set_flashdata('msg','Note: The Shapefile Co-ordinate System Must Be In WGS84 ie. EPSG:4326 '.$cat_name);
+  redirect('add_layers?tbl_name='.$cat_table);
+}
+
 
 
         }else{

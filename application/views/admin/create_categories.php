@@ -31,7 +31,6 @@
 
 
 
-
                             <div class="form-group ">
                                 <label class="control-label col-md-3">Category Image</label>
                                 <div class="col-md-9">
@@ -52,6 +51,27 @@
 
                                 </div>
                             </div>
+                        <div class='row col-md-12' >
+                            <div class="form-group col-md-6">
+                                <label for="exampleInputFile">Category Type</label>
+                              <select name="category_type">
+
+                                <option value="Hazard_Data">Hazard Data</option>
+                                <option value="Exposure_Data">Exposure Data</option>
+                                <option value="Baseline_Data">Baseline Data</option>
+                              </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputFile">File Type</label>
+                                  <select name="upload_type">
+
+                                    <option value="csv">CSV File</option>
+                                    <option value="shapefile">Shapefile</option>
+                                  </select>
+                                    </div>
+</div>
+
 
 
                             <button type="submit" name="submit_cat" class="btn btn-info">Submit</button>

@@ -17,6 +17,7 @@ class LayersController extends CI_Controller
 public function add_layers(){
 
 //echo APPPATH;
+$tble_name= $this->input->get('tbl_name');
 $this->load->view("admin/header");
 $this->load->view("admin/layers_upload");
 $this->load->view("admin/footer");
@@ -24,12 +25,12 @@ $this->load->view("admin/footer");
 
 
 
-//code
+code
 if(@$_POST["proj"]){
 
   // $tble_name=strtolower(str_replace(" ","_",$_POST['f_name']));
 
-  $UPLOAD_SCHEMA = strtolower(str_replace(" ","_",$_POST['f_name']));
+  $UPLOAD_SCHEMA = $tble_name;
 
 
 
@@ -39,7 +40,7 @@ if(@$_POST["proj"]){
         foreach(scandir($v) as $file) {
             if ('.' === $file || '..' === $file) continue;
             //if (is_dir("$v/$file")) rmdir_recursive("$v/$file");
-            //else 
+            //else
             unlink("$v/$file");
         }
         rmdir($v);
@@ -190,7 +191,7 @@ public function layers_detail(){
 
 public function layers_edit(){
 
-  
+
   $tbl=base64_decode($this->input->get('tbl'));
   $id=base64_decode($this->input->get('id'));
   echo $tbl;

@@ -1,108 +1,96 @@
 
-    <!-- Call to Action -->
-    <div>
-    <section class="call-to-action text-white text-center">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6 text-left"><h3>About The Project </h3>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro provident suscipit natus a cupiditate ab minus illum quaerat maxime inventore Ea consequatur consectetur hic provident dolor ab aliquam eveniet alias</div>
-          <div class="col-sm-5 " style="margin-left: 95px;">
-            <h3>Subscribe To Our Newsletter</h3><div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Your's Email" aria-label="email" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <a href="#subscribe"><button class="input-group-text" style="text-decoration: none" id="basic-addon2">Subscribe!</button> </a>
+      <footer id="website-footer" class="bg-dark">
+
+        <div class="subscribe-wrap">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="fbox">
+                  <h4>Disaster Information Management Platform</h4>
+                  <p>
+                    This platform visualizes the data regarding risk and hazards over available dataset in order to enable basic risk assessment in the municipality.
+                  </p>
+                </div>
               </div>
-            </div></div>
+              <div class="col-md-6">
+                <div class="fbox">
+                  <h4>Subscribe To Our Newsletter</h4>
+                  <form>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Email Address" aria-label="Email Address" aria-describedby="basic-addon2">
+                      <div class="input-group-append">
+                        <button class="btn btn-secondary" type="button">Subscribe</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-    </section>
-</div>
-
-
- <!-- Footer -->
-    <footer class="footer bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
-            <ul class="list-inline mb-2">
-              <li class="list-inline-item">
-                <a href="#">About</a>
-              </li>
-              <li class="list-inline-item">&sdot;</li>
-              <li class="list-inline-item">
-                <a href="#">Contact</a>
-              </li>
-              <li class="list-inline-item">&sdot;</li>
-              <li class="list-inline-item">
-                <a href="#">Terms of Use</a>
-              </li>
-              <li class="list-inline-item">&sdot;</li>
-              <li class="list-inline-item">
-                <a href="#">Privacy Policy</a>
-              </li>
-            </ul>
-            <p class="text-muted small mb-4 mb-lg-0">&copy; Naxa Pvt 2018. All Rights Reserved.</p>
-          </div>
-          <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
-            <ul class="list-inline mb-0">
-              <li class="list-inline-item mr-3">
-                <a href="#">
-                  <i class="fa fa-facebook fa-2x fa-fw"></i>
-                </a>
-              </li>
-              <li class="list-inline-item mr-3">
-                <a href="#">
-                  <i class="fa fa-twitter fa-2x fa-fw"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-instagram fa-2x fa-fw"></i>
-                </a>
-              </li>
-            </ul>
+        <div class="footer-bottom">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 sec-left">
+                <p class="margin-top">
+                  <a href="#" title="">About</a>
+                  <a href="#" title="">Contact</a>
+                  <a href="#" title="">Terms of Use</a>
+                  <a href="#" title="">Privacy Policy</a>
+                </p>
+                <p>
+                  &copy; 2018 <a href="#" title="">Naxa</a>. All Rights Reserved.
+                </p>
+              </div>
+              <div class="col-md-6 sec-right">
+                <p class="margin-top social-icons">
+                  <a href="#" title=""><i class="fa fa-facebook"></i></a>
+                  <a href="#" title=""><i class="fa fa-twitter"></i></a>
+                  <a href="#" title=""><i class="fa fa-google-plus"></i></a>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
+
+      </footer>
 
 
-</body>
+      <script type="text/javascript">
+          document.onreadystatechange = function () {
+            var state = document.readyState
+            if (state == 'interactive') {
+             document.getElementById('contents').style.visibility="hidden";
+           } else if (state == 'complete') {
+            setTimeout(function(){
+             document.getElementById('interactive');
+             document.getElementById('load').style.visibility="hidden";
+             document.getElementById('website-header').style.visibility="visible";
+           },1000);
+          }
+        }
+      </script>
+
+      <!--counter-->
+      <script type="text/javascript">
+
+        $('.count').each(function () {
+          $(this).prop('Counter',0).animate({
+            Counter: $(this).text()
+          }, {
+            duration: 4000,
+            easing: 'swing',
+            step: function (now) {
+              $(this).text(Math.ceil(now));
+            }
+          });
+        });
+      </script>
+
+  </body>
 
 </html>
-<script type="text/javascript">
-      document.onreadystatechange = function () {
-  var state = document.readyState
-  if (state == 'interactive') {
-       document.getElementById('contents').style.visibility="hidden";
-  } else if (state == 'complete') {
-      setTimeout(function(){
-         document.getElementById('interactive');
-         document.getElementById('load').style.visibility="hidden";
-         document.getElementById('contents').style.visibility="visible";
-      },1000);
-  }
-}
-    </script>
 
-    <!--counter-->
-    <script type="text/javascript">
-      
 
-      $('.count').each(function () {
-    $(this).prop('Counter',0).animate({
-        Counter: $(this).text()
-    }, {
-        duration: 4000,
-        easing: 'swing',
-        step: function (now) {
-            $(this).text(Math.ceil(now));
-        }
-    });
-});
-    </script>
 
-  
