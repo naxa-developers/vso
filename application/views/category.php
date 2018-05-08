@@ -7,6 +7,8 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css" />
 
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/leaflet.label.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/changunarayan.js"></script>
 <style>
 .leaflet-left{
 	left: 21.5%;
@@ -656,111 +658,7 @@ select#sel1 {
   font-size: 18px;
 }
 
-
-/*range slider*/
-
-.range {
-  display: table;
-  position: relative;
-  height: 25px;
-  background-color: inherit;
-  border-radius: 0px;
-  cursor: pointer;
-  border-bottom: 1px dotted #ccc;
-  padding: 0px 0 5px;
-}
-
-.range input[type="range"] {
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-  -ms-appearance: none !important;
-  -o-appearance: none !important;
-  appearance: none !important;
-
-  display: table-cell;
-  width: 60%;
-  background-color: transparent;
-  height: 25px;
-  cursor: pointer;
-  padding: 18px 15px 0px 20px;
-}
-.range input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-  -ms-appearance: none !important;
-  -o-appearance: none !important;
-  appearance: none !important;
-
-  width: 11px;
-  height: 25px;
-  color: rgb(255, 255, 255);
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: 0px;
-  background-color: rgb(153, 153, 153);
-}
-
-.range input[type="range"]::-moz-slider-thumb {
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-  -ms-appearance: none !important;
-  -o-appearance: none !important;
-  appearance: none !important;
-
-  width: 11px;
-  height: 25px;
-  color: rgb(255, 255, 255);
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: 0px;
-  background-color: rgb(153, 153, 153);
-}
-
-.range output {
-  display: table-cell;
-  padding: 0px 5px 4px;
-  min-width: 30px;
-  color: rgb(255, 255, 255);
-  background-color: rgb(153, 153, 153);
-  text-align: center;
-  text-decoration: none;
-  border-radius: 0px;
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
-  width: 1%;
-  white-space: nowrap;
-  vertical-align: middle;
-
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: -moz-none;
-  -o-user-select: none;
-  user-select: none;
-}
-.range input[type="range"] {
-  outline: none;
-}
-
-.range.range-primary input[type="range"]::-webkit-slider-thumb {
-  background-color: rgb(66, 139, 202);
-}
-.range.range-primary input[type="range"]::-moz-slider-thumb {
-  background-color: rgb(66, 139, 202);
-}
-.range.range-primary output {
-  background-color: rgb(0, 86, 179);frange
-}
-.range.range-primary input[type="range"] {
-  outline-color: rgb(66, 139, 202);
-}
+/* range slider */
 
 .treeview_list{
   list-style: square outside none;
@@ -821,7 +719,11 @@ select#sel1 {
 											</div> -->
 
 											<div class="col-md-12">
-												<button type="button" id = "<?php echo $data['category_table'].'_toggle'?>" class="btn btn-xs btn-toggle pull-right" data-toggle="button" aria-pressed="false" autocomplete="off">
+											<?php	if($data['default_load']=='0'){ ?>
+												<button type="button" value = "<?php echo $data['category_table'];?>" id = "<?php echo $data['category_table'].'_toggle'?>" class="btn btn-xs btn-toggle pull-right CheckBox" data-toggle="button" aria-pressed="false" autocomplete="off">
+												<?php	}else{ ?>
+													<button type="button" value = "<?php echo $data['category_table'];?>" id = "<?php echo $data['category_table'].'_toggle'?>" class="btn btn-xs btn-toggle pull-right active CheckBox" data-toggle="button" aria-pressed="false" autocomplete="off">
+											<?php	} ?>
 													<div class="handle"></div>
 												</button>
 											</div>
@@ -1061,16 +963,8 @@ select#sel1 {
      <div role="tabpanel" class="tab-pane active" id="table1">
       <div class="form-group">
        <!-- <label for="sel1" class="label_summary">Select layer:</label> -->
-       <select class="form-control" id="sel1">
-        <option>Select layer</option>
-        <option>Education Institution</option>
-        <option>Health facilities</option>
-        <option>Open Spaces</option>
-        <option>Household</option>
-        <option>Risks and hazards</option>
-        <option>Heritage sites</option>
-        <option>Public Places</option>
-        <option>Institutions</option>
+       <select class="form-control" id="active_layers">
+
       </select>
     </div>
 
@@ -1093,19 +987,8 @@ select#sel1 {
 </div>
 
 <div class="list-cat-panel">
-  <ul class="list-group cate categories">
-   <li class="list-group-item" >Sankhu School <span class="pull-right"><a href="#"><i class="fa fa-crosshairs"></i></a></span></li>
-   <li class="list-group-item" >Sankhu School <span class="pull-right"><a href="#"><i class="fa fa-crosshairs"></i></a></span></li>
-   <li class="list-group-item" >Sankhu School <span class="pull-right"><a href="#"><i class="fa fa-crosshairs"></i></a></span></li>
-   <li class="list-group-item" >Sankhu School <span class="pull-right"><a href="#"><i class="fa fa-crosshairs"></i></a></span></li>
-   <li class="list-group-item" >Sankhu School <span class="pull-right"><a href="#"><i class="fa fa-crosshairs"></i></a></span></li>
-   <li class="list-group-item" >Sankhu School <span class="pull-right"><a href="#"><i class="fa fa-crosshairs"></i></a></span></li>
-   <li class="list-group-item" >Sankhu School <span class="pull-right"><a href="#"><i class="fa fa-crosshairs"></i></a></span></li>
-   <li class="list-group-item" >Sankhu School <span class="pull-right"><a href="#"><i class="fa fa-crosshairs"></i></a></span></li>
-   <li class="list-group-item" >Sankhu School <span class="pull-right"><a href="#"><i class="fa fa-crosshairs"></i></a></span></li>
-   <li class="list-group-item" >Sankhu School <span class="pull-right"><a href="#"><i class="fa fa-crosshairs"></i></a></span></li>
-   <li class="list-group-item" >Sankhu School <span class="pull-right"><a href="#"><i class="fa fa-crosshairs"></i></a></span></li>
-   <li class="list-group-item" >Sankhu School <span class="pull-right"><a href="#"><i class="fa fa-crosshairs"></i></a></span></li>
+  <ul id="ListGroup" class="list-group cate categories">
+
  </ul>
 </div>
 </div>
@@ -1192,6 +1075,34 @@ select#sel1 {
 <!-- scripts for leaflet map -->
 <script>
 
+var layer_array = '<?php echo $layer_name; ?>';
+var geo_array = '<?php echo $geo; ?>';
+var default_loadd = '<?php echo $default_load; ?>';
+
+//
+var cat_layer = '<?php echo $cat_map_layer; ?>';
+var cat_tbl_array = '<?php echo $category_tbl; ?>';
+
+
+//
+
+
+
+
+layer_name = JSON.parse(layer_array);
+geojson = JSON.parse(geo_array);
+default_load = JSON.parse(default_loadd);
+console.log(default_load);
+
+cat_layer_data = JSON.parse(cat_layer);
+cat_tbl_array_name = JSON.parse(cat_tbl_array);
+
+var selected_category='<?php echo $_GET['tbl'] ?>';
+
+//clicked category_map
+$('#<?php echo $_GET['tbl'] ?>').prop('checked',true);
+$('#<?php echo $_GET['tbl'].'_toggle'?>').addClass('active');
+
 	/*-- LayerJS--*/
 	$(document).ready(function(){
 		$(".layer-toggle").click(function(){
@@ -1201,64 +1112,335 @@ select#sel1 {
 
 			//map part
 
-				var map = L.map('map');//.setView([27.7005033, 85.4328162], 13);
-				L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-					attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
-				$(".layer-toggle").click(function(){
-					$(".panel.panel-success").toggle(1000);
-					$(".layer-toggle i").toggleClass("fa-chevron-right");
+			var map = L.map('map').setView([27.693547,85.440240], 13);
+		 // map.scrollWheelZoom.disable();
+		 map.options.maxBounds;  // remove the maxBounds object from the map options
+		 //map.options.minZoom = 9;
+
+			//map.options.minZoom = 14;
+			//console.log("adfasfsadfasfasdfasfdasdfsafasdfsafasfasfsafsa");
+			var osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+			});
+
+			googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+				maxZoom: 20,
+				subdomains:['mt0','mt1','mt2','mt3']
+			});
+			googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+				maxZoom: 20,
+				subdomains:['mt0','mt1','mt2','mt3']
+			});
+			googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+				maxZoom: 20,
+				subdomains:['mt0','mt1','mt2','mt3']
+			});
+			googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{
+				maxZoom: 20,
+				subdomains:['mt0','mt1','mt2','mt3']
+			});
+			//var none = "";
+			var baseLayers = {
+				"OpenStreetMap": osm,
+				"Google Streets": googleStreets,
+				"Google Hybrid": googleHybrid,
+				"Google Satellite": googleSat,
+				"Google Terrain": googleTerrain//,
+				//"None": none
+			};
+
+			map.addLayer(googleStreets);
+			layerswitcher = L.control.layers(baseLayers, {}, {collapsed: true}).addTo(map);
+
+				 function underscoreToSpace(naaaaame) {
+
+						 var underscored = naaaaame;
+
+						 var spaced = underscored.replace(/_/g, " ");
+
+						 return spaced;
+
+				 }
+
+		 for(i=0; i<layer_name.length; i++){
+		 window[''+layer_name[i]] = new L.GeoJSON(geojson[i],
+		 {
+
+
+		 //  pointToLayer: function(feature,Latlng)
+		 //  {
+		 //    icons=L.icon({
+		 //    iconUrl: "https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon.png"
+		 //  });
+		 //  var marker = L.marker(Latlng,{icon: icons});
+		 //
+		 // },
+		 // with onEachFeature the task is carried out on Each of the point of coordinates or other properties Like( Creating table in each point of cordinates and etc)
+
+		 onEachFeature: function(feature,layer){
+
+			layer.on('click',function() {
+			map.fitBounds(layer.getBounds());
+		 });
+
+
+														 var popUpContent = "";
+
+														 popUpContent += '<table style="width:100%;" id="District-popup" class="popuptable">';
+
+														 for (data in layer.feature.properties) {
+
+																 // console.log('feature ', feature);
+
+																 dataspaced = underscoreToSpace(data);
+
+																 popUpContent += "<tr>" + "<td></td>" + "<td>" + "  " + layer.feature.properties[data] + "</td>" + "</tr>";
+
+														 }
+
+														 popUpContent += '</table>';
+
+
+
+														 layer.bindPopup(L.popup({
+
+																 closeOnClick: true,
+
+																 closeButton: true,
+
+																 keepInView: true,
+
+																 autoPan: true,
+
+																 maxHeight: 200,
+
+																 minWidth: 250
+
+														 }).setContent(popUpContent));
+
+
+			layer.setStyle({
+
+											fillColor: randomColor(),
+											fillOpacity:0,
+											weight: 0.5,
+											opacity: 1,
+											color: 'black'//,
+											//dashArray: '3'
+
+									});
+		 // table is created to put all the data of the database into the marker on one click
+		 //slayer.bindLabel('sdfsaas');
+
+
+
+		 // console.log(feature);
+		 }
+
+		 }).addTo(map);
+
+		 }
+
+
+	$('#active_layers').append('<option id = '+selected_category+' >'+selected_category.replace( "_"," ")+'</option>');
+		 //cat map load
+		 for(i=0; i<cat_tbl_array_name.length; i++){
+
+			 console.log(cat_tbl_array_name[i]);
+		 window[''+cat_tbl_array_name[i]]= new L.GeoJSON(cat_layer_data[i],
+		 {
+
+			 pointToLayer: function(feature,Latlng)
+				{
+					icons=L.icon({
+					iconUrl: "https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon.png"
 				});
-				var sankhu = new L.geoJson.ajax("http://localhost/demo_sankhu/json/Shankharapur.geojson", {
+				var marker = L.marker(Latlng,{icon: icons});
+						return marker;
 
-					onEachFeature: function(feature,layer){
-
-						layer.on('click', function() {
-							map.fitBounds(layer.getBounds());
-						});
-						layer.setStyle({
-							fillColor:"Green",
-							fillOpacity:0,
-							weight: 1,
-							opacity: 1,
-							color: 'black',
-                                //dashArray: '3'
-
-             });
-
-					}
+			 },
 
 
-				}).addTo(map);
-				sankhu.on('data:loaded', function (data) {
-					map.fitBounds(sankhu.getBounds());
-				});
 
-				open_space = new L.geoJson.ajax("http://localhost/demo_sankhu/json/Open_Spaces.geojson", {
-					pointToLayer: function(feature, latlng) {
-						icons = L.icon({
-								//iconSize: [27, 27],
-								iconAnchor: [13, 27],
-								popupAnchor:  [2, -24],
-								iconUrl: 'http://localhost/demo_sankhu/css/img/marker-icon.png'
-							});
-				//console.log(icon.options);
-				var marker = L.marker(latlng, {icon: icons});
-				return marker;
 
-			},
-			onEachFeature: function(feature, layer) {
-				layer.bindPopup(feature.properties.Name);
-				//feature.properties.layer_name = "transit_stops";
+		 onEachFeature: function(feature,layer){
+		 var popUpContent = "";
 
+														 popUpContent += '<table style="width:100%;" id="District-popup" class="popuptable">';
+
+														 for (data in layer.feature.properties) {
+
+																 // console.log('feature ', feature);
+
+																 dataspaced = underscoreToSpace(data);
+
+																 popUpContent += "<tr>" + "<td></td>" + "<td>" + "  " + layer.feature.properties[data] + "</td>" + "</tr>";
+
+														 }
+
+														 popUpContent += '</table>';
+
+
+
+														 layer.bindPopup(L.popup({
+
+																 closeOnClick: true,
+
+																 closeButton: true,
+
+																 keepInView: true,
+
+																 autoPan: true,
+
+																 maxHeight: 200,
+
+																 minWidth: 250
+
+														 }).setContent(popUpContent));
+
+
+
+		 },
+
+
+
+		 });
+
+//add layer if the admin has set the layer to load by default on page load
+		if($('#'+cat_tbl_array_name[i]+'_toggle').hasClass('active')){
+				console.log(cat_tbl_array_name[i]);
+				window[''+cat_tbl_array_name[i]].addTo(map);
+				//$('#active_layers').append('<option>Select layer</option>');
+
+				var table_name=cat_tbl_array_name[i].replace( '_',' ');
+       if(cat_tbl_array_name[i]==selected_category){
+
+			 }else{
+
+				$('#active_layers').append('<option id= '+cat_tbl_array_name[i]+' >'+table_name+'</option>');
+			 }
+
+
+
+		}
+
+		 }
+		 //cat map end
+
+
+
+
+
+
+
+
+		 $( ".CheckBox" ).click(function( event ) {
+					layerClicked = window[event.target.value];
+			//console.log(layerClicked);
+							if (map.hasLayer(layerClicked)) {
+									map.removeLayer(layerClicked);
+							}
+							else{
+									map.addLayer(layerClicked);
+							} ;
+			});
+
+
+		 $( ".CheckBoxStart" ).click(function( event ) {
+		 layerClicked1 = window[event.target.value];
+		 map.addLayer(layerClicked1);
+		 map.removeLayer(layerClicked1)
+
+			});
+
+
+			L.Mask = L.Polygon.extend({
+				options: {
+					stroke: false,
+					color: '#333',
+					fillOpacity: 0.5,
+					clickable: true,
+
+					outerBounds: new L.LatLngBounds([-90, -360], [90, 360])
+				},
+
+				initialize: function (latLngs, options) {
+
+							 var outerBoundsLatLngs = [
+						this.options.outerBounds.getSouthWest(),
+						this.options.outerBounds.getNorthWest(),
+						this.options.outerBounds.getNorthEast(),
+						this.options.outerBounds.getSouthEast()
+					];
+							L.Polygon.prototype.initialize.call(this, [outerBoundsLatLngs, latLngs], options);
+				},
+
+			});
+			L.mask = function (latLngs, options) {
+				return new L.Mask(latLngs, options);
+			};
+
+
+			var coordinates = changu1[0].features[0].geometry.coordinates[0];
+
+			var latLngs = [];
+			for (i=0; i<coordinates.length; i++) {
+				for(j=0; j<coordinates[i].length;j++){
+					// console.log(coordinates[i][j]);
+					latLngs.push(new L.LatLng(coordinates[i][j][1], coordinates[i][j][0]));
+				}
 			}
-		});
-
-				open_space.on('data:loaded', function (data) {
 
 
-				});
-				open_space.addTo(map);
+			L.mask(latLngs).addTo(map);
 
+
+function Loadlist(selected_list_id){
+	$.ajax({
+                                    type: "GET",
+                                  //  data: name,
+                                    url:  "MapController/get_summary_list?selected_list_id="+selected_list_id,
+                                    beforeSend: function() {
+                                      //  $.LoadingOverlay("show");
+                                    },
+                                    complete: function() {
+                                      //  $.LoadingOverlay("hide", true);
+                                    },
+                                    success: function (result) {
+																			$("#ListGroup").html('');
+																				var result_parsed = JSON.parse(result);
+																				  //
+																					//console.log(result_parsed[i]);
+																				for(var i=0; i<result_parsed.length;i++){
+																					var coords = JSON.parse(result_parsed[i].st_asgeojson);
+																					$("#ListGroup").append('<li id='+coords.coordinates[0]+' name = '+coords.coordinates[1]+' class="list-group-item zoomTo" >'+result_parsed[i].field+' <span class="pull-right"><a href="#"><i class="fa fa-crosshairs"></i></a></span></li>');
+
+
+
+																				}
+
+                                    }
+
+
+                                });
+
+}
+
+
+Loadlist(selected_category);
+
+ $('#active_layers').on('change',function(){
+var selected_list_id=$('#active_layers option:selected').attr('id');
+
+   Loadlist(selected_list_id);
+ });
+
+
+$("#ListGroup").on('click', '.zoomTo', function(){ console.log("fadsdfasfd");
+			var lat = parseFloat($(this).attr('id'));
+			var lon = parseFloat($(this).attr('name'));
+			map.setView([lon,lat],16);
+});
 
 			});
 		</script>
@@ -1285,8 +1467,8 @@ select#sel1 {
     <script type="text/javascript">
       $(document).ready(function() {
 
-				$('#<?php echo $_GET['tbl'] ?>').prop('checked',true);
-				$('#<?php echo $_GET['tbl'].'_toggle'?>').addClass('active');
+
+
 				//$('#category1_toggle').removeClass('active');
         $('#select1').multiselect();
         $('#select2').multiselect();

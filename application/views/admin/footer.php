@@ -87,6 +87,20 @@
       ]
   });
 
+  $('#tb3').DataTable({
+     dom: 'Bfrtip',
+      "paging": true,
+      "searching": true,
+      "info": true,
+      "ordering": true,
+
+     buttons: [
+
+     ],
+
+
+ });
+
 });//documnt
 
 // steps forms

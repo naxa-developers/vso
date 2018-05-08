@@ -297,5 +297,5 @@ map.removeLayer(layerClicked1)
 
 
 
-});
+});//document
 </script>

@@ -30,10 +30,10 @@
               <h5><i class="fa fa-info-circle"></i> Note: Select a Csv File to Upload to Table</h5><br>
               <form role="form" method="POST" action="" enctype="multipart/form-data">
 
-                
+
 
                 <div class="form-group">
-                  <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">select long</label>
+                  <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Select Longitude</label>
 
                   <select name='long' class="form-control  m-bot15">
                     <?php for($i=0;$i<sizeof($row);$i++){ ?>
@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">select long</label>
+                  <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Select Latitude</label>
 
                   <select name='lat' class="form-control  m-bot15">
                     <?php for($i=0;$i<sizeof($row);$i++){ ?>

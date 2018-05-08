@@ -29,7 +29,7 @@
                       <h4> NO Data   </h4>
 
                     <?php }else{ ?>
-                      <table class="table table-hover">
+                      <table class="table table-hover" id="tb3">
                           <thead>
 
 
