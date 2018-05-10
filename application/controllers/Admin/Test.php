@@ -15,13 +15,33 @@ class Test extends CI_Controller
 
   public function index(){
 
+if($this->input->post('submit')=='submit'){
+  unset($_POST['submit']);
+//var_dump(sizeof($_POST));
+//var_dump($_POST);
 
-    // $this->load->view('admin/header');
-    // $this->load->view('admin/footer');
-    //ksjdkjaskjdkasfdsf//
 
-  }
+$aa=array();
+foreach($_POST as $row) {
 
+    //var_dump(json_encode($row));
+      //array design
+      $a=array(
+        'col'=> $row[0],
+        'name'=>$row[1]
+      );
+      array_push($aa,$a);
+
+}
+$ab['a']=$aa;
+echo json_encode($ab);
+//end
+}else{
+  $this->load->view('admin/header');
+  $this->load->view('maplabel');
+  $this->load->view('admin/footer');
+}
+}
   // all categories table operation start
 
   public function data_tables() // view table

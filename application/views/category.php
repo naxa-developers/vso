@@ -1241,12 +1241,20 @@ $('#<?php echo $_GET['tbl'].'_toggle'?>').addClass('active');
 
 		 }
 
+styles=JSON.parse('<?php echo $style ?>');
+//popup CheckBoxStart
+popup_content_parsed = JSON.parse('<?php echo $popup_content ?>');
+
+//popup end
 
 	$('#active_layers').append('<option id = '+selected_category+' >'+selected_category.replace( "_"," ")+'</option>');
 		 //cat map load
 		 for(i=0; i<cat_tbl_array_name.length; i++){
+//style start
+var style=JSON.parse(styles[i]);
+//style end
 
-			 console.log(cat_tbl_array_name[i]);
+			 //console.log(cat_tbl_array_name[i]);
 		 window[''+cat_tbl_array_name[i]]= new L.GeoJSON(cat_layer_data[i],
 		 {
 
@@ -1255,7 +1263,15 @@ $('#<?php echo $_GET['tbl'].'_toggle'?>').addClass('active');
 					icons=L.icon({
 					iconUrl: "https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon.png"
 				});
-				var marker = L.marker(Latlng,{icon: icons});
+				var marker = L.circleMarker(Latlng);
+				//for(data in style){
+
+
+					marker.setStyle(style);
+
+
+			//	}
+
 						return marker;
 
 			 },
@@ -1264,19 +1280,32 @@ $('#<?php echo $_GET['tbl'].'_toggle'?>').addClass('active');
 
 
 		 onEachFeature: function(feature,layer){
+
+			 //console.log(feature);
+
 		 var popUpContent = "";
 
 														 popUpContent += '<table style="width:100%;" id="District-popup" class="popuptable">';
 
-														 for (data in layer.feature.properties) {
+														 //for (data in popup_content_parsed) {
+															 		pop = JSON.parse(popup_content_parsed[i]);
+
+																	for(data in pop.a){
+																			//console.log(data);
+																			pop1 = pop.a[data].col;
+																			name = pop.a[data].name;
+																			popUpContent += "<tr>" + "<td>"+name+"</td>" + "<td>" +  feature.properties[pop1]  + "</td></tr>";
+																	}
+
+
 
 																 // console.log('feature ', feature);
 
-																 dataspaced = underscoreToSpace(data);
+																 //dataspaced = underscoreToSpace(data);
+																 //console.log(JSON.parse(popup_content_parsed[data]));
 
-																 popUpContent += "<tr>" + "<td></td>" + "<td>" + "  " + layer.feature.properties[data] + "</td>" + "</tr>";
 
-														 }
+														 //}
 
 														 popUpContent += '</table>';
 

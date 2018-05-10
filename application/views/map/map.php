@@ -183,11 +183,14 @@ window[''+cat_tbl_array_name[i]]= new L.GeoJSON(cat_layer_data[i],
 
 
 onEachFeature: function(feature,layer){
+
+  
 var popUpContent = "";
 
                         popUpContent += '<table style="width:100%;" id="District-popup" class="popuptable">';
 
                         for (data in layer.feature.properties) {
+                          console.log(feature);
 
                             // console.log('feature ', feature);
 

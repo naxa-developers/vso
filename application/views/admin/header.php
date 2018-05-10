@@ -144,6 +144,7 @@
                     <ul class="sub">
 
                         <li><a href="<?php echo base_url();?>categories_tbl">Categories</a></li>
+                        <li><a href="<?php echo base_url();?>categories_tbl">Categories Popup</a></li>
 
                     </ul>
                 </li>
