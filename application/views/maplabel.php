@@ -1,10 +1,10 @@
 !--main content start-->
-<!-- <script src="<?php echo base_url();?>assets/admin/js/jquery-1.10.2.min.js"></script> -->
+ <script src="<?php echo base_url();?>assets/admin/js/jquery-1.10.2.min.js"></script>
 <section id="main-content" class="">
   <section class="wrapper">
     <!-- page start-->
     <!-- page start-->
-    <div class="row">
+    <div class="row" >
         <div class="col-lg-12">
             <section class="panel">
                 <header class="panel-heading">
@@ -15,9 +15,9 @@
                   <div class="form-group">
                       <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Selects</label>
                       <div class="col-lg-6">
-                          <select class="form-control m-bot15">
+                          <select id="getcolumns" class="form-control m-bot15">
                             <?php foreach($tbl_name as $tbl){ ?>
-                              <option value="<?php echo $tbl['category_table'] ?>"><?php echo $tbl['category_name'] ?></option>
+                              <option  value="<?php echo $tbl['category_table'] ?>"><?php echo $tbl['category_name'] ?></option>
 
                             <?php } ?>
                           </select>
@@ -29,21 +29,20 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <form class="form-horizontal bucket-form" method="get">
+                            <form class="form-horizontal bucket-form" action=" " method="POST">
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Checkboxes</label>
 
                                     <div class="col-sm-9 icheck ">
 
-                                        <div class="minimal  col-md-4">
-                                            <div class="checkbox ">
-                                                <input type="checkbox" name="a134[]" value="abc" id = "ch1" class="chbox"> I have a bike<br>
-                                                  <input type="checkbox" name="a134[]" value="a21" class="ch1"   hidden><br>
+                                        <div class="minimal col-md-12">
+                                            <div id="checkbox_div" class="checkbox col-md-12">
 
                                             </div>
                                         </div>
+                                        <input type="text" name="table" value="<?php echo $table ?>" hidden>
                                         <br/>
-                                        <input type="submit" name="submit" value="submit">
+                                        <button type="submit" name="submit" class="btn btn-info">Upload</button>
 
 
 
@@ -99,9 +98,8 @@ $(document).ready(function(){
 
 
 
-$('.chbox').on('click',function(){
-
-//  console.log($(this).is(':checked'));
+$('#checkbox_div').on('click','input .chbox',function(){
+console.log($(this).is(':checked'));
 if($(this).is(':checked')){
   //console.log('checked');
 
@@ -125,6 +123,42 @@ $('.'+Class).attr('checked',false);
 
 
 });
+
+
+function getcolumns(id)
+{
+//var tbl='<?php echo $table ?>'
+//var id=document.getElementById("getcolumns").value;
+// var dataString = 'id='+ id;
+console.log(id);
+$("#checkbox_div").html("");
+
+$.ajax
+({
+type: "GET",
+url: "<?php echo base_url(); ?>MapController/getcolumnss?tbl="+id,
+
+
+
+success: function(html)
+{
+console.log(html);
+$("#checkbox_div").html(html);
+}
+});
+
+}
+$('#getcolumns').on('change',function(){
+
+  var Option=$('#getcolumns option:selected').val();
+  getcolumns(Option);
+
+});
+
+$("#getcolumns  option:selected").attr("selected",false);
+$("#getcolumns  option[value='<?php echo $table; ?>']").attr("selected",true);
+getcolumns("<?php echo $table; ?>");
+
 
 
 </script>

@@ -363,14 +363,16 @@ public function get_summary_list(){
 
 public function manage_popup(){
 
-$this->body['tbl_name']=$this->Map_model->get_layer('categories_tbl');
 
-
-  if($this->input->post('submit')=='submit'){
+  if(isset($_POST['submit'])){
+$table=$_POST['table'];
     unset($_POST['submit']);
+    unset($_POST['table']);
 
 
-
+//var_dump($_POST);
+//echo $table;
+//exit();
   $aa=array();
   foreach($_POST as $row) {
 
@@ -384,9 +386,21 @@ $this->body['tbl_name']=$this->Map_model->get_layer('categories_tbl');
 
   }
   $ab['a']=$aa;
-  echo json_encode($ab);
+$data= array(
+
+  'popup_content'=>json_encode($ab),
+);
+  $this->Map_model->update_popup($table,$data);
   //end
   }else{
+
+    $tbl=$_GET['tbl'];
+    //echo $tbl ;
+    //exit();
+    $this->body['tbl_name']=$this->Map_model->get_layer('categories_tbl');
+    $this->body['popup']=$this->Map_model->get_popup($tbl);
+    $this->body['table']=$tbl;
+
     $this->load->view('admin/header');
     $this->load->view('maplabel',$this->body);
     $this->load->view('admin/footer');
@@ -397,7 +411,80 @@ $this->body['tbl_name']=$this->Map_model->get_layer('categories_tbl');
 
 
 
+  public function getcolumnss() {  //show edit label page
 
+      $tablename=$_GET['tbl'];
+
+
+
+         $result =  $fields=$this->db->list_fields($tablename);
+
+         $checked1 = $this->Map_model->get_checkedcolumns($tablename);
+         $col_name = $this->Map_model->col_name($tablename);
+        $checked2=$checked1['popup_content'];
+
+         $checked=json_decode($checked2,TRUE);
+         //($checked1);
+         //var_dump($col_name);
+
+
+        $checked_column_array=array();
+         foreach ($checked as $key) {
+
+             //var_dump($key);
+
+             foreach($key as $key1 => $value){
+
+
+               array_push($checked_column_array,$value['col']);
+             }
+}
+
+$html="";
+
+
+ for ($i=0;$i<sizeof($col_name);$i++) {
+$checked="";
+   for($j=0;$j<sizeof($checked_column_array);$j++)
+   {
+
+     if($checked_column_array[$j]== $col_name[$i]['eng_lang']){//check if the checkbox should be checked
+
+   	$checked = "checked";
+    break;
+
+
+     }else{
+   	//$html=$html.'<input type = "checkbox" >'.$result[$i].'</input>';
+   	$checked = "";
+
+
+     }
+   }
+
+    $html=$html.'<input type="checkbox" name='.$col_name[$i]["eng_lang"].'[] value='.$col_name[$i]["eng_lang"].' id = "ch'.$col_name[$i]["id"].' class= "chbox" '.$checked.'/>'.$col_name[$i]["nepali_lang"].'<br>'.
+     '<input type="checkbox" name='.$col_name[$i]["eng_lang"].'[] value="'.$col_name[$i]["nepali_lang"].'" class="ch'.$col_name[$i]["id"].'"   hidden '.$checked.'><br>';
+
+
+
+
+
+
+         }
+echo $html;
+
+
+
+}
+
+
+public function manage_style(){
+
+
+
+
+
+}
 
 
 

@@ -54,6 +54,14 @@ $this->db->select('*');
         return $query->result_array();
       }
 
+      public function get_popup($tbl){
+          $this->db->select('*');
+            $this->db->order_by('id','ASC');
+            $this->db->where('tbl_name',$tbl);
+          $query=$this->db->get('tbl_lang');
+          return $query->result_array();
+        }
+
 
 public function get_nep($tbl,$typ){
 
@@ -64,9 +72,37 @@ public function get_nep($tbl,$typ){
 return  $q->result_array();
 
 
+}
+
+public function get_checkedcolumns($tbl){
+
+  $this->db->select('popup_content');
+
+  $this->db->where('category_table',$tbl);
+  $q=$this->db->get('categories_tbl');
+  return  $q->row_array();
+
+
+
+}
+public function col_name($tbl){
+
+  $this->db->select('*');
+
+  $this->db->where('tbl_name',$tbl);
+  $q=$this->db->get('tbl_lang');
+  return  $q->result_array();
+
+
+
+}
+public function update_popup($tbl,$data){
+
+  $this->db->where('category_table',$tbl);
+  $q=$this->db->update('categories_tbl',$data);
 
 
 
 }
 
-}
+}//end

@@ -227,7 +227,7 @@ $lat='a'.$la;
 
 $this->Dash_model->create_geom($long,$lat,$tbl_name);
 //$data=$this->Dash_model->get();
-redirect('categories_tbl');
+redirect('manage_popup?tbl='.$tbl_name);
 
 
 
