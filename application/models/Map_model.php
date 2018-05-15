@@ -11,6 +11,7 @@ $q=$this->db->get('categories_tbl');
 
 public function get_summary($field,$tbl){
 
+
  $this->db->select($field.' AS field');
  $this->db->select('ST_AsGeoJSON(the_geom)');
   $query=$this->db->get($tbl);
@@ -102,6 +103,20 @@ public function update_popup($tbl,$data){
   $q=$this->db->update('categories_tbl',$data);
 
 
+
+}
+
+public function update_style($tbl,$data){
+
+  $this->db->where('category_table',$tbl);
+  $q=$this->db->update('categories_tbl',$data);
+
+}
+
+
+public function update_value($id,$data){
+$this->db->where('id',$id);
+$this->db->update('categories_tbl',$data);
 
 }
 

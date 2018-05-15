@@ -1440,6 +1440,7 @@ function Loadlist(selected_list_id){
 																				var result_parsed = JSON.parse(result);
 																				  //
 																					//console.log(result_parsed[i]);
+																					console.log(result);
 																				for(var i=0; i<result_parsed.length;i++){
 																					var coords = JSON.parse(result_parsed[i].st_asgeojson);
 																					$("#ListGroup").append('<li id='+coords.coordinates[0]+' name = '+coords.coordinates[1]+' class="list-group-item zoomTo" >'+result_parsed[i].field+' <span class="pull-right"><a href="#"><i class="fa fa-crosshairs"></i></a></span></li>');

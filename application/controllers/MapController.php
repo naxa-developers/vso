@@ -391,6 +391,10 @@ $data= array(
   'popup_content'=>json_encode($ab),
 );
   $this->Map_model->update_popup($table,$data);
+
+  $this->session->set_flashdata('msg',$table.' Popup was successfully updated');
+
+  redirect('categories_tbl');
   //end
   }else{
 
@@ -462,7 +466,7 @@ $checked="";
      }
    }
 
-    $html=$html.'<input type="checkbox" name='.$col_name[$i]["eng_lang"].'[] value='.$col_name[$i]["eng_lang"].' id = "ch'.$col_name[$i]["id"].' class= "chbox" '.$checked.'/>'.$col_name[$i]["nepali_lang"].'<br>'.
+    $html=$html.'<input type="checkbox" name='.$col_name[$i]["eng_lang"].'[] value='.$col_name[$i]["eng_lang"].' id = "ch'.$col_name[$i]["id"].'" class= "chbox" '.$checked.'/>'.$col_name[$i]["nepali_lang"].'<br>'.
      '<input type="checkbox" name='.$col_name[$i]["eng_lang"].'[] value="'.$col_name[$i]["nepali_lang"].'" class="ch'.$col_name[$i]["id"].'"   hidden '.$checked.'><br>';
 
 
@@ -480,12 +484,55 @@ echo $html;
 
 public function manage_style(){
 
+$tbl=$_GET['tbl'];
+
+if(isset($_POST['submit'])){
+ unset($_POST['submit']);
+
+
+$style=json_encode($_POST);
+$data=array(
+
+'style'=>$style,
+
+
+);
+
+$this->Map_model->update_style($tbl,$data);
+
+
+
+  $this->session->set_flashdata('msg',$tbl.' Style was successfully updated');
+
+  redirect('categories_tbl');
+
+
+
+}else{
+
+  $this->load->view('admin/header');
+$this->load->view('admin/manage_style');
+  $this->load->view('admin/footer');
+
+}
 
 
 
 
 }
 
+
+public function update_default(){
+
+
+
+ $data=array(
+'default_load'=>$this->input->get('value'),
+
+ );
+ $this->Map_model->update_value($this->input->get('id'),$data);
+
+}
 
 
 }//end

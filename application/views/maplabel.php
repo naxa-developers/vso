@@ -98,7 +98,7 @@ $(document).ready(function(){
 
 
 
-$('#checkbox_div').on('click','input .chbox',function(){
+$('#checkbox_div').on('click','.chbox',function(){
 console.log($(this).is(':checked'));
 if($(this).is(':checked')){
   //console.log('checked');
