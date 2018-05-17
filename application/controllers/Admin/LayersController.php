@@ -23,7 +23,7 @@ $this->load->view("admin/layers_upload");
 $this->load->view("admin/footer");
 $tble_name=$_GET['tbl_name'];
 $id=$_GET['id'];
-echo $table_name;
+echo $tble_name;
 echo $id;
 exit();
 
@@ -144,7 +144,7 @@ if(@$_POST["proj"]){
     $this->session->set_flashdata('msg','The table '.$UPLOAD_SCHEMA.' table was sucessfully created');
 
     $data=array(
-   'category_table'=>$table_name,
+   'category_table'=>$tble_name,
 
 
 
