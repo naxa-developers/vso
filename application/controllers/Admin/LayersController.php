@@ -23,8 +23,9 @@ $this->load->view("admin/layers_upload");
 $this->load->view("admin/footer");
 $tble_name=$_GET['tbl_name'];
 $id=$_GET['id'];
-//echo $table_name;
-//echo $id;
+echo $table_name;
+echo $id;
+exit();
 
 
 //code
