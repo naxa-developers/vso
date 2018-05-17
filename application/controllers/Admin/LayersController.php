@@ -21,8 +21,7 @@ public function add_layers(){
 $this->load->view("admin/header");
 $this->load->view("admin/layers_upload");
 $this->load->view("admin/footer");
-$tble_name=$_GET['tbl_name'];
-$id=$_GET['id'];
+
 // echo $tble_name;
 // echo $id;
 // exit();
@@ -30,6 +29,8 @@ $id=$_GET['id'];
 
 //code
 if(@$_POST["proj"]){
+  $tble_name=$_GET['tbl_name'];
+  $id=$_GET['id'];
 
   // $tble_name=strtolower(str_replace(" ","_",$_POST['f_name']));
 
