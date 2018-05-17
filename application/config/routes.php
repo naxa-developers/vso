@@ -63,6 +63,7 @@ $route['map'] ='MapController/map_page';
 $route['category'] ='MapController/category_map';
 $route['manage_popup'] ='MapController/manage_popup';
 $route['manage_style'] ='MapController/manage_style';
+$route['update_summary'] ='MapController/update_summary';
 
 $route['report_page'] ='ReportController/report_page';
 

@@ -3,7 +3,10 @@ class Layers_model extends CI_Model {
 
 
 
-public function insert_layer($data){
+public function insert_layer($id,$data){
+
+$this->db->where('id',$id);
+$this->db->update('categories_tbl',$data);
 
 
 return $this->db->insert('layers_tbl',$data);

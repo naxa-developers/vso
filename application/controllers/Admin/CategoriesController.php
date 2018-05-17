@@ -372,7 +372,7 @@ redirect('csv_data_tbl?tbl='.base64_encode($cat_name).'&& id='.base64_encode($in
 
 }else{
   $this->session->set_flashdata('msg','Note: The Shapefile Co-ordinate System Must Be In WGS84 ie. EPSG:4326 '.$cat_name);
-  redirect('add_layers?tbl_name='.$cat_table);
+  redirect('add_layers?tbl_name='.$cat_table.'&& id='.$insert);
 }
 
 

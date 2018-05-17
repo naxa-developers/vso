@@ -17,15 +17,17 @@ class LayersController extends CI_Controller
 public function add_layers(){
 
 //echo APPPATH;
-$tble_name= $this->input->get('tbl_name');
+//$tble_name= $this->input->get('tbl_name');
 $this->load->view("admin/header");
 $this->load->view("admin/layers_upload");
 $this->load->view("admin/footer");
+$table_name=$_GET['tbl_name'];
+$id=$_GET['id'];
+//echo $table_name;
+//echo $id;
 
 
-
-
-code
+//code
 if(@$_POST["proj"]){
 
   // $tble_name=strtolower(str_replace(" ","_",$_POST['f_name']));
@@ -141,12 +143,12 @@ if(@$_POST["proj"]){
     $this->session->set_flashdata('msg','The table '.$UPLOAD_SCHEMA.' table was sucessfully created');
 
     $data=array(
-   'layer_name'=>$_POST['f_name'],
-   'layer_table'=>$UPLOAD_SCHEMA,
+   'category_table'=>$table_name,
+
 
 
     );
-    $this->Layers_model->insert_layer($data);
+    $this->Layers_model->insert_layer($id,$data);
     redirect('add_layers');
   }
 

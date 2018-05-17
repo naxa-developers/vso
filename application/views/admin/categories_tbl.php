@@ -47,7 +47,7 @@
 
                         <?php }elseif($key == 'style'){?>
 
-                          <td>sstyle</td>
+                          <td>Style</td>
 
                         <?php }elseif($key == 'popup_content'){?>
 
@@ -93,7 +93,7 @@
 
                             if($key == 'summary_list'){   ?>
 
-                              <td><a href="<?php echo base_url()?>manage_popup?tbl=<?php echo $v['category_table'];?>"><button type="submit" class="btn-sm btn-success">Summary</button></a></td>
+                              <td><a href="<?php echo base_url()?>update_summary?tbl=<?php echo $v['category_table'];?>"><button type="submit" class="btn-sm btn-success">Summary</button></a></td>
 
                             <?php }elseif($key == 'style'){?>
 
