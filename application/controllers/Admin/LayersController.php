@@ -21,7 +21,7 @@ public function add_layers(){
 $this->load->view("admin/header");
 $this->load->view("admin/layers_upload");
 $this->load->view("admin/footer");
-$table_name=$_GET['tbl_name'];
+$tble_name=$_GET['tbl_name'];
 $id=$_GET['id'];
 //echo $table_name;
 //echo $id;

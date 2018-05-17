@@ -9,7 +9,7 @@ $this->db->where('id',$id);
 $this->db->update('categories_tbl',$data);
 
 
-return $this->db->insert('layers_tbl',$data);
+
 
 
 }
