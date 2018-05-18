@@ -17,15 +17,15 @@
             <br>
             <br>
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-8">
                 <form class="form-horizontal bucket-form" action=" " method="POST">
                   <div class="form-group">
                     <label class="col-sm-3 control-label">Select Summary: &nbsp&nbsp&nbsp&nbsp&nbsp </label>
 
-
+                          <div class="row col-md-9">
                     <?php foreach($summary as $data){  ?>
 
-                      <div class="col-sm-3 icheck ">
+                      <div class="col-sm-4 icheck ">
 
                         <div class="minimal single-row">
                           <div class="radio ">
@@ -35,7 +35,9 @@
                         </div>
                       </div>
 
+
                     <?php } ?>
+                      </div>
 
 
 

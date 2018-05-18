@@ -40,7 +40,7 @@
                             <td>Id</td>
                             <?php foreach($data_nep as $value){
 
-                            // if($key == "latitude"||$key == "longitude"){}else{
+                            if($value['nepali_lang']=='gid'){}else{
                                           ?>
                               <td>
 
@@ -52,7 +52,7 @@
                									// 					      }?>
 
                               </td>
-                            <?php  } ?>
+                            <?php  } }?>
                             <td>
                               Operations
                             </td>
@@ -96,7 +96,7 @@
                <span class="tools pull-center">
                    <div class="panel-body">
                      <p> Click below csv button to downlaod the empty table format to add data  </p>
-                 <table class="table table-hover" id="tb2" style="display:none;">
+                 <table class="table table-hover" id="tb2" style="display:none" >
 
                    <thead>
 
@@ -109,7 +109,7 @@
                      <?php foreach($data_nep as $value){
 
 
-
+                          if($value['nepali_lang']=='id'){}else{
                        ?>
 
 
@@ -121,7 +121,7 @@
                          ?>
 
                        </td>
-                     <?php  } ?>
+                     <?php  }} ?>
 
                    </tr>
 

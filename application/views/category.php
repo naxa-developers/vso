@@ -1075,8 +1075,7 @@ select#sel1 {
 <!-- scripts for leaflet map -->
 <script>
 
-var layer_array = '<?php echo $layer_name; ?>';
-var geo_array = '<?php echo $geo; ?>';
+
 var default_loadd = '<?php echo $default_load; ?>';
 
 //
@@ -1089,8 +1088,8 @@ var cat_tbl_array = '<?php echo $category_tbl; ?>';
 
 
 
-layer_name = JSON.parse(layer_array);
-geojson = JSON.parse(geo_array);
+// layer_name = JSON.parse(layer_array);
+// geojson = JSON.parse(geo_array);
 default_load = JSON.parse(default_loadd);
 console.log(default_load);
 
@@ -1162,84 +1161,84 @@ $('#<?php echo $_GET['tbl'].'_toggle'?>').addClass('active');
 
 				 }
 
-		 for(i=0; i<layer_name.length; i++){
-		 window[''+layer_name[i]] = new L.GeoJSON(geojson[i],
-		 {
-
-
-		 //  pointToLayer: function(feature,Latlng)
-		 //  {
-		 //    icons=L.icon({
-		 //    iconUrl: "https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon.png"
-		 //  });
-		 //  var marker = L.marker(Latlng,{icon: icons});
+		 // for(i=0; i<layer_name.length; i++){
+		 // window[''+layer_name[i]] = new L.GeoJSON(geojson[i],
+		 // {
 		 //
-		 // },
-		 // with onEachFeature the task is carried out on Each of the point of coordinates or other properties Like( Creating table in each point of cordinates and etc)
-
-		 onEachFeature: function(feature,layer){
-
-			layer.on('click',function() {
-			map.fitBounds(layer.getBounds());
-		 });
-
-
-														 var popUpContent = "";
-
-														 popUpContent += '<table style="width:100%;" id="District-popup" class="popuptable">';
-
-														 for (data in layer.feature.properties) {
-
-																 // console.log('feature ', feature);
-
-																 dataspaced = underscoreToSpace(data);
-
-																 popUpContent += "<tr>" + "<td></td>" + "<td>" + "  " + layer.feature.properties[data] + "</td>" + "</tr>";
-
-														 }
-
-														 popUpContent += '</table>';
-
-
-
-														 layer.bindPopup(L.popup({
-
-																 closeOnClick: true,
-
-																 closeButton: true,
-
-																 keepInView: true,
-
-																 autoPan: true,
-
-																 maxHeight: 200,
-
-																 minWidth: 250
-
-														 }).setContent(popUpContent));
-
-
-			layer.setStyle({
-
-											fillColor: randomColor(),
-											fillOpacity:0,
-											weight: 0.5,
-											opacity: 1,
-											color: 'black'//,
-											//dashArray: '3'
-
-									});
-		 // table is created to put all the data of the database into the marker on one click
-		 //slayer.bindLabel('sdfsaas');
-
-
-
-		 // console.log(feature);
-		 }
-
-		 }).addTo(map);
-
-		 }
+		 //
+		 // //  pointToLayer: function(feature,Latlng)
+		 // //  {
+		 // //    icons=L.icon({
+		 // //    iconUrl: "https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon.png"
+		 // //  });
+		 // //  var marker = L.marker(Latlng,{icon: icons});
+		 // //
+		 // // },
+		 // // with onEachFeature the task is carried out on Each of the point of coordinates or other properties Like( Creating table in each point of cordinates and etc)
+		 //
+		 // onEachFeature: function(feature,layer){
+		 //
+			// layer.on('click',function() {
+			// map.fitBounds(layer.getBounds());
+		 // });
+		 //
+		 //
+			// 											 var popUpContent = "";
+		 //
+			// 											 popUpContent += '<table style="width:100%;" id="District-popup" class="popuptable">';
+		 //
+			// 											 for (data in layer.feature.properties) {
+		 //
+			// 													 // console.log('feature ', feature);
+		 //
+			// 													 dataspaced = underscoreToSpace(data);
+		 //
+			// 													 popUpContent += "<tr>" + "<td></td>" + "<td>" + "  " + layer.feature.properties[data] + "</td>" + "</tr>";
+		 //
+			// 											 }
+		 //
+			// 											 popUpContent += '</table>';
+		 //
+		 //
+		 //
+			// 											 layer.bindPopup(L.popup({
+		 //
+			// 													 closeOnClick: true,
+		 //
+			// 													 closeButton: true,
+		 //
+			// 													 keepInView: true,
+		 //
+			// 													 autoPan: true,
+		 //
+			// 													 maxHeight: 200,
+		 //
+			// 													 minWidth: 250
+		 //
+			// 											 }).setContent(popUpContent));
+		 //
+		 //
+			// layer.setStyle({
+		 //
+			// 								fillColor: randomColor(),
+			// 								fillOpacity:0,
+			// 								weight: 0.5,
+			// 								opacity: 1,
+			// 								color: 'black'//,
+			// 								//dashArray: '3'
+		 //
+			// 						});
+		 // // table is created to put all the data of the database into the marker on one click
+		 // //slayer.bindLabel('sdfsaas');
+		 //
+		 //
+		 //
+		 // // console.log(feature);
+		 // }
+		 //
+		 // }).addTo(map);
+		 //
+		 // }
 
 styles=JSON.parse('<?php echo $style ?>');
 //popup CheckBoxStart
@@ -1267,7 +1266,7 @@ var style=JSON.parse(styles[i]);
 				//for(data in style){
 
 
-					marker.setStyle(style);
+
 
 
 			//	}
@@ -1282,6 +1281,7 @@ var style=JSON.parse(styles[i]);
 		 onEachFeature: function(feature,layer){
 
 			 //console.log(feature);
+			 	layer.setStyle(style);
 
 		 var popUpContent = "";
 

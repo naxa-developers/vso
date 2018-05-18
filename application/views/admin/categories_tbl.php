@@ -200,7 +200,7 @@ url: "<?php echo base_url(); ?>MapController/update_default?id="+id+"&value="+va
 
 success: function(response)
 {
-alert(response);
+//alert(response);
 
 }
 });

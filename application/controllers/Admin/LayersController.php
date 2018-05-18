@@ -7,6 +7,8 @@ class LayersController extends CI_Controller
     parent::__construct();
 
       $this->load->model('Layers_model');
+      $this->load->model('Dash_model');
+        $this->load->dbforge();
   }
 
 
@@ -119,6 +121,7 @@ if(@$_POST["proj"]){
   $tablename = "f".date('Ymd').($hex); //the name of a table in postgresql must start with carater, the letter f refers to 'feature'
 
   //creando el comando para generar el archivo SQL
+
   $command = "shp2pgsql -s ".$_POST["proj"]." -g the_geom -I -W \"latin1\" ".$shapefile[0]." ".$UPLOAD_SCHEMA." > ".$tempdir."/".$tablename.".sql";
   echo $command;
 
@@ -146,17 +149,86 @@ if(@$_POST["proj"]){
 
     $data=array(
    'category_table'=>$tble_name,
-
-
-
     );
+
     $this->Layers_model->insert_layer($id,$data);
-    redirect('add_layers');
+
+
+    $id = array(
+          'id' => array(
+                      'type' => 'INT',
+                      'constraint' => 5,
+                      'unsigned' => TRUE,
+                      'auto_increment' => TRUE
+                                            ),
+    );
+    $this->dbforge->add_key('id', TRUE);
+    $this->dbforge->add_column($tble_name,$id);
+    $fields=$this->db->list_fields($tble_name);
+    for($i=0;$i<sizeof($fields);$i++){
+      //echo $fields[$i];
+
+      $data_lang=array(
+
+      'eng_lang'=>$fields[$i],
+      'nepali_lang'=>$fields[$i],
+      'tbl_name'=>$tble_name,
+
+
+      );
+
+        $lang_insert=$this->Dash_model->insert_lang('tbl_lang',$data_lang);
+
+
+    }
+
+    redirect('manage_popup?tbl='.$tble_name);
   }
 
 }//post end
 
 
+
+}
+
+
+
+
+public function test_lang(){
+
+
+
+$fields=$this->db->list_fields('wards_changu');
+var_dump(sizeof($fields));
+
+for($i=0;$i<sizeof($fields);$i++){
+  //echo $fields[$i];
+
+  $data_lang=array(
+
+  'eng_lang'=>$fields[$i],
+  'nepali_lang'=>$fields[$i],
+  'tbl_name'=>'wards_changu',
+
+
+  );
+
+    $lang_insert=$this->Dash_model->insert_lang('tbl_lang',$data_lang);
+
+
+}
+
+
+$id = array(
+      'id' => array(
+                  'type' => 'INT',
+                  'constraint' => 5,
+                  'unsigned' => TRUE,
+                  'auto_increment' => TRUE
+                                        ),
+);
+$this->dbforge->add_key('id', TRUE);
+$this->dbforge->add_column('wards_changu', $id);
 
 }
 
