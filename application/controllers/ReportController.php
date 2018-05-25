@@ -191,7 +191,7 @@ if ($insert=="") {
 }else{
 
   $file_name = $_FILES['photo']['name'];
-  
+
   $ext = pathinfo($file_name, PATHINFO_EXTENSION);
 
   $img_upload=$this->Report_model->do_upload($file_name,$insert);
@@ -214,8 +214,9 @@ echo json_encode($response);
 
 }else {
 
+  $code= strip_tags($img_upload['error']);
   $response['status']=201;
-  $response['data']='error';
+  $response['data']=$code;
   echo json_encode($response);
 
 }
