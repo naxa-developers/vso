@@ -40,10 +40,10 @@
 
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active" id="hazard-tab" data-toggle="tab" href="#hazard" role="tab" aria-controls="hazard" aria-selected="true">Hazard Data</a>
+            <a class="nav-link active" id="hazard-tab" data-toggle="tab" href="#hazard" role="tab" aria-controls="hazard" aria-selected="true">Resources</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="exposure-tab" data-toggle="tab" href="#exposure" role="tab" aria-controls="exposure" aria-selected="false">Exposure Data</a>
+            <a class="nav-link" id="exposure-tab" data-toggle="tab" href="#exposure" role="tab" aria-controls="exposure" aria-selected="false">Hazard & Vulnerability</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" id="baseline-tab" data-toggle="tab" href="#baseline" role="tab" aria-controls="baseline" aria-selected="false">Baseline Data</a>
@@ -52,7 +52,7 @@
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="hazard" role="tabpanel" aria-labelledby="hazard-tab">
             <ul class="row">
-                <?php foreach($hazard_data as $data){ ?>
+                <?php foreach($exposure_data as $data){ ?>
               <li class="col-md-3 col-lg-2">
                 <a href="<?php echo base_url()?>category?tbl=<?php echo $data['category_table'] ?>" class="dataset-item-wrap margin-top-large" data-mh="eq-item">
                   <img src="<?php echo $data['category_photo'] ?>">
@@ -64,7 +64,7 @@
           </div>
           <div class="tab-pane fade" id="exposure" role="tabpanel" aria-labelledby="exposure-tab">
 <ul class="row">
-    <?php foreach($exposure_data as $data){ ?>
+    <?php foreach($hazard_data as $data){ ?>
             <li class="col-md-3 col-lg-2">
               <a href="<?php echo base_url()?>category?tbl=<?php echo $data['category_table'] ?>" class="dataset-item-wrap margin-top-large" data-mh="eq-item">
                 <img src="<?php echo $data['category_photo'] ?>">
