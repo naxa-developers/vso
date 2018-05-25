@@ -22,7 +22,12 @@ public function map_page(){
 
 
 }
+public function publication(){
 
+  $this->load->view('header');
+  $this->load->view('publication');
+  $this->load->view('footer');
+}
 
   public function post_data()
 
@@ -47,7 +52,7 @@ public function map_page(){
     $this->body['exposure_data']=$this->Main_model->get_cat_exposure($tbl);
    $this->body['baseline_data']=$this->Main_model->get_cat_baseline($tbl);
 
-   $this->body['proj_data']=$this->Main_model->get_proj_data();
+
    $this->body['background_img']=$this->Main_model->get_bck_img();
    $this->body['emerg_contact']=$this->Upload_model->get_emergency_con();
 
@@ -68,8 +73,10 @@ $this->load->view('admin/login-page');
 
   public function about_page(){
 
+     $this->body['proj_data']=$this->Main_model->get_proj_data();
+
     $this->load->view('header');
-    $this->load->view('about');
+    $this->load->view('about',$this->body);
     $this->load->view('footer');
 
 

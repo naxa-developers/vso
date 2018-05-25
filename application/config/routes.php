@@ -58,12 +58,16 @@ $route['translate_uri_dashes'] = FALSE;
 $route['main'] ='MainController/default_page';
 $route['datasets'] ='MainController/dataset_page';
 $route['about'] ='MainController/about_page';
+$route['publication'] ='MainController/publication';
 
 $route['map'] ='MapController/map_page';
 $route['category'] ='MapController/category_map';
 $route['manage_popup'] ='MapController/manage_popup';
 $route['manage_style'] ='MapController/manage_style';
 $route['update_summary'] ='MapController/update_summary';
+$route['map_reports_table'] ='MapController/map_reports_table';
+$route['map_reports'] ='MapController/map_reports';
+
 
 $route['report_page'] ='ReportController/report_page';
 

@@ -571,4 +571,18 @@ class MapController extends CI_Controller
   }
 
 
+public function map_reports_table(){
+
+  $this->load->view('header');
+  $this->load->view('map_reports_table');
+  $this->load->view('footer');
+}
+
+public function map_reports(){
+
+  $this->load->view('header');
+  $this->load->view('map_reports');
+  $this->load->view('footer');
+}
+
 }//end

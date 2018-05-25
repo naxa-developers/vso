@@ -59,7 +59,7 @@
   <script src="assets/js/vendor/jquery.nicescroll.min.js"></script>
   <script src="assets/js/plugins.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
-  
+
   <script>
     $(document).ready(function(){
       var imgSrc = $('.banner-item>img').attr('src');
@@ -122,7 +122,7 @@
 
           <header id="website-header">
             <nav class="navbar navbar-expand-lg navbar-light bg-white">
-              <div class="container"> 
+              <div class="container">
                 <a class="navbar-brand" href="#">
                   <div class="logo-gov clearfix">
                     <img src="<?php echo base_url();?>assets/img/logo.png" alt="Logo">
@@ -146,7 +146,7 @@
                       <a class="nav-link" href="<?php echo base_url()?>datasets">Datasets</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url()?>map">Map</a>
+                      <a class="nav-link" href="<?php echo base_url()?>category?tbl=">Map</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="<?php echo base_url()?>about"">About</a>
@@ -158,7 +158,7 @@
                       <a class="nav-link" href="<?php echo base_url()?>report_page">Reports</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#no-page-added">Publication</a>
+                      <a class="nav-link" href="<?php echo base_url()?>publication">Publication</a>
                     </li>
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -176,5 +176,3 @@
             </nav>
 
           </header>
-
-
