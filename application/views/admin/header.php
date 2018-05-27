@@ -174,8 +174,8 @@
                     </a>
                     <ul class="sub">
 
-                        <!-- <li><a href="<?php echo base_url();?>create_categories_tbl">Create Database Tables</a></li>
-                        <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
+                        <li><a href="<?php echo base_url();?>report_manage">View Reports</a></li>
+                        <!-- <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
 
                     </ul>
                 </li>

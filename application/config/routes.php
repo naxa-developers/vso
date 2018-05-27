@@ -70,6 +70,8 @@ $route['map_reports'] ='MapController/map_reports';
 
 
 $route['report_page'] ='ReportController/report_page';
+$route['report_manage'] ='ReportController/report_manage';
+$route['report/delete'] = 'ReportController/delete_data';
 
 
 // Admin routes

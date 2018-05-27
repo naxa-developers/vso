@@ -8,6 +8,7 @@ class ReportController extends CI_Controller
 
     $this->load->helper('url');
     $this->load->model('Report_model');
+    $this->load->model('Dash_model');
 
   }
 
@@ -263,6 +264,62 @@ echo json_encode($response);
 
 
   }
+
+
+
+//admin panel parent start
+
+ public function report_manage()
+{
+
+
+if(isset($_POST['submit'])){
+
+  var_dump($_POST);
+  $id=$this->input->post('id');
+  $status=array(
+  'status'=>$this->input->post('status'),
+);
+  $this->Report_model->update_img_path($id,$status);
+  $this->session->set_flashdata('msg', 'Satus successfully Changed');
+  redirect('report_manage');
+
+}else{
+
+$this->body['data']=$this->Report_model->get_report_data();
+
+//var_dump($this->body['data']);
+
+  $this->load->view('admin/header');
+  $this->load->view('admin/report_tbl',$this->body);
+  $this->load->view('admin/footer');
+
+}
+
+  // code...
+}
+
+public function delete_data(){
+
+  $id=$this->input->get('id');
+  $tbl_name='report_tbl';
+
+  $this->Dash_model->delete_data($id,$tbl_name);
+
+
+
+  $this->session->set_flashdata('msg','Id number '.$id.' row data was deleted successfully');
+  redirect('report_manage');
+
+
+}
+
+
+//end
+
+
+
+
 
 
 }
