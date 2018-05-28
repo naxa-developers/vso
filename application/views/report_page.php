@@ -463,9 +463,9 @@ font-size: 14px;
             <div class="text-center dropdown-category_dropdown filter-check">
               <select name="incident_type" class="custom-select multiselect-icon">
                 <option value="0" selected>Select Category</option>
-                <option value="Fire" >fire</option>
-                <option value="Earth" >earth</option>
-                <option value="Water" >water</option>
+                <option value="Fire" >Fire</option>
+                <option value="Earth" >Earth</option>
+                <option value="Water" >Water</option>
 
               </select>
             </div>
