@@ -82,10 +82,15 @@ $filter= $queryy->result_array();
       // }
 
 
-   //var_dump($filter);
+  
+ if($filter==NULL){
+    $filter=$this->Report_model->get_report_data();
+      $this->body['report_data']=$filter;
+      $this->session->set_flashdata('msg','No Matching data as filter applied');
+ }else{
 
       $this->body['report_data']=$filter;
-
+}
       foreach($filter as $data){
 
         $features_report[]= array(

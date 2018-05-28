@@ -18,10 +18,10 @@
             <br>
             <br>
             <div class="row">
-              <div class="col-md-8">
+              <div class="col-md-12">
                 <form class="form-horizontal bucket-form" action=" " method="POST">
                   <div class="form-group">
-                    <label class="col-sm-3 control-label">Select Summary: &nbsp&nbsp&nbsp&nbsp&nbsp </label>
+                    <label class="col-sm-3 ">Select Summary: </label>
 
                           <div class="row col-md-9">
                     <?php foreach($summary as $data){  ?>

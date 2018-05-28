@@ -417,7 +417,16 @@ font-size: 14px;
         </div>
 
         <div class="col-md-9 col-sm-12 jana-map">
-
+          <?php
+            $error=	$this->session->flashdata('msg');
+             if($error){ ?>
+               <div class="alert alert-danger alert-dismissible">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Message!!!!</strong> <?php echo $error ; ?>
+                    </div>
+             <?php
+             }
+              ?>
         <form action="" method="post">
 
           <div class="row" style="margin-left: 0; margin-right: 0;">
@@ -454,9 +463,9 @@ font-size: 14px;
             <div class="text-center dropdown-category_dropdown filter-check">
               <select name="incident_type" class="custom-select multiselect-icon">
                 <option value="0" selected>Select Category</option>
-                <option value="fire" >fire</option>
-                <option value="earth" >earth</option>
-                <option value="water" >water</option>
+                <option value="Fire" >fire</option>
+                <option value="Earth" >earth</option>
+                <option value="Water" >water</option>
 
               </select>
             </div>
@@ -515,7 +524,7 @@ font-size: 14px;
         $(".panel.panel-success").toggle(1000);
         $(".layer-toggle i").toggleClass("fa-chevron-right");
       });
-      var sankhu = new L.geoJson.ajax("http://app.naxa.com.np/geojson/Shankharapur.geojson", {
+      var sankhu = new L.geoJson.ajax("http://localhost/vso/geojson/Shankharapur.geojson", {
 
         onEachFeature: function(feature,layer){
 
