@@ -524,7 +524,7 @@ font-size: 14px;
         $(".panel.panel-success").toggle(1000);
         $(".layer-toggle i").toggleClass("fa-chevron-right");
       });
-      var sankhu = new L.geoJson.ajax("http://localhost/vso/geojson/Shankharapur.geojson", {
+      var sankhu = new L.geoJson.ajax("http://app.naxa.com.np/geojson/Shankharapur.geojson", {
 
         onEachFeature: function(feature,layer){
 
