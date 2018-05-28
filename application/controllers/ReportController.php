@@ -76,7 +76,7 @@ $filter= $queryy->result_array();
       //
       //   );
       //   $filter=$this->Report_model->filter_data($fiter_param);
-        var_dump($filter);
+        //var_dump($filter);
       //
       //
       // }
