@@ -351,12 +351,28 @@ class MapController extends CI_Controller
 
 
     $list=$this->Map_model->get_summary_list($tbl);
+    //$this->Map_model->get_summary_data($tbl);
     $f_d=$list['summary_list'];
+    $summary=$list['summary'];
+    //db
+    $this->db->from($tbl);
+    $query = $this->db->get();
+    $rowcount = $query->num_rows();
+
+//db
+
 
     $summary_list=$this->Map_model->get_summary($f_d,$tbl);
 
+    $summary_div=array(
+      'rowcount'=>$rowcount,
+      'summary'=>$summary,
+      'summary_list'=>$summary_list
 
-    echo(json_encode($summary_list));
+    );
+
+
+    echo(json_encode($summary_div));
 
   }
 
@@ -552,7 +568,12 @@ class MapController extends CI_Controller
         'summary_list'=>$_POST['summary'],
 
       );
+      $ddata=array(
+        'summary'=>$_POST['summary_data'],
+
+      );
       $this->Map_model->update_popup($tbl,$data);
+      $this->Map_model->update_popup($tbl,$ddata);
       $this->session->set_flashdata('msg',$tbl.' Summary was successfully updated');
 
       redirect('categories_tbl');
@@ -561,7 +582,9 @@ class MapController extends CI_Controller
 
 
     $this->body['summary']=$this->Map_model->get_popup($tbl);
-    //var_dump($summary);
+   $summary_single=$this->Map_model->get_summary_single($tbl);
+   $this->body['selected']=$summary_single;
+
 
     $this->load->view('admin/header');
     $this->load->view('admin/summary',$this->body);
@@ -583,6 +606,21 @@ public function map_reports(){
   $this->load->view('header');
   $this->load->view('map_reports');
   $this->load->view('footer');
+}
+
+public function test(){
+  $list=$this->Map_model->get_summary_list('household_data');
+  //$this->Map_model->get_summary_data('household_data');
+  $f_d=$list['summary_list'];
+  $summary=$list['summary'];
+  var_dump($summary);
+  //db
+  $this->db->from('household_data');
+  $query = $this->db->get();
+  $rowcount = $query->num_rows();
+  echo $rowcount;
+
+
 }
 
 }//end

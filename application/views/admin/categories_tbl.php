@@ -57,6 +57,10 @@
 
                           <td>Default Load</td>
 
+                        <?php }elseif($key == 'summary'){?>
+
+                        
+
                         <?php }elseif($key == 'category_table'){?>
 
                         <?php }elseif($key == 'category_photo'){?>
@@ -116,6 +120,9 @@
 
                               <?php  } ?>
 
+                            <?php }elseif($key == 'summary'){?>
+
+
 
 
                             <?php }elseif($key == 'category_table'){?>
@@ -130,15 +137,48 @@
                               <td><?php echo $value;?></td>
                             <?php } } ?>
                             <td><a href="<?php echo base_url()?>data_tables?tbl_name=<?php echo base64_encode($v['category_table']);?>">View</a> /
-                              <a href="<?php echo base_url()?>edit_categories?id=<?php echo base64_encode($v['id']);?>&& tbl=<?php echo base64_encode($tbl_name);?>">Edit</a> /
+                              <!-- <a href="<?php echo base_url()?>edit_categories?id=<?php echo base64_encode($v['id']);?>&& tbl=<?php echo base64_encode($tbl_name);?>">Edit</a> / -->
                               <a href="<?php echo base_url()?>delete_data?id=<?php echo  $v['id'];?>&& tbl=<?php echo ($tbl_name);?>&& cat_tbl=<?php echo $v['category_table']  ?>">Delete</a>
                             </td>
 
-
-
-
-
                           </tr>
+
+
+                          <!-- modal start -->
+
+
+                          <!-- Modal -->
+                            <div class="modal fade" id="myModal<?php echo  $v['id'];?>" role="dialog">
+                              <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Change Status</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>Choose Status.</p>
+
+                                    <form action="" method="POST">
+                                      <input type="text" name="id" value="<?php echo  $v['id'];?>" hidden>
+
+
+
+                                    <br><br>
+                                <button type="submit" name="submit" class="btn btn-danger">Change</button>
+                              </form>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div>
+                          <!-- modal end -->
+
                         <?php  }?>
                       </tbody>
                     </table>

@@ -910,7 +910,7 @@ select#sel1 {
 </div>
 <div class="form-group">
   <label for="sel1">Select list:</label>
-  <select class="form-control" id="sel1">
+  <select class="form-control " id="sel1">
    <option>1</option>
    <option>2</option>
    <option>3</option>
@@ -963,7 +963,7 @@ select#sel1 {
      <div role="tabpanel" class="tab-pane active" id="table1">
       <div class="form-group">
        <!-- <label for="sel1" class="label_summary">Select layer:</label> -->
-       <select class="form-control" id="active_layers">
+       <select class="form-control drop" id="active_layers">
 
       </select>
     </div>
@@ -974,7 +974,8 @@ select#sel1 {
        <div class="col-sm-12">
         <div class="counter_cat">
          <a> <!-- <img src="img/map(1).png" class="img-responsive center-block" />  -->
-          <span class="count text-center"><b>  70</b></span><span class="ic"><b> Open Spaces </b></span>
+
+          <span class="count text-center " id="count_summary"><b>  70</b></span><span class="ic"><b> Open Spaces </b></span>
         </a>
       </div>
       <div class="counter-desc">
@@ -1091,7 +1092,7 @@ var cat_tbl_array = '<?php echo $category_tbl; ?>';
 // layer_name = JSON.parse(layer_array);
 // geojson = JSON.parse(geo_array);
 default_load = JSON.parse(default_loadd);
-console.log(default_load);
+//console.log(default_load);
 
 cat_layer_data = JSON.parse(cat_layer);
 cat_tbl_array_name = JSON.parse(cat_tbl_array);
@@ -1337,7 +1338,7 @@ var style=JSON.parse(styles[i]);
 
 //add layer if the admin has set the layer to load by default on page load
 		if($('#'+cat_tbl_array_name[i]+'_toggle').hasClass('active')){
-				console.log(cat_tbl_array_name[i]);
+				//console.log(cat_tbl_array_name[i]);
 				window[''+cat_tbl_array_name[i]].addTo(map);
 				//$('#active_layers').append('<option>Select layer</option>');
 
@@ -1359,28 +1360,15 @@ var style=JSON.parse(styles[i]);
 
 
 
+		 function toTitleCase(str) {
+	 			return str.replace(/\w\S*/g, function(txt){
+	 					return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+	 			});
+	 	}
 
 
 
 
-		 $( ".CheckBox" ).click(function( event ) {
-					layerClicked = window[event.target.value];
-			//console.log(layerClicked);
-							if (map.hasLayer(layerClicked)) {
-									map.removeLayer(layerClicked);
-							}
-							else{
-									map.addLayer(layerClicked);
-							} ;
-			});
-
-
-		 $( ".CheckBoxStart" ).click(function( event ) {
-		 layerClicked1 = window[event.target.value];
-		 map.addLayer(layerClicked1);
-		 map.removeLayer(layerClicked1)
-
-			});
 
 
 			L.Mask = L.Polygon.extend({
@@ -1424,7 +1412,9 @@ var style=JSON.parse(styles[i]);
 			L.mask(latLngs).addTo(map);
 
 
+
 function Loadlist(selected_list_id){
+	console.log(selected_list_id);
 	$.ajax({
                                     type: "GET",
                                   //  data: name,
@@ -1436,14 +1426,23 @@ function Loadlist(selected_list_id){
                                       //  $.LoadingOverlay("hide", true);
                                     },
                                     success: function (result) {
+																		//	console.log(result);
 																			$("#ListGroup").html('');
 																				var result_parsed = JSON.parse(result);
 																				  //
-																					//console.log(result_parsed[i]);
-																					console.log(result);
-																				for(var i=0; i<result_parsed.length;i++){
-																					var coords = JSON.parse(result_parsed[i].st_asgeojson);
-																					$("#ListGroup").append('<li id='+coords.coordinates[0]+' name = '+coords.coordinates[1]+' class="list-group-item zoomTo" >'+result_parsed[i].field+' <span class="pull-right"><a href="#"><i class="fa fa-crosshairs"></i></a></span></li>');
+																					console.log(result_parsed['rowcount']);
+																				//	console.log(result);
+																			selected_list_id1=	selected_list_id.replace('_',' ');
+																			selected_list_id2=toTitleCase(selected_list_id1);
+																					$("#count_summary").html("<b>"+result_parsed['rowcount']+"</b>");
+																					$(".ic").html(" <b>"+ selected_list_id2+"</b>");
+
+																					$(".counter-desc").html(result_parsed['summary']);
+																				for(var i=0; i<result_parsed['summary_list'].length;i++){
+																				//	console.log(result_parsed[0]['rowcount']);
+
+																					var coords = JSON.parse(result_parsed['summary_list'][i].st_asgeojson);
+																					$("#ListGroup").append('<li id='+coords.coordinates[0]+' name = '+coords.coordinates[1]+' class="list-group-item zoomTo" >'+result_parsed['summary_list'][i].field+' <span class="pull-right"><a href="#"><i class="fa fa-crosshairs"></i></a></span></li>');
 
 
 
@@ -1466,11 +1465,52 @@ var selected_list_id=$('#active_layers option:selected').attr('id');
  });
 
 
-$("#ListGroup").on('click', '.zoomTo', function(){ console.log("fadsdfasfd");
+$("#ListGroup").on('click', '.zoomTo', function(){ //console.log("fadsdfasfd");
 			var lat = parseFloat($(this).attr('id'));
 			var lon = parseFloat($(this).attr('name'));
 			map.setView([lon,lat],16);
 });
+
+
+$( ".CheckBox" ).click(function( event ) {
+		 layerClicked = window[event.target.value];
+
+ var layertoggled = ($(this).attr('id')).replace("_toggle","");
+var	togglename=toTitleCase(layertoggled.replace("_"," "));
+
+
+ console.log();
+
+				 if (map.hasLayer(layerClicked)) {
+						 map.removeLayer(layerClicked);
+
+						 for (var i = 0; i < $('.drop').children().length; i++) {
+							 if($('.drop').children()[i].id==layertoggled){
+								 $('.drop').children()[i].remove();
+							 }
+						 }
+						 Loadlist($('.drop').children()[0].id);
+				 }
+				 else{
+						 map.addLayer(layerClicked);
+
+						$('.drop option:selected').removeClass('active');
+						$('.drop').prepend("<option id="+layertoggled+" selected>"+togglename+"</option>");
+						//s$('#'+layertoggled).attr({'selected':true});
+
+						Loadlist(layertoggled);
+
+
+				 } ;
+ });
+
+
+$( ".CheckBoxStart" ).click(function( event ) {
+layerClicked1 = window[event.target.value];
+map.addLayer(layerClicked1);
+map.removeLayer(layerClicked1)
+
+ });
 
 			});
 		</script>

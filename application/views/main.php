@@ -84,8 +84,9 @@
                 <h6><?php echo  $data['category_name'] ?></h6>
               </a>
             </li>
-          </ul>
+
           <?php } ?>
+          </ul>
           </div>
         </div>
 
