@@ -59,6 +59,7 @@ $route['main'] ='MainController/default_page';
 $route['datasets'] ='MainController/dataset_page';
 $route['about'] ='MainController/about_page';
 $route['publication'] ='MainController/publication';
+$route['inventory'] ='MainController/inventory';
 
 $route['map'] ='MapController/map_page';
 $route['category'] ='MapController/category_map';

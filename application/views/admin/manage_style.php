@@ -1,8 +1,17 @@
 <!--main content start-->
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/admin/css/colorpicker.css" />
-<script src="<?php echo base_url();?>assets/admin/js/jquery-1.10.2.min.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.2/css/bootstrap-slider.min.css" /> -->
+<!--
+
+ <link href="<?php echo base_url()?>assets/admin/css/ion.rangeSlider.css" rel="stylesheet" />
+  <link href="<?php echo base_url()?>assets/admin/css/ion.rangeSlider.skinFlat.css" rel="stylesheet"/>
+
 <script type="text/javascript" src="<?php echo base_url()?>assets/admin/js/spinner.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>assets/admin/js/bootstrap-colorpicker.js"></script>
+
+
+<script src="<?php echo base_url()?>assets/admin/js/ion.rangeSlider.min.js" type="text/javascript"></script> -->
+
+
 <section id="main-content" class="">
   <section class="wrapper">
     <!-- page start-->
@@ -22,7 +31,11 @@
             <form class="form-horizontal bucket-form" method="post" action="">
 
 
+<!-- start -->
+  <!-- <input id="range_5" type="text" name="range_5" value="" /> -->
 
+
+<!-- end -->
 
 
 
@@ -157,6 +170,7 @@
 </section>
 <!--main content end-->
 
-<script>
+
+
 //$(".spinner-input").val(5);
 </script>

@@ -149,10 +149,10 @@
                       <a class="nav-link" href="<?php echo base_url()?>category?tbl=">Map</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url()?>about"">About</a>
+                      <a class="nav-link" href="<?php echo base_url()?>about">About</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="assets/contact.php">Er Inventory</a>
+                      <a class="nav-link" href="<?php echo base_url()?>inventory">Er Inventory</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="<?php echo base_url()?>report_page">Reports</a>

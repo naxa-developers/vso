@@ -71,6 +71,7 @@ $this->load->view('admin/login-page');
 
 }
 
+//about
   public function about_page(){
 
      $this->body['proj_data']=$this->Main_model->get_proj_data();
@@ -136,7 +137,14 @@ $this->load->view('admin/login-page');
 
   }
 
+  public function inventory(){
 
+    $this->load->view('header');
+    $this->load->view('inventory');
+    $this->load->view('footer');
+
+
+  }
 
 
 
