@@ -24,8 +24,11 @@ public function map_page(){
 }
 public function publication(){
 
+$this->load->model('Publication_model');
+  $this->body['data']=$this->Publication_model->get_all_data();
+
   $this->load->view('header');
-  $this->load->view('publication');
+  $this->load->view('publication',$this->body);
   $this->load->view('footer');
 }
 
@@ -74,7 +77,14 @@ $this->load->view('admin/login-page');
 //about
   public function about_page(){
 
+    
+
      $this->body['proj_data']=$this->Main_model->get_proj_data();
+     $this->body['disaster']=$this->Main_model->get_about_where(1);
+     $this->body['risk']=$this->Main_model->get_about_where(2);
+     $this->body['utility']=$this->Main_model->get_about_where(3);
+     $this->body['house']=$this->Main_model->get_about_where(4);
+     $this->body['query']=$this->Main_model->get_about_where(5);
 
     $this->load->view('header');
     $this->load->view('about',$this->body);
@@ -88,8 +98,10 @@ $this->load->view('admin/login-page');
 
   public function dataset_page(){
 
+    $this->body['data']=$this->Main_model->get_category();
+   //var_dump($this->body['data']);
     $this->load->view('header');
-    $this->load->view('datasets');
+    $this->load->view('datasets',$this->body);
     $this->load->view('footer');
 
 

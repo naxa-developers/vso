@@ -359,7 +359,7 @@ class MapController extends CI_Controller
     $query = $this->db->get();
     $rowcount = $query->num_rows();
 
-//db
+    //db
 
 
     $summary_list=$this->Map_model->get_summary($f_d,$tbl);
@@ -529,9 +529,12 @@ class MapController extends CI_Controller
 
 
     }else{
-
+      $data=$this->Map_model->get_summary_list($tbl);
+      $style_array=json_decode($data['style'],TRUE);
+      
+      $this->body['style_array']=$style_array;
       $this->load->view('admin/header');
-      $this->load->view('admin/manage_style');
+      $this->load->view('admin/manage_style',$this->body);
       $this->load->view('admin/footer');
 
     }
@@ -581,46 +584,34 @@ class MapController extends CI_Controller
     }else{
 
 
-    $this->body['summary']=$this->Map_model->get_popup($tbl);
-   $summary_single=$this->Map_model->get_summary_single($tbl);
-   $this->body['selected']=$summary_single;
+      $this->body['summary']=$this->Map_model->get_popup($tbl);
+      $summary_single=$this->Map_model->get_summary_single($tbl);
+      $this->body['selected']=$summary_single;
 
 
-    $this->load->view('admin/header');
-    $this->load->view('admin/summary',$this->body);
-    $this->load->view('admin/footer');
+      $this->load->view('admin/header');
+      $this->load->view('admin/summary',$this->body);
+      $this->load->view('admin/footer');
 
-}
+    }
   }
 
 
-public function map_reports_table(){
-
-  $this->load->view('header');
-  $this->load->view('map_reports_table');
-  $this->load->view('footer');
-}
-
-public function map_reports(){
-
-  $this->load->view('header');
-  $this->load->view('map_reports');
-  $this->load->view('footer');
-}
-
-public function test(){
-  $list=$this->Map_model->get_summary_list('household_data');
-  //$this->Map_model->get_summary_data('household_data');
-  $f_d=$list['summary_list'];
-  $summary=$list['summary'];
-  var_dump($summary);
-  //db
-  $this->db->from('household_data');
-  $query = $this->db->get();
-  $rowcount = $query->num_rows();
-  echo $rowcount;
 
 
-}
+  public function test(){
+    $list=$this->Map_model->get_summary_list('household_data');
+    //$this->Map_model->get_summary_data('household_data');
+    $f_d=$list['summary_list'];
+    $summary=$list['summary'];
+    var_dump($summary);
+    //db
+    $this->db->from('household_data');
+    $query = $this->db->get();
+    $rowcount = $query->num_rows();
+    echo $rowcount;
+
+
+  }
 
 }//end

@@ -26,35 +26,35 @@ class ReportController extends CI_Controller
       unset($_POST['submit']);
       foreach($_POST as $key => $value ){
 
-      	//echo $value;
-      	//echo $key;
-      	if($_POST[$key]!='0'){
+        //echo $value;
+        //echo $key;
+        if($_POST[$key]!='0'){
           //echo $key;
-      		if($key == "from_date" && $_POST['from_date'] != ""){
-      		  $sql.="incident_time >= '".$value."' AND ";
-      		}
-      		elseif($key == "to_date" && $_POST['to_date'] != ""){
-      		  $sql.="incident_time <= '".$value."' AND ";
-      		}
-      		elseif($key != "from_date" && $key != "to_date"){
-      		   $sql.=$key."='".$value."' AND ";
-      		}
+          if($key == "from_date" && $_POST['from_date'] != ""){
+            $sql.="incident_time >= '".$value."' AND ";
+          }
+          elseif($key == "to_date" && $_POST['to_date'] != ""){
+            $sql.="incident_time <= '".$value."' AND ";
+          }
+          elseif($key != "from_date" && $key != "to_date"){
+            $sql.=$key."='".$value."' AND ";
+          }
 
-      	}
+        }
 
       }
 
-//echo $sql;
-$query=substr($sql, 0, strlen($sql)-4);
-//echo $query;
-$queryy=$this->db->query($query);
-$filter= $queryy->result_array();
-//var_dump($filter);
-// foreach($filter as $f){
-//
-// echo $f['name'];
-//
-// }
+      //echo $sql;
+      $query=substr($sql, 0, strlen($sql)-4);
+      //echo $query;
+      $queryy=$this->db->query($query);
+      $filter= $queryy->result_array();
+      //var_dump($filter);
+      // foreach($filter as $f){
+      //
+      // echo $f['name'];
+      //
+      // }
 
       // if($this->input->post('category')== '0'){
       //
@@ -76,21 +76,21 @@ $filter= $queryy->result_array();
       //
       //   );
       //   $filter=$this->Report_model->filter_data($fiter_param);
-        //var_dump($filter);
+      //var_dump($filter);
       //
       //
       // }
 
 
 
- if($filter==NULL){
-    $filter=$this->Report_model->get_report_data();
-      $this->body['report_data']=$filter;
-      $this->session->set_flashdata('msg','No Matching data as filter applied');
- }else{
+      if($filter==NULL){
+        $filter=$this->Report_model->get_report_data();
+        $this->body['report_data']=$filter;
+        $this->session->set_flashdata('msg','No Matching data as filter applied');
+      }else{
 
-      $this->body['report_data']=$filter;
-}
+        $this->body['report_data']=$filter;
+      }
       foreach($filter as $data){
 
         $features_report[]= array(
@@ -136,104 +136,104 @@ $filter= $queryy->result_array();
     }else{
 
 
-    $all_report_data=$this->Report_model->get_report_data();
-    $this->body['report_data']=$all_report_data;
+      $all_report_data=$this->Report_model->get_report_data();
+      $this->body['report_data']=$all_report_data;
 
-    foreach($all_report_data as $data){
+      foreach($all_report_data as $data){
 
-      $features_report[]= array(
-        "type" =>"Feature",
-        "properties"=>$data,
-        "geometry"=>array(
+        $features_report[]= array(
+          "type" =>"Feature",
+          "properties"=>$data,
+          "geometry"=>array(
 
-          'type'=>'Point',
-          'coordinates'=>array(
-            $data['longitude'],
-            $data['latitude'],
-            1.0
+            'type'=>'Point',
+            'coordinates'=>array(
+              $data['longitude'],
+              $data['latitude'],
+              1.0
+            ),
           ),
-        ),
+        );
+
+
+      }
+
+      $map_report= array(
+        'type' => 'FeatureCollection',
+        'features' => $features_report,
       );
 
+      $this->body['report_map_layer']= json_encode($map_report, JSON_NUMERIC_CHECK);
+
+      //var_dump($this->body['report_map_layer']);
+
+      $this->load->view('header');
+      $this->load->view('report_page',$this->body);
+      $this->load->view('footer');
 
     }
-
-    $map_report= array(
-      'type' => 'FeatureCollection',
-      'features' => $features_report,
-    );
-
-    $this->body['report_map_layer']= json_encode($map_report, JSON_NUMERIC_CHECK);
-
-    //var_dump($this->body['report_map_layer']);
-
-    $this->load->view('header');
-    $this->load->view('report_page',$this->body);
-    $this->load->view('footer');
-
-}
   }
 
 
- public function report_table()
-{
-  $this->load->view('header');
-  $this->load->view('map_reports_table');
-  $this->load->view('footer');
-}
+  public function report_table()
+  {
+    $this->load->view('header');
+    $this->load->view('map_reports_table');
+    $this->load->view('footer');
+  }
 
 
 
   public function report_insert_api(){
 
-$data_array=json_decode($_POST['data'],TRUE);
-$insert=$this->Report_model->insert($data_array);
+    $data_array=json_decode($_POST['data'],TRUE);
+    $insert=$this->Report_model->insert($data_array);
 
-if ($insert=="") {
-
-
+    if ($insert=="") {
 
 
-}else{
-
-  $file_name = $_FILES['photo']['name'];
-
-  $ext = pathinfo($file_name, PATHINFO_EXTENSION);
-
-  $img_upload=$this->Report_model->do_upload($file_name,$insert);
 
 
-if ($img_upload == 1) {
+    }else{
 
-  $image_path=base_url() . 'uploads/report/'.$insert.'.'.$ext ;
+      $file_name = $_FILES['photo']['name'];
 
-  $data=array(
+      $ext = pathinfo($file_name, PATHINFO_EXTENSION);
 
-    'photo'=>$image_path
-
-  );
-
-$this->Report_model->update_img_path($insert,$data);
-$response['status']=200;
-$response['data']='Reported';
-echo json_encode($response);
-
-}else {
-
-  $code= strip_tags($img_upload['error']);
-  $response['status']=201;
-  $response['data']=$code;
-  echo json_encode($response);
-
-}
+      $img_upload=$this->Report_model->do_upload($file_name,$insert);
 
 
+      if ($img_upload == 1) {
+
+        $image_path=base_url() . 'uploads/report/'.$insert.'.'.$ext ;
+
+        $data=array(
+
+          'photo'=>$image_path
+
+        );
+
+        $this->Report_model->update_img_path($insert,$data);
+        $response['status']=200;
+        $response['data']='Reported';
+        echo json_encode($response);
+
+      }else {
+
+        $code= strip_tags($img_upload['error']);
+        $response['status']=201;
+        $response['data']=$code;
+        echo json_encode($response);
+
+      }
 
 
 
 
 
-}
+
+
+    }
 
 
   }
@@ -272,57 +272,69 @@ echo json_encode($response);
 
 
 
-//admin panel parent start
+  //admin panel parent start
 
- public function report_manage()
-{
-
-
-if(isset($_POST['submit'])){
-
-  var_dump($_POST);
-  $id=$this->input->post('id');
-  $status=array(
-  'status'=>$this->input->post('status'),
-);
-  $this->Report_model->update_img_path($id,$status);
-  $this->session->set_flashdata('msg', 'Satus successfully Changed');
-  redirect('report_manage');
-
-}else{
-
-$this->body['data']=$this->Report_model->get_report_data();
-
-//var_dump($this->body['data']);
-
-  $this->load->view('admin/header');
-  $this->load->view('admin/report_tbl',$this->body);
-  $this->load->view('admin/footer');
-
-}
-
-  // code...
-}
-
-public function delete_data(){
-
-  $id=$this->input->get('id');
-  $tbl_name='report_tbl';
-
-  $this->Dash_model->delete_data($id,$tbl_name);
+  public function report_manage()
+  {
 
 
+    if(isset($_POST['submit'])){
 
-  $this->session->set_flashdata('msg','Id number '.$id.' row data was deleted successfully');
-  redirect('report_manage');
+      var_dump($_POST);
+      $id=$this->input->post('id');
+      $status=array(
+        'status'=>$this->input->post('status'),
+      );
+      $this->Report_model->update_img_path($id,$status);
+      $this->session->set_flashdata('msg', 'Satus successfully Changed');
+      redirect('report_manage');
+
+    }else{
+
+      $this->body['data']=$this->Report_model->get_report_data();
+
+      //var_dump($this->body['data']);
+
+      $this->load->view('admin/header');
+      $this->load->view('admin/report_tbl',$this->body);
+      $this->load->view('admin/footer');
+
+    }
+
+    // code...
+  }
+  
+  public function delete_data(){
+
+    $id=$this->input->get('id');
+    $tbl_name='report_tbl';
+
+    $this->Dash_model->delete_data($id,$tbl_name);
 
 
-}
+
+    $this->session->set_flashdata('msg','Id number '.$id.' row data was deleted successfully');
+    redirect('report_manage');
 
 
-//end
+  }
 
 
+  //end
+
+  public function map_reports_table(){
+
+    $this->load->view('header');
+    $this->load->view('map_reports_table');
+    $this->load->view('footer');
+  }
+
+  public function map_reports(){
+    $this->body['data']=$this->Report_model->get_report_data();
+    $this->load->view('header');
+    $this->load->view('map_reports',$this->body);
+    $this->load->view('footer');
+  }
 
 
 

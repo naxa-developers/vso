@@ -145,10 +145,12 @@ p.about {
 
 
 				<hr>
+<?php foreach ($data as $d) { ?>
+
 
 				<div class="row">
 
-					<div class="col-sm-8"> <h5 class="dataset-head">Data 1</h5>
+					<div class="col-sm-8"> <h5 class="dataset-head"><?php echo $d['category_name']?></h5>
 						<p class="small" >
 							<span class="fa fa-eye"></span> 71 views
 							<span class="fa fa-save"></span> 0 download
@@ -156,9 +158,7 @@ p.about {
 							2012-01-09 T11:59:0
 						</p>
 						<p class="about">
-							This dataset population under 16 years of age living with
-							parents,mother, father, father and step-mother, mother and step-father,
-							other relatives, employer and others by age groups and sex.
+							<?php echo $d['summary'] ?>
 						</p>
 						<button class="btn btn-light btn-sm">KML</button>
 						<button class="btn btn-light btn-sm">CSV</button>
@@ -166,62 +166,7 @@ p.about {
 					</div>
 				</div>
 				<hr>
-				<div class="row">
-
-					<div class="col-sm-8 "> <h5 class="dataset-head">Data 1</h5>
-						<p class="small" >
-							<span class="fa fa-eye"></span> 71 views
-							<span class="fa fa-save"></span> 0 download
-							<span class="fa fa-calendar"></span> Last update
-							2012-01-09 T11:59:0
-						</p>
-						<p class="about">
-							This dataset population under 16 years of age living with
-							parents,mother, father, father and step-mother, mother and step-father,
-							other relatives, employer and others by age groups and sex.
-						</p>
-						<button class="btn btn-light btn-sm">KML</button>
-						<button class="btn btn-light btn-sm">CSV</button>
-						<button class="btn btn-light btn-sm">Geojson</button></div>
-					</div>
-					<hr>
-					<div class="row">
-
-						<div class="col-sm-8 "> <h5 class="dataset-head">Data 1</h5>
-							<p class="small" >
-								<span class="fa fa-eye"></span> 71 views
-								<span class="fa fa-save"></span> 0 download
-								<span class="fa fa-calendar"></span> Last update
-								2012-01-09 T11:59:0
-							</p>
-							<p class="about">
-								This dataset population under 16 years of age living with
-								parents,mother, father, father and step-mother, mother and step-father,
-								other relatives, employer and others by age groups and sex.
-							</p>
-							<button class="btn btn-light btn-sm">KML</button>
-							<button class="btn btn-light btn-sm">CSV</button>
-							<button class="btn btn-light btn-sm">Geojson</button></div>
-						</div>
-						<hr>
-						<div class="row">
-
-							<div class="col-sm-8"> <h5 class="dataset-head">Data 1</h5>
-								<p class="small">
-									<span class="fa fa-eye"></span> 71 views
-									<span class="fa fa-save"></span> 0 download
-									<span class="fa fa-calendar"></span> Last update
-									2012-01-09 T11:59:0
-								</p>
-								<p class="about">
-									This dataset population under 16 years of age living with
-									parents,mother, father, father and step-mother, mother and step-father,
-									other relatives, employer and others by age groups and sex.
-								</p>
-								<button class="btn btn-light btn-sm">KML</button>
-								<button class="btn btn-light btn-sm">CSV</button>
-								<button class="btn btn-light btn-sm">Geojson</button></div>
-							</div>
+		<?php	} ?>
 							<div class="col-md-10">
 								<ul class="pagination pull-right" style="padding-top: 20px; padding-bottom: 30px;">
 									<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
@@ -238,6 +183,3 @@ p.about {
 
 				</div>
 			</div>
-
-
-		

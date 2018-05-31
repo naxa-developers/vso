@@ -102,21 +102,15 @@
 
                     <div class="col-xs-7 col-sm-7 col-md-7">
                         <div class="section-1-content">
-                        <h2>Disaster Information Management System</h2>
-                        <p class="section1-p">This Disaster Information Management System is developed in order to visualize the risk and hazard locations in Changunarayan Municipality over municipal infrastructures and households. A GIS based Risk Assessment Platform is not only to provide visual information to municipality authorities but also to disseminate GIS based information to public. The systems also aims municipality level stakeholders use this system during planning, which ultimately supports participatory planning process. Platform should support multi-layered filter options. Maps and attributes are two important component of this platform. User has opportunity to user either maps or data as per their requirement. System uses Open Street Map (OSM) as a base map.</p>
-                        <ul>
-                            <li>Consolidated dataset of municipal risks and hazards</li>
-                            <li>GIS layers of local utilities, infrastructures and settlements</li>
-                            <li>Basic query and filter options for data analysis</li>
-                            <li>A mobile application to view data in mobile phones</li>
-                            <li>Efficient data import and update</li>
+                        <h2><?php echo $disaster['title'] ?></h2>
+                        <p class="section1-p"><?php echo $disaster['summary'] ?></p>
 
-                        </ul>
+
                     </div>
                     </div>
 
             <div class="col-xs-5 col-sm-5 col-md-5" style="padding-top:0; padding-right: 0; padding-left: 0">
-                <img class="section1-img" src="assets/img/info2.png">
+                <img class="section1-img" src="<?php echo $disaster['photo'] ?>">
             </div>
             </div>
         </div>
@@ -128,11 +122,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">
-                        <img class="section2-img" src="assets/img/ris.png">
+                        <img class="section2-img" src="<?php echo $risk['photo'] ?>">
                     </div>
                     <div class="col-md-6">
-                        <h4>Risk and Hazard Data</h4>
-                        <p>All the risks and hazard data and their locations identified during participatory Vulnerability Capacity Assessment (VCA) in the municipality has been visualized in this platform.</p>
+                        <h4><?php echo $risk['title'] ?></h4>
+                        <p><?php echo $risk['summary'] ?></p>
                     </div>
                 </div>
             </div>
@@ -143,12 +137,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
-                        <h4>Infrastructure and Utility Data Layers</h4>
-                        <p>The available up-to-date GIS layers of the local infrastructures and utilities like Hospitals, Schools, Government Offices and other important locations have been managed as interactive layers in this platform.</p>
+                        <h4><?php echo $utility['title'] ?></h4>
+                        <p><?php echo $utility['summary'] ?></p>
                     </div>
 
                     <div class="col-md-3">
-                        <img class="section2-img" src="assets/img/utility.png"></div>
+                        <img class="section2-img" src="<?php echo $utility['photo'] ?>"></div>
                 </div>
             </div>
         </div>
@@ -157,11 +151,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">
-                        <img class="section2-img" src="assets/img/hold.png">
+                        <img class="section2-img" src="<?php echo $house['photo'] ?>">
                     </div>
                     <div class="col-md-6">
-                        <h4>Household Data</h4>
-                        <p>Household level data including demographic, socio-economic data along with location of all the households in the municipality have been included in this platform. Each house is interactive and further information of the house can be viewed.</p>
+                        <h4><?php echo $house['title'] ?></h4>
+                        <p><?php echo $house['summary'] ?></p>
                     </div>
                 </div>
             </div>
@@ -172,12 +166,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
-                        <h4>Query and Filter Options</h4>
-                        <p>Over the available datasets in the platform, basic query and filter operations can ba carried out for analysis.</p>
+                        <h4><?php echo $query['title'] ?></h4>
+                        <p><?php echo $query['summary'] ?></p>
                     </div>
 
                     <div class="col-md-3">
-                        <img class="section2-img" src="assets/img/query.png"></div>
+                        <img class="section2-img" src="<?php echo $query['photo'] ?>"></div>
                 </div>
             </div>
         </div>

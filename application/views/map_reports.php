@@ -121,15 +121,15 @@
  <table class="responstable">
   <tr>
     <th><span>#</span></th>
-    <th data-th="Incident detail"><span>Date</span></th>
-    <th><span>Recieved Time</span></th>
+    <th data-th="Incident detail"><span>Recieved Date</span></th>
+    <!-- <th><span>Recieved Time</span></th> -->
     <th><span>Type of Incident</span></th>
     <th><span>Location</span></th>
     <th><span>Status</span></th>
     <th><span>Remarks</span></th>
   </tr>
   <tr>
-    <td></td>
+    <!-- <td></td>
     <td><span class="report-form"><input type="date" class="form-control form-control-sm"></span></td>
     <td><span class="report-form"><input type="time" class="form-control form-control-sm"></span></td>
     <td><span class="report-form"><input type="text" class="form-control form-control-sm" placeholder="type of incident"></span></td>
@@ -141,163 +141,23 @@
         <option value="Waiting">Pending</option>
         <option value="Issued">Verified</option>
         <option value="Piled">Queued</option>
-      </select></span></td>
-    <td><span class="report-form"><input type="text" class="form-control form-control-sm" placeholder="place of incident"></span></td>
+      </select></span></td> -->
+    <!-- <td><span class="report-form"><input type="text" class="form-control form-control-sm" placeholder="place of incident"></span></td> -->
 
   </tr>
-  <tr>
-    <td><a href="#" name="open_element" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-open"></i> Open</a></td>
-    <td>26-3-2018</td>
-    <td>10:00 AM</td>
-    <td>Fire</td>
-    <td>Ward no 1, Newar Tole</td>
-    <td>Actioned</td>
-    <td></td>
-
-  </tr>
+  <?php foreach($data as $report){ ?>
   <tr>
     <td><a href="#" name="open_element" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-open"></i> Open</a></td>
 
-    <td>26-3-2019</td>
-    <td>10:25 AM</td>
-    <td>Landslide</td>
-    <td>Ward no 4, Ghimire gaun</td>
-    <td>Pending</td>
-    <td></td>
+
+    <td><?php echo $report['incident_time']?></td>
+    <td><?php echo $report['incident_type']?></td>
+    <td>Ward <?php echo $report['ward']?></td>
+    <td><?php echo $report['status']?></td>
+    <td><?php echo $report['message']?></td>
 
   </tr>
-  <tr>
-    <td><a href="#" name="open_element" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-open"></i> Open</a></td>
-
-    <td>26-3-2020</td>
-    <td>10:50 AM</td>
-    <td>Pipe leakage</td>
-    <td>location 1</td>
-    <td>Verified</td>
-    <td></td>
-
-  </tr>
-  <tr>
-   <td><a href="#" name="open_element" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-open"></i> Open</a></td>
-
-   <td>26-3-2021</td>
-   <td>11:15 AM</td>
-   <td>Incident Type 1</td>
-   <td>location 2</td>
-   <td>Queued</td>
-   <td></td>
-
- </tr>
- <tr>
-   <td><a href="#" name="open_element" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-open"></i> Open</a></td>
-
-   <td>26-3-2022</td>
-   <td>11:40 AM</td>
-   <td>Incident Type 2</td>
-   <td>location 3</td>
-   <td>Actioned</td>
-   <td></td>
-
- </tr>
- <tr>
-   <td><a href="#" name="open_element" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-open"></i> Open</a></td>
-
-   <td>26-3-2023</td>
-   <td>12:05 PM</td>
-   <td>Incident Type 3</td>
-   <td>location 4</td>
-   <td>Pending</td>
-   <td></td>
-
- </tr>
- <tr>
-   <td><a href="#" name="open_element" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-open"></i> Open</a></td>
-
-   <td>26-3-2024</td>
-   <td>12:30 PM</td>
-   <td>Incident Type 4</td>
-   <td>location 5</td>
-   <td>Verified</td>
-   <td></td>
-
- </tr>
- <tr>
-   <td><a href="#" name="open_element" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-open"></i> Open</a></td>
-
-   <td>26-3-2025</td>
-   <td>12:55 PM</td>
-   <td>Incident Type 5</td>
-   <td>location 6</td>
-   <td>Queued</td>
-   <td></td>
-
- </tr>
- <tr>
-   <td><a href="#" name="open_element" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-open"></i> Open</a></td>
-
-   <td>26-3-2026</td>
-   <td>1:20 PM</td>
-   <td>Incident Type 6</td>
-   <td>location 7</td>
-   <td>Actioned</td>
-   <td></td>
-
- </tr>
- <tr>
-   <td><a href="#" name="open_element" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-open"></i> Open</a></td>
-
-   <td>26-3-2027</td>
-   <td>1:55 PM</td>
-   <td>Incident Type 7</td>
-   <td>location 8</td>
-   <td>Pending</td>
-   <td></td>
-
- </tr>
- <tr>
-   <td><a href="#" name="open_element" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-open"></i> Open</a></td>
-
-   <td>26-3-2028</td>
-   <td>2:20 PM</td>
-   <td>Incident Type 8</td>
-   <td>location 9</td>
-   <td>Verified</td>
-   <td></td>
-
- </tr>
- <tr>
-   <td><a href="#" name="open_element" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-open"></i> Open</a></td>
-
-   <td>26-3-2029</td>
-   <td>2:45 PM</td>
-   <td>Incident Type 9</td>
-   <td>location 10</td>
-   <td>Queued</td>
-   <td></td>
-
- </tr>
- <tr>
-   <td><a href="#" name="open_element" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-open"></i> Open</a></td>
-
-   <td>26-3-2030</td>
-   <td>3:10 PM</td>
-   <td>Incident Type 10</td>
-   <td>location 11</td>
-   <td>Actioned</td>
-   <td></td>
-
- </tr>
- <tr>
-   <td><a href="#" name="open_element" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-open"></i> Open</a></td>
-
-   <td>26-3-2031</td>
-   <td>3:40 PM</td>
-   <td>Incident Type 11</td>
-   <td>location 12</td>
-   <td>Pending</td>
-   <td></td>
-
- </tr>
+<?php } ?>
 
 </table>
 

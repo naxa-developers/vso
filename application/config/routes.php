@@ -66,14 +66,14 @@ $route['category'] ='MapController/category_map';
 $route['manage_popup'] ='MapController/manage_popup';
 $route['manage_style'] ='MapController/manage_style';
 $route['update_summary'] ='MapController/update_summary';
-$route['map_reports_table'] ='MapController/map_reports_table';
-$route['map_reports'] ='MapController/map_reports';
+
 
 
 $route['report_page'] ='ReportController/report_page';
 $route['report_manage'] ='ReportController/report_manage';
 $route['report/delete'] = 'ReportController/delete_data';
-
+$route['map_reports_table'] ='ReportController/map_reports_table';
+$route['map_reports'] ='ReportController/map_reports';
 
 // Admin routes
 
@@ -113,3 +113,13 @@ $route['emergency_contact'] = 'Admin/UploadController/emergency_contact';
 $route['delete_emergency'] = 'Admin/UploadController/delete_emerg';
 $route['edit_emergency'] = 'Admin/UploadController/edit_emerg';
 $route['add_emergency'] = 'Admin/UploadController/add_emergency';
+
+
+$route['view_publication'] = 'Admin/PublicationController/view_publication';
+$route['add_publication'] = 'Admin/PublicationController/add_publication';
+$route['delete_publication'] = 'Admin/PublicationController/delete_publication';
+$route['edit_publication'] = 'Admin/PublicationController/edit_publication';
+$route['download'] = 'Admin/PublicationController/download';
+
+$route['view_about'] = 'Admin/AboutController/view_about';
+$route['edit_about'] = 'Admin/AboutController/edit_about';

@@ -13,6 +13,16 @@ class Test extends CI_Controller
   }
 
 
+
+public function search(){
+
+$this->load->view('search');
+
+}
+
+
+
+
   public function index(){
 
 if($this->input->post('submit')=='submit'){

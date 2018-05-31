@@ -156,7 +156,7 @@
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-th"></i>
-                        <span>Emergency Contact Management</span>
+                        <span>Emergency Contact</span>
                     </a>
                     <ul class="sub">
 
@@ -188,8 +188,8 @@
                     </a>
                     <ul class="sub">
 
-                        <!-- <li><a href="<?php echo base_url();?>create_categories_tbl">Create Database Tables</a></li>
-                        <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
+                        <li><a href="<?php echo base_url();?>view_publication">Publication</a></li>
+                      <!--   <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
 
                     </ul>
                 </li>
