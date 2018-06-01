@@ -12,6 +12,16 @@ class MapController extends CI_Controller
   }
 
 
+
+public function map_download()
+{
+
+  $this->load->view('header');
+  $this->load->view('map_download');
+  $this->load->view('footer');
+
+}
+
   // public function map_page(){
   //
   //   //administrative laayer start
@@ -531,7 +541,7 @@ class MapController extends CI_Controller
     }else{
       $data=$this->Map_model->get_summary_list($tbl);
       $style_array=json_decode($data['style'],TRUE);
-      
+
       $this->body['style_array']=$style_array;
       $this->load->view('admin/header');
       $this->load->view('admin/manage_style',$this->body);

@@ -681,6 +681,7 @@ select#sel1 {
 						<li class="basemap chevron1" id="close-panel-left"><img src="<?php echo base_url()?>assets/img/up-arrow.png" class="test-icon chevron"></li>
 						<li role="presentation" class="active layer"><a href="#categories" aria-controls="home" role="tab" data-toggle="tab"><img src="<?php echo base_url()?>assets/img/boxes.png" class="test-icon"></a></li>
 						<li role="presentation" class="basemap"><a href="#layers" aria-controls="profile" role="tab" data-toggle="tab"><img src="<?php echo base_url()?>assets/img/layers-icon.png" class="test-icon"></a></li>
+						<li role="presentation" class="basemap"><a href="<?php echo base_url()?>map_download"><img src="<?php echo base_url()?>assets/img/layers-icon.png" class="test-icon"></a></li>
 					</ul>
 				</div>
 			</div>

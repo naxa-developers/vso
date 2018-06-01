@@ -12,6 +12,13 @@ class MainController extends CI_Controller
   }
 
 
+public function contact(){
+  $this->load->view('header');
+  $this->load->view('contact');
+  $this->load->view('footer');
+
+}
+
 
 public function map_page(){
 
@@ -77,7 +84,7 @@ $this->load->view('admin/login-page');
 //about
   public function about_page(){
 
-    
+
 
      $this->body['proj_data']=$this->Main_model->get_proj_data();
      $this->body['disaster']=$this->Main_model->get_about_where(1);
