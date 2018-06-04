@@ -1,18 +1,16 @@
-<link href="sitemapstyler/sitemapstyler.css" rel="stylesheet" type="text/css" media="screen" />
-<script type="text/javascript" src="sitemapstyler/sitemapstyler.js"></script>
+
+
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.2/randomColor.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css" />
 
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/leaflet.label.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/changunarayan.js"></script>
 <style>
 .leaflet-left{
-	left: 21.5%;
-	top: 12px;
+  left: 21.5%;
+  top: 12px;
 }
 
 ul.nav.nav-tabs{
@@ -124,14 +122,15 @@ div#filter {
  overflow: hidden;
  width: 250px;
  background-color: #fdfeff;
- padding: 5px;
+ padding: 5px;    
  border-radius: 0px;
  float: right;
- height: 523px;
+ height: 545px;
  font-size: 11px;
 }
 span.ic {
-  font-size: 12px;
+ font-size: 14px;
+ font-weight: 600;
 }
 
 .modal-window>div {
@@ -200,11 +199,11 @@ span.ic {
 }
 
 div#over_map1 {
-  position: absolute;
-  z-index: 8;
+  position: absolute; 
+  z-index: 8; 
   right: 0px;
 }
-#wrapper { position: relative; }
+#wrap { position: relative; }
 #over_map { position: absolute; left: 0px; z-index: 8; top: 33px;}
 
 .icon-bar{
@@ -231,20 +230,20 @@ div#over_map1 {
   width: 290px;
   overflow-y: auto;
   overflow-x: hidden;
-  height: 523px;
+  height: 545px;
 }
 
 .panel.panel-success {
   background-color: #fff;
-  float:left;
+  float:left;  
   overflow-y: auto;
   overflow-x: hidden;
 }
 
-.treeview input[type="checkbox"] {
+.treeview input[type="checkbox"].checker{
   display: none;
 }
-.treeview input[type="radio"] {
+.treeview input[type="radio"].checker {
   display: none;
 }
 
@@ -254,7 +253,6 @@ div#over_map1 {
   margin: 0;
   margin-bottom: 5px;
   overflow: hidden;
-
 }
 
 .treeview li {
@@ -284,14 +282,14 @@ div#over_map1 {
   padding-left: 23px;
   /*background-color: #f3f3f4;*/
   cursor: pointer;
-  font-size: 12px;
+  font-size: 13px;
   display: flex;
   align-items: center;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .treeview li label.specific i {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .treeview li label.specific > span {
@@ -322,7 +320,7 @@ div#over_map1 {
 }
 
 .treeview li label.specific:not(.child):before {
-  font: normal normal normal 14px/1 FontAwesome;
+  font: normal normal normal 13px/1 FontAwesome;
   content: "\f054";
 }
 
@@ -356,23 +354,25 @@ div#over_map1 {
   margin-left: 15px;
 }
 
-#apply{
-  font-size: 10px;
+#appl{
+  font-size: 11px;
   color: #fff;
   border: 1px solid transparent;
   background: #0056b3;
   border-radius: 0px;
-  padding: 5px;
+  padding: 4px;
+  letter-spacing: 0.4px;
+  margin: 0px 1px;
 }
 
-#apply:hover,#apply:active{
+#appl:hover,#apply:active{
   color: #0056b3;
   border: none;
   background: none;
   border: 1px solid  #0056b3;
 }
 .treeview .btn-pos{
-  margin: 0px 4px;
+  margin: 4px 0px 2px;
 }
 
 .treeview .desc{
@@ -393,8 +393,8 @@ div#over_map1 {
 
 
 .categories .list-group-item{
-  font-size: 13px;
-  border-left: none;
+  font-size: 13px; 
+  border-left: none; 
   border-right: none;
   border-radius: 0;
   margin-bottom: -1px;
@@ -406,14 +406,15 @@ div#over_map1 {
 
 .form-group .label_summary{
   font-size: 13px;
-  font-weight: bold;
+  font-weight: 600;
   padding: 5px 8px;
 }
 
 .total .counter-desc{
   margin: auto;
   padding: 0px 8px;
-  font-size: 12px;
+  font-size: 13px;
+  text-align: justify;
 }
 
 .right-content-info .total{
@@ -425,13 +426,13 @@ div#over_map1 {
 .list-cat-panel {
 /*  overflow-y: auto;
 height: 280px;*/
-}
+} 
 
 .head-panel .control div a{
   color: #0056b3;
 }
 
-.transform img{
+.transform1 img{
   -moz-transition-duration: 0.4s;
   -o-transition-duration: 0.4s;
   -webkit-transition-duration: 0.4s;
@@ -473,9 +474,10 @@ height: 280px;*/
 }
 
 .right-content-info{
-  height: 446px;
+  height: 462px;
   overflow-y: auto;
   overflow-x: hidden;
+  border-bottom: 1px solid #ddd;
 }
 
 .treeview .inter-list-panel{
@@ -626,20 +628,20 @@ height: 280px;*/
 }
 
 #table1 .form-group{
-  margin-bottom: 5px;
-  border-radius: 0;
+  margin-bottom: 5px; 
+  border-radius: 0; 
   /*padding: 0px 10px;*/
 }
 div#map{
-  width:100%;
-  height:523px;
+  width:100%; 
+  height:545px; 
   z-index:1;
   margin-top: 0px;
 }
 
 #legend .cate{
-  font-size: 13px;
-  font-weight: bold;
+  font-size: 13px; 
+  font-weight: 600;
 }
 
 .panel-heading .nav-tabs img.test-icon{
@@ -648,9 +650,9 @@ div#map{
 }
 
 select#sel1 {
-  height: 30px;
-  font-size: 11px;
+  font-size: 13px;
   border-radius: 0;
+  color: #222;
 }
 
 .total a {
@@ -658,18 +660,146 @@ select#sel1 {
   font-size: 18px;
 }
 
-/* range slider */
+
+/*range slider*/
+
+.range {
+  display: table;
+  position: relative;
+  height: 25px;
+  background-color: inherit;
+  border-radius: 0px;
+  cursor: pointer;
+  border-bottom: 1px dotted #ccc;
+  padding: 0px 0 5px;
+}
+
+.range input[type="range"] {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  -ms-appearance: none !important;
+  -o-appearance: none !important;
+  appearance: none !important;
+
+  display: table-cell;
+  width: 60%;
+  background-color: transparent;
+  height: 25px;
+  cursor: pointer;
+  padding: 18px 15px 0px 20px;
+}
+.range input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  -ms-appearance: none !important;
+  -o-appearance: none !important;
+  appearance: none !important;
+
+  width: 11px;
+  height: 25px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0px;
+  background-color: rgb(153, 153, 153);
+}
+
+.range input[type="range"]::-moz-slider-thumb {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  -ms-appearance: none !important;
+  -o-appearance: none !important;
+  appearance: none !important;
+
+  width: 11px;
+  height: 25px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0px;
+  background-color: rgb(153, 153, 153);
+}
+
+.range output {
+  display: table-cell;
+  padding: 0px 5px 4px;
+  min-width: 30px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(153, 153, 153);
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0px;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  width: 1%;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
+}
+.range input[type="range"] {
+  outline: none;
+}
+
+.range.range-primary input[type="range"]::-webkit-slider-thumb {
+  background-color: rgb(66, 139, 202);
+}
+.range.range-primary input[type="range"]::-moz-slider-thumb {
+  background-color: rgb(66, 139, 202);
+}
+.range.range-primary output {
+  background-color: rgb(0, 86, 179);frange
+}
+.range.range-primary input[type="range"] {
+  outline-color: rgb(66, 139, 202);
+}
 
 .treeview_list{
-  list-style: square outside none;
   display:list-item;
 }
-.treeview-content-p{
-  margin: 15px 20px 5px;
+.treeview-content-p .form-check-input{
+  margin-top: 0.2rem;
+}
+
+#sitemap li a{
+  font-size: 13px;
+  font-weight: 600;
+}
+ul#sitemap {
+  margin-left: 20px;
+  background-color: #fff;
+  margin-top: 10px;
+  overflow: hidden;
+
+}
+
+#sitemap input{
+  margin-right: 5px;
+}
+div#layers li {
+  margin-top: 5px;
+}
+
+#wrap1 .nav-tabs > li.active > a,  #wrap1 .nav > li > a:hover{
+  background-color: #002052;
+  opacity: 0.8;
+  border: none;
 }
 </style>
 
-<div id="wrapper">
+<div id="wrap">
 
 
 	<!-- left pane -->
@@ -681,7 +811,7 @@ select#sel1 {
 						<li class="basemap chevron1" id="close-panel-left"><img src="<?php echo base_url()?>assets/img/up-arrow.png" class="test-icon chevron"></li>
 						<li role="presentation" class="active layer"><a href="#categories" aria-controls="home" role="tab" data-toggle="tab"><img src="<?php echo base_url()?>assets/img/boxes.png" class="test-icon"></a></li>
 						<li role="presentation" class="basemap"><a href="#layers" aria-controls="profile" role="tab" data-toggle="tab"><img src="<?php echo base_url()?>assets/img/layers-icon.png" class="test-icon"></a></li>
-						<li role="presentation" class="basemap"><a href="<?php echo base_url()?>map_download"><img src="<?php echo base_url()?>assets/img/layers-icon.png" class="test-icon"></a></li>
+						<li role="presentation" class="basemap"><a href="<?php echo base_url()?>map_download"><img src="<?php echo base_url()?>assets/img/map-down.png" class="test-icon">&nbsp;<sub class="text-light" style="font-size: 13px;">Maps</sub></a></li>
 					</ul>
 				</div>
 			</div>
@@ -734,7 +864,7 @@ select#sel1 {
 								</div>
 
 
-								<input type="checkbox" name="tall" id="<?php echo $data['category_table']?>">
+								<input type="checkbox" name="tall" class="checker" id="<?php echo $data['category_table']?>">
 
 								<label for="<?php echo $data['category_table']?>" class="specific">
 									<!-- <div class="ball" data-id="1"></div> -->
@@ -747,19 +877,42 @@ select#sel1 {
 
 								<ul>
 									<li>
-										<div class="desc">
-                      <div class="range range-primary">
+										 <div class="desc">
+                      <!-- <div class="range range-primary">
                         <small>Transparency</small>
                         <input type="range" name="range" min="1" max="100" value="50" onchange="rangePrimary.value=value">
-                        <!-- <output id="rangePrimary">50</output> -->
+                       <output id="rangePrimary">50</output>
+                     </div> -->
+                     <div class="treeview-content-p">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" value="" checked>Basic(1-8)
+                        </label>
                       </div>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" value="">Secondary
+                        </label>
+                      </div>
+                      <div class="form-check disabled">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" value="" checked>College
+                        </label>
+                      </div> 
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" value="">University
+                        </label>
+                      </div>
+                      <div class="form-check disabled">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" value="">Technical Institutions
+                        </label>
+                      </div>
+                    </div>
 
-                      <div class="treeview-content-p">
-                       <p class="treeview_list">Primary</p>
-                       <p class="treeview_list">Secondary</p>
-                     </div>
-                     <div class="btn-pos text-right">
-                      <a href="#open-modal" id="apply" class="btn btn-default btn-xs">Add filters</a>
+                    <div class="btn-pos text-right">
+                      <a href="#open-modal" id="appl" class="btn btn-default btn-xs">Add filters</a>
                     </div>
                   </div>
                 </li>
@@ -964,7 +1117,7 @@ select#sel1 {
      <div role="tabpanel" class="tab-pane active" id="table1">
       <div class="form-group">
        <!-- <label for="sel1" class="label_summary">Select layer:</label> -->
-       <select class="form-control drop" id="active_layers">
+       <select class="form-control custom-select drop" id="active_layers">
 
       </select>
     </div>
@@ -974,9 +1127,9 @@ select#sel1 {
       <div class="row">
        <div class="col-sm-12">
         <div class="counter_cat">
-         <a> <!-- <img src="img/map(1).png" class="img-responsive center-block" />  -->
+         <a>
 
-          <span class="count text-center " id="count_summary"><b>  70</b></span><span class="ic"><b> Open Spaces </b></span>
+          <span class="count text-center " id="count_summary"> 70</span><span class="ic"> Open Spaces </span>
         </a>
       </div>
       <div class="counter-desc">
@@ -996,7 +1149,8 @@ select#sel1 {
 </div>
 
 <div class="btn-pos-list text-center">
- <a href="#" id="apply" class="btn btn-default btn-md">View all</a>
+ <a href="#" id="appl" class="btn btn-default btn-md">View all</a>
+ <a href="#" id="appl" class="btn btn-default btn-md">Download</a>
 </div>
 
 </div>
@@ -1060,7 +1214,7 @@ select#sel1 {
 
     </div>
     <div class="modal-footer">
-     <button type="button" class="btn btn-sm" id="apply"><i class="fa fa-filter"></i> apply</button>
+     <button type="button" class="btn btn-sm" id="appl"><i class="fa fa-filter"></i> apply</button>
    </div>
  </div>
 

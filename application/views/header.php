@@ -4,13 +4,12 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"  lang="en"> <!--<![endif]-->
 <head>
-  <link rel="shortcut icon" href="<?php echo base_url();?>assets/img/ng.png">
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <link rel="shortcut icon" href="<?php echo base_url();?>assets/img/ng.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
   <title>Municipal GIS</title>
@@ -18,46 +17,44 @@
   <!-- Bootstrap core CSS -->
   <link href="<?php echo base_url();?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+  <script>window.jQuery || document.write('<script src="<?php echo base_url();?>assets/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+  <script src="<?php echo base_url();?>assets/js/vendor/popper.min.js"></script>
+
+  <script src="<?php echo base_url();?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <script src="<?php echo base_url();?>assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
+  <script src="<?php echo base_url();?>assets/js/vendor/jquery.nicescroll.min.js"></script>
+
   <!-- map -->
   <link href="<?php echo base_url();?>assets/css/sitemapstyler.css" rel="stylesheet" type="text/css" media="screen" />
-
-  <!-- end map -->
 
   <!-- Custom fonts for this template -->
   <link href="<?php echo base_url();?>assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link href="<?php echo base_url();?>assets/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
   <!-- Custom styles for this template -->
   <link href="<?php echo base_url();?>assets/css/landing-page.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/leaflet.label.css">
-
-
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/new.css">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/styles.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/leaflet.label.css">
-  <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
-  <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
-  <script type="text/javascript" src="<?php echo base_url();?>assets/js/leaflet.label.js"></script>
-  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-  <!-- Bootstrap core JavaScript -->
-  <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
-  <!-- <script src="<?php echo base_url();?>assets/vendor/jquery/jquery.min.js"></script> -->
-  <script src="<?php echo base_url();?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="<?php echo base_url();?>assets/js/carousels.js"></script>
-  <!-- map -->
-  <script type="text/javascript" src="<?php echo base_url();?>assets/js/sitemapstyler.js"></script>
-  <!-- map -->
 
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css">
 
-  <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-  <script src="assets/js/vendor/popper.min.js"></script>
-  <script src="assets/js/vendor/jquery.nicescroll.min.js"></script>
-  <script src="assets/js/plugins.js"></script>
+  <link rel="stylesheet" href="assets/css/jquery.dropdown.css">
+
+<!--   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/new.css"> -->
+ 
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/leaflet.label.css">
+  <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/leaflet.label.js"></script>
+
+  <script src="<?php echo base_url();?>assets/js/carousels.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/sitemapstyler.js"></script>  
+
+  <script src="<?php echo base_url();?>assets/js/plugins.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
 
   <script>
@@ -111,6 +108,19 @@
     z-index: 999;
   }
 
+  .subscribe-wrap .fbox .list-group a, .subscribe-wrap .fbox .list-group a:hover{
+  color: #fff;
+  }
+
+  .subscribe-wrap .fbox .list-group li{
+    /*list-style: square inside none;*/
+    text-decoration: underline;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
 </style>
 </head>
 
@@ -118,16 +128,16 @@
    <!--[if lt IE 8]>
      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-        <div id="load" style="background-color: white; "></div>
+        <div id="load" style="background-color: white;"></div>
 
           <header id="website-header">
             <nav class="navbar navbar-expand-lg navbar-light bg-white">
               <div class="container">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="<?php echo base_url();?>">
                   <div class="logo-gov clearfix">
-                    <img src="<?php echo base_url();?>assets/img/logo.png" alt="Logo">
+                    <img src="<?php echo base_url();?>assets/img/logo.jpg" alt="Logo">
                     <h6>
-                      <strong>Shankharapur Municipality</strong><br/>
+                      <strong>Changu Narayan Municipality</strong><br/>
                       <small>Disaster Information Management Platform</small>
                     </h6>
                   </div>
@@ -142,31 +152,27 @@
                     <li class="nav-item active">
                       <a class="nav-link" href="index.php"><i class="fa fa-home"></i><span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url()?>datasets">Datasets</a>
+                    <li class="nav-item">                     
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url()?>category?tbl=">Map</a>
+                      <a class="nav-link" href="<?php echo base_url()?>category?tbl=">Maps</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url()?>about">About</a>
+                      <a class="nav-link" href="<?php echo base_url()?>report_page">Incident Reports</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url()?>inventory">Er Inventory</a>
+                      <a class="nav-link" href="<?php echo base_url()?>contact">Contacts</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url()?>report_page">Reports</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url()?>publication">Publication</a>
+                      
                     </li>
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Websites
+                        Download
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="http://www.changunarayanmun.gov.np/en" target="_blank">Municipal Website</a>
-                        <a class="dropdown-item" href="http://neoc.gov.np/en/" target="_blank">NEOC</a>
+                         <a class="nav-link" href="<?php echo base_url()?>datasets">Datasets</a>
+                          <a class="nav-link" href="<?php echo base_url()?>publication">Publication</a>
                       </div>
                     </li>
                   </ul>

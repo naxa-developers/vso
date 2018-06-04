@@ -2,7 +2,7 @@
           <img src="assets/img/img-banner.jpg" class="banner-img">
           <div class="container clearfix">
             <div class="banner-caption pull-left">
-              <h2><strong>Shankharpur Disaster Risk Information Platform</strong></h2>
+              <h2><strong>Changu Narayan Disaster Information Management Platform</strong></h2>
               <p>
               A public platform for GIS Data to support development in Changu Narayan
               </p>
@@ -46,7 +46,7 @@
             <a class="nav-link" id="exposure-tab" data-toggle="tab" href="#exposure" role="tab" aria-controls="exposure" aria-selected="false">Hazard & Vulnerability</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="baseline-tab" data-toggle="tab" href="#baseline" role="tab" aria-controls="baseline" aria-selected="false">Baseline Data</a>
+            <a class="nav-link" id="baseline-tab" data-toggle="tab" href="#baseline" role="tab" aria-controls="baseline" aria-selected="false">Base Data</a>
           </li>
         </ul>
         <div class="tab-content" id="myTabContent">
@@ -97,12 +97,11 @@
       <div class="container">
         <div class="featured-post clearfix">
           <h5 class="post-ribbon">Featured Dataset</h5>
-          <img src="assets/img/img-post.jpg" alt="">
+          <img src="assets/img/img-earthquake.jpg" alt="">
           <h3>Nepal Earthquake Dataset</h3>
           <p>
-          The Tech North team have mapped the Northern tech ecosystem to show the co-working spaces, accelerators, incubators and digital businesses across the region. Henri Egle Sorotos explains how, and why.
+          This dataset gives the information about Earthquake Vulnerability in this municipality. The status of houses, safe places in an emergency, Earthquake Emergency contacts of police, army, rescue etc are provided. Also, the municipality can post publications about earthquakes and mitigation efforts
           </p>
-          <a href="#" title="" class="btn btn-outline-dark">Read More</a>
         </div>
       </div>
     </div>
