@@ -105,6 +105,7 @@ $route['view_proj'] = 'Admin/ProjectController/view_proj';
 
 $route['csv_upload'] = 'Admin/TableController/copy_table';
 $route['csv_tbl'] = 'Admin/TableController/csv_tbl';
+$route['get_csv'] = 'Admin/TableController/get_csv';
 
 $route['add_layers'] = 'Admin/LayersController/add_layers';
 $route['layers_view'] = 'Admin/LayersController/layers_view';

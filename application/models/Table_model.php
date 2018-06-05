@@ -34,12 +34,42 @@ class Table_model extends CI_Model {
 
 }
 
+public function get_tables_data($tbl){ //get data of table
+
+  $this->db->select('*');
+  $this->db->order_by('id','ASC');
+  $q=$this->db->get($tbl);
+  return $q;
+
+
+}
+
+public function get_as($d,$tbl){
+
+  foreach($d as $v){
+  $this->db->select($v['eng_lang'].' AS '.pg_escape_string(preg_replace('/[^A-Za-z0-9\-]/', ' ', $v['nepali_lang'])));
+  }
+
+  $this->db->order_by('id','ASC');
+  $q=$this->db->get($tbl);
+  return $q;
+
+
+}
+
+public function get_lang($tbl){
+
+  $this->db->select('*');
+  $this->db->where('tbl_name',$tbl);
+  $q=$this->db->get('tbl_lang');
+  return $q->result_array();
+}
 
  public function table_copy($p,$f,$f_n,$tbl){ //import table
 
 	/* $query="COPY survey(name_of_surveyor,name_of_district,name_of_municipality,ward_no,address,latitude,longitude)
    FROM 'C:\Users\munchen\Downloads\home_survey.csv' DELIMITER ',' CSV HEADER"; */
-  
+
    $query="COPY $tbl($f_n)FROM '$p' DELIMITER ',' CSV HEADER";
 	 return $this->db->query($query);
 

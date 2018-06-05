@@ -243,5 +243,34 @@ $this->load->view('admin/footer');
 
 }
 
+public function get_csv(){
+
+
+  array_map('unlink', glob("uploads/csv/*.csv"));
+  
+
+ $tbl=$this->input->get('tbl');
+
+   $this->load->dbutil();
+   $this->load->helper('file');
+   $this->load->helper('download');
+   $d=$this->Table_model->get_lang($tbl);
+   /* get the object   */
+   $report = $this->Table_model->get_as($d,$tbl);
+
+  /*  pass it to db utility function  */
+  $new_report = $this->dbutil->csv_from_result($report);
+     $name = $tbl.'.csv';
+   /*  Now use it to write file. write_file helper function will do it */
+   write_file('uploads/csv/'.$name,$new_report);
+
+     $data=file_get_contents('uploads/csv/'.$name);
+    force_download($name,$data);
+
+     $path='uploads/csv/'.$name;
+     echo $path;
+     unlink($path);
+}
+
 
 }//main

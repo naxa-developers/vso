@@ -13,6 +13,14 @@ class Test extends CI_Controller
   }
 
 
+public function select_as(){
+
+    $this->load->model('Table_model');
+    $d=$this->Table_model->get_lang();
+  //  var_dump(($d));
+
+  var_dump($this->Table_model->get_as($d));
+}
 
 public function search(){
 
@@ -541,8 +549,26 @@ var_dump($row);
 
   }
 
+public function get_csv(){
 
 
 
+  $this->load->model('Table_model');
+  $this->load->dbutil();
+  $this->load->helper('file');
+  $this->load->helper('download');
+  /* get the object   */
+  $report = $this->Table_model->get_tables_data('icons');
 
+  /*  pass it to db utility function  */
+  $new_report = $this->dbutil->csv_from_result($report);
+  /*  Now use it to write file. write_file helper function will do it */
+  write_file('uploads/csv/csv_filee.csv',$new_report);
+  $name='csv_filee.csv';
+     $data=file_get_contents('uploads/csv/csv_filee.csv');
+     //force_download($name,$data);
+     unlink("uploads/csv/csv_filee.csv");
 }
+
+
+}//end
