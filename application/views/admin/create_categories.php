@@ -1,3 +1,19 @@
+<style>
+label > input{ /* HIDE RADIO */
+  visibility: hidden; /* Makes input not-clickable */
+  position: absolute; /* Remove input from document flow */
+}
+label > input + img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:2px solid transparent;
+}
+label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+  border:2px solid #f00;
+}
+
+</style>
+
+
 <!--main content start-->
 <section id="main-content" class="">
     <section class="wrapper">
@@ -34,6 +50,9 @@
                             <div class="form-group ">
                                 <label class="control-label col-md-3">Category Image</label>
                                 <div class="col-md-9">
+<br>
+                                  <div class="col-md-6">
+                                    Upload Image
                                     <div class="fileupload fileupload-new" data-provides="fileupload">
                                         <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
                                             <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
@@ -46,8 +65,96 @@
                                                    <input type="file" name="cat_pic" class="default" />
                                                    </span>
 
+
                                         </div>
                                     </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    Select Icon
+                                    <div class="panel panel-default icon-select" style="border: 1px solid #ddd;max-height: 150px; width: 425px;
+    overflow-x: auto;" >
+                                    <div class="panel-body" style="overflow: hidden;">
+                                      <form method="post">
+
+                                        <div class="form-group">  
+    
+  <label>
+    <input type="radio" name="fb" value="small" />
+    <img src="assets/img/icn.png" height="90">
+  </label>
+
+    <label>
+    <input type="radio" name="fb" value="small" />
+    <img src="assets/img/icn.png" height="90">
+  </label>
+
+    <label>
+    <input type="radio" name="fb" value="small" />
+    <img src="assets/img/icn.png" height="90">
+  </label>
+
+    <label>
+    <input type="radio" name="fb" value="small" />
+    <img src="assets/img/icn.png" height="90">
+  </label>
+
+    <label>
+    <input type="radio" name="fb" value="small" />
+    <img src="assets/img/icn.png" height="90">
+  </label>
+
+    <label>
+    <input type="radio" name="fb" value="small" />
+    <img src="assets/img/icn.png" height="90">
+  </label>
+
+    <label>
+    <input type="radio" name="fb" value="small" />
+    <img src="assets/img/icn.png" height="90">
+  </label>
+
+    <label>
+    <input type="radio" name="fb" value="small" />
+    <img src="assets/img/icn.png" height="90">
+  </label>
+
+    <label>
+    <input type="radio" name="fb" value="small" />
+    <img src="assets/img/icn.png" height="90">
+  </label>
+
+    <label>
+    <input type="radio" name="fb" value="small" />
+    <img src="assets/img/icn.png" height="90">
+  </label>
+
+    <label>
+    <input type="radio" name="fb" value="small" />
+    <img src="assets/img/icn.png" height="90">
+  </label>
+
+  <label>
+    <input type="radio" name="fb" value="small" />
+    <img src="assets/img/icn.png" height="90">
+  </label>
+
+    <label>
+    <input type="radio" name="fb" value="small" />
+    <img src="assets/img/icn.png" height="90">
+  </label>
+  
+
+                                      
+                                        </div>
+                                      </form> 
+                                
+                    
+                                    </div>
+                                    </div>
+
+                                  </div>
+
+
 
                                 </div>
                             </div>
@@ -98,3 +205,11 @@
     </section>
 </section>
 <!--main content end-->
+
+<script type="text/javascript">
+  $(document).ready(function(e){
+        $(".addicon").click(function(){
+        $(this).toggleClass("check");
+      });
+  });
+</script>
