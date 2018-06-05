@@ -222,5 +222,69 @@ if(isset($_POST['submit'])){
 }
 
 
+public function add_icon(){
+
+  if(isset($_POST['submit'])){
+
+    $file_name = $_FILES['back_pic']['name'];
+
+    $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+    $proj_name='icon'.time();
+
+
+    $img_upload=$this->Upload_model->do_upload_icon($file_name,$proj_name);
+
+    if($img_upload==1){
+
+      $image_path=base_url() . 'uploads/icons/'.$proj_name.'.'.$ext ;
+
+      $data=array(
+
+        'icon_path'=>$image_path
+
+      );
+
+        $update=$this->Upload_model->insert_icon($data);
+//var_dump($update);
+        if($update==NULL){
+
+
+          $this->session->set_flashdata('msg', 'Icon successfully Added');
+          redirect('add_icon');
+
+        }else{
+
+          //db error
+        }
+
+  }else{
+
+
+    $code= strip_tags($img_upload['error']);
+
+
+
+    $this->session->set_flashdata('msg', $code);
+    redirect('add_icon');
+  }
+
+
+
+
+
+
+
+
+
+  }else{
+
+
+  $this->load->view('admin/header');
+  $this->load->view('admin/icons');
+  $this->load->view('admin/footer');
+
+}
+
+}
 
 }//main

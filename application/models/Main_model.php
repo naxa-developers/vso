@@ -14,6 +14,8 @@ class Main_model extends CI_Model {
   }
 
 
+
+
   public function get_about_where($id)
   {
     $this->db->select('*');
@@ -54,7 +56,7 @@ class Main_model extends CI_Model {
   public function get_cat($tbl){
 
     $this->db->select('*');
-    $this->db->order_by('ordering','ASC');
+    $this->db->order_by('id','ASC');
     $query=$this->db->get($tbl);
     return $query->result_array();
   }
@@ -66,7 +68,7 @@ class Main_model extends CI_Model {
     $this->db->select('*');
 
     $this->db->where('category_type','Exposure_Data');
-    $this->db->order_by('ordering','ASC');
+    $this->db->order_by('id','ASC');
     $query=$this->db->get($tbl);
     return $query->result_array();
   }
@@ -76,7 +78,7 @@ class Main_model extends CI_Model {
     $this->db->select('*');
 
     $this->db->where('category_type','Baseline_Data');
-    $this->db->order_by('ordering','ASC');
+    $this->db->order_by('id','ASC');
     $query=$this->db->get($tbl);
     return $query->result_array();
   }
@@ -86,18 +88,12 @@ class Main_model extends CI_Model {
     $this->db->select('*');
 
     $this->db->where('category_type','Hazard_Data');
-    $this->db->order_by('ordering','ASC');
+    $this->db->order_by('id','ASC');
     $query=$this->db->get($tbl);
     return $query->result_array();
   }
 
-  public function get_bck_img(){
-
-
-
-
-
-  }
+  
 
 
 

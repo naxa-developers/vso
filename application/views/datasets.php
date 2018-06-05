@@ -1,5 +1,5 @@
 
-
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="assets/css/datasets.css">
 <style type="text/css">
 
@@ -128,7 +128,7 @@ p.about {
 					<div class="col-md-10">
 						<div class="row no-gutters">
 							<div class="col">
-								<input class="form-control border-secondary border-right-0 rounded-0" type="search" value="search for datasets" id="example-search-input4">
+								<input class="form-control border-secondary border-right-0 rounded-0" type="search" id="myInput" onkeyup="myFunction()"  >
 							</div>
 							<div class="col-auto">
 								<button class="btn btn-secondary border-left-0 rounded-0 rounded-right" type="button">
@@ -144,13 +144,15 @@ p.about {
 				<!--advance Search ends-->
 
 
-				<hr>
+
 <?php foreach ($data as $d) { ?>
 
 
 				<div class="row">
 
-					<div class="col-sm-8"> <h5 class="dataset-head"><?php echo $d['category_name']?></h5>
+
+					<div class="col-sm-8 myUL"> <h5 id="<?php echo $d['id']?>" class="dataset-head"><?php echo $d['category_name']?></h5>
+
 						<p class="small" >
 							<span class="fa fa-eye"></span> 71 views
 							<span class="fa fa-save"></span> 0 download
@@ -163,9 +165,13 @@ p.about {
 						<button class="btn btn-light btn-sm">KML</button>
 						<button class="btn btn-light btn-sm">CSV</button>
 						<button class="btn btn-light btn-sm">Geojson</button>
+
+							<hr>
+
 					</div>
+
 				</div>
-				<hr>
+
 		<?php	} ?>
 							<div class="col-md-10">
 								<ul class="pagination pull-right" style="padding-top: 20px; padding-bottom: 30px;">
@@ -183,3 +189,35 @@ p.about {
 
 				</div>
 			</div>
+			<script type="text/javascript">
+
+			function myFunction() {
+			  // Declare variables
+			 var  input, filter, div, h5, a, i;
+			  input = document.getElementById('myInput');
+
+			  filter = input.value.toUpperCase();
+
+			  div = document.getElementsByClassName("myUL");
+
+			  h5 = document.getElementsByTagName('h5');
+			  console.log(h5);
+			  console.log(div);
+			  console.log(filter);
+			  console.log(input);
+
+			  // Loop through all list items, and hide those who don't match the search query
+			  for (i = 0; i < h5.length; i++) {
+			      // a = h5[i].getElementsByTagName("a")[0];
+			       //console.log(h5[i].innerHTML.toUpperCase().indexOf(filter));
+			      if (h5[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+			       console.log('if');
+			          $("#"+h5[i].id).parent().css('display','');
+			      } else {
+			console.log('else');
+			              $("#"+h5[i].id).parent().css('display','none');
+			      }
+			  }
+			}
+
+			</script>

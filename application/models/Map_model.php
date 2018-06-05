@@ -10,6 +10,14 @@ class Map_model extends CI_Model {
   }
 
 
+  public function get_map_download_data()
+  {
+    $this->db->select('*');
+    $query=$this->db->get('maps_download');
+    return $query->result_array();
+
+  }
+
   public function get_summary($field,$tbl){
 
 

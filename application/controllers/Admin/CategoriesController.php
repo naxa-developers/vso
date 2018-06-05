@@ -44,12 +44,12 @@ class CategoriesController extends CI_Controller
 
   public function categories_tbl(){
 
-   $this->body['data']=$this->Dash_model->get_tables_data('categories_tbl');
-     $this->body['tbl_name']='categories_tbl';
+    $this->body['data']=$this->Dash_model->get_tables_data('categories_tbl');
+    $this->body['tbl_name']='categories_tbl';
 
-   $this->load->view('admin/header');
-   $this->load->view('admin/categories_tbl',$this->body);
-   $this->load->view('admin/footer');
+    $this->load->view('admin/header');
+    $this->load->view('admin/categories_tbl',$this->body);
+    $this->load->view('admin/footer');
 
 
 
@@ -59,54 +59,54 @@ class CategoriesController extends CI_Controller
 
   public function view_cat_tables(){  // getting all list of cat table
 
-  $this->body['data']=$this->Dash_model->view_cat_tables();
-  $this->load->view('admin/header');
-  $this->load->view('admin/cat_tables',$this->body);
-  $this->load->view('admin/footer');
+    $this->body['data']=$this->Dash_model->view_cat_tables();
+    $this->load->view('admin/header');
+    $this->load->view('admin/cat_tables',$this->body);
+    $this->load->view('admin/footer');
 
 
 
   }
 
-public function drop_cat_table(){
+  public function drop_cat_table(){
 
-  $tbl_name=base64_decode($this->input->get('tbl_name'));
+    $tbl_name=base64_decode($this->input->get('tbl_name'));
 
-  $drop_tbl=$this->dbforge->drop_table($tbl_name);
-  //var_dump($drop_tbl);
-  if($drop_tbl){
+    $drop_tbl=$this->dbforge->drop_table($tbl_name);
+    //var_dump($drop_tbl);
+    if($drop_tbl){
 
-$this->session->set_flashdata('msg',$tbl_name.' table was sucessfully deleted');
+      $this->session->set_flashdata('msg',$tbl_name.' table was sucessfully deleted');
 
-redirect('view_cat_tables');
+      redirect('view_cat_tables');
 
 
-  }else{
+    }else{
 
-//db error
+      //db error
+    }
+
+
   }
-
-
-}
 
 
 
   public function edit(){ //edit table
 
 
-     $tbl_name= base64_decode($this->input->get('tbl'));
-     $nep=$this->Dash_model->get_tables_data_lang('tbl_lang',$tbl_name);
+    $tbl_name= base64_decode($this->input->get('tbl'));
+    $nep=$this->Dash_model->get_tables_data_lang('tbl_lang',$tbl_name);
     // $fields= $this->db->list_fields($tbl_name);
 
-  //  var_dump($nep);
+    //  var_dump($nep);
     //var_dump($_POST);
 
-        foreach($nep as $nep){
-        //  echo $nep['eng_lang'];
+    foreach($nep as $nep){
+      //  echo $nep['eng_lang'];
 
-    $this->form_validation->set_rules($nep['eng_lang'], 'Fill field', 'required');
+      $this->form_validation->set_rules($nep['eng_lang'], 'Fill field', 'required');
 
-  }
+    }
 
     if ($this->form_validation->run() == FALSE){
 
@@ -152,52 +152,52 @@ redirect('view_cat_tables');
 
     $tbl_name= base64_decode($this->input->get('tbl'));
 
-   $fields=$this->db->list_fields($tbl_name);
+    $fields=$this->db->list_fields($tbl_name);
 
- //  var_dump($nep);
-   //var_dump($_POST);
+    //  var_dump($nep);
+    //var_dump($_POST);
 
-       for($i=0;$i<sizeof($fields);$i++){
-       //  echo $nep['eng_lang'];
+    for($i=0;$i<sizeof($fields);$i++){
+      //  echo $nep['eng_lang'];
 
-   $this->form_validation->set_rules($fields[$i], 'Fill field', 'required');
+      $this->form_validation->set_rules($fields[$i], 'Fill field', 'required');
 
- }
+    }
 
-   if ($this->form_validation->run() == FALSE){
-
-
-
-     $e_id=base64_decode($this->input->get('id'));
+    if ($this->form_validation->run() == FALSE){
 
 
 
-     $this->body['fields']=$fields;
-
-     $this->body['edit_data']=$this->Dash_model->edit_get_data($e_id,$tbl_name);
-
-     $this->load->view('admin/header');
-     $this->load->view('admin/categories_edit',$this->body);
-     $this->load->view('admin/footer');
+      $e_id=base64_decode($this->input->get('id'));
 
 
 
-   }else{
+      $this->body['fields']=$fields;
 
-     $data=$_POST;
-     unset($data['id']);
+      $this->body['edit_data']=$this->Dash_model->edit_get_data($e_id,$tbl_name);
 
-
-     $update=$this->Dash_model->update($_POST['id'],$data,$tbl_name);
-     if($update==1){
-       $this->session->set_flashdata('msg','Id number '.$_POST['id'].' row data was updated successfully');
-       redirect('categories_tbl?tbl_name='.base64_encode($tbl_name));
-     }else{
-       redirect('categories_edit');
-     }
+      $this->load->view('admin/header');
+      $this->load->view('admin/categories_edit',$this->body);
+      $this->load->view('admin/footer');
 
 
-   }
+
+    }else{
+
+      $data=$_POST;
+      unset($data['id']);
+
+
+      $update=$this->Dash_model->update($_POST['id'],$data,$tbl_name);
+      if($update==1){
+        $this->session->set_flashdata('msg','Id number '.$_POST['id'].' row data was updated successfully');
+        redirect('categories_tbl?tbl_name='.base64_encode($tbl_name));
+      }else{
+        redirect('categories_edit');
+      }
+
+
+    }
 
 
 
@@ -231,20 +231,20 @@ redirect('view_cat_tables');
 
         $add_column=$this->dbforge->add_column($tbl,$fields);
 
-   // inserting corresponding nepali and englis column name in table
+        // inserting corresponding nepali and englis column name in table
 
-       $data_lang=array(
+        $data_lang=array(
 
-       'eng_lang'=>'a'.$i,
-       'nepali_lang'=>$_POST["c_name"][$i],
-       'tbl_name'=>$tbl,
+          'eng_lang'=>'a'.$i,
+          'nepali_lang'=>$_POST["c_name"][$i],
+          'tbl_name'=>$tbl,
 
 
-       );
+        );
 
-         $lang_insert=$this->Dash_model->insert_lang('tbl_lang',$data_lang);
+        $lang_insert=$this->Dash_model->insert_lang('tbl_lang',$data_lang);
 
-         //end
+        //end
 
       }
 
@@ -253,12 +253,12 @@ redirect('view_cat_tables');
 
         $this->session->set_flashdata('table',$tbl.' table with '.$l.' Columns Successfully Added');
 
-       $data_array=array(
+        $data_array=array(
 
-      'category_table'=>$tbl,
+          'category_table'=>$tbl,
 
 
-       );
+        );
 
         $update=$this->Dash_model->cat_update($id,$data_array);
 
@@ -333,6 +333,7 @@ redirect('view_cat_tables');
 
     if(isset($_POST['submit_cat'])){
 
+
       $cat_name=$this->input->post('cat_name');
       $cat_type=$this->input->post('category_type');
       $upload_type=$this->input->post('upload_type');
@@ -340,20 +341,13 @@ redirect('view_cat_tables');
 
       $file_name = $_FILES['cat_pic']['name'];
 
-      $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+      if($file_name = $_FILES['cat_pic']['name']==""){
 
-
-      $img_upload=$this->Dash_model->do_upload($file_name,$cat_table);
-      //var_dump ($img_upload);
-      if($img_upload==1){
-
-        $image_path=base_url() . 'uploads/categories/'.$cat_table.'.'.$ext ;
-      //  var_dump ($image_path);
 
         $data=array(
           'category_name'=>$cat_name,
           'category_table'=>$cat_table,
-          'category_photo'=>$image_path,
+          'category_photo'=>$this->input->post('icon'),
           'category_type'=>$cat_type,
           'uplaod_type'=>$upload_type
 
@@ -366,14 +360,14 @@ redirect('view_cat_tables');
 
 
 
-if($upload_type=='csv'){
-    $this->session->set_flashdata('msg','Important!!!Create Table for the category '.$cat_name);
-redirect('csv_data_tbl?tbl='.base64_encode($cat_name).'&& id='.base64_encode($insert).'&& tbl_name='.base64_encode($cat_table));
+          if($upload_type=='csv'){
+            $this->session->set_flashdata('msg','Important!!!Create Table for the category '.$cat_name);
+            redirect('csv_data_tbl?tbl='.base64_encode($cat_name).'&& id='.base64_encode($insert).'&& tbl_name='.base64_encode($cat_table));
 
-}else{
-  $this->session->set_flashdata('msg','Note: The Shapefile Co-ordinate System Must Be In WGS84 ie. EPSG:4326 '.$cat_name);
-  redirect('add_layers?tbl_name='.$cat_table.'&& id='.$insert);
-}
+          }else{
+            $this->session->set_flashdata('msg','Note: The Shapefile Co-ordinate System Must Be In WGS84 ie. EPSG:4326 '.$cat_name);
+            redirect('add_layers?tbl_name='.$cat_table.'&& id='.$insert);
+          }
 
 
 
@@ -386,15 +380,61 @@ redirect('csv_data_tbl?tbl='.base64_encode($cat_name).'&& id='.base64_encode($in
 
       }else{
 
-        $code= strip_tags($img_upload['error']);
-        $this->body['error']=$code;
+        $ext = pathinfo($file_name, PATHINFO_EXTENSION);
 
 
-        $this->load->view('admin/header');
-        $this->load->view('admin/create_categories',$this->body);
-        $this->load->view('admin/footer');
+        $img_upload=$this->Dash_model->do_upload($file_name,$cat_table);
+        //var_dump ($img_upload);
+        if($img_upload==1){
+
+          $image_path=base_url() . 'uploads/categories/'.$cat_table.'.'.$ext ;
+          //  var_dump ($image_path);
+
+          $data=array(
+            'category_name'=>$cat_name,
+            'category_table'=>$cat_table,
+            'category_photo'=>$image_path,
+            'category_type'=>$cat_type,
+            'uplaod_type'=>$upload_type
+
+          );
+
+          $insert=$this->Dash_model->insert_cat('categories_tbl',$data);
+          if($insert!=""){
+
+
+
+
+
+            if($upload_type=='csv'){
+              $this->session->set_flashdata('msg','Important!!!Create Table for the category '.$cat_name);
+              redirect('csv_data_tbl?tbl='.base64_encode($cat_name).'&& id='.base64_encode($insert).'&& tbl_name='.base64_encode($cat_table));
+
+            }else{
+              $this->session->set_flashdata('msg','Note: The Shapefile Co-ordinate System Must Be In WGS84 ie. EPSG:4326 '.$cat_name);
+              redirect('add_layers?tbl_name='.$cat_table.'&& id='.$insert);
+            }
+
+
+
+          }else{
+            var_dump($insert);
+
+
+          }
+
+
+        }else{
+
+          $code= strip_tags($img_upload['error']);
+          $this->body['error']=$code;
+
+
+          $this->load->view('admin/header');
+          $this->load->view('admin/create_categories',$this->body);
+          $this->load->view('admin/footer');
+        }
       }
-
 
     }else{
 
@@ -403,11 +443,11 @@ redirect('csv_data_tbl?tbl='.base64_encode($cat_name).'&& id='.base64_encode($in
 
 
 
+      $this->body['icon']=$this->Dash_model->get_tables_data('icons');
 
-
-        $this->load->view('admin/header');
-        $this->load->view('admin/create_categories');
-        $this->load->view('admin/footer');
+      $this->load->view('admin/header');
+      $this->load->view('admin/create_categories',$this->body);
+      $this->load->view('admin/footer');
 
 
 
@@ -418,60 +458,60 @@ redirect('csv_data_tbl?tbl='.base64_encode($cat_name).'&& id='.base64_encode($in
   //creating categories with its table end
 
 
-// adding data to categoriess table
+  // adding data to categoriess table
 
-public function add_data_categories_tbl(){
+  public function add_data_categories_tbl(){
 
-  $this->load->view('admin/header');
-  $this->load->view('admin/csv_upload');
-  $this->load->view('admin/footer');
-
-
-
-}
-
-//end adding data
-
-public function delete_data(){
-
-  $id=$this->input->get('id');
-  $tbl_name=trim($this->input->get('tbl'));
-  $cat_tbl=$this->input->get('cat_tbl');
+    $this->load->view('admin/header');
+    $this->load->view('admin/csv_upload');
+    $this->load->view('admin/footer');
 
 
- $this->Dash_model->delete_data($id,$tbl_name);
 
-  if($tbl_name=="categories_tbl"){
+  }
+
+  //end adding data
+
+  public function delete_data(){
+
+    $id=$this->input->get('id');
+    $tbl_name=trim($this->input->get('tbl'));
+    $cat_tbl=$this->input->get('cat_tbl');
+
+
+    $this->Dash_model->delete_data($id,$tbl_name);
+
+    if($tbl_name=="categories_tbl"){
 
       $drop_tbl=$this->dbforge->drop_table($cat_tbl);
 
       $this->Dash_model->delete_lang($cat_tbl);
 
-  $this->session->set_flashdata('msg','Id number '.$id.' row data was deleted successfully');
- redirect('categories_tbl?tbl_name='.base64_encode($tbl_name));
-}else{
+      $this->session->set_flashdata('msg','Id number '.$id.' row data was deleted successfully');
+      redirect('categories_tbl?tbl_name='.base64_encode($tbl_name));
+    }else{
 
-  $this->session->set_flashdata('msg','Id number '.$id.' row data was deleted successfully');
-  redirect('data_tables?tbl_name='.base64_encode($tbl_name));
+      $this->session->set_flashdata('msg','Id number '.$id.' row data was deleted successfully');
+      redirect('data_tables?tbl_name='.base64_encode($tbl_name));
 
-}
+    }
 
-}
+  }
 
 
-public function csv_data_tbl(){
+  public function csv_data_tbl(){
 
- // echo base64_decode($this->input->get('tbl'));
- // echo base64_decode($this->input->get('id'));
+    // echo base64_decode($this->input->get('tbl'));
+    // echo base64_decode($this->input->get('id'));
 
-$this->body['tbl']=$this->input->get('tbl_name');
-$this->body['id']=$this->input->get('id');
+    $this->body['tbl']=$this->input->get('tbl_name');
+    $this->body['id']=$this->input->get('id');
 
-$this->load->view('admin/header');
-$this->load->view('admin/csv_data_tbl',$this->body);
-$this->load->view('admin/footer');
+    $this->load->view('admin/header');
+    $this->load->view('admin/csv_data_tbl',$this->body);
+    $this->load->view('admin/footer');
 
-}
+  }
 
 
 }//controller end

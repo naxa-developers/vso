@@ -71,6 +71,8 @@ $route['map_download'] ='MapController/map_download';
 
 
 
+
+
 $route['report_page'] ='ReportController/report_page';
 $route['report_manage'] ='ReportController/report_manage';
 $route['report/delete'] = 'ReportController/delete_data';
@@ -115,6 +117,7 @@ $route['emergency_contact'] = 'Admin/UploadController/emergency_contact';
 $route['delete_emergency'] = 'Admin/UploadController/delete_emerg';
 $route['edit_emergency'] = 'Admin/UploadController/edit_emerg';
 $route['add_emergency'] = 'Admin/UploadController/add_emergency';
+$route['add_icon'] = 'Admin/UploadController/add_icon';
 
 
 $route['view_publication'] = 'Admin/PublicationController/view_publication';
@@ -125,3 +128,5 @@ $route['download'] = 'Admin/PublicationController/download';
 
 $route['view_about'] = 'Admin/AboutController/view_about';
 $route['edit_about'] = 'Admin/AboutController/edit_about';
+
+$route['map_show'] ='Admin/MapDownload/map_show';
