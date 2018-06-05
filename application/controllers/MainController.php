@@ -63,7 +63,7 @@ $this->load->model('Publication_model');
    $this->body['baseline_data']=$this->Main_model->get_cat_baseline($tbl);
 
 
-   $this->body['background_img']=$this->Main_model->get_bck_img();
+   
    $this->body['emerg_contact']=$this->Upload_model->get_emergency_con();
 
     $this->load->view('header');
