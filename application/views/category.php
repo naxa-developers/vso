@@ -810,7 +810,7 @@ div#layers li {
 					<ul class="nav nav-tabs" role="tablist">
 						<li class="basemap chevron1" id="close-panel-left"><img src="<?php echo base_url()?>assets/img/up-arrow.png" class="test-icon chevron"></li>
 						<li role="presentation" class="active layer"><a href="#categories" aria-controls="home" role="tab" data-toggle="tab"><img src="<?php echo base_url()?>assets/img/boxes.png" class="test-icon"></a></li>
-						<li role="presentation" class="basemap"><a href="#layers" aria-controls="profile" role="tab" data-toggle="tab"><img src="<?php echo base_url()?>assets/img/layers-icon.png" class="test-icon"></a></li>
+						<!-- <li role="presentation" class="basemap"><a href="#layers" aria-controls="profile" role="tab" data-toggle="tab"><img src="<?php echo base_url()?>assets/img/layers-icon.png" class="test-icon"></a></li> -->
 						<li role="presentation" class="basemap"><a href="<?php echo base_url()?>map_download"><img src="<?php echo base_url()?>assets/img/map-down.png" class="test-icon">&nbsp;<sub class="text-light" style="font-size: 13px;">Maps</sub></a></li>
 					</ul>
 				</div>
@@ -929,7 +929,7 @@ div#layers li {
 
 <!-- categories -->
 <!-- layer -->
-<div role="tabpanel" class="tab-pane" id="layers">
+<!-- <div role="tabpanel" class="tab-pane" id="layers">
   <div id="layers">
 
    <div id="content map">
@@ -1053,7 +1053,7 @@ div#layers li {
 </div>
 
 </div>
-</div>
+</div> -->
 <!-- layer -->
 
 <!-- filter -->

@@ -30,7 +30,7 @@
 .responstable th {
   display: none;
   border: 1px solid #FFF;
-  background-color: #1f5cb2;
+  background-color: #7696c7;
   color: #FFF;
   padding: 1em;
 }

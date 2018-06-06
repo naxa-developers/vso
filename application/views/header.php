@@ -77,20 +77,10 @@
   div#map {
     margin-top: 44px ;
   }
+.sub-head {
+    margin-top: -14px;
+}
 
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(120,120,120,120);
-    border-radius: 10px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(120,120,120,120);
-  }
   #load{
     width:100%;
     height:100%;
@@ -138,7 +128,7 @@
                     <img src="<?php echo base_url();?>assets/img/logo.jpg" alt="Logo">
                     <h6>
                       <strong>Changu Narayan Municipality</strong><br/>
-                      <small>Disaster Information Management Platform</small>
+                     <div class="sub-head"> <small>Disaster Information Management Platform</small> </div>
                     </h6>
                   </div>
                 </a>

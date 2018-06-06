@@ -217,8 +217,9 @@ font-size: 14px;
       margin: 1px 0px 3px;
       height: 30px;
       padding: 0px 5px;
-      border: 1px solid grey;
+      border: 1px solid #f30728;
       width: 98%;
+      border-radius: 2px;
     }
     .filter-check .glyphicon{
       color: #002052;
@@ -230,7 +231,8 @@ font-size: 14px;
       width: 49%;
       display: inline;
       margin: 1px -2px 3px;
-      border: 1px solid #757373;
+      border: 1px solid #f30728;
+      border-radius: 2px;
     }
 
     .filter-check p{
@@ -338,7 +340,12 @@ font-size: 14px;
       color: #fff;
       font-size: 13px;
     }
-
+button.btn.btn-light.btn-sm {
+   color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+}
   </style>
 
   <div id="conten-map">

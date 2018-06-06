@@ -118,10 +118,10 @@
 <div class="container ">
     <div class="contact-search-1">
 	<div class="row">
-    <div class="col-sm-8 text-center">
+    <div class="col-sm-12 text-center">
         <div class="row no-gutters">
           <div class="col">
-            <input class="form-control border-secondary border-right-0 rounded-0" type="search" value="search" id="example-search-input4">
+            <input class="form-control border-secondary border-right-0 rounded-0" type="search" placeholder="Search For.." id="example-search-input4">
           </div>
           <div class="col-auto">
             <button class="btn btn-secondary border-left-0 rounded-0 rounded-right" type="button">
