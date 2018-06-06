@@ -121,7 +121,7 @@ div#filter {
 .panel.panel-info {
  overflow: hidden;
  width: 250px;
- background-color: #fdfeff;
+ background-color: #f3f3f3;
  padding: 5px;    
  border-radius: 0px;
  float: right;
@@ -354,23 +354,8 @@ div#over_map1 {
   margin-left: 15px;
 }
 
-#appl{
-  font-size: 11px;
-  color: #fff;
-  border: 1px solid transparent;
-  background: #0056b3;
-  border-radius: 0px;
-  padding: 4px;
-  letter-spacing: 0.4px;
-  margin: 0px 1px;
-}
 
-#appl:hover,#apply:active{
-  color: #0056b3;
-  border: none;
-  background: none;
-  border: 1px solid  #0056b3;
-}
+
 .treeview .btn-pos{
   margin: 4px 0px 2px;
 }
@@ -386,6 +371,7 @@ div#over_map1 {
 
 .control{
   padding: 5px 5px 0px 0px;
+
 }
 .head-panel{
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
@@ -570,6 +556,7 @@ height: 280px;*/
   height: 1rem;
   width: 2rem;
   border-radius: 1rem;
+  margin-top: 5px;
 }
 .control .btn-toggle.btn-xs:focus,
 .control .btn-toggle.btn-xs.focus,
@@ -797,6 +784,25 @@ div#layers li {
   opacity: 0.8;
   border: none;
 }
+
+ul.treeview.checklist {
+    background-color: #f3f3f3;
+}
+div#left-panel-toggle {
+    background-color: #f3f3f3;
+}
+.indicator{
+    background-color: #668BB2;
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    height: 15px;
+    width: 15px;
+  }
+  div#table1 {
+    background-color: #f3f3f3;
+}
+
 </style>
 
 <div id="wrap">
@@ -850,6 +856,9 @@ div#layers li {
 											</div> -->
 
 											<div class="col-md-12">
+                        <span class="indicator"></span>
+                       <a href="#open-modal" id="appl" <span class="fa fa-filter" style="margin-left: 202px; color: #bdc1c8;"></span></a>
+                        
 											<?php	if($data['default_load']=='0'){ ?>
 												<button type="button" value = "<?php echo $data['category_table'];?>" id = "<?php echo $data['category_table'].'_toggle'?>" class="btn btn-xs btn-toggle pull-right CheckBox" data-toggle="button" aria-pressed="false" autocomplete="off">
 												<?php	}else{ ?>
@@ -911,9 +920,7 @@ div#layers li {
                       </div>
                     </div>
 
-                    <div class="btn-pos text-right">
-                      <a href="#open-modal" id="appl" class="btn btn-default btn-xs">Add filters</a>
-                    </div>
+                    
                   </div>
                 </li>
               </ul>
@@ -1184,7 +1191,8 @@ div#layers li {
 
          <div class="col-6">
           <div class="form-group">
-           <select id="select1" multiple="multiple" class="btn btn-default">
+           <select id="select1" class="custom-select
+           ">
             <option value="1">Cheese</option>
             <option value="2">Tomatoes</option>
             <option value="3">Mozzarella</option>
@@ -1199,7 +1207,7 @@ div#layers li {
       <div class="col-6">
         <div class="form-group">
 
-          <select multiple="multiple" id="select2" class="btn btn-default">
+          <select id="select2" class="custom-select">
             <option value="111">Select Data</option>
             <option value="222">Risk and Hazards</option>
             <option value="333">Household</option>

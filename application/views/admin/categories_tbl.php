@@ -8,7 +8,7 @@
         <section class="panel">
           <section class="panel">
             <header class="panel-heading">
-              Hover Table
+              Categories
               <span class="tools pull-right">
                 <a href="<?php echo base_url()?>create_categories"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Category</button></a>
               </span>

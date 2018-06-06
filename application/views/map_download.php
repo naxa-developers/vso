@@ -57,6 +57,10 @@
 .publish .publish-des{
   text-align: justify;
 }
+p.para {
+    font-size: 14px;
+    margin-top: -15px;
+}
 </style>
 
 <div id="map_download">
@@ -96,45 +100,29 @@
 	</div>
 
 	<div class="row">
-		<div class="col-sm-3 basemap"><img src="assets/img/bm.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img1"><p class="base text-center">Street Map</p>
-			<div class="text-block">
-				<h5>Changunarayan map</h5>
-			</div>
+		<div class="col-sm-3 basemap"><img src="assets/img/bm.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img1"><p class="base ">Street Map</p> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
+		
 		</div>
-		<div class="col-sm-3 basemap"><img src="assets/img/bm1.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img2"><p class="base text-center">Satellite Map</p>
-			<div class="text-block">
-				<h5>Changunarayan map</h5>
-			</div>
+		<div class="col-sm-3 basemap"><img src="assets/img/bm1.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img2"><p class="base ">Satellite Map</p> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
+		
 		</div>
-		<div class="col-sm-3 basemap"><img src="assets/img/bm2.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img3"><p class="base text-center">Dark Map</p>
-			<div class="text-block">
-				<h5>Changunarayan map</h5>
-			</div>
+		<div class="col-sm-3 basemap"><img src="assets/img/bm2.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img3"><p class="base ">Dark Map</p> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
+		
 		</div>
-		<div class="col-sm-3 basemap"><img src="assets/img/bm4.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality"><p class="base text-center">Outdoor Map</p>
-			<div class="text-block">
-				<h5>Changunarayan map</h5>
-			</div>
+		<div class="col-sm-3 basemap"><img src="assets/img/bm4.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality"><p class="base ">Outdoor Map</p> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
+		
 		</div>
-		<div class="col-sm-3 basemap"><img src="assets/img/bm.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality"><p class="base text-center">Street Map</p>
-			<div class="text-block">
-				<h5>Changunarayan map</h5>
-			</div>
+		<div class="col-sm-3 basemap"><img src="assets/img/bm.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality"><p class="base ">Street Map</p> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
+		
 		</div>
-		<div class="col-sm-3 basemap"><img src="assets/img/bm1.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality"><p class="base text-center">Satellite Map</p>
-			<div class="text-block">
-				<h5>Changunarayan map</h5>
-			</div>
+		<div class="col-sm-3 basemap"><img src="assets/img/bm1.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality"><p class="base ">Satellite Map</p> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
+		
 		</div>
-		<div class="col-sm-3 basemap"><img src="assets/img/bm2.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality"><p class="base text-center">Dark Map</p>
-			<div class="text-block">
-				<h5>Changunarayan map</h5>
-			</div>
+		<div class="col-sm-3 basemap"><img src="assets/img/bm2.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality"><p class="base ">Dark Map</p> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
+		
 		</div>
-		<div class="col-sm-3 basemap"><img src="assets/img/bm4.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality"><p class="base text-center">Outdoor Map</p>
-			<div class="text-block">
-				<h5>Changunarayan map</h5>
-			</div>
+		<div class="col-sm-3 basemap"><img src="assets/img/bm4.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality"><p class="base ">Outdoor Map</p> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
+		
 		</div>
 	</div>
 

@@ -352,13 +352,13 @@ button.btn.btn-light.btn-sm {
     <nav class="navbar navbar-expand-sm">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="#"><i class="fa fa-map" aria-hidden="true"></i> MAP</a>
+          <a class="nav-link" href="#"><i class="fa fa-map" aria-hidden="true"></i> Map</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="map_reports"><i class="fa fa-database" aria-hidden="true"></i> DATA</a>
+          <a class="nav-link" href="map_reports"><i class="fa fa-database" aria-hidden="true"></i> Data</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="map_reports_table"><i class="fa fa-pencil-square" aria-hidden="true"></i> GHATANA DARTA</a>
+          <a class="nav-link" href="map_reports_table"><i class="fa fa-pencil-square" aria-hidden="true"></i> Ghatana Bibaran</a>
         </li>
       </ul>
     </nav>
