@@ -14,6 +14,16 @@ class Main_model extends CI_Model {
   }
 
 
+public function get_contact($cat,$tbl)
+{
+  $this->db->select('*');
+  $this->db->where('category',$cat);
+  $q=$this->db->get($tbl);
+  return $q->result_array();
+
+  
+}
+
 
 
   public function get_about_where($id)
@@ -93,7 +103,7 @@ class Main_model extends CI_Model {
     return $query->result_array();
   }
 
-  
+
 
 
 

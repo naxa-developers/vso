@@ -184,83 +184,25 @@
           <th><span>Email</span></th>
           <th><span>Website</span></th>
         </tr>
-        <tr>
-          <td>1</td>
-          <td>Red Cross society</td>
-          <td>Kathmandu</td>
-          <td>9849515124</td>
-          <td>01-425485</td>
-          <td>Mr. Ram Krishna Wagle</td>
-          <td>Operations Manager</td>
-          <td>98510451245</td>
-          <td>redcross_npl@gmail.com</td>
-          <td>www.redcrossnepal.com</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Red Cross society</td>
-          <td>Kathmandu</td>
-          <td>9849515124</td>
-          <td>01-425485</td>
-          <td>Mr. Ram Krishna Wagle</td>
-          <td>Operations Manager</td>
-          <td>98510451245</td>
-          <td>redcross_npl@gmail.com</td>
-          <td>www.redcrossnepal.com</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Red Cross society</td>
-          <td>Kathmandu</td>
-          <td>9849515124</td>
-          <td>01-425485</td>
-          <td>Mr. Ram Krishna Wagle</td>
-          <td>Operations Manager</td>
-          <td>98510451245</td>
-          <td>redcross_npl@gmail.com</td>
-          <td>www.redcrossnepal.com</td>
-        </tr>
-
-        <tr>
-          <td>1</td>
-          <td>Red Cross society</td>
-          <td>Kathmandu</td>
-          <td>9849515124</td>
-          <td>01-425485</td>
-          <td>Mr. Ram Krishna Wagle</td>
-          <td>Operations Manager</td>
-          <td>98510451245</td>
-          <td>redcross_npl@gmail.com</td>
-          <td>www.redcrossnepal.com</td>
-        </tr>
 
 
-        <tr>
-          <td>1</td>
-          <td>Red Cross society</td>
-          <td>Kathmandu</td>
-          <td>9849515124</td>
-          <td>01-425485</td>
-          <td>Mr. Ram Krishna Wagle</td>
-          <td>Operations Manager</td>
-          <td>98510451245</td>
-          <td>redcross_npl@gmail.com</td>
-          <td>www.redcrossnepal.com</td>
-        </tr>
+       <?php foreach ($health as  $health) {
+
+        ?>
 
         <tr>
-          <td>1</td>
-          <td>Red Cross society</td>
-          <td>Kathmandu</td>
-          <td>9849515124</td>
-          <td>01-425485</td>
-          <td>Mr. Ram Krishna Wagle</td>
-          <td>Operations Manager</td>
-          <td>98510451245</td>
-          <td>redcross_npl@gmail.com</td>
-          <td>www.redcrossnepal.com</td>
-        </tr>
+          <td><?php echo $health['id'] ?></td>
+          <td><?php echo $health['organization'] ?></td>
+          <td><?php echo $health['address'] ?></td>
+          <td><?php echo $health['phone_no'] ?></td>
+          <td><?php echo $health['alternate_phone_no'] ?></td>
+          <td><?php echo $health['contact_person'] ?></td>
+          <td><?php echo $health['personal_no'] ?></td>
+          <td><?php echo $health['email'] ?></td>
+          <td><?php echo $health['website'] ?></td>
 
+        </tr>
+ <?php } ?>
 
       </table>
     </div>
@@ -282,66 +224,25 @@
         <th><span>Email</span></th>
         <th><span>Website</span></th>
       </tr>
+
+  <?php foreach ($responders as $responders) {
+    // code...
+   ?>
+
       <tr>
-        <td>1</td>
-        <td>Red Cross society</td>
-        <td>Kathmandu</td>
-        <td>9849515124</td>
-        <td>01-425485</td>
-        <td>Mr. Ram Krishna Wagle</td>
-        <td>Operations Manager</td>
-        <td>98510451245</td>
-        <td>redcross_npl@gmail.com</td>
-        <td>www.redcrossnepal.com</td>
+        <td><?php echo $responders['id'] ?></td>
+        <td><?php echo $responders['organization'] ?></td>
+        <td><?php echo $responders['address'] ?></td>
+        <td><?php echo $responders['phone_no'] ?></td>
+        <td><?php echo $responders['alternate_phone_no'] ?></td>
+        <td><?php echo $responders['contact_person'] ?></td>
+        <td><?php echo $responders['personal_no'] ?></td>
+        <td><?php echo $responders['email'] ?></td>
+        <td><?php echo $responders['website'] ?></td>
+
       </tr>
-      <tr>
-        <td>1</td>
-        <td>Red Cross society</td>
-        <td>Kathmandu</td>
-        <td>9849515124</td>
-        <td>01-425485</td>
-        <td>Mr. Ram Krishna Wagle</td>
-        <td>Operations Manager</td>
-        <td>98510451245</td>
-        <td>redcross_npl@gmail.com</td>
-        <td>www.redcrossnepal.com</td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>Red Cross society</td>
-        <td>Kathmandu</td>
-        <td>9849515124</td>
-        <td>01-425485</td>
-        <td>Mr. Ram Krishna Wagle</td>
-        <td>Operations Manager</td>
-        <td>98510451245</td>
-        <td>redcross_npl@gmail.com</td>
-        <td>www.redcrossnepal.com</td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>Red Cross society</td>
-        <td>Kathmandu</td>
-        <td>9849515124</td>
-        <td>01-425485</td>
-        <td>Mr. Ram Krishna Wagle</td>
-        <td>Operations Manager</td>
-        <td>98510451245</td>
-        <td>redcross_npl@gmail.com</td>
-        <td>www.redcrossnepal.com</td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>Red Cross society</td>
-        <td>Kathmandu</td>
-        <td>9849515124</td>
-        <td>01-425485</td>
-        <td>Mr. Ram Krishna Wagle</td>
-        <td>Operations Manager</td>
-        <td>98510451245</td>
-        <td>redcross_npl@gmail.com</td>
-        <td>www.redcrossnepal.com</td>
-      </tr>
+
+ <?php } ?>
 
     </table>
   </div>
@@ -363,83 +264,21 @@
       <th><span>Email</span></th>
       <th><span>Website</span></th>
     </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Kathmandu</td>
-      <td>9849515124</td>
-      <td>01-425485</td>
-      <td>Mr. Ram Krishna Wagle</td>
-      <td>Operations Manager</td>
-      <td>98510451245</td>
-      <td>redcross_npl@gmail.com</td>
-      <td>www.redcrossnepal.com</td>
-    </tr>
 
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Kathmandu</td>
-      <td>9849515124</td>
-      <td>01-425485</td>
-      <td>Mr. Ram Krishna Wagle</td>
-      <td>Operations Manager</td>
-      <td>98510451245</td>
-      <td>redcross_npl@gmail.com</td>
-      <td>www.redcrossnepal.com</td>
-    </tr>
+    <?php foreach ($security as $security) {
+      // code...
+    } ?>
 
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Kathmandu</td>
-      <td>9849515124</td>
-      <td>01-425485</td>
-      <td>Mr. Ram Krishna Wagle</td>
-      <td>Operations Manager</td>
-      <td>98510451245</td>
-      <td>redcross_npl@gmail.com</td>
-      <td>www.redcrossnepal.com</td>
-    </tr>
+    <td><?php echo $security['id'] ?></td>
+    <td><?php echo $security['organization'] ?></td>
+    <td><?php echo $security['address'] ?></td>
+    <td><?php echo $security['phone_no'] ?></td>
+    <td><?php echo $security['alternate_phone_no'] ?></td>
+    <td><?php echo $security['contact_person'] ?></td>
+    <td><?php echo $security['personal_no'] ?></td>
+    <td><?php echo $security['email'] ?></td>
+    <td><?php echo $security['website'] ?></td>
 
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Kathmandu</td>
-      <td>9849515124</td>
-      <td>01-425485</td>
-      <td>Mr. Ram Krishna Wagle</td>
-      <td>Operations Manager</td>
-      <td>98510451245</td>
-      <td>redcross_npl@gmail.com</td>
-      <td>www.redcrossnepal.com</td>
-    </tr>
-
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Kathmandu</td>
-      <td>9849515124</td>
-      <td>01-425485</td>
-      <td>Mr. Ram Krishna Wagle</td>
-      <td>Operations Manager</td>
-      <td>98510451245</td>
-      <td>redcross_npl@gmail.com</td>
-      <td>www.redcrossnepal.com</td>
-    </tr>
-
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Kathmandu</td>
-      <td>9849515124</td>
-      <td>01-425485</td>
-      <td>Mr. Ram Krishna Wagle</td>
-      <td>Operations Manager</td>
-      <td>98510451245</td>
-      <td>redcross_npl@gmail.com</td>
-      <td>www.redcrossnepal.com</td>
-    </tr>
 
   </table>
 </div>
@@ -461,97 +300,24 @@
       <th><span>Email</span></th>
       <th><span>Website</span></th>
     </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Kathmandu</td>
-      <td>9849515124</td>
-      <td>01-425485</td>
-      <td>Mr. Ram Krishna Wagle</td>
-      <td>Operations Manager</td>
-      <td>98510451245</td>
-      <td>redcross_npl@gmail.com</td>
-      <td>www.redcrossnepal.com</td>
-    </tr>
+    <?php foreach ($ngo as $ngo) {
+      // code...
+     ?>
 
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Kathmandu</td>
-      <td>9849515124</td>
-      <td>01-425485</td>
-      <td>Mr. Ram Krishna Wagle</td>
-      <td>Operations Manager</td>
-      <td>98510451245</td>
-      <td>redcross_npl@gmail.com</td>
-      <td>www.redcrossnepal.com</td>
-    </tr>
+        <tr>
+          <td><?php echo $ngo['id'] ?></td>
+          <td><?php echo $ngo['organization'] ?></td>
+          <td><?php echo $ngo['address'] ?></td>
+          <td><?php echo $ngo['phone_no'] ?></td>
+          <td><?php echo $ngo['alternate_phone_no'] ?></td>
+          <td><?php echo $ngo['contact_person'] ?></td>
+          <td><?php echo $ngo['personal_no'] ?></td>
+          <td><?php echo $ngo['email'] ?></td>
+          <td><?php echo $ngo['website'] ?></td>
 
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Kathmandu</td>
-      <td>9849515124</td>
-      <td>01-425485</td>
-      <td>Mr. Ram Krishna Wagle</td>
-      <td>Operations Manager</td>
-      <td>98510451245</td>
-      <td>redcross_npl@gmail.com</td>
-      <td>www.redcrossnepal.com</td>
-    </tr>
+        </tr>
 
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Kathmandu</td>
-      <td>9849515124</td>
-      <td>01-425485</td>
-      <td>Mr. Ram Krishna Wagle</td>
-      <td>Operations Manager</td>
-      <td>98510451245</td>
-      <td>redcross_npl@gmail.com</td>
-      <td>www.redcrossnepal.com</td>
-    </tr>
-
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Kathmandu</td>
-      <td>9849515124</td>
-      <td>01-425485</td>
-      <td>Mr. Ram Krishna Wagle</td>
-      <td>Operations Manager</td>
-      <td>98510451245</td>
-      <td>redcross_npl@gmail.com</td>
-      <td>www.redcrossnepal.com</td>
-    </tr>
-
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Kathmandu</td>
-      <td>9849515124</td>
-      <td>01-425485</td>
-      <td>Mr. Ram Krishna Wagle</td>
-      <td>Operations Manager</td>
-      <td>98510451245</td>
-      <td>redcross_npl@gmail.com</td>
-      <td>www.redcrossnepal.com</td>
-    </tr>
-
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Kathmandu</td>
-      <td>9849515124</td>
-      <td>01-425485</td>
-      <td>Mr. Ram Krishna Wagle</td>
-      <td>Operations Manager</td>
-      <td>98510451245</td>
-      <td>redcross_npl@gmail.com</td>
-      <td>www.redcrossnepal.com</td>
-    </tr>
-
+   <?php } ?>
   </table>
 </div>
 </div>
@@ -570,76 +336,23 @@
       <th><span>Phone No.</span></th>
       <th><span>Email</span></th>
     </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Mr. Rameshwor Thapa</td>
-      <td>Nepal Youth circle</td>
-      <td>Event Manager</td>
-      <td>Lalitpur</td>
-      <td>9841652324</td>
-      <td>ramesh_wor@gmail.com</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Mr. Rameshwor Thapa</td>
-      <td>Nepal Youth circle</td>
-      <td>Event Manager</td>
-      <td>Lalitpur</td>
-      <td>9841652324</td>
-      <td>ramesh_wor@gmail.com</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Mr. Rameshwor Thapa</td>
-      <td>Nepal Youth circle</td>
-      <td>Event Manager</td>
-      <td>Lalitpur</td>
-      <td>9841652324</td>
-      <td>ramesh_wor@gmail.com</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Mr. Rameshwor Thapa</td>
-      <td>Nepal Youth circle</td>
-      <td>Event Manager</td>
-      <td>Lalitpur</td>
-      <td>9841652324</td>
-      <td>ramesh_wor@gmail.com</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Mr. Rameshwor Thapa</td>
-      <td>Nepal Youth circle</td>
-      <td>Event Manager</td>
-      <td>Lalitpur</td>
-      <td>9841652324</td>
-      <td>ramesh_wor@gmail.com</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Mr. Rameshwor Thapa</td>
-      <td>Nepal Youth circle</td>
-      <td>Event Manager</td>
-      <td>Lalitpur</td>
-      <td>9841652324</td>
-      <td>ramesh_wor@gmail.com</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Mr. Rameshwor Thapa</td>
-      <td>Nepal Youth circle</td>
-      <td>Event Manager</td>
-      <td>Lalitpur</td>
-      <td>9841652324</td>
-      <td>ramesh_wor@gmail.com</td>
-    </tr>
+    <?php foreach ($ddr as $ddr) {
+      // code...
+     ?>
+
+     <tr>
+       <td><?php echo $ddr['id'] ?></td>
+       <td><?php echo $ddr['photo'] ?></td>
+       <td><?php echo $ddr['name'] ?></td>
+       <td><?php echo $ddr['organization'] ?></td>
+       <td><?php echo $ddr['post'] ?></td>
+       <td><?php echo $ddr['address'] ?></td>
+       <td><?php echo $ddr['phone_no'] ?></td>
+       <td><?php echo $ddr['email'] ?></td>
+
+     </tr>
+
+   <?php } ?>
   </table>
 </div>
 </div>
@@ -658,76 +371,23 @@
       <th><span>Phone No.</span></th>
       <th><span>Email</span></th>
     </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Mr. Rameshwor Thapa</td>
-      <td>Nepal Youth circle</td>
-      <td>Event Manager</td>
-      <td>Lalitpur</td>
-      <td>9841652324</td>
-      <td>ramesh_wor@gmail.com</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Mr. Rameshwor Thapa</td>
-      <td>Nepal Youth circle</td>
-      <td>Event Manager</td>
-      <td>Lalitpur</td>
-      <td>9841652324</td>
-      <td>ramesh_wor@gmail.com</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Mr. Rameshwor Thapa</td>
-      <td>Nepal Youth circle</td>
-      <td>Event Manager</td>
-      <td>Lalitpur</td>
-      <td>9841652324</td>
-      <td>ramesh_wor@gmail.com</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Mr. Rameshwor Thapa</td>
-      <td>Nepal Youth circle</td>
-      <td>Event Manager</td>
-      <td>Lalitpur</td>
-      <td>9841652324</td>
-      <td>ramesh_wor@gmail.com</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Mr. Rameshwor Thapa</td>
-      <td>Nepal Youth circle</td>
-      <td>Event Manager</td>
-      <td>Lalitpur</td>
-      <td>9841652324</td>
-      <td>ramesh_wor@gmail.com</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Mr. Rameshwor Thapa</td>
-      <td>Nepal Youth circle</td>
-      <td>Event Manager</td>
-      <td>Lalitpur</td>
-      <td>9841652324</td>
-      <td>ramesh_wor@gmail.com</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Mr. Rameshwor Thapa</td>
-      <td>Nepal Youth circle</td>
-      <td>Event Manager</td>
-      <td>Lalitpur</td>
-      <td>9841652324</td>
-      <td>ramesh_wor@gmail.com</td>
-    </tr>
+    <?php foreach ($personnel as $personnel) {
+
+     ?>
+
+     <tr>
+       <td><?php echo $personnel['id'] ?></td>
+       <td><?php echo $personnel['photo'] ?></td>
+       <td><?php echo $personnel['name'] ?></td>
+       <td><?php echo $personnel['organization'] ?></td>
+       <td><?php echo $personnel['post'] ?></td>
+       <td><?php echo $personnel['address'] ?></td>
+       <td><?php echo $personnel['phone_no'] ?></td>
+       <td><?php echo $personnel['email'] ?></td>
+
+     </tr>
+
+   <?php } ?>
   </table>
 </div>
 </div>
@@ -737,7 +397,7 @@
    <!-- responsive table for displaying contact directory -->
    <table class="responstable">
     <tr>
-      <th><span>S.N (test)</span></th>
+      <th><span>S.N</span></th>
       <th data-th="Members of Municipal Assembly"><span>Photo</span></th>
       <th><span>Name</span></th>
       <th><span>Organization</span></th>
@@ -746,76 +406,23 @@
       <th><span>Phone No.</span></th>
       <th><span>Email</span></th>
     </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Mr. Rameshwor Thapa</td>
-      <td>Nepal Youth circle</td>
-      <td>Event Manager</td>
-      <td>Lalitpur</td>
-      <td>9841652324</td>
-      <td>ramesh_wor@gmail.com</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Mr. Rameshwor Thapa</td>
-      <td>Nepal Youth circle</td>
-      <td>Event Manager</td>
-      <td>Lalitpur</td>
-      <td>9841652324</td>
-      <td>ramesh_wor@gmail.com</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Mr. Rameshwor Thapa</td>
-      <td>Nepal Youth circle</td>
-      <td>Event Manager</td>
-      <td>Lalitpur</td>
-      <td>9841652324</td>
-      <td>ramesh_wor@gmail.com</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Mr. Rameshwor Thapa</td>
-      <td>Nepal Youth circle</td>
-      <td>Event Manager</td>
-      <td>Lalitpur</td>
-      <td>9841652324</td>
-      <td>ramesh_wor@gmail.com</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Mr. Rameshwor Thapa</td>
-      <td>Nepal Youth circle</td>
-      <td>Event Manager</td>
-      <td>Lalitpur</td>
-      <td>9841652324</td>
-      <td>ramesh_wor@gmail.com</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Mr. Rameshwor Thapa</td>
-      <td>Nepal Youth circle</td>
-      <td>Event Manager</td>
-      <td>Lalitpur</td>
-      <td>9841652324</td>
-      <td>ramesh_wor@gmail.com</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Red Cross society</td>
-      <td>Mr. Rameshwor Thapa</td>
-      <td>Nepal Youth circle</td>
-      <td>Event Manager</td>
-      <td>Lalitpur</td>
-      <td>9841652324</td>
-      <td>ramesh_wor@gmail.com</td>
-    </tr>
+    <?php foreach ($members as $members) {
+
+     ?>
+
+        <tr>
+          <td><?php echo $members['id'] ?></td>
+          <td><?php echo $members['photo'] ?></td>
+          <td><?php echo $members['name'] ?></td>
+          <td><?php echo $members['organization'] ?></td>
+          <td><?php echo $members['post'] ?></td>
+          <td><?php echo $members['address'] ?></td>
+          <td><?php echo $members['phone_no'] ?></td>
+          <td><?php echo $members['email'] ?></td>
+
+        </tr>
+
+   <?php } ?>
   </table>
 </div>
 </div>
