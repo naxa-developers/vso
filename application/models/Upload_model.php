@@ -5,19 +5,29 @@ class Upload_model extends CI_Model {
 
 
 
-public function get_emergency_con(){
+public function get_emergency_con($cat){
 
 $this->db->select('*');
+$this->db->where('category',$cat);
 $query=$this->db->get('emergency_contact');
 return $query->result_array();
 
 
 }
+public function get_emergency_per($cat){
 
-public function delete($id){
+$this->db->select('*');
+$this->db->where('category',$cat);
+$query=$this->db->get('emergency_personnel');
+return $query->result_array();
+
+
+}
+
+public function delete($id,$tbl){
 
 $this->db->where('id',$id);
-return $this->db->delete('emergency_contact');
+return $this->db->delete($tbl);
 
 }
 
@@ -106,13 +116,20 @@ $this->db->where('id',$id);
 $query=$this->db->get('emergency_contact');
 return $query->row_array();
 
+}
+public function e_data_personnel($id){
+
+$this->db->select('*');
+$this->db->where('id',$id);
+$query=$this->db->get('emergency_personnel');
+return $query->row_array();
 
 }
 
-public function update_emerg($id,$data){
+public function update_emerg($id,$data,$tbl){
 
   $this->db->where('id',$id);
-  return $this->db->update('emergency_contact',$data);
+  return $this->db->update($tbl,$data);
 
 
 }
@@ -120,6 +137,10 @@ public function update_emerg($id,$data){
 public function insert_emrg($data){
 
 return  $this->db->insert('emergency_contact',$data);
+}
+public function insert_emrg_personnel($data){
+
+return  $this->db->insert('emergency_personnel',$data);
 }
 
 }

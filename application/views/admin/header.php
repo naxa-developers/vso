@@ -162,6 +162,13 @@
 
                         <!-- <li><a href="<?php echo base_url();?>create_categories_tbl">Create Database Tables</a></li>
                         <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
+                          <li><a href="<?php echo base_url()?>emergency_contact?cat=health">Health Institutions</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_contact?cat=responders">Emergency Responders</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_contact?cat=security">Security</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_contact?cat=ngo">NGOs and INGOs</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel?cat=ddr">DRR Volunteers</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel?cat=personnel">Municipality Personnel</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel?cat=members">Members of Municipal Assemblysss</a></li>
 
                     </ul>
                 </li>

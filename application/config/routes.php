@@ -115,9 +115,12 @@ $route['layers_edit'] = 'Admin/LayersController/layers_edit';
 
 $route['background'] = 'Admin/UploadController/bck_img';
 $route['emergency_contact'] = 'Admin/UploadController/emergency_contact';
+$route['emergency_personnel'] = 'Admin/UploadController/emergency_personnel';
 $route['delete_emergency'] = 'Admin/UploadController/delete_emerg';
 $route['edit_emergency'] = 'Admin/UploadController/edit_emerg';
+$route['edit_emergency_personnel'] = 'Admin/UploadController/edit_emerg_personnel';
 $route['add_emergency'] = 'Admin/UploadController/add_emergency';
+$route['add_emergency_personnel'] = 'Admin/UploadController/add_emergency_personnel';
 $route['add_icon'] = 'Admin/UploadController/add_icon';
 
 
