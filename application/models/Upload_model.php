@@ -90,6 +90,33 @@ return $this->db->delete($tbl);
 
     }
   }
+  public function do_upload_emerg($filename,$name)
+  {
+
+    $field_name                     ='emerg_pic';
+    $config['upload_path']          = './uploads/emergency_personnel/';
+    $config['allowed_types']        = 'gif|jpg|png';
+    $config['max_size']             = 7000;
+    $config['overwrite']             = TRUE;
+    $config['file_name']           = $name;
+
+    $this->load->library('upload', $config);
+
+    if ( ! $this->upload->do_upload($field_name))
+    {
+      $error = array('error' => $this->upload->display_errors());
+      return $error;
+
+
+    }
+    else
+    {
+
+
+      return 1;
+
+    }
+  }
 
 
   public function update_data($data){
@@ -138,9 +165,19 @@ public function insert_emrg($data){
 
 return  $this->db->insert('emergency_contact',$data);
 }
+
 public function insert_emrg_personnel($data){
 
-return  $this->db->insert('emergency_personnel',$data);
+  $this->db->insert('emergency_personnel',$data);
+if ($this->db->affected_rows() > 0)
+{
+ return $this->db->insert_id();
+}
+else
+{
+  $error = $this->db->error();
+  return $error;
+}
 }
 
 }

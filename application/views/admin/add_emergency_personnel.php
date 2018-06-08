@@ -15,7 +15,7 @@
             Form Elements
         </header>
         <div class="panel-body">
-            <form class="form-horizontal bucket-form" method="post" action="">
+            <form class="form-horizontal bucket-form" method="post" action="" enctype="multipart/form-data">
 
 
 
@@ -67,8 +67,31 @@
                   </div>
               </div>
 
-            
 
+              <div class="form-group ">
+                <label class="control-label col-md-3"> Personnel Photo</label>
+                <div class="col-md-9">
+                  <br>
+                  <div class="col-md-6">
+
+                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                      <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                      </div>
+                      <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                      <div>
+                        <span class="btn btn-white btn-file">
+                          <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
+                          <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                          <input type="file" name="emerg_pic" class="default" />
+                        </span>
+
+
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                  </div>
 
 
 

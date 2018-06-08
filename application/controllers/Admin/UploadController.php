@@ -199,6 +199,10 @@ class UploadController extends CI_Controller
       $insert=$this->Upload_model->insert_emrg($_POST);
       if($insert){
 
+
+
+
+
         $this->session->set_flashdata('msg','Emergency Contact Added successfully');
         redirect('emergency_contact?cat='.$cat);
 
@@ -237,8 +241,54 @@ class UploadController extends CI_Controller
  public function emergency_personnel()
 {
 
+
+
+
   $cat=$this->input->get('cat');
 //echo $cat ;
+if(isset($_POST['submit']))
+{
+
+  $id=$this->input->post('id');
+  $file_name = $_FILES['emerg_pic']['name'];
+
+
+
+  $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+
+
+
+  $img_upload=$this->Upload_model->do_upload_emerg($file_name,$id);
+
+
+  if($img_upload==1){
+
+    $image_path=base_url() . 'uploads/emergency_personnel/'.$id.'.'.$ext ;
+
+    $data=array(
+
+      'photo'=>$image_path
+
+    );
+
+    $update=$this->Upload_model->update_emerg($id,$data,'emergency_personnel');
+    $this->session->set_flashdata('msg','successfully Photo Changed');
+    redirect('emergency_personnel?cat='.$cat);
+
+}else{
+
+  $code= strip_tags($img_upload['error']);
+
+
+
+  $this->session->set_flashdata('msg', $code);
+  redirect('emergency_personnel?cat='.$cat);
+
+
+}
+
+
+}else{
 
   $this->body['data']=$this->Upload_model->get_emergency_per($cat);
   $this->body['cat']=$cat;
@@ -246,6 +296,7 @@ class UploadController extends CI_Controller
   $this->load->view('admin/header');
   $this->load->view('admin/emergency_personnel_tbl',$this->body);
   $this->load->view('admin/footer');
+}
 
 }
 
@@ -260,12 +311,48 @@ public function add_emergency_personnel(){
 
     $_POST['category']=$cat;
     unset($_POST['submit']);
-
+    unset($_POST['emerg_pic']);
+ //var_dump($_POST);
     $insert=$this->Upload_model->insert_emrg_personnel($_POST);
-    if($insert){
 
-      $this->session->set_flashdata('msg','Emergency Contact Added successfully');
-      redirect('emergency_personnel?cat='.$cat);
+
+    if($insert!=""){
+
+      $file_name = $_FILES['emerg_pic']['name'];
+
+
+
+      $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+
+
+
+      $img_upload=$this->Upload_model->do_upload_emerg($file_name,$insert);
+
+
+      if($img_upload==1){
+
+        $image_path=base_url() . 'uploads/emergency_personnel/'.$insert.'.'.$ext ;
+
+        $data=array(
+
+          'photo'=>$image_path
+
+        );
+
+        $update=$this->Upload_model->update_emerg($insert,$data,'emergency_personnel');
+        $this->session->set_flashdata('msg','Emergency Contact Added successfully');
+        redirect('emergency_personnel?cat='.$cat);
+}else{
+
+  $code= strip_tags($img_upload['error']);
+
+
+
+  $this->session->set_flashdata('msg', $code);
+  redirect('emergency_personnel?cat='.$cat);
+
+}
+
 
 
     }else{

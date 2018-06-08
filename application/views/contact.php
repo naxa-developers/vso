@@ -342,7 +342,7 @@
 
      <tr>
        <td><?php echo $ddr['id'] ?></td>
-       <td><?php echo $ddr['photo'] ?></td>
+       <td><img src="<?php echo $ddr['photo']?>" height="50" width="50"></td>
        <td><?php echo $ddr['name'] ?></td>
        <td><?php echo $ddr['organization'] ?></td>
        <td><?php echo $ddr['post'] ?></td>
@@ -377,7 +377,7 @@
 
      <tr>
        <td><?php echo $personnel['id'] ?></td>
-       <td><?php echo $personnel['photo'] ?></td>
+       <td><img src="<?php echo $personnel['photo']?>" height="50" width="50"></td>
        <td><?php echo $personnel['name'] ?></td>
        <td><?php echo $personnel['organization'] ?></td>
        <td><?php echo $personnel['post'] ?></td>
@@ -412,7 +412,7 @@
 
         <tr>
           <td><?php echo $members['id'] ?></td>
-          <td><?php echo $members['photo'] ?></td>
+       <td><img src="<?php echo $members['photo']?>" height="50" width="50"></td>
           <td><?php echo $members['name'] ?></td>
           <td><?php echo $members['organization'] ?></td>
           <td><?php echo $members['post'] ?></td>
