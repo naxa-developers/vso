@@ -121,7 +121,7 @@
     <div class="col-sm-12 text-center">
         <div class="row no-gutters">
           <div class="col">
-            <input class="form-control border-secondary border-right-0 rounded-0" type="search" placeholder="Search For.." id="example-search-input4">
+            <input class="form-control border-secondary border-right-0 rounded-0" type="search" placeholder="Search For.." id="myInput" onkeyup="myFunction()">
           </div>
           <div class="col-auto">
             <button class="btn btn-secondary border-left-0 rounded-0 rounded-right" type="button">
@@ -190,16 +190,16 @@
 
         ?>
 
-        <tr>
-          <td><?php echo $health['id'] ?></td>
-          <td><?php echo $health['organization'] ?></td>
-          <td><?php echo $health['address'] ?></td>
-          <td><?php echo $health['phone_no'] ?></td>
-          <td><?php echo $health['alternate_phone_no'] ?></td>
-          <td><?php echo $health['contact_person'] ?></td>
-          <td><?php echo $health['personal_no'] ?></td>
-          <td><?php echo $health['email'] ?></td>
-          <td><?php echo $health['website'] ?></td>
+        <tr class="tr_tbl">
+          <td id="<?php echo $health['id'] ?>idhealth"><?php echo $health['id'] ?></td>
+          <td id="<?php echo $health['id'] ?>organizationhealth"><?php echo $health['organization'] ?></td>
+          <td id="<?php echo $health['id'] ?>addresshealth"><?php echo $health['address'] ?></td>
+          <td id="<?php echo $health['id'] ?>phone_nohealth"><?php echo $health['phone_no'] ?></td>
+          <td id="<?php echo $health['id'] ?>alternate_phone_nohealth"><?php echo $health['alternate_phone_no'] ?></td>
+          <td id="<?php echo $health['id'] ?>contact_personhealth"><?php echo $health['contact_person'] ?></td>
+          <td id="<?php echo $health['id'] ?>personal_nohealth"><?php echo $health['personal_no'] ?></td>
+          <td id="<?php echo $health['id'] ?>emailhealth"><?php echo $health['email'] ?></td>
+          <td id="<?php echo $health['id'] ?>websitehealth"><?php echo $health['website'] ?></td>
 
         </tr>
  <?php } ?>
@@ -229,16 +229,16 @@
     // code...
    ?>
 
-      <tr>
-        <td><?php echo $responders['id'] ?></td>
-        <td><?php echo $responders['organization'] ?></td>
-        <td><?php echo $responders['address'] ?></td>
-        <td><?php echo $responders['phone_no'] ?></td>
-        <td><?php echo $responders['alternate_phone_no'] ?></td>
-        <td><?php echo $responders['contact_person'] ?></td>
-        <td><?php echo $responders['personal_no'] ?></td>
-        <td><?php echo $responders['email'] ?></td>
-        <td><?php echo $responders['website'] ?></td>
+      <tr class="tr_tbl">
+        <td id="<?php echo $responders['id'] ?>idresponders"><?php echo $responders['id'] ?></td>
+        <td id="<?php echo $responders['id'] ?>organizationresponders"><?php echo $responders['organization'] ?></td>
+        <td id="<?php echo $responders['id'] ?>addressresponders"><?php echo $responders['address'] ?></td>
+        <td id="<?php echo $responders['id'] ?>phone_noresponders"><?php echo $responders['phone_no'] ?></td>
+        <td id="<?php echo $responders['id'] ?>alternate_phone_noresponders"><?php echo $responders['alternate_phone_no'] ?></td>
+        <td id="<?php echo $responders['id'] ?>contact_personresponders"><?php echo $responders['contact_person'] ?></td>
+        <td id="<?php echo $responders['id'] ?>personal_noresponders"><?php echo $responders['personal_no'] ?></td>
+        <td id="<?php echo $responders['id'] ?>emailresponders"><?php echo $responders['email'] ?></td>
+        <td id="<?php echo $responders['id'] ?>websiteresponders"><?php echo $responders['website'] ?></td>
 
       </tr>
 
@@ -265,20 +265,21 @@
       <th><span>Website</span></th>
     </tr>
 
+
     <?php foreach ($security as $security) {
       // code...
     } ?>
-
-    <td><?php echo $security['id'] ?></td>
-    <td><?php echo $security['organization'] ?></td>
-    <td><?php echo $security['address'] ?></td>
-    <td><?php echo $security['phone_no'] ?></td>
-    <td><?php echo $security['alternate_phone_no'] ?></td>
-    <td><?php echo $security['contact_person'] ?></td>
-    <td><?php echo $security['personal_no'] ?></td>
-    <td><?php echo $security['email'] ?></td>
-    <td><?php echo $security['website'] ?></td>
-
+    <tr class="tr_tbl">
+    <td id="<?php echo $security['id'] ?>idSecurity"><?php echo $security['id'] ?></td>
+    <td id="<?php echo $security['id'] ?>organizationSecurity"><?php echo $security['organization'] ?></td>
+    <td id="<?php echo $security['id'] ?>addressSecurity"><?php echo $security['address'] ?></td>
+    <td id="<?php echo $security['id'] ?>phone_noSecurity"><?php echo $security['phone_no'] ?></td>
+    <td id="<?php echo $security['id'] ?>alternate_phone_noSecurity"><?php echo $security['alternate_phone_no'] ?></td>
+    <td id="<?php echo $security['id'] ?>contact_personSecurity"><?php echo $security['contact_person'] ?></td>
+    <td id="<?php echo $security['id'] ?>personal_noSecurity"><?php echo $security['personal_no'] ?></td>
+    <td id="<?php echo $security['id'] ?>emailSecurity"><?php echo $security['email'] ?></td>
+    <td id="<?php echo $security['id'] ?>websiteSecurity"><?php echo $security['website'] ?></td>
+  </tr>
 
   </table>
 </div>
@@ -304,16 +305,16 @@
       // code...
      ?>
 
-        <tr>
-          <td><?php echo $ngo['id'] ?></td>
-          <td><?php echo $ngo['organization'] ?></td>
-          <td><?php echo $ngo['address'] ?></td>
-          <td><?php echo $ngo['phone_no'] ?></td>
-          <td><?php echo $ngo['alternate_phone_no'] ?></td>
-          <td><?php echo $ngo['contact_person'] ?></td>
-          <td><?php echo $ngo['personal_no'] ?></td>
-          <td><?php echo $ngo['email'] ?></td>
-          <td><?php echo $ngo['website'] ?></td>
+        <tr class="tr_tbl">
+          <td id="<?php echo $ngo['id'] ?>idngo"><?php echo $ngo['id'] ?></td>
+          <td id="<?php echo $ngo['id'] ?>organizationngo"><?php echo $ngo['organization'] ?></td>
+          <td id="<?php echo $ngo['id'] ?>addressngo"><?php echo $ngo['address'] ?></td>
+          <td id="<?php echo $ngo['id'] ?>phone_nongo"><?php echo $ngo['phone_no'] ?></td>
+          <td id="<?php echo $ngo['id'] ?>alternate_phone_nongo" ><?php echo $ngo['alternate_phone_no'] ?></td>
+          <td id="<?php echo $ngo['id'] ?>contact_personngo"><?php echo $ngo['contact_person'] ?></td>
+          <td id="<?php echo $ngo['id'] ?>personal_nongo"><?php echo $ngo['personal_no'] ?></td>
+          <td id="<?php echo $ngo['id'] ?>emailngo"><?php echo $ngo['email'] ?></td>
+          <td id="<?php echo $ngo['id'] ?>websitengo"><?php echo $ngo['website'] ?></td>
 
         </tr>
 
@@ -340,15 +341,15 @@
       // code...
      ?>
 
-     <tr>
-       <td><?php echo $ddr['id'] ?></td>
-       <td><img src="<?php echo $ddr['photo']?>" height="50" width="50"></td>
-       <td><?php echo $ddr['name'] ?></td>
-       <td><?php echo $ddr['organization'] ?></td>
-       <td><?php echo $ddr['post'] ?></td>
-       <td><?php echo $ddr['address'] ?></td>
-       <td><?php echo $ddr['phone_no'] ?></td>
-       <td><?php echo $ddr['email'] ?></td>
+     <tr class="tr_tbl">
+       <td id="<?php echo $ddr['id'] ?>idddr"><?php echo $ddr['id'] ?></td>
+       <td id="<?php echo $ddr['id'] ?>photoddr" ><img src="<?php echo $ddr['photo']?>" height="50" width="50"></td>
+       <td id="<?php echo $ddr['id'] ?>nameddr"><?php echo $ddr['name'] ?></td>
+       <td id="<?php echo $ddr['id'] ?>organizationddr"><?php echo $ddr['organization'] ?></td>
+       <td id="<?php echo $ddr['id'] ?>postddr"><?php echo $ddr['post'] ?></td>
+       <td id="<?php echo $ddr['id'] ?>addressddr"><?php echo $ddr['address'] ?></td>
+       <td id="<?php echo $ddr['id'] ?>phone_noddr"><?php echo $ddr['phone_no'] ?></td>
+       <td id="<?php echo $ddr['id'] ?>emailddr"><?php echo $ddr['email'] ?></td>
 
      </tr>
 
@@ -375,15 +376,15 @@
 
      ?>
 
-     <tr>
-       <td><?php echo $personnel['id'] ?></td>
-       <td><img src="<?php echo $personnel['photo']?>" height="50" width="50"></td>
-       <td><?php echo $personnel['name'] ?></td>
-       <td><?php echo $personnel['organization'] ?></td>
-       <td><?php echo $personnel['post'] ?></td>
-       <td><?php echo $personnel['address'] ?></td>
-       <td><?php echo $personnel['phone_no'] ?></td>
-       <td><?php echo $personnel['email'] ?></td>
+     <tr class="tr_tbl">
+       <td id="<?php echo $personnel['id'] ?>idpersonnel"><?php echo $personnel['id'] ?></td>
+       <td id="<?php echo $personnel['id'] ?>photopersonnel"><img src="<?php echo $personnel['photo']?>" height="50" width="50"></td>
+       <td id="<?php echo $personnel['id'] ?>namepersonnel"><?php echo $personnel['name'] ?></td>
+       <td id="<?php echo $personnel['id'] ?>organizationpersonnel"><?php echo $personnel['organization'] ?></td>
+       <td id="<?php echo $personnel['id'] ?>postpersonnel"><?php echo $personnel['post'] ?></td>
+       <td id="<?php echo $personnel['id'] ?>addresspersonnel"><?php echo $personnel['address'] ?></td>
+       <td id="<?php echo $personnel['id'] ?>phone_nopersonnel"><?php echo $personnel['phone_no'] ?></td>
+       <td id="<?php echo $personnel['id'] ?>emailpersonnel"><?php echo $personnel['email'] ?></td>
 
      </tr>
 
@@ -410,15 +411,15 @@
 
      ?>
 
-        <tr>
-          <td><?php echo $members['id'] ?></td>
-       <td><img src="<?php echo $members['photo']?>" height="50" width="50"></td>
-          <td><?php echo $members['name'] ?></td>
-          <td><?php echo $members['organization'] ?></td>
-          <td><?php echo $members['post'] ?></td>
-          <td><?php echo $members['address'] ?></td>
-          <td><?php echo $members['phone_no'] ?></td>
-          <td><?php echo $members['email'] ?></td>
+        <tr class="tr_tbl">
+          <td id="<?php echo $members['id'] ?>idmembers"><?php echo $members['id'] ?></td>
+          <td id="<?php echo $members['id'] ?>photomembers"><img src="<?php echo $members['photo']?>" height="50" width="50"></td>
+          <td id="<?php echo $members['id'] ?>namemembers"><?php echo $members['name'] ?></td>
+          <td id="<?php echo $members['id'] ?>organizationmembers"><?php echo $members['organization'] ?></td>
+          <td id="<?php echo $members['id'] ?>postmembers"><?php echo $members['post'] ?></td>
+          <td id="<?php echo $members['id'] ?>addressmembers"><?php echo $members['address'] ?></td>
+          <td id="<?php echo $members['id'] ?>phone_nomembers"><?php echo $members['phone_no'] ?></td>
+          <td id="<?php echo $members['id'] ?>emailmembers"><?php echo $members['email'] ?></td>
 
         </tr>
 
@@ -430,7 +431,65 @@
 
 </div>
 
-<script src="<?php echo base_url()?>assets/jsbootstrap-tabdrop.js"></script>
+<script src="<?php echo base_url()?>assets/js/bootstrap-tabdrop.js"></script>
 <script type="text/javascript">
-  $(".nav-tabs").tabdrop();
+ $(".nav-tabs").tabdrop();
+
+
+
+
+  function myFunction() {
+    // Declare variables
+   var  input, filter, div, tr, i ,j;
+    input = document.getElementById('myInput');
+
+    filter = input.value.toUpperCase();
+
+  //
+     div = document.getElementsByClassName("tab-pane");
+  //
+     // td = document.getElementsByTagName('td');
+     tr = document.getElementsByClassName('tr_tbl');
+      // console.log(td);
+  //   console.log(h5);
+  //   console.log(div);
+  //   console.log(filter);
+  //   console.log(input);
+  //
+  //   // Loop through all list items, and hide those who don't match the search query
+ // var ab='Juddha Barun Yantra Karyalaya'
+ // console.log(ab.toUpperCase().indexOf(filter));
+console.log(tr);
+ for(j = 0; j < tr.length; j++){
+   //console.log(tr);
+   var closeit = 0;
+    for (i = 0; i < tr[j].children.length; i++) {
+        var td = tr[j].children[i];
+        //console.log(td);
+        // a = h5[i].getElementsByTagName("a")[0];
+         //console.log(td[i].innerHTML.toUpperCase().indexOf(filter));
+
+        if(closeit == 0){
+          $("#"+td.id).parent().css('display','none');
+          //console.log("not found on"+td[i].id);
+
+        }
+
+        if ((td.innerText.toUpperCase().indexOf(filter) > -1) && closeit == 0) {
+        // console.log("found on"+td.id);
+        // console.log(closeit);
+          
+            $("#"+td.id).parent().css('display','');
+            closeit = 1;
+
+
+        }
+
+    }
+    //console.log("row");
+}
+
+  }
+
+
 </script>
