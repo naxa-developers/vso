@@ -7,9 +7,9 @@
             <section class="panel">
               <section class="panel">
                   <header class="panel-heading">
-                      Hover Table
+                     <b>Map Downloads</b>
                       <span class="tools pull-right">
-                        <a href="<?php echo base_url()?>add_layers"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Layers</button></a>
+                        <a href="<?php echo base_url()?>add_maps"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Maps</button></a>
                        </span>
                   </header>
                   <div class="panel-body">
@@ -29,7 +29,7 @@
                       <h4> NO Data   </h4>
 
                     <?php }else{ ?>
-                      <table class="table table-hover">
+                      <table class="table table-hover" id='tb1'>
                           <thead>
 
 
@@ -40,6 +40,7 @@
 
                             <?php foreach($data[0] as $key => $value){
 
+                                if($key=='category'){}else{
 
                                           ?>
                               <td>
@@ -52,7 +53,7 @@
                														      }?>
 
                               </td>
-                            <?php  } ?>
+                            <?php  } }?>
                             <td>
                               Operations
                             </td>
@@ -66,21 +67,80 @@
 
                               <?php foreach($v as $key => $value) {
 
+                                if($key=='photo'){
 
 
+            echo '<td><button type="button" class="btn btn-round btn-danger" data-toggle="modal" data-target="#myModal'.$v['id'].'"> change  Photo</button></td>';
+                                      ?>
+                              <?php   }elseif($key=='category'){}else{ ?>
 
-                                  ?>
                               <td><?php echo $value;?></td>
-                            <?php }  ?>
-                              <td><a href="<?php echo base_url()?>layers_detail?tbl_name=<?php echo base64_encode($v['layer_table']);?>">View</a> /
-                                <a href="<?php echo base_url()?>edit_categories?id=<?php echo base64_encode($v['id']);?>&& tbl=<?php echo base64_encode($tbl_name);?>">Edit</a> /
-                                <a href="<?php echo base_url()?>delete_data?id=<?php echo  $v['id'];?> && tbl=<?php echo ($tbl_name);?> && cat_tbl=<?php echo $v['layer_table']  ?>">Delete</a></td>
+                            <?php }}  ?>
+                              <td>
+                                <a href="<?php echo base_url()?>edit_map?id=<?php echo base64_encode($v['id']);?> ">Edit</a> /
+                                <a href="<?php echo base_url()?>delete_map?id=<?php echo $v['id'];?>">Delete</a></td>
 
 
 
 
 
                           </tr>
+                          <!-- modal start -->
+
+
+                          <!-- Modal -->
+                            <div class="modal fade" id="myModal<?php echo  $v['id'];?>" role="dialog">
+                              <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Change Photo</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>.</p>
+
+                                    <form action="" method="POST" enctype="multipart/form-data">
+                                      <input type="text" name="id" value="<?php echo  $v['id'];?>" hidden>
+
+                                                  <div class="form-group ">
+                                                    <label class="control-label col-md-3"></label>
+                                                    <div class="col-md-9">
+                                                      <br>
+                                                      <div class="col-md-6">
+                                                        Upload Image
+                                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                          <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                                            <img src="<?php echo  $v['photo'];?>" alt="" />
+                                                          </div>
+                                                          <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                                          <div>
+                                                            <span class="btn btn-white btn-file">
+                                                              <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
+                                                              <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                                                              <input type="file" name="map_pic" class="default" />
+                                                            </span>
+
+
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      </div>
+                                                      </div>
+                                <button type="submit" name="submit" class="btn btn-danger">Change</button>
+                              </form>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div>
+                          <!-- modal end -->
+
                         <?php  }?>
                           </tbody>
                       </table>
