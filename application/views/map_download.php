@@ -75,8 +75,7 @@ h6.base {
 			<div class="row">
 				<div class="col-md-4">
 					<div class="input-group">
-						<input class="form-control"
-						placeholder="Search here...">
+						<input class="form-control" placeholder="Search here..." id="myInput" onkeyup="myFunction()">
 						<div class="input-group-addon" ><i class="fa fa-search"></i></div>
 					</div>
 				</div>
@@ -106,34 +105,17 @@ h6.base {
 
 
 	<div class="row">
-		<div class="col-md-3"><img src="assets/img/bm.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img1"><h6 class="base ">Street Map</h6> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
-		</div>
 
-		<div class="col-md-3"><img src="assets/img/bm1.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img2"><h6 class="base ">Satellite Map</h6> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
-		</div>
+<?php  foreach ($data as $v){ ?>
 
-		<div class="col-md-3"><img src="assets/img/bm2.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img3"><h6 class="base ">Dark Map</h6> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
-		</div>
-
-		<div class="col-md-3"><img src="assets/img/bm4.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality">
-			<h6 class="base ">Outdoor Map</h6> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
+		<div class="col-sm-3 basemap myUL">
+		<a href="<?php echo $v['photo']?>"  target="_blank"><img src="<?php echo $v['photo']  ?>" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img1"></a>
+			<h6 class="base" id="<?php echo $v['id']  ?>"><?php echo $v['title']  ?></h6>
+			 <p class="para"><?php echo $v['summary']  ?></p>
 
 		</div>
 
-			<div class="col-md-3"><img src="assets/img/bm.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img1"><h6 class="base ">Street Map</h6> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
-		</div>
-
-		<div class="col-md-3"><img src="assets/img/bm1.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img2"><h6 class="base ">Satellite Map</h6> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
-		</div>
-
-		<div class="col-md-3"><img src="assets/img/bm2.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img3"><h6 class="base ">Dark Map</h6> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
-		</div>
-
-		<div class="col-md-3"><img src="assets/img/bm4.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality">
-			<h6 class="base ">Outdoor Map</h6> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
-
-		</div>
-
+	<?php } ?>
 
 	</div>
 
@@ -141,3 +123,33 @@ h6.base {
 
 </div>
 </div>
+
+<script type="text/javascript">
+
+function myFunction() {
+	// Declare variables
+ var  input, filter, div, h5, a, i;
+	input = document.getElementById('myInput');
+
+	filter = input.value.toUpperCase();
+
+
+
+	h6 = document.getElementsByTagName('h6');
+
+
+	// Loop through all list items, and hide those who don't match the search query
+	for (i = 0; i < h6.length; i++) {
+			// a = h5[i].getElementsByTagName("a")[0];
+			 //console.log(h5[i].innerHTML.toUpperCase().indexOf(filter));
+			if (h6[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+
+					$("#"+h6[i].id).parent().css('display','');
+			} else {
+
+							$("#"+h6[i].id).parent().css('display','none');
+			}
+	}
+}
+
+</script>

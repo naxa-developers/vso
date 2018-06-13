@@ -7,10 +7,10 @@
             <section class="panel">
               <section class="panel">
                   <header class="panel-heading">
-                      <b>Reports</b>
-                      <!-- <span class="tools pull-right">
-                        <a href="<?php echo base_url()?>add_proj"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Project Partner</button></a>
-                       </span> -->
+                     <b>Emergency Contacts</b>
+                      <span class="tools pull-right">
+                        <a href="<?php echo base_url()?>add_emergency_personnel?cat=<?php echo $cat ?>"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Emergency Contact</button></a>
+                       </span>
                   </header>
                   <div class="panel-body">
 
@@ -40,9 +40,8 @@
 
                             <?php foreach($data[0] as $key => $value){
 
-                                if ($key=='id'||$key=='latitude'||$key=='longitude'||$key=='photo') {
-                                  // code...
-                                }else{
+                                if($key=='category'){}else{
+
                                           ?>
                               <td>
 
@@ -54,7 +53,7 @@
                														      }?>
 
                               </td>
-                            <?php  }} ?>
+                            <?php  } }?>
                             <td>
                               Operations
                             </td>
@@ -68,46 +67,24 @@
 
                               <?php foreach($v as $key => $value) {
 
-                                if ($key=='id'||$key=='latitude'||$key=='longitude'||$key=='photo') {
-                                  // code...
-                                }elseif($key=='status'){
-
-                                    if($value=='ongoing'){
-                                     echo '<td><button type="button" class="btn btn-round btn-primary" data-toggle="modal" data-target="#myModal'.$v['id'].'">Ongoing</button></td>';
-
-                                   } elseif($value=='completed'){
-                                      echo '<td><button type="button" class="btn btn-round btn-success" data-toggle="modal" data-target="#myModal'.$v['id'].'">Completed</button></td>';
-
-                                    } elseif($value=='pending'){
-                                       echo '<td><button type="button" class="btn btn-round btn-danger" data-toggle="modal" data-target="#myModal'.$v['id'].'">Pending</button></td>';
-
-                                   }else{
-
-                                    echo '<td><button type="button" class="btn btn-round btn-warning" data-toggle="modal" data-target="#myModal'.$v['id'].'"> choose status</button></td>';
-                                   }
+                                if($key=='photo'){
 
 
-
-
-                                 }else{ ?>
-
-
-
-
+            echo '<td><button type="button" class="btn btn-round btn-danger" data-toggle="modal" data-target="#myModal'.$v['id'].'"> change  Photo</button></td>';
+                                      ?>
+                              <?php   }elseif($key=='category'){}else{ ?>
 
                               <td><?php echo $value;?></td>
                             <?php }}  ?>
                               <td>
-
-                          <a href="<?php echo base_url()?>report/delete?id=<?php echo  $v['id'];?>">Delete</a>
-                        </td>
+                                <a href="<?php echo base_url()?>edit_emergency_personnel?id=<?php echo base64_encode($v['id']);?> && cat=<?php echo $cat ?> && tbl=emergency_personnel">Edit</a> /
+                                <a href="<?php echo base_url()?>delete_emergency?id=<?php echo $v['id'];?> && cat=<?php echo $cat ?> && tbl=emergency_personnel">Delete</a></td>
 
 
 
 
 
                           </tr>
-
                           <!-- modal start -->
 
 
@@ -119,23 +96,38 @@
                                 <div class="modal-content">
                                   <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Change Status</h4>
+                                    <h4 class="modal-title">Change Photo</h4>
                                   </div>
                                   <div class="modal-body">
-                                    <p>Choose Status.</p>
+                                    <p>.</p>
 
-                                    <form action="" method="POST">
+                                    <form action="" method="POST" enctype="multipart/form-data">
                                       <input type="text" name="id" value="<?php echo  $v['id'];?>" hidden>
-                                <label class="radio-inline">
-                                  <input type="radio" name="status" value="pending">Pending
-                                </label>
-                                <label class="radio-inline">
-                                  <input type="radio" name="status" value="ongoing">Ongoing
-                                </label>
-                                <label class="radio-inline">
-                                  <input type="radio" name="status" value="completed">Completed
-                                </label>
-                                <br><br>
+
+                                                  <div class="form-group ">
+                                                    <label class="control-label col-md-3"></label>
+                                                    <div class="col-md-9">
+                                                      <br>
+                                                      <div class="col-md-6">
+                                                        Upload Image
+                                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                          <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                                            <img src="<?php echo  $v['photo'];?>" alt="" />
+                                                          </div>
+                                                          <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                                          <div>
+                                                            <span class="btn btn-white btn-file">
+                                                              <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
+                                                              <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                                                              <input type="file" name="emerg_pic" class="default" />
+                                                            </span>
+
+
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      </div>
+                                                      </div>
                                 <button type="submit" name="submit" class="btn btn-danger">Change</button>
                               </form>
 
@@ -148,8 +140,6 @@
                               </div>
                             </div>
                           <!-- modal end -->
-
-
 
                         <?php  }?>
                           </tbody>
@@ -164,12 +154,6 @@
 
         </div>
     <!-- page end-->
-
-
-
     </section>
 </section>
-
-
-
 <!--main content end-->

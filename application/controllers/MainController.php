@@ -13,8 +13,18 @@ class MainController extends CI_Controller
 
 
 public function contact(){
+
+$this->body['health']=$this->Main_model->get_contact('health','emergency_contact');
+$this->body['responders']=$this->Main_model->get_contact('responders','emergency_contact');
+$this->body['security']=$this->Main_model->get_contact('security','emergency_contact');
+$this->body['ngo']=$this->Main_model->get_contact('ngo','emergency_contact');
+$this->body['ddr']=$this->Main_model->get_contact('ddr','emergency_personnel');
+$this->body['personnel']=$this->Main_model->get_contact('personnel','emergency_personnel');
+$this->body['members']=$this->Main_model->get_contact('members','emergency_personnel');
+
+//svar_dump($this->body['ddr']);
   $this->load->view('header');
-  $this->load->view('contact');
+  $this->load->view('contact',$this->body);
   $this->load->view('footer');
 
 }
@@ -63,8 +73,8 @@ $this->load->model('Publication_model');
    $this->body['baseline_data']=$this->Main_model->get_cat_baseline($tbl);
 
 
-   
-   $this->body['emerg_contact']=$this->Upload_model->get_emergency_con();
+
+   //$this->body['emerg_contact']=$this->Upload_model->get_emergency_con();
 
     $this->load->view('header');
     $this->load->view('main',$this->body);

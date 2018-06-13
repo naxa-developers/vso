@@ -18,7 +18,7 @@ public function map_download()
 
  $this->body['data']=$this->Map_model->get_map_download_data();
   $this->load->view('header');
-  $this->load->view('map_download');
+  $this->load->view('map_download',$this->body);
   $this->load->view('footer');
 
 }

@@ -9,7 +9,7 @@
                   <header class="panel-heading">
                      <b>Emergency Contacts</b>
                       <span class="tools pull-right">
-                        <a href="<?php echo base_url()?>add_emergency"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Emergency Contact</button></a>
+                        <a href="<?php echo base_url()?>add_emergency?cat=<?php echo $cat ?>"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Emergency Contact</button></a>
                        </span>
                   </header>
                   <div class="panel-body">
@@ -73,8 +73,8 @@
                               <td><?php echo $value;?></td>
                             <?php }  ?>
                               <td>
-                                <a href="<?php echo base_url()?>edit_emergency?id=<?php echo base64_encode($v['id']);?>">Edit</a> /
-                                <a href="<?php echo base_url()?>delete_emergency?id=<?php echo $v['id'];?>">Delete</a></td>
+                                <a href="<?php echo base_url()?>edit_emergency?id=<?php echo base64_encode($v['id']);?> && cat=<?php echo $cat ?> && tbl=emergency_contact"">Edit</a> /
+                                <a href="<?php echo base_url()?>delete_emergency?id=<?php echo $v['id'];?> && cat=<?php echo $cat ?> && tbl=emergency_contact">Delete</a></td>
 
 
 

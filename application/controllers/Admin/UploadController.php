@@ -15,237 +15,432 @@ class UploadController extends CI_Controller
 
 
 
-public function csv_upload(){
+  public function csv_upload(){
 
-echo $this->input->get("tbl");
-$this->load->view("admin/header");
-$this->load->view("admin/csv_file");
-$this->load->view("admin/footer");
+    echo $this->input->get("tbl");
+    $this->load->view("admin/header");
+    $this->load->view("admin/csv_file");
+    $this->load->view("admin/footer");
 
 
+  }
+
+  public function bck_img(){
+
+
+
+    if(isset($_POST['submit'])){
+
+      $file_name = $_FILES['back_pic']['name'];
+
+      $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+      $proj_name='p';
+
+
+      $img_upload=$this->Upload_model->do_upload($file_name,$proj_name);
+
+      if($img_upload==1){
+
+        $image_path=base_url() . 'assets/img/'.$proj_name.'.'.$ext ;
+
+        $data=array(
+
+          'background_img_path'=>$image_path
+
+        );
+
+        $update=$this->Upload_model->update_data($data);
+
+        if($update==1){
+
+
+          $this->session->set_flashdata('msg', 'Background Image successfully Changed');
+          redirect('background');
+
+        }else{
+
+          //db error
+        }
+
+      }else{
+
+
+        $code= strip_tags($img_upload['error']);
+
+
+
+        $this->session->set_flashdata('msg', $code);
+        redirect('background');
+      }
+
+
+
+
+
+
+
+
+
+    }else{
+
+      $this->load->view('admin/header');
+      $this->load->view('admin/upload_bck_img');
+      $this->load->view('admin/footer');
+
+
+
+
+
+    }
+
+
+  }
+
+  //emergency contact start
+
+  public function  emergency_contact(){
+
+    $cat=$this->input->get('cat');
+
+
+    $this->body['data']=$this->Upload_model->get_emergency_con($cat);
+    $this->body['cat']=$cat;
+
+    $this->load->view('admin/header');
+    $this->load->view('admin/emergency_contact_tbl',$this->body);
+    $this->load->view('admin/footer');
+
+
+
+  }
+
+  public function delete_emerg(){
+
+      $cat=$this->input->get('cat');
+      $tbl=$this->input->get('tbl');
+      echo $tbl;
+    $delete=$this->Upload_model->delete($this->input->get('id'),$tbl);
+
+
+    if($delete){
+
+      $this->session->set_flashdata('msg','Successfully Deleted');
+
+      if($tbl=='emergency_contact'){
+          redirect('emergency_contact?cat='.$cat);
+
+}else{
+    redirect('emergency_personnel?cat='.$cat);
 }
 
-public function bck_img(){
+
+    }else{
+
+      //db error
+    }
+
+
+  }
+
+
+  public function edit_emerg(){
+
+    $cat=$this->input->get('cat');
+    $tbl=$this->input->get('tbl');
+
+    if(isset($_POST['submit'])){
+
+      unset($_POST['submit']);
 
 
 
-if(isset($_POST['submit'])){
+      $update=$this->Upload_model->update_emerg($this->input->post('id'),$_POST,$tbl);
 
-  $file_name = $_FILES['back_pic']['name'];
-
-  $ext = pathinfo($file_name, PATHINFO_EXTENSION);
-  $proj_name='p';
+      if($update){
 
 
-  $img_upload=$this->Upload_model->do_upload($file_name,$proj_name);
-
-  if($img_upload==1){
-
-    $image_path=base_url() . 'assets/img/'.$proj_name.'.'.$ext ;
-
-    $data=array(
-
-      'background_img_path'=>$image_path
-
-    );
-
-      $update=$this->Upload_model->update_data($data);
-
-      if($update==1){
-
-
-        $this->session->set_flashdata('msg', 'Background Image successfully Changed');
-        redirect('background');
+        $this->session->set_flashdata('msg','Updated successfully');
+        redirect('emergency_contact?cat='.$cat);
 
       }else{
 
         //db error
       }
 
-}else{
 
+    }else{
+
+
+
+
+      $this->body['e_data']=$this->Upload_model->e_data(base64_decode($this->input->get('id')));
+      //echo base64_decode($this->input->get('id'));
+      // var_dump($this->body['e_data']);
+
+      $this->load->view('admin/header');
+      $this->load->view('admin/edit_emerg',$this->body);
+      $this->load->view('admin/footer');
+
+    }
+
+
+  }
+
+  public function add_emergency(){
+
+    $cat=$this->input->get('cat');
+
+    if(isset($_POST['submit'])){
+
+
+      $_POST['category']=$cat;
+      unset($_POST['submit']);
+
+      $insert=$this->Upload_model->insert_emrg($_POST);
+      if($insert){
+
+
+
+
+
+        $this->session->set_flashdata('msg','Emergency Contact Added successfully');
+        redirect('emergency_contact?cat='.$cat);
+
+
+      }else{
+
+        //db error
+      }
+
+    }else{
+
+      $this->load->view('admin/header');
+      $this->load->view('admin/add_emergency');
+      $this->load->view('admin/footer');
+
+    }
+
+
+
+
+
+
+
+  }
+
+
+  //emergency contact end
+
+
+
+
+
+
+  //emergency contact personal
+
+ public function emergency_personnel()
+{
+
+
+
+
+  $cat=$this->input->get('cat');
+//echo $cat ;
+if(isset($_POST['submit']))
+{
+
+  $id=$this->input->post('id');
+  $file_name = $_FILES['emerg_pic']['name'];
+
+
+
+  $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+
+
+
+  $img_upload=$this->Upload_model->do_upload_emerg($file_name,$id);
+
+
+  if($img_upload==1){
+
+    $image_path=base_url() . 'uploads/emergency_personnel/'.$id.'.'.$ext ;
+
+    $data=array(
+
+      'photo'=>$image_path
+
+    );
+
+    $update=$this->Upload_model->update_emerg($id,$data,'emergency_personnel');
+    $this->session->set_flashdata('msg','successfully Photo Changed');
+    redirect('emergency_personnel?cat='.$cat);
+
+}else{
 
   $code= strip_tags($img_upload['error']);
 
 
 
   $this->session->set_flashdata('msg', $code);
-  redirect('background');
+  redirect('emergency_personnel?cat='.$cat);
+
+
 }
 
 
-
-
-
-
-
-
-
 }else{
+
+  $this->body['data']=$this->Upload_model->get_emergency_per($cat);
+  $this->body['cat']=$cat;
 
   $this->load->view('admin/header');
-  $this->load->view('admin/upload_bck_img');
+  $this->load->view('admin/emergency_personnel_tbl',$this->body);
   $this->load->view('admin/footer');
-
-
-
-
-
 }
-
 
 }
 
 
 
-public function  emergency_contact(){
+public function add_emergency_personnel(){
 
-  $this->body['data']=$this->Upload_model->get_emergency_con();
+  $cat=$this->input->get('cat');
 
-  $this->load->view('admin/header');
-  $this->load->view('admin/emergency_contact_tbl',$this->body);
-  $this->load->view('admin/footer');
+  if(isset($_POST['submit'])){
 
 
+    $_POST['category']=$cat;
+    unset($_POST['submit']);
+    unset($_POST['emerg_pic']);
+ //var_dump($_POST);
+    $insert=$this->Upload_model->insert_emrg_personnel($_POST);
 
-}
 
-public function delete_emerg(){
+    if($insert!=""){
 
-$delete=$this->Upload_model->delete($this->input->get('id'));
-
-if($delete){
-
-$this->session->set_flashdata('msg','Successfully Deleted');
-redirect('emergency_contact');
+      $file_name = $_FILES['emerg_pic']['name'];
 
 
 
+      $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+
+
+
+      $img_upload=$this->Upload_model->do_upload_emerg($file_name,$insert);
+
+
+      if($img_upload==1){
+
+        $image_path=base_url() . 'uploads/emergency_personnel/'.$insert.'.'.$ext ;
+
+        $data=array(
+
+          'photo'=>$image_path
+
+        );
+
+        $update=$this->Upload_model->update_emerg($insert,$data,'emergency_personnel');
+        $this->session->set_flashdata('msg','Emergency Contact Added successfully');
+        redirect('emergency_personnel?cat='.$cat);
 }else{
 
-  //db error
+  $code= strip_tags($img_upload['error']);
+
+
+
+  $this->session->set_flashdata('msg', $code);
+  redirect('emergency_personnel?cat='.$cat);
+
 }
 
 
-}
 
+    }else{
 
-public function edit_emerg(){
+      //db error
+    }
 
-
-
-if(isset($_POST['submit'])){
-
-
-$data=array(
-
-'name'=>$this->input->post('name'),
-'address'=>$this->input->post('address'),
-'contact_number'=>$this->input->post('contact_number'),
-
-
-);
-
-
-$update=$this->Upload_model->update_emerg($this->input->post('id'),$data);
-
-if($update){
-
-
-$this->session->set_flashdata('msg','Updated successfully');
-redirect('emergency_contact');
-
-}else{
-
-  //db error
-}
-
-
-}else{
-
-
-
-
-$this->body['e_data']=$this->Upload_model->e_data(base64_decode($this->input->get('id')));
- echo base64_decode($this->input->get('id'));
- var_dump($this->body['e_data']);
+  }else{
 
     $this->load->view('admin/header');
-    $this->load->view('admin/edit_emerg',$this->body);
+    $this->load->view('admin/add_emergency_personnel');
     $this->load->view('admin/footer');
 
+  }
 }
 
+public function edit_emerg_personnel(){
 
-}
+  $cat=$this->input->get('cat');
+  $tbl=$this->input->get('tbl');
 
-public function add_emergency(){
+  if(isset($_POST['submit'])){
 
-if(isset($_POST['submit'])){
-
-  $data=array(
-
-  'name'=>$this->input->post('name'),
-  'address'=>$this->input->post('address'),
-  'contact_number'=>$this->input->post('contact_number'),
+    unset($_POST['submit']);
 
 
-  );
+
+    $update=$this->Upload_model->update_emerg($this->input->post('id'),$_POST,$tbl);
+
+    if($update){
 
 
-  $insert=$this->Upload_model->insert_emrg($data);
-  if($insert){
+      $this->session->set_flashdata('msg','Updated successfully');
+      redirect('emergency_personnel?cat='.$cat);
 
-    $this->session->set_flashdata('msg','Emergency Contact Added successfully');
-    redirect('emergency_contact');
+    }else{
+
+      //db error
+    }
 
 
   }else{
 
-    //db error
+
+
+
+    $this->body['e_data']=$this->Upload_model->e_data_personnel(base64_decode($this->input->get('id')));
+    //echo base64_decode($this->input->get('id'));
+    // var_dump($this->body['e_data']);
+
+    $this->load->view('admin/header');
+    $this->load->view('admin/edit_emerg_personnel',$this->body);
+    $this->load->view('admin/footer');
+
   }
 
-}else{
-
-  $this->load->view('admin/header');
-  $this->load->view('admin/add_emergency');
-  $this->load->view('admin/footer');
 
 }
 
 
 
 
+  //emergency contact personal end
+
+  public function add_icon(){
+
+    if(isset($_POST['submit'])){
+
+      $file_name = $_FILES['back_pic']['name'];
+
+      $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+      $proj_name='icon'.time();
 
 
+      $img_upload=$this->Upload_model->do_upload_icon($file_name,$proj_name);
 
-}
+      if($img_upload==1){
 
+        $image_path=base_url() . 'uploads/icons/'.$proj_name.'.'.$ext ;
 
-public function add_icon(){
+        $data=array(
 
-  if(isset($_POST['submit'])){
+          'icon_path'=>$image_path
 
-    $file_name = $_FILES['back_pic']['name'];
-
-    $ext = pathinfo($file_name, PATHINFO_EXTENSION);
-    $proj_name='icon'.time();
-
-
-    $img_upload=$this->Upload_model->do_upload_icon($file_name,$proj_name);
-
-    if($img_upload==1){
-
-      $image_path=base_url() . 'uploads/icons/'.$proj_name.'.'.$ext ;
-
-      $data=array(
-
-        'icon_path'=>$image_path
-
-      );
+        );
 
         $update=$this->Upload_model->insert_icon($data);
-//var_dump($update);
+        //var_dump($update);
         if($update==NULL){
 
 
@@ -257,34 +452,34 @@ public function add_icon(){
           //db error
         }
 
-  }else{
+      }else{
 
 
-    $code= strip_tags($img_upload['error']);
+        $code= strip_tags($img_upload['error']);
 
 
 
-    $this->session->set_flashdata('msg', $code);
-    redirect('add_icon');
+        $this->session->set_flashdata('msg', $code);
+        redirect('add_icon');
+      }
+
+
+
+
+
+
+
+
+
+    }else{
+
+
+      $this->load->view('admin/header');
+      $this->load->view('admin/icons');
+      $this->load->view('admin/footer');
+
+    }
+
   }
-
-
-
-
-
-
-
-
-
-  }else{
-
-
-  $this->load->view('admin/header');
-  $this->load->view('admin/icons');
-  $this->load->view('admin/footer');
-
-}
-
-}
 
 }//main
