@@ -27,6 +27,8 @@
 	border-radius: 5px;
 	cursor: pointer;
 	transition: 0.3s;
+	    height: 150px;
+    width: 250px
 }
 
 #myImg:hover {opacity: 0.7;}
@@ -59,7 +61,10 @@
 }
 p.para {
     font-size: 14px;
-    margin-top: -15px;
+    margin-top: -5px;
+}
+h6.base {
+    font-weight: bold;
 }
 </style>
 
@@ -99,32 +104,40 @@ p.para {
 		</div>
 	</div>
 
+
 	<div class="row">
-		<div class="col-sm-3 basemap"><img src="assets/img/bm.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img1"><p class="base ">Street Map</p> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
-		
+		<div class="col-md-3"><img src="assets/img/bm.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img1"><h6 class="base ">Street Map</h6> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
 		</div>
-		<div class="col-sm-3 basemap"><img src="assets/img/bm1.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img2"><p class="base ">Satellite Map</p> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
-		
+
+		<div class="col-md-3"><img src="assets/img/bm1.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img2"><h6 class="base ">Satellite Map</h6> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
 		</div>
-		<div class="col-sm-3 basemap"><img src="assets/img/bm2.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img3"><p class="base ">Dark Map</p> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
-		
+
+		<div class="col-md-3"><img src="assets/img/bm2.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img3"><h6 class="base ">Dark Map</h6> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
 		</div>
-		<div class="col-sm-3 basemap"><img src="assets/img/bm4.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality"><p class="base ">Outdoor Map</p> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
-		
+
+		<div class="col-md-3"><img src="assets/img/bm4.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality">
+			<h6 class="base ">Outdoor Map</h6> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
+
 		</div>
-		<div class="col-sm-3 basemap"><img src="assets/img/bm.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality"><p class="base ">Street Map</p> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
-		
+
+			<div class="col-md-3"><img src="assets/img/bm.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img1"><h6 class="base ">Street Map</h6> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
 		</div>
-		<div class="col-sm-3 basemap"><img src="assets/img/bm1.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality"><p class="base ">Satellite Map</p> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
-		
+
+		<div class="col-md-3"><img src="assets/img/bm1.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img2"><h6 class="base ">Satellite Map</h6> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
 		</div>
-		<div class="col-sm-3 basemap"><img src="assets/img/bm2.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality"><p class="base ">Dark Map</p> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
-		
+
+		<div class="col-md-3"><img src="assets/img/bm2.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img3"><h6 class="base ">Dark Map</h6> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
 		</div>
-		<div class="col-sm-3 basemap"><img src="assets/img/bm4.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality"><p class="base ">Outdoor Map</p> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
-		
+
+		<div class="col-md-3"><img src="assets/img/bm4.jpg" class="mapp-image" id="myImg" alt="cangunarayan municipality">
+			<h6 class="base ">Outdoor Map</h6> <p class="para">Lorem ipsum dolor sit amet and wer  para  que consectetur adipiscing elit.</p>
+
 		</div>
+
+
 	</div>
+
+	
 
 </div>
 </div>

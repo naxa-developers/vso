@@ -167,10 +167,8 @@
 
 <!-- page end-->
 </section>
-</section>
 <!--main content end-->
 
 
 
-//$(".spinner-input").val(5);
-</script>
+
