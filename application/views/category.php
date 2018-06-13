@@ -126,7 +126,7 @@ div#filter {
  overflow: hidden;
  width: 250px;
  background-color: #f3f3f3;
- padding: 5px;    
+ padding: 5px;
  border-radius: 0px;
  float: right;
  height: 545px;
@@ -203,8 +203,8 @@ span.ic {
 }
 
 div#over_map1 {
-  position: absolute; 
-  z-index: 8; 
+  position: absolute;
+  z-index: 8;
   right: 0px;
 }
 #wrap { position: relative; }
@@ -239,7 +239,7 @@ div#over_map1 {
 
 .panel.panel-success {
   background-color: #fff;
-  float:left;  
+  float:left;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -384,8 +384,8 @@ div#over_map1 {
 
 
 .categories .list-group-item{
-  font-size: 13px; 
-  border-left: none; 
+  font-size: 13px;
+  border-left: none;
   border-right: none;
   border-radius: 0;
   margin-bottom: -1px;
@@ -417,7 +417,7 @@ div#over_map1 {
 .list-cat-panel {
 /*  overflow-y: auto;
 height: 280px;*/
-} 
+}
 
 .head-panel .control div a{
   color: #0056b3;
@@ -620,19 +620,19 @@ height: 280px;*/
 }
 
 #table1 .form-group{
-  margin-bottom: 5px; 
-  border-radius: 0; 
+  margin-bottom: 5px;
+  border-radius: 0;
   /*padding: 0px 10px;*/
 }
 div#map{
-  width:100%; 
-  height:545px; 
+  width:100%;
+  height:545px;
   z-index:1;
   margin-top: 0px;
 }
 
 #legend .cate{
-  font-size: 13px; 
+  font-size: 13px;
   font-weight: 600;
 }
 
@@ -797,15 +797,15 @@ div#left-panel-toggle {
   background-color: #f3f3f3;
 }
 .indicator{
-  background-color: green;
+
   position: relative;
   display: inline-block;
   color: #fff;
   height: 9px;
   width: 27px;
-  margin-left: 5px; 
+  margin-left: 5px;
   border-radius:7px;
-  margin-bottom: 1px; 
+  margin-bottom: 1px;
   margin-right: 5px;
 }
 div#table1 {
@@ -865,10 +865,22 @@ div#table1 {
 											</div> -->
 
 											<div class="col-md-12">
-                        <span class="indicator" data-toggle="tooltip" data-placement="top" title="Resources"></span>
+                        <?php if($data['category_type']=='Exposure_Data'){ ?>
+
+                        <span class="indicator" style="background-color:<?php echo 'green' ?>" data-toggle="tooltip" data-placement="top" title="Exposure Data"></span>
+
+
+                     <?php }elseif($data['category_type']=='Baseline_Data'){ ?>
+
+                         <span class="indicator" style="background-color:<?php echo 'blue' ?>" data-toggle="tooltip" data-placement="top" title="Baseline Data"></span>
+
+                       <?php }else{ ?>
+                             <span class="indicator" style="background-color:<?php echo 'red' ?>" data-toggle="tooltip" data-placement="top" title="Hazard Data"></span>
+
+                          <?php } ?>
                         <a href="#open-modal" id="appl" >
                         <img src="<?php echo base_url()?>assets/img/filter.png" class="filter-icon"></a>
-                        
+
                         <?php	if($data['default_load']=='0'){ ?>
                         <button type="button" value = "<?php echo $data['category_table'];?>" id = "<?php echo $data['category_table'].'_toggle'?>" class="btn btn-xs btn-toggle  CheckBox" data-toggle="button" aria-pressed="false" autocomplete="off">
                           <?php	}else{ ?>
@@ -917,7 +929,7 @@ div#table1 {
                         <label class="form-check-label">
                           <input type="checkbox" class="form-check-input" value="" checked>College
                         </label>
-                      </div> 
+                      </div>
                       <div class="form-check">
                         <label class="form-check-label">
                           <input type="checkbox" class="form-check-input" value="">University
@@ -930,7 +942,7 @@ div#table1 {
                       </div>
                     </div>
 
-                    
+
                   </div>
                 </li>
               </ul>
