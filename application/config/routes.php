@@ -69,6 +69,8 @@ $route['manage_style'] ='MapController/manage_style';
 $route['update_summary'] ='MapController/update_summary';
 $route['map_download'] ='MapController/map_download';
 
+$route['news_register'] ='NewsletterController/register';
+
 
 
 

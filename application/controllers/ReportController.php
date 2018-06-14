@@ -303,7 +303,7 @@ class ReportController extends CI_Controller
 
     // code...
   }
-  
+
   public function delete_data(){
 
     $id=$this->input->get('id');

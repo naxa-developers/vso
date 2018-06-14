@@ -197,6 +197,7 @@
           <td id="<?php echo $health['id'] ?>phone_nohealth"><?php echo $health['phone_no'] ?></td>
           <td id="<?php echo $health['id'] ?>alternate_phone_nohealth"><?php echo $health['alternate_phone_no'] ?></td>
           <td id="<?php echo $health['id'] ?>contact_personhealth"><?php echo $health['contact_person'] ?></td>
+          <td id="<?php echo $health['id'] ?>contact_personhealth"><?php echo $health['post'] ?></td>
           <td id="<?php echo $health['id'] ?>personal_nohealth"><?php echo $health['personal_no'] ?></td>
           <td id="<?php echo $health['id'] ?>emailhealth"><?php echo $health['email'] ?></td>
           <td id="<?php echo $health['id'] ?>websitehealth"><?php echo $health['website'] ?></td>
@@ -478,7 +479,7 @@ console.log(tr);
         if ((td.innerText.toUpperCase().indexOf(filter) > -1) && closeit == 0) {
         // console.log("found on"+td.id);
         // console.log(closeit);
-          
+
             $("#"+td.id).parent().css('display','');
             closeit = 1;
 

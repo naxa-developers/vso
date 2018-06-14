@@ -361,6 +361,10 @@ class CategoriesController extends CI_Controller
 
 
           if($upload_type=='csv'){
+            $this->load->model('Newsletter');
+            $mail_subject='Data Map Added in VSO Webpage';
+            $m='New Data Map('.$cat_name.')has been added in VSO Webpage.Plese follow link to view new Map Data <br>'.base_url().'category?tbl='.$cat_table;
+            $this->Newsletter->send_mail($m,$mail_subject);
             $this->session->set_flashdata('msg','Important!!!Create Table for the category '.$cat_name);
             redirect('csv_data_tbl?tbl='.base64_encode($cat_name).'&& id='.base64_encode($insert).'&& tbl_name='.base64_encode($cat_table));
 

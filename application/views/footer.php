@@ -16,11 +16,11 @@
               <div class="col-md-4">
                 <div class="fbox">
                   <h4>Subscribe To Our Newsletter</h4>
-                  <form>
+                  <form action="<?php echo base_url()?>news_register" method="POST">
                     <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Email Address" aria-label="Email Address" aria-describedby="basic-addon2">
+                      <input type="email" class="form-control" name="email" placeholder="Email Address" aria-label="Email Address" aria-describedby="basic-addon2">
                       <div class="input-group-append">
-                        <button class="btn btn-secondary" type="button">Subscribe</button>
+                        <button class="btn btn-secondary" name="submit"  type="submit">Subscribe</button>
                       </div>
                     </div>
                   </form>
@@ -37,7 +37,7 @@
                     <li><a href="https://www.dpnet.org.np/" target="_blank">Nepal: Disaster Preparedness Network Nepal (DPNET)</a></li>
                     <li><a href="http://un.org.np/thematicareas/disasterpreparedness/erp" target="_blank">Emergency Response Plan</a></li>
                   </ul>
-                </div>                  
+                </div>
               </div>
 
             </div>
@@ -105,6 +105,3 @@
   </body>
 
 </html>
-
-
-

@@ -73,12 +73,12 @@
       <div class="input-group">
         <!-- <input class="form-control"
         placeholder="Search here..."> -->
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search ">
+      	<input class="form-control" placeholder="Search here..." id="myInput" onkeyup="myFunction()">
         <div class="input-group-addon" ></div>
       </div>
     </div>
 
-    <div class="col-md-4">
+    <!-- <div class="col-md-4">
 
       <div class="form-group">
         <select class="custom-select">
@@ -88,16 +88,8 @@
           <option value="2" >Papers</option>
         </select>
       </div>
-    </div>
-    <div class="col-md-4"><div class="form-group">
-      <select class="custom-select">
-        <option value="0" selected disabled>Select Document</option>
-        <option value="3" >Document 1</option>
-        <option value="1" >Document 2</option>
-        <option value="2" >Document 3</option>
-      </select>
-    </div>
-  </div>
+    </div> -->
+
 </div>
 
 </div>

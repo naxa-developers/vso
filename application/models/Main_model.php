@@ -2,7 +2,16 @@
 class Main_model extends CI_Model {
 
 
+  public function get_feature()
+  {
 
+  $this->db->select('*');
+  $this->db->where('default_load','1');
+  $q=$this->db->get('featured_dataset');
+  return $q->row_array();
+
+
+  }
 
 
   public function get_post(){
@@ -21,7 +30,7 @@ public function get_contact($cat,$tbl)
   $q=$this->db->get($tbl);
   return $q->result_array();
 
-  
+
 }
 
 
