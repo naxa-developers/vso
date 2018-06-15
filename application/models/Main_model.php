@@ -6,7 +6,7 @@ class Main_model extends CI_Model {
   {
 
   $this->db->select('*');
-  $this->db->where('default_load','1');
+  $this->db->where('default','1');
   $q=$this->db->get('featured_dataset');
   return $q->row_array();
 

@@ -145,7 +145,7 @@
                     <ul class="sub">
 
                         <li><a href="<?php echo base_url();?>categories_tbl">Categories</a></li>
-                        <li><a href="<?php echo base_url();?>categories_tbl">Categories Popup</a></li>
+                        <!-- <li><a href="<?php echo base_url();?>categories_tbl">Categories Popup</a></li> -->
 
                     </ul>
                 </li>
@@ -209,8 +209,8 @@
                     </a>
                     <ul class="sub">
 
-                        <!-- <li><a href="<?php echo base_url();?>create_categories_tbl">Create Database Tables</a></li>
-                        <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
+                       <li><a href="<?php echo base_url();?>feature">Featured Datasets</a></li>
+                        <!--  <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
 
                     </ul>
                 </li>

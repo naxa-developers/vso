@@ -191,6 +191,49 @@ p.about {
 			</div>
 			<script type="text/javascript">
 
+    	// search from main page
+
+			var search ='<?php echo $search ?>';
+
+
+			if(search != 0 ){
+				searchFunction(search);
+
+
+				function searchFunction(search) {
+	 			 // Declare variables
+	 			var   filter, div, h5, a, i;
+
+
+	 		 	 filter = search.toUpperCase();
+				 	console.log(filter);
+
+	 			 div = document.getElementsByClassName("myUL");
+
+	 			 h5 = document.getElementsByTagName('h5');
+	 			 console.log(h5);
+	 			 console.log(div);
+	 			 console.log(filter);
+	 			// console.log(input);
+
+	 			 // Loop through all list items, and hide those who don't match the search query
+	 			 for (i = 0; i < h5.length; i++) {
+	 					 // a = h5[i].getElementsByTagName("a")[0];
+	 						//console.log(h5[i].innerHTML.toUpperCase().indexOf(filter));
+	 					 if (h5[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+	 						console.log('if');
+	 							 $("#"+h5[i].id).parent().css('display','');
+	 					 } else {
+	 		 console.log('else');
+	 									 $("#"+h5[i].id).parent().css('display','none');
+	 					 }
+	 			 }
+	 		 }
+
+		 }
+
+		// search from main page end
+
 			function myFunction() {
 			  // Declare variables
 			 var  input, filter, div, h5, a, i;

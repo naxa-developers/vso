@@ -118,7 +118,18 @@ $this->load->view('admin/login-page');
 
   public function dataset_page(){
 
+    if(isset($_POST['submit_search'])){
+
+
+     $this->body['search']=$this->input->post('search');
+     $this->body['data']=$this->Main_model->get_category();
+
+    }else{
+
+    $this->body['search']=0;
     $this->body['data']=$this->Main_model->get_category();
+
+    }
    //var_dump($this->body['data']);
     $this->load->view('header');
     $this->load->view('datasets',$this->body);

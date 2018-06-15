@@ -84,6 +84,10 @@ $route['map_reports'] ='ReportController/map_reports';
 // Admin routes
 
 $route['admin'] = 'Admin/LoginController';
+$route['feature'] = 'Admin/FeatureDataset/feature';
+$route['add_feature'] = 'Admin/FeatureDataset/add_feature';
+$route['delete_feature'] = 'Admin/FeatureDataset/delete_feature';
+$route['edit_feature'] = 'Admin/FeatureDataset/edit_feature';
 
 $route['table_create'] = 'Admin/TableController/create_table';
 $route['dashboard'] = 'Admin/CategoriesController';
