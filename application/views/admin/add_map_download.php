@@ -52,7 +52,7 @@
                                   </div>
 
                                   <div class="form-group ">
-                                    <label class="control-label col-md-3"> Personnel Photo</label>
+                                    <label class="control-label col-md-3"> Map Photo</label>
                                     <div class="col-md-9">
                                       <br>
                                       <div class="col-md-6">

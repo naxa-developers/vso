@@ -101,10 +101,13 @@ class UploadController extends CI_Controller
   public function  emergency_contact(){
 
     $cat=$this->input->get('cat');
+     // var_dump($cat);
+     $name=$this->input->get('name');
 
 
     $this->body['data']=$this->Upload_model->get_emergency_con($cat);
     $this->body['cat']=$cat;
+   $this->body['name']=$name;
 
     $this->load->view('admin/header');
     $this->load->view('admin/emergency_contact_tbl',$this->body);
@@ -245,6 +248,7 @@ class UploadController extends CI_Controller
 
 
   $cat=$this->input->get('cat');
+
 //echo $cat ;
 if(isset($_POST['submit']))
 {
@@ -292,6 +296,8 @@ if(isset($_POST['submit']))
 
   $this->body['data']=$this->Upload_model->get_emergency_per($cat);
   $this->body['cat']=$cat;
+  $name=$this->input->get('name');
+   $this->body['name']=$name;
 
   $this->load->view('admin/header');
   $this->load->view('admin/emergency_personnel_tbl',$this->body);

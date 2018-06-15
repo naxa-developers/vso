@@ -7,7 +7,7 @@
             <section class="panel">
               <section class="panel">
                   <header class="panel-heading">
-                     <b>Emergency Contacts</b>
+                      <b><?php echo $name ?></b>
                       <span class="tools pull-right">
                         <a href="<?php echo base_url()?>add_emergency_personnel?cat=<?php echo $cat ?>"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Emergency Contact</button></a>
                        </span>

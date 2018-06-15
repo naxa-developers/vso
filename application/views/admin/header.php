@@ -116,12 +116,12 @@
         <!-- sidebar menu start-->
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
-                <li>
+                <!-- <li>
                     <a class="active" href="index.html">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-laptop"></i>
@@ -162,13 +162,13 @@
 
                         <!-- <li><a href="<?php echo base_url();?>create_categories_tbl">Create Database Tables</a></li>
                         <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
-                          <li><a href="<?php echo base_url()?>emergency_contact?cat=health">Health Institutions</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_contact?cat=responders">Emergency Responders</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_contact?cat=security">Security</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_contact?cat=ngo">NGOs and INGOs</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel?cat=ddr">DRR Volunteers</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel?cat=personnel">Municipality Personnel</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel?cat=members">Members of Municipal Assemblysss</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_contact?name=Health Institutions&&cat=health">Health Institutions</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_contact?name=Emergency Responders&&cat=responders">Emergency Responders</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_contact?name=Security&&cat=security">Security</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_contact?name=NGOs and INGOs&&cat=ngo">NGOs and INGOs</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel?name=DRR Volunteers&&cat=ddr">DRR Volunteers</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Municipality Personnel&&cat=personnel">Municipality Personnel</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Members of Municipal Assemblysss&&cat=members">Members of Municipal Assemblysss</a></li>
 
                     </ul>
                 </li>
@@ -243,19 +243,19 @@
                     </ul>
                 </li>
 
-                <li class="sub-menu">
+                <!-- <li class="sub-menu">
                     <a href="javascript:;">
                         <i class=" fa fa-bar-chart-o"></i>
                         <span>Layers</span>
                     </a>
                     <ul class="sub">
                         <li><a href="<?php echo base_url();?>layers_view">Layers</a></li>
-                        <!-- <li><a href="chartjs.html">Chartjs</a></li>
+                        <li><a href="chartjs.html">Chartjs</a></li>
                         <li><a href="flot_chart.html">Flot Charts</a></li>
-                        <li><a href="c3_chart.html">C3 Chart</a></li> -->
+                        <li><a href="c3_chart.html">C3 Chart</a></li>
                     </ul>
-                </li>
-                <li class="sub-menu">
+                </li> -->
+                <!-- <li class="sub-menu">
                     <a href="javascript:;">
                         <i class=" fa fa-bar-chart-o"></i>
                         <span>Maps</span>
@@ -264,7 +264,7 @@
                         <li><a href="google_map.html">Google Map</a></li>
                         <li><a href="vector_map.html">Vector Map</a></li>
                     </ul>
-                </li>
+                </li> -->
 
 
             </ul>
