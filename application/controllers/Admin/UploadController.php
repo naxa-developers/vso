@@ -121,7 +121,8 @@ class UploadController extends CI_Controller
 
       $cat=$this->input->get('cat');
       $tbl=$this->input->get('tbl');
-      echo $tbl;
+
+
     $delete=$this->Upload_model->delete($this->input->get('id'),$tbl);
 
 
@@ -150,6 +151,7 @@ class UploadController extends CI_Controller
 
     $cat=$this->input->get('cat');
     $tbl=$this->input->get('tbl');
+    $name=$this->input->get('name');
 
     if(isset($_POST['submit'])){
 

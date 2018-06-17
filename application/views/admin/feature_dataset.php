@@ -79,7 +79,7 @@
                             <?php }}  ?>
                               <td>
                                 <a href="<?php echo base_url()?>edit_feature?id=<?php echo base64_encode($v['id']);?> ">Edit</a> /
-                                <a href="<?php echo base_url()?>delete_feature?id=<?php echo $v['id'];?>">Delete</a></td>
+                                <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>delete_feature?id=<?php echo $v['id'];?>">Delete</a></td>
 
 
 

@@ -205,7 +205,7 @@
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-th"></i>
-                        <span>Datasets</span>
+                        <span>Featured Datasets</span>
                     </a>
                     <ul class="sub">
 

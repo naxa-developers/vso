@@ -1,3 +1,4 @@
+
 <!--main content start-->
 <section id="main-content">
     <section class="wrapper">
@@ -7,10 +8,10 @@
             <section class="panel">
               <section class="panel">
                   <header class="panel-heading">
-                      <b><?php echo $name ?></b>
+                     <b><?php echo $name ?> Emergency Contact</b>
                       <span class="tools pull-right">
-                        <a href="<?php echo base_url()?>add_emergency_personnel?cat=<?php echo $cat ?>"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Emergency Contact</button></a>
-                       </span>
+          <a href="<?php echo base_url()?>add_emergency_personnel?cat=<?php echo $cat ?>"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Emergency Contact</button></a>
+                        </span>
                   </header>
                   <div class="panel-body">
 
@@ -78,7 +79,7 @@
                             <?php }}  ?>
                               <td>
                                 <a href="<?php echo base_url()?>edit_emergency_personnel?id=<?php echo base64_encode($v['id']);?> && cat=<?php echo $cat ?> && tbl=emergency_personnel">Edit</a> /
-                                <a href="<?php echo base_url()?>delete_emergency?id=<?php echo $v['id'];?> && cat=<?php echo $cat ?> && tbl=emergency_personnel">Delete</a></td>
+                                <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>delete_emergency?id=<?php echo $v['id'];?> && cat=<?php echo $cat ?> && tbl=emergency_personnel">Delete</a></td>
 
 
 

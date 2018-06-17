@@ -7,7 +7,7 @@
             <section class="panel">
 
                   <header class="panel-heading">
-                      Data OF Table <?php echo $tbl_name ?>
+                      Data OF Table <?php echo $name ?>
                       <span class="tools pull-right">
                           <a href="csv_upload?tbl=<?php echo base64_encode($tbl_name)?>"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-cloud-upload"></i> Upload Data </button></a>
                        </span>
@@ -72,7 +72,7 @@
                                   ?>
                               <td><?php echo $value;?></td>
                             <?php }  ?>
-                              <td><a href="<?php echo base_url()?>edit?id=<?php echo base64_encode($v['id']);?>&& tbl=<?php echo base64_encode($tbl_name);?> ">Edit</a>/<a href="<?php echo base_url()?>delete_data?id=<?php echo  $v['id'];?> && tbl=<?php echo $tbl_name;?>">Delete</a></td>
+                              <td><a href="<?php echo base_url()?>edit?id=<?php echo base64_encode($v['id']);?>&& tbl=<?php echo base64_encode($tbl_name);?> ">Edit</a>/<a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>delete_data?id=<?php echo  $v['id'];?> && tbl=<?php echo $tbl_name;?>">Delete</a></td>
 
 
 

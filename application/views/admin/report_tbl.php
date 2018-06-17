@@ -99,7 +99,7 @@
                             <?php }}  ?>
                               <td>
 
-                          <a href="<?php echo base_url()?>report/delete?id=<?php echo  $v['id'];?>">Delete</a>
+                          <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>report/delete?id=<?php echo  $v['id'];?>">Delete</a>
                         </td>
 
 

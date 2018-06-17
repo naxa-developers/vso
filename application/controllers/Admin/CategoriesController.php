@@ -28,12 +28,16 @@ class CategoriesController extends CI_Controller
   {
 
     $tbl_name=base64_decode($this->input->get('tbl_name'));
+    $name=str_replace('_'," ",$tbl_name);
+
+
 
     $this->body['data']=$this->Dash_model->get_tables_data($tbl_name);
 
     $this->body['data_nep']=$this->Dash_model->get_tables_data_lang('tbl_lang',$tbl_name);
     $this->body['fields']=$this->db->list_fields($tbl_name);
     $this->body['tbl_name']=$tbl_name;
+    $this->body['name']=$name;
 
     $this->load->view('admin/header');
     $this->load->view('admin/data_tables',$this->body);
