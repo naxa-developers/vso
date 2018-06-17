@@ -126,15 +126,43 @@
 
                                     <form action="" method="POST">
                                       <input type="text" name="id" value="<?php echo  $v['id'];?>" hidden>
+                                    <?php  if($v['status']=='pending') { ?>
                                 <label class="radio-inline">
-                                  <input type="radio" name="status" value="pending">Pending
+                                  <input type="radio" name="status" value="pending" checked>Pending
                                 </label>
                                 <label class="radio-inline">
-                                  <input type="radio" name="status" value="ongoing">Ongoing
+                                  <input type="radio" name="status" value="ongoing" >Ongoing
                                 </label>
                                 <label class="radio-inline">
-                                  <input type="radio" name="status" value="completed">Completed
+                                  <input type="radio" name="status" value="completed" >Completed
                                 </label>
+                              <?php }elseif($v['status']=='ongoing'){ ?>
+
+                                <label class="radio-inline">
+                                  <input type="radio" name="status" value="pending" >Pending
+                                </label>
+
+                                <label class="radio-inline">
+                                  <input type="radio" name="status" value="ongoing" checked>Ongoing
+                                </label>
+
+                                <label class="radio-inline">
+                                  <input type="radio" name="status" value="completed" >Completed
+                                </label>
+
+                              <?php }else{ ?>
+                                <label class="radio-inline">
+                                  <input type="radio" name="status" value="pending" >Pending
+                                </label>
+
+                                <label class="radio-inline">
+                                  <input type="radio" name="status" value="ongoing" >Ongoing
+                                </label>
+
+                                <label class="radio-inline">
+                                  <input type="radio" name="status" value="completed" checked>Completed
+                                </label>
+                              <?php } ?>
                                 <br><br>
                                 <button type="submit" name="submit" class="btn btn-danger">Change</button>
                               </form>
