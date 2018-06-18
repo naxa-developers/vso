@@ -1,3 +1,4 @@
+
 <!--main content start-->
 <section id="main-content">
     <section class="wrapper">
@@ -7,10 +8,10 @@
             <section class="panel">
               <section class="panel">
                   <header class="panel-heading">
-                     <b>Emergency Contacts</b>
+                     <b><?php echo $name ?> Emergency Contact</b>
                       <span class="tools pull-right">
                         <a href="<?php echo base_url()?>add_emergency?cat=<?php echo $cat ?>"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Emergency Contact</button></a>
-                       </span>
+                        </span>
                   </header>
                   <div class="panel-body">
 
@@ -29,7 +30,7 @@
                       <h4> NO Data   </h4>
 
                     <?php }else{ ?>
-                      <table class="table table-hover" id='tb1'>
+                      <table class="table table-hover" id="tb3">
                           <thead>
 
 
@@ -73,9 +74,8 @@
                               <td><?php echo $value;?></td>
                             <?php }  ?>
                               <td>
-                                <a href="<?php echo base_url()?>edit_emergency?id=<?php echo base64_encode($v['id']);?> && cat=<?php echo $cat ?> && tbl=emergency_contact"">Edit</a> /
-                                <a href="<?php echo base_url()?>delete_emergency?id=<?php echo $v['id'];?> && cat=<?php echo $cat ?> && tbl=emergency_contact">Delete</a></td>
-
+                                <a href="<?php echo base_url()?>edit_emergency?id=<?php echo base64_encode($v['id']);?> && cat=<?php echo $cat ?> && tbl=emergency_contact">Edit</a> /
+                                <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>delete_emergency?id=<?php echo $v['id'];?> && cat=<?php echo $cat ?> && tbl=emergency_contact">Delete</a></td>
 
 
 

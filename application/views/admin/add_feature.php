@@ -7,7 +7,7 @@
         <div class="col-lg-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Layer Upload
+                      Feature Dataset
                     </header>
                     <div class="panel-body">
                         <div class="position-center">
@@ -27,18 +27,18 @@
 
                                   <div class="form-group">
                                       <label for="exampleInputFile">Map Category</label>
-                                    <select name="category">
+                                    <select name="table">
+                                         <?php foreach($cat as $d){ ?>
+                                      <option value="<?php echo $d['category_table'] ?>"><?php echo $d['category_name']?></option>
 
-                                      <option value="street_map">street map</option>
-                                      <option value="satellite_map">satellite map</option>
-                                      <option value="outdoor_map">outdoor map</option>
-
+                                    <?php } ?>
                                     </select>
                                       </div>
 
                                   <div class="form-group">
                                     <label for="exampleInputEmail1">Title</label>
                                     <input type="text" name="title" class="form-control" id="exampleInputEmail1"  required>
+                                    <input type="hidden" name="default" value="1" class="form-control" id="exampleInputEmail1">
                                   </div>
 
 
@@ -52,7 +52,7 @@
                                   </div>
 
                                   <div class="form-group ">
-                                    <label class="control-label col-md-3"> Map Photo</label>
+                                    <label class="control-label col-md-3"> Feature Dataset Photo</label>
                                     <div class="col-md-9">
                                       <br>
                                       <div class="col-md-6">

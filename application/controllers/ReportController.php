@@ -282,6 +282,15 @@ class ReportController extends CI_Controller
 
       var_dump($_POST);
       $id=$this->input->post('id');
+      if($this->input->post('status')=='completed'){
+
+      $data=$this->Report_model->get_data($id);
+      $this->load->model('Newsletter');
+      $mail_subject='Report';
+      $m='Report submitted by '.$data["name"].' about '.$data["incident_type"].' From Ward '.$data["ward"].' has been Completed. Complaint was as:<br> '.$data["message"].'<br> Plese follow link to view all report <br>'.base_url().'report_page';
+      $this->Newsletter->send_mail($m,$mail_subject);
+
+      }
       $status=array(
         'status'=>$this->input->post('status'),
       );
@@ -303,7 +312,7 @@ class ReportController extends CI_Controller
 
     // code...
   }
-  
+
   public function delete_data(){
 
     $id=$this->input->get('id');

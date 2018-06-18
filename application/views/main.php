@@ -21,11 +21,11 @@
               <div class="col-md-6">
                 <div class="search-wrap text-center">
                   <h3 class="mb-3">Search For <strong>Datasets</strong></h3>
-                  <form>
+                  <form method="POST" action="<?php echo base_url()?>datasets">
                     <div class="input-group input-group-lg">
-                  <input type="text" class="form-control" placeholder="Keywords" aria-label="Keywords" aria-describedby="basic-addon2">
+                  <input type="text" class="form-control" name="search" placeholder="Keywords" aria-label="Keywords" aria-describedby="basic-addon2">
                   <div class="input-group-append">
-                    <button class="btn btn-secondary" type="button">Search</button>
+                    <button class="btn btn-secondary" name="submit_search" type="submit">Search</button>
                   </div>
                 </div>
                   </form>
@@ -97,10 +97,10 @@
       <div class="container">
         <div class="featured-post clearfix">
           <h5 class="post-ribbon">Featured Dataset</h5>
-          <img src="assets/img/img-earthquake.jpg" alt="">
-          <h3>Nepal Earthquake Dataset</h3>
+          <img src="<?php echo $feature['photo'] ?>" alt="">
+          <h3><?php echo $feature['title'] ?></h3>
           <p>
-          This dataset gives the information about Earthquake Vulnerability in this municipality. The status of houses, safe places in an emergency, Earthquake Emergency contacts of police, army, rescue etc are provided. Also, the municipality can post publications about earthquakes and mitigation efforts
+          <?php echo $feature['summary'] ?>
           </p>
         </div>
       </div>

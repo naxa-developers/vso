@@ -65,7 +65,12 @@ $attachment=$_FILES['uploadedfile']['name'];
       'file'=>$file_path
     );
 
-  $update_path=$this->Publication_model->update_path($insert,$img);
+     $update_path=$this->Publication_model->update_path($insert,$img);
+     
+     $this->load->model('Newsletter');
+     $mail_subject='New Publication Added in VSO Webpage';
+     $m='New Publication '.$this->input->post('title').' has been added in VSO Webpage.Plese follow link to view new Publication <br>'.base_url().'publication';
+     $this->Newsletter->send_mail($m,$mail_subject);
 
       $this->session->set_flashdata('msg','Publication successfully added');
 

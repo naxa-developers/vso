@@ -1,4 +1,4 @@
-
+<?php var_dump($data) ?>
 <!--main content start-->
 <section id="main-content">
     <section class="wrapper">
@@ -8,15 +8,15 @@
             <section class="panel">
               <section class="panel">
                   <header class="panel-heading">
-                     <b><?php echo $name ?> Emergency Contact</b>
+                     <b>Feature Datasets</b>
                       <span class="tools pull-right">
-          <a href="<?php echo base_url()?>add_emergency_personnel?cat=<?php echo $cat ?>"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Emergency Contact</button></a>
-                        </span>
+                        <a href="<?php echo base_url()?>add_feature"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Feature Dataset</button></a>
+                       </span>
                   </header>
                   <div class="panel-body">
 
                     <?php
-                      $error=	$this->session->flashdata('msg');
+                      $error=	$this->session->flashdata('msgg');
                        if($error){ ?>
                          <div class="alert alert-info alert-dismissible">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -41,7 +41,7 @@
 
                             <?php foreach($data[0] as $key => $value){
 
-                                if($key=='category'){}else{
+                                if($key=='table'){}else{
 
                                           ?>
                               <td>
@@ -73,13 +73,13 @@
 
             echo '<td><button type="button" class="btn btn-round btn-danger" data-toggle="modal" data-target="#myModal'.$v['id'].'"> change  Photo</button></td>';
                                       ?>
-                              <?php   }elseif($key=='category'){}else{ ?>
+                              <?php   }elseif($key=='table'){}else{ ?>
 
                               <td><?php echo $value;?></td>
                             <?php }}  ?>
                               <td>
-                                <a href="<?php echo base_url()?>edit_emergency_personnel?id=<?php echo base64_encode($v['id']);?> && cat=<?php echo $cat ?> && tbl=emergency_personnel">Edit</a> /
-                                <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>delete_emergency?id=<?php echo $v['id'];?> && cat=<?php echo $cat ?> && tbl=emergency_personnel">Delete</a></td>
+                                <a href="<?php echo base_url()?>edit_feature?id=<?php echo base64_encode($v['id']);?> ">Edit</a> /
+                                <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>delete_feature?id=<?php echo $v['id'];?>">Delete</a></td>
 
 
 
@@ -120,7 +120,7 @@
                                                             <span class="btn btn-white btn-file">
                                                               <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
                                                               <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                                                              <input type="file" name="emerg_pic" class="default" />
+                                                              <input type="file" name="map_pic" class="default" />
                                                             </span>
 
 
@@ -151,6 +151,80 @@
 
             </section>
         </div>
+        </div>
+
+    <!-- next -->
+    <div class="col-sm-12">
+        <section class="panel">
+          <section class="panel">
+              <header class="panel-heading">
+                 <b> Choose Feature Datasets</b>
+                  <span class="tools pull-right">
+                    <!-- <a href="<?php echo base_url()?>add_maps"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Maps</button></a> -->
+                   </span>
+              </header>
+              <div class="panel-body">
+
+                <?php
+                  $error=	$this->session->flashdata('msg');
+                   if($error){ ?>
+                     <div class="alert alert-info alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Message!!!!</strong>  <?php echo $error ; }?>
+                          </div>
+                          <br>
+                          <br>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <form class="form-horizontal bucket-form" action=" " method="POST">
+                                <div class="form-group">
+                                  <label class="col-sm-3 ">Select Featured Dataset: </label>
+
+                                        <div class="row col-md-9">
+                                        <!-- <?php var_dump($data) ?> -->
+                                  <?php foreach($data as $data){  ?>
+
+
+
+                                    <div class="col-sm-4 icheck ">
+
+                                      <div class="minimal single-row">
+                                        <div class="radio ">
+                                        <?php   if($data['default']=='1'){ ?>
+                                          <input tabindex="3" type="radio" value="<?php echo  $data['id'];?>"  name="default" checked>
+
+                                      <?php  }else{ ?>
+                                          <input tabindex="3" type="radio" value="<?php echo  $data['id'];?>"  name="default">
+
+                                      <?php  } ?>
+                                          <label><?php echo $data['title'] ?></label>
+
+
+                                        </div>
+                                      </div>
+                                    </div>
+
+
+                                  <?php } ?>
+                                      <br><br>
+                                      <br><br>
+                                  <button type="submit" name="submit_feature" class="btn btn-info">Update</button>
+                                </form>
+                                    </div>
+
+
+
+
+              </div>
+            </div>
+            </div>
+          </section>
+
+        </section>
+
+    <!-- next -->
+
+
     </div>
 
         </div>

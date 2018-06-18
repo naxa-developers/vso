@@ -34,6 +34,15 @@ return $q->result_array();
 
 }
 
+public function get_data($filter){
+
+$this->db->where('id',$filter);
+$q=$this->db->get('report_tbl');
+return $q->row_array();
+
+
+}
+
 public function do_upload($filename,$name)
 {
 

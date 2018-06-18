@@ -69,6 +69,7 @@
 	<!-- search bar -->
 	<div class="publish-srch">
     <div class="row">
+
     <div class="col-md-6">
           <div class="input-group">
             <input class="form-control"
@@ -79,16 +80,6 @@
 
     <div class="col-md-6">
 
-      <div class="form-group">
-        <select class="custom-select">
-          <option value="0" selected disabled>Document Type</option>
-          <option value="3" >Research</option>
-          <option value="1" >Plans and Policies</option>
-          <option value="2" >Papers</option>
-        </select>
-      </div>
-    </div>
-  
 </div>
 
 </div>

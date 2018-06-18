@@ -12,6 +12,8 @@ class MainController extends CI_Controller
   }
 
 
+
+
 public function contact(){
 
 $this->body['health']=$this->Main_model->get_contact('health','emergency_contact');
@@ -71,6 +73,7 @@ $this->load->model('Publication_model');
    $this->body['hazard_data']=$this->Main_model->get_cat_hazard($tbl);
     $this->body['exposure_data']=$this->Main_model->get_cat_exposure($tbl);
    $this->body['baseline_data']=$this->Main_model->get_cat_baseline($tbl);
+   $this->body['feature']=$this->Main_model->get_feature();
 
 
 
@@ -115,7 +118,18 @@ $this->load->view('admin/login-page');
 
   public function dataset_page(){
 
+    if(isset($_POST['submit_search'])){
+
+
+     $this->body['search']=$this->input->post('search');
+     $this->body['data']=$this->Main_model->get_category();
+
+    }else{
+
+    $this->body['search']=0;
     $this->body['data']=$this->Main_model->get_category();
+
+    }
    //var_dump($this->body['data']);
     $this->load->view('header');
     $this->load->view('datasets',$this->body);
@@ -123,6 +137,8 @@ $this->load->view('admin/login-page');
 
 
   }
+
+
 
   public function get_map(){
 
