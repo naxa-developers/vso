@@ -206,9 +206,10 @@ div#over_map1 {
   position: absolute;
   z-index: 8;
   right: 0px;
+  width: 250px;
 }
 #wrap { position: relative; }
-#over_map { position: absolute; left: 0px; z-index: 8; top: 33px;}
+#over_map { position: absolute; left: 0px; z-index: 8; top: 33px;width: 0px;}
 
 .icon-bar{
   background-color:#0056b3;

@@ -1,3 +1,20 @@
+       <style type="text/css">
+       label > input{ /* HIDE RADIO */
+  visibility: hidden; /* Makes input not-clickable */
+  position: absolute; /* Remove input from document flow */
+}
+label > input + img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:2px solid transparent;
+}
+label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+  border:2px solid #f00;
+}
+div#exampleModal {
+    overflow: hidden;
+}
+     </style>
+
       <footer id="website-footer" class="bg-dark">
 
         <div class="subscribe-wrap">
@@ -20,7 +37,64 @@
                     <div class="input-group">
                       <input type="email" class="form-control" name="email" placeholder="Email Address" aria-label="Email Address" aria-describedby="basic-addon2">
                       <div class="input-group-append">
-                        <button class="btn btn-secondary" name="submit"  type="submit">Subscribe</button>
+                                           <button class="btn btn-secondary" name="submit"  type="submit" data-toggle="modal" data-target="#exampleModal">Subscribe</button>
+                        <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: #111">SUBSCRIBE</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="margin-left: 25px;">
+        <div class="row">
+          <div class="col-md-6">
+    <label>
+    <input id="fb3" type="checkbox" name="fb" value="med" />
+    <img src="<?php echo base_url();?>assets/img/dataset.png"  alt="Logo" height="90" >
+    <p class="text-center" style="color: #111"> Datasets</p>
+  </label>
+</div>
+  
+<div class="col-md-6">
+     <label>
+    <input id="fb3" type="checkbox" name="fb" value="med" />
+    <img src="<?php echo base_url();?>assets/img/dataset.png" alt="Logo" height="90">
+    <p class="text-center"  style="color: #111"> Maps</p>
+  </label>
+  </div>
+
+<div class="col-md-6">
+     <label>
+    <input id="fb3" type="checkbox" name="fb" value="med" />
+    <img src="<?php echo base_url();?>assets/img/dataset.png" alt="Logo" height="90">
+    <p class="text-center" style="color: #111"> Publications</p>
+  </label>
+  </div>
+
+<div class="col-md-6">
+     <label>
+    <input id="fb3" type="checkbox" name="fb" value="med" />
+    <img src="<?php echo base_url();?>assets/img/dataset.png" alt="Logo" height="90">
+    <p class="text-center" style="color: #111">Contact</p>
+  </label>
+</div>
+
+<div class="all-select" style="color: #111">
+  <input type="checkbox" name="allselect"> Subscribe All
+</div>
+</div>
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</div>
+         
                       </div>
                     </div>
                   </form>
