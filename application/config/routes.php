@@ -143,3 +143,5 @@ $route['map_show'] ='Admin/MapDownload/map_show';
 $route['add_maps'] ='Admin/MapDownload/add_maps';
 $route['edit_map'] ='Admin/MapDownload/edit_map';
 $route['delete_map'] ='Admin/MapDownload/delete_map';
+
+$route['dashboard'] ='Admin/DashController/dashboard';

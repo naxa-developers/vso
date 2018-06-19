@@ -67,7 +67,7 @@
 <div class="brand">
 
     <a href="index.html" class="logo">
-        <img src="aassets/admin/images/logo.png" alt="">
+        <img src="<?php echo base_url()?>assets/img/admin.png" alt="admin" height=60;>
     </a>
     <div class="sidebar-toggle-box">
         <div class="fa fa-bars"></div>
@@ -90,7 +90,7 @@
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                 <img alt="" src="aassets/admin/images/avatar1_small.jpg">
-                <span class="username">Admin</span>
+                <span class="username"><i class="fa fa-user"></i>  Admin</span>
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
@@ -116,12 +116,12 @@
         <!-- sidebar menu start-->
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
-                <!-- <li>
-                    <a class="active" href="index.html">
+                <li>
+                    <a href="<?php echo base_url()?>dashboard" class="active">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
-                </li> -->
+                </li>
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-laptop"></i>

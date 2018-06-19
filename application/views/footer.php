@@ -33,7 +33,7 @@ div#exampleModal {
               <div class="col-md-4">
                 <div class="fbox">
                   <h4>Subscribe To Our Newsletter</h4>
-                  <form action="<?php echo base_url()?>news_register" method="POST">
+                  <form action="" method="">
                     <div class="input-group">
                       <input type="email" class="form-control" name="email" placeholder="Email Address" aria-label="Email Address" aria-describedby="basic-addon2">
                       <div class="input-group-append">
@@ -51,45 +51,47 @@ div#exampleModal {
       <div class="modal-body" style="margin-left: 25px;">
         <div class="row">
           <div class="col-md-6">
-    <label>
-    <input id="fb3" type="checkbox" name="fb" value="med" />
-    <img src="<?php echo base_url();?>assets/img/dataset.png"  alt="Logo" height="90" >
-    <p class="text-center" style="color: #111"> Datasets</p>
-  </label>
-</div>
-  
-<div class="col-md-6">
-     <label>
-    <input id="fb3" type="checkbox" name="fb" value="med" />
-    <img src="<?php echo base_url();?>assets/img/dataset.png" alt="Logo" height="90">
-    <p class="text-center"  style="color: #111"> Maps</p>
-  </label>
-  </div>
+            <form>
+              <label>
+                <input id="fb3" type="checkbox" name="fb" value="med" />
+                <img src="<?php echo base_url();?>assets/img/dataset.png"  alt="Logo" height="90" >
+                <p class="text-center" style="color: #111"> Datasets</p>
+              </label>
+            </div>
 
-<div class="col-md-6">
-     <label>
-    <input id="fb3" type="checkbox" name="fb" value="med" />
-    <img src="<?php echo base_url();?>assets/img/dataset.png" alt="Logo" height="90">
-    <p class="text-center" style="color: #111"> Publications</p>
-  </label>
-  </div>
+            <div class="col-md-6">
+             <label>
+              <input id="fb3" type="checkbox" name="fb" value="med" />
+              <img src="<?php echo base_url();?>assets/img/dataset.png" alt="Logo" height="90">
+              <p class="text-center"  style="color: #111"> Maps</p>
+            </label>
+          </div>
 
-<div class="col-md-6">
-     <label>
-    <input id="fb3" type="checkbox" name="fb" value="med" />
-    <img src="<?php echo base_url();?>assets/img/dataset.png" alt="Logo" height="90">
-    <p class="text-center" style="color: #111">Contact</p>
-  </label>
-</div>
+          <div class="col-md-6">
+           <label>
+            <input id="fb3" type="checkbox" name="fb" value="med" />
+            <img src="<?php echo base_url();?>assets/img/dataset.png" alt="Logo" height="90">
+            <p class="text-center" style="color: #111"> Publications</p>
+          </label>
+        </div>
 
-<div class="all-select" style="color: #111">
-  <input type="checkbox" name="allselect"> Subscribe All
-</div>
-</div>
-  
+        <div class="col-md-6">
+         <label>
+          <input id="fb3" type="checkbox" name="fb" value="med" />
+          <img src="<?php echo base_url();?>assets/img/dataset.png" alt="Logo" height="90">
+          <p class="text-center" style="color: #111">Contact</p>
+        </label>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Subscribe</button>
+
+      <div class="all-select" style="color: #111">
+        <input type="checkbox" name="allselect"> Subscribe All
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary">Subscribe</button>
+  </form>
       </div>
     </div>
   </div>
