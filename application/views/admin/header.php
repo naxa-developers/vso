@@ -67,7 +67,7 @@
 <div class="brand">
 
     <a href="index.html" class="logo">
-        <img src="<?php echo base_url()?>assets/img/admin.png" alt="admin" height=60;>
+        <img src="<?php echo base_url()?>assets/img/changu.png" alt="admin" height=60;><div class="cnm">Changunarayan <br>Municipality </div>
     </a>
     <div class="sidebar-toggle-box">
         <div class="fa fa-bars"></div>

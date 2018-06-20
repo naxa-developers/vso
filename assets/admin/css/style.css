@@ -343,11 +343,20 @@ ul.sidebar-menu li a.active i {
     position:relative;
 }
 a.logo {
-    font-size:21px;
+    font-size:10px;
     color:#2e2e2e;
     float:left;
-    margin:10px 0 0 25px;
+   /* margin:10px 0 0 25px;*/
     text-transform:uppercase;
+}
+
+.cnm {
+    float: right;
+    margin-left: 11px;
+    font-size: 15px;
+    color: #111;
+    color: white;
+    margin-top: 14px;
 }
 a.logo:hover,a.logo:focus {
     text-decoration:none;
