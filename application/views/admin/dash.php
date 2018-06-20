@@ -19,7 +19,7 @@ h1.sub{
           <div class="top-stats-panel">
             <div class="daily-visit">
               <h4 class="widget-h">Total Reports</h4>
-              <h1 class="sub" id="count">24</h1>
+              <h1 class="sub" id="count">2487</h1>
 
             </div>
           </div>
@@ -33,19 +33,22 @@ h1.sub{
           <div class="top-stats-panel">
             <div class="daily-visit">
               <h4 class="widget-h">Users</h4>
-              <h1 class="sub">7</h1>
+              <h1 class="sub">732</h1>
 
             </div>
           </div>
         </div>
       </section>
     </div>
-    <div class="col-md-4">
+   <div class="col-md-4">
       <section class="panel">
         <div class="panel-body">
           <div class="top-stats-panel">
-            <h4 class="widget-h">Data</h4>
-            <h1 class="sub text-center">12</h1>
+            <div class="daily-visit">
+              <h4 class="widget-h">Data</h4>
+              <h1 class="sub">437</h1>
+
+            </div>
           </div>
         </div>
       </section>

@@ -6,7 +6,7 @@
               <p>
               A public platform for GIS Data to support development in Changu Narayan
               </p>
-              <a href="#" title="" class="btn btn-lg btn-outline-white margin-top-sm">Get Started</a>
+              <button class="btn btn-lg btn-outline-white margin-top-sm" id="started">Get Started</button>
             </div>
             <!--<div class="banner-infograph d-none d-md-block pull-right">
               <img src="assets/img/info5.png" alt="">
@@ -15,7 +15,7 @@
 
         </div>
 
-        <div class="bg-dark">
+        <div class="bg-dark" id="nextDiv">
           <div class="container">
             <div class="row justify-content-md-center">
               <div class="col-md-6">
@@ -105,3 +105,11 @@
         </div>
       </div>
     </div>
+
+    <script type="text/javascript">
+$("#started").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#nextDiv").offset().top
+    }, 2000);
+});
+    </script>
