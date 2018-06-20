@@ -15,7 +15,7 @@ h1.sub{
           <div class="top-stats-panel">
             <div class="daily-visit">
               <h4 class="widget-h">Total Reports</h4>
-              <h1 class="sub" id="count">24</h1>
+              <h1 class="sub" id="count"><?php echo $report ?></h1>
 
             </div>
           </div>
@@ -29,7 +29,7 @@ h1.sub{
           <div class="top-stats-panel">
             <div class="daily-visit">
               <h4 class="widget-h">Users</h4>
-              <h1 class="sub">7</h1>
+              <h1 class="sub"><?php echo $user ?></h1>
 
             </div>
           </div>
@@ -41,7 +41,7 @@ h1.sub{
         <div class="panel-body">
           <div class="top-stats-panel">
             <h4 class="widget-h">Data</h4>
-            <h1 class="sub text-center">12</h1>
+            <h1 class="sub text-center"><?php echo $map ?></h1>
           </div>
         </div>
       </section>
@@ -62,7 +62,7 @@ h1.sub{
 
           <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-         
+
         </div>
       </section>
       <!--earning graph end-->
@@ -72,7 +72,7 @@ h1.sub{
       <section class="panel">
         <div class="panel-body">
 
-         <img src="<?php echo base_url()?>assets/img/dataset.png" alt="admin" height=230; width=310;>
+         <img src="<?php echo $max['photo']?>" alt="admin" height=230; width=310;>
          <!-- Tab panes -->
 
        </div>
@@ -81,7 +81,7 @@ h1.sub{
 
      </section>
 
-   
+
 
      <!-- page end-->
 
@@ -91,6 +91,12 @@ h1.sub{
 
 <!--main content end-->
 <script>
+var home=parseInt("<?php echo $home ?>");
+var map=parseInt("<?php echo $map ?>");
+var report=parseInt("<?php echo $reports ?>");
+var about=parseInt("<?php echo $about ?>");
+
+
 window.onload = function () {
 
 var chart = new CanvasJS.Chart("chartContainer", {
@@ -102,17 +108,17 @@ var chart = new CanvasJS.Chart("chartContainer", {
   axisY: {
     title: ""
   },
-  data: [{        
-    type: "column",  
-    showInLegend: true, 
+  data: [{
+    type: "column",
+    showInLegend: true,
     legendMarkerColor: "grey",
     legendText: "Pages",
-    dataPoints: [      
-      { y: 232, label: "Home" },
-      { y: 266,  label: "Map" },
-      { y: 169,  label: "Reports" },
-      { y: 158,  label: "About" },
-      
+    dataPoints: [
+      { y: home, label: "Home" },
+      { y: map,  label: "Map" },
+      { y: report,  label: "Reports" },
+      { y: about,  label: "About" },
+
     ]
   }]
 });
@@ -122,5 +128,5 @@ chart.render();
 </script>
 
    <script type="text/javascript">
-     
+
    </script>

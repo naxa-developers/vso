@@ -16,8 +16,22 @@ return $q->result_array();
 
 }
 
+public function get_count_views($field)
+{
+  $this->db->select('*');
+  $this->db->where('page',$field);
+  $q=$this->db->get('views');
+  return $q->row_array();
+  // code...
+}
 
+public function update_views($id,$data)
 
+{
+  $this->db->where('id',$id);
+  $this->db->update('views',$data);
+  // code...
+}
 
 public function search($id){
 $q=$this->db->get_where('report_tbl',array ('id'=>$id));

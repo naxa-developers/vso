@@ -66,6 +66,7 @@ $this->load->model('Publication_model');
   public function default_page()
   {
 
+  $this->load->model('Report_model');
     // echo $this->db->query("SELECT VERSION()")->row('version');
 
     //echo base_url();
@@ -75,6 +76,21 @@ $this->load->model('Publication_model');
    $this->body['baseline_data']=$this->Main_model->get_cat_baseline($tbl);
    $this->body['feature']=$this->Main_model->get_feature();
 
+
+   //views add
+   $count=$this->Report_model->get_count_views('home');
+
+   $add_count=$count['views_count']+1;
+
+   $data=array(
+   'views_count'=>$add_count,
+
+   );
+
+
+ $this->Report_model->update_views($count['id'],$data);
+
+ //views add end
 
 
    //$this->body['emerg_contact']=$this->Upload_model->get_emergency_con();
@@ -97,7 +113,7 @@ $this->load->view('admin/login-page');
 //about
   public function about_page(){
 
-
+    $this->load->model('Report_model');
 
      $this->body['proj_data']=$this->Main_model->get_proj_data();
      $this->body['disaster']=$this->Main_model->get_about_where(1);
@@ -105,6 +121,21 @@ $this->load->view('admin/login-page');
      $this->body['utility']=$this->Main_model->get_about_where(3);
      $this->body['house']=$this->Main_model->get_about_where(4);
      $this->body['query']=$this->Main_model->get_about_where(5);
+
+     //views add
+     $count=$this->Report_model->get_count_views('about');
+
+     $add_count=$count['views_count']+1;
+
+     $data=array(
+     'views_count'=>$add_count,
+
+     );
+
+
+   $this->Report_model->update_views($count['id'],$data);
+
+   //views add end
 
     $this->load->view('header');
     $this->load->view('about',$this->body);

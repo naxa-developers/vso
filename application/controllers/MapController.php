@@ -9,6 +9,7 @@ class MapController extends CI_Controller
     $this->load->helper('url');
     $this->load->model('Map_model');
     $this->load->model('Dash_model');
+    $this->load->model('Report_model');
   }
 
 
@@ -347,6 +348,20 @@ public function map_download()
 
     $this->body['data']=$this->Dash_model->get_tables_data('categories_tbl');
 
+    //views add
+    $count=$this->Report_model->get_count_views('map');
+
+    $add_count=$count['views_count']+1;
+
+    $data=array(
+    'views_count'=>$add_count,
+
+    );
+
+
+  $this->Report_model->update_views($count['id'],$data);
+
+  //views add end
 
     $this->load->view('header');
     $this->load->view('category.php',$this->body);
