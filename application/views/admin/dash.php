@@ -4,6 +4,10 @@ h1.sub{
 
 }
 </style>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- Add this script before </body> -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
 <!--main content start-->
 <section id="main-content">
   <section class="wrapper">
@@ -121,6 +125,10 @@ chart.render();
 }
 </script>
 
-   <script type="text/javascript">
-     
-   </script>
+    <!--counter-->
+      <script type="text/javascript">
+         $('.sub').counterUp({
+                delay: 10,
+                time: 2000
+            });
+      </script>
