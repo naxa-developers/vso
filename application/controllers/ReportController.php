@@ -13,6 +13,7 @@ class ReportController extends CI_Controller
   }
 
   public function report_page(){
+
     //filter  startColorstr
     if(isset($_POST['submit'])){
 
@@ -164,6 +165,21 @@ class ReportController extends CI_Controller
       );
 
       $this->body['report_map_layer']= json_encode($map_report, JSON_NUMERIC_CHECK);
+
+      //views add
+      $count=$this->Report_model->get_count_views('reports');
+
+      $add_count=$count['views_count']+1;
+
+      $data=array(
+      'views_count'=>$add_count,
+
+      );
+
+
+    $this->Report_model->update_views($count['id'],$data);
+
+    //views add end
 
       //var_dump($this->body['report_map_layer']);
 

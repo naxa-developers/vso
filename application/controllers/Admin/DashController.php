@@ -6,7 +6,8 @@ class DashController extends CI_Controller
   {
     parent::__construct();
 
-    
+   $this->load->model('Admin_dash_model');
+
   }
 
 
@@ -14,8 +15,27 @@ public function dashboard()
 {
 
 
+
+$this->body['user']=$this->Admin_dash_model->count_data('users');
+$this->body['map']=$this->Admin_dash_model->count_data('categories_tbl');
+$this->body['report']=$this->Admin_dash_model->count_data('report_tbl');
+$this->body['max']=$this->Admin_dash_model->max_views();
+//var_dump($this->body['max']);
+
+$home=$this->Admin_dash_model->count_views('home');
+$map=$this->Admin_dash_model->count_views('map');
+$reports=$this->Admin_dash_model->count_views('reports');
+$about=$this->Admin_dash_model->count_views('about');
+
+$this->body['home']=$home['views_count'];
+$this->body['map']=$map['views_count'];
+$this->body['reports']=$reports['views_count'];
+$this->body['about']=$about['views_count'];
+//var_dump($this->body['user']);
+
+
 $this->load->view('admin/header');
-$this->load->view('admin/dash.php');
+$this->load->view('admin/dash.php',$this->body);
 $this->load->view('admin/footer');
 
 

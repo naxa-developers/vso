@@ -110,6 +110,6 @@
 $("#started").click(function() {
     $('html, body').animate({
         scrollTop: $("#nextDiv").offset().top
-    }, 2000);
+    }, 1000);
 });
     </script>
