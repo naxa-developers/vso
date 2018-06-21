@@ -82,7 +82,7 @@ h1.sub{
       <section class="panel">
         <div class="panel-body">
 
-         <img src="<?php echo $max['photo']?>" alt="admin" height=230; width=310;>
+         <img src="<?php echo $max['photo']?>" alt="visited" height=230; width=310;>
          <!-- Tab panes -->
 
        </div>

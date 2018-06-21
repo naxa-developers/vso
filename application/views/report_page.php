@@ -125,7 +125,7 @@ font-size: 14px;
       font-weight: 400;
       box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
       border-radius: 0;
-      padding: 5px;
+      padding: 8px;
       margin-bottom: 10px;
     }
 
@@ -217,7 +217,8 @@ font-size: 14px;
       margin: 1px 0px 3px;
       height: 30px;
       padding: 0px 5px;
-      border: 1px solid #f30728;
+       border: 1px solid #989696;
+      background-color:#bdbdbd;
       width: 98%;
       border-radius: 2px;
     }
@@ -231,8 +232,9 @@ font-size: 14px;
       width: 49%;
       display: inline;
       margin: 1px -2px 3px;
-      border: 1px solid #f30728;
       border-radius: 2px;
+      border: 1px solid #989696;
+      background-color:#bdbdbd;
     }
 
     .filter-check p{
