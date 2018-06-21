@@ -640,11 +640,7 @@ public function map_download()
 
 
   }
-public funtion dashboard(){
 
-echo 'sdasd';
-
-}
 
 
 }//end
