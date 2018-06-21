@@ -168,10 +168,7 @@ a.list-group-item.list-group-item-action {
 }
 /* Useless styles, just for demo design */
 
-body {
-  font-family: "Open sans", "Segoe UI", "Segoe WP", Helvetica, Arial, sans-serif;
-  color: #777;
-}
+
 
 .txtcenter {
   margin-top: 4em;

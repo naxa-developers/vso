@@ -70,7 +70,7 @@
 	<div class="publish-srch">
     <div class="row">
 
-    <div class="col-md-6">
+    <div class="col-md-6 col-md-offset-3">
           <div class="input-group">
             <input class="form-control"
             placeholder="Search here...">

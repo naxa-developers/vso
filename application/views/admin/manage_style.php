@@ -10,6 +10,7 @@
 
 
 <script src="<?php echo base_url()?>assets/admin/js/ion.rangeSlider.min.js" type="text/javascript"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 
 <section id="main-content" class="">
@@ -46,19 +47,11 @@
               <div class="form-group">
                 <label class="control-label col-md-3">Opacity</label>
                 <div class="col-md-9">
-                  <div id="spinner3">
-                    <div class="input-group" style="width:150px;">
-                      <input type="text" name="opacity" value="<?php echo $style_array['opacity'] ?>" class="spinner-input form-control" maxlength="3" >
-                      <div class="spinner-buttons input-group-btn">
-                        <button type="button" class="btn btn-default spinner-up">
-                          <i class="fa fa-angle-up"></i>
-                        </button>
-                        <button type="button" class="btn btn-default spinner-down">
-                          <i class="fa fa-angle-down"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                  <div class="input-group" style="width: 150px">
+        <span class="input-group-btn "><button type="button" class="btn btn-default value-control opac" data-target="font-size"  data-action="minus"><span class="glyphicon glyphicon-minus"></span></button></span>
+        <input type="text" value="0.1" min="0" max="1" class="form-control" id="font-size" >
+        <span class="input-group-btn "><button type="button" class="btn btn-default value-control opac" data-action="plus" data-target="font-size"><span class="glyphicon glyphicon-plus"></span></button></span>
+    </div>
                   <span class="help-block">
                     with max value: 10
                   </span>
@@ -69,41 +62,27 @@
               <div class="form-group">
                 <label class="control-label col-md-3">Fill Opacity</label>
                 <div class="col-md-9">
-                  <div id="spinner3">
-                    <div class="input-group" style="width:150px;">
-                      <input type="text" name="fillOpacity" value="<?php echo $style_array['fillOpacity'] ?>" class="spinner-input form-control" maxlength="3" >
-                      <div class="spinner-buttons input-group-btn">
-                        <button type="button" class="btn btn-default spinner-up">
-                          <i class="fa fa-angle-up"></i>
-                        </button>
-                        <button type="button" class="btn btn-default spinner-down">
-                          <i class="fa fa-angle-down"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                         <div class="input-group" style="width: 150px">
+        <span class="input-group-btn"><button type="button" class="btn btn-default value-control fillopac" data-action="minus" data-target="fillopac"><span class="glyphicon glyphicon-minus"></span></button></span>
+        <input type="text" value="0.1" class="form-control" id="fillopac">
+        <span class="input-group-btn"><button type="button"  class="btn btn-default value-control fillopac" data-action="plus" data-target="fillopac"><span class="glyphicon glyphicon-plus"></span></button></span>
+    </div>
                   <span class="help-block">
                     with max value: 10
                   </span>
                 </div>
               </div>
+            
 
               <div class="form-group">
                 <label class="control-label col-md-3">Weight</label>
                 <div class="col-md-9">
                   <div id="spinner3">
-                    <div class="input-group" style="width:150px;">
-                      <input type="text" name="weight" value="<?php echo $style_array['weight'] ?>" class="spinner-input form-control" maxlength="3" >
-                      <div class="spinner-buttons input-group-btn">
-                        <button type="button" class="btn btn-default spinner-up">
-                          <i class="fa fa-angle-up"></i>
-                        </button>
-                        <button type="button" class="btn btn-default spinner-down">
-                          <i class="fa fa-angle-down"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                                     <div class="input-group" style="width: 150px">
+        <span class="input-group-btn"><button type="button" class="btn btn-default value-control weight" data-action="minus" data-target="weight"><span class="glyphicon glyphicon-minus"></span></button></span>
+        <input type="text" min="1" max="10" value="<?php echo $style_array['weight'] ?>" class="form-control" id="weight">
+        <span class="input-group-btn"><button type="button" class="btn btn-default value-control weight" data-action="plus" data-target="weight"><span class="glyphicon glyphicon-plus"></span></button></span>
+    </div>
                   <span class="help-block">
                     with max value: 10
                   </span>
@@ -172,3 +151,128 @@
 
 
 
+<script>
+
+$(document).ready(function(){
+
+
+  $(".opac").on('click',function(){
+    var action = $(this).attr('data-action')
+    var target = $(this).attr('data-target')
+    var value  = parseFloat($('[id="'+target+'"]').val());
+   
+   // console.log('action');
+   // console.log(action);
+   // //console.log(target);
+   // console.log(value);
+    
+    if ( action == "plus" ) {
+
+      value=value+0.1;
+
+      var val=Math.round(value*100)/100;
+
+      console.log(val);
+      
+     
+      
+    }else{
+    
+        value=value-0.1;
+         var val=Math.round(value*100)/100;
+        
+      
+     }
+    // $('[id="'+target+'"]').val(value);
+    $("#font-size").val(val);
+});
+
+
+
+
+
+  $(".fillopac").on('click',function(){
+    var action = $(this).attr('data-action')
+    var target = $(this).attr('data-target')
+    var value  = parseFloat($('[id="'+target+'"]').val());
+   
+   // console.log('action');
+   // console.log(action);
+   // //console.log(target);
+   // console.log(value);
+    
+    if ( action == "plus" ) {
+
+      value=value+0.1;
+       var val=Math.round(value*100)/100;
+      
+     
+       console.log(value);
+    }else{
+    
+        value=value-0.1;
+         var val=Math.round(value*100)/100;
+      
+     }
+    // $('[id="'+target+'"]').val(value);
+    $("#fillopac").val(val);
+});
+
+    $(".weight").on('click',function(){
+    var action = $(this).attr('data-action')
+    var target = $(this).attr('data-target')
+    var value  = parseFloat($('[id="'+target+'"]').val());
+   
+   // console.log('action');
+   // console.log(action);
+   // //console.log(target);
+   // console.log(value);
+    
+    if ( action == "plus" ) {
+
+      value=value+1;
+       var val=Math.round(value*100)/100;
+      
+     
+       console.log(value);
+    }else{
+    
+        value=value-1;
+         var val=Math.round(value*100)/100;
+      
+     }
+    // $('[id="'+target+'"]').val(value);
+    $("#weight").val(val);
+});
+
+
+
+
+});
+
+// $(document).on('click','.value-control1',function(){
+//     var action1 = $(this).attr('data-action')
+//     var target1 = $(this).attr('data-target')
+//     var value1  = parseFloat($('[id="'+target1+'"]').val());
+//     if ( action1 == "plus" ) {
+//       value=value+0.1;
+//     }
+//     if ( action1 == "minus" ) {
+//        value=value-0.1;
+//     }
+//     $('[id="'+target1+'"]').val(value)
+// })
+
+// $(document).on('click','.value-control',function(){
+//     var action = $(this).attr('data-action')
+//     var target = $(this).attr('data-target')
+//     var value  = parseFloat($('[id="'+target+'"]').val());
+//     if ( action == "plus" ) {
+//       value++;
+//     }
+//     if ( action == "minus" ) {
+//       value--;
+//     }
+//     $('[id="'+target+'"]').val(value)
+// })
+</script>

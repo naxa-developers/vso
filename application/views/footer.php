@@ -53,7 +53,7 @@ div#exampleModal {
           <div class="col-md-6">
             <form>
               <label>
-                <input id="fb3" type="checkbox" name="fb" value="med" />
+                <input id="fb3" type="radio" name="fb" value="med" />
                 <img src="<?php echo base_url();?>assets/img/dataset.png"  alt="Logo" height="90" >
                 <p class="text-center" style="color: #111"> Datasets</p>
               </label>
@@ -61,7 +61,7 @@ div#exampleModal {
 
             <div class="col-md-6">
              <label>
-              <input id="fb3" type="checkbox" name="fb" value="med" />
+              <input id="fb3" type="radio" name="fb" value="med" />
               <img src="<?php echo base_url();?>assets/img/dataset.png" alt="Logo" height="90">
               <p class="text-center"  style="color: #111"> Maps</p>
             </label>
@@ -69,7 +69,7 @@ div#exampleModal {
 
           <div class="col-md-6">
            <label>
-            <input id="fb3" type="checkbox" name="fb" value="med" />
+            <input id="fb3" type="radio" name="fb" value="med" />
             <img src="<?php echo base_url();?>assets/img/dataset.png" alt="Logo" height="90">
             <p class="text-center" style="color: #111"> Publications</p>
           </label>
@@ -77,14 +77,14 @@ div#exampleModal {
 
         <div class="col-md-6">
          <label>
-          <input id="fb3" type="checkbox" name="fb" value="med" />
+          <input id="fb3" type="radio" name="fb" value="med" />
           <img src="<?php echo base_url();?>assets/img/dataset.png" alt="Logo" height="90">
           <p class="text-center" style="color: #111">Contact</p>
         </label>
       </div>
 
       <div class="all-select" style="color: #111">
-        <input type="checkbox" name="allselect"> Subscribe All
+        <input type="radio" name="allselect"> Subscribe All
       </div>
     </div>
 
