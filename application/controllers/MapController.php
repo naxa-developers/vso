@@ -556,6 +556,7 @@ public function map_download()
 
     }else{
       $data=$this->Map_model->get_summary_list($tbl);
+
       $style_array=json_decode($data['style'],TRUE);
 
       $this->body['style_array']=$style_array;
@@ -639,5 +640,11 @@ public function map_download()
 
 
   }
+public funtion dashboard(){
+
+echo 'sdasd';
+
+}
+
 
 }//end
