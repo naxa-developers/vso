@@ -7,8 +7,10 @@ h1.sub{
 
 <!-- Add this script before </body> -->
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
 <!--main content start-->
 <section id="main-content">
   <section class="wrapper">
@@ -37,7 +39,7 @@ h1.sub{
             <div class="daily-visit">
               <h4 class="widget-h">Users</h4>
 
-              <h1 class="sub"><?php echo $user ?></h1>
+              <h1 class="sub" id="count1"><?php echo $user ?></h1>
 
 
             </div>
@@ -51,7 +53,7 @@ h1.sub{
           <div class="top-stats-panel">
 
             <h4 class="widget-h">Data</h4>
-            <h1 class="sub text-center"><?php echo $map ?></h1>
+            <h1 class="sub text-center" id="count2"><?php echo $map ?></h1>
 
           </div>
         </div>
@@ -141,11 +143,17 @@ chart.render();
 
     <!--counter-->
       <script type="text/javascript">
-         $('.sub').counterUp({
-                delay: 10,
-                time: 2000
-            });
+$('#count,#count1,#count2').each(function () {
+    $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 4000,
+        easing: 'swing',
+        step: function (now) {
+            $(this).text(Math.ceil(now));
+        }
+    });
+});
       </script>
 
    
-
