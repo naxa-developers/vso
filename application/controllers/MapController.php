@@ -538,6 +538,7 @@ public function map_download()
 
 
       $style=json_encode($_POST);
+      
       $data=array(
 
         'style'=>$style,

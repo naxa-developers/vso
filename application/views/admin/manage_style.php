@@ -52,7 +52,7 @@
                 <div class="col-md-9">
                   <div class="input-group" style="width: 150px">
         <span class="input-group-btn "><button type="button" class="btn btn-default value-control opac" data-target="font-size"  data-action="minus"><span class="glyphicon glyphicon-minus"></span></button></span>
-        <input type="text" value="0.1" min="0" max="1" class="form-control" id="font-size" >
+        <input type="text" name="opacity" value="<?php echo $style_array['opacity'] ?>" min="0" max="1" class="form-control" id="font-size" >
         <span class="input-group-btn "><button type="button" class="btn btn-default value-control opac" data-action="plus" data-target="font-size"><span class="glyphicon glyphicon-plus"></span></button></span>
     </div>
                   <span class="help-block">
@@ -67,7 +67,7 @@
                 <div class="col-md-9">
                          <div class="input-group" style="width: 150px">
         <span class="input-group-btn"><button type="button" class="btn btn-default value-control fillopac" data-action="minus" data-target="fillopac"><span class="glyphicon glyphicon-minus"></span></button></span>
-        <input type="text" value="0.1" class="form-control" id="fillopac">
+        <input type="text" name="fillOpacity" value="<?php echo $style_array['fillOpacity'] ?>" class="form-control" id="fillopac">
         <span class="input-group-btn"><button type="button"  class="btn btn-default value-control fillopac" data-action="plus" data-target="fillopac"><span class="glyphicon glyphicon-plus"></span></button></span>
     </div>
                   <span class="help-block">
@@ -75,7 +75,7 @@
                   </span>
                 </div>
               </div>
-            
+
 
               <div class="form-group">
                 <label class="control-label col-md-3">Weight</label>
@@ -83,7 +83,7 @@
                   <div id="spinner3">
                                      <div class="input-group" style="width: 150px">
         <span class="input-group-btn"><button type="button" class="btn btn-default value-control weight" data-action="minus" data-target="weight"><span class="glyphicon glyphicon-minus"></span></button></span>
-        <input type="text" min="1" max="10" value="<?php echo $style_array['weight'] ?>" class="form-control" id="weight">
+        <input type="text" name="weight" min="1" max="10" value="<?php echo $style_array['weight'] ?>" class="form-control" id="weight">
         <span class="input-group-btn"><button type="button" class="btn btn-default value-control weight" data-action="plus" data-target="weight"><span class="glyphicon glyphicon-plus"></span></button></span>
     </div>
                   <span class="help-block">
@@ -94,7 +94,7 @@
 
 
 
-              
+
               <div class="form-group">
                 <label class="control-label col-md-3">Color</label>
                 <div class="col-md-4 col-xs-11">
@@ -163,12 +163,12 @@ $(document).ready(function(){
     var action = $(this).attr('data-action')
     var target = $(this).attr('data-target')
     var value  = parseFloat($('[id="'+target+'"]').val());
-   
+
    // console.log('action');
    // console.log(action);
    // //console.log(target);
    // console.log(value);
-    
+
     if ( action == "plus" ) {
 
       value=value+0.1;
@@ -176,15 +176,15 @@ $(document).ready(function(){
       var val=Math.round(value*100)/100;
 
       console.log(val);
-      
-     
-      
+
+
+
     }else{
-    
+
         value=value-0.1;
          var val=Math.round(value*100)/100;
-        
-      
+
+
      }
     // $('[id="'+target+'"]').val(value);
     $("#font-size").val(val);
@@ -198,24 +198,24 @@ $(document).ready(function(){
     var action = $(this).attr('data-action')
     var target = $(this).attr('data-target')
     var value  = parseFloat($('[id="'+target+'"]').val());
-   
+
    // console.log('action');
    // console.log(action);
    // //console.log(target);
    // console.log(value);
-    
+
     if ( action == "plus" ) {
 
       value=value+0.1;
        var val=Math.round(value*100)/100;
-      
-     
+
+
        console.log(value);
     }else{
-    
+
         value=value-0.1;
          var val=Math.round(value*100)/100;
-      
+
      }
     // $('[id="'+target+'"]').val(value);
     $("#fillopac").val(val);
@@ -225,24 +225,24 @@ $(document).ready(function(){
     var action = $(this).attr('data-action')
     var target = $(this).attr('data-target')
     var value  = parseFloat($('[id="'+target+'"]').val());
-   
+
    // console.log('action');
    // console.log(action);
    // //console.log(target);
    // console.log(value);
-    
+
     if ( action == "plus" ) {
 
       value=value+1;
        var val=Math.round(value*100)/100;
-      
-     
+
+
        console.log(value);
     }else{
-    
+
         value=value-1;
          var val=Math.round(value*100)/100;
-      
+
      }
     // $('[id="'+target+'"]').val(value);
     $("#weight").val(val);

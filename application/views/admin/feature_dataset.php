@@ -1,4 +1,4 @@
-<?php var_dump($data) ?>
+
 <!--main content start-->
 <section id="main-content">
     <section class="wrapper">
