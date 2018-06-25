@@ -345,6 +345,7 @@ public function map_download()
     $this->body['category_tbl']= json_encode($cat_tbles, JSON_NUMERIC_CHECK);
     $this->body['popup_content']= json_encode($popup, JSON_NUMERIC_CHECK);
     $this->body['style']= json_encode($style, JSON_NUMERIC_CHECK);
+    //var_dump($this->body['style']);
 
     $this->body['data']=$this->Dash_model->get_tables_data('categories_tbl');
 
@@ -556,6 +557,7 @@ public function map_download()
 
     }else{
       $data=$this->Map_model->get_summary_list($tbl);
+
       $style_array=json_decode($data['style'],TRUE);
 
       $this->body['style_array']=$style_array;
@@ -639,5 +641,46 @@ public function map_download()
 
 
   }
+
+public function get_sub_cat_data(){
+
+$tbl= $this->input->get('tbl');
+$data=$this->input->get('data');
+$col=$this->input->get('col');
+
+$get=$this->Dash_model->get_sub_cat_data($tbl,$data,$col);
+$get_style=$this->Dash_model->get_sub_cat_style($tbl);
+
+foreach($get as $cat_data){
+
+  $cat_ddata=$cat_data ;
+  unset($cat_data['st_asgeojson']);
+
+  $features_cat[]= array(
+    'type' =>'Feature',
+    'properties'=>$cat_data,
+    'geometry'=>json_decode($cat_ddata['st_asgeojson'],JSON_NUMERIC_CHECK)
+
+  );
+
+
+}
+
+
+
+$sub_category= array(
+  'type' => 'FeatureCollection',
+  'features' => $features_cat,
+);
+
+//echo(json_encode($sub_category));
+
+$response['geojson']=json_encode($sub_category);
+$response['style']=$get_style['style'];
+echo json_encode($response);
+
+}
+
+
 
 }//end

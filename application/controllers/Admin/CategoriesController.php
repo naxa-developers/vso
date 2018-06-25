@@ -521,5 +521,68 @@ class CategoriesController extends CI_Controller
 
   }
 
+ public function sub_categories(){
+
+
+   if(isset($_POST['submit'])){
+
+   $tbl_name=$this->input->post('cat');
+   $this->body['tbl']=$tbl_name;
+
+$this->body['data']=$this->Dash_model->get_tables_data_lang('tbl_lang',$tbl_name);
+$this->load->view('admin/header');
+$this->load->view('admin/select_column',$this->body);
+$this->load->view('admin/footer');
+
+}else{
+
+  $this->body['data']=$this->Dash_model->get_tables_data('categories_tbl');
+
+//var_dump($this->body['data']);
+   $this->load->view('admin/header');
+   $this->load->view('admin/sub_categories',$this->body);
+   $this->load->view('admin/footer');
+
+}
+ }
+
+public function sub_cat_insert(){
+  $col=$this->input->post('col');
+  $tbl=$this->input->post('tbl');
+
+  $data=$this->Dash_model->get_sub_cat($col,$tbl);
+  //var_dump($data);
+
+
+$data_array=array();
+foreach($data as $d){
+
+  array_push($data_array,$d[$col]);
+}
+$json=json_encode($data_array);
+$sub_data=array(
+
+'sub_categories'=>$json,
+'sub_col'=>$col
+
+);
+
+$update=$this->Dash_model->update_sub_cat($sub_data,$tbl);
+if($update==1){
+
+  $this->session->set_flashdata('msg','Sub Categories Updated');
+  redirect('categories_tbl');
+
+}else{
+
+
+
+}
+
+
+
+
+
+}
 
 }//controller end

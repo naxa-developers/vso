@@ -11,6 +11,18 @@ $this->db->delete('tbl_lang');
 
 }
 
+public function get_sub_cat_style($tbl){
+
+  $this->db->where('category_table',$tbl);
+  $q=$this->db->get('categories_tbl');
+  return $q->row_array();
+
+
+
+}
+
+
+
   public function create_geom($long,$lat,$tbl){
 
   $query= "UPDATE $tbl SET the_geom =  ST_PointFromText('POINT(' || $long || ' ' || $lat || ')', 27700)";
@@ -28,6 +40,17 @@ $this->db->delete('tbl_lang');
     }
 
   // create categories
+
+public function get_sub_cat_data($tbl,$data,$col){
+
+$this->db->select('*');
+$this->db->select('ST_AsGeoJSON(the_geom)');
+$this->db->where($col,$data);
+$res=$this->db->get($tbl);
+return $res->result_array();
+
+}
+
   public function do_upload($filename,$name)
   {
 
@@ -165,8 +188,25 @@ public function delete_data($id,$table_name){
 }
 
 
+public function get_sub_cat($col,$tbl){
+
+  $this->db->select($col);
+  $this->db->distinct();
+  $res=$this->db->get($tbl);
+  return $res->result_array();
+}
+
   // end cat tables
 
+  public function update_sub_cat($data,$tbl){ // update the edited table
 
+    $this->db->where('category_table',$tbl);
+    $q=$this->db->update('categories_tbl',$data);
+    if($q){
+      return 1;
+    }else{
+      return 0;
+    }
+  }
 
 }//main
