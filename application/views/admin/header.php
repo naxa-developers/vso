@@ -89,7 +89,7 @@
         <!-- user login dropdown start-->
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <img alt="" src="aassets/admin/images/avatar1_small.jpg">
+                
                 <span class="username"><i class="fa fa-user"></i>  Admin</span>
                 <b class="caret"></b>
             </a>
@@ -133,6 +133,7 @@
                         <li><a href="<?php echo base_url()?>view_proj">Project Partners</a></li>
                         <li><a href="<?php echo base_url()?>emergency_contact">Emergency Contact</a></li>
                         <li><a href="<?php echo base_url()?>background">Background Image</a></li>
+                        <li><a href="<?php echo base_url();?>feature">Featured Datasets</a></li>
                     </ul>
                 </li>
 
@@ -202,18 +203,7 @@
                 </li>
 
 
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-th"></i>
-                        <span>Featured Datasets</span>
-                    </a>
-                    <ul class="sub">
-
-                       <li><a href="<?php echo base_url();?>feature">Featured Datasets</a></li>
-                        <!--  <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
-
-                    </ul>
-                </li>
+       
 
                 <li class="sub-menu">
                     <a href="javascript:;">

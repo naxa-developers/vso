@@ -9,7 +9,7 @@
                   <header class="panel-heading">
                      <b>Map Downloads</b>
                       <span class="tools pull-right">
-                        <a href="<?php echo base_url()?>add_maps"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Maps</button></a>
+                        <a href="<?php echo base_url()?>add_maps"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-plus"></i> Add Maps</button></a>
                        </span>
                   </header>
                   <div class="panel-body">

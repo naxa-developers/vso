@@ -7,9 +7,7 @@ h1.sub{
 
 <!-- Add this script before </body> -->
 
-
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 <!--main content start-->
 <section id="main-content">
@@ -142,8 +140,10 @@ chart.render();
 
 
     <!--counter-->
-      <script type="text/javascript">
-$('#count,#count1,#count2').each(function () {
+ 
+<script type="text/javascript">
+  $('#count,#count1,#count2').each(function () {
+
     $(this).prop('Counter',0).animate({
         Counter: $(this).text()
     }, {
@@ -157,3 +157,4 @@ $('#count,#count1,#count2').each(function () {
       </script>
 
    
+
