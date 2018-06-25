@@ -8,7 +8,10 @@
         <div class="col-lg-12">
             <section class="panel">
                 <header class="panel-heading">
-                  Different Color Custom Checkbox & Radio
+                  <b>Manage Popup Style</b>
+                  <span class="tools pull-right">
+          <a href=""><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-map-marker"></i> View In Map</button></a>
+                        </span>
                 </header>
                 <div class="panel-body">
 
@@ -42,7 +45,7 @@
                                         </div>
                                         <input type="text" name="table" value="<?php echo $table ?>" hidden>
                                         <br/>
-                                        <button type="submit" name="submit" class="btn btn-info">Upload</button>
+                                        <button type="submit" name="submit" class="btn btn-info" style="background-color: #1fb5ad;border-color: #1fb5ad;">Update</button>
 
 
 

@@ -7,7 +7,7 @@
             <section class="panel">
               <section class="panel">
                   <header class="panel-heading">
-                      Hover Table
+                      <b>About Management</b>
                       <span class="tools pull-right">
                         <!-- <a href="<?php echo base_url()?>add_layers"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Layers</button></a> -->
                        </span>

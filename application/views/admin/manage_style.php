@@ -26,7 +26,10 @@
       <div class="col-lg-12">
         <section class="panel">
           <header class="panel-heading">
-            Form Elements
+            <b>Manage Marker Style</b>
+             <span class="tools pull-right">
+                        <a href=""><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-map-marker"></i> View In Map</button></a>
+                        </span>
           </header>
           <div class="panel-body">
             <form class="form-horizontal bucket-form" method="post" action="">
@@ -116,7 +119,7 @@
               </div>
 
               <div class="col-md-6">
-                <button type="submit" name="submit" class="btn btn-info">Submit</button>
+                <button type="submit" name="submit" class="btn btn-success" style="background-color: #1fb5ad;border-color: #1fb5ad;">Update</button>
 
               </div>
 

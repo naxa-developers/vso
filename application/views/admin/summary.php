@@ -6,12 +6,38 @@
 
 
 
+                      <!--summary brief -->
+
+                      <div class="row">
+                             <div class="col-lg-12">
+                                 <section class="panel">
+                                     <header class="panel-heading">
+                                      Summary
+                                     </header>
+                                     <div class="panel-body">
+                                         <div class="form">
+
+                                                 <div class="form-group">
+                                                     <label class="col-sm-2 control-label col-sm-2">Summary</label>
+                                                     <div class="col-sm-10">
+                                                         <textarea class="form-control ckeditor" name="summary_data" rows="6"><?php echo $selected['summary'] ?></textarea>
+                                                     </div>
+                                                 </div>
+
+                                         </div>
+                                     </div>
+                                 </section>
+                             </div>
+                         </div>
 
     <div class="row">
       <div class="col-lg-12">
         <section class="panel">
           <header class="panel-heading">
-            Different Color Custom Checkbox & Radio
+            <b>Select The Category According To </b>
+            <span class="tools pull-right">
+                        <a href=""><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-map-marker"></i> View In Map</button></a>
+                        </span>
           </header>
           <div class="panel-body">
 
@@ -46,29 +72,6 @@
 
                       </div>
 
-                      <!--summary brief -->
-
-                      <div class="row">
-                             <div class="col-lg-12">
-                                 <section class="panel">
-                                     <header class="panel-heading">
-                                      Summary
-                                     </header>
-                                     <div class="panel-body">
-                                         <div class="form">
-
-                                                 <div class="form-group">
-                                                     <label class="col-sm-2 control-label col-sm-2">Summary</label>
-                                                     <div class="col-sm-10">
-                                                         <textarea class="form-control ckeditor" name="summary_data" rows="6"><?php echo $selected['summary'] ?></textarea>
-                                                     </div>
-                                                 </div>
-
-                                         </div>
-                                     </div>
-                                 </section>
-                             </div>
-                         </div>
                       <!-- summary brief end -->
 
 
@@ -77,7 +80,7 @@
 
                   </div>
                   <br/>
-                  <button type="submit" name="submit" class="btn btn-info">Update</button>
+                  <button type="submit" name="submit" class="btn btn-success" style="background-color: #1fb5ad;border-color: #1fb5ad;">Update</button>
                 </form>
               </div>
 

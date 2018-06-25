@@ -7,11 +7,11 @@
         <div class="col-lg-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Basic Formss
+                        <b>Background Image </b>
                     </header>
                     <div class="panel-body">
                         <div class="position-center">
-                          <h5><i class="fa fa-info-circle"></i> Note: Select a Background Image</h5><br>
+                          <h5><i class="fa fa-info-circle"></i> Note: Select a Background Image To Preview In HomePage.</h5><br>
 
                           <?php
                             $error=	$this->session->flashdata('msg');
@@ -27,7 +27,7 @@
 
 
                               <div class="form-group ">
-                                <label class="control-label col-md-3">Project Partner Logo </label>
+                                <label class="control-label col-md-3">Background Image </label>
                                 <div class="col-md-9">
                                   <div class="fileupload fileupload-new" data-provides="fileupload">
                                     <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
@@ -36,7 +36,7 @@
                                     <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
                                     <div>
                                       <span class="btn btn-white btn-file">
-                                        <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
+                                        <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Upload Image</span>
                                         <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
                                         <input type="file" name="back_pic" class="default" />
                                       </span>
