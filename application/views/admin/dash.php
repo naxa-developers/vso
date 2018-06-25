@@ -51,7 +51,7 @@ h1.sub{
           <div class="top-stats-panel">
 
             <h4 class="widget-h">Data</h4>
-            <h1 class="sub text-center" id="count2"><?php echo $map ?></h1>
+            <h1 class="sub text-center" id="count2"><?php echo $map_data ?></h1>
 
           </div>
         </div>
@@ -140,7 +140,7 @@ chart.render();
 
 
     <!--counter-->
- 
+
 <script type="text/javascript">
   $('#count,#count1,#count2').each(function () {
 
@@ -155,6 +155,3 @@ chart.render();
     });
 });
       </script>
-
-   
-
