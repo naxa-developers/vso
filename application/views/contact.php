@@ -162,13 +162,14 @@
   </ul>
 
 
-    <div class="col-sm-12 " style="margin: 10px auto;">
-          <a href="#" class="btn btn-" role="button">Download</a>
-    </div>
+   
 
 
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="health" role="tabpanel" aria-labelledby="health-tab">
+      <br>
+      <button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px; float: right;"><i class="fa fa-download"></i> Download</button>
+      <br>
       <div class="row" id="reportable">
        <!-- responsive table for displaying contact directory -->
        <table class="responstable">
@@ -210,6 +211,9 @@
   </div>
 
   <div class="tab-pane fade show" id="emergency" role="tabpanel" aria-labelledby="emergency-tab">
+    <br>
+      <button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button>
+      <br>
     <div class="row" id="reportable">
      <!-- responsive table for displaying contact directory -->
      <table class="responstable">
@@ -250,6 +254,9 @@
 </div>
 
 <div class="tab-pane fade show" id="security" role="tabpanel" aria-labelledby="security-tab">
+  <br>
+      <button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button>
+      <br>
   <div class="row" id="reportable">
    <!-- responsive table for displaying contact directory -->
    <table class="responstable">
@@ -287,6 +294,9 @@
 </div>
 
 <div class="tab-pane fade show" id="ngo" role="tabpanel" aria-labelledby="ngo-tab">
+  <br>
+      <button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button>
+      <br>
   <div class="row" id="reportable">
    <!-- responsive table for displaying contact directory -->
    <table class="responstable">
@@ -325,6 +335,9 @@
 </div>
 
 <div class="tab-pane fade show" id="volunter" role="tabpanel" aria-labelledby="volunter-tab">
+  <br>
+      <button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button>
+      <br>
   <div class="row" id="reportable">
    <!-- responsive table for displaying contact directory -->
    <table class="responstable">
@@ -360,6 +373,9 @@
 </div>
 
 <div class="tab-pane fade show" id="person" role="tabpanel" aria-labelledby="person-tab">
+  <br>
+      <button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button>
+      <br>
   <div class="row" id="reportable">
    <!-- responsive table for displaying contact directory -->
    <table class="responstable">
@@ -395,6 +411,9 @@
 </div>
 
 <div class="tab-pane fade show" id="member" role="tabpanel" aria-labelledby="member-tab">
+  <br>
+      <button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button>
+      <br>
   <div class="row" id="reportable">
    <!-- responsive table for displaying contact directory -->
    <table class="responstable">
