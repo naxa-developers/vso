@@ -103,6 +103,8 @@ $route['edit_categories'] = 'Admin/CategoriesController/edit_categories';
 $route['drop_cat_table'] = 'Admin/CategoriesController/drop_cat_table';
 $route['delete_data'] = 'Admin/CategoriesController/delete_data';
 $route['csv_data_tbl'] = 'Admin/CategoriesController/csv_data_tbl';
+$route['sub_categories'] = 'Admin/CategoriesController/sub_categories';
+$route['sub_cat_insert'] = 'Admin/CategoriesController/sub_cat_insert';
 
 $route['proj/delete_data'] = 'Admin/ProjectController/delete_data';
 $route['proj/edit_proj'] = 'Admin/ProjectController/edit_proj';

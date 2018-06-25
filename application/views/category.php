@@ -916,31 +916,26 @@ div#table1 {
                        <output id="rangePrimary">50</output>
                      </div> -->
                      <div class="treeview-content-p">
+
+                  <?php if($data['sub_categories']==''){  ?>
+
+                <p> No sub categories </p>
+
+          <?php  }else{
+
+                $data_array=json_decode($data['sub_categories'],TRUE);
+
+                  for($i=0;sizeof($data_array)>$i;$i++){
+
+                ?>
+
                       <div class="form-check">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" value="" checked>Basic(1-8)
-                        </label>
+
+                    <input type="checkbox" id="<?php echo $data['sub_col'] ?>" name="<?php echo $data['category_table'] ?>" class="form-check-input sub-cat" value="<?php echo $data_array[$i] ?>"><label class="form-check-label"><?php echo $data_array[$i] ?></label>
+
                       </div>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" value="">Secondary
-                        </label>
-                      </div>
-                      <div class="form-check disabled">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" value="" checked>College
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" value="">University
-                        </label>
-                      </div>
-                      <div class="form-check disabled">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" value="">Technical Institutions
-                        </label>
-                      </div>
+
+                    <?php }} ?>
                     </div>
 
 
@@ -1669,7 +1664,7 @@ $( ".CheckBox" ).click(function( event ) {
  var	togglename=toTitleCase(layertoggled.replace("_"," "));
 
 
- console.log();
+
 
  if (map.hasLayer(layerClicked)) {
    map.removeLayer(layerClicked);
@@ -1702,6 +1697,103 @@ $( ".CheckBoxStart" ).click(function( event ) {
 
 });
 
+//sub-cat
+$('.sub-cat').click(function(){
+ //$('.treeview-content-p input:checked')
+
+  var data=$(this).val() ;
+  var col= $(this).attr('id') ;
+  var tbl=$(this).attr('name') ;
+//  console.log($(this).name()) ;
+  single_map=data.replace(/ /g, "_");
+
+  if(map.hasLayer(window[single_map])){
+    map.removeLayer(window[single_map]);
+    console.log('if');
+  }
+  else {
+
+console.log('else');
+$.ajax({
+type: "GET",
+                         //  data: name,
+                         url:  "MapController/get_sub_cat_data?tbl="+tbl+"&&data="+data+"&&col="+col,
+                         beforeSend: function() {
+                             //  $.LoadingOverlay("show");
+                           },
+                           complete: function() {
+                             //  $.LoadingOverlay("hide", true);
+                           },
+                           success: function (result) {
+
+                           //alert(result);
+
+
+                             data=JSON.parse(result);
+                             sub_cat=JSON.parse(data.geojson);
+                             sub_style=JSON.parse(data.style);
+                            //console.log(sub_style);
+                          //layers
+
+
+                          //map.options.minZoom = 14;
+                          //console.log("adfasfsadfasfasdfasfdasdfsafasdfsafasfasfsafsa");
+
+
+                        //  map.addLayer(googleStreets);
+
+
+
+
+                          //layer
+                          //console.log(data.replace(/ /g, "_"));
+
+                          //console.log($(this).attr('id'));
+                            window[single_map]=new L.GeoJSON(sub_cat,{
+                                pointToLayer: function(feature, latlng) {
+                                  icons = L.icon({
+                                    //iconSize: [27, 27],
+                                    iconAnchor: [13, 27],
+                                    popupAnchor:  [2, -24],
+                                    iconUrl: 'https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon.png'
+                                  });
+                                  //console.log(icon.options);
+                                  var marker = L.circleMarker(latlng);
+                                  return marker;
+
+                                },
+                                onEachFeature: function(feature, layer) {
+                                    layer.setStyle(sub_style);
+                                  layer.bindPopup(feature.properties);
+                                  //feature.properties.layer_name = "transit_stops";
+
+                                }
+                              }).addTo(map);
+                              map.removeLayer(window[''+cat_tbl_array_name[i]]);
+
+
+
+
+                              //map.addLayer(col);
+
+
+                           }
+
+
+});
+}
+});
+
+
+
+
+
+//sub-cat
+
+
+
+
+
 });
 </script>
 
@@ -1729,10 +1821,17 @@ $( ".CheckBoxStart" ).click(function( event ) {
 
 
 
+    //});
+
+
+
+
 				//$('#category1_toggle').removeClass('active');
-        $('#select1').multiselect();
-        $('#select2').multiselect();
+        // $('#select1').multiselect();
+        // $('#select2').multiselect();
       });
+
+
 
 
     </script>
