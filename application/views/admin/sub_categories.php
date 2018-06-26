@@ -11,7 +11,7 @@
       <div class="col-lg-12">
         <section class="panel">
           <header class="panel-heading">
-            Different Color Custom Checkbox & Radio
+            <b>Sub Categories</b>
           </header>
           <div class="panel-body">
 

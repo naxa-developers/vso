@@ -1,3 +1,4 @@
+
 <!--main content start-->
 <script src="<?php echo base_url();?>assets/admin/js/jquery-1.10.2.min.js"></script>
 <section id="main-content">
@@ -9,6 +10,9 @@
           <section class="panel">
             <header class="panel-heading">
               Categories
+               <span class="tools pull-right down">
+                <a href="#"><button type="submit" name="upload_data" class="btn btn-primary"><i class="fa fa-download"></i> Download</button></a>
+              </span>
               <span class="tools pull-right">
                 <a href="<?php echo base_url()?>create_categories"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-plus"></i> Add Category</button></a>
               </span>

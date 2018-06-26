@@ -5760,3 +5760,7 @@ right: -1px;
 .sortable{
     min-height: 400px;;
 }
+
+.down{
+  margin-top:-7px;
+}
