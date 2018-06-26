@@ -26,10 +26,12 @@ div#exampleModal {
     overflow: hidden;
 }
 .map-marker{
- display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 15%;
+width: 60px;
+    height: 80px;
+    margin: auto;
+    display: block;
+    margin-left: 12px;
+  
 }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -139,6 +141,90 @@ div#exampleModal {
                   </div>
                 </div>
               </div>
+           
+
+
+
+            <div class="form-group ">
+              <div class="col-md-9">
+                <br>
+                <div class="col-md-6">
+                  Upload Image
+                  <div class="fileupload fileupload-new" data-provides="fileupload">
+                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                      <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                    </div>
+                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                    <div>
+                      <span class="btn btn-white btn-file">
+                        <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
+                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                        <input type="file" name="cat_pic" class="default" />
+                      </span>
+
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  Select Icon
+                  <div class="panel panel-default icon-select" style="border: 1px solid #ddd;max-height: 150px; width: 425px;overflow-x: auto;" >
+                    <div class="panel-body" style="overflow: hidden;">
+
+
+                      <div class="form-group">
+
+                      <div class="row">
+          <div class="col-md-3">
+            <form>
+              <label>
+                <input id="fb3" type="radio" name="fb" value="med" />
+                <img class="map-marker" src="<?php echo base_url();?>assets/img/mark.png"  alt="Logo"  >
+                
+              </label>
+            </div>
+
+            <div class="col-md-3">
+             <label>
+              <input id="fb3" type="radio" name="fb" value="med" />
+              <img class="map-marker" src="<?php echo base_url();?>assets/img/mark.png" alt="Logo" >
+            
+            </label>
+          </div>
+
+          <div class="col-md-3">
+           <label>
+            <input id="fb3" type="radio" name="fb" value="med" />
+            <img class="map-marker" src="<?php echo base_url();?>assets/img/mark.png" alt="Logo" >
+            
+          </label>
+        </div>
+
+        <div class="col-md-3">
+         <label>
+          <input id="fb3" type="radio" name="fb" value="med" />
+          <img class="map-marker" src="<?php echo base_url();?>assets/img/mark.png" alt="Logo">
+          
+        </label>
+      </div>
+      
+
+                                    </div>
+
+
+                      </div>
+
+
+
+                    </div>
+                  </div>
+
+                </div>
+
+
+
+              </div>
+            </div>
 
               <div class="col-md-6">
                 <button type="submit" name="submit" class="btn btn-success" style="background-color: #1fb5ad;border-color: #1fb5ad;">Update</button>
@@ -164,77 +250,6 @@ div#exampleModal {
 
 
 
-   <!-- next -->
-    <div class="col-sm-12">
-       <section class="panel">
-          <section class="panel">
-              <header class="panel-heading">
-                 <b> Choose Map Markerss</b>
-                  <span class="tools pull-right">
-                    <!-- <a href="<?php echo base_url()?>add_maps"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Maps</button></a> -->
-                   </span>
-              </header>
-              <div class="panel-body">
-
-                <?php
-                  $error= $this->session->flashdata('msg');
-                   if($error){ ?>
-                     <div class="alert alert-info alert-dismissible">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong>Message!!!!</strong>  <?php echo $error ; }?>
-                          </div>
-                          <br>
-                          <br>
-                          <div class="row">
-                            <div class="col-md-12">
-                              <div class="row">
-          <div class="col-md-3">
-            <form>
-              <label>
-                <input id="fb3" type="radio" name="fb" value="med" />
-                <img class="map-marker" src="<?php echo base_url();?>assets/img/mark.png"  alt="Logo" height="50" >
-                
-              </label>
-            </div>
-
-            <div class="col-md-3">
-             <label>
-              <input id="fb3" type="radio" name="fb" value="med" />
-              <img class="map-marker" src="<?php echo base_url();?>assets/img/mark.png" alt="Logo" height="50">
-            
-            </label>
-          </div>
-
-          <div class="col-md-3">
-           <label>
-            <input id="fb3" type="radio" name="fb" value="med" />
-            <img class="map-marker" src="<?php echo base_url();?>assets/img/mark.png" alt="Logo" height="50">
-            
-          </label>
-        </div>
-
-        <div class="col-md-3">
-         <label>
-          <input id="fb3" type="radio" name="fb" value="med" />
-          <img class="map-marker" src="<?php echo base_url();?>assets/img/mark.png" alt="Logo" height="50">
-          
-        </label>
-      </div>
-      
-
-                                    </div>
-
-
-</form>
-
-              </div>
-            </div>
-            </div>
-          </section>
-
-        </section>
-
-    <!-- next -->
 
 
 
