@@ -33,7 +33,15 @@ public function get_contact($cat,$tbl)
 
 }
 
+public function get_contact_csv($cat,$tbl)
+{
+  $this->db->select('*');
+  $this->db->where('category',$cat);
+  $q=$this->db->get($tbl);
+  return $q ;
 
+
+}
 
   public function get_about_where($id)
   {

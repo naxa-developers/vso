@@ -61,6 +61,7 @@ $route['about'] ='MainController/about_page';
 $route['publication'] ='MainController/publication';
 $route['inventory'] ='MainController/inventory';
 $route['contact'] ='MainController/contact';
+$route['get_csv_emergency'] ='MainController/get_csv_emergency';
 
 $route['map'] ='MapController/map_page';
 $route['category'] ='MapController/category_map';

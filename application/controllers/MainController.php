@@ -222,6 +222,52 @@ $this->load->view('admin/login-page');
 
   }
 
+  public function get_csv_emergency(){
+
+    $this->load->dbutil();
+    $this->load->helper('file');
+    $this->load->helper('download');
+
+    array_map('unlink', glob("uploads/emergency_personnel/file/*.csv"));
+
+
+   $type=$this->input->get('type');
+   $namee=$this->input->get('name');
+   $tbl=$this->input->get('tbl');
+
+
+
+
+
+//echo 'asdasd';
+
+
+  $report=$this->Main_model->get_contact_csv($type,$tbl);
+
+
+
+
+
+
+
+
+
+
+
+    /*  pass it to db utility function  */
+    $new_report = $this->dbutil->csv_from_result($report);
+       $name = $namee.'.csv';
+     /*  Now use it to write file. write_file helper function will do it */
+     write_file('uploads/emergency_personnel/file/'.$name,$new_report);
+
+       $data=file_get_contents('uploads/emergency_personnel/file/'.$name);
+      force_download($name,$data);
+
+       // $path='uploads/csv/'.$name;
+       // echo $path;
+       // unlink($path);
+  }
+
 
 
 }
