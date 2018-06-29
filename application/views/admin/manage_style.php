@@ -10,30 +10,8 @@
 
 
 <script src="<?php echo base_url()?>assets/admin/js/ion.rangeSlider.min.js" type="text/javascript"></script> -->
-<style type="text/css">
-         label > input{ /* HIDE RADIO */
-  visibility: hidden; /* Makes input not-clickable */
-  position: absolute; /* Remove input from document flow */
-}
-label > input + img{ /* IMAGE STYLES */
-  cursor:pointer;
-  border:2px solid transparent;
-}
-label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
-  border:2px solid #f00;
-}
-div#exampleModal {
-    overflow: hidden;
-}
-.map-marker{
-width: 60px;
-    height: 80px;
-    margin: auto;
-    display: block;
-    margin-left: 12px;
-  
-}
-</style>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 
@@ -145,7 +123,7 @@ width: 60px;
 
 
 
-            <div class="form-group ">
+            <!-- <div class="form-group ">
               <div class="col-md-9">
                 <br>
                 <div class="col-md-6">
@@ -224,7 +202,7 @@ width: 60px;
 
 
               </div>
-            </div>
+            </div> -->
 
               <div class="col-md-6">
                 <button type="submit" name="submit" class="btn btn-success" style="background-color: #1fb5ad;border-color: #1fb5ad;">Update</button>
