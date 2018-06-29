@@ -170,3 +170,7 @@ img { border: 0; max-width: 100%; }
  
 html[xmlns] .clearfix { display: block; }
 * html .clearfix { height: 1%; }
+
+div#tb1_filter {
+    margin-top: -15px !important;
+}

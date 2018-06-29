@@ -2767,6 +2767,7 @@ ul.amounts li {
 }
 .dataTables_filter {
     float:right;
+    margin-top: -15px !important;
 }
 .dataTables_length select {
     width:65px;

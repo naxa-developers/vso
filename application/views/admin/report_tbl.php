@@ -8,9 +8,7 @@
               <section class="panel">
                   <header class="panel-heading">
                       <b>Reports</b>
-                         <span class="tools pull-right down">
-                <a href="#"><button type="submit" name="upload_data" class="btn btn-primary"><i class="fa fa-download"></i> Download</button></a>
-              </span>
+                    
                       <!-- <span class="tools pull-right">
                         <a href="<?php echo base_url()?>add_proj"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Project Partner</button></a>
                        </span> -->
