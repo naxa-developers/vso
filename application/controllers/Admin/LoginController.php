@@ -39,6 +39,15 @@ public function index(){
 
        if($check==TRUE){
 
+         $newdata = array(
+
+   					'logged_in' => TRUE,
+
+   					);
+
+
+   			$this->session->set_userdata($newdata);
+
       redirect('dashboard');
 
        }else{
@@ -61,7 +70,20 @@ public function index(){
 
 }//method end
 
+public function logout(){
 
+  $newdata = array(
+
+      'logged_in' => TRUE,
+
+      );
+
+
+   $this->session->unset_userdata($newdata);
+   $this->session->sess_destroy();
+   redirect('admin', 'refresh');
+
+}
 
 
 

@@ -76,6 +76,8 @@ $route['news_register'] ='NewsletterController/register';
 
 
 
+
+
 $route['report_page'] ='ReportController/report_page';
 $route['report_manage'] ='ReportController/report_manage';
 $route['report/delete'] = 'ReportController/delete_data';
@@ -85,6 +87,8 @@ $route['map_reports'] ='ReportController/map_reports';
 // Admin routes
 
 $route['admin'] = 'Admin/LoginController';
+$route['logout'] = 'Admin/LoginController/logout';
+
 $route['feature'] = 'Admin/FeatureDataset/feature';
 $route['add_feature'] = 'Admin/FeatureDataset/add_feature';
 $route['delete_feature'] = 'Admin/FeatureDataset/delete_feature';

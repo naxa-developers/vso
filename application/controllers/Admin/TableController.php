@@ -6,10 +6,18 @@ class TableController extends CI_Controller
   {
     parent::__construct();
 
+    if(($this->session->userdata('logged_in'))!=TRUE)
+    {
+
+      redirect('admin');
+    }else{
+
+    }
+
     $this->load->helper('url');
     $this->load->model('Table_model');
     $this->load->model('Dash_model');
-      $this->load->dbforge();
+    $this->load->dbforge();
   }
 
 
@@ -18,8 +26,8 @@ class TableController extends CI_Controller
 
   public function copy_table(){
 
-//$table_name=base64_decode($this->input->get('tbl'));
-$table_name='test_test';
+    //$table_name=base64_decode($this->input->get('tbl'));
+    $table_name='test_test';
 
 
     if(isset($_POST['submit'])){
@@ -28,7 +36,7 @@ $table_name='test_test';
       $fields=$this->db->list_fields($table_name);
       unset($fields[0]);
       $field_name=implode(",",$fields);
-    var_dump($field_name);
+      var_dump($field_name);
 
       $field_name=('lat,long,name');
 
@@ -64,7 +72,7 @@ $table_name='test_test';
     }
 
 
-}
+  }
 
 
   public function create_table(){ //create table postgress
@@ -99,178 +107,178 @@ $table_name='test_test';
     $table='users';
     $this->Main_model->insert($data,$table);
 
-}
+  }
 
-public function csv_tbl(){
-
-
-$tbl_name=base64_decode($this->input->get('tbl')) ;
+  public function csv_tbl(){
 
 
-if(isset($_POST['submit'])){
+    $tbl_name=base64_decode($this->input->get('tbl')) ;
 
 
-$file=$_FILES ["fileToUpload"];
-
-// $tbl_name=strstr($file['name'], '.', true);
-// $tbl_name=strtolower($tbl_name);
-
-//svar_dump($file);
+    if(isset($_POST['submit'])){
 
 
-$csv_file=$file['tmp_name'];
- //var_dump($csv_file);
-     // exit();
-chmod($csv_file, 0777);
+      $file=$_FILES ["fileToUpload"];
 
-$fp = fopen($csv_file, 'r');
-$frow = fgetcsv($fp);
-//$frow=trim($frow," ");
-// var_dump($frow);
-// exit();
-   $n=sizeof($frow);
-   $row=array();
-for($i=0;$i<$n;$i++){
-//echo $frow[$i];
-  array_push($row,trim($frow[$i]," "));
-}
+      // $tbl_name=strstr($file['name'], '.', true);
+      // $tbl_name=strtolower($tbl_name);
 
-if( $this->db->table_exists($tbl_name) == FALSE ){
+      //svar_dump($file);
 
-  $this->dbforge->add_field('id');
 
-  $create=$this->dbforge->create_table($tbl_name, FALSE);
+      $csv_file=$file['tmp_name'];
+      //var_dump($csv_file);
+      // exit();
+      chmod($csv_file, 0777);
 
-  if($create==true){
+      $fp = fopen($csv_file, 'r');
+      $frow = fgetcsv($fp);
+      //$frow=trim($frow," ");
+      // var_dump($frow);
+      // exit();
+      $n=sizeof($frow);
+      $row=array();
+      for($i=0;$i<$n;$i++){
+        //echo $frow[$i];
+        array_push($row,trim($frow[$i]," "));
+      }
 
-    for($i=0;$i<sizeof($row);$i++){
+      if( $this->db->table_exists($tbl_name) == FALSE ){
 
-      $fields =
-      array(
+        $this->dbforge->add_field('id');
 
-        'a'.$i=> array(
-          'type' =>'varchar',
+        $create=$this->dbforge->create_table($tbl_name, FALSE);
 
-        ),
+        if($create==true){
+
+          for($i=0;$i<sizeof($row);$i++){
+
+            $fields =
+            array(
+
+              'a'.$i=> array(
+                'type' =>'varchar',
+
+              ),
+            );
+
+            $add_column=$this->dbforge->add_column($tbl_name,$fields);
+
+            // inserting corresponding nepali and englis column name in table
+
+            $data_lang=array(
+
+              'eng_lang'=>'a'.$i,
+              'nepali_lang'=>$row[$i],
+              'tbl_name'=>$tbl_name,
+
+
+            );
+
+            $lang_insert=$this->Dash_model->insert_lang('tbl_lang',$data_lang);
+
+
+
+          }
+
+          $geom_index=sizeof($row)+1;
+
+          $data_lang=array(
+
+            'eng_lang'=>'the_geom',
+            'nepali_lang'=>'the_geom',
+            'tbl_name'=>$tbl_name,
+
+
+          );
+
+          $lang_insert=$this->Dash_model->insert_lang('tbl_lang',$data_lang);
+
+
+          $filename=$file['name'];
+          $fields=$this->db->list_fields($tbl_name);
+          unset($fields[0]);
+          $field_name=implode(",",$fields);
+          $c=$this->Table_model->table_copy($csv_file,$filename,$field_name,$tbl_name);
+
+        }else{
+          echo 'not craete table';
+        }
+
+      }else{
+
+        echo 'table';
+      }
+
+      $this->body['csv_file']=$csv_file;
+      $this->body['row']=$row;
+
+
+      $this->load->view('admin/header');
+      $this->load->view('admin/csv_row',$this->body);
+      $this->load->view('admin/footer');
+
+
+
+
+    }elseif(isset($_POST['submit_row'])){
+
+      var_dump($_POST);
+      $fields = array(
+        'the_geom' => array('type' => 'geometry')
       );
+      $this->dbforge->add_column($tbl_name, $fields);
+      $lo=$_POST['long'];
+      $la=$_POST['lat'];
+      $long='a'.$lo;
+      $lat='a'.$la;
 
-      $add_column=$this->dbforge->add_column($tbl_name,$fields);
-
-  // inserting corresponding nepali and englis column name in table
-
-     $data_lang=array(
-
-     'eng_lang'=>'a'.$i,
-     'nepali_lang'=>$row[$i],
-     'tbl_name'=>$tbl_name,
+      $this->Dash_model->create_geom($long,$lat,$tbl_name);
+      //$data=$this->Dash_model->get();
+      redirect('manage_popup?tbl='.$tbl_name);
 
 
-     );
 
-       $lang_insert=$this->Dash_model->insert_lang('tbl_lang',$data_lang);
+
+    }else{
+      $this->load->view('admin/header');
+      $this->load->view('admin/csv_file');
+      $this->load->view('admin/footer');
 
 
 
     }
 
-$geom_index=sizeof($row)+1;
+  }
 
-    $data_lang=array(
-
-    'eng_lang'=>'the_geom',
-    'nepali_lang'=>'the_geom',
-    'tbl_name'=>$tbl_name,
+  public function get_csv(){
 
 
-    );
-
-      $lang_insert=$this->Dash_model->insert_lang('tbl_lang',$data_lang);
+    array_map('unlink', glob("uploads/csv/*.csv"));
 
 
-          $filename=$file['name'];
-         $fields=$this->db->list_fields($tbl_name);
-         unset($fields[0]);
-         $field_name=implode(",",$fields);
-        $c=$this->Table_model->table_copy($csv_file,$filename,$field_name,$tbl_name);
+    $tbl=$this->input->get('tbl');
 
-}else{
-  echo 'not craete table';
-}
+    $this->load->dbutil();
+    $this->load->helper('file');
+    $this->load->helper('download');
+    $d=$this->Table_model->get_lang($tbl);
+    /* get the object   */
+    $report = $this->Table_model->get_as($d,$tbl);
 
-}else{
+    /*  pass it to db utility function  */
+    $new_report = $this->dbutil->csv_from_result($report);
+    $name = $tbl.'.csv';
+    /*  Now use it to write file. write_file helper function will do it */
+    write_file('uploads/csv/'.$name,$new_report);
 
-echo 'table';
-}
-
- $this->body['csv_file']=$csv_file;
- $this->body['row']=$row;
-
-
- $this->load->view('admin/header');
- $this->load->view('admin/csv_row',$this->body);
- $this->load->view('admin/footer');
-
-
-
-
-}elseif(isset($_POST['submit_row'])){
-
-var_dump($_POST);
-$fields = array(
-    'the_geom' => array('type' => 'geometry')
-);
-$this->dbforge->add_column($tbl_name, $fields);
-$lo=$_POST['long'];
-$la=$_POST['lat'];
-$long='a'.$lo;
-$lat='a'.$la;
-
-$this->Dash_model->create_geom($long,$lat,$tbl_name);
-//$data=$this->Dash_model->get();
-redirect('manage_popup?tbl='.$tbl_name);
-
-
-
-
-}else{
-$this->load->view('admin/header');
-$this->load->view('admin/csv_file');
-$this->load->view('admin/footer');
-
-
-
-}
-
-}
-
-public function get_csv(){
-
-
-  array_map('unlink', glob("uploads/csv/*.csv"));
-  
-
- $tbl=$this->input->get('tbl');
-
-   $this->load->dbutil();
-   $this->load->helper('file');
-   $this->load->helper('download');
-   $d=$this->Table_model->get_lang($tbl);
-   /* get the object   */
-   $report = $this->Table_model->get_as($d,$tbl);
-
-  /*  pass it to db utility function  */
-  $new_report = $this->dbutil->csv_from_result($report);
-     $name = $tbl.'.csv';
-   /*  Now use it to write file. write_file helper function will do it */
-   write_file('uploads/csv/'.$name,$new_report);
-
-     $data=file_get_contents('uploads/csv/'.$name);
+    $data=file_get_contents('uploads/csv/'.$name);
     force_download($name,$data);
 
-     $path='uploads/csv/'.$name;
-     echo $path;
-     unlink($path);
-}
+    $path='uploads/csv/'.$name;
+    echo $path;
+    unlink($path);
+  }
 
 
 }//main

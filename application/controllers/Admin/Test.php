@@ -6,6 +6,14 @@ class Test extends CI_Controller
   {
     parent::__construct();
 
+    if(($this->session->userdata('logged_in'))!=TRUE)
+    {
+
+      redirect('admin');
+    }else{
+
+    }
+
     $this->load->dbforge();
     $this->load->helper('url');
     $this->load->model('Dash_model');
@@ -13,53 +21,53 @@ class Test extends CI_Controller
   }
 
 
-public function select_as(){
+  public function select_as(){
 
     $this->load->model('Table_model');
     $d=$this->Table_model->get_lang();
-  //  var_dump(($d));
+    //  var_dump(($d));
 
-  var_dump($this->Table_model->get_as($d));
-}
+    var_dump($this->Table_model->get_as($d));
+  }
 
-public function search(){
+  public function search(){
 
-$this->load->view('search');
+    $this->load->view('search');
 
-}
+  }
 
 
 
 
   public function index(){
 
-if($this->input->post('submit')=='submit'){
-  unset($_POST['submit']);
-//var_dump(sizeof($_POST));
-//var_dump($_POST);
+    if($this->input->post('submit')=='submit'){
+      unset($_POST['submit']);
+      //var_dump(sizeof($_POST));
+      //var_dump($_POST);
 
 
-$aa=array();
-foreach($_POST as $row) {
+      $aa=array();
+      foreach($_POST as $row) {
 
-    //var_dump(json_encode($row));
-      //array design
-      $a=array(
-        'col'=> $row[0],
-        'name'=>$row[1]
-      );
-      array_push($aa,$a);
+        //var_dump(json_encode($row));
+        //array design
+        $a=array(
+          'col'=> $row[0],
+          'name'=>$row[1]
+        );
+        array_push($aa,$a);
 
-}
-$ab['a']=$aa;
-echo json_encode($ab);
-//end
-}else{
-  $this->load->view('admin/header');
-  $this->load->view('maplabel');
-  $this->load->view('admin/footer');
-}
-}
+      }
+      $ab['a']=$aa;
+      echo json_encode($ab);
+      //end
+    }else{
+      $this->load->view('admin/header');
+      $this->load->view('maplabel');
+      $this->load->view('admin/footer');
+    }
+  }
   // all categories table operation start
 
   public function data_tables() // view table
@@ -353,193 +361,193 @@ echo json_encode($ab);
     if(isset($_POST['submit'])){
 
 
-    $file=$_FILES ["fileToUpload"];
+      $file=$_FILES ["fileToUpload"];
 
-    // $tbl_name=strstr($file['name'], '.', true);
-    // $tbl_name=strtolower($tbl_name);
+      // $tbl_name=strstr($file['name'], '.', true);
+      // $tbl_name=strtolower($tbl_name);
 
-    //svar_dump($file);
-     var_dump($file);
+      //svar_dump($file);
+      var_dump($file);
 
-    $csv_file=$file['tmp_name'];
-     //var_dump($csv_file);
-         // exit();
-    chmod($csv_file, 0777);
+      $csv_file=$file['tmp_name'];
+      //var_dump($csv_file);
+      // exit();
+      chmod($csv_file, 0777);
 
-    $fp = fopen($csv_file, 'r');
-    $frow = fgetcsv($fp);
-    //$frow=trim($frow," ");
-    // var_dump($frow);
-    // exit();
-       $n=sizeof($frow);
-       $row=array();
-    for($i=0;$i<$n;$i++){
-    //echo $frow[$i];
-      array_push($row,trim($frow[$i]," "));
-    }
+      $fp = fopen($csv_file, 'r');
+      $frow = fgetcsv($fp);
+      //$frow=trim($frow," ");
+      // var_dump($frow);
+      // exit();
+      $n=sizeof($frow);
+      $row=array();
+      for($i=0;$i<$n;$i++){
+        //echo $frow[$i];
+        array_push($row,trim($frow[$i]," "));
+      }
 
-    //
-    // $a2=array(0=>"purple",1=>"orange");
-    // array_splice($row,0,0,$a2);
+      //
+      // $a2=array(0=>"purple",1=>"orange");
+      // array_splice($row,0,0,$a2);
 
-     $this->body['csv_file']=$csv_file;
-     $this->body['row']=$row;
-
-
-     $this->load->view('admin/header');
-     $this->load->view('admin/csv_row',$this->body);
-     $this->load->view('admin/footer');
-
-  // exit();
-    // if(in_array("Latitude",$row,TRUE)){
-    //
-    //
-    //
-    // if(in_array('Longitude',$row,TRUE)){
+      $this->body['csv_file']=$csv_file;
+      $this->body['row']=$row;
 
 
+      $this->load->view('admin/header');
+      $this->load->view('admin/csv_row',$this->body);
+      $this->load->view('admin/footer');
 
-
-    // if($row[0]=='Longitude' || $row[1]=='Latitude'  ){
-
-    //
-    //   if( $this->db->table_exists($tbl_name) == FALSE ){
-    // //echo "4";
-    //     $this->dbforge->add_field('id');
-    //     $create=$this->dbforge->create_table($tbl_name, FALSE);
-    //
-    // // var_dump($create);
-    // // exit();
-    //
-    // if($create==true){
-    //
-    //   for($i=0;$i<sizeof($row);$i++){
-    //
-    //     $fields =
-    //     array(
-    //
-    //       'a'.$i=> array(
-    //         'type' =>'varchar',
-    //
-    //       ),
-    //     );
-    //
-    //     $add_column=$this->dbforge->add_column($tbl_name,$fields);
-    //
-    // // inserting corresponding nepali and englis column name in table
-    //
-    //    $data_lang=array(
-    //
-    //    'eng_lang'=>'a'.$i,
-    //    'nepali_lang'=>$row[$i],
-    //    'tbl_name'=>$tbl_name,
-    //
-    //
-    //    );
-    //
-    //      $lang_insert=$this->Dash_model->insert_lang('tbl_lang',$data_lang);
-    //
-    //
-    //
-    //   }
-    //
-    //   if($add_column==true){
-    //
-    //     //echo "true column";
-    //
-    //      $fields=$this->db->list_fields($tbl_name);
-    //      unset($fields[0]);
-    //      $field_name=implode(",",$fields);
-    //
-    //
-    //
-    //      $filename=$file['name'];
-    //
-    //
-    //
-    //
-    //      $c=$this->Table_model->table_copy($csv_file,$filename,$field_name,$tbl_name);
-    // // var_dump($c);
-    // // exit();
-    //      $this->session->set_flashdata('msg',$tbl_name.' table with '.sizeof($row).' Columns Successfully Added');
-    //
-    //
-    //       redirect('csv_tbl');
-    //
-    //
-    //   }else{
-    //
-    //   //table not created
-    //
-    //   }
-    //
-    //
-    //
-    // } else{
-    //
-    //   echo 'table not created';
-    // }
-    // }else{
-    //
-    //
-    //   //table exist
-    // }
-
-    // }else{
-    //
-    //
-    //
-    //
-    // $this->session->set_flashdata('msg',' Order of latitude and longitude not correct in csv. 1st column shold be longitude and 2nd latitude');
-    // redirect('csv_tbl');
-    //
-    // }
+      // exit();
+      // if(in_array("Latitude",$row,TRUE)){
+      //
+      //
+      //
+      // if(in_array('Longitude',$row,TRUE)){
 
 
 
-    // }else{
-    //
-    //
-    // $this->session->set_flashdata('msg','Column name Longitude not found in Csv');
-    // redirect('csv_tbl');
-    //
-    // }
-    //
-    //
-    //
-    // }else{
-    //
-    //
-    //   $this->session->set_flashdata('msg','Column name Latitude not found in CSV');
-    //
-    // // $update_cat=$this->Table_model->insert_tbl($data,$id);
-    //
-    //    redirect('csv_tbl');
-    //
-    // }
+
+      // if($row[0]=='Longitude' || $row[1]=='Latitude'  ){
+
+      //
+      //   if( $this->db->table_exists($tbl_name) == FALSE ){
+      // //echo "4";
+      //     $this->dbforge->add_field('id');
+      //     $create=$this->dbforge->create_table($tbl_name, FALSE);
+      //
+      // // var_dump($create);
+      // // exit();
+      //
+      // if($create==true){
+      //
+      //   for($i=0;$i<sizeof($row);$i++){
+      //
+      //     $fields =
+      //     array(
+      //
+      //       'a'.$i=> array(
+      //         'type' =>'varchar',
+      //
+      //       ),
+      //     );
+      //
+      //     $add_column=$this->dbforge->add_column($tbl_name,$fields);
+      //
+      // // inserting corresponding nepali and englis column name in table
+      //
+      //    $data_lang=array(
+      //
+      //    'eng_lang'=>'a'.$i,
+      //    'nepali_lang'=>$row[$i],
+      //    'tbl_name'=>$tbl_name,
+      //
+      //
+      //    );
+      //
+      //      $lang_insert=$this->Dash_model->insert_lang('tbl_lang',$data_lang);
+      //
+      //
+      //
+      //   }
+      //
+      //   if($add_column==true){
+      //
+      //     //echo "true column";
+      //
+      //      $fields=$this->db->list_fields($tbl_name);
+      //      unset($fields[0]);
+      //      $field_name=implode(",",$fields);
+      //
+      //
+      //
+      //      $filename=$file['name'];
+      //
+      //
+      //
+      //
+      //      $c=$this->Table_model->table_copy($csv_file,$filename,$field_name,$tbl_name);
+      // // var_dump($c);
+      // // exit();
+      //      $this->session->set_flashdata('msg',$tbl_name.' table with '.sizeof($row).' Columns Successfully Added');
+      //
+      //
+      //       redirect('csv_tbl');
+      //
+      //
+      //   }else{
+      //
+      //   //table not created
+      //
+      //   }
+      //
+      //
+      //
+      // } else{
+      //
+      //   echo 'table not created';
+      // }
+      // }else{
+      //
+      //
+      //   //table exist
+      // }
+
+      // }else{
+      //
+      //
+      //
+      //
+      // $this->session->set_flashdata('msg',' Order of latitude and longitude not correct in csv. 1st column shold be longitude and 2nd latitude');
+      // redirect('csv_tbl');
+      //
+      // }
 
 
-  }elseif(isset($_POST['submit_row'])){
+
+      // }else{
+      //
+      //
+      // $this->session->set_flashdata('msg','Column name Longitude not found in Csv');
+      // redirect('csv_tbl');
+      //
+      // }
+      //
+      //
+      //
+      // }else{
+      //
+      //
+      //   $this->session->set_flashdata('msg','Column name Latitude not found in CSV');
+      //
+      // // $update_cat=$this->Table_model->insert_tbl($data,$id);
+      //
+      //    redirect('csv_tbl');
+      //
+      // }
 
 
-$csv_file=$_POST['csv_file'];
+    }elseif(isset($_POST['submit_row'])){
 
 
- $fp = fopen($csv_file, 'r');
- $frow = fgetcsv($fp);
-$n=sizeof($frow);
-    $row=array();
- for($i=0;$i<$n;$i++){
- //echo $frow[$i];
-   array_push($row,trim($frow[$i]," "));
- }
+      $csv_file=$_POST['csv_file'];
 
-var_dump($row);
 
-  }else{
-    $this->load->view('admin/header');
-    $this->load->view('admin/csv_file');
-    $this->load->view('admin/footer');
+      $fp = fopen($csv_file, 'r');
+      $frow = fgetcsv($fp);
+      $n=sizeof($frow);
+      $row=array();
+      for($i=0;$i<$n;$i++){
+        //echo $frow[$i];
+        array_push($row,trim($frow[$i]," "));
+      }
+
+      var_dump($row);
+
+    }else{
+      $this->load->view('admin/header');
+      $this->load->view('admin/csv_file');
+      $this->load->view('admin/footer');
 
 
 
@@ -549,26 +557,26 @@ var_dump($row);
 
   }
 
-public function get_csv(){
+  public function get_csv(){
 
 
 
-  $this->load->model('Table_model');
-  $this->load->dbutil();
-  $this->load->helper('file');
-  $this->load->helper('download');
-  /* get the object   */
-  $report = $this->Table_model->get_tables_data('icons');
+    $this->load->model('Table_model');
+    $this->load->dbutil();
+    $this->load->helper('file');
+    $this->load->helper('download');
+    /* get the object   */
+    $report = $this->Table_model->get_tables_data('icons');
 
-  /*  pass it to db utility function  */
-  $new_report = $this->dbutil->csv_from_result($report);
-  /*  Now use it to write file. write_file helper function will do it */
-  write_file('uploads/csv/csv_filee.csv',$new_report);
-  $name='csv_filee.csv';
-     $data=file_get_contents('uploads/csv/csv_filee.csv');
-     //force_download($name,$data);
-     unlink("uploads/csv/csv_filee.csv");
-}
+    /*  pass it to db utility function  */
+    $new_report = $this->dbutil->csv_from_result($report);
+    /*  Now use it to write file. write_file helper function will do it */
+    write_file('uploads/csv/csv_filee.csv',$new_report);
+    $name='csv_filee.csv';
+    $data=file_get_contents('uploads/csv/csv_filee.csv');
+    //force_download($name,$data);
+    unlink("uploads/csv/csv_filee.csv");
+  }
 
 
 }//end

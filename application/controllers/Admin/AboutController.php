@@ -6,6 +6,14 @@ class AboutController extends CI_Controller
   {
     parent::__construct();
 
+    if(($this->session->userdata('logged_in'))!=TRUE)
+    {
+
+    redirect('admin');
+    }else{
+
+    }
+
     $this->load->dbforge();
     $this->load->helper('url');
     $this->load->model('About_model');
