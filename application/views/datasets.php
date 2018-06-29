@@ -46,75 +46,17 @@ p.about {
 					<a href="#" class="list-group-item list-group-item-action active ">
 						Categories
 					</a>
+
+         <?php foreach ($data as $d) { ?>
+
 					<a href="#" class="list-group-item list-group-item-action"> <p class="check" style="margin-bottom: 0rem">
-						<input type="checkbox" id="test1" />
-						<label for="test1">Household</label>     <span class="badge badge-primary badge-pill pull-right">14</span>
+						<input type="checkbox" id="test<?php echo $d['id']?>" />
+						<label for="test<?php echo $d['id']?>"><?php echo $d['category_name']?></label>     <span class="badge badge-primary badge-pill pull-right">14</span>
 
 					</p></a>
-					<a href="#" class="list-group-item list-group-item-action"> <p  style="margin-bottom: 0rem">
-						<input type="checkbox" id="test2"  />
-						<label for="test2">Educational Institution</label>     <span class="badge badge-primary badge-pill pull-right">14</span>
 
-					</p></a>
-					<a href="#" class="list-group-item list-group-item-action"> <p  style="margin-bottom: 0rem">
-						<input type="checkbox" id="test3"  />
-						<label for="test3">Government Institution</label>     <span class="badge badge-primary badge-pill pull-right">14</span>
+				<?php } ?>
 
-					</p></a>
-					<a href="#" class="list-group-item list-group-item-action ">   <p  style="margin-bottom: 0rem">
-						<input type="checkbox" id="test4" />
-						<label for="test4">Hotel,Homestay</label>     <span class="badge badge-primary badge-pill pull-right">14</span>
-					</p></a>
-
-					<a href="#" class="list-group-item list-group-item-action ">   <p  style="margin-bottom: 0rem">
-						<input type="checkbox" id="test5" />
-						<label for="test5">Banking Institution</label>     <span class="badge badge-primary badge-pill pull-right">14</span>
-					</p></a>
-
-					<a href="#" class="list-group-item list-group-item-action ">   <p  style="margin-bottom: 0rem">
-						<input type="checkbox" id="test6" />
-						<label for="test6">Heritage Sites</label>     <span class="badge badge-primary badge-pill pull-right">14</span>
-					</p></a>
-
-					<a href="#" class="list-group-item list-group-item-action ">   <p  style="margin-bottom: 0rem">
-						<input type="checkbox" id="test7" />
-						<label for="test7">Security Forces</label>     <span class="badge badge-primary badge-pill pull-right">14</span>
-					</p></a>
-
-					<a href="#" class="list-group-item list-group-item-action ">   <p  style="margin-bottom: 0rem">
-						<input type="checkbox" id="test8" />
-						<label for="test8">Health Institution</label>     <span class="badge badge-primary badge-pill pull-right">14</span>
-					</p></a>
-
-					<a href="#" class="list-group-item list-group-item-action ">   <p  style="margin-bottom: 0rem">
-						<input type="checkbox" id="test9" />
-						<label for="test9">Private Organization</label>     <span class="badge badge-primary badge-pill pull-right">14</span>
-					</p></a>
-
-					<a href="#" class="list-group-item list-group-item-action ">   <p  style="margin-bottom: 0rem">
-						<input type="checkbox" id="test10" />
-						<label for="test10">Religious Places</label>     <span class="badge badge-primary badge-pill pull-right">14</span>
-					</p></a>
-
-					<a href="#" class="list-group-item list-group-item-action ">   <p  style="margin-bottom: 0rem">
-						<input type="checkbox" id="test12" />
-						<label for="test12">Open spaces</label>     <span class="badge badge-primary badge-pill pull-right">14</span>
-					</p></a>
-
-					<a href="#" class="list-group-item list-group-item-action ">   <p  style="margin-bottom: 0rem">
-						<input type="checkbox" id="test13" />
-						<label for="test13">Other Public Places</label>     <span class="badge badge-primary badge-pill pull-right">14</span>
-					</p></a>
-
-					<a href="#" class="list-group-item list-group-item-action ">   <p  style="margin-bottom: 0rem">
-						<input type="checkbox" id="test14" />
-						<label for="test14">Risks Zones</label>     <span class="badge badge-primary badge-pill pull-right">14</span>
-					</p></a>
-
-					<a href="#" class="list-group-item list-group-item-action ">   <p  style="margin-bottom: 0rem">
-						<input type="checkbox" id="test15" />
-						<label for="test15">Construction Activities</label>     <span class="badge badge-primary badge-pill pull-right">14</span>
-					</p></a>
 				</div>
 
 				<div class="spacing text-center">
@@ -128,7 +70,7 @@ p.about {
 					<div class="col-md-10">
 						<div class="row no-gutters">
 							<div class="col">
-								<input class="form-control border-secondary border-right-0 rounded-0" type="search" id="myInput" onkeyup="myFunction()"  >
+								<input value="<?php echo $search ?>" class="form-control border-secondary border-right-0 rounded-0" type="search" id="myInput" onkeyup="myFunction()"  >
 							</div>
 							<div class="col-auto">
 								<button class="btn btn-secondary border-left-0 rounded-0 rounded-right" type="button">
@@ -137,10 +79,12 @@ p.about {
 							</div>
 						</div>
 
-						<div class="found text-center" style="font-size: 12px;"><b>75 Dataset(s) Found.</b></div>
+						<!-- <div class="found text-center" style="font-size: 12px;"><b>aaaaaa</b></div> -->
 					</div>
 
 				</div>
+
+				<br>
 				<!--advance Search ends-->
 
 
