@@ -84,6 +84,10 @@ class CategoriesController extends CI_Controller
 
     $tbl_name=base64_decode($this->input->get('tbl_name'));
 
+    if($tbl_name==""){
+
+    }else{
+
     $drop_tbl=$this->dbforge->drop_table($tbl_name);
     //var_dump($drop_tbl);
     if($drop_tbl){
@@ -98,7 +102,7 @@ class CategoriesController extends CI_Controller
       //db error
     }
 
-
+}
   }
 
 
@@ -517,7 +521,12 @@ class CategoriesController extends CI_Controller
 
     if($tbl_name=="categories_tbl"){
 
+      if ($this->db->table_exists($cat_tbl))
+{
       $drop_tbl=$this->dbforge->drop_table($cat_tbl);
+}
+
+
 
       $this->Dash_model->delete_lang($cat_tbl);
 
