@@ -276,21 +276,24 @@ public function map_download()
     // $this->body['field']=$fields; nep
 
     $cat_tbl=$this->Map_model->get_layer('categories_tbl');
+
     $this->body['category_name']=$cat_tbl;
     $popup = array();
     $style = array();
     $marker_type = array();
     foreach($cat_tbl as $tbl){
 
+if(!$this->db->table_exists($tbl['category_table'])){
 
+}else{
       $cat_tbles[]=$tbl['category_table'];
       //$popup[]=$tbl['popup_content'];
       array_push($popup, trim(trim(json_encode($tbl['popup_content'],JSON_NUMERIC_CHECK),'"['),']"'));
       array_push($style, trim(trim(json_encode($tbl['style'],JSON_NUMERIC_CHECK),'"['),']"'));
       array_push($marker_type, trim(trim(json_encode($tbl['marker_type'],JSON_NUMERIC_CHECK),'"['),']"'));
-
+}
     }
-    //var_dump($cat_tbles);
+    
 
     $category_data = array();
 
