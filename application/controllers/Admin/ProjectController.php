@@ -41,14 +41,15 @@ class ProjectController extends CI_Controller
 
       $file_name = $_FILES['proj_pic']['name'];
 
-      $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+      //$ext = pathinfo($file_name, PATHINFO_EXTENSION);
 
 
       $img_upload=$this->Project_model->do_upload($file_name,$proj_name);
 
-      if($img_upload==1){
+      if($img_upload != ""){
 
-        $image_path=base_url() . 'uploads/project_partner/'.$proj_name.'.'.$ext ;
+        $ext=$img_upload['upload_data']['file_ext'];
+        $image_path=base_url() . 'uploads/project_partner/'.$proj_name.$ext ;
 
         $data=array(
           'project_name'=>$proj_name,

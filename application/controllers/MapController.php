@@ -682,7 +682,7 @@ public function circle_marker(){
     $this->body['tbl']=$tbl;
 
     $this->load->view('admin/header');
-    $this->load->view('admin/manage_style',$this->body);
+    $this->load->view('admin/circle_manage',$this->body);
     $this->load->view('admin/footer');
 
   }

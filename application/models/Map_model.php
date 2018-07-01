@@ -159,7 +159,9 @@ class Map_model extends CI_Model {
     {
 
 
-      return 1;
+      $data = array('upload_data' => $this->upload->data());
+
+      return $data;
 
     }
   }

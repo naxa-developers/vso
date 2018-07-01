@@ -268,16 +268,18 @@ class UploadController extends CI_Controller
 
 
 
-      $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+      //$ext = pathinfo($file_name, PATHINFO_EXTENSION);
 
 
 
       $img_upload=$this->Upload_model->do_upload_emerg($file_name,$id);
 
 
-      if($img_upload==1){
+      if($img_upload != ""){
 
-        $image_path=base_url() . 'uploads/emergency_personnel/'.$id.'.'.$ext ;
+        $ext=$img_upload['upload_data']['file_ext'];
+
+        $image_path=base_url() . 'uploads/emergency_personnel/'.$id.$ext ;
 
         $data=array(
 
@@ -338,16 +340,18 @@ class UploadController extends CI_Controller
 
 
 
-        $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+        //$ext = pathinfo($file_name, PATHINFO_EXTENSION);
 
 
 
         $img_upload=$this->Upload_model->do_upload_emerg($file_name,$insert);
 
 
-        if($img_upload==1){
+        if($img_upload != ""){
 
-          $image_path=base_url() . 'uploads/emergency_personnel/'.$insert.'.'.$ext ;
+          $ext=$img_upload['upload_data']['file_ext'];
+
+          $image_path=base_url() . 'uploads/emergency_personnel/'.$insert.$ext ;
 
           $data=array(
 

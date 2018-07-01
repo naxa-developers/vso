@@ -381,6 +381,10 @@ class CategoriesController extends CI_Controller
             redirect('csv_data_tbl?tbl='.base64_encode($cat_name).'&& id='.base64_encode($insert).'&& tbl_name='.base64_encode($cat_table));
 
           }else{
+            $this->load->model('Newsletter');
+            $mail_subject='Data Map Added in VSO Webpage';
+            $m='New Data Map('.$cat_name.')has been added in VSO Webpage.Plese follow link to view new Map Data <br>'.base_url().'category?tbl='.$cat_table;
+            $this->Newsletter->send_mail($m,$mail_subject);
             $this->session->set_flashdata('msg','Note: The Shapefile Co-ordinate System Must Be In WGS84 ie. EPSG:4326 '.$cat_name);
             redirect('add_layers?tbl_name='.$cat_table.'&& id='.$insert);
           }
@@ -396,14 +400,20 @@ class CategoriesController extends CI_Controller
 
       }else{
 
-        $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+        // $info = new SplFileInfo($file_name);
+        // $ext=$info->getExtension();
+
+      //  $ext = pathinfo($file_name, PATHINFO_EXTENSION);
 
 
         $img_upload=$this->Dash_model->do_upload($file_name,$cat_table);
         //var_dump ($img_upload);
-        if($img_upload==1){
+        if($img_upload != ""){
 
-          $image_path=base_url() . 'uploads/categories/'.$cat_table.'.'.$ext ;
+          $ext=$img_upload['upload_data']['file_ext'];
+
+
+          $image_path=base_url() . 'uploads/categories/'.$cat_table.$ext ;
           //  var_dump ($image_path);
 
           $data=array(
@@ -423,10 +433,18 @@ class CategoriesController extends CI_Controller
 
 
             if($upload_type=='csv'){
+              $this->load->model('Newsletter');
+              $mail_subject='Data Map Added in VSO Webpage';
+              $m='New Data Map('.$cat_name.')has been added in VSO Webpage.Plese follow link to view new Map Data <br>'.base_url().'category?tbl='.$cat_table;
+              $this->Newsletter->send_mail($m,$mail_subject);
               $this->session->set_flashdata('msg','Important!!!Create Table for the category '.$cat_name);
               redirect('csv_data_tbl?tbl='.base64_encode($cat_name).'&& id='.base64_encode($insert).'&& tbl_name='.base64_encode($cat_table));
 
             }else{
+              $this->load->model('Newsletter');
+              $mail_subject='Data Map Added in VSO Webpage';
+              $m='New Data Map('.$cat_name.')has been added in VSO Webpage.Plese follow link to view new Map Data <br>'.base_url().'category?tbl='.$cat_table;
+              $this->Newsletter->send_mail($m,$mail_subject);
               $this->session->set_flashdata('msg','Note: The Shapefile Co-ordinate System Must Be In WGS84 ie. EPSG:4326 '.$cat_name);
               redirect('add_layers?tbl_name='.$cat_table.'&& id='.$insert);
             }

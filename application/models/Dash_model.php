@@ -83,8 +83,9 @@ return $res->result_array();
     else
     {
 
+      $data = array('upload_data' => $this->upload->data());
 
-      return 1;
+      return $data;
 
     }
   }

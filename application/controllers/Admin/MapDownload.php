@@ -32,16 +32,18 @@ class MapDownload extends CI_Controller
 
 
 
-      $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+    //  $ext = pathinfo($file_name, PATHINFO_EXTENSION);
 
 
 
       $img_upload=$this->Map_model->do_upload($file_name,$id);
 
 
-      if($img_upload==1){
+      if($img_upload != ""){
 
-        $image_path=base_url() . 'uploads/map_download/'.$id.'.'.$ext ;
+          $ext=$img_upload['upload_data']['file_ext'];
+
+        $image_path=base_url() . 'uploads/map_download/'.$id.$ext ;
 
         $data=array(
 
@@ -96,16 +98,19 @@ class MapDownload extends CI_Controller
 
 
 
-        $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+        //$ext = pathinfo($file_name, PATHINFO_EXTENSION);
 
 
 
         $img_upload=$this->Map_model->do_upload($file_name,$insert);
 
 
-        if($img_upload==1){
+        if($img_upload != ""){
 
-          $image_path=base_url() . 'uploads/map_download/'.$insert.'.'.$ext ;
+            $ext=$img_upload['upload_data']['file_ext'];
+
+
+          $image_path=base_url() . 'uploads/map_download/'.$insert.$ext ;
 
           $data=array(
 

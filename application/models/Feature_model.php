@@ -45,7 +45,9 @@ public function do_upload($filename,$name)
   {
 
 
-    return 1;
+    $data = array('upload_data' => $this->upload->data());
+
+    return $data;
 
   }
 }

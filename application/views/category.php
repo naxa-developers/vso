@@ -879,7 +879,7 @@ div#table1 {
                              <span class="indicator" style="background-color:<?php echo 'red' ?>" data-toggle="tooltip" data-placement="top" title="Hazard Data"></span>
 
                           <?php } ?>
-                        <a href="#open-modal" id="appl" >
+                        <a href="#" id="appl" >
                         <img src="<?php echo base_url()?>assets/img/filter.png" class="filter-icon"></a>
 
                         <?php	if($data['default_load']=='0'){ ?>

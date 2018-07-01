@@ -113,7 +113,9 @@ return $this->db->delete($tbl);
     {
 
 
-      return 1;
+      $data = array('upload_data' => $this->upload->data());
+
+      return $data;
 
     }
   }
