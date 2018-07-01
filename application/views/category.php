@@ -1427,6 +1427,8 @@ $(document).ready(function(){
 		 // }
 
      styles=JSON.parse('<?php echo $style ?>');
+     marker_types=JSON.parse('<?php echo $marker_type ?>');
+
 //popup CheckBoxStart
 popup_content_parsed = JSON.parse('<?php echo $popup_content ?>');
 
@@ -1437,21 +1439,44 @@ $('#active_layers').append('<option id = '+selected_category+' >'+selected_categ
 		 for(i=0; i<cat_tbl_array_name.length; i++){
 //style start
 var style=JSON.parse(styles[i]);
+var marker_type=marker_types[i];
+console.log(marker_type);
 //style end
 
 			 //console.log(cat_tbl_array_name[i]);
       window[''+cat_tbl_array_name[i]]= new L.GeoJSON(cat_layer_data[i],
       {
 
+
+
         pointToLayer: function(feature,Latlng)
         {
+
+        if(marker_type=='icon'){
+
+          console.log(style.icon);
+
+          icons=L.icon({
+            iconSize: [21, 27],
+            iconAnchor: [13, 27],
+            popupAnchor:  [2, -24],
+
+            iconUrl:style.icon
+          });
+          var marker = L.marker(Latlng,{icon:icons});
+
+
+        }else{
+
+
+
          icons=L.icon({
            iconUrl: "https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon.png"
          });
          var marker = L.circleMarker(Latlng);
 				//for(data in style){
 
-
+  }
 
 
 
@@ -1467,7 +1492,10 @@ var style=JSON.parse(styles[i]);
     onEachFeature: function(feature,layer){
 
 			 //console.log(feature);
-      layer.setStyle(style);
+       if(marker_type !='icon'){
+         layer.setStyle(style);
+       }
+
 
       var popUpContent = "";
 

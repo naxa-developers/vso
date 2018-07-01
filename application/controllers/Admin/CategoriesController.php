@@ -532,26 +532,29 @@ class CategoriesController extends CI_Controller
  public function sub_categories(){
 
 
-   if(isset($_POST['submit'])){
+//    if(isset($_POST['submit'])){
+//
+//    $tbl_name=$this->input->post('cat');
+//    $this->body['tbl']=$tbl_name;
+//
+// $this->body['data']=$this->Dash_model->get_tables_data_lang('tbl_lang',$tbl_name);
+// $this->load->view('admin/header');
+// $this->load->view('admin/select_column',$this->body);
+// $this->load->view('admin/footer');
+//
+// }else{
 
-   $tbl_name=$this->input->post('cat');
-   $this->body['tbl']=$tbl_name;
+  $tbl_name=$this->input->get('tbl');
+  $this->body['tbl']=$tbl_name;
 
-$this->body['data']=$this->Dash_model->get_tables_data_lang('tbl_lang',$tbl_name);
-$this->load->view('admin/header');
-$this->load->view('admin/select_column',$this->body);
-$this->load->view('admin/footer');
+  $this->body['data']=$this->Dash_model->get_tables_data_lang('tbl_lang',$tbl_name);
+  $sel_colum=$this->Dash_model->get_sub_cat_style($tbl_name);
+  $this->body['selected_column']=$sel_colum['sub_col'];
+  $this->load->view('admin/header');
+  $this->load->view('admin/select_column',$this->body);
+  $this->load->view('admin/footer');
 
-}else{
-
-  $this->body['data']=$this->Dash_model->get_tables_data('categories_tbl');
-
-//var_dump($this->body['data']);
-   $this->load->view('admin/header');
-   $this->load->view('admin/sub_categories',$this->body);
-   $this->load->view('admin/footer');
-
-}
+//}
  }
 
 public function sub_cat_insert(){

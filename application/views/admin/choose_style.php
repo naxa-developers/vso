@@ -14,13 +14,14 @@
               <section class="panel">
                   <header class="panel-heading">
                      <b>Choose Map Marker Style</b>
-                  
-                      
+
+
                   </header>
                   <div class="panel-body">
 <!-- page start-->
     <div class="row">
      <div class="col-md-6">
+       <a href="circle_marker?tbl=<?php echo $tbl ?>">
       <section class="panel">
         <div class="panel-body choose" style="border: 1px solid #ecebeb">
           <div class="top-stats-panel">
@@ -34,9 +35,11 @@
           </div>
         </div>
       </section>
+    </a>
     </div>
 
     <div class="col-md-6">
+       <a href="location_marker?tbl=<?php echo $tbl ?>">
       <section class="panel">
         <div class="panel-body choose" style="border: 1px solid #ecebeb">
           <div class="top-stats-panel">
@@ -50,11 +53,12 @@
           </div>
         </div>
       </section>
+    </a>
     </div>
-  
+
 
   </div>
-                   
+
                   </div>
               </section>
 

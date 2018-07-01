@@ -32,7 +32,15 @@
                         <div class="minimal single-row">
                           <div class="radio ">
 
-                            <input tabindex="3" type="radio" value="<?php echo $data['eng_lang'] ?>"  name="col" >
+														<?php if($selected_column==$data['eng_lang']){ ?>
+
+                            <input tabindex="3" type="radio" value="<?php echo $data['eng_lang'] ?>"  name="col"  checked>
+
+													<?php }else{?>
+
+													<input tabindex="3" type="radio" value="<?php echo $data['eng_lang'] ?>"  name="col" >
+
+														<?php }?>
 
                             <label><?php echo $data['nepali_lang'] ?></label>
                           </div>
