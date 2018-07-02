@@ -165,6 +165,10 @@
                           <a class="nav-link" href="<?php echo base_url()?>publication">Publication</a>
                       </div>
                     </li>
+                     <li class="nav-item">
+                      <span class="nav-link"><img src="<?php echo base_url();?>assets/img/uk.png" height="15"> / <img src="<?php echo base_url();?>assets/img/nep.png" height="15"></span>
+                    </li>
+                    
                   </ul>
                 </div>
 
