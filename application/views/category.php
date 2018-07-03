@@ -1433,9 +1433,10 @@ $(document).ready(function(){
 popup_content_parsed = JSON.parse('<?php echo $popup_content ?>');
 
 //popup end
-
+if(selected_category==""){}else{
 $('#active_layers').append('<option id = '+selected_category+' >'+selected_category.replace( "_"," ")+'</option>');
-		 //cat map load
+}
+     //cat map load
 		 for(i=0; i<cat_tbl_array_name.length; i++){
 //style start
 var style=JSON.parse(styles[i]);
