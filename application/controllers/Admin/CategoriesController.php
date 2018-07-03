@@ -144,6 +144,8 @@ class CategoriesController extends CI_Controller
 
     }else{
 
+
+
       $data=$_POST;
       unset($data['id']);
 
@@ -173,12 +175,13 @@ class CategoriesController extends CI_Controller
     //  var_dump($nep);
     //var_dump($_POST);
 
-    for($i=0;$i<sizeof($fields);$i++){
+    //for($i=0;$i<sizeof($fields);$i++){
       //  echo $nep['eng_lang'];
 
-      $this->form_validation->set_rules($fields[$i], 'Fill field', 'required');
+      $this->form_validation->set_rules('category_name', 'Fill field', 'required');
+      $this->form_validation->set_rules('category_type', 'Fill field', 'required');
 
-    }
+  //  }
 
     if ($this->form_validation->run() == FALSE){
 

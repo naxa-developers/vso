@@ -103,7 +103,7 @@
                   <div id="spinner3">
                                      <div class="input-group" style="width: 150px">
               <span class="input-group-btn"><button type="button" class="btn btn-default value-control radius" data-action="minus" data-target="Radius"><span class="glyphicon glyphicon-minus"></span></button></span>
-              <input type="text" name="weight" min="1" max="10" value="<?php echo $style_array['weight'] ?>" class="form-control" id="radius">
+              <input type="text" name="radius" min="1" max="10" value="<?php echo $style_array['weight'] ?>" class="form-control" id="radius">
               <span class="input-group-btn"><button type="button" class="btn btn-default value-control radius" data-action="plus" data-target="radius"><span class="glyphicon glyphicon-plus"></span></button></span>
               </div>
                   <span class="help-block">

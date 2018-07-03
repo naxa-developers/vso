@@ -293,7 +293,7 @@ if(!$this->db->table_exists($tbl['category_table'])){
       array_push($marker_type, trim(trim(json_encode($tbl['marker_type'],JSON_NUMERIC_CHECK),'"['),']"'));
 }
     }
-    
+
 
     $category_data = array();
 
@@ -704,7 +704,15 @@ public function location_marker(){
 
     if( $_FILES['cat_pic']['name']==''){
 
+      $_POST['opacity']="";
+      $_POST['fillOpacity']="";
+      $_POST['weight']="";
+      $_POST['radius']="";
+      $_POST['color']="";
+      $_POST['fillColor']="";
       $style=json_encode($_POST);
+
+
 
       $data=array(
 
@@ -810,6 +818,7 @@ public function location_marker(){
 
   }
 
+
   public function update_summary(){
 
     $tbl=$_GET['tbl'];
@@ -819,7 +828,8 @@ public function location_marker(){
     if(isset($_POST['submit'])){
 
 
-      //var_dump($_POST);
+      // var_dump($_POST);
+      // exit();
       $data=array(
         'summary_list'=>$_POST['summary'],
 
