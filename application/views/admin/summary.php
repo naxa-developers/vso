@@ -12,7 +12,7 @@
 			<div class="col-lg-12">
 				<section class="panel">
 					<header class="panel-heading">
-						Summary
+						<?php echo $name_summary ?>
 					</header>
 					<div class="panel-body">
 							<form class="form-horizontal bucket-form" action=" " method="POST">
@@ -35,7 +35,7 @@
 			<div class="col-lg-12">
 				<section class="panel">
 					<header class="panel-heading">
-						<b>Select Summary To </b>
+						<b><?php echo $name_summary ?></b>
 						<span class="tools pull-right">
 							<a href=""><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-map-marker"></i> View In Map</button></a>
 						</span>

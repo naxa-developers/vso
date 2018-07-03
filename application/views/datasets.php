@@ -47,20 +47,24 @@ p.about {
 						Categories
 					</a>
 
-         <?php foreach ($data as $d) { ?>
+				<form method="POST" action="" >
+
+         <?php foreach ($data_panel as $d) { ?>
 
 					<a href="#" class="list-group-item list-group-item-action"> <p class="check" style="margin-bottom: 0rem">
-						<input type="checkbox" id="test<?php echo $d['id']?>" />
-						<label for="test<?php echo $d['id']?>"><?php echo $d['category_name']?></label>     <span class="badge badge-primary badge-pill pull-right">14</span>
+						<input type="checkbox" name=dataset[] value="<?php echo $d['category_table']?>" id="test<?php echo $d['id']?>" />
+						<label for="test<?php echo $d['id']?>"><?php echo $d['category_name']?></label><span class="badge badge-primary badge-pill pull-right"></span>
 
 					</p></a>
 
 				<?php } ?>
 
+
 				</div>
 
 				<div class="spacing text-center">
-					<button class="btn btn-primary btn-sm center-block">Apply</button>
+					<button class="btn btn-primary btn-sm center-block" type="submit" name="submit">Apply</button>
+						</form>
 				</div>
 			</div><!--end panel-->
 			<div class="col-sm-9">

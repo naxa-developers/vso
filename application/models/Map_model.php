@@ -13,6 +13,7 @@ class Map_model extends CI_Model {
   public function get_map_download_data()
   {
     $this->db->select('*');
+    $this->db->order_by('id','DESC');
     $query=$this->db->get('maps_download');
     return $query->result_array();
 

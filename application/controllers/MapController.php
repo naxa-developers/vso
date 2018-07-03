@@ -846,7 +846,7 @@ public function location_marker(){
 
     }else{
 
-
+      $this->body['name_summary']=ucwords(str_replace("_"," ",$tbl));     
       $this->body['summary']=$this->Map_model->get_popup($tbl);
       $summary_single=$this->Map_model->get_summary_single($tbl);
       $this->body['selected']=$summary_single;

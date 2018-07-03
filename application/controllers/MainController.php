@@ -154,11 +154,22 @@ $this->load->view('admin/login-page');
 
      $this->body['search']=$this->input->post('search');
      $this->body['data']=$this->Main_model->get_category();
+    $this->body['data_panel']=$this->Main_model->get_category();
 
     }else{
 
-    $this->body['search']=0;
+    $this->body['search']="";
     $this->body['data']=$this->Main_model->get_category();
+    $this->body['data_panel']=$this->Main_model->get_category();
+
+    }
+    if(isset($_POST['submit'])){
+
+      $checked_dataset=$_POST['dataset'];
+
+    $this->body['data']=$this->Main_model->get_checked_dataset($checked_dataset);
+    $this->body['data_panel']=$this->Main_model->get_category();
+      //var_dump($get_checked);
 
     }
    //var_dump($this->body['data']);

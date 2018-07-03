@@ -13,6 +13,16 @@ class Main_model extends CI_Model {
 
   }
 
+  public function get_checked_dataset($data)
+  {
+
+  $this->db->select('*');
+  $this->db->or_where_in('category_table',$data);
+  $q=$this->db->get('categories_tbl');
+  return $q->result_array();
+
+
+  }
 
   public function get_post(){
 
