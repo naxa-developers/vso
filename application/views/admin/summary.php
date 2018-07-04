@@ -54,15 +54,17 @@
 											<?php foreach($summary as $data){  ?>
 
 												<div class="col-sm-4 icheck ">
+													<div class="col-md-12 bar">
 
 													<div class="minimal single-row">
 														<div class="radio ">
 															<?php   if($data['eng_lang']==$selected['summary_list']){ ?>
-																<input tabindex="3" type="radio" value="<?php echo $data['eng_lang'] ?>"  name="summary" checked>
+																<input tabindex="3" type="radio" class="rdo" value="<?php echo $data['eng_lang'] ?>"  name="summary" checked>
 															<?php  }else{ ?>
-																<input tabindex="3" type="radio" value="<?php echo $data['eng_lang'] ?>"  name="summary">
+																<input tabindex="3" type="radio" class="rdo" value="<?php echo $data['eng_lang'] ?>"  name="summary">
 															<?php  } ?>
 															<label><?php echo $data['nepali_lang'] ?></label>
+														</div>
 														</div>
 													</div>
 												</div>

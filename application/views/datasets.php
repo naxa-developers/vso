@@ -113,6 +113,7 @@ p.about {
 						<button class="btn btn-light btn-sm">KML</button>
 						<a href="<?php echo base_url()?>get_csv?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm">CSV</button></a>
 						<button class="btn btn-light btn-sm">Geojson</button>
+						<a href="<?php echo base_url()?>category?tbl="><button class="btn btn-light btn-sm">ViewIn Map</button></a>
 
 							<hr>
 

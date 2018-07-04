@@ -46,7 +46,7 @@ img.test-icon.chevron {
   margin-left: 10px;
 }
 img.filter-icon {
- height: 20px;
+ height: 15px;
  margin-right: 5px;
 }
 
@@ -559,8 +559,8 @@ height: 280px;*/
   padding: 0;
   position: relative;
   border: none;
-  height: 1rem;
-  width: 2rem;
+  height: 11px;
+  width: 1.2rem;
   border-radius: 1rem;
   margin-top: -2px;
 }
@@ -593,20 +593,20 @@ height: 280px;*/
   opacity: 0.5;
 }
 .control .btn-toggle.btn-xs > .handle {
-  position: absolute;
-  top: 0.125rem;
-  left: 0.125rem;
-  width: 0.75rem;
-  height: 0.75rem;
-  border-radius: 0.75rem;
-  background: #fff;
-  transition: left 0.25s;
+ position: absolute;
+    top: 2px;
+    left: 0.125rem;
+    width: 8px;
+    height: 7px;
+    border-radius: 0.75rem;
+    background: #fff;
+    transition: left 0.25s;
 }
 .control .btn-toggle.btn-xs.active {
   transition: background-color 0.25s;
 }
 .control .btn-toggle.btn-xs.active > .handle {
-  left: 1.125rem;
+  left: 10px;
   transition: left 0.25s;
 }
 .control .btn-toggle.btn-xs.active:before {
@@ -802,8 +802,8 @@ div#left-panel-toggle {
   position: relative;
   display: inline-block;
   color: #fff;
-  height: 9px;
-  width: 27px;
+  height: 5px;
+  width: 15px;
   margin-left: 5px;
   border-radius:7px;
   margin-bottom: 1px;
@@ -1174,8 +1174,8 @@ div#table1 {
 </div>
 
 <div class="btn-pos-list text-center">
- <a href="#" id="appl" class="btn btn-default btn-md">View all</a>
- <a href="#" id="appl" class="btn btn-default btn-md">Download</a>
+ <a href="#" id="appl" class="btn btn-primary btn-md">View all</a>
+ <a href="#" id="appl" class="btn btn-primary btn-md"><i class="fa fa-download"></i> Download</a>
 </div>
 
 </div>
