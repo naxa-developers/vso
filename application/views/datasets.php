@@ -1,5 +1,7 @@
 
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+<script src="<?php echo base_url();?>assets/js/tokml.js"></script>
+<script src="<?php echo base_url();?>assets/js/download.js"></script>
 <link rel="stylesheet" type="text/css" href="assets/css/datasets.css">
 <style type="text/css">
 
@@ -122,10 +124,10 @@ p.about {
 						<p class="about">
 							<?php echo $d['summary'] ?>
 						</p>
-						<button class="btn btn-light btn-sm">KML</button>
+						<button id="kml" name="<?php echo $d['category_table']?>" class="btn btn-light btn-sm">KML</button>
 						<a href="<?php echo base_url()?>get_csv_dataset?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm">CSV</button></a>
 						<a href="<?php echo base_url()?>get_geojson_dataset?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm">Geojson</button></a>
-						
+
 
 							<hr>
 
@@ -153,6 +155,33 @@ p.about {
 			<script type="text/javascript">
 
     	// search from main page
+
+			$('#kml').click(function(){
+
+				var tbl = $(this).attr('name')
+
+
+			 $.ajax({
+			 type: "GET",
+			                          //  data: name,
+			                          url:"Admin/TableController/get_kml_dataset?tbl="+tbl,
+			                          beforeSend: function() {
+			                              //  $.LoadingOverlay("show");
+			                            },
+			                            complete: function() {
+			                              //  $.LoadingOverlay("hide", true);
+			                            },
+			                            success: function (result) {
+
+																	//console.log(result);
+																	var kml = tokml(result); // json is geojson here
+                                  download(kml, tbl+".kml", "text/xml");
+															
+
+																	}
+
+			});
+			});
 
 			var search ='<?php echo $search ?>';
 
