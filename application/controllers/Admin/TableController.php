@@ -251,7 +251,7 @@ class TableController extends CI_Controller
 
   }
 
-  public function get_csv(){
+  public function get_csv_dataset(){
 
 
     array_map('unlink', glob("uploads/csv/*.csv"));
@@ -275,10 +275,113 @@ class TableController extends CI_Controller
     $data=file_get_contents('uploads/csv/'.$name);
     force_download($name,$data);
 
-    $path='uploads/csv/'.$name;
-    echo $path;
-    unlink($path);
+    // $path='uploads/csv/'.$name;
+    // echo $path;
+    // unlink($path);
   }
+
+
+public function get_geojson_dataset(){
+
+   array_map('unlink', glob("uploads/dataset_geojson/*.geojson"));
+  //
+  //
+   $tbl=$this->input->get('tbl');
+  //
+  // $this->load->dbutil();
+  $this->load->helper('file');
+   $this->load->helper('download');
+  $d=$this->Table_model->get_lang($tbl);
+  /* get the object   */
+  $report = $this->Table_model->get_asjson($d,$tbl);
+  $dataset_data=$report->result_array();
+  // var_dump($dataset_data);
+  // exit();
+
+  foreach($dataset_data as $data){
+
+    $ddata=$data ;
+    unset($data['st_asgeojson']);
+
+
+
+    $features_cat[]= array(
+      'type' =>'Feature',
+      'properties'=>$data,
+      'geometry'=>json_decode($ddata['st_asgeojson'],JSON_NUMERIC_CHECK)
+
+    );
+
+
+  }
+
+
+
+  $dataset_array= array(
+    'type' => 'FeatureCollection',
+    'features' => $features_cat,
+  );
+
+$dataset_geojson=json_encode($dataset_array);
+
+  /*  pass it to db utility function  */
+  // $new_report = $this->dbutil->csv_from_result($report);
+   $name = $tbl.'.geojson';
+  // /*  Now use it to write file. write_file helper function will do it */
+   write_file('uploads/dataset_geojson/'.$name,$dataset_geojson);
+  //
+  $data=file_get_contents('uploads/dataset_geojson/'.$name);
+  force_download($name,$data);
+
+
+}
+
+public function get_kml_dataset(){
+
+
+  //
+  //
+   $tbl=$this->input->get('tbl');
+  //
+  // $this->load->dbutil();
+
+  $d=$this->Table_model->get_lang($tbl);
+  /* get the object   */
+  $report = $this->Table_model->get_asjson($d,$tbl);
+  $dataset_data=$report->result_array();
+  // var_dump($dataset_data);
+  // exit();
+
+  foreach($dataset_data as $data){
+
+    $ddata=$data ;
+    unset($data['st_asgeojson']);
+
+
+
+    $features_cat[]= array(
+      'type' =>'Feature',
+      'properties'=>$data,
+      'geometry'=>json_decode($ddata['st_asgeojson'],JSON_NUMERIC_CHECK)
+
+    );
+
+
+  }
+
+
+
+  $dataset_array= array(
+    'type' => 'FeatureCollection',
+    'features' => $features_cat,
+  );
+
+$dataset_geojson=json_encode($dataset_array);
+
+  echo $dataset_geojson;
+
+}
+
 
 
 }//main

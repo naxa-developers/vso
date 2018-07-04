@@ -1,5 +1,7 @@
 
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+<script src="<?php echo base_url();?>assets/js/tokml.js"></script>
+<script src="<?php echo base_url();?>assets/js/download.js"></script>
 <link rel="stylesheet" type="text/css" href="assets/css/datasets.css">
 <style type="text/css">
 
@@ -49,7 +51,18 @@ p.about {
 
 				<form method="POST" action="" >
 
-         <?php foreach ($data_panel as $d) { ?>
+         <?php foreach ($data_panel as $d) {
+
+					if (in_array($d['category_table'], $checked_data)){
+						?>
+
+					<a href="#" class="list-group-item list-group-item-action"> <p class="check" style="margin-bottom: 0rem">
+						<input type="checkbox" name=dataset[] value="<?php echo $d['category_table']?>" id="test<?php echo $d['id']?>" checked/>
+						<label for="test<?php echo $d['id']?>"><?php echo $d['category_name']?></label><span class="badge badge-primary badge-pill pull-right"></span>
+
+					</p></a>
+
+			<?php	}else{ ?>
 
 					<a href="#" class="list-group-item list-group-item-action"> <p class="check" style="margin-bottom: 0rem">
 						<input type="checkbox" name=dataset[] value="<?php echo $d['category_table']?>" id="test<?php echo $d['id']?>" />
@@ -57,7 +70,8 @@ p.about {
 
 					</p></a>
 
-				<?php } ?>
+
+				<?php } }?>
 
 
 				</div>
@@ -110,10 +124,11 @@ p.about {
 						<p class="about">
 							<?php echo $d['summary'] ?>
 						</p>
-						<button class="btn btn-light btn-sm">KML</button>
-						<a href="<?php echo base_url()?>get_csv?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm">CSV</button></a>
-						<button class="btn btn-light btn-sm">Geojson</button>
-						<a href="<?php echo base_url()?>category?tbl="><button class="btn btn-light btn-sm">ViewIn Map</button></a>
+			<button id="kml" name="<?php echo $d['category_table']?>" class="btn btn-light btn-sm">KML</button>
+						<a href="<?php echo base_url()?>get_csv_dataset?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm">CSV</button></a>
+						<a href="<?php echo base_url()?>get_geojson_dataset?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm">Geojson</button></a>
+						<a href="<?php echo base_url()?>category?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm">ViewIn Map</button></a>
+
 
 							<hr>
 
@@ -141,6 +156,33 @@ p.about {
 			<script type="text/javascript">
 
     	// search from main page
+
+			$('#kml').click(function(){
+
+				var tbl = $(this).attr('name')
+
+
+			 $.ajax({
+			 type: "GET",
+			                          //  data: name,
+			                          url:"Admin/TableController/get_kml_dataset?tbl="+tbl,
+			                          beforeSend: function() {
+			                              //  $.LoadingOverlay("show");
+			                            },
+			                            complete: function() {
+			                              //  $.LoadingOverlay("hide", true);
+			                            },
+			                            success: function (result) {
+
+																	//console.log(result);
+																	var kml = tokml(result); // json is geojson here
+                                  download(kml, tbl+".kml", "text/xml");
+															
+
+																	}
+
+			});
+			});
 
 			var search ='<?php echo $search ?>';
 

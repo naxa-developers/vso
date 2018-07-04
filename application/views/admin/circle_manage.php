@@ -101,8 +101,8 @@
                 <label class="control-label col-md-3">Radius</label>
                 <div class="col-md-9">
                   <div id="spinner3">
-                                     <div class="input-group" style="width: 150px">
-              <span class="input-group-btn"><button type="button" class="btn btn-default value-control radius" data-action="minus" data-target="Radius"><span class="glyphicon glyphicon-minus"></span></button></span>
+                   <div class="input-group" style="width: 150px">
+              <span class="input-group-btn"><button type="button" class="btn btn-default value-control radius" data-action="minus" data-target="radius"><span class="glyphicon glyphicon-minus"></span></button></span>
               <input type="text" name="radius" min="1" max="10" value="<?php echo $style_array['weight'] ?>" class="form-control" id="radius">
               <span class="input-group-btn"><button type="button" class="btn btn-default value-control radius" data-action="plus" data-target="radius"><span class="glyphicon glyphicon-plus"></span></button></span>
               </div>
@@ -291,6 +291,7 @@ if ( action == "plus" ) {
 }else{
 
     value=value-1;
+    console.log(value);
      var val=Math.round(value*100)/100;
 
  }
