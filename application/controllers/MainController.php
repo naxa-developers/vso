@@ -14,42 +14,42 @@ class MainController extends CI_Controller
 
 
 
-public function contact(){
+  public function contact(){
 
-$this->body['health']=$this->Main_model->get_contact('health','emergency_contact');
-$this->body['responders']=$this->Main_model->get_contact('responders','emergency_contact');
-$this->body['security']=$this->Main_model->get_contact('security','emergency_contact');
-$this->body['ngo']=$this->Main_model->get_contact('ngo','emergency_contact');
-$this->body['ddr']=$this->Main_model->get_contact('ddr','emergency_personnel');
-$this->body['personnel']=$this->Main_model->get_contact('personnel','emergency_personnel');
-$this->body['members']=$this->Main_model->get_contact('members','emergency_personnel');
+    $this->body['health']=$this->Main_model->get_contact('health','emergency_contact');
+    $this->body['responders']=$this->Main_model->get_contact('responders','emergency_contact');
+    $this->body['security']=$this->Main_model->get_contact('security','emergency_contact');
+    $this->body['ngo']=$this->Main_model->get_contact('ngo','emergency_contact');
+    $this->body['ddr']=$this->Main_model->get_contact('ddr','emergency_personnel');
+    $this->body['personnel']=$this->Main_model->get_contact('personnel','emergency_personnel');
+    $this->body['members']=$this->Main_model->get_contact('members','emergency_personnel');
 
-//svar_dump($this->body['ddr']);
-  $this->load->view('header');
-  $this->load->view('contact',$this->body);
-  $this->load->view('footer');
+    //svar_dump($this->body['ddr']);
+    $this->load->view('header');
+    $this->load->view('contact',$this->body);
+    $this->load->view('footer');
 
-}
-
-
-public function map_page(){
+  }
 
 
-  $this->load->view('header');
-  $this->load->view('mapt');
-  $this->load->view('footer');
+  public function map_page(){
 
 
-}
-public function publication(){
+    $this->load->view('header');
+    $this->load->view('mapt');
+    $this->load->view('footer');
 
-$this->load->model('Publication_model');
-  $this->body['data']=$this->Publication_model->get_all_data();
 
-  $this->load->view('header');
-  $this->load->view('publication',$this->body);
-  $this->load->view('footer');
-}
+  }
+  public function publication(){
+
+    $this->load->model('Publication_model');
+    $this->body['data']=$this->Publication_model->get_all_data();
+
+    $this->load->view('header');
+    $this->load->view('publication',$this->body);
+    $this->load->view('footer');
+  }
 
   public function post_data()
 
@@ -66,34 +66,34 @@ $this->load->model('Publication_model');
   public function default_page()
   {
 
-  $this->load->model('Report_model');
+    $this->load->model('Report_model');
     // echo $this->db->query("SELECT VERSION()")->row('version');
 
     //echo base_url();
     $tbl='categories_tbl';
-   $this->body['hazard_data']=$this->Main_model->get_cat_hazard($tbl);
+    $this->body['hazard_data']=$this->Main_model->get_cat_hazard($tbl);
     $this->body['exposure_data']=$this->Main_model->get_cat_exposure($tbl);
-   $this->body['baseline_data']=$this->Main_model->get_cat_baseline($tbl);
-   $this->body['feature']=$this->Main_model->get_feature();
+    $this->body['baseline_data']=$this->Main_model->get_cat_baseline($tbl);
+    $this->body['feature']=$this->Main_model->get_feature();
 
 
-   //views add
-   $count=$this->Report_model->get_count_views('home');
+    //views add
+    $count=$this->Report_model->get_count_views('home');
 
-   $add_count=$count['views_count']+1;
+    $add_count=$count['views_count']+1;
 
-   $data=array(
-   'views_count'=>$add_count,
+    $data=array(
+      'views_count'=>$add_count,
 
-   );
-
-
- $this->Report_model->update_views($count['id'],$data);
-
- //views add end
+    );
 
 
-   //$this->body['emerg_contact']=$this->Upload_model->get_emergency_con();
+    $this->Report_model->update_views($count['id'],$data);
+
+    //views add end
+
+
+    //$this->body['emerg_contact']=$this->Upload_model->get_emergency_con();
 
     $this->load->view('header');
     $this->load->view('main',$this->body);
@@ -104,38 +104,38 @@ $this->load->model('Publication_model');
   }
 
 
-public function log(){
+  public function log(){
 
-$this->load->view('admin/login-page');
+    $this->load->view('admin/login-page');
 
-}
+  }
 
-//about
+  //about
   public function about_page(){
 
     $this->load->model('Report_model');
 
-     $this->body['proj_data']=$this->Main_model->get_proj_data();
-     $this->body['disaster']=$this->Main_model->get_about_where(1);
-     $this->body['risk']=$this->Main_model->get_about_where(2);
-     $this->body['utility']=$this->Main_model->get_about_where(3);
-     $this->body['house']=$this->Main_model->get_about_where(4);
-     $this->body['query']=$this->Main_model->get_about_where(5);
+    $this->body['proj_data']=$this->Main_model->get_proj_data();
+    $this->body['disaster']=$this->Main_model->get_about_where(1);
+    $this->body['risk']=$this->Main_model->get_about_where(2);
+    $this->body['utility']=$this->Main_model->get_about_where(3);
+    $this->body['house']=$this->Main_model->get_about_where(4);
+    $this->body['query']=$this->Main_model->get_about_where(5);
 
-     //views add
-     $count=$this->Report_model->get_count_views('about');
+    //views add
+    $count=$this->Report_model->get_count_views('about');
 
-     $add_count=$count['views_count']+1;
+    $add_count=$count['views_count']+1;
 
-     $data=array(
-     'views_count'=>$add_count,
+    $data=array(
+      'views_count'=>$add_count,
 
-     );
+    );
 
 
-   $this->Report_model->update_views($count['id'],$data);
+    $this->Report_model->update_views($count['id'],$data);
 
-   //views add end
+    //views add end
 
     $this->load->view('header');
     $this->load->view('about',$this->body);
@@ -151,28 +151,44 @@ $this->load->view('admin/login-page');
 
     if(isset($_POST['submit_search'])){
 
-
-     $this->body['search']=$this->input->post('search');
-     $this->body['data']=$this->Main_model->get_category();
-    $this->body['data_panel']=$this->Main_model->get_category();
+      $this->body['checked_data']=array();
+      $this->body['search']=$this->input->post('search');
+      $this->body['data']=$this->Main_model->get_category();
+      $this->body['data_panel']=$this->Main_model->get_category();
 
     }else{
 
-    $this->body['search']="";
-    $this->body['data']=$this->Main_model->get_category();
-    $this->body['data_panel']=$this->Main_model->get_category();
+      $this->body['search']="";
+      $this->body['checked_data']=array();
+      $this->body['data']=$this->Main_model->get_category();
+      $this->body['data_panel']=$this->Main_model->get_category();
 
     }
     if(isset($_POST['submit'])){
 
-      $checked_dataset=$_POST['dataset'];
+    unset($_POST['submit']);
+    //var_dump($_POST);
 
-    $this->body['data']=$this->Main_model->get_checked_dataset($checked_dataset);
-    $this->body['data_panel']=$this->Main_model->get_category();
+     if($_POST == NULL){
+         $this->body['checked_data']=array();
+         $this->body['data']=$this->Main_model->get_category();
+     }else{
+        $checked_dataset=$_POST['dataset'];
+        $this->body['data']=$this->Main_model->get_checked_dataset($checked_dataset);
+        $this->body['checked_data']=$checked_dataset;
+
+     }
+
+
+
+
+
+      $this->body['data_panel']=$this->Main_model->get_category();
       //var_dump($get_checked);
 
     }
-   //var_dump($this->body['data']);
+    //var_dump($this->body['data']);
+
     $this->load->view('header');
     $this->load->view('datasets',$this->body);
     $this->load->view('footer');
@@ -242,18 +258,18 @@ $this->load->view('admin/login-page');
     array_map('unlink', glob("uploads/emergency_personnel/file/*.csv"));
 
 
-   $type=$this->input->get('type');
-   $namee=$this->input->get('name');
-   $tbl=$this->input->get('tbl');
+    $type=$this->input->get('type');
+    $namee=$this->input->get('name');
+    $tbl=$this->input->get('tbl');
 
 
 
 
 
-//echo 'asdasd';
+    //echo 'asdasd';
 
 
-  $report=$this->Main_model->get_contact_csv($type,$tbl);
+    $report=$this->Main_model->get_contact_csv($type,$tbl);
 
 
 
@@ -267,16 +283,16 @@ $this->load->view('admin/login-page');
 
     /*  pass it to db utility function  */
     $new_report = $this->dbutil->csv_from_result($report);
-       $name = $namee.'.csv';
-     /*  Now use it to write file. write_file helper function will do it */
-     write_file('uploads/emergency_personnel/file/'.$name,$new_report);
+    $name = $namee.'.csv';
+    /*  Now use it to write file. write_file helper function will do it */
+    write_file('uploads/emergency_personnel/file/'.$name,$new_report);
 
-       $data=file_get_contents('uploads/emergency_personnel/file/'.$name);
-      force_download($name,$data);
+    $data=file_get_contents('uploads/emergency_personnel/file/'.$name);
+    force_download($name,$data);
 
-       // $path='uploads/csv/'.$name;
-       // echo $path;
-       // unlink($path);
+    // $path='uploads/csv/'.$name;
+    // echo $path;
+    // unlink($path);
   }
 
 

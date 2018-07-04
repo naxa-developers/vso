@@ -49,7 +49,18 @@ p.about {
 
 				<form method="POST" action="" >
 
-         <?php foreach ($data_panel as $d) { ?>
+         <?php foreach ($data_panel as $d) {
+
+					if (in_array($d['category_table'], $checked_data)){
+						?>
+
+					<a href="#" class="list-group-item list-group-item-action"> <p class="check" style="margin-bottom: 0rem">
+						<input type="checkbox" name=dataset[] value="<?php echo $d['category_table']?>" id="test<?php echo $d['id']?>" checked/>
+						<label for="test<?php echo $d['id']?>"><?php echo $d['category_name']?></label><span class="badge badge-primary badge-pill pull-right"></span>
+
+					</p></a>
+
+			<?php	}else{ ?>
 
 					<a href="#" class="list-group-item list-group-item-action"> <p class="check" style="margin-bottom: 0rem">
 						<input type="checkbox" name=dataset[] value="<?php echo $d['category_table']?>" id="test<?php echo $d['id']?>" />
@@ -57,7 +68,8 @@ p.about {
 
 					</p></a>
 
-				<?php } ?>
+
+				<?php } }?>
 
 
 				</div>
@@ -111,8 +123,9 @@ p.about {
 							<?php echo $d['summary'] ?>
 						</p>
 						<button class="btn btn-light btn-sm">KML</button>
-						<a href="<?php echo base_url()?>get_csv?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm">CSV</button></a>
-						<button class="btn btn-light btn-sm">Geojson</button>
+						<a href="<?php echo base_url()?>get_csv_dataset?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm">CSV</button></a>
+						<a href="<?php echo base_url()?>get_geojson_dataset?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm">Geojson</button></a>
+						
 
 							<hr>
 

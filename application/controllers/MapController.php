@@ -704,12 +704,12 @@ public function location_marker(){
 
     if( $_FILES['cat_pic']['name']==''){
 
-      $_POST['opacity']="";
-      $_POST['fillOpacity']="";
-      $_POST['weight']="";
-      $_POST['radius']="";
-      $_POST['color']="";
-      $_POST['fillColor']="";
+      $_POST['opacity']="0";
+      $_POST['fillOpacity']="0";
+      $_POST['weight']="0";
+      $_POST['radius']="0";
+      $_POST['color']="0";
+      $_POST['fillColor']="0";
       $style=json_encode($_POST);
 
 
@@ -846,7 +846,7 @@ public function location_marker(){
 
     }else{
 
-      $this->body['name_summary']=ucwords(str_replace("_"," ",$tbl));     
+      $this->body['name_summary']=ucwords(str_replace("_"," ",$tbl));
       $this->body['summary']=$this->Map_model->get_popup($tbl);
       $summary_single=$this->Map_model->get_summary_single($tbl);
       $this->body['selected']=$summary_single;
