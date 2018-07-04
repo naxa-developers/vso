@@ -89,14 +89,14 @@
         <!-- user login dropdown start-->
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                
+
                 <span class="username"><i class="fa fa-user"></i>  Admin</span>
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
                 <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                 <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
+                <li><a href="<?php echo base_url()?>logout"><i class="fa fa-key"></i> Log Out</a></li>
             </ul>
         </li>
         <!-- user login dropdown end -->
@@ -203,7 +203,7 @@
                 </li>
 
 
-       
+
 
                 <li class="sub-menu">
                     <a href="javascript:;">

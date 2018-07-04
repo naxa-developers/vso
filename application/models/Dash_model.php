@@ -39,6 +39,16 @@ public function get_sub_cat_style($tbl){
       return $query->result_array();
     }
 
+    public function get_tbl_type($tbl){
+
+
+        $this->db->select('*');
+        $this->db->select('ST_AsGeoJSON(the_geom)');
+        $this->db->limit(1);
+        $query=$this->db->get($tbl);
+        return $query->row_array();
+      }
+
   // create categories
 
 public function get_sub_cat_data($tbl,$data,$col){
@@ -73,11 +83,44 @@ return $res->result_array();
     else
     {
 
+      $data = array('upload_data' => $this->upload->data());
+
+      return $data;
+
+    }
+  }
+
+  public function do_upload_marker($filename,$name)
+  {
+
+    $field_name                     ='cat_pic';
+    $config['upload_path']          = './uploads/icons/map/';
+    $config['allowed_types']        = 'gif|jpg|png';
+    $config['max_size']             = 7000;
+    $config['overwrite']             = TRUE;
+    $config['file_name']           = $name;
+
+    $this->load->library('upload', $config);
+
+    if ( ! $this->upload->do_upload($field_name))
+    {
+      $error = array('error' => $this->upload->display_errors());
+      return $error;
+
+
+    }
+    else
+    {
+
 
       return 1;
 
     }
   }
+
+
+
+
 
   public function insert_cat($table, $udata)
   {

@@ -61,6 +61,7 @@ $route['about'] ='MainController/about_page';
 $route['publication'] ='MainController/publication';
 $route['inventory'] ='MainController/inventory';
 $route['contact'] ='MainController/contact';
+$route['get_csv_emergency'] ='MainController/get_csv_emergency';
 
 $route['map'] ='MapController/map_page';
 $route['category'] ='MapController/category_map';
@@ -68,8 +69,12 @@ $route['manage_popup'] ='MapController/manage_popup';
 $route['manage_style'] ='MapController/manage_style';
 $route['update_summary'] ='MapController/update_summary';
 $route['map_download'] ='MapController/map_download';
+$route['circle_marker'] ='MapController/circle_marker';
+$route['location_marker'] ='MapController/location_marker';
 
 $route['news_register'] ='NewsletterController/register';
+
+
 
 
 
@@ -84,6 +89,8 @@ $route['map_reports'] ='ReportController/map_reports';
 // Admin routes
 
 $route['admin'] = 'Admin/LoginController';
+$route['logout'] = 'Admin/LoginController/logout';
+
 $route['feature'] = 'Admin/FeatureDataset/feature';
 $route['add_feature'] = 'Admin/FeatureDataset/add_feature';
 $route['delete_feature'] = 'Admin/FeatureDataset/delete_feature';

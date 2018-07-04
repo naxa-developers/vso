@@ -46,7 +46,7 @@ img.test-icon.chevron {
   margin-left: 10px;
 }
 img.filter-icon {
- height: 20px;
+ height: 15px;
  margin-right: 5px;
 }
 
@@ -559,8 +559,8 @@ height: 280px;*/
   padding: 0;
   position: relative;
   border: none;
-  height: 1rem;
-  width: 2rem;
+  height: 11px;
+  width: 1.2rem;
   border-radius: 1rem;
   margin-top: -2px;
 }
@@ -593,20 +593,20 @@ height: 280px;*/
   opacity: 0.5;
 }
 .control .btn-toggle.btn-xs > .handle {
-  position: absolute;
-  top: 0.125rem;
-  left: 0.125rem;
-  width: 0.75rem;
-  height: 0.75rem;
-  border-radius: 0.75rem;
-  background: #fff;
-  transition: left 0.25s;
+ position: absolute;
+    top: 2px;
+    left: 0.125rem;
+    width: 8px;
+    height: 7px;
+    border-radius: 0.75rem;
+    background: #fff;
+    transition: left 0.25s;
 }
 .control .btn-toggle.btn-xs.active {
   transition: background-color 0.25s;
 }
 .control .btn-toggle.btn-xs.active > .handle {
-  left: 1.125rem;
+  left: 10px;
   transition: left 0.25s;
 }
 .control .btn-toggle.btn-xs.active:before {
@@ -802,8 +802,8 @@ div#left-panel-toggle {
   position: relative;
   display: inline-block;
   color: #fff;
-  height: 9px;
-  width: 27px;
+  height: 5px;
+  width: 15px;
   margin-left: 5px;
   border-radius:7px;
   margin-bottom: 1px;
@@ -879,7 +879,7 @@ div#table1 {
                              <span class="indicator" style="background-color:<?php echo 'red' ?>" data-toggle="tooltip" data-placement="top" title="Hazard Data"></span>
 
                           <?php } ?>
-                        <a href="#open-modal" id="appl" >
+                        <a href="#" id="appl" >
                         <img src="<?php echo base_url()?>assets/img/filter.png" class="filter-icon"></a>
 
                         <?php	if($data['default_load']=='0'){ ?>
@@ -1174,8 +1174,8 @@ div#table1 {
 </div>
 
 <div class="btn-pos-list text-center">
- <a href="#" id="appl" class="btn btn-default btn-md">View all</a>
- <a href="#" id="appl" class="btn btn-default btn-md">Download</a>
+ <a href="#" id="appl" class="btn btn-primary btn-md">View all</a>
+ <a href="#" id="appl" class="btn btn-primary btn-md"><i class="fa fa-download"></i> Download</a>
 </div>
 
 </div>
@@ -1427,31 +1427,57 @@ $(document).ready(function(){
 		 // }
 
      styles=JSON.parse('<?php echo $style ?>');
+     marker_types=JSON.parse('<?php echo $marker_type ?>');
+
 //popup CheckBoxStart
 popup_content_parsed = JSON.parse('<?php echo $popup_content ?>');
 
 //popup end
-
+if(selected_category==""){}else{
 $('#active_layers').append('<option id = '+selected_category+' >'+selected_category.replace( "_"," ")+'</option>');
-		 //cat map load
+}
+     //cat map load
 		 for(i=0; i<cat_tbl_array_name.length; i++){
 //style start
 var style=JSON.parse(styles[i]);
+var marker_type=marker_types[i];
+console.log(marker_type);
 //style end
 
 			 //console.log(cat_tbl_array_name[i]);
       window[''+cat_tbl_array_name[i]]= new L.GeoJSON(cat_layer_data[i],
       {
 
+
+
         pointToLayer: function(feature,Latlng)
         {
+
+        if(marker_type=='icon'){
+
+          console.log(style.icon);
+
+          icons=L.icon({
+            iconSize: [21, 27],
+            iconAnchor: [13, 27],
+            popupAnchor:  [2, -24],
+
+            iconUrl:style.icon
+          });
+          var marker = L.marker(Latlng,{icon:icons});
+
+
+        }else{
+
+
+
          icons=L.icon({
            iconUrl: "https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon.png"
          });
          var marker = L.circleMarker(Latlng);
 				//for(data in style){
 
-
+  }
 
 
 
@@ -1467,7 +1493,10 @@ var style=JSON.parse(styles[i]);
     onEachFeature: function(feature,layer){
 
 			 //console.log(feature);
-      layer.setStyle(style);
+       if(marker_type !='icon'){
+         layer.setStyle(style);
+       }
+
 
       var popUpContent = "";
 

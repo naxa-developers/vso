@@ -23,7 +23,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
       <div class="col-lg-12">
         <section class="panel">
           <header class="panel-heading">
-            Basic Forms
+            <b> Add Category</b>
           </header>
           <div class="panel-body">
             <div class="position-center">

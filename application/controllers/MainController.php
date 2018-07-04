@@ -154,11 +154,22 @@ $this->load->view('admin/login-page');
 
      $this->body['search']=$this->input->post('search');
      $this->body['data']=$this->Main_model->get_category();
+    $this->body['data_panel']=$this->Main_model->get_category();
 
     }else{
 
-    $this->body['search']=0;
+    $this->body['search']="";
     $this->body['data']=$this->Main_model->get_category();
+    $this->body['data_panel']=$this->Main_model->get_category();
+
+    }
+    if(isset($_POST['submit'])){
+
+      $checked_dataset=$_POST['dataset'];
+
+    $this->body['data']=$this->Main_model->get_checked_dataset($checked_dataset);
+    $this->body['data_panel']=$this->Main_model->get_category();
+      //var_dump($get_checked);
 
     }
    //var_dump($this->body['data']);
@@ -220,6 +231,52 @@ $this->load->view('admin/login-page');
     $this->load->view('footer');
 
 
+  }
+
+  public function get_csv_emergency(){
+
+    $this->load->dbutil();
+    $this->load->helper('file');
+    $this->load->helper('download');
+
+    array_map('unlink', glob("uploads/emergency_personnel/file/*.csv"));
+
+
+   $type=$this->input->get('type');
+   $namee=$this->input->get('name');
+   $tbl=$this->input->get('tbl');
+
+
+
+
+
+//echo 'asdasd';
+
+
+  $report=$this->Main_model->get_contact_csv($type,$tbl);
+
+
+
+
+
+
+
+
+
+
+
+    /*  pass it to db utility function  */
+    $new_report = $this->dbutil->csv_from_result($report);
+       $name = $namee.'.csv';
+     /*  Now use it to write file. write_file helper function will do it */
+     write_file('uploads/emergency_personnel/file/'.$name,$new_report);
+
+       $data=file_get_contents('uploads/emergency_personnel/file/'.$name);
+      force_download($name,$data);
+
+       // $path='uploads/csv/'.$name;
+       // echo $path;
+       // unlink($path);
   }
 
 

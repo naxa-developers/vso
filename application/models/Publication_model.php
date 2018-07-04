@@ -6,6 +6,7 @@ class Publication_model extends CI_Model {
 public function get_all_data(){
 
 $this->db->select('*');
+$this->db->order_by('id','DESC');
 $q=$this->db->get('publication');
 return $q->result_array();
 }
@@ -57,7 +58,9 @@ public function do_upload($filename,$name)
   {
 
 
-    return 1;
+    $data = array('upload_data' => $this->upload->data());
+
+    return $data;
 
   }
 }

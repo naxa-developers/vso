@@ -25,6 +25,22 @@
                     <label class="col-sm-3 ">Select Summary: </label>
 
                           <div class="row col-md-9">
+
+														<div class="col-sm-4 icheck ">
+
+															<div class="minimal single-row">
+																<div class="radio ">
+
+
+														<input tabindex="3" type="radio" value=""  name="col" checked>
+														<label>None</label>
+
+
+
+
+															</div>
+															</div>
+															</div>
                     <?php foreach($data as $data){  ?>
 
                       <div class="col-sm-4 icheck ">
@@ -32,15 +48,26 @@
                         <div class="minimal single-row">
                           <div class="radio ">
 
-                            <input tabindex="3" type="radio" value="<?php echo $data['eng_lang'] ?>"  name="col" >
+														<?php if($selected_column==$data['eng_lang']){ ?>
+
+                            <input tabindex="3" type="radio" value="<?php echo $data['eng_lang'] ?>"  name="col"  checked>
+
+													<?php }else{?>
+
+													<input tabindex="3" type="radio" value="<?php echo $data['eng_lang'] ?>"  name="col" >
+
+														<?php }?>
 
                             <label><?php echo $data['nepali_lang'] ?></label>
+
+
                           </div>
                         </div>
                       </div>
 
 
                     <?php } ?>
+
 
 
                       </div>

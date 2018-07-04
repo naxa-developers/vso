@@ -12,7 +12,7 @@
     <div class="col-lg-12">
     <section class="panel">
         <header class="panel-heading">
-            Form Elements
+            Change Category
         </header>
         <div class="panel-body">
             <form class="form-horizontal bucket-form" method="post" action="">
@@ -38,6 +38,27 @@
            ?>
 
 
+      <?php if($fields[$i]=='category_name' || $fields[$i]=='category_type'){   ?>
+
+
+                <?php if($fields[$i]=='category_type'){ ?>
+
+                  <div class="form-group">
+                      <label class="col-sm-3 control-label"><?php  echo ucwords(str_replace("_"," ",$fields[$i]));?></label>
+
+                      <div class="col-sm-6">
+                        <select name="<?php echo $fields[$i];?>" >
+
+                          <option value="<?php echo $edit_data[$fields[$i]]; ?>"><?php echo str_replace("_"," ",$edit_data[$fields[$i]])?></option>
+                          <option value="Hazard_Data">Hazard Data</option>
+                          <option value="Exposure_Data">Exposure Data</option>
+                          <option value="Baseline_Data">Baseline Data</option>
+                        </select>
+                      </div>
+                  </div>
+
+              <?php }else{  ?>
+
                 <div class="form-group">
                     <label class="col-sm-3 control-label"><?php  echo ucwords(str_replace("_"," ",$fields[$i]));?></label>
                     <div class="col-sm-6">
@@ -45,7 +66,7 @@
                     </div>
                 </div>
 
-             <?php }}?>
+             <?php }}}}?>
 
 
 

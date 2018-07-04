@@ -3081,12 +3081,12 @@ ul.amounts li {
     border-left: 1px solid #1fadea;
 }
 /*custom checkox & radio btn*/
-.icheck div,.icheck .disabled {
+/*.icheck div,.icheck .disabled {
     float:left;
-}
-.icheck div {
+}*/
+/*.icheck div {
     margin-right:10px;
-}
+}*/
 .icheck label {
     font-weight:normal;
 }
@@ -5764,4 +5764,17 @@ right: -1px;
 
 .down{
   margin-top:-7px;
+}
+.col-md-12.bar {
+    background-color: #f3f3f3;
+    border: 1px solid #e0ddd5;
+    margin-bottom: 10px;
+    min-height: 50px;
+    height: 50px;
+}
+.rdo{
+margin-left: 0px !important;
+}
+.icheck {
+    word-wrap: break-word;
 }

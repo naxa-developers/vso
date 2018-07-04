@@ -77,9 +77,7 @@
   div#map {
     margin-top: 44px ;
   }
-.sub-head {
-    margin-top: -14px;
-}
+
 
   #load{
     width:100%;
@@ -127,7 +125,7 @@
                   <div class="logo-gov clearfix">
                     <img src="<?php echo base_url();?>assets/img/logo.jpg" alt="Logo">
                     <h6>
-                      <strong>Changu Narayan Municipality</strong><br/>
+                      <strong>Changu Narayan Municipality</strong>
                      <div class="sub-head"> <small>Disaster Information Management Platform</small> </div>
                     </h6>
                   </div>
@@ -165,6 +163,10 @@
                           <a class="nav-link" href="<?php echo base_url()?>publication">Publication</a>
                       </div>
                     </li>
+                     <li class="nav-item">
+                      <span class="nav-link"><img src="<?php echo base_url();?>assets/img/uk.png" height="15"> / <img src="<?php echo base_url();?>assets/img/nep.png" height="15"></span>
+                    </li>
+                    
                   </ul>
                 </div>
 

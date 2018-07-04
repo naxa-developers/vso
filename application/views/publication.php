@@ -72,9 +72,8 @@
 
     <div class="col-md-6 col-md-offset-3">
           <div class="input-group">
-            <input class="form-control"
-            placeholder="Search here...">
-            
+            <input class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here...">
+
           </div>
         </div>
 
@@ -132,6 +131,7 @@
 <script type="text/javascript">
 
 function myFunction() {
+  console.log('adas');
   // Declare variables
   var input, filter, div, h5, a, i;
   input = document.getElementById('myInput');
@@ -148,10 +148,10 @@ function myFunction() {
       // a = h5[i].getElementsByTagName("a")[0];
        //console.log(h5[i].innerHTML.toUpperCase().indexOf(filter));
       if (h5[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-       console.log('if');
+      // console.log('if');
           $("#"+h5[i].id).parent().parent().parent().parent().css('display','');
       } else {
-console.log('else');
+//console.log('else');
               $("#"+h5[i].id).parent().parent().parent().parent().css('display','none');
       }
   }

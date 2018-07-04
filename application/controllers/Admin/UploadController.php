@@ -6,6 +6,14 @@ class UploadController extends CI_Controller
   {
     parent::__construct();
 
+    if(($this->session->userdata('logged_in'))!=TRUE)
+    {
+
+      redirect('admin');
+    }else{
+
+    }
+
 
     $this->load->model('Upload_model');
   }
@@ -101,13 +109,13 @@ class UploadController extends CI_Controller
   public function  emergency_contact(){
 
     $cat=$this->input->get('cat');
-     // var_dump($cat);
-     $name=$this->input->get('name');
+    // var_dump($cat);
+    $name=$this->input->get('name');
 
 
     $this->body['data']=$this->Upload_model->get_emergency_con($cat);
     $this->body['cat']=$cat;
-   $this->body['name']=$name;
+    $this->body['name']=$name;
 
     $this->load->view('admin/header');
     $this->load->view('admin/emergency_contact_tbl',$this->body);
@@ -119,8 +127,8 @@ class UploadController extends CI_Controller
 
   public function delete_emerg(){
 
-      $cat=$this->input->get('cat');
-      $tbl=$this->input->get('tbl');
+    $cat=$this->input->get('cat');
+    $tbl=$this->input->get('tbl');
 
 
     $delete=$this->Upload_model->delete($this->input->get('id'),$tbl);
@@ -131,11 +139,11 @@ class UploadController extends CI_Controller
       $this->session->set_flashdata('msg','Successfully Deleted');
 
       if($tbl=='emergency_contact'){
-          redirect('emergency_contact?cat='.$cat);
+        redirect('emergency_contact?cat='.$cat);
 
-}else{
-    redirect('emergency_personnel?cat='.$cat);
-}
+      }else{
+        redirect('emergency_personnel?cat='.$cat);
+      }
 
 
     }else{
@@ -243,103 +251,35 @@ class UploadController extends CI_Controller
 
   //emergency contact personal
 
- public function emergency_personnel()
-{
+  public function emergency_personnel()
+  {
 
 
 
 
-  $cat=$this->input->get('cat');
+    $cat=$this->input->get('cat');
 
-//echo $cat ;
-if(isset($_POST['submit']))
-{
+    //echo $cat ;
+    if(isset($_POST['submit']))
+    {
 
-  $id=$this->input->post('id');
-  $file_name = $_FILES['emerg_pic']['name'];
-
-
-
-  $ext = pathinfo($file_name, PATHINFO_EXTENSION);
-
-
-
-  $img_upload=$this->Upload_model->do_upload_emerg($file_name,$id);
-
-
-  if($img_upload==1){
-
-    $image_path=base_url() . 'uploads/emergency_personnel/'.$id.'.'.$ext ;
-
-    $data=array(
-
-      'photo'=>$image_path
-
-    );
-
-    $update=$this->Upload_model->update_emerg($id,$data,'emergency_personnel');
-    $this->session->set_flashdata('msg','successfully Photo Changed');
-    redirect('emergency_personnel?cat='.$cat);
-
-}else{
-
-  $code= strip_tags($img_upload['error']);
-
-
-
-  $this->session->set_flashdata('msg', $code);
-  redirect('emergency_personnel?cat='.$cat);
-
-
-}
-
-
-}else{
-
-  $this->body['data']=$this->Upload_model->get_emergency_per($cat);
-  $this->body['cat']=$cat;
-  $name=$this->input->get('name');
-   $this->body['name']=$name;
-
-  $this->load->view('admin/header');
-  $this->load->view('admin/emergency_personnel_tbl',$this->body);
-  $this->load->view('admin/footer');
-}
-
-}
-
-
-
-public function add_emergency_personnel(){
-
-  $cat=$this->input->get('cat');
-
-  if(isset($_POST['submit'])){
-
-
-    $_POST['category']=$cat;
-    unset($_POST['submit']);
-    unset($_POST['emerg_pic']);
- //var_dump($_POST);
-    $insert=$this->Upload_model->insert_emrg_personnel($_POST);
-
-
-    if($insert!=""){
-
+      $id=$this->input->post('id');
       $file_name = $_FILES['emerg_pic']['name'];
 
 
 
-      $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+      //$ext = pathinfo($file_name, PATHINFO_EXTENSION);
 
 
 
-      $img_upload=$this->Upload_model->do_upload_emerg($file_name,$insert);
+      $img_upload=$this->Upload_model->do_upload_emerg($file_name,$id);
 
 
-      if($img_upload==1){
+      if($img_upload != ""){
 
-        $image_path=base_url() . 'uploads/emergency_personnel/'.$insert.'.'.$ext ;
+        $ext=$img_upload['upload_data']['file_ext'];
+
+        $image_path=base_url() . 'uploads/emergency_personnel/'.$id.$ext ;
 
         $data=array(
 
@@ -347,78 +287,150 @@ public function add_emergency_personnel(){
 
         );
 
-        $update=$this->Upload_model->update_emerg($insert,$data,'emergency_personnel');
-        $this->session->set_flashdata('msg','Emergency Contact Added successfully');
+        $update=$this->Upload_model->update_emerg($id,$data,'emergency_personnel');
+        $this->session->set_flashdata('msg','successfully Photo Changed');
         redirect('emergency_personnel?cat='.$cat);
-}else{
 
-  $code= strip_tags($img_upload['error']);
+      }else{
+
+        $code= strip_tags($img_upload['error']);
 
 
 
-  $this->session->set_flashdata('msg', $code);
-  redirect('emergency_personnel?cat='.$cat);
+        $this->session->set_flashdata('msg', $code);
+        redirect('emergency_personnel?cat='.$cat);
 
-}
 
+      }
 
 
     }else{
 
-      //db error
+      $this->body['data']=$this->Upload_model->get_emergency_per($cat);
+      $this->body['cat']=$cat;
+      $name=$this->input->get('name');
+      $this->body['name']=$name;
+
+      $this->load->view('admin/header');
+      $this->load->view('admin/emergency_personnel_tbl',$this->body);
+      $this->load->view('admin/footer');
     }
 
-  }else{
-
-    $this->load->view('admin/header');
-    $this->load->view('admin/add_emergency_personnel');
-    $this->load->view('admin/footer');
-
   }
-}
-
-public function edit_emerg_personnel(){
-
-  $cat=$this->input->get('cat');
-  $tbl=$this->input->get('tbl');
-
-  if(isset($_POST['submit'])){
-
-    unset($_POST['submit']);
 
 
 
-    $update=$this->Upload_model->update_emerg($this->input->post('id'),$_POST,$tbl);
+  public function add_emergency_personnel(){
 
-    if($update){
+    $cat=$this->input->get('cat');
+
+    if(isset($_POST['submit'])){
 
 
-      $this->session->set_flashdata('msg','Updated successfully');
-      redirect('emergency_personnel?cat='.$cat);
+      $_POST['category']=$cat;
+      unset($_POST['submit']);
+      unset($_POST['emerg_pic']);
+      //var_dump($_POST);
+      $insert=$this->Upload_model->insert_emrg_personnel($_POST);
+
+
+      if($insert!=""){
+
+        $file_name = $_FILES['emerg_pic']['name'];
+
+
+
+        //$ext = pathinfo($file_name, PATHINFO_EXTENSION);
+
+
+
+        $img_upload=$this->Upload_model->do_upload_emerg($file_name,$insert);
+
+
+        if($img_upload != ""){
+
+          $ext=$img_upload['upload_data']['file_ext'];
+
+          $image_path=base_url() . 'uploads/emergency_personnel/'.$insert.$ext ;
+
+          $data=array(
+
+            'photo'=>$image_path
+
+          );
+
+          $update=$this->Upload_model->update_emerg($insert,$data,'emergency_personnel');
+          $this->session->set_flashdata('msg','Emergency Contact Added successfully');
+          redirect('emergency_personnel?cat='.$cat);
+        }else{
+
+          $code= strip_tags($img_upload['error']);
+
+
+
+          $this->session->set_flashdata('msg', $code);
+          redirect('emergency_personnel?cat='.$cat);
+
+        }
+
+
+
+      }else{
+
+        //db error
+      }
 
     }else{
 
-      //db error
+      $this->load->view('admin/header');
+      $this->load->view('admin/add_emergency_personnel');
+      $this->load->view('admin/footer');
+
+    }
+  }
+
+  public function edit_emerg_personnel(){
+
+    $cat=$this->input->get('cat');
+    $tbl=$this->input->get('tbl');
+
+    if(isset($_POST['submit'])){
+
+      unset($_POST['submit']);
+
+
+
+      $update=$this->Upload_model->update_emerg($this->input->post('id'),$_POST,$tbl);
+
+      if($update){
+
+
+        $this->session->set_flashdata('msg','Updated successfully');
+        redirect('emergency_personnel?cat='.$cat);
+
+      }else{
+
+        //db error
+      }
+
+
+    }else{
+
+
+
+
+      $this->body['e_data']=$this->Upload_model->e_data_personnel(base64_decode($this->input->get('id')));
+      //echo base64_decode($this->input->get('id'));
+      // var_dump($this->body['e_data']);
+
+      $this->load->view('admin/header');
+      $this->load->view('admin/edit_emerg_personnel',$this->body);
+      $this->load->view('admin/footer');
+
     }
 
 
-  }else{
-
-
-
-
-    $this->body['e_data']=$this->Upload_model->e_data_personnel(base64_decode($this->input->get('id')));
-    //echo base64_decode($this->input->get('id'));
-    // var_dump($this->body['e_data']);
-
-    $this->load->view('admin/header');
-    $this->load->view('admin/edit_emerg_personnel',$this->body);
-    $this->load->view('admin/footer');
-
   }
-
-
-}
 
 
 

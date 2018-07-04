@@ -10,7 +10,7 @@
           <section class="panel">
             <header class="panel-heading">
               Categories
-              
+
               <span class="tools pull-right">
                 <a href="<?php echo base_url()?>create_categories"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-plus"></i> Add Category</button></a>
               </span>
@@ -65,6 +65,11 @@
 
                         <?php }elseif($key == 'category_table'){?>
 
+                        <?php }elseif($key == 'marker_type'){?>
+
+
+                        <?php }elseif($key == 'sub_col'){?>
+
                         <?php }elseif($key == 'category_photo'){?>
 
                         <?php }elseif($key == 'ordering'){?>
@@ -109,6 +114,10 @@
 
                               <td><a href="<?php echo base_url()?>manage_popup?tbl=<?php echo $v['category_table'];?>"><button type="submit" class="btn-sm btn-primary">Popup</button></a></td>
 
+                            <?php }elseif($key == 'sub_categories'){?>
+
+                              <td><a href="<?php echo base_url()?>sub_categories?tbl=<?php echo $v['category_table'];?>"><button type="submit" class="btn-sm btn-warning">sub-categories</button></a></td>
+
 
                             <?php }elseif($key == 'default_load'){?>
 
@@ -123,6 +132,10 @@
                               <?php  } ?>
 
                             <?php }elseif($key == 'summary'){?>
+
+                            <?php }elseif($key == 'marker_type'){?>
+
+                            <?php }elseif($key == 'sub_col'){?>
 
 
 
@@ -139,7 +152,7 @@
                               <td><?php echo $value;?></td>
                             <?php } } ?>
                             <td><a href="<?php echo base_url()?>data_tables?tbl_name=<?php echo base64_encode($v['category_table']);?>">View</a> /
-                              <!-- <a href="<?php echo base_url()?>edit_categories?id=<?php echo base64_encode($v['id']);?>&& tbl=<?php echo base64_encode($tbl_name);?>">Edit</a> / -->
+                              <a href="<?php echo base_url()?>edit_categories?id=<?php echo base64_encode($v['id']);?>&& tbl=<?php echo base64_encode($tbl_name);?>">Edit</a> /
                               <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>delete_data?id=<?php echo  $v['id'];?>&& tbl=<?php echo ($tbl_name);?>&& cat_tbl=<?php echo $v['category_table']  ?>">Delete</a>
                             </td>
 

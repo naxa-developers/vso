@@ -4,7 +4,7 @@
             <div class="banner-caption pull-left">
               <h2><strong>Changu Narayan Disaster Information Management Platform</strong></h2>
               <p>
-              A public platform for GIS Data to support development in Changu Narayan
+               A GIS based data portal for disaster management
               </p>
               <button class="btn btn-lg btn-outline-white margin-top-sm" id="started">Get Started</button>
             </div>

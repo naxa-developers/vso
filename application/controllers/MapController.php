@@ -276,19 +276,24 @@ public function map_download()
     // $this->body['field']=$fields; nep
 
     $cat_tbl=$this->Map_model->get_layer('categories_tbl');
+
     $this->body['category_name']=$cat_tbl;
     $popup = array();
     $style = array();
+    $marker_type = array();
     foreach($cat_tbl as $tbl){
 
+if(!$this->db->table_exists($tbl['category_table'])){
 
+}else{
       $cat_tbles[]=$tbl['category_table'];
       //$popup[]=$tbl['popup_content'];
       array_push($popup, trim(trim(json_encode($tbl['popup_content'],JSON_NUMERIC_CHECK),'"['),']"'));
       array_push($style, trim(trim(json_encode($tbl['style'],JSON_NUMERIC_CHECK),'"['),']"'));
-
+      array_push($marker_type, trim(trim(json_encode($tbl['marker_type'],JSON_NUMERIC_CHECK),'"['),']"'));
+}
     }
-    //var_dump($cat_tbles);
+
 
     $category_data = array();
 
@@ -345,6 +350,7 @@ public function map_download()
     $this->body['category_tbl']= json_encode($cat_tbles, JSON_NUMERIC_CHECK);
     $this->body['popup_content']= json_encode($popup, JSON_NUMERIC_CHECK);
     $this->body['style']= json_encode($style, JSON_NUMERIC_CHECK);
+    $this->body['marker_type']= json_encode($marker_type, JSON_NUMERIC_CHECK);
     //var_dump($this->body['style']);
 
     $this->body['data']=$this->Dash_model->get_tables_data('categories_tbl');
@@ -531,17 +537,187 @@ public function map_download()
 
   public function manage_style(){
 
-    $tbl=$_GET['tbl'];
+      $tbl=$_GET['tbl'];
 
     if(isset($_POST['submit'])){
       unset($_POST['submit']);
 
 
       $style=json_encode($_POST);
-      
+
+      // var_dump($style);
+      // echo $tbl;
+
+         $data=array(
+
+           'style'=>$style,
+
+
+         );
+
+        $this->Map_model->update_style($tbl,$data);
+
+
+
+        $this->session->set_flashdata('msg',$tbl.' Style was successfully updated');
+
+        redirect('categories_tbl');
+
+
+
+   }else{
+
+
+
+
+
+
+
+    $data=$this->Dash_model->get_tbl_type($tbl);
+    $map_data_type=json_decode($data['st_asgeojson'],TRUE)['type'];
+
+    if($map_data_type=='Point'){
+
+      $this->body['tbl']=$tbl;
+
+      $this->load->view('admin/header');
+      $this->load->view('admin/choose_style',$this->body);
+      $this->load->view('admin/footer');
+
+    }else{
+
+
+
+      $data=$this->Map_model->get_summary_list($tbl);
+
+      $style_array=json_decode($data['style'],TRUE);
+
+      $this->body['style_array']=$style_array;
+
+
+      $this->load->view('admin/header');
+      $this->load->view('admin/manage_style',$this->body);
+      $this->load->view('admin/footer');
+
+    }
+
+
+}
+  }
+
+  // public function manage_style(){
+  //
+  //   $tbl=$_GET['tbl'];
+  //
+  //   if(isset($_POST['submit'])){
+  //     unset($_POST['submit']);
+  //
+  //
+  //     $style=json_encode($_POST);
+  //
+  //     $data=array(
+  //
+  //       'style'=>$style,
+  //
+  //
+  //     );
+  //
+  //     $this->Map_model->update_style($tbl,$data);
+  //
+  //
+  //
+  //     $this->session->set_flashdata('msg',$tbl.' Style was successfully updated');
+  //
+  //     redirect('categories_tbl');
+  //
+  //
+  //
+  //   }else{
+  //     $data=$this->Map_model->get_summary_list($tbl);
+  //
+  //     $style_array=json_decode($data['style'],TRUE);
+  //
+  //     $this->body['style_array']=$style_array;
+  //     $this->body['tbl']=$tbl;
+  //
+  //     $this->load->view('admin/header');
+  //     $this->load->view('admin/choose_style',$this->body);
+  //     $this->load->view('admin/footer');
+  //
+  //   }
+  //
+  // }
+
+public function circle_marker(){
+
+  $tbl=$_GET['tbl'];
+
+  if(isset($_POST['submit'])){
+    unset($_POST['submit']);
+
+
+    $style=json_encode($_POST);
+
+    $data=array(
+
+      'style'=>$style,
+
+
+
+    );
+
+    $this->Map_model->update_style($tbl,$data);
+
+
+
+    $this->session->set_flashdata('msg',$tbl.' Style was successfully updated');
+
+    redirect('categories_tbl');
+
+
+
+  }else{
+    $data=$this->Map_model->get_summary_list($tbl);
+
+    $style_array=json_decode($data['style'],TRUE);
+
+    $this->body['style_array']=$style_array;
+    $this->body['tbl']=$tbl;
+
+    $this->load->view('admin/header');
+    $this->load->view('admin/circle_manage',$this->body);
+    $this->load->view('admin/footer');
+
+  }
+
+}
+
+public function location_marker(){
+
+  $tbl=$_GET['tbl'];
+
+  if(isset($_POST['submit'])){
+    unset($_POST['submit']);
+
+  var_dump($_POST);
+  var_dump($_FILES['cat_pic']['name']);
+
+    if( $_FILES['cat_pic']['name']==''){
+
+      $_POST['opacity']="";
+      $_POST['fillOpacity']="";
+      $_POST['weight']="";
+      $_POST['radius']="";
+      $_POST['color']="";
+      $_POST['fillColor']="";
+      $style=json_encode($_POST);
+
+
+
       $data=array(
 
         'style'=>$style,
+      'marker_type'=>'icon',
 
 
       );
@@ -557,21 +733,77 @@ public function map_download()
 
 
     }else{
-      $data=$this->Map_model->get_summary_list($tbl);
 
-      $style_array=json_decode($data['style'],TRUE);
+      $file_name = $_FILES['cat_pic']['name'];
 
-      $this->body['style_array']=$style_array;
-      $this->load->view('admin/header');
-      $this->load->view('admin/manage_style',$this->body);
-      $this->load->view('admin/footer');
+      $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+
+      $img_upload=$this->Dash_model->do_upload_marker($file_name,$tbl);
+
+      if($img_upload==1){
+
+        $image_path=base_url() . 'uploads/icons/map/'.$tbl.'.'.$ext ;
+
+       $st=array(
+     'icon'=>$image_path,
+
+       );
+
+      $style=json_encode($st);
+
+        $data=array(
+          'style'=>$style,
+          'marker_type'=>'icon',
+        );
+
+
+   $this->Map_model->update_style($tbl,$data);
+
+   $this->session->set_flashdata('msg',$tbl.' Style was successfully updated');
+
+   redirect('categories_tbl');
+
+
+      }else{
+
+        $code= strip_tags($img_upload['error']);
+
+
+
+        $this->session->set_flashdata('msg', $code);
+
+
+
+        redirect('categories_tbl');
+
+      }
+
+
 
     }
 
 
 
 
+  }else{
+
+    $data=$this->Map_model->get_summary_list($tbl);
+
+    $style_array=json_decode($data['style'],TRUE);
+
+    $this->body['style_array']=$style_array;
+    $this->body['tbl']=$tbl;
+
+    $this->load->view('admin/header');
+    $this->load->view('admin/choose_icon',$this->body);
+    $this->load->view('admin/footer');
+
   }
+
+
+
+}
+
 
 
   public function update_default(){
@@ -586,6 +818,7 @@ public function map_download()
 
   }
 
+
   public function update_summary(){
 
     $tbl=$_GET['tbl'];
@@ -595,7 +828,8 @@ public function map_download()
     if(isset($_POST['submit'])){
 
 
-      //var_dump($_POST);
+      // var_dump($_POST);
+      // exit();
       $data=array(
         'summary_list'=>$_POST['summary'],
 
@@ -612,7 +846,7 @@ public function map_download()
 
     }else{
 
-
+      $this->body['name_summary']=ucwords(str_replace("_"," ",$tbl));     
       $this->body['summary']=$this->Map_model->get_popup($tbl);
       $summary_single=$this->Map_model->get_summary_single($tbl);
       $this->body['selected']=$summary_single;
