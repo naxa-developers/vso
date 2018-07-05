@@ -124,7 +124,7 @@ p.about {
 						<p class="about">
 							<?php echo $d['summary'] ?>
 						</p>
-			<button id="kml" name="<?php echo $d['category_table']?>" class="btn btn-light btn-sm">KML</button>
+			<button id="" name="<?php echo $d['category_table']?>" class="btn btn-light btn-sm kml">KML</button>
 						<a href="<?php echo base_url()?>get_csv_dataset?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm">CSV</button></a>
 						<a href="<?php echo base_url()?>get_geojson_dataset?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm">Geojson</button></a>
 						<a href="<?php echo base_url()?>category?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm">ViewIn Map</button></a>
@@ -157,7 +157,8 @@ p.about {
 
     	// search from main page
 
-			$('#kml').click(function(){
+			$('.kml').on('click',function(){
+				console.log('clicked');
 
 				var tbl = $(this).attr('name')
 
@@ -174,10 +175,12 @@ p.about {
 			                            },
 			                            success: function (result) {
 
-																	//console.log(result);
-																	var kml = tokml(result); // json is geojson here
+																	//console.log(JSON.parse(result));
+																	var result_parsed=JSON.parse(result);
+																	var kml = tokml(result_parsed); // json is geojson here
+																	console.log(kml);
                                   download(kml, tbl+".kml", "text/xml");
-															
+
 
 																	}
 
