@@ -6,13 +6,13 @@ class TableController extends CI_Controller
   {
     parent::__construct();
 
-    if(($this->session->userdata('logged_in'))!=TRUE)
-    {
-
-      redirect('admin');
-    }else{
-
-    }
+    // if(($this->session->userdata('logged_in'))!=TRUE)
+    // {
+    //
+    //   redirect('admin');
+    // }else{
+    //
+    // }
 
     $this->load->helper('url');
     $this->load->model('Table_model');
