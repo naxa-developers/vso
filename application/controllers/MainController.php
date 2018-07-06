@@ -252,6 +252,7 @@ class MainController extends CI_Controller
   public function get_csv_emergency(){
 
     $this->load->dbutil();
+
     $this->load->helper('file');
     $this->load->helper('download');
 
@@ -283,9 +284,11 @@ class MainController extends CI_Controller
 
     /*  pass it to db utility function  */
     $new_report = $this->dbutil->csv_from_result($report);
+    //var_dump(mb_convert_encoding($new_report, 'UTF-8', 'auto'));
+  //  exit();
     $name = $namee.'.csv';
     /*  Now use it to write file. write_file helper function will do it */
-    write_file('uploads/emergency_personnel/file/'.$name,$new_report);
+    file_put_contents('uploads/emergency_personnel/file/'.$name,$new_report);
 
     $data=file_get_contents('uploads/emergency_personnel/file/'.$name);
     force_download($name,$data);
