@@ -116,8 +116,8 @@ p.about {
 					<div class="col-sm-8 myUL"> <h5 id="<?php echo $d['id']?>" class="dataset-head"><?php echo $d['category_name']?></h5>
 
 						<p class="small" >
-							<span class="fa fa-eye"></span> 71 views
-							<span class="fa fa-save"></span> 0 download
+							<span class="fa fa-eye"></span> <?php echo $d['views']?> views
+							<span class="fa fa-save"></span> <?php echo $d['download']?> download
 							<span class="fa fa-calendar"></span> Last update
 							2012-01-09 T11:59:0
 						</p>

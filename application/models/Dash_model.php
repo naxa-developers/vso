@@ -150,6 +150,16 @@ return $res->result_array();
 
   }
 
+  public function get_count_views_datasets($tbl){ //get data of table
+
+    $this->db->select('*');
+    $this->db->where('category_table',$tbl);
+    $q=$this->db->get('categories_tbl');
+    return $q->row_array();
+
+
+  }
+
   public function get_tables_data_lang($tbl,$tble_field){ //get data of table
 
     $this->db->select('*');

@@ -253,6 +253,15 @@ class TableController extends CI_Controller
 
   public function get_csv_dataset(){
 
+    $count_dataset=$this->Dash_model->get_count_views_datasets($this->input->get('tbl'));
+    $add_count_dataset=$count_dataset['download']+1;
+    $data_dataset=array(
+    'download'=>$add_count_dataset,
+
+    );
+    $this->Dash_model->cat_update($count_dataset['id'],$data_dataset);
+
+
 
     array_map('unlink', glob("uploads/csv/*.csv"));
 
@@ -282,6 +291,14 @@ class TableController extends CI_Controller
 
 
 public function get_geojson_dataset(){
+
+  $count_dataset=$this->Dash_model->get_count_views_datasets($this->input->get('tbl'));
+  $add_count_dataset=$count_dataset['download']+1;
+  $data_dataset=array(
+  'download'=>$add_count_dataset,
+
+  );
+  $this->Dash_model->cat_update($count_dataset['id'],$data_dataset);
 
    array_map('unlink', glob("uploads/dataset_geojson/*.geojson"));
   //
@@ -342,6 +359,14 @@ public function get_kml_dataset(){
   //
   //
    $tbl=$this->input->get('tbl');
+   $count_dataset=$this->Dash_model->get_count_views_datasets($tbl);
+   $add_count_dataset=$count_dataset['download']+1;
+   $data_dataset=array(
+   'download'=>$add_count_dataset,
+
+   );
+   $this->Dash_model->cat_update($count_dataset['id'],$data_dataset);
+
   //
   // $this->load->dbutil();
 
