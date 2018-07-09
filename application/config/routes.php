@@ -71,6 +71,7 @@ $route['update_summary'] ='MapController/update_summary';
 $route['map_download'] ='MapController/map_download';
 $route['circle_marker'] ='MapController/circle_marker';
 $route['location_marker'] ='MapController/location_marker';
+$route['data_map'] ='MapController/data_map';
 
 $route['news_register'] ='NewsletterController/register';
 

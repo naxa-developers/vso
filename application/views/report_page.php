@@ -527,6 +527,7 @@ button.btn.btn-light.btn-sm {
       //map part
 
       var map = L.map('map');//.setView([27.7005033, 85.4328162], 13);
+      map.attributionControl.addAttribution("<a href='http://www.naxa.com.np' title = 'Contributor'>NAXA</a>");
       L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
       $(".layer-toggle").click(function(){

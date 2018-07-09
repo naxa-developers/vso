@@ -120,7 +120,7 @@ class CategoriesController extends CI_Controller
     foreach($nep as $nep){
       //  echo $nep['eng_lang'];
 
-      $this->form_validation->set_rules($nep['eng_lang'], 'Fill field', 'required');
+      $this->form_validation->set_rules($nep['eng_lang'], 'Fill field', 'trim');
 
     }
 
@@ -221,6 +221,7 @@ class CategoriesController extends CI_Controller
 
 
   }
+
 
 
   //creating categories with its table start
@@ -358,9 +359,19 @@ class CategoriesController extends CI_Controller
       $upload_type=$this->input->post('upload_type');
       $cat_table=strtolower(str_replace(" ","_",$cat_name));
 
+      if( $this->db->table_exists($cat_table)==true ){
+
+
+        $this->session->set_flashdata('msg', 'Category Already Exists !! Please use another category name');
+        redirect('categories_tbl');
+      }else{
+
+
+
       $file_name = $_FILES['cat_pic']['name'];
 
       if($file_name = $_FILES['cat_pic']['name']==""){
+
 
 
         $data=array(
@@ -476,6 +487,7 @@ class CategoriesController extends CI_Controller
           $this->load->view('admin/footer');
         }
       }
+  }
 
     }else{
 

@@ -124,10 +124,10 @@ p.about {
 						<p class="about">
 							<?php echo $d['summary'] ?>
 						</p>
-			<button id="" name="<?php echo $d['category_table']?>" class="btn btn-light btn-sm kml">KML</button>
-						<a href="<?php echo base_url()?>get_csv_dataset?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm">CSV</button></a>
-						<a href="<?php echo base_url()?>get_geojson_dataset?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm">Geojson</button></a>
-						<a href="<?php echo base_url()?>category?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm">ViewIn Map</button></a>
+			<button id="" name="<?php echo $d['category_table']?>" class="btn btn-light btn-sm kml"><span class="fa fa-download"></span> KML</button>
+						<a href="<?php echo base_url()?>get_csv_dataset?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm"><span class="fa fa-download"></span> CSV</button></a>
+						<a href="<?php echo base_url()?>get_geojson_dataset?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm"><span class="fa fa-download"></span> Geojson</button></a>
+						<a href="<?php echo base_url()?>category?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm"><span class="fa fa-eye"></span> Map</button></a>
 
 
 							<hr>

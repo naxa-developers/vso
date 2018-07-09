@@ -9,8 +9,10 @@
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/changunarayan.js"></script>
 <style>
 .leaflet-left{
-  left: 21.5%;
-  top: 12px;
+left: 21.5%;
+}
+.leaflet-right{
+right:260px;
 }
 
 ul.nav.nav-tabs{
@@ -1174,8 +1176,8 @@ div#table1 {
 </div>
 
 <div class="btn-pos-list text-center">
- <a href="#" id="appl" class="btn btn-primary btn-md">View all</a>
- <a href="#" id="appl" class="btn btn-primary btn-md"><i class="fa fa-download"></i> Download</a>
+ <a href="#" id="viewall" class="btn btn-primary btn-md">View all</a>
+ <a href="#" id="downloaddata" class="btn btn-primary btn-md"><i class="fa fa-download"></i> Download</a>
 </div>
 
 </div>
@@ -1298,6 +1300,7 @@ $(document).ready(function(){
 			//map part
 
 			var map = L.map('map').setView([27.693547,85.440240], 13);
+      map.attributionControl.addAttribution("<a href='http://www.naxa.com.np' title = 'Contributor'>NAXA</a>");
 		 // map.scrollWheelZoom.disable();
 		 map.options.maxBounds;  // remove the maxBounds object from the map options
 		 //map.options.minZoom = 9;
@@ -1347,7 +1350,7 @@ $(document).ready(function(){
 
      }
 
-		 
+
      styles=JSON.parse('<?php echo $style ?>');
      marker_types=JSON.parse('<?php echo $marker_type ?>');
 
@@ -1507,45 +1510,45 @@ if($('#'+cat_tbl_array_name[i]+'_toggle').hasClass('active')){
 
 
 
-   L.Mask = L.Polygon.extend({
-    options: {
-     stroke: false,
-     color: '#333',
-     fillOpacity: 0.5,
-     clickable: true,
-
-     outerBounds: new L.LatLngBounds([-90, -360], [90, 360])
-   },
-
-   initialize: function (latLngs, options) {
-
-    var outerBoundsLatLngs = [
-    this.options.outerBounds.getSouthWest(),
-    this.options.outerBounds.getNorthWest(),
-    this.options.outerBounds.getNorthEast(),
-    this.options.outerBounds.getSouthEast()
-    ];
-    L.Polygon.prototype.initialize.call(this, [outerBoundsLatLngs, latLngs], options);
-  },
-
-});
-   L.mask = function (latLngs, options) {
-    return new L.Mask(latLngs, options);
-  };
-
-
-  var coordinates = changu1[0].features[0].geometry.coordinates[0];
-
-  var latLngs = [];
-  for (i=0; i<coordinates.length; i++) {
-    for(j=0; j<coordinates[i].length;j++){
-					// console.log(coordinates[i][j]);
-					latLngs.push(new L.LatLng(coordinates[i][j][1], coordinates[i][j][0]));
-				}
-			}
-
-
-			L.mask(latLngs).addTo(map);
+//    L.Mask = L.Polygon.extend({
+//     options: {
+//      stroke: false,
+//      color: '#333',
+//      fillOpacity: 0.5,
+//      clickable: true,
+//
+//      outerBounds: new L.LatLngBounds([-90, -360], [90, 360])
+//    },
+//
+//    initialize: function (latLngs, options) {
+//
+//     var outerBoundsLatLngs = [
+//     this.options.outerBounds.getSouthWest(),
+//     this.options.outerBounds.getNorthWest(),
+//     this.options.outerBounds.getNorthEast(),
+//     this.options.outerBounds.getSouthEast()
+//     ];
+//     L.Polygon.prototype.initialize.call(this, [outerBoundsLatLngs, latLngs], options);
+//   },
+//
+// });
+//    L.mask = function (latLngs, options) {
+//     return new L.Mask(latLngs, options);
+//   };
+//
+//
+//   var coordinates = changu1[0].features[0].geometry.coordinates[0];
+//
+//   var latLngs = [];
+//   for (i=0; i<coordinates.length; i++) {
+//     for(j=0; j<coordinates[i].length;j++){
+// 					// console.log(coordinates[i][j]);
+// 					latLngs.push(new L.LatLng(coordinates[i][j][1], coordinates[i][j][0]));
+// 				}
+// 			}
+//
+//
+// 			L.mask(latLngs).addTo(map);
 
 
 
@@ -1580,9 +1583,11 @@ if($('#'+cat_tbl_array_name[i]+'_toggle').hasClass('active')){
                                        var coords = JSON.parse(result_parsed['summary_list'][i].st_asgeojson);
                                        $("#ListGroup").append('<li id='+coords.coordinates[0]+' name = '+coords.coordinates[1]+' class="list-group-item zoomTo" >'+result_parsed['summary_list'][i].field+' <span class="pull-right"><a href="#"><i class="fa fa-crosshairs"></i></a></span></li>');
 
+                                       }
 
+                                        $("#viewall").attr('href','data_map?tbl='+selected_list_id);
+                                        $("#downloaddata").attr('href','get_csv_dataset?tbl='+selected_list_id);
 
-                                     }
 
                                    }
 
@@ -1608,17 +1613,19 @@ $("#ListGroup").on('click', '.zoomTo', function(){ //console.log("fadsdfasfd");
 });
 
 
-$( ".CheckBox" ).click(function( event ) {
- layerClicked = window[event.target.value];
+$( ".CheckBox" ).on('click', function( event ) {
+  $(this).attr('disabled',true);
+
+ //layerClicked = window[event.target.value];
+ layerClicked = window[$(this)[0].value];
 
  var layertoggled = ($(this).attr('id')).replace("_toggle","");
  var	togglename=toTitleCase(layertoggled.replace("_"," "));
 
 
-
-
  if (map.hasLayer(layerClicked)) {
    map.removeLayer(layerClicked);
+
 
    for (var i = 0; i < $('.drop').children().length; i++) {
     if($('.drop').children()[i].id==layertoggled){
@@ -1628,17 +1635,19 @@ $( ".CheckBox" ).click(function( event ) {
  Loadlist($('.drop').children()[0].id);
 }
 else{
- map.addLayer(layerClicked);
-
- $('.drop option:selected').removeClass('active');
- $('.drop').prepend("<option id="+layertoggled+" selected>"+togglename+"</option>");
-						//s$('#'+layertoggled).attr({'selected':true});
-
-						Loadlist(layertoggled);
+   map.addLayer(layerClicked);
 
 
-         } ;
-       });
+   $('.drop option:selected').removeClass('active');
+   $('.drop').prepend("<option id="+layertoggled+" selected>"+togglename+"</option>");
+  						//s$('#'+layertoggled).attr({'selected':true});
+
+  						Loadlist(layertoggled);
+
+
+  } ;
+  $(this).attr('disabled',false);
+});
 
 
 $( ".CheckBoxStart" ).click(function( event ) {
@@ -1660,11 +1669,11 @@ $('.sub-cat').click(function(){
 
   if(map.hasLayer(window[single_map])){
     map.removeLayer(window[single_map]);
-    console.log('if');
+    //console.log('if');
   }
   else {
 
-console.log('else');
+//console.log('else');
 $.ajax({
 type: "GET",
                          //  data: name,
@@ -1683,6 +1692,8 @@ type: "GET",
                              data=JSON.parse(result);
                              sub_cat=JSON.parse(data.geojson);
                              sub_style=JSON.parse(data.style);
+                             marker_type=data.marker_type;
+                             console.log(marker_type);
                             //console.log(sub_style);
                           //layers
 
@@ -1702,19 +1713,38 @@ type: "GET",
                           //console.log($(this).attr('id'));
                             window[single_map]=new L.GeoJSON(sub_cat,{
                                 pointToLayer: function(feature, latlng) {
-                                  icons = L.icon({
-                                    //iconSize: [27, 27],
-                                    iconAnchor: [13, 27],
-                                    popupAnchor:  [2, -24],
-                                    iconUrl: 'https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon.png'
-                                  });
-                                  //console.log(icon.options);
-                                  var marker = L.circleMarker(latlng);
-                                  return marker;
+                                  if(marker_type=='icon'){
+
+
+
+                                    icons=L.icon({
+                                      iconSize: [21, 27],
+                                      iconAnchor: [13, 27],
+                                      popupAnchor:  [2, -24],
+
+                                      iconUrl:sub_style.icon
+                                    });
+                                  //  console.log(sub_style.icon);
+                                    var marker = L.marker(latlng,{icon:icons});
+
+
+                                  }else{
+
+
+
+                                   icons=L.icon({
+                                     iconUrl: "https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon.png"
+                                   });
+                                   var marker = L.circleMarker(latlng);
+                          				//for(data in style){
+                                }
+                          return marker;
 
                                 },
                                 onEachFeature: function(feature, layer) {
+                                  if(marker_type !='icon'){
                                     layer.setStyle(sub_style);
+                                  }
                                   layer.bindPopup(feature.properties);
                                   //feature.properties.layer_name = "transit_stops";
 
@@ -1751,38 +1781,32 @@ type: "GET",
 
 <!-- panel toggle script -->
 <script>
- $('#close-panel-left').click(function(){
-  $('#left-panel-toggle').slideToggle('fast');
-  $(this).toggleClass('transform');
+$('#close-panel-left').click(function(){
+$('#left-panel-toggle').slideToggle('fast', function(){
+if($(this).is(':hidden')){
+$(".leaflet-left").css("left","10px");
+}
+else {
+$(".leaflet-left").css("left","21.5%");
+}
+});
+$(this).toggleClass('transform');
+
 });
 </script>
 
 <script>
- $('#close-panel-right').click(function(){
-  $('#right-panel-toggle').slideToggle('fast');
-  $(this).toggleClass('transform');
+
+$('#close-panel-right').click(function(){
+$('#right-panel-toggle').slideToggle('fast', function(){
+if($(this).is(':hidden')){
+$(".leaflet-right").css("right","10px");
+}
+else {
+$(".leaflet-right").css("right","260px");
+}
+//console.log("toggled");
+});
+$(this).toggleClass('transform');
 });
 </script>
-
-
-
-<!-- Initialize the plugin for multiselect -->
-<script type="text/javascript">
-  $(document).ready(function() {
-
-
-
-    //});
-
-
-
-
-				//$('#category1_toggle').removeClass('active');
-        // $('#select1').multiselect();
-        // $('#select2').multiselect();
-      });
-
-
-
-
-    </script>

@@ -10,6 +10,19 @@ class Map_model extends CI_Model {
   }
 
 
+  public function get_as_map_data($d,$tbl){
+
+    foreach($d as $v){
+    $this->db->select($v['eng_lang'].' AS '.pg_escape_string(preg_replace('/[^A-Za-z0-9\-]/', ' ', $v['nepali_lang'])));
+    }
+
+    $this->db->order_by('id','ASC');
+    $q=$this->db->get($tbl);
+    return $q->result_array();
+
+
+  }
+
   public function get_map_download_data()
   {
     $this->db->select('*');
@@ -90,6 +103,14 @@ class Map_model extends CI_Model {
     return  $q->result_array();
 
 
+  }
+
+  public function get_lang_map_data($tbl){
+
+    $this->db->select('*');
+    $this->db->where('tbl_name',$tbl);
+    $q=$this->db->get('tbl_lang');
+    return $q->result_array();
   }
 
   public function get_checkedcolumns($tbl){

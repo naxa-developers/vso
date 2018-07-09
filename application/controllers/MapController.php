@@ -12,7 +12,22 @@ class MapController extends CI_Controller
     $this->load->model('Report_model');
   }
 
+  public function data_map(){
 
+
+$tbl=$this->input->get('tbl');
+//echo $tbl;
+ $d=$this->Map_model->get_lang_map_data($tbl);
+
+$this->body['data']=$this->Map_model->get_as_map_data($d,$tbl);
+//var_dump($this->body['data']);
+//
+  $this->load->view('header');
+  $this->load->view('data_map',$this->body);
+  $this->load->view('footer');
+
+
+  }
 
 public function map_download()
 {
@@ -674,6 +689,7 @@ $sub_category= array(
 
 $response['geojson']=json_encode($sub_category);
 $response['style']=$get_style['style'];
+$response['marker_type']=$get_style['marker_type'];
 echo json_encode($response);
 
 }

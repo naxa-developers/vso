@@ -88,7 +88,7 @@
 
               <!-- table hidden start -->
 
-              <div class="col-sm-12">
+              <!-- <div class="col-sm-12">
                   <section class="panel">
                 <header class="panel-heading">
                   Download  CSV format OF Table <?php echo $tbl_name?>
@@ -148,7 +148,7 @@
             </div>
           </span>
         </section>
-      </div>
+      </div> -->
 
 
               <!-- table hidden end -->
