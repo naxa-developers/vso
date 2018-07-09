@@ -144,8 +144,10 @@ if(!$this->db->table_exists($tbl['category_table'])){
 
   $this->Report_model->update_views($count['id'],$data);
   $this->Dash_model->cat_update($count_dataset['id'],$data_dataset);
-
+  $def_select=$this->Dash_model->get_default_cat_data('categories_tbl');
+  $this->body['default_selected_cat_tbl']=$def_select['category_table'];
   //views add end
+//  exit();
 
     $this->load->view('header');
     $this->load->view('category.php',$this->body);

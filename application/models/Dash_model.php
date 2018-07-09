@@ -150,6 +150,18 @@ return $res->result_array();
 
   }
 
+  public function get_default_cat_data($tbl){ //get data of table
+
+    $this->db->select('*');
+    $this->db->order_by('id','ASC');
+    $this->db->where('default_load',1);
+    $this->db->limit(1);
+    $q=$this->db->get($tbl);
+    return $q->row_array();
+
+
+  }
+
   public function get_count_views_datasets($tbl){ //get data of table
 
     $this->db->select('*');

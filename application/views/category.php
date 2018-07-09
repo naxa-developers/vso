@@ -1029,7 +1029,7 @@ div#table1 {
                     <div class="counter_cat">
                       <a>
 
-                        <span class="count text-center " id="count_summary"> 70</span><span class="ic"> Open Spaces </span>
+                        <span class="counti text-center " id="count_summary"> 70</span><span class="ic"> Open Spaces </span>
                       </a>
                     </div>
                     <div class="counter-desc">
@@ -1231,6 +1231,7 @@ $(document).ready(function(){
   popup_content_parsed = JSON.parse('<?php echo $popup_content ?>');
 
   //popup end
+  //selected cat empty
   if(selected_category==""){}else{
     $('#active_layers').append('<option id = '+selected_category+' >'+selected_category.replace( "_"," ")+'</option>');
   }
@@ -1239,7 +1240,7 @@ $(document).ready(function(){
     //style start
     var style=JSON.parse(styles[i]);
     var marker_type=marker_types[i];
-    console.log(marker_type);
+    //console.log(marker_type);
     //style end
 
     //console.log(cat_tbl_array_name[i]);
@@ -1253,7 +1254,7 @@ $(document).ready(function(){
 
           if(marker_type=='icon'){
 
-            console.log(style.icon);
+          //  console.log(style.icon);
 
             icons=L.icon({
               iconSize: [21, 27],
@@ -1427,6 +1428,9 @@ $(document).ready(function(){
 
     function Loadlist(selected_list_id){
       console.log(selected_list_id);
+      if(selected_list_id==""){
+      selected_list_id='<?php echo $default_selected_cat_tbl ?>';
+      }
       $.ajax({
         type: "GET",
         //  data: name,
@@ -1442,12 +1446,14 @@ $(document).ready(function(){
           $("#ListGroup").html('');
           var result_parsed = JSON.parse(result);
           //
-          console.log(result_parsed['rowcount']);
+          //console.log(result_parsed['rowcount']);
           //	console.log(result);
           selected_list_id1=	selected_list_id.replace('_',' ');
           selected_list_id2=toTitleCase(selected_list_id1);
           $("#count_summary").html("<b>"+result_parsed['rowcount']+"</b>");
           $(".ic").html(" <b>"+ selected_list_id2+"</b>");
+
+         //console.log(result_parsed['summary']);
 
           $(".counter-desc").html(result_parsed['summary']);
           for(var i=0; i<result_parsed['summary_list'].length;i++){
@@ -1567,7 +1573,7 @@ $(document).ready(function(){
           sub_style=JSON.parse(data.style);
           marker_type=data.marker_type;
           popup_content_parsed=data.popup_content;
-          console.log(popup_content_parsed);
+        //  console.log(popup_content_parsed);
           //console.log(sub_style);
           //layers
 
@@ -1627,7 +1633,7 @@ $(document).ready(function(){
 
               //for (data in popup_content_parsed) {
               pop = JSON.parse(popup_content_parsed);
-              console.log(pop);
+            //  console.log(pop);
 
               for(data in pop.a){
                 //console.log(data);
