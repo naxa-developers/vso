@@ -10,10 +10,21 @@
                 <header class="panel-heading">
                   <b>Manage Popup Style</b>
                   <span class="tools pull-right">
-          <a href=""><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-map-marker"></i> View In Map</button></a>
+          <a href="<?php echo base_url()?>category?tbl=<?php echo $table ?>"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-map-marker"></i> View In Map</button></a>
                         </span>
                 </header>
                 <div class="panel-body">
+
+                  <?php
+                  $error=	$this->session->flashdata('msg');
+                  if($error){ ?>
+                    <div class="alert alert-info alert-dismissible">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                      <strong>Message!!!!</strong>  <?php echo $error ; ?>
+                    </div>
+                    <?php
+                  }
+                  ?>
 
                   <div class="form-group">
                       <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Selects</label>

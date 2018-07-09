@@ -33,10 +33,23 @@ div#exampleModal {
           <section class="panel">
             <header class="panel-heading">
               <b>Choose Map Icon Style</b>
-
+              <span class="tools pull-right">
+                         <a href="<?php echo base_url()?>category?tbl=<?php echo $tbl ?>"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-map-marker"></i> View In Map</button></a>
+                         </span>
 
             </header>
             <div class="panel-body">
+
+              <?php
+              $error=	$this->session->flashdata('msg');
+              if($error){ ?>
+                <div class="alert alert-info alert-dismissible">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <strong>Message!!!!</strong>  <?php echo $error ; ?>
+                </div>
+                <?php
+              }
+              ?>
               <form role="form" method="POST" action="" enctype="multipart/form-data">
 
                 <div class="form-group ">

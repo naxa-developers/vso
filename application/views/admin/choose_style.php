@@ -18,6 +18,17 @@
 
                   </header>
                   <div class="panel-body">
+
+                    <?php
+                    $error=	$this->session->flashdata('msg');
+                    if($error){ ?>
+                      <div class="alert alert-info alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>Message!!!!</strong>  <?php echo $error ; ?>
+                      </div>
+                      <?php
+                    }
+                    ?>
 <!-- page start-->
     <div class="row">
      <div class="col-md-6">

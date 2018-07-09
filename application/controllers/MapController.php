@@ -220,7 +220,7 @@ if(!$this->db->table_exists($tbl['category_table'])){
 
       $this->session->set_flashdata('msg',$table.' Popup was successfully updated');
 
-      redirect('categories_tbl');
+      redirect('manage_popup?tbl='.$table);
       //end
     }else{
 
@@ -338,7 +338,7 @@ if(!$this->db->table_exists($tbl['category_table'])){
 
         $this->session->set_flashdata('msg',$tbl.' Style was successfully updated');
 
-        redirect('categories_tbl');
+        redirect('manage_style?tbl='.$tbl);
 
 
 
@@ -370,6 +370,7 @@ if(!$this->db->table_exists($tbl['category_table'])){
       $style_array=json_decode($data['style'],TRUE);
 
       $this->body['style_array']=$style_array;
+      $this->body['table']=$tbl;
 
 
       $this->load->view('admin/header');
@@ -434,10 +435,13 @@ public function circle_marker(){
 
 
     $style=json_encode($_POST);
+    echo $style ;
+    //exit();
 
     $data=array(
 
       'style'=>$style,
+      'marker_type'=>NULL,
 
 
 
@@ -449,7 +453,7 @@ public function circle_marker(){
 
     $this->session->set_flashdata('msg',$tbl.' Style was successfully updated');
 
-    redirect('categories_tbl');
+    redirect('circle_marker?tbl='.$tbl);
 
 
 
@@ -505,7 +509,7 @@ public function location_marker(){
 
       $this->session->set_flashdata('msg',$tbl.' Style was successfully updated');
 
-      redirect('categories_tbl');
+      redirect('location_marker?tbl='.$tbl);
 
 
 
@@ -538,7 +542,7 @@ public function location_marker(){
 
    $this->session->set_flashdata('msg',$tbl.' Style was successfully updated');
 
-   redirect('categories_tbl');
+     redirect('location_marker?tbl='.$tbl);
 
 
       }else{
@@ -551,7 +555,7 @@ public function location_marker(){
 
 
 
-        redirect('categories_tbl');
+          redirect('location_marker?tbl='.$tbl);
 
       }
 
@@ -690,6 +694,7 @@ $sub_category= array(
 $response['geojson']=json_encode($sub_category);
 $response['style']=$get_style['style'];
 $response['marker_type']=$get_style['marker_type'];
+$response['popup_content']=$get_style['popup_content'];
 echo json_encode($response);
 
 }

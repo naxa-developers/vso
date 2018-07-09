@@ -30,10 +30,22 @@
           <header class="panel-heading">
             <b>Manage Marker Style</b>
              <span class="tools pull-right">
-                        <a href=""><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-map-marker"></i> View In Map</button></a>
+                        <a href="<?php echo base_url()?>category?tbl=<?php echo $tbl?>"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-map-marker"></i> View In Map</button></a>
                         </span>
           </header>
           <div class="panel-body">
+
+            <?php
+            $error=	$this->session->flashdata('msg');
+            if($error){ ?>
+              <div class="alert alert-info alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Message!!!!</strong>  <?php echo $error ; ?>
+              </div>
+              <?php
+            }
+            ?>
+
             <form class="form-horizontal bucket-form" method="post" action="">
 
 
@@ -103,7 +115,7 @@
                   <div id="spinner3">
                    <div class="input-group" style="width: 150px">
               <span class="input-group-btn"><button type="button" class="btn btn-default value-control radius" data-action="minus" data-target="radius"><span class="glyphicon glyphicon-minus"></span></button></span>
-              <input type="text" name="radius" min="1" max="10" value="<?php echo $style_array['weight'] ?>" class="form-control" id="radius">
+              <input type="text" name="radius" min="1" max="10" value="<?php echo $style_array['radius'] ?>" class="form-control" id="radius">
               <span class="input-group-btn"><button type="button" class="btn btn-default value-control radius" data-action="plus" data-target="radius"><span class="glyphicon glyphicon-plus"></span></button></span>
               </div>
                   <span class="help-block">

@@ -1,5 +1,6 @@
 
 
+<link rel="stylesheet" href="<?php echo base_url();?>assets/css/popuptableinmap.css"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
@@ -9,10 +10,10 @@
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/changunarayan.js"></script>
 <style>
 .leaflet-left{
-left: 21.5%;
+  left: 21.5%;
 }
 .leaflet-right{
-right:260px;
+  right:260px;
 }
 
 ul.nav.nav-tabs{
@@ -48,8 +49,8 @@ img.test-icon.chevron {
   margin-left: 10px;
 }
 img.filter-icon {
- height: 15px;
- margin-right: 5px;
+  height: 15px;
+  margin-right: 5px;
 }
 
 li.basemap.chevron2 {
@@ -77,13 +78,13 @@ li.active.layer img:hover {
 }
 
 li.active.layer {
- background-color: #0056b3;
- height: 32px;
+  background-color: #0056b3;
+  height: 32px;
 }
 
 .panel-heading.right {
-/*  float: right;
-margin-right: 7px;*/
+  /*  float: right;
+  margin-right: 7px;*/
 }
 
 li.list-group-item {
@@ -125,18 +126,18 @@ div#filter {
 }
 
 .panel.panel-info {
- overflow: hidden;
- width: 250px;
- background-color: #f3f3f3;
- padding: 5px;
- border-radius: 0px;
- float: right;
- height: 545px;
- font-size: 11px;
+  overflow: hidden;
+  width: 250px;
+  background-color: #f3f3f3;
+  padding: 5px;
+  border-radius: 0px;
+  float: right;
+  height: 545px;
+  font-size: 11px;
 }
 span.ic {
- font-size: 14px;
- font-weight: 600;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .modal-window>div {
@@ -418,8 +419,8 @@ div#over_map1 {
 }
 
 .list-cat-panel {
-/*  overflow-y: auto;
-height: 280px;*/
+  /*  overflow-y: auto;
+  height: 280px;*/
 }
 
 .head-panel .control div a{
@@ -595,14 +596,14 @@ height: 280px;*/
   opacity: 0.5;
 }
 .control .btn-toggle.btn-xs > .handle {
- position: absolute;
-    top: 2px;
-    left: 0.125rem;
-    width: 8px;
-    height: 7px;
-    border-radius: 0.75rem;
-    background: #fff;
-    transition: left 0.25s;
+  position: absolute;
+  top: 2px;
+  left: 0.125rem;
+  width: 8px;
+  height: 7px;
+  border-radius: 0.75rem;
+  background: #fff;
+  transition: left 0.25s;
 }
 .control .btn-toggle.btn-xs.active {
   transition: background-color 0.25s;
@@ -820,436 +821,308 @@ div#table1 {
 <div id="wrap">
 
 
-	<!-- left pane -->
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-6 no-padding col-sm-12">
-				<div class="panel-heading">
-					<ul class="nav nav-tabs" role="tablist">
-						<li class="basemap chevron1" id="close-panel-left"><img src="<?php echo base_url()?>assets/img/up-arrow.png" class="test-icon chevron"></li>
-						<li role="presentation" class="active layer"><a href="#categories" aria-controls="home" role="tab" data-toggle="tab"><img src="<?php echo base_url()?>assets/img/boxes.png" class="test-icon"></a></li>
-						<!-- <li role="presentation" class="basemap"><a href="#layers" aria-controls="profile" role="tab" data-toggle="tab"><img src="<?php echo base_url()?>assets/img/layers-icon.png" class="test-icon"></a></li> -->
-						<li role="presentation" class="basemap"><a href="<?php echo base_url()?>map_download"><img src="<?php echo base_url()?>assets/img/map-down.png" class="test-icon">&nbsp;<sub class="text-light" style="font-size: 13px;">Maps</sub></a></li>
-					</ul>
-				</div>
-			</div>
+  <!-- left pane -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 no-padding col-sm-12">
+        <div class="panel-heading">
+          <ul class="nav nav-tabs" role="tablist">
+            <li class="basemap chevron1" id="close-panel-left"><img src="<?php echo base_url()?>assets/img/up-arrow.png" class="test-icon chevron"></li>
+            <li role="presentation" class="active layer"><a href="#categories" aria-controls="home" role="tab" data-toggle="tab"><img src="<?php echo base_url()?>assets/img/boxes.png" class="test-icon"></a></li>
+            <!-- <li role="presentation" class="basemap"><a href="#layers" aria-controls="profile" role="tab" data-toggle="tab"><img src="<?php echo base_url()?>assets/img/layers-icon.png" class="test-icon"></a></li> -->
+            <li role="presentation" class="basemap"><a href="<?php echo base_url()?>map_download"><img src="<?php echo base_url()?>assets/img/map-down.png" class="test-icon">&nbsp;<sub class="text-light" style="font-size: 13px;">Maps</sub></a></li>
+          </ul>
+        </div>
+      </div>
 
-			<div class="col-md-6 no-padding col-sm-12" style="background: #0056b3">
-				<div class="panel-heading right pull-right">
-					<ul class="nav nav-tabs" role="tablist">
-						<li role="presentation" class="active layer navbar-right pull-right"><a href="#table1" aria-controls="home" role="tab" data-toggle="tab"><img src="<?php echo base_url()?>assets/img/menu.png" class="test-icon"></a></li>
-						<li class=" basemap chevron2 navbar-right" id="close-panel-right"><img src="<?php echo base_url()?>assets/img/up-arrow.png" class="test-icon chevron"></li>
-					</ul>
-				</div>
-			</div>
+      <div class="col-md-6 no-padding col-sm-12" style="background: #0056b3">
+        <div class="panel-heading right pull-right">
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active layer navbar-right pull-right"><a href="#table1" aria-controls="home" role="tab" data-toggle="tab"><img src="<?php echo base_url()?>assets/img/menu.png" class="test-icon"></a></li>
+            <li class=" basemap chevron2 navbar-right" id="close-panel-right"><img src="<?php echo base_url()?>assets/img/up-arrow.png" class="test-icon chevron"></li>
+          </ul>
+        </div>
+      </div>
 
-		</div>
-	</div>
+    </div>
+  </div>
 
-	<div class="half col-sm-12 col-md-4 no-padding" id ="over_map">
-		<div class="panel panel-success categories" id="left-panel-toggle">
-			<div class="panel-body cate">
-				<div>
-					<!-- Tab panes -->
-					<div class="tab-content cate">
-						<!-- categories -->
-						<div role="tabpanel" class="tab-pane active" id="categories">
-							<ul class="treeview checklist">
-
-
-               <?php  foreach ($data as $data){ ?>
-
-               <li class="card inter-list-panel">
-                 <div class="head-panel">
-                  <div class="control">
-                   <div class="row">
-											<!-- <div class="col-md-1 pull-left">
-												<a href="#"><i class="fa fa-info-circle"></i></a>
-											</div> -->
-
-											<div class="col-md-12">
-                        <?php if($data['category_type']=='Exposure_Data'){ ?>
-
-                        <span class="indicator" style="background-color:<?php echo 'green' ?>" data-toggle="tooltip" data-placement="top" title="Exposure Data"></span>
+  <div class="half col-sm-12 col-md-4 no-padding" id ="over_map">
+    <div class="panel panel-success categories" id="left-panel-toggle">
+      <div class="panel-body cate">
+        <div>
+          <!-- Tab panes -->
+          <div class="tab-content cate">
+            <!-- categories -->
+            <div role="tabpanel" class="tab-pane active" id="categories">
+              <ul class="treeview checklist">
 
 
-                     <?php }elseif($data['category_type']=='Baseline_Data'){ ?>
+                <?php  foreach ($data as $data){ ?>
 
-                         <span class="indicator" style="background-color:<?php echo 'blue' ?>" data-toggle="tooltip" data-placement="top" title="Baseline Data"></span>
+                  <li class="card inter-list-panel">
+                    <div class="head-panel">
+                      <div class="control">
+                        <div class="row">
+                          <!-- <div class="col-md-1 pull-left">
+                          <a href="#"><i class="fa fa-info-circle"></i></a>
+                        </div> -->
 
-                       <?php }else{ ?>
-                             <span class="indicator" style="background-color:<?php echo 'red' ?>" data-toggle="tooltip" data-placement="top" title="Hazard Data"></span>
+                        <div class="col-md-12">
+                          <?php if($data['category_type']=='Exposure_Data'){ ?>
+
+                            <span class="indicator" style="background-color:<?php echo 'green' ?>" data-toggle="tooltip" data-placement="top" title="Exposure Data"></span>
+
+
+                          <?php }elseif($data['category_type']=='Baseline_Data'){ ?>
+
+                            <span class="indicator" style="background-color:<?php echo 'blue' ?>" data-toggle="tooltip" data-placement="top" title="Baseline Data"></span>
+
+                          <?php }else{ ?>
+                            <span class="indicator" style="background-color:<?php echo 'red' ?>" data-toggle="tooltip" data-placement="top" title="Hazard Data"></span>
 
                           <?php } ?>
-                        <a href="#" id="appl" >
-                        <img src="<?php echo base_url()?>assets/img/filter.png" class="filter-icon"></a>
+                          <a href="#" id="appl" >
+                            <img src="<?php echo base_url()?>assets/img/filter.png" class="filter-icon"></a>
 
-                        <?php	if($data['default_load']=='0'){ ?>
-                        <button type="button" value = "<?php echo $data['category_table'];?>" id = "<?php echo $data['category_table'].'_toggle'?>" class="btn btn-xs btn-toggle  CheckBox" data-toggle="button" aria-pressed="false" autocomplete="off">
-                          <?php	}else{ ?>
-                          <button type="button" value = "<?php echo $data['category_table'];?>" id = "<?php echo $data['category_table'].'_toggle'?>" class="btn btn-xs btn-toggle  active CheckBox" data-toggle="button" aria-pressed="false" autocomplete="off">
-                           <?php	} ?>
-                           <div class="handle"></div>
-                         </button>
-                       </div>
-                     </div>
-                   </div>
-
-                 </div>
-
-
-                 <input type="checkbox" name="tall" class="checker" id="<?php echo $data['category_table']?>">
-
-                 <label for="<?php echo $data['category_table']?>" class="specific">
-                   <!-- <div class="ball" data-id="1"></div> -->
-                   <p><?php echo $data['category_name']; ?></p>
-									<!-- <div class="action-list">
-										<i class="fa fa-info-circle"></i>
-										<i class="fa fa-plus"></i>
-									</div> -->
-								</label>
-
-								<ul>
-									<li>
-                   <div class="desc">
-                      <!-- <div class="range range-primary">
-                        <small>Transparency</small>
-                        <input type="range" name="range" min="1" max="100" value="50" onchange="rangePrimary.value=value">
-                       <output id="rangePrimary">50</output>
-                     </div> -->
-                     <div class="treeview-content-p">
-
-                  <?php if($data['sub_categories']==''){  ?>
-
-                <p> No sub categories </p>
-
-          <?php  }else{
-
-                $data_array=json_decode($data['sub_categories'],TRUE);
-
-                  for($i=0;sizeof($data_array)>$i;$i++){
-
-                ?>
-
-                      <div class="form-check">
-
-                    <input type="checkbox" id="<?php echo $data['sub_col'] ?>" name="<?php echo $data['category_table'] ?>" class="form-check-input sub-cat" value="<?php echo $data_array[$i] ?>"><label class="form-check-label"><?php echo $data_array[$i] ?></label>
+                            <?php	if($data['default_load']=='0'){ ?>
+                              <button type="button" value = "<?php echo $data['category_table'];?>" id = "<?php echo $data['category_table'].'_toggle'?>" class="btn btn-xs btn-toggle  CheckBox" data-toggle="button" aria-pressed="false" autocomplete="off">
+                              <?php	}else{ ?>
+                                <button type="button" value = "<?php echo $data['category_table'];?>" id = "<?php echo $data['category_table'].'_toggle'?>" class="btn btn-xs btn-toggle  active CheckBox" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                <?php	} ?>
+                                <div class="handle"></div>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
 
                       </div>
 
-                    <?php }} ?>
-                    </div>
+
+                      <input type="checkbox" name="tall" class="checker" id="<?php echo $data['category_table']?>">
+
+                      <label for="<?php echo $data['category_table']?>" class="specific">
+                        <!-- <div class="ball" data-id="1"></div> -->
+                        <p><?php echo $data['category_name']; ?></p>
+                        <!-- <div class="action-list">
+                        <i class="fa fa-info-circle"></i>
+                        <i class="fa fa-plus"></i>
+                      </div> -->
+                    </label>
+
+                    <ul>
+                      <li>
+                        <div class="desc">
+                          <!-- <div class="range range-primary">
+                          <small>Transparency</small>
+                          <input type="range" name="range" min="1" max="100" value="50" onchange="rangePrimary.value=value">
+                          <output id="rangePrimary">50</output>
+                        </div> -->
+                        <div class="treeview-content-p">
+
+                          <?php if($data['sub_categories']==''){  ?>
+
+                            <p> No sub categories </p>
+
+                          <?php  }else{
+
+                            $data_array=json_decode($data['sub_categories'],TRUE);
+
+                            for($i=0;sizeof($data_array)>$i;$i++){
+
+                              ?>
+
+                              <div class="form-check">
+
+                                <input type="checkbox" id="<?php echo $data['sub_col'] ?>" name="<?php echo $data['category_table'] ?>" class="form-check-input sub-cat" value="<?php echo $data_array[$i] ?>"><label class="form-check-label"><?php echo $data_array[$i] ?></label>
+
+                              </div>
+
+                            <?php }} ?>
+                          </div>
 
 
-                  </div>
-                </li>
+                        </div>
+                      </li>
+                    </ul>
+
+                  </li>
+
+                <?php }?>
+
               </ul>
 
-            </li>
 
-            <?php }?>
-
-          </ul>
+            </div>
 
 
+            <!-- filter -->
+            <div role="tabpanel" class="tab-pane" id="filter">
+              <div class="form-group">
+                <label for="usr"></label>
+                <input type="text" class="form-control" id="usr"  placeholder="Enter text eg. Text">
+              </div>
+              <div class="form-group">
+                <label for="sel1">Select list:</label>
+                <select class="form-control " id="sel1">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="sel1">Select list:</label>
+                <select class="form-control" id="sel1" >
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+              </div>
+
+              <button type="button" class="btn btn-default btn-sm"> Filter</button>
+
+            </div>
+
+            <!-- legend -->
+            <div role="tabpanel" class="tab-pane" id="legend">
+              <ul class="list-group cate">
+                <li class="list-group-item"><i class="fa fa-square" style='color:#8DD3C7;'></i> Roads</li>
+                <li class="list-group-item"><i class="fa fa-square" style='color:#FFFFB3;'></i> Rivers</li>
+                <li class="list-group-item"><i class="fa fa-square" style='color:#BEBADA;'></i> Mountain</li>
+                <li class="list-group-item"><i class="fa fa-square" style='color:#FB8072;'></i> Forest</li>
+                <li class="list-group-item"><i class="fa fa-square" style='color:#80B1D3;'></i> Lake</li>
+              </ul>
+            </div>
+            <!-- legend -->
+
+            <!-- categories -->
+
+          </div>
         </div>
-
-        <!-- categories -->
-        <!-- layer -->
-<!-- <div role="tabpanel" class="tab-pane" id="layers">
-  <div id="layers">
-
-   <div id="content map">
-    <ul id="sitemap" class="layer-sites">
-
-     <li><a><input type="checkbox" name="1"> Administrative Layers</a>
-      <ul>
-       <li><a ><input type="checkbox" name="1"> Municipal Boundary</a></li>
-       <li><a><input type="checkbox" name="1"> Ward Boundary</a></li>
-       <li><a><input type="checkbox" name="1"> Old VDCs</a></li>
-       <li><a ><input type="checkbox" name="1"> Old ward Layers</a></li>
-
-     </ul>
-   </li>
-   <li><a><input type="checkbox" name="1"> Settlement Layers</a>
-    <ul>
-     <li><a><input type="checkbox" name="1"> Settlement Clusters</a></li>
-     <li><a><input type="checkbox" name="1"> Households</a></li>
-
-
-   </ul>
- </li>
-
- <li><a><input type="checkbox" name="1"> Risks and Hazards</a>
-  <ul>
-   <li><a><input type="checkbox" name="1"> Sublayer 1</a></li>
-   <li><a><input type="checkbox" name="1"> Sublayer 2</a></li>
-   <li><a><input type="checkbox" name="1"> Sublayer 3</a></li>
-
- </ul>
-</li>
-
-<li><a><input type="checkbox" name="1"> Open Spaces / Safe locations</a>
-  <ul>
-   <li><a><input type="checkbox" name="1"> Grounds</a></li>
-   <li><a><input type="checkbox" name="1"> Parks</a></li>
-   <li><a><input type="checkbox" name="1"> Open Spaces</a></li>
-
- </ul>
-</li>
-
-<li><a><input type="checkbox" name="1"> Institution</a>
-  <ul>
-   <li><a><input type="checkbox" name="1"> Private Organization</a>
-    <ul>
-     <li><a><input type="checkbox" name="1"> Category 1</a></li>
-     <li><a><input type="checkbox" name="1"> Category 2</a></li>
-     <li><a><input type="checkbox" name="1"> Hotels & Lodges</a></li>
-     <li><a><input type="checkbox" name="1"> Financial Institutions</a></li>
-
-   </ul>	</li>
-
-   <li><a><input type="checkbox" name="1"> Government Organizations</a>
-     <ul>
-      <li><a><input type="checkbox" name="1"> Ward offices</a></li>
-      <li><a><input type="checkbox" name="1"> Govt. Offices</a></li>
-      <li><a><input type="checkbox" name="1"> Post offices etc.</a></li>
-    </ul>
-  </li>
-</ul>
-</li>
-
-<li><a><input type="checkbox" name="1"> Urban Utilities</a>
- <ul>
-  <li><a><input type="checkbox" name="1"> Roads</a></li>
-  <li><a><input type="checkbox" name="1"> Rivers</a></li>
-  <li><a><input type="checkbox" name="1"> Bus Park</a></li>
-  <li><a><input type="checkbox" name="1"> Public Toilets</a></li>
-  <li><a><input type="checkbox" name="1"> Public Taps</a></li>
-  <li><a><input type="checkbox" name="1"> Falcha</a></li>
-  <li><a><input type="checkbox" name="1"> Bus Chautari</a></li>
-
-</ul>
-</li>
-
-<li><a><input type="checkbox" name="1"> Educational Institutions</a>
- <ul>
-  <li><a><input type="checkbox" name="1"> Schools</a></li>
-  <li><a><input type="checkbox" name="1"> Colleges</a></li>
-  <li><a><input type="checkbox" name="1"> Training Centers</a></li>
-
-</ul>
-</li>
-
-<li><a><input type="checkbox" name="1"> Health Centers</a>
- <ul>
-  <li><a><input type="checkbox" name="1"> Health Posts</a></li>
-  <li><a><input type="checkbox" name="1"> Hospitals</a></li>
-  <li><a><input type="checkbox" name="1"> Pharmacies</a></li>
-  <li><a><input type="checkbox" name="1"> Health Centers</a></li>
-
-</ul>
-</li>
-
-<li><a><input type="checkbox" name="1"> Development Projects </a>
- <ul>
-  <li><a><input type="checkbox" name="1"> Construction Sites</a></li>
-  <li><a><input type="checkbox" name="1"> Ongoing Projects</a></li>
-
-</ul>
-</li>
-
-<li><a><input type="checkbox" name="1"> Heritage Sites</a>
- <ul>
-  <li><a><input type="checkbox" name="1"> Temples</a></li>
-  <li><a><input type="checkbox" name="1"> Gompas</a></li>
-  <li><a><input type="checkbox" name="1"> Monasteries</a></li>
-  <li><a><input type="checkbox" name="1"> Pati/Pauwa</a></li>
-  <li><a><input type="checkbox" name="1"> H. Sites</a></li>
-
-</ul>
-</li>
-<li><a><input type="checkbox" name="1"> Security Forces</a>
- <ul>
-  <li><a><input type="checkbox" name="1"> Police Station</a></li>
-  <li><a><input type="checkbox" name="1"> Army Camps</a></li>
-
-</ul>
-</li>
-</ul>
-</div>
-
-</div>
-</div> -->
-<!-- layer -->
-
-<!-- filter -->
-<div role="tabpanel" class="tab-pane" id="filter">
- <div class="form-group">
-  <label for="usr"></label>
-  <input type="text" class="form-control" id="usr"  placeholder="Enter text eg. Text">
-</div>
-<div class="form-group">
-  <label for="sel1">Select list:</label>
-  <select class="form-control " id="sel1">
-   <option>1</option>
-   <option>2</option>
-   <option>3</option>
-   <option>4</option>
- </select>
-</div>
-<div class="form-group">
-  <label for="sel1">Select list:</label>
-  <select class="form-control" id="sel1" >
-   <option>1</option>
-   <option>2</option>
-   <option>3</option>
-   <option>4</option>
- </select>
-</div>
-
-<button type="button" class="btn btn-default btn-sm"> Filter</button>
-
-</div>
-
-<!-- legend -->
-<div role="tabpanel" class="tab-pane" id="legend">
- <ul class="list-group cate">
-  <li class="list-group-item"><i class="fa fa-square" style='color:#8DD3C7;'></i> Roads</li>
-  <li class="list-group-item"><i class="fa fa-square" style='color:#FFFFB3;'></i> Rivers</li>
-  <li class="list-group-item"><i class="fa fa-square" style='color:#BEBADA;'></i> Mountain</li>
-  <li class="list-group-item"><i class="fa fa-square" style='color:#FB8072;'></i> Forest</li>
-  <li class="list-group-item"><i class="fa fa-square" style='color:#80B1D3;'></i> Lake</li>
-</ul>
-</div>
-<!-- legend -->
-
-<!-- categories -->
-
-</div>
-</div>
-</div>
-</div>
-</div>
-
-
-<div id="over_map1" class="col-sm-12 col-md-4 no-padding">
-
-  <div class="panel panel-info col-sm-12 no-padding" id="right-panel-toggle">
-   <div class="panel-body">
-
-    <!-- Tab panes -->
-    <div class="tab-content right">
-     <!-- categories -->
-     <div role="tabpanel" class="tab-pane active" id="table1">
-      <div class="form-group">
-       <!-- <label for="sel1" class="label_summary">Select layer:</label> -->
-       <select class="form-control custom-select drop" id="active_layers">
-
-       </select>
-     </div>
-
-     <div class="right-content-info">
-       <div class="card total">
-        <div class="row">
-         <div class="col-sm-12">
-          <div class="counter_cat">
-           <a>
-
-            <span class="count text-center " id="count_summary"> 70</span><span class="ic"> Open Spaces </span>
-          </a>
-        </div>
-        <div class="counter-desc">
-         <p>this is the description of individual category
-         this is the description of individual category this is the description of individual category this is the description of individual category</p>
-       </div>
-     </div>
-
-   </div>
- </div>
-
- <div class="list-cat-panel">
-  <ul id="ListGroup" class="list-group cate categories">
-
-  </ul>
-</div>
-</div>
-
-<div class="btn-pos-list text-center">
- <a href="#" id="viewall" class="btn btn-primary btn-md">View all</a>
- <a href="#" id="downloaddata" class="btn btn-primary btn-md"><i class="fa fa-download"></i> Download</a>
-</div>
-
-</div>
-<!-- categories -->
-
-<!-- layer -->
-<div role="tabpanel" class="tab-pane" id="popups"></div>
-<!-- layer -->
-
-<!-- filter -->
-
-<!-- categories -->
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="container">
-	<div class="row">
-		<div class="col-sm-12 col-md-4 no-padding">
-     <div id="open-modal" class="modal-window" role="dialog">
-      <div class="box1" style="border-radius: 0;">
-       <div class="modal-header">
-        <a href="#modal-close" title="Close" class="modal-close"><i class="fa fa-times exit fa-2x"></i></a>
-        <h6>Filter Education Institution</h6>
-      </div>
-
-      <div class="modal-body">
-        <div class="row">
-
-         <div class="col-6">
-          <div class="form-group">
-           <select id="select1" class="custom-select
-           ">
-           <option value="1">Cheese</option>
-           <option value="2">Tomatoes</option>
-           <option value="3">Mozzarella</option>
-           <option value="4">Mushrooms</option>
-           <option value="5">Pepperoni</option>
-           <option value="6">Onions</option>
-         </select>
-
-       </div>
-     </div>
-
-     <div class="col-6">
-      <div class="form-group">
-
-        <select id="select2" class="custom-select">
-          <option value="111">Select Data</option>
-          <option value="222">Risk and Hazards</option>
-          <option value="333">Household</option>
-          <option value="444">Schools</option>
-          <option value="555">Health Facilities</option>
-          <option value="666">Government Offices</option>
-          <option value="777">Open Spaces</option>
-        </select>
-
       </div>
     </div>
-
   </div>
-  <div class="modal-footer">
-   <button type="button" class="btn btn-sm" id="appl"><i class="fa fa-filter"></i> apply</button>
- </div>
-</div>
 
-</div>
-</div>
-</div>
-</div>
+
+  <div id="over_map1" class="col-sm-12 col-md-4 no-padding">
+
+    <div class="panel panel-info col-sm-12 no-padding" id="right-panel-toggle">
+      <div class="panel-body">
+
+        <!-- Tab panes -->
+        <div class="tab-content right">
+          <!-- categories -->
+          <div role="tabpanel" class="tab-pane active" id="table1">
+            <div class="form-group">
+              <!-- <label for="sel1" class="label_summary">Select layer:</label> -->
+              <select class="form-control custom-select drop" id="active_layers">
+
+              </select>
+            </div>
+
+            <div class="right-content-info">
+              <div class="card total">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="counter_cat">
+                      <a>
+
+                        <span class="count text-center " id="count_summary"> 70</span><span class="ic"> Open Spaces </span>
+                      </a>
+                    </div>
+                    <div class="counter-desc">
+                      <p>this is the description of individual category
+                        this is the description of individual category this is the description of individual category this is the description of individual category</p>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="list-cat-panel">
+                  <ul id="ListGroup" class="list-group cate categories">
+
+                  </ul>
+                </div>
+              </div>
+
+              <div class="btn-pos-list text-center">
+                <a href="#" id="viewall" class="btn btn-primary btn-md">View all</a>
+                <a href="#" id="downloaddata" class="btn btn-primary btn-md"><i class="fa fa-download"></i> Download</a>
+              </div>
+
+            </div>
+            <!-- categories -->
+
+            <!-- layer -->
+            <div role="tabpanel" class="tab-pane" id="popups"></div>
+            <!-- layer -->
+
+            <!-- filter -->
+
+            <!-- categories -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-4 no-padding">
+        <div id="open-modal" class="modal-window" role="dialog">
+          <div class="box1" style="border-radius: 0;">
+            <div class="modal-header">
+              <a href="#modal-close" title="Close" class="modal-close"><i class="fa fa-times exit fa-2x"></i></a>
+              <h6>Filter Education Institution</h6>
+            </div>
+
+            <div class="modal-body">
+              <div class="row">
+
+                <div class="col-6">
+                  <div class="form-group">
+                    <select id="select1" class="custom-select
+                    ">
+                    <option value="1">Cheese</option>
+                    <option value="2">Tomatoes</option>
+                    <option value="3">Mozzarella</option>
+                    <option value="4">Mushrooms</option>
+                    <option value="5">Pepperoni</option>
+                    <option value="6">Onions</option>
+                  </select>
+
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group">
+
+                  <select id="select2" class="custom-select">
+                    <option value="111">Select Data</option>
+                    <option value="222">Risk and Hazards</option>
+                    <option value="333">Household</option>
+                    <option value="444">Schools</option>
+                    <option value="555">Health Facilities</option>
+                    <option value="666">Government Offices</option>
+                    <option value="777">Open Spaces</option>
+                  </select>
+
+                </div>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-sm" id="appl"><i class="fa fa-filter"></i> apply</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div id="map" class="col-sm-12 no-padding"></div>
@@ -1259,12 +1132,12 @@ div#table1 {
 <!-- scripts for leaflet map -->
 <script>
 
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip();
-  });
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
 
 
-  var default_loadd = '<?php echo $default_load; ?>';
+var default_loadd = '<?php echo $default_load; ?>';
 
 //
 var cat_layer = '<?php echo $cat_map_layer; ?>';
@@ -1293,84 +1166,84 @@ $('#<?php echo $_GET['tbl'].'_toggle'?>').addClass('active');
 /*-- LayerJS--*/
 $(document).ready(function(){
   $(".layer-toggle").click(function(){
-   $(".panel.panel-success").toggle(800);
-   $(".layer-toggle i").toggleClass("fa-chevron-right");
- });
+    $(".panel.panel-success").toggle(800);
+    $(".layer-toggle i").toggleClass("fa-chevron-right");
+  });
 
-			//map part
+  //map part
 
-			var map = L.map('map').setView([27.693547,85.440240], 13);
-      map.attributionControl.addAttribution("<a href='http://www.naxa.com.np' title = 'Contributor'>NAXA</a>");
-		 // map.scrollWheelZoom.disable();
-		 map.options.maxBounds;  // remove the maxBounds object from the map options
-		 //map.options.minZoom = 9;
+  var map = L.map('map').setView([27.693547,85.440240], 13);
+  map.attributionControl.addAttribution("<a href='http://www.naxa.com.np' title = 'Contributor'>NAXA</a>");
+  // map.scrollWheelZoom.disable();
+  map.options.maxBounds;  // remove the maxBounds object from the map options
+  //map.options.minZoom = 9;
 
-			//map.options.minZoom = 14;
-			//console.log("adfasfsadfasfasdfasfdasdfsafasdfsafasfasfsafsa");
-			var osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-				attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-			});
+  //map.options.minZoom = 14;
+  //console.log("adfasfsadfasfasdfasfdasdfsafasdfsafasfasfsafsa");
+  var osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+  });
 
-			googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
-				maxZoom: 20,
-				subdomains:['mt0','mt1','mt2','mt3']
-			});
-			googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
-				maxZoom: 20,
-				subdomains:['mt0','mt1','mt2','mt3']
-			});
-			googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
-				maxZoom: 20,
-				subdomains:['mt0','mt1','mt2','mt3']
-			});
-			googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{
-				maxZoom: 20,
-				subdomains:['mt0','mt1','mt2','mt3']
-			});
-			//var none = "";
-			var baseLayers = {
-				"OpenStreetMap": osm,
-				"Google Streets": googleStreets,
-				"Google Hybrid": googleHybrid,
-				"Google Satellite": googleSat,
-				"Google Terrain": googleTerrain//,
-				//"None": none
-			};
+  googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+  });
+  googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+  });
+  googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+  });
+  googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+  });
+  //var none = "";
+  var baseLayers = {
+    "OpenStreetMap": osm,
+    "Google Streets": googleStreets,
+    "Google Hybrid": googleHybrid,
+    "Google Satellite": googleSat,
+    "Google Terrain": googleTerrain//,
+    //"None": none
+  };
 
-			map.addLayer(googleStreets);
-			layerswitcher = L.control.layers(baseLayers, {}, {collapsed: true}).addTo(map);
+  map.addLayer(googleStreets);
+  layerswitcher = L.control.layers(baseLayers, {}, {collapsed: true}).addTo(map);
 
-     function underscoreToSpace(naaaaame) {
+  function underscoreToSpace(naaaaame) {
 
-       var underscored = naaaaame;
+    var underscored = naaaaame;
 
-       var spaced = underscored.replace(/_/g, " ");
+    var spaced = underscored.replace(/_/g, " ");
 
-       return spaced;
+    return spaced;
 
-     }
+  }
 
 
-     styles=JSON.parse('<?php echo $style ?>');
-     marker_types=JSON.parse('<?php echo $marker_type ?>');
+  styles=JSON.parse('<?php echo $style ?>');
+  marker_types=JSON.parse('<?php echo $marker_type ?>');
 
-//popup CheckBoxStart
-popup_content_parsed = JSON.parse('<?php echo $popup_content ?>');
+  //popup CheckBoxStart
+  popup_content_parsed = JSON.parse('<?php echo $popup_content ?>');
 
-//popup end
-if(selected_category==""){}else{
-$('#active_layers').append('<option id = '+selected_category+' >'+selected_category.replace( "_"," ")+'</option>');
-}
-     //cat map load
-		 for(i=0; i<cat_tbl_array_name.length; i++){
-//style start
-var style=JSON.parse(styles[i]);
-var marker_type=marker_types[i];
-console.log(marker_type);
-//style end
+  //popup end
+  if(selected_category==""){}else{
+    $('#active_layers').append('<option id = '+selected_category+' >'+selected_category.replace( "_"," ")+'</option>');
+  }
+  //cat map load
+  for(i=0; i<cat_tbl_array_name.length; i++){
+    //style start
+    var style=JSON.parse(styles[i]);
+    var marker_type=marker_types[i];
+    console.log(marker_type);
+    //style end
 
-			 //console.log(cat_tbl_array_name[i]);
-      window[''+cat_tbl_array_name[i]]= new L.GeoJSON(cat_layer_data[i],
+    //console.log(cat_tbl_array_name[i]);
+    window[''+cat_tbl_array_name[i]]= new L.GeoJSON(cat_layer_data[i],
       {
 
 
@@ -1378,398 +1251,432 @@ console.log(marker_type);
         pointToLayer: function(feature,Latlng)
         {
 
-        if(marker_type=='icon'){
+          if(marker_type=='icon'){
 
-          console.log(style.icon);
+            console.log(style.icon);
 
-          icons=L.icon({
-            iconSize: [21, 27],
-            iconAnchor: [13, 27],
-            popupAnchor:  [2, -24],
+            icons=L.icon({
+              iconSize: [21, 27],
+              iconAnchor: [13, 27],
+              popupAnchor:  [2, -24],
 
-            iconUrl:style.icon
-          });
-          var marker = L.marker(Latlng,{icon:icons});
+              iconUrl:style.icon
+            });
+            var marker = L.marker(Latlng,{icon:icons});
 
+
+          }else{
+
+
+
+            icons=L.icon({
+              iconUrl: "https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon.png"
+            });
+            var marker = L.circleMarker(Latlng);
+            //for(data in style){
+
+          }
+
+
+
+          //	}
+
+          return marker;
+
+        },
+
+
+
+
+        onEachFeature: function(feature,layer){
+
+          //console.log(feature);
+          if(marker_type !='icon'){
+            layer.setStyle(style);
+          }
+
+
+          var popUpContent = "";
+
+          popUpContent += '<table style="width:100%;" id="District-popup" class="popuptable">';
+
+          //for (data in popup_content_parsed) {
+          pop = JSON.parse(popup_content_parsed[i]);
+
+          for(data in pop.a){
+            //console.log(data);
+            pop1 = pop.a[data].col;
+            name = pop.a[data].name;
+            popUpContent += "<tr>" + "<td>"+name+"</td>" + "<td>" +  feature.properties[pop1]  + "</td></tr>";
+          }
+
+
+
+          // console.log('feature ', feature);
+
+          //dataspaced = underscoreToSpace(data);
+          //console.log(JSON.parse(popup_content_parsed[data]));
+
+
+          //}
+
+          popUpContent += '</table>';
+
+
+
+          layer.bindPopup(L.popup({
+
+            closeOnClick: true,
+
+            closeButton: true,
+
+            keepInView: true,
+
+            autoPan: true,
+
+            maxHeight: 200,
+
+            minWidth: 250
+
+          }).setContent(popUpContent));
+
+
+
+        },
+
+
+
+      });
+
+      //add layer if the admin has set the layer to load by default on page load
+      if($('#'+cat_tbl_array_name[i]+'_toggle').hasClass('active')){
+        //console.log(cat_tbl_array_name[i]);
+        window[''+cat_tbl_array_name[i]].addTo(map);
+        //$('#active_layers').append('<option>Select layer</option>');
+
+        var table_name=cat_tbl_array_name[i].replace( '_',' ');
+        if(cat_tbl_array_name[i]==selected_category){
 
         }else{
 
-
-
-         icons=L.icon({
-           iconUrl: "https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon.png"
-         });
-         var marker = L.circleMarker(Latlng);
-				//for(data in style){
-
-  }
+          $('#active_layers').append('<option id= '+cat_tbl_array_name[i]+' >'+table_name+'</option>');
+        }
 
 
 
-			//	}
-
-      return marker;
-
-    },
-
-
-
-
-    onEachFeature: function(feature,layer){
-
-			 //console.log(feature);
-       if(marker_type !='icon'){
-         layer.setStyle(style);
-       }
-
-
-      var popUpContent = "";
-
-      popUpContent += '<table style="width:100%;" id="District-popup" class="popuptable">';
-
-														 //for (data in popup_content_parsed) {
-                              pop = JSON.parse(popup_content_parsed[i]);
-
-                              for(data in pop.a){
-																			//console.log(data);
-																			pop1 = pop.a[data].col;
-																			name = pop.a[data].name;
-																			popUpContent += "<tr>" + "<td>"+name+"</td>" + "<td>" +  feature.properties[pop1]  + "</td></tr>";
-                                   }
-
-
-
-																 // console.log('feature ', feature);
-
-																 //dataspaced = underscoreToSpace(data);
-																 //console.log(JSON.parse(popup_content_parsed[data]));
-
-
-														 //}
-
-														 popUpContent += '</table>';
-
-
-
-														 layer.bindPopup(L.popup({
-
-                             closeOnClick: true,
-
-                             closeButton: true,
-
-                             keepInView: true,
-
-                             autoPan: true,
-
-                             maxHeight: 200,
-
-                             minWidth: 250
-
-                           }).setContent(popUpContent));
-
-
-
-                           },
-
-
-
-                         });
-
-//add layer if the admin has set the layer to load by default on page load
-if($('#'+cat_tbl_array_name[i]+'_toggle').hasClass('active')){
-				//console.log(cat_tbl_array_name[i]);
-				window[''+cat_tbl_array_name[i]].addTo(map);
-				//$('#active_layers').append('<option>Select layer</option>');
-
-				var table_name=cat_tbl_array_name[i].replace( '_',' ');
-       if(cat_tbl_array_name[i]==selected_category){
-
-       }else{
-
-        $('#active_layers').append('<option id= '+cat_tbl_array_name[i]+' >'+table_name+'</option>');
       }
 
+    }
+    //cat map end
 
+
+
+
+    function toTitleCase(str) {
+      return str.replace(/\w\S*/g, function(txt){
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      });
+    }
+
+
+
+
+
+
+    //    L.Mask = L.Polygon.extend({
+    //     options: {
+    //      stroke: false,
+    //      color: '#333',
+    //      fillOpacity: 0.5,
+    //      clickable: true,
+    //
+    //      outerBounds: new L.LatLngBounds([-90, -360], [90, 360])
+    //    },
+    //
+    //    initialize: function (latLngs, options) {
+    //
+    //     var outerBoundsLatLngs = [
+    //     this.options.outerBounds.getSouthWest(),
+    //     this.options.outerBounds.getNorthWest(),
+    //     this.options.outerBounds.getNorthEast(),
+    //     this.options.outerBounds.getSouthEast()
+    //     ];
+    //     L.Polygon.prototype.initialize.call(this, [outerBoundsLatLngs, latLngs], options);
+    //   },
+    //
+    // });
+    //    L.mask = function (latLngs, options) {
+    //     return new L.Mask(latLngs, options);
+    //   };
+    //
+    //
+    //   var coordinates = changu1[0].features[0].geometry.coordinates[0];
+    //
+    //   var latLngs = [];
+    //   for (i=0; i<coordinates.length; i++) {
+    //     for(j=0; j<coordinates[i].length;j++){
+    // 					// console.log(coordinates[i][j]);
+    // 					latLngs.push(new L.LatLng(coordinates[i][j][1], coordinates[i][j][0]));
+    // 				}
+    // 			}
+    //
+    //
+    // 			L.mask(latLngs).addTo(map);
+
+
+
+    function Loadlist(selected_list_id){
+      console.log(selected_list_id);
+      $.ajax({
+        type: "GET",
+        //  data: name,
+        url:  "MapController/get_summary_list?selected_list_id="+selected_list_id,
+        beforeSend: function() {
+          //  $.LoadingOverlay("show");
+        },
+        complete: function() {
+          //  $.LoadingOverlay("hide", true);
+        },
+        success: function (result) {
+          //	console.log(result);
+          $("#ListGroup").html('');
+          var result_parsed = JSON.parse(result);
+          //
+          console.log(result_parsed['rowcount']);
+          //	console.log(result);
+          selected_list_id1=	selected_list_id.replace('_',' ');
+          selected_list_id2=toTitleCase(selected_list_id1);
+          $("#count_summary").html("<b>"+result_parsed['rowcount']+"</b>");
+          $(".ic").html(" <b>"+ selected_list_id2+"</b>");
+
+          $(".counter-desc").html(result_parsed['summary']);
+          for(var i=0; i<result_parsed['summary_list'].length;i++){
+            //	console.log(result_parsed[0]['rowcount']);
+
+            var coords = JSON.parse(result_parsed['summary_list'][i].st_asgeojson);
+            $("#ListGroup").append('<li id='+coords.coordinates[0]+' name = '+coords.coordinates[1]+' class="list-group-item zoomTo" >'+result_parsed['summary_list'][i].field+' <span class="pull-right"><a href="#"><i class="fa fa-crosshairs"></i></a></span></li>');
+
+          }
+
+          $("#viewall").attr('href','data_map?tbl='+selected_list_id);
+          $("#downloaddata").attr('href','get_csv_dataset?tbl='+selected_list_id);
+
+
+        }
+
+
+      });
 
     }
 
-  }
-		 //cat map end
 
+    Loadlist(selected_category);
 
-
-
-		 function toTitleCase(str) {
-     return str.replace(/\w\S*/g, function(txt){
-       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-     });
-   }
-
-
-
-
-
-
-//    L.Mask = L.Polygon.extend({
-//     options: {
-//      stroke: false,
-//      color: '#333',
-//      fillOpacity: 0.5,
-//      clickable: true,
-//
-//      outerBounds: new L.LatLngBounds([-90, -360], [90, 360])
-//    },
-//
-//    initialize: function (latLngs, options) {
-//
-//     var outerBoundsLatLngs = [
-//     this.options.outerBounds.getSouthWest(),
-//     this.options.outerBounds.getNorthWest(),
-//     this.options.outerBounds.getNorthEast(),
-//     this.options.outerBounds.getSouthEast()
-//     ];
-//     L.Polygon.prototype.initialize.call(this, [outerBoundsLatLngs, latLngs], options);
-//   },
-//
-// });
-//    L.mask = function (latLngs, options) {
-//     return new L.Mask(latLngs, options);
-//   };
-//
-//
-//   var coordinates = changu1[0].features[0].geometry.coordinates[0];
-//
-//   var latLngs = [];
-//   for (i=0; i<coordinates.length; i++) {
-//     for(j=0; j<coordinates[i].length;j++){
-// 					// console.log(coordinates[i][j]);
-// 					latLngs.push(new L.LatLng(coordinates[i][j][1], coordinates[i][j][0]));
-// 				}
-// 			}
-//
-//
-// 			L.mask(latLngs).addTo(map);
-
-
-
-      function Loadlist(selected_list_id){
-       console.log(selected_list_id);
-       $.ajax({
-        type: "GET",
-                                  //  data: name,
-                                  url:  "MapController/get_summary_list?selected_list_id="+selected_list_id,
-                                  beforeSend: function() {
-                                      //  $.LoadingOverlay("show");
-                                    },
-                                    complete: function() {
-                                      //  $.LoadingOverlay("hide", true);
-                                    },
-                                    success: function (result) {
-																		//	console.log(result);
-                                   $("#ListGroup").html('');
-                                   var result_parsed = JSON.parse(result);
-																				  //
-                                         console.log(result_parsed['rowcount']);
-																				//	console.log(result);
-                                       selected_list_id1=	selected_list_id.replace('_',' ');
-                                       selected_list_id2=toTitleCase(selected_list_id1);
-                                       $("#count_summary").html("<b>"+result_parsed['rowcount']+"</b>");
-                                       $(".ic").html(" <b>"+ selected_list_id2+"</b>");
-
-                                       $(".counter-desc").html(result_parsed['summary']);
-                                       for(var i=0; i<result_parsed['summary_list'].length;i++){
-																				//	console.log(result_parsed[0]['rowcount']);
-
-                                       var coords = JSON.parse(result_parsed['summary_list'][i].st_asgeojson);
-                                       $("#ListGroup").append('<li id='+coords.coordinates[0]+' name = '+coords.coordinates[1]+' class="list-group-item zoomTo" >'+result_parsed['summary_list'][i].field+' <span class="pull-right"><a href="#"><i class="fa fa-crosshairs"></i></a></span></li>');
-
-                                       }
-
-                                        $("#viewall").attr('href','data_map?tbl='+selected_list_id);
-                                        $("#downloaddata").attr('href','get_csv_dataset?tbl='+selected_list_id);
-
-
-                                   }
-
-
-                                 });
-
-     }
-
-
-     Loadlist(selected_category);
-
-     $('#active_layers').on('change',function(){
+    $('#active_layers').on('change',function(){
       var selected_list_id=$('#active_layers option:selected').attr('id');
 
       Loadlist(selected_list_id);
     });
 
 
-$("#ListGroup").on('click', '.zoomTo', function(){ //console.log("fadsdfasfd");
- var lat = parseFloat($(this).attr('id'));
- var lon = parseFloat($(this).attr('name'));
- map.setView([lon,lat],16);
-});
+    $("#ListGroup").on('click', '.zoomTo', function(){ //console.log("fadsdfasfd");
+    var lat = parseFloat($(this).attr('id'));
+    var lon = parseFloat($(this).attr('name'));
+    map.setView([lon,lat],16);
+  });
 
 
-$( ".CheckBox" ).on('click', function( event ) {
-  $(this).attr('disabled',true);
+  $( ".CheckBox" ).on('click', function( event ) {
+    $(this).attr('disabled',true);
 
- //layerClicked = window[event.target.value];
- layerClicked = window[$(this)[0].value];
+    //layerClicked = window[event.target.value];
+    layerClicked = window[$(this)[0].value];
 
- var layertoggled = ($(this).attr('id')).replace("_toggle","");
- var	togglename=toTitleCase(layertoggled.replace("_"," "));
-
-
- if (map.hasLayer(layerClicked)) {
-   map.removeLayer(layerClicked);
+    var layertoggled = ($(this).attr('id')).replace("_toggle","");
+    var	togglename=toTitleCase(layertoggled.replace("_"," "));
 
 
-   for (var i = 0; i < $('.drop').children().length; i++) {
-    if($('.drop').children()[i].id==layertoggled){
-     $('.drop').children()[i].remove();
-   }
- }
- Loadlist($('.drop').children()[0].id);
-}
-else{
-   map.addLayer(layerClicked);
+    if (map.hasLayer(layerClicked)) {
+      map.removeLayer(layerClicked);
 
 
-   $('.drop option:selected').removeClass('active');
-   $('.drop').prepend("<option id="+layertoggled+" selected>"+togglename+"</option>");
-  						//s$('#'+layertoggled).attr({'selected':true});
-
-  						Loadlist(layertoggled);
-
-
-  } ;
-  $(this).attr('disabled',false);
-});
-
-
-$( ".CheckBoxStart" ).click(function( event ) {
-  layerClicked1 = window[event.target.value];
-  map.addLayer(layerClicked1);
-  map.removeLayer(layerClicked1)
-
-});
-
-//sub-cat
-$('.sub-cat').click(function(){
- //$('.treeview-content-p input:checked')
-
-  var data=$(this).val() ;
-  var col= $(this).attr('id') ;
-  var tbl=$(this).attr('name') ;
-//  console.log($(this).name()) ;
-  single_map=data.replace(/ /g, "_");
-
-  if(map.hasLayer(window[single_map])){
-    map.removeLayer(window[single_map]);
-    //console.log('if');
-  }
-  else {
-
-//console.log('else');
-$.ajax({
-type: "GET",
-                         //  data: name,
-                         url:  "MapController/get_sub_cat_data?tbl="+tbl+"&&data="+data+"&&col="+col,
-                         beforeSend: function() {
-                             //  $.LoadingOverlay("show");
-                           },
-                           complete: function() {
-                             //  $.LoadingOverlay("hide", true);
-                           },
-                           success: function (result) {
-
-                           //alert(result);
+      for (var i = 0; i < $('.drop').children().length; i++) {
+        if($('.drop').children()[i].id==layertoggled){
+          $('.drop').children()[i].remove();
+        }
+      }
+      Loadlist($('.drop').children()[0].id);
+    }
+    else{
+      map.addLayer(layerClicked);
 
 
-                             data=JSON.parse(result);
-                             sub_cat=JSON.parse(data.geojson);
-                             sub_style=JSON.parse(data.style);
-                             marker_type=data.marker_type;
-                             console.log(marker_type);
-                            //console.log(sub_style);
-                          //layers
+      $('.drop option:selected').removeClass('active');
+      $('.drop').prepend("<option id="+layertoggled+" selected>"+togglename+"</option>");
+      //s$('#'+layertoggled).attr({'selected':true});
+
+      Loadlist(layertoggled);
 
 
-                          //map.options.minZoom = 14;
-                          //console.log("adfasfsadfasfasdfasfdasdfsafasdfsafasfasfsafsa");
+    } ;
+    $(this).attr('disabled',false);
+  });
 
 
-                        //  map.addLayer(googleStreets);
+  $( ".CheckBoxStart" ).click(function( event ) {
+    layerClicked1 = window[event.target.value];
+    map.addLayer(layerClicked1);
+    map.removeLayer(layerClicked1)
+
+  });
+
+  //sub-cat
+  $('.sub-cat').click(function(){
+    //$('.treeview-content-p input:checked')
+
+    var data=$(this).val() ;
+    var col= $(this).attr('id') ;
+    var tbl=$(this).attr('name') ;
+    //  console.log($(this).name()) ;
+    single_map=data.replace(/ /g, "_");
+
+    if(map.hasLayer(window[single_map])){
+      map.removeLayer(window[single_map]);
+      //console.log('if');
+    }
+    else {
+
+      //console.log('else');
+      $.ajax({
+        type: "GET",
+        //  data: name,
+        url:  "MapController/get_sub_cat_data?tbl="+tbl+"&&data="+data+"&&col="+col,
+        beforeSend: function() {
+          //  $.LoadingOverlay("show");
+        },
+        complete: function() {
+          //  $.LoadingOverlay("hide", true);
+        },
+        success: function (result) {
+
+          //alert(result);
 
 
+          data=JSON.parse(result);
+          sub_cat=JSON.parse(data.geojson);
+          sub_style=JSON.parse(data.style);
+          marker_type=data.marker_type;
+          popup_content_parsed=data.popup_content;
+          console.log(popup_content_parsed);
+          //console.log(sub_style);
+          //layers
 
 
-                          //layer
-                          //console.log(data.replace(/ /g, "_"));
-
-                          //console.log($(this).attr('id'));
-                            window[single_map]=new L.GeoJSON(sub_cat,{
-                                pointToLayer: function(feature, latlng) {
-                                  if(marker_type=='icon'){
+          //map.options.minZoom = 14;
+          //console.log("adfasfsadfasfasdfasfdasdfsafasdfsafasfasfsafsa");
 
 
-
-                                    icons=L.icon({
-                                      iconSize: [21, 27],
-                                      iconAnchor: [13, 27],
-                                      popupAnchor:  [2, -24],
-
-                                      iconUrl:sub_style.icon
-                                    });
-                                  //  console.log(sub_style.icon);
-                                    var marker = L.marker(latlng,{icon:icons});
-
-
-                                  }else{
-
-
-
-                                   icons=L.icon({
-                                     iconUrl: "https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon.png"
-                                   });
-                                   var marker = L.circleMarker(latlng);
-                          				//for(data in style){
-                                }
-                          return marker;
-
-                                },
-                                onEachFeature: function(feature, layer) {
-                                  if(marker_type !='icon'){
-                                    layer.setStyle(sub_style);
-                                  }
-                                  layer.bindPopup(feature.properties);
-                                  //feature.properties.layer_name = "transit_stops";
-
-                                }
-                              }).addTo(map);
-                              map.removeLayer(window[''+cat_tbl_array_name[i]]);
+          //  map.addLayer(googleStreets);
 
 
 
 
-                              //map.addLayer(col);
+          //layer
+          //console.log(data.replace(/ /g, "_"));
 
-
-                           }
-
-
-});
-}
-});
-
+          //console.log($(this).attr('id'));
+          window[single_map]=new L.GeoJSON(sub_cat,{
+            pointToLayer: function(feature, latlng) {
+              if(marker_type=='icon'){
 
 
 
+                icons=L.icon({
+                  iconSize: [21, 27],
+                  iconAnchor: [13, 27],
+                  popupAnchor:  [2, -24],
 
-//sub-cat
+                  iconUrl:sub_style.icon
+                });
+                //  console.log(sub_style.icon);
+                var marker = L.marker(latlng,{icon:icons});
+
+
+              }else{
+
+
+
+                icons=L.icon({
+                  iconUrl: "https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon.png"
+                });
+                var marker = L.circleMarker(latlng);
+                //for(data in style){
+              }
+              return marker;
+
+            },
+            onEachFeature: function(feature, layer) {
+              if(marker_type !='icon'){
+                layer.setStyle(sub_style);
+              }
+
+
+              var popUpContent = "";
+
+              popUpContent += '<table style="width:100%;" id="District-popup" class="popuptable">';
+
+              //for (data in popup_content_parsed) {
+              pop = JSON.parse(popup_content_parsed);
+              console.log(pop);
+
+              for(data in pop.a){
+                //console.log(data);
+                pop1 = pop.a[data].col;
+                name = pop.a[data].name;
+                popUpContent += "<tr>" + "<td>"+name+"</td>" + "<td>" +  feature.properties[pop1]  + "</td></tr>";
+              }
+
+              popUpContent += '</table>';
+
+
+
+              layer.bindPopup(L.popup({
+
+                closeOnClick: true,
+
+                closeButton: true,
+
+                keepInView: true,
+
+                autoPan: true,
+
+                maxHeight: 200,
+
+                minWidth: 250
+
+              }).setContent(popUpContent));
+            }
+          }).addTo(map);
+          map.removeLayer(window[''+cat_tbl_array_name[i]]);
+
+
+
+
+          //map.addLayer(col);
+
+
+        }
+
+
+      });
+    }
+  });
+
+
+
+
+
+  //sub-cat
 
 
 
@@ -1782,15 +1689,15 @@ type: "GET",
 <!-- panel toggle script -->
 <script>
 $('#close-panel-left').click(function(){
-$('#left-panel-toggle').slideToggle('fast', function(){
-if($(this).is(':hidden')){
-$(".leaflet-left").css("left","10px");
-}
-else {
-$(".leaflet-left").css("left","21.5%");
-}
-});
-$(this).toggleClass('transform');
+  $('#left-panel-toggle').slideToggle('fast', function(){
+    if($(this).is(':hidden')){
+      $(".leaflet-left").css("left","10px");
+    }
+    else {
+      $(".leaflet-left").css("left","21.5%");
+    }
+  });
+  $(this).toggleClass('transform');
 
 });
 </script>
@@ -1798,15 +1705,15 @@ $(this).toggleClass('transform');
 <script>
 
 $('#close-panel-right').click(function(){
-$('#right-panel-toggle').slideToggle('fast', function(){
-if($(this).is(':hidden')){
-$(".leaflet-right").css("right","10px");
-}
-else {
-$(".leaflet-right").css("right","260px");
-}
-//console.log("toggled");
-});
-$(this).toggleClass('transform');
+  $('#right-panel-toggle').slideToggle('fast', function(){
+    if($(this).is(':hidden')){
+      $(".leaflet-right").css("right","10px");
+    }
+    else {
+      $(".leaflet-right").css("right","260px");
+    }
+    //console.log("toggled");
+  });
+  $(this).toggleClass('transform');
 });
 </script>

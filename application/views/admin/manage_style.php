@@ -30,10 +30,22 @@
           <header class="panel-heading">
             <b>Manage Marker Style</b>
              <span class="tools pull-right">
-                        <a href=""><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-map-marker"></i> View In Map</button></a>
+                        <a href="<?php echo base_url()?>category?tbl=<?php echo $table ?>"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-map-marker"></i> View In Map</button></a>
                         </span>
           </header>
           <div class="panel-body">
+
+            <?php
+            $error=	$this->session->flashdata('msg');
+            if($error){ ?>
+              <div class="alert alert-info alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Message!!!!</strong>  <?php echo $error ; ?>
+              </div>
+              <?php
+            }
+            ?>
+
             <form class="form-horizontal bucket-form" method="post" action="">
 
 
@@ -119,7 +131,7 @@
                   </div>
                 </div>
               </div>
-           
+
 
 
 
@@ -158,7 +170,7 @@
               <label>
                 <input id="fb3" type="radio" name="fb" value="med" />
                 <img class="map-marker" src="<?php echo base_url();?>assets/img/mark.png"  alt="Logo"  >
-                
+
               </label>
             </div>
 
@@ -166,7 +178,7 @@
              <label>
               <input id="fb3" type="radio" name="fb" value="med" />
               <img class="map-marker" src="<?php echo base_url();?>assets/img/mark.png" alt="Logo" >
-            
+
             </label>
           </div>
 
@@ -174,7 +186,7 @@
            <label>
             <input id="fb3" type="radio" name="fb" value="med" />
             <img class="map-marker" src="<?php echo base_url();?>assets/img/mark.png" alt="Logo" >
-            
+
           </label>
         </div>
 
@@ -182,10 +194,10 @@
          <label>
           <input id="fb3" type="radio" name="fb" value="med" />
           <img class="map-marker" src="<?php echo base_url();?>assets/img/mark.png" alt="Logo">
-          
+
         </label>
       </div>
-      
+
 
                                     </div>
 
