@@ -245,16 +245,16 @@
                         <li><a href="c3_chart.html">C3 Chart</a></li>
                     </ul>
                 </li> -->
-                <!-- <li class="sub-menu">
+                <li class="sub-menu">
                     <a href="javascript:;">
                         <i class=" fa fa-bar-chart-o"></i>
-                        <span>Maps</span>
+                        <span>Site Management</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="google_map.html">Google Map</a></li>
-                        <li><a href="vector_map.html">Vector Map</a></li>
+                        <li><a href="site_setting">Site Setting</a></li>
+                        <!-- <li><a href="vector_map.html">Vector Map</a></li> -->
                     </ul>
-                </li> -->
+                </li>
 
 
             </ul>

@@ -19,7 +19,7 @@ class SiteController extends CI_Controller
     $this->load->model('Site_model');
   }
 
-public function testt(){
+public function site_setting(){
 
   $this->load->view('admin/header');
   $this->load->view('admin/site_setting');
