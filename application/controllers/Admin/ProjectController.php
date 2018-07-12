@@ -141,8 +141,8 @@ class ProjectController extends CI_Controller
       //unset($_POST['project_'])
       //var_dump($_FILES);
 
-      // $this->input->post('project_name');
-      // $this->input->post('project_brief');
+      $this->input->post('project_name');
+      $this->input->post('project_brief');
       if( $_FILES['proj_pic']['name']==''){
 
         $data= array(
@@ -235,7 +235,7 @@ class ProjectController extends CI_Controller
 
 
 
-      }
+     }
 
 
 
