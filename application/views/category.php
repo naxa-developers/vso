@@ -1177,6 +1177,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
     <input type="text" name="size" class="size-box">
   </div>
 </div>
+
  <button class="btn btn-default btn-sm applie" data-toggle="modal" data-target="#test-modal-2">Apply</button>
     </div>
            <!--  -->
@@ -1413,6 +1414,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
 
             </div>
             <div class="modal-footer">
+
               <button type="button" class="btn btn-sm" id="appl"><i class="fa fa-filter"></i> apply</button>
             </div>
           </div>
