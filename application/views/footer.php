@@ -22,9 +22,9 @@ div#exampleModal {
             <div class="row clearfix">
               <div class="col-md-4">
                 <div class="fbox">
-                  <h4>Disaster Information Management Platform</h4>
+                  <h4><?php echo $site_info['footer_big'] ?></h4>
                   <p>
-                    This platform visualizes the data regarding risk and hazards over available dataset in order to enable basic risk assessment in the municipality. &nbsp; <a href="<?php echo base_url()?>about" title="" class="btn btn-outline-light btn-sm">See More</a>
+                    <?php echo $site_info['footer_small'] ?> &nbsp; <a href="<?php echo base_url()?>about" title="" class="btn btn-outline-light btn-sm">See More</a>
                   </p>
 
                 </div>
@@ -96,7 +96,7 @@ div#exampleModal {
     </div>
   </div>
 </div>
-         
+
                       </div>
                     </div>
                   </form>
@@ -107,11 +107,11 @@ div#exampleModal {
                 <div class="fbox">
                   <h4>Importatant Links</h4>
                   <ul class="list-group">
-                    <li><a href="http://www.changunarayanmun.gov.np/en" target="_blank">Municipal Website</a></li>
-                    <li><a href="https://www.unisdr.org/" target="_blank">ISDR(International Strategy for Disaster Reduction) Asia Pacific</a></li>
-                    <li><a href="http://neoc.gov.np/en/" target="_blank">Nepal: National Emergency Operation Center (NEOC)</a></li>
-                    <li><a href="https://www.dpnet.org.np/" target="_blank">Nepal: Disaster Preparedness Network Nepal (DPNET)</a></li>
-                    <li><a href="http://un.org.np/thematicareas/disasterpreparedness/erp" target="_blank">Emergency Response Plan</a></li>
+                    <li><a href="<?php echo $site_info['1_link'] ?>" target="_blank"><?php echo $site_info['1_name'] ?></a></li>
+                    <li><a href="<?php echo $site_info['2_link'] ?>" target="_blank"><?php echo $site_info['2_name'] ?></a></li>
+                    <li><a href="<?php echo $site_info['3_link'] ?>" target="_blank"><?php echo $site_info['3_name'] ?></a></li>
+                    <li><a href="<?php echo $site_info['4_link'] ?>" target="_blank"><?php echo $site_info['4_name'] ?></a></li>
+                    <li><a href="<?php echo $site_info['5_link'] ?>" target="_blank"><?php echo $site_info['5_name'] ?></a></li>
                   </ul>
                 </div>
               </div>
@@ -135,9 +135,9 @@ div#exampleModal {
               </div>
               <div class="col-md-6 sec-right">
                 <p class="margin-top social-icons">
-                  <a href="#" title=""><i class="fa fa-facebook"></i></a>
-                  <a href="#" title=""><i class="fa fa-twitter"></i></a>
-                  <a href="#" title=""><i class="fa fa-google-plus"></i></a>
+                  <a href="<?php echo $site_info['facebook'] ?>" title=""><i class="fa fa-facebook"></i></a>
+                  <a href="<?php echo $site_info['twitter'] ?>" title=""><i class="fa fa-twitter"></i></a>
+                  <a href="<?php echo $site_info['google'] ?>" title=""><i class="fa fa-google-plus"></i></a>
                 </p>
               </div>
             </div>

@@ -1,5 +1,5 @@
 <div class="banner-item">
-          <img src="assets/img/img-banner.jpg" class="banner-img">
+          <img src="uploads/site_setting/cover_photo.jpg" class="banner-img">
           <div class="container clearfix">
             <div class="banner-caption pull-left">
               <h2><strong>Changu Narayan Disaster Information Management Platform</strong></h2>

@@ -16,6 +16,15 @@ return $q->result_array();
 
 }
 
+public function site_setting(){
+
+$this->db->select('*');
+$q=$this->db->get('site_setting');
+return $q->row_array();
+
+
+}
+
 public function get_count_views($field)
 {
   $this->db->select('*');

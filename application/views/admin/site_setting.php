@@ -177,7 +177,7 @@
                       <label for="project_name" class="control-label col-md-4">1st Site Link:</label>
 
                       <div class="col-md-8">
-                        <input type="text" name="1st_link"  id="twitter_link" placeholder="http://app.naxa.com.np/" class="form-control" value=""/>
+                        <input type="text" name="1_link"  id="twitter_link" placeholder="http://app.naxa.com.np/" class="form-control" value=""/>
 
                       </div></div>
                       <div class="col-md-6">
@@ -270,7 +270,7 @@
                                   <label for="project_name" class="control-label col-md-4">Facebook:</label>
 
                                   <div class="col-md-8">
-                                    <input type="text" name="1_site"  id="facebook_link" placeholder="Chnagunarayan" class="form-control" value=""/>
+                                    <input type="text" name="fb"  id="facebook_link" placeholder="Chnagunarayan" class="form-control" value=""/>
 
 
                                   </div>
@@ -279,14 +279,14 @@
                                   <label for="project_name" class="control-label col-md-4">Twitter:</label>
 
                                   <div class="col-md-8">
-                                    <input type="text" name="1st_link"  id="twitter_link" placeholder="http://app.naxa.com.np/" class="form-control" value=""/>
+                                    <input type="text" name="twitter"  id="twitter_link" placeholder="http://app.naxa.com.np/" class="form-control" value=""/>
 
                                   </div></div>
                                   <div class="col-md-6">
                                     <label for="project_name" class="control-label col-md-4">Google Plus:</label>
 
                                     <div class="col-md-8">
-                                      <input type="text" name="2_name"  id="twitter_link" placeholder="Chnagunarayan" class="form-control" value=""/>
+                                      <input type="text" name="google"  id="twitter_link" placeholder="Chnagunarayan" class="form-control" value=""/>
 
                                     </div>
                                   </div>

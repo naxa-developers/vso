@@ -44,15 +44,15 @@
   <link rel="stylesheet" href="assets/css/jquery.dropdown.css">
 
 <!--   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/new.css"> -->
- 
-  
+
+
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/leaflet.label.css">
   <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/leaflet.label.js"></script>
 
   <script src="<?php echo base_url();?>assets/js/carousels.js"></script>
-  <script type="text/javascript" src="<?php echo base_url();?>assets/js/sitemapstyler.js"></script>  
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/sitemapstyler.js"></script>
 
   <script src="<?php echo base_url();?>assets/js/plugins.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
@@ -123,10 +123,10 @@
               <div class="container">
                 <a class="navbar-brand" href="<?php echo base_url();?>">
                   <div class="logo-gov clearfix">
-                    <img src="<?php echo base_url();?>assets/img/logo.jpg" alt="Logo">
+                    <img src="<?php echo base_url();?>uploads/site_setting/site_logo.jpg" alt="Logo">
                     <h6>
-                      <strong>Changu Narayan Municipality</strong>
-                     <div class="sub-head"> <small>Disaster Information Management Platform</small> </div>
+                      <strong><?php echo $site_info['site_name'] ?></strong>
+                     <div class="sub-head"> <small><?php echo $site_info['site_text'] ?></small> </div>
                     </h6>
                   </div>
                 </a>
@@ -140,7 +140,7 @@
                     <li class="nav-item active">
                       <a class="nav-link" href="index.php"><i class="fa fa-home"></i><span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">                     
+                    <li class="nav-item">
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="<?php echo base_url()?>category?tbl=">Maps</a>
@@ -152,7 +152,7 @@
                       <a class="nav-link" href="<?php echo base_url()?>contact">Contacts</a>
                     </li>
                     <li class="nav-item">
-                      
+
                     </li>
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -166,7 +166,7 @@
                      <li class="nav-item">
                       <span class="nav-link"><img src="<?php echo base_url();?>assets/img/uk.png" height="15"> / <img src="<?php echo base_url();?>assets/img/nep.png" height="15"></span>
                     </li>
-                    
+
                   </ul>
                 </div>
 
