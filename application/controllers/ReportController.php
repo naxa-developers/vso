@@ -120,9 +120,11 @@ class ReportController extends CI_Controller
 
       //var_dump($this->body['report_map_layer']);
 
-      $this->load->view('header');
+         $this->data['site_info']=$this->Report_model->site_setting();
+
+      $this->load->view('header',$this->data);
       $this->load->view('report_page',$this->body);
-      $this->load->view('footer');
+      $this->load->view('footer',$this->data);
 
 
 
@@ -182,10 +184,11 @@ class ReportController extends CI_Controller
     //views add end
 
       //var_dump($this->body['report_map_layer']);
+      $this->data['site_info']=$this->Report_model->site_setting();
 
-      $this->load->view('header');
+      $this->load->view('header',$this->data);
       $this->load->view('report_page',$this->body);
-      $this->load->view('footer');
+      $this->load->view('footer',$this->data);
 
     }
   }
@@ -193,9 +196,10 @@ class ReportController extends CI_Controller
 
   public function report_table()
   {
-    $this->load->view('header');
-    $this->load->view('map_reports_table');
-    $this->load->view('footer');
+    $this->data['site_info']=$this->Report_model->site_setting();
+    $this->load->view('header',$this->data);
+    $this->load->view('map_reports_table',$this->data);
+    $this->load->view('footer',$this->data);
   }
 
 
@@ -349,16 +353,21 @@ class ReportController extends CI_Controller
 
   public function map_reports_table(){
 
-    $this->load->view('header');
+     $this->data['site_info']=$this->Report_model->site_setting();
+
+    $this->load->view('header',$this->data);
     $this->load->view('map_reports_table');
-    $this->load->view('footer');
+    $this->load->view('footer',$this->data);
   }
 
   public function map_reports(){
+
+     $this->data['site_info']=$this->Report_model->site_setting();
+
     $this->body['data']=$this->Report_model->get_report_data();
-    $this->load->view('header');
+    $this->load->view('header',$this->data);
     $this->load->view('map_reports',$this->body);
-    $this->load->view('footer');
+    $this->load->view('footer',$this->data);
   }
 
 

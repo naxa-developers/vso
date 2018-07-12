@@ -106,9 +106,9 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                 <label for="exampleInputFile">Category Type</label>
                 <select name="category_type">
 
-                  <option value="Hazard_Data">Hazard Data</option>
-                  <option value="Exposure_Data">Exposure Data</option>
-                  <option value="Baseline_Data">Baseline Data</option>
+                  <option value="Hazard_Data">Resources</option>
+                  <option value="Exposure_Data">Hazard & Vulnerability</option>
+                  <option value="Baseline_Data">Base Data</option>
                 </select>
               </div>
 

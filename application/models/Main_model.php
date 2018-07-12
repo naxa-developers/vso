@@ -24,6 +24,16 @@ class Main_model extends CI_Model {
 
   }
 
+  public function site_setting(){
+
+  $this->db->select('*');
+  $q=$this->db->get('site_setting');
+  return $q->row_array();
+
+
+  }
+
+
   public function get_post(){
 
     $this->db->select('*');

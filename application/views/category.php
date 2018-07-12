@@ -892,7 +892,6 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
       <div class="col-md-6 no-padding col-sm-12" style="background: #0056b3">
         <div class="panel-heading right pull-right">
           <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active layer navbar-right pull-right"><a href="#table1" aria-controls="home" role="tab" data-toggle="tab"><img src="<?php echo base_url()?>assets/img/menu.png" class="test-icon"></a></li>
             <li class=" basemap chevron2 navbar-right" id="close-panel-right"><img src="<?php echo base_url()?>assets/img/up-arrow.png" class="test-icon chevron"></li>
           </ul>
         </div>
@@ -1328,8 +1327,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
               </div>
 
               <div class="btn-pos-list text-center">
-                <a href="#" id="viewall" class="btn btn-primary btn-md">View all</a>
-                <a href="#" id="downloaddata" class="btn btn-primary btn-md"><i class="fa fa-download"></i> Download</a>
+                <a href="#" id="viewall" class="btn btn-primary btn-sm">View all</a>
               </div>
 
             </div>

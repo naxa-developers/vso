@@ -20,11 +20,12 @@ $tbl=$this->input->get('tbl');
  $d=$this->Map_model->get_lang_map_data($tbl);
 
 $this->body['data']=$this->Map_model->get_as_map_data($d,$tbl);
+   $this->data['site_info']=$this->Report_model->site_setting();
 //var_dump($this->body['data']);
 //
-  $this->load->view('header');
+  $this->load->view('header',$this->data);
   $this->load->view('data_map',$this->body);
-  $this->load->view('footer');
+  $this->load->view('footer',$this->data);
 
 
   }
@@ -33,9 +34,11 @@ public function map_download()
 {
 
  $this->body['data']=$this->Map_model->get_map_download_data();
-  $this->load->view('header');
+ $this->data['site_info']=$this->Report_model->site_setting();
+
+  $this->load->view('header',$this->data);
   $this->load->view('map_download',$this->body);
-  $this->load->view('footer');
+  $this->load->view('footer',$this->data);
 
 }
 
@@ -146,12 +149,15 @@ if(!$this->db->table_exists($tbl['category_table'])){
   $this->Dash_model->cat_update($count_dataset['id'],$data_dataset);
   $def_select=$this->Dash_model->get_default_cat_data('categories_tbl');
   $this->body['default_selected_cat_tbl']=$def_select['category_table'];
+
+  $this->data['site_info']=$this->Report_model->site_setting();
+
   //views add end
 //  exit();
 
-    $this->load->view('header');
+    $this->load->view('header',$this->data);
     $this->load->view('category.php',$this->body);
-    $this->load->view('footer');
+    $this->load->view('footer',$this->data);
 
 
 
