@@ -1,10 +1,10 @@
 <div class="banner-item">
-          <img src="uploads/site_setting/cover_photo.jpg" class="banner-img">
+          <img src="<?php echo $site_info['cover_photo'] ?>" class="banner-img">
           <div class="container clearfix">
             <div class="banner-caption pull-left">
-              <h2><strong>Changu Narayan Disaster Information Management Platform</strong></h2>
+              <h2><strong><?php echo $site_info['cover_big'] ?></strong></h2>
               <p>
-               A GIS based data portal for disaster management
+               <?php echo $site_info['cover_big'] ?>
               </p>
               <button class="btn btn-lg btn-outline-white margin-top-sm" id="started">Get Started</button>
             </div>

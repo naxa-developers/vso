@@ -9,6 +9,17 @@
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/leaflet.label.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/changunarayan.js"></script>
 <style>
+.modal-content{
+  background-color: #f5f4f4;
+}
+input.size-box {
+    width: 100%;
+    height: 50px;
+    
+}
+.text-size {
+    margin-top: 10px;
+}
 .leaflet-left{
   left: 21.5%;
 }
@@ -826,7 +837,7 @@ div#table1 {
 }
 .tst {
 
-    line-height: 8px;
+    line-height: 0px;
 }
 tbody.applied-list {
     font-size: 12px;
@@ -835,12 +846,14 @@ tbody.applied-list {
     margin-top: 15px;
     margin-left: 420px;
     border-radius: 2px;
+        background-color: #002b59;
+    color: #fff;
 }
 .panel.panel-default.pane {
     border: 1px solid grey;
     margin-top: 5px;
     padding: 15px;
-        box-shadow: 2px 4px 8px #888888;
+       
 }
 label > input{ /* HIDE RADIO */
   visibility: hidden; /* Makes input not-clickable */
@@ -851,23 +864,28 @@ label > input + .exp{ /* IMAGE STYLES */
   border:1px solid transparent;
 }
 label > input:checked + .exp{ /* (RADIO CHECKED) IMAGE STYLES */
-  border:1px solid #f00;
   width: 80px;
   height: 20px;
   padding: 4px;
 }
 label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
-  border:1px solid #f00;
+
   width: 30px;
   height: 20px;
 
 }
+.modal-header {
+    background-color: #002b59;
+    color: #fff
+  }
 .express{
-  padding-top: 10px;
-      max-height: 230px;
+  background-color: #fff;
+      padding-top: 15px;
+    padding-bottom: 0px;
+    max-height: 150px;
     overflow-y: auto;
         border: 1px solid #888888;
-    box-shadow: 2px 4px 8px #888888;
+
 
 }
 /**/
@@ -1064,7 +1082,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
     <div class="modal-content">
       <div class="modal-header">
          <h4 class="modal-title">Household Data</h4>
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #fff">&times;</span><span class="sr-only">Close</span></button>
        
       </div>
       <div class="modal-body">
@@ -1131,7 +1149,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
   </label></div>
           </div>
       </div></div>
-      <div class="col-md-4">Values<div class="col-md-12 express">   <div class="row">
+      <div class="col-md-4"><input type="checkbox" name="check1"> Values<div class="col-md-12 express">   <div class="row">
             <div class="col-md-12 tst"><label>
     <input type="radio" name="fi" value="big"/>
     <p class="exp text-center"> 1 </p>
@@ -1154,11 +1172,13 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
 </div>
 
 <div class="container">
-  <div class="panel panel-default pane">
-    <div class="panel-body text-center"> Size > 5 </div>
+  <div class="text-size">
+    <a href="#"  style="color: grey"> clear</a>
+    <input type="text" name="size" class="size-box">
   </div>
 </div>
- <button class="btn btn-success btn-sm applie" data-toggle="modal" data-target="#test-modal-2">Apply</button>
+
+ <button class="btn btn-default btn-sm applie" data-toggle="modal" data-target="#test-modal-2">Apply</button>
     </div>
            <!--  -->
       </div>
@@ -1197,7 +1217,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">Household Data</h4>
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #fff">&times;</span><span class="sr-only">Close</span></button>
         
       </div>
       <div class="modal-body">
@@ -1235,8 +1255,9 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
 <!--         <button class="btn btn-default" data-toggle="modal" data-target="#test-modal-3">Launch Modal 3</button>
  -->      </div>
       <div class="modal-footer modal2">
-       <a href=""> <button type="button" class="btn btn-primary btn-sm">Download</button></a>
-       <a href=""> <button type="button" class="btn btn-info btn-sm">Map</button></a>
+        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+       <a href=""> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download"></i> Download</button></a>
+       <a href=""> <button type="button" class="btn btn-info btn-sm"> <i class="fa fa-eye"></i> Map</button></a>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -1255,6 +1276,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
         <!-- <button class="btn btn-default" data-toggle="modal" data-target="#test-modal-4">Launch Modal 4</button> -->
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Download</button>
         <button type="button" class="btn btn-primary btn-sm">Map</button>
       </div>
@@ -1392,6 +1414,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
 
             </div>
             <div class="modal-footer">
+
               <button type="button" class="btn btn-sm" id="appl"><i class="fa fa-filter"></i> apply</button>
             </div>
           </div>
