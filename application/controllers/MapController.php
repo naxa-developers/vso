@@ -708,5 +708,31 @@ echo json_encode($response);
 }
 
 
+public function get_map_filter(){
+
+  $tbl=$this->input->get('tbl');
+
+  $filter=$this->Map_model->get_lang_map_data($tbl);
+
+ echo  json_encode($filter);
+
+
+
+}
+
+public function get_map_filter_value(){
+
+  $tbl=$this->input->get('tbl');
+  $col=$this->input->get('col');
+
+  $values=$this->Dash_model->get_sub_cat($col,$tbl);
+
+ echo  json_encode($values);
+
+}
+
+
+
+
 
 }//end

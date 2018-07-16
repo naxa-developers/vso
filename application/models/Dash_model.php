@@ -256,6 +256,7 @@ public function delete_data($id,$table_name){
 public function get_sub_cat($col,$tbl){
 
   $this->db->select($col);
+  
   $this->db->distinct();
   $res=$this->db->get($tbl);
   return $res->result_array();
