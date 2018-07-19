@@ -74,6 +74,7 @@ $route['location_marker'] ='MapController/location_marker';
 $route['data_map'] ='MapController/data_map';
 
 $route['news_register'] ='NewsletterController/register';
+$route['site_setting'] ='Admin/SiteController/site_setting';
 
 
 

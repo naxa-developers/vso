@@ -123,7 +123,7 @@
               <div class="container">
                 <a class="navbar-brand" href="<?php echo base_url();?>">
                   <div class="logo-gov clearfix">
-                    <img src="<?php echo base_url();?>uploads/site_setting/site_logo.jpg" alt="Logo">
+                    <img src="<?php echo $site_info['site_logo'] ?>" alt="Logo">
                     <h6>
                       <strong><?php echo $site_info['site_name'] ?></strong>
                      <div class="sub-head"> <small><?php echo $site_info['site_text'] ?></small> </div>

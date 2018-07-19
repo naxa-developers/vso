@@ -15,8 +15,7 @@
 input.size-box {
     width: 100%;
     height: 50px;
-    
-}
+
 .text-size {
     margin-top: 10px;
 }
@@ -853,7 +852,7 @@ tbody.applied-list {
     border: 1px solid grey;
     margin-top: 5px;
     padding: 15px;
-       
+
 }
 label > input{ /* HIDE RADIO */
   visibility: hidden; /* Makes input not-clickable */
@@ -887,6 +886,16 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
         border: 1px solid #888888;
 
 
+
+}
+.modal-body.mdl2 {
+    width: 500px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+  }
+.modal-backdrop.show {
+    z-index: 5;
+    opacity: .5;
 }
 /**/
 </style>
@@ -953,7 +962,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                             <span class="indicator" style="background-color:<?php echo 'red' ?>" data-toggle="tooltip" data-placement="top" title="Hazard Data"></span>
 
                           <?php } ?>
-                          <a data-toggle="modal" href="#test-modal" id="appl">
+                          <a data-toggle="modal" href="#<?php echo $data['category_table'];?>_" class = "filterthis" id="<?php echo $data['category_table'];?>">
                         <img src="<?php echo base_url()?>assets/img/filter.png" class="filter-icon"></a>
 
                             <?php	if($data['default_load']=='0'){ ?>
@@ -1019,6 +1028,182 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
 
                   </li>
 
+                  <!-- new moadal -->
+                <div class="container">
+                    <div class="modal fade" id="<?php echo $data['category_table']?>_" data-modal-index="999999999999999999">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                         <h4 class="modal-title"><?php echo $data['category_name']?></h4>
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #fff">&times;</span><span class="sr-only">Close</span></button>
+
+                      </div>
+                      <div class="modal-body">
+                           <!-- modal 1 design -->
+                           <div class="row">
+                      <div class="col-md-4">Filter
+                        <div class="col-md-12 express">
+                          <div class="row filter_column_name">
+
+
+
+                          </div>
+                        </div></div>
+                      <div class="col-md-4">Expression<div class="col-md-12 express">
+                        <div class="row">
+                            <div class="col-md-6"><label>
+                    <input type="radio" name="fb" class="ex_map" value="="/>
+                    <p class="ex text-center"> = </p>
+                  </label></div>
+                   <div class="col-md-6"><label>
+                    <input type="radio" name="fb" class="ex_map" value="+"/>
+                    <p class="ex text-center"> + </p>
+                  </label></div>
+                   <div class="col-md-6"><label>
+                    <input type="radio" name="fb" class="ex_map" value="-"/>
+                    <p class="ex text-center"> - </p>
+                  </label></div>
+                   <div class="col-md-6"><label>
+                    <input type="radio" name="fb" class="ex_map" value=">"/>
+                    <p class="ex text-center"> > </p>
+                  </label></div>
+                   <div class="col-md-6"><label>
+                    <input type="radio" name="fb" class="ex_map" value="<"/>
+                    <p class="ex text-center"> < </p>
+                  </label></div>
+                  <div class="col-md-6"><label>
+                    <input type="radio" name="fb" class="ex_map" value="AND"/>
+                    <p class="ex text-center"> AND </p>
+                  </label></div>
+                  <div class="col-md-6"><label>
+                    <input type="radio" name="fb" class="ex_map" value="OR"/>
+                    <p class="ex text-center"> OR </p>
+                  </label></div>
+                  <div class="col-md-6"><label>
+                    <input type="radio" name="fb" class="ex_map" value="NOT"/>
+                    <p class="ex text-center"> NOT </p>
+                  </label></div>
+                          </div>
+                      </div></div>
+                      <div class="col-md-4 "><input type="checkbox" name="check1"> Values<div class="col-md-12 express">
+                        <div class="row filter_values">
+
+                   </div>
+                 </div>
+                <input type="number" name="value1" style="width: 135px" placeholder="Or Input Value">
+                </div>
+
+                <div class="container">
+                  <div class="text-size">
+                    <a href="#"  style="color: grey"> clear</a>
+                    <input type="text" name="" class="size-box selected_filter_ex">
+                    <input type="text" name="" class="size-box selected_filter_query">
+                  </div>
+                </div>
+
+                 <button class="btn btn-default btn-sm applie applied_filter" data-toggle="modal" data-target="#<?php echo $data['category_table']?>_mod_dat">Apply</button>
+                    </div>
+                           <!--  -->
+                      </div>
+                      <div class=" left-apply">
+                        <div class="container">
+                      <h6><b>Applied Filters</b></h6>
+                      <!-- applied filters -->
+                     <table class="table">
+
+                  <tbody class="applied-list">
+                    <!-- <tr>
+                      <th scope="row">1</th>
+                      <td>Size > 3</td>
+                      <td><i class="fa fa-eye"></i></td>
+                      <td><i class="fa fa-minus"></i></td>
+                    </tr> -->
+
+                  </tbody>
+                </table>
+                      <!--  -->
+                      </div>
+
+                      </div>
+                    </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+
+                    <div class="modal fade" id="<?php echo $data['category_table']?>_mod_dat" data-modal-index="2">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title"><?php echo $data['category_name']?></h4>
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #fff">&times;</span><span class="sr-only">Close</span></button>
+
+                      </div>
+                      <div class="modal-body mdl2">
+                        <h4 id='filter_tbl_name'></h4>
+                        <table class="table table-striped" id="table_filter">
+                  <thead>
+                    <tr>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+
+
+                  </tbody>
+                </table>
+                <!--         <button class="btn btn-default" data-toggle="modal" data-target="#test-modal-3">Launch Modal 3</button>
+                 -->      </div>
+                      <div class="modal-footer modal2">
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                       <a href=""> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download"></i> Download</button></a>
+                       <!-- <a href=""> <button type="button" class="btn btn-info btn-sm"> <i class="fa fa-eye"></i> Map</button></a> -->
+                      </div>
+                    </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+                    <div class="modal fade" id="test-modal-3">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">Modal title 3</h4>
+                      </div>
+                      <div class="modal-body">
+
+
+                        <!-- <button class="btn btn-default" data-toggle="modal" data-target="#test-modal-4">Launch Modal 4</button> -->
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Download</button>
+                        <button type="button" class="btn btn-primary btn-sm">Map</button>
+                      </div>
+                    </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+
+                    <div class="modal fade" id="test-modal-4">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">Modal title 4</h4>
+                      </div>
+                      <div class="modal-body">
+                        <p>One fine body&hellip;</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+                </div>
+                <!-- new moadal -->
+
                 <?php }?>
 
               </ul>
@@ -1075,6 +1260,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
       </div>
     </div>
   </div>
+<<<<<<< HEAD
   <!-- new moadal -->
 <div class="container">
     <div class="modal fade" id="test-modal" data-modal-index="1">
@@ -1285,25 +1471,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
 </div><!-- /.modal -->
 
 
-    <div class="modal fade" id="test-modal-4">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title">Modal title 4</h4>
-      </div>
-      <div class="modal-body">
-        <p>One fine body&hellip;</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-</div>
-<!-- new moadal -->
+
 
 
   <div id="over_map1" class="col-sm-12 col-md-4 no-padding">
@@ -1978,13 +2146,283 @@ $(document).ready(function(){
     }
   });
 
-
-
-
-
   //sub-cat
 
 
+
+//filter
+
+$('.filterthis').on('click',function(){
+
+    $('.applied-list').html('');
+    $(".selected_filter_ex").val('');
+    $(".selected_filter_query").val('');
+  var tbl=($(this).attr("id"));
+
+
+
+  $.ajax({
+    type: "GET",
+    //  data: name,
+    url:  "MapController/get_map_filter?tbl="+tbl,
+    beforeSend: function() {
+      //  $.LoadingOverlay("show");
+    },
+    complete: function() {
+      //  $.LoadingOverlay("hide", true);
+    },
+    success: function (result) {
+
+      var filter_column = JSON.parse(result);
+     //console.log(filter_column);
+$(".filter_column_name").html(' ');
+      for(var i=0;i<filter_column.length;i++){
+
+      //  console.log(filter_column[i].nepali_lang);
+          $(".filter_column_name").append('<div class="col-md-12"><label><input class="filter_value" type="radio" name="'+tbl+'" id="'+filter_column[i].nepali_lang+'" value="'+filter_column[i].eng_lang+'"/><p class="exp text-center">'+filter_column[i].nepali_lang+' </p></label></div>');
+
+    }
+
+
+}
+  });
+
+
+
+});
+
+$(document).on('click','.filter_value',function(){
+
+  var col_name=$(this).val();
+  var name=$(this).attr('id');
+
+  var data_tbl=$(this).attr('name');
+  $.ajax({
+    type: "GET",
+    //  data: name,
+    url:  "MapController/get_map_filter_value?tbl="+data_tbl+"&&col="+col_name,
+    beforeSend: function() {
+      //  $.LoadingOverlay("show");
+    },
+    complete: function() {
+      //  $.LoadingOverlay("hide", true);
+    },
+    success: function (result) {
+
+      var values = JSON.parse(result);
+
+      $(".filter_values").html(' ');
+
+      for(var i=0;i<values.length;i++){
+
+
+          //console.log(values[i][col_name]);
+
+            $(".filter_values").append('<div class="col-md-12"><label><input class="filter_value_item" type="radio" name="" value="'+values[i][col_name]+'"/><p class="exp text-center">'+values[i][col_name]+'</p></label></div>');
+
+
+
+      }
+
+      $(".selected_filter_ex").val(name);
+      $(".selected_filter_query").val(col_name);
+      $(".selected_filter_query").attr('id',data_tbl);
+  //  console.log($(".selected_filter_ex").val());
+
+
+
+
+
+    }
+
+
+  });
+  });
+
+
+  $('.ex_map').on('click',function(){
+
+  console.log($(this).val());
+
+    $(".selected_filter_ex").val($(".selected_filter_ex").val()+' '+$(this).val());
+    $(".selected_filter_query").val($(".selected_filter_query").val()+' '+$(this).val());
+
+
+  //  console.log('ex');
+});
+
+$(document).on('click','.filter_value_item',function(){
+
+    $(".selected_filter_ex").val($(".selected_filter_ex").val()+' '+$(this).val());
+    $(".selected_filter_query").val($(".selected_filter_query").val()+" '"+$(this).val()+"'");
+
+  });
+
+$('.applied_filter').on('click',function(){
+
+  //console.log('click');
+  var show_qry=$(".selected_filter_ex").val();
+  var qry=$(".selected_filter_query").val();
+  var qry_tbl=$(".selected_filter_query").attr('id');
+
+  $('#filter_tbl_name').text(show_qry);
+
+
+  $('.applied-list').append('<tr><th scope="row"></th><td>'+show_qry+'</td><td><i class="fa fa-eye"></i></td><td><i class="fa fa-minus"></i></td></tr>');
+  //console.log('result');
+  $.ajax({
+    type: "GET",
+    //  data: name,
+    url:  "MapController/filter_query?qry="+qry+"&&tbl="+qry_tbl,
+    beforeSend: function() {
+      //  $.LoadingOverlay("show");
+    },
+    complete: function() {
+      //  $.LoadingOverlay("hide", true);
+    },
+    success: function (result) {
+
+     var data=JSON.parse(result);
+  var modal_table=JSON.parse(data.table_data);
+  map_json=JSON.parse(data.geojson);
+  sub_style=JSON.parse(data.style);
+  marker_type=data.marker_type;
+  popup_content_parsed=data.popup_content;
+  table_n=data.table_name;
+  console.log(map_json);
+  console.log(sub_style);
+  console.log(marker_type);
+  console.log(popup_content_parsed);
+
+
+document.getElementById("filter_tbl_name").innerHTML = 'aaa';
+//$('h4').html(show_qry);
+$('#table_filter >tbody').html('');
+for(var i=0;i<modal_table.length;i++){
+
+var tbl_body=""
+ tbl_body += '<tr>';
+
+  $.each(modal_table[i], function(k, v) {
+
+
+    $('#table_filter >thead tr').append('<th scope="col">'+k+'</th>');
+
+
+
+     tbl_body += '<td>'+v+'</td>';
+
+
+    //display the key and value pair
+    //alert(k + ' is ' + v);
+  //  console.log(k);
+
+
+});
+
+ tbl_body += '</tr>';
+ //console.log(tbl_body);
+$('#table_filter >tbody').append(tbl_body);
+
+
+}//loop for table end
+
+$('#'+table_n+'_toggle').removeClass('active');
+
+//map for filter
+var filter_map=new L.GeoJSON(map_json,{
+  pointToLayer: function(feature, latlng) {
+    if(marker_type=='icon'){
+
+
+
+      icons=L.icon({
+        iconSize: [21, 27],
+        iconAnchor: [13, 27],
+        popupAnchor:  [2, -24],
+
+        iconUrl:sub_style.icon
+      });
+      //  console.log(sub_style.icon);
+      var marker = L.marker(latlng,{icon:icons});
+
+
+    }else{
+
+
+
+      icons=L.icon({
+        iconUrl: "https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon.png"
+      });
+      var marker = L.circleMarker(latlng);
+      //for(data in style){
+    }
+    return marker;
+
+  },
+  onEachFeature: function(feature, layer) {
+    if(marker_type !='icon'){
+      layer.setStyle(sub_style);
+    }
+
+
+    var popUpContent = "";
+
+    popUpContent += '<table style="width:100%;" id="District-popup" class="popuptable">';
+
+    //for (data in popup_content_parsed) {
+    pop = JSON.parse(popup_content_parsed);
+  //  console.log(pop);
+
+    for(data in pop.a){
+      //console.log(data);
+      pop1 = pop.a[data].col;
+      name = pop.a[data].name;
+      popUpContent += "<tr>" + "<td>"+name+"</td>" + "<td>" +  feature.properties[pop1]  + "</td></tr>";
+    }
+
+    popUpContent += '</table>';
+
+
+
+    layer.bindPopup(L.popup({
+
+      closeOnClick: true,
+
+      closeButton: true,
+
+      keepInView: true,
+
+      autoPan: true,
+
+      maxHeight: 200,
+
+      minWidth: 250
+
+    }).setContent(popUpContent));
+  }
+}).addTo(map);
+map.removeLayer(window[table_n]);
+
+
+
+
+
+
+
+
+//map for filter end
+
+
+
+}//succes end
+
+});//ajaxa end
+
+
+});
+
+//filter
 
 
 
