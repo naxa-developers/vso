@@ -888,6 +888,11 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
 
 
 }
+.modal-body.mdl2 {
+    width: 500px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+  }
 .modal-backdrop.show {
     z-index: 5;
     opacity: .5;
@@ -1092,10 +1097,11 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                   <div class="text-size">
                     <a href="#"  style="color: grey"> clear</a>
                     <input type="text" name="" class="size-box selected_filter_ex">
+                    <input type="text" name="" class="size-box selected_filter_query">
                   </div>
                 </div>
 
-                 <button class="btn btn-default btn-sm applie" data-toggle="modal" data-target="#test-modal-2">Apply</button>
+                 <button class="btn btn-default btn-sm applie applied_filter" data-toggle="modal" data-target="#<?php echo $data['category_table']?>_mod_dat">Apply</button>
                     </div>
                            <!--  -->
                       </div>
@@ -1106,18 +1112,13 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                      <table class="table">
 
                   <tbody class="applied-list">
-                    <tr>
+                    <!-- <tr>
                       <th scope="row">1</th>
                       <td>Size > 3</td>
                       <td><i class="fa fa-eye"></i></td>
                       <td><i class="fa fa-minus"></i></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Occupation=Farmer</td>
-                     <td><i class="fa fa-eye"></i></td>
-                      <td><i class="fa fa-minus"></i></td>
-                    </tr>
+                    </tr> -->
+
                   </tbody>
                 </table>
                       <!--  -->
@@ -1129,44 +1130,25 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                 </div><!-- /.modal -->
 
 
-                    <div class="modal fade" id="test-modal-2" data-modal-index="2">
+                    <div class="modal fade" id="<?php echo $data['category_table']?>_mod_dat" data-modal-index="2">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h4 class="modal-title">Household Data</h4>
+                        <h4 class="modal-title"><?php echo $data['category_name']?></h4>
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #fff">&times;</span><span class="sr-only">Close</span></button>
 
                       </div>
-                      <div class="modal-body">
-                        <h4>Size > 3</h4>
-                        <table class="table table-striped">
+                      <div class="modal-body mdl2">
+                        <h4 id='filter_tbl_name'></h4>
+                        <table class="table table-striped" id="table_filter">
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">First</th>
-                      <th scope="col">Last</th>
-                      <th scope="col">Handle</th>
+
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
+
+
                   </tbody>
                 </table>
                 <!--         <button class="btn btn-default" data-toggle="modal" data-target="#test-modal-3">Launch Modal 3</button>
@@ -1174,7 +1156,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                       <div class="modal-footer modal2">
                         <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
                        <a href=""> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download"></i> Download</button></a>
-                       <a href=""> <button type="button" class="btn btn-info btn-sm"> <i class="fa fa-eye"></i> Map</button></a>
+                       <!-- <a href=""> <button type="button" class="btn btn-info btn-sm"> <i class="fa fa-eye"></i> Map</button></a> -->
                       </div>
                     </div><!-- /.modal-content -->
                   </div><!-- /.modal-dialog -->
@@ -1960,6 +1942,10 @@ $(document).ready(function(){
 //filter
 
 $('.filterthis').on('click',function(){
+
+    $('.applied-list').html('');
+    $(".selected_filter_ex").val('');
+    $(".selected_filter_query").val('');
   var tbl=($(this).attr("id"));
 
 
@@ -2028,6 +2014,8 @@ $(document).on('click','.filter_value',function(){
       }
 
       $(".selected_filter_ex").val(name);
+      $(".selected_filter_query").val(col_name);
+      $(".selected_filter_query").attr('id',data_tbl);
   //  console.log($(".selected_filter_ex").val());
 
 
@@ -2046,19 +2034,184 @@ $(document).on('click','.filter_value',function(){
   console.log($(this).val());
 
     $(".selected_filter_ex").val($(".selected_filter_ex").val()+' '+$(this).val());
+    $(".selected_filter_query").val($(".selected_filter_query").val()+' '+$(this).val());
 
-    console.log('ex');
+
+  //  console.log('ex');
 });
 
 $(document).on('click','.filter_value_item',function(){
 
     $(".selected_filter_ex").val($(".selected_filter_ex").val()+' '+$(this).val());
+    $(".selected_filter_query").val($(".selected_filter_query").val()+" '"+$(this).val()+"'");
 
   });
 
+$('.applied_filter').on('click',function(){
+
+  //console.log('click');
+  var show_qry=$(".selected_filter_ex").val();
+  var qry=$(".selected_filter_query").val();
+  var qry_tbl=$(".selected_filter_query").attr('id');
+
+  $('#filter_tbl_name').text(show_qry);
+
+
+  $('.applied-list').append('<tr><th scope="row"></th><td>'+show_qry+'</td><td><i class="fa fa-eye"></i></td><td><i class="fa fa-minus"></i></td></tr>');
+  //console.log('result');
+  $.ajax({
+    type: "GET",
+    //  data: name,
+    url:  "MapController/filter_query?qry="+qry+"&&tbl="+qry_tbl,
+    beforeSend: function() {
+      //  $.LoadingOverlay("show");
+    },
+    complete: function() {
+      //  $.LoadingOverlay("hide", true);
+    },
+    success: function (result) {
+
+     var data=JSON.parse(result);
+  var modal_table=JSON.parse(data.table_data);
+  map_json=JSON.parse(data.geojson);
+  sub_style=JSON.parse(data.style);
+  marker_type=data.marker_type;
+  popup_content_parsed=data.popup_content;
+  table_n=data.table_name;
+  console.log(map_json);
+  console.log(sub_style);
+  console.log(marker_type);
+  console.log(popup_content_parsed);
+
+
+document.getElementById("filter_tbl_name").innerHTML = 'aaa';
+//$('h4').html(show_qry);
+$('#table_filter >tbody').html('');
+for(var i=0;i<modal_table.length;i++){
+
+var tbl_body=""
+ tbl_body += '<tr>';
+
+  $.each(modal_table[i], function(k, v) {
+
+
+    $('#table_filter >thead tr').append('<th scope="col">'+k+'</th>');
+
+
+
+     tbl_body += '<td>'+v+'</td>';
+
+
+    //display the key and value pair
+    //alert(k + ' is ' + v);
+  //  console.log(k);
+
+
+});
+
+ tbl_body += '</tr>';
+ //console.log(tbl_body);
+$('#table_filter >tbody').append(tbl_body);
+
+
+}//loop for table end
+
+$('#'+table_n+'_toggle').removeClass('active');
+
+//map for filter
+var filter_map=new L.GeoJSON(map_json,{
+  pointToLayer: function(feature, latlng) {
+    if(marker_type=='icon'){
+
+
+
+      icons=L.icon({
+        iconSize: [21, 27],
+        iconAnchor: [13, 27],
+        popupAnchor:  [2, -24],
+
+        iconUrl:sub_style.icon
+      });
+      //  console.log(sub_style.icon);
+      var marker = L.marker(latlng,{icon:icons});
+
+
+    }else{
+
+
+
+      icons=L.icon({
+        iconUrl: "https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon.png"
+      });
+      var marker = L.circleMarker(latlng);
+      //for(data in style){
+    }
+    return marker;
+
+  },
+  onEachFeature: function(feature, layer) {
+    if(marker_type !='icon'){
+      layer.setStyle(sub_style);
+    }
+
+
+    var popUpContent = "";
+
+    popUpContent += '<table style="width:100%;" id="District-popup" class="popuptable">';
+
+    //for (data in popup_content_parsed) {
+    pop = JSON.parse(popup_content_parsed);
+  //  console.log(pop);
+
+    for(data in pop.a){
+      //console.log(data);
+      pop1 = pop.a[data].col;
+      name = pop.a[data].name;
+      popUpContent += "<tr>" + "<td>"+name+"</td>" + "<td>" +  feature.properties[pop1]  + "</td></tr>";
+    }
+
+    popUpContent += '</table>';
+
+
+
+    layer.bindPopup(L.popup({
+
+      closeOnClick: true,
+
+      closeButton: true,
+
+      keepInView: true,
+
+      autoPan: true,
+
+      maxHeight: 200,
+
+      minWidth: 250
+
+    }).setContent(popUpContent));
+  }
+}).addTo(map);
+map.removeLayer(window[table_n]);
+
+
+
+
+
+
+
+
+//map for filter end
+
+
+
+}//succes end
+
+});//ajaxa end
+
+
+});
 
 //filter
-
 
 
 

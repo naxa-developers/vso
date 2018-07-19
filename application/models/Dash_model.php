@@ -61,6 +61,19 @@ return $res->result_array();
 
 }
 
+public function filter_map_data($tbl,$query){
+
+$this->db->select('*');
+$this->db->select('ST_AsGeoJSON(the_geom)');
+$this->db->where($query);
+$res=$this->db->get($tbl);
+return $res->result_array();
+
+}
+
+
+
+
   public function do_upload($filename,$name)
   {
 
@@ -256,7 +269,7 @@ public function delete_data($id,$table_name){
 public function get_sub_cat($col,$tbl){
 
   $this->db->select($col);
-  
+
   $this->db->distinct();
   $res=$this->db->get($tbl);
   return $res->result_array();

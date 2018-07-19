@@ -23,6 +23,17 @@ class Map_model extends CI_Model {
 
   }
 
+  public function get_map_filter_data($tbl,$query,$d){
+    foreach($d as $v){
+    $this->db->select($v['eng_lang'].' AS '.pg_escape_string(preg_replace('/[^A-Za-z0-9\-]/', ' ', $v['nepali_lang'])));
+    }
+   $this->db->where($query);
+   $res=$this->db->get($tbl);
+   return $res->result_array();
+
+
+  }
+
   public function get_map_download_data()
   {
     $this->db->select('*');
