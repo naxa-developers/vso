@@ -17,6 +17,12 @@ input.size-box {
     height: 50px;
 
 }
+
+.treeview ul.show{
+height: auto;
+max-height: 100px;
+}
+
 .text-size {
     margin-top: 10px;
 }
@@ -1059,10 +1065,10 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                     <input type="radio" name="fb" class="ex_map" value="+"/>
                     <p class="ex text-center"> + </p>
                   </label></div>
-                   <div class="col-md-6"><label>
+                   <!-- <div class="col-md-6"><label>
                     <input type="radio" name="fb" class="ex_map" value="-"/>
                     <p class="ex text-center"> - </p>
-                  </label></div>
+                  </label></div> -->
                    <div class="col-md-6"><label>
                     <input type="radio" name="fb" class="ex_map" value=">"/>
                     <p class="ex text-center"> > </p>
@@ -1071,7 +1077,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                     <input type="radio" name="fb" class="ex_map" value="<"/>
                     <p class="ex text-center"> < </p>
                   </label></div>
-                  <div class="col-md-6"><label>
+                  <!-- <div class="col-md-6"><label>
                     <input type="radio" name="fb" class="ex_map" value="AND"/>
                     <p class="ex text-center"> AND </p>
                   </label></div>
@@ -1082,7 +1088,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                   <div class="col-md-6"><label>
                     <input type="radio" name="fb" class="ex_map" value="NOT"/>
                     <p class="ex text-center"> NOT </p>
-                  </label></div>
+                  </label></div> -->
                           </div>
                       </div></div>
                       <div class="col-md-4 "><input type="checkbox" name="check1"> Values<div class="col-md-12 express">
@@ -1097,7 +1103,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                   <div class="text-size">
                     <a href="#"  style="color: grey"> clear</a>
                     <input type="text" name="" class="size-box selected_filter_ex">
-                    <input type="text" name="" class="size-box selected_filter_query">
+                    <input type="text" name="" class="size-box selected_filter_query" hidden>
                   </div>
                 </div>
 
@@ -1155,7 +1161,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                  -->      </div>
                       <div class="modal-footer modal2">
                         <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                       <a href=""> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download"></i> Download</button></a>
+                       <a href=""> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download"></i> Downloads</button></a>
                        <!-- <a href=""> <button type="button" class="btn btn-info btn-sm"> <i class="fa fa-eye"></i> Map</button></a> -->
                       </div>
                     </div><!-- /.modal-content -->
@@ -2249,4 +2255,10 @@ $('#close-panel-right').click(function(){
   });
   $(this).toggleClass('transform');
 });
+
+$('.specific').click(function(){
+$(this).siblings("ul").toggleClass('show');
+});
+
+
 </script>

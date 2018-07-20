@@ -11,7 +11,7 @@
                     </header>
                     <div class="panel-body">
                         <div class="position-center">
-                          <h5><i class="fa fa-info-circle"></i> Note: Select a Layer File to Upload to Table</h5><br>
+                          <h5><i class="fa fa-info-circle"></i> Note: Use of correct Data</h5><br>
                             <form role="form" method="POST" action="" enctype="multipart/form-data">
 
                               <?php
@@ -29,9 +29,11 @@
                                       <label for="exampleInputFile">Map Category</label>
                                     <select name="category">
 
-                                      <option value="street_map">street map</option>
-                                      <option value="satellite_map">satellite map</option>
-                                      <option value="outdoor_map">outdoor map</option>
+                                      <option value="admin_map">Administrative Map</option>
+                                      <option value="land_map">Landuse Map</option>
+                                      <option value="socio_map">Socio Economic Map</option>
+                                      <option value="risk_map">Risk And Hazard Map</option>
+                                      <option value="resdource_map">Resource Map</option>
 
                                     </select>
                                       </div>
