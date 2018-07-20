@@ -233,10 +233,10 @@ class MainController extends CI_Controller
   }
 
   public function inventory(){
-
-    $this->load->view('header');
+$this->data['site_info']=$this->Main_model->site_setting();
+    $this->load->view('header', $this->data);
     $this->load->view('inventory');
-    $this->load->view('footer');
+    $this->load->view('footer', $this->data);
 
 
   }
