@@ -9,13 +9,17 @@
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/leaflet.label.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/changunarayan.js"></script>
 <style>
+.treeview ul.show{
+height: auto;
+max-height: 100px;
+}
 .modal-content{
   background-color: #f5f4f4;
 }
 input.size-box {
     width: 100%;
     height: 50px;
-
+}
 .text-size {
     margin-top: 10px;
 }
@@ -2459,5 +2463,11 @@ $('#close-panel-right').click(function(){
     //console.log("toggled");
   });
   $(this).toggleClass('transform');
+});
+</script>
+
+<script type="text/javascript">
+  $('.specific').click(function(){
+$(this).siblings("ul").toggleClass('show');
 });
 </script>
