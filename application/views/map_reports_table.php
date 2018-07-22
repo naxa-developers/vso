@@ -93,6 +93,9 @@
   margin: 30px auto 15px;
 }
 
+table.responstable {
+    overflow-x: scroll;
+}
 </style>
 
 

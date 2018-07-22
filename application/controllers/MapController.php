@@ -796,6 +796,7 @@ $data=$this->input->get('data');
 $col=$this->input->get('col');
 
 $get=$this->Dash_model->get_sub_cat_data($tbl,$data,$col);
+$get_count=$this->Dash_model->get_sub_cat_data_count($tbl,$data,$col);
 
 $get_style=$this->Dash_model->get_sub_cat_style($tbl);
 
@@ -824,6 +825,7 @@ $sub_category= array(
 //echo(json_encode($sub_category));
 
 $response['geojson']=json_encode($sub_category);
+$response['count_data']=$get_count;
 $response['style']=$get_style['style'];
 $response['marker_type']=$get_style['marker_type'];
 $response['popup_content']=$get_style['popup_content'];

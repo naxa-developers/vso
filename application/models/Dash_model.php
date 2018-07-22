@@ -61,6 +61,16 @@ return $res->result_array();
 
 }
 
+public function get_sub_cat_data_count($tbl,$data,$col){
+
+$this->db->select('*');
+
+$this->db->where($col,$data);
+$res=$this->db->get($tbl);
+return $res->num_rows();
+
+}
+
 public function filter_map_data($tbl,$query){
 
 $this->db->select('*');

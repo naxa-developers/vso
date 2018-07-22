@@ -6,6 +6,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.2/randomColor.js"></script>
 
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/leaflet.label.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/changunarayan.js"></script>
 <style>
@@ -17,6 +23,11 @@ input.size-box {
     height: 50px;
 
 }
+
+/* div#dialog {
+    margin-top: 215px !important;
+    margin-left: -505px !important;
+} */
 
 .treeview ul.show{
 height: auto;
@@ -650,6 +661,7 @@ div#map{
   height:545px;
   z-index:1;
   margin-top: 0px;
+
 }
 
 #legend .cate{
@@ -903,8 +915,25 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
     z-index: 5;
     opacity: .5;
 }
+
+.overlay {
+    left: 21.5%;
+    /* height: 500px; */
+    width: 200px;
+    position: absolute;
+    /* right: 0px; */
+    z-index: 2000;
+    bottom: 0px;
+    background-color: white;
+    pointer-events: auto;
+    padding: 10px;
+}
 /**/
 </style>
+
+
+
+
 
 <div id="wrap">
 
@@ -1393,7 +1422,13 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
   </div>
 </div>
 
-<div id="map" class="col-sm-12 no-padding"></div>
+<div id="map" class="col-sm-12 no-padding">
+
+  <!-- sub-data pop -->
+  <div id="dialog_sub_cat" class="overlay" style="display:none" title="Data Number!" ></div>
+  <!-- sub-data pop -->
+
+</div>
 
 
 
@@ -1809,11 +1844,12 @@ $(document).ready(function(){
     //$('.treeview-content-p input:checked')
 
     var data=$(this).val() ;
+    var data_count=$(this).val() ;
     var col= $(this).attr('id') ;
     var tbl=$(this).attr('name') ;
     //  console.log($(this).name()) ;
     single_map=data.replace(/ /g, "_");
-
+    $('#'+tbl+'_toggle').removeClass('active');
     if(map.hasLayer(window[single_map])){
       map.removeLayer(window[single_map]);
       //console.log('if');
@@ -1841,8 +1877,9 @@ $(document).ready(function(){
           sub_style=JSON.parse(data.style);
           marker_type=data.marker_type;
           popup_content_parsed=data.popup_content;
-        //  console.log(popup_content_parsed);
-          //console.log(sub_style);
+          count=data.count_data;
+         console.log(count);
+          console.log(data_count);
           //layers
 
 
@@ -1851,9 +1888,9 @@ $(document).ready(function(){
 
 
           //  map.addLayer(googleStreets);
+   $('#dialog_sub_cat').show();
 
-
-
+  $('#dialog_sub_cat').html('<b>'+count+'</b> '+data_count+' found');
 
           //layer
           //console.log(data.replace(/ /g, "_"));
@@ -1931,7 +1968,8 @@ $(document).ready(function(){
               }).setContent(popUpContent));
             }
           }).addTo(map);
-          map.removeLayer(window[''+cat_tbl_array_name[i]]);
+          // map.removeLayer(window[''+cat_tbl_array_name[i]]);
+          map.removeLayer(window[tbl]);
 
 
 

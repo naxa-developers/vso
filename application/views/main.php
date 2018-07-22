@@ -92,7 +92,7 @@
 
       </div>
         </div>
-
+<a href="category?tbl=<?php echo $feature['table'] ?>">
     <div class="bg-white feature-section">
       <div class="container">
         <div class="featured-post clearfix">
@@ -105,7 +105,7 @@
         </div>
       </div>
     </div>
-
+</a>
     <script type="text/javascript">
 $("#started").click(function() {
     $('html, body').animate({

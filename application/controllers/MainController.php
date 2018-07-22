@@ -26,7 +26,8 @@ class MainController extends CI_Controller
     $this->data['site_info']=$this->Main_model->site_setting();
 
     $this->load->view('header',$this->data);
-    $this->load->view('contact',$this->body);
+    //$this->load->view('contact',$this->body);
+    $this->load->view('contact_static',$this->body);
     $this->load->view('footer',$this->data);
 
   }
