@@ -275,8 +275,7 @@ class TableController extends CI_Controller
     $d=$this->Table_model->get_lang($tbl);
     /* get the object   */
     $report = $this->Table_model->get_as($d,$tbl);
-    var_dump($report);
-     exit();
+    
     /*  pass it to db utility function  */
     $new_report = $this->dbutil->csv_from_result($report);
     $name = $tbl.'.csv';
