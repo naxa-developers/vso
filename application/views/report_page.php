@@ -11,6 +11,20 @@
 
 
 <style>
+span.exit {
+    float: right;
+    margin-right: 10px;
+}
+.row.sent {
+    margin-top: 90px;
+    color: grey;
+    font-size: 13px;
+}
+img.read-mor {
+    max-height: 250px;
+    margin-bottom: 25px;
+    border: 1px solid black;
+}
 /*.leaflet-left .leaflet-control {
   margin-left: 1300;
   margin-bottom: 10;
@@ -399,7 +413,32 @@ button.btn.btn-light.btn-sm {
                       <h5><?php echo $data['incident_type'] ;?></h5>
                       <p class="small">
                       <?php echo $data['message'] ;?>
-                        <a class="naya" id="btnitem" data-toggle="modal" data-target="#myModal">.... Read more</a>
+                      <!-- readmore -->
+                      <a  class="naya" data-toggle="modal" data-target=".<?php echo $data['id'] ;?>_">Read More</a>
+
+<div class="modal fade <?php echo $data['id'] ;?>_" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #111" class="exit">×</span><span class="sr-only">Close</span></button>
+    <div class="container">
+    <h3>Incident Type : <?php echo $data['incident_type'] ;?></h3>
+    <hr>
+    <div class="row">
+      <div class="col-md-4"><img src="<?php echo $data['photo'] ;?>" alt="image" class="read-mor"></div>
+      <div class="col-md-8">
+      <?php echo $data['message'] ;?>
+        <div class="row sent">
+          <div class="col-md-4">Name: <?php echo $data['name'] ;?></div>
+          <div class="col-md-4"> Date: <?php echo $data['incident_time'] ;?></div>
+          <!-- <div class="col-md-4">3 Days Ago</div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<!-- read more modal -->
                       </p>
 
                     </div>
@@ -534,7 +573,7 @@ button.btn.btn-light.btn-sm {
         $(".panel.panel-success").toggle(1000);
         $(".layer-toggle i").toggleClass("fa-chevron-right");
       });
-      var sankhu = new L.geoJson.ajax("http://app.naxa.com.np/geojson/Shankharapur.geojson", {
+      var sankhu = new L.geoJson.ajax("http://app.naxa.com.np/geojson/Changunaryan_Ward.geojson", {
 
         onEachFeature: function(feature,layer){
 

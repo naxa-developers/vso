@@ -26,8 +26,8 @@ class TableController extends CI_Controller
 
   public function copy_table(){
 
-    //$table_name=base64_decode($this->input->get('tbl'));
-    $table_name='test_test';
+    $table_name=base64_decode($this->input->get('tbl'));
+  //  $table_name='test_test';
 
 
     if(isset($_POST['submit'])){
@@ -36,13 +36,14 @@ class TableController extends CI_Controller
       $fields=$this->db->list_fields($table_name);
       unset($fields[0]);
       $field_name=implode(",",$fields);
-      var_dump($field_name);
+      //var_dump($field_name);
 
-      $field_name=('lat,long,name');
+      //$field_name=('lat,long,name');
 
 
       $f=($_FILES["fileToUpload"]);
       $path=$f["tmp_name"];
+      chmod($path, 0777);
       $filename=$f["name"];
 
 

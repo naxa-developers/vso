@@ -1038,7 +1038,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                           <input type="range" name="range" min="1" max="100" value="50" onchange="rangePrimary.value=value">
                           <output id="rangePrimary">50</output>
                         </div> -->
-                        <div class="treeview-content-p">
+                        <div class="treeview-content-p" id="<?php echo $data['category_table']?>_treeview">
 
                           <?php if($data['sub_categories']==''){  ?>
 
@@ -1730,7 +1730,7 @@ $(document).ready(function(){
 
 
     function Loadlist(selected_list_id){
-      console.log(selected_list_id);
+      //console.log(selected_list_id);
       if(selected_list_id==""){
       selected_list_id='<?php echo $default_selected_cat_tbl ?>';
       }
@@ -1840,9 +1840,9 @@ $(document).ready(function(){
   });
 
   //sub-cat
-  $('.sub-cat').click(function(){
+  $('.sub-cat').on('click',function(){
     //$('.treeview-content-p input:checked')
-
+  //  console.log("entered");
     var data=$(this).val() ;
     var data_count=$(this).val() ;
     var col= $(this).attr('id') ;
@@ -1851,11 +1851,12 @@ $(document).ready(function(){
     single_map=data.replace(/ /g, "_");
     $('#'+tbl+'_toggle').removeClass('active');
     if(map.hasLayer(window[single_map])){
+    //  console.log("if");
       map.removeLayer(window[single_map]);
       //console.log('if');
     }
     else {
-
+//console.log("else");
       //console.log('else');
       $.ajax({
         type: "GET",
@@ -1878,8 +1879,8 @@ $(document).ready(function(){
           marker_type=data.marker_type;
           popup_content_parsed=data.popup_content;
           count=data.count_data;
-         console.log(count);
-          console.log(data_count);
+         //console.log(count);
+        //  console.log(data_count);
           //layers
 
 
@@ -1990,9 +1991,22 @@ $(document).ready(function(){
 
 //filter
 
+  $('.treeview-content-p').on('click','.form-check > .filterswitch',function(event){
+    var layerClickedFilter = window[event.target.value];
+    if(map.hasLayer(layerClickedFilter)){
+        map.removeLayer(layerClickedFilter)
+    }
+    else {
+        map.addLayer(layerClickedFilter);
+    }
+
+
+  });
+
+
 $('.filterthis').on('click',function(){
 
-    $('.applied-list').html('');
+    //$('.applied-list').html('');
     $(".selected_filter_ex").val('');
     $(".selected_filter_query").val('');
   var tbl=($(this).attr("id"));
@@ -2080,7 +2094,7 @@ $(document).on('click','.filter_value',function(){
 
   $('.ex_map').on('click',function(){
 
-  console.log($(this).val());
+//  console.log($(this).val());
 
     $(".selected_filter_ex").val($(".selected_filter_ex").val()+' '+$(this).val());
     $(".selected_filter_query").val($(".selected_filter_query").val()+' '+$(this).val());
@@ -2096,6 +2110,9 @@ $(document).on('click','.filter_value_item',function(){
 
   });
 
+
+
+var count_filter = 0;
 $('.applied_filter').on('click',function(){
 
   //console.log('click');
@@ -2103,10 +2120,16 @@ $('.applied_filter').on('click',function(){
   var qry=$(".selected_filter_query").val();
   var qry_tbl=$(".selected_filter_query").attr('id');
 
+  $('#'+qry_tbl+'_treeview').append('<div class="form-check" id="'+qry_tbl+count_filter+'filter">'+
+
+    '<input type="checkbox" name="" class="form-check-input filterswitch" value="'+qry_tbl+count_filter+'" checked><label class="form-check-label">'+show_qry+'</label>'+
+
+  '</div>');
+
   $('#filter_tbl_name').text(show_qry);
 
 
-  $('.applied-list').append('<tr><th scope="row"></th><td>'+show_qry+'</td><td><i class="fa fa-eye"></i></td><td><i class="fa fa-minus"></i></td></tr>');
+  $('.applied-list').append('<tr class="'+qry_tbl+count_filter+'list"><th scope="row"></th><td>'+qry_tbl+'</td><td>'+show_qry+'</td><td><i class="fa fa-eye"></i></td><td><i class="fa fa-minus delete_filter" id="'+qry_tbl+count_filter+'"></i></td></tr>');
   //console.log('result');
   $.ajax({
     type: "GET",
@@ -2127,10 +2150,10 @@ $('.applied_filter').on('click',function(){
   marker_type=data.marker_type;
   popup_content_parsed=data.popup_content;
   table_n=data.table_name;
-  console.log(map_json);
-  console.log(sub_style);
-  console.log(marker_type);
-  console.log(popup_content_parsed);
+  // console.log(map_json);
+  // console.log(sub_style);
+  // console.log(marker_type);
+  // console.log(popup_content_parsed);
 
 
 document.getElementById("filter_tbl_name").innerHTML = 'aaa';
@@ -2168,7 +2191,8 @@ $('#table_filter >tbody').append(tbl_body);
 $('#'+table_n+'_toggle').removeClass('active');
 
 //map for filter
-var filter_map=new L.GeoJSON(map_json,{
+//console.log(qry_tbl+count_filter);
+window[qry_tbl+count_filter] =new L.GeoJSON(map_json,{
   pointToLayer: function(feature, latlng) {
     if(marker_type=='icon'){
 
@@ -2240,10 +2264,11 @@ var filter_map=new L.GeoJSON(map_json,{
     }).setContent(popUpContent));
   }
 }).addTo(map);
+count_filter = count_filter+1;
 map.removeLayer(window[table_n]);
 
 
-
+$(".selected_filter_ex").val('');
 
 
 
@@ -2260,6 +2285,25 @@ map.removeLayer(window[table_n]);
 
 });
 
+
+$('.applied-list').on('click','tr > td > .delete_filter',function(){
+
+//console.log($(this).closest('tr'));
+  //$(this).closest('tr').remove();
+  var classs = $(this).closest('tr')[0].className;
+  //console.log(classs);
+  $('.applied-list > .'+classs).remove();
+  var id = $(this)[0].id+"filter";
+  var mapLayerId = $(this)[0].id;
+  $("#"+id).remove();
+
+  map.removeLayer(window[mapLayerId]);
+
+
+
+
+
+});
 //filter
 
 
