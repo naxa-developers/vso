@@ -949,7 +949,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
               //   if($data['category_table']=='health_facilities'){
 
                 //
-                }else{ ?>
+              //  }else{ ?>
 
                   <li class="card inter-list-panel">
                     <div class="head-panel">

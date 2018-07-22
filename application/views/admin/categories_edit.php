@@ -51,7 +51,7 @@
 
                           <option value="<?php echo $edit_data[$fields[$i]]; ?>"><?php echo str_replace("_"," ",$edit_data[$fields[$i]])?></option>
                           <option value="Hazard_Data">Hazard Data</option>
-                          <option value="Exposure_Data">Exposure Data</option>
+                          <option value="Exposure_Data">Resource Data</option>
                           <option value="Baseline_Data">Baseline Data</option>
                         </select>
                       </div>
