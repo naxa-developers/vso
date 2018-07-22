@@ -43,6 +43,129 @@ public function map_download()
 }
 
 
+public function  admin_category_map(){
+
+
+  $cat_tbl=$this->Map_model->get_layer('categories_tbl');
+
+  $this->body['category_name']=$cat_tbl;
+  $popup = array();
+  $style = array();
+  $marker_type = array();
+  foreach($cat_tbl as $tbl){
+
+if(!$this->db->table_exists($tbl['category_table'])){
+
+}else{
+    $cat_tbles[]=$tbl['category_table'];
+    //$popup[]=$tbl['popup_content'];
+    array_push($popup, trim(trim(json_encode($tbl['popup_content'],JSON_NUMERIC_CHECK),'"['),']"'));
+    array_push($style, trim(trim(json_encode($tbl['style'],JSON_NUMERIC_CHECK),'"['),']"'));
+    array_push($marker_type, trim(trim(json_encode($tbl['marker_type'],JSON_NUMERIC_CHECK),'"['),']"'));
+}
+  }
+
+
+  $category_data = array();
+
+
+  for($i=0; $i<sizeof($cat_tbles); $i++){
+
+
+
+
+    $get_map=$this->Dash_model->get($cat_tbles[$i]);
+    //var_dump($get_map);
+    if (isset($features_cat)){
+
+      $features_cat = array();
+    }
+
+    foreach($get_map as $cat_data){
+
+      $cat_ddata=$cat_data ;
+      unset($cat_data['st_asgeojson']);
+
+      $features_cat[]= array(
+        'type' =>'Feature',
+        'properties'=>$cat_data,
+        'geometry'=>json_decode($cat_ddata['st_asgeojson'],JSON_NUMERIC_CHECK)
+
+      );
+
+
+    }
+
+    $category= $cat_tbles[$i];
+
+    $$category= array(
+      'type' => 'FeatureCollection',
+      'features' => $features_cat,
+    );
+
+    //var_dump($$category);
+    array_push($category_data,$$category);
+
+  }
+
+
+
+  //var_dump($this->body['field']);
+
+
+
+  $this->body['default_load']=json_encode($this->Map_model->default_load(),JSON_NUMERIC_CHECK);
+
+
+  $this->body['cat_map_layer']= json_encode($category_data, JSON_NUMERIC_CHECK);
+  $this->body['category_tbl']= json_encode($cat_tbles, JSON_NUMERIC_CHECK);
+  $this->body['popup_content']= json_encode($popup, JSON_NUMERIC_CHECK);
+  $this->body['style']= json_encode($style, JSON_NUMERIC_CHECK);
+  $this->body['marker_type']= json_encode($marker_type, JSON_NUMERIC_CHECK);
+  //var_dump($this->body['style']);
+
+  $this->body['data']=$this->Dash_model->get_tables_data('categories_tbl');
+
+  //views add
+  $count_dataset=$this->Dash_model->get_count_views_datasets($this->input->get('tbl'));
+  //var_dump($count_dataset);
+  $count=$this->Report_model->get_count_views('map');
+
+  $add_count=$count['views_count']+1;
+  $add_count_dataset=$count_dataset['views']+1;
+
+  $data=array(
+  'views_count'=>$add_count,
+
+  );
+
+  $data_dataset=array(
+  'views'=>$add_count_dataset,
+
+  );
+
+
+$this->Report_model->update_views($count['id'],$data);
+$this->Dash_model->cat_update($count_dataset['id'],$data_dataset);
+$def_select=$this->Dash_model->get_default_cat_data('categories_tbl');
+$this->body['default_selected_cat_tbl']=$def_select['category_table'];
+
+$this->data['site_info']=$this->Report_model->site_setting();
+
+//views add end
+//  exit();
+
+  $this->load->view('header',$this->data);
+  $this->load->view('admin_category.php',$this->body);
+  $this->load->view('footer',$this->data);
+
+
+
+}
+
+
+
+
   public function  category_map(){
 
 

@@ -65,6 +65,7 @@ $route['get_csv_emergency'] ='MainController/get_csv_emergency';
 
 $route['map'] ='MapController/map_page';
 $route['category'] ='MapController/category_map';
+$route['admin_category'] ='MapController/admin_category_map';
 $route['manage_popup'] ='MapController/manage_popup';
 $route['manage_style'] ='MapController/manage_style';
 $route['update_summary'] ='MapController/update_summary';

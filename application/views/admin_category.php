@@ -944,12 +944,9 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
               <ul class="treeview checklist">
 
 
-                <?php  foreach ($data as $data){
+                <?php  foreach ($data as $data){ ?>
 
-              //   if($data['category_table']=='health_facilities'){
 
-                //
-                }else{ ?>
 
                   <li class="card inter-list-panel">
                     <div class="head-panel">
@@ -1215,7 +1212,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                 </div>
                 <!-- new moadal -->
 
-              <?php }//}?>
+              <?php }?>
 
               </ul>
 
