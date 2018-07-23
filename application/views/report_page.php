@@ -573,7 +573,7 @@ button.btn.btn-light.btn-sm {
         $(".panel.panel-success").toggle(1000);
         $(".layer-toggle i").toggleClass("fa-chevron-right");
       });
-      var sankhu = new L.geoJson.ajax("http://app.naxa.com.np/geojson/Changunaryan.geojson", {
+      var sankhu = new L.geoJson.ajax("http://app.naxa.com.np/geojson/Changunarayan_Ward.geojson", {
 
         onEachFeature: function(feature,layer){
 
