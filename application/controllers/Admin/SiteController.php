@@ -243,12 +243,82 @@ class SiteController extends CI_Controller
 public function important_link(){
 
 
-  
+  unset($_POST['submit']);
+
+
+
+
+  $update=$this->Site_model->update_data($_POST);
+  echo $update;
+
+  if($update){
+
+    $this->session->set_flashdata('msg','Importnat Links successfully Updated');
+    redirect('site_setting');
+
+  }else{
+
+
+    //error
+  }
+
+
+
+}
+
+public function find_us_links(){
+
+
+  unset($_POST['submit']);
+
+
+
+
+  $update=$this->Site_model->update_data($_POST);
+  echo $update;
+
+  if($update){
+
+    $this->session->set_flashdata('msg','Find us Links successfully Updated');
+    redirect('site_setting');
+
+  }else{
+
+
+    //error
+  }
+
+
+
 }
 
 
 
+public function copyright(){
 
+
+  unset($_POST['submit']);
+
+
+
+
+  $update=$this->Site_model->update_data($_POST);
+  echo $update;
+
+  if($update){
+
+    $this->session->set_flashdata('msg','Copy Right Text successfully Updated');
+    redirect('site_setting');
+
+  }else{
+
+
+    //error
+  }
+
+
+
+}
 
 
 
