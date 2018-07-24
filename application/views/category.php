@@ -15,13 +15,16 @@
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/leaflet.label.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/changunarayan.js"></script>
 <style>
+.treeview ul.show{
+height: auto;
+max-height: 100px;
+}
 .modal-content{
   background-color: #f5f4f4;
 }
 input.size-box {
     width: 100%;
     height: 50px;
-
 }
 
 /* div#dialog {
@@ -908,6 +911,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
         border: 1px solid #888888;
 
 
+
 }
 .modal-body.mdl2 {
     width: 500px;
@@ -1302,6 +1306,217 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
       </div>
     </div>
   </div>
+<<<<<<< HEAD
+  <!-- new moadal -->
+<div class="container">
+    <div class="modal fade" id="test-modal" data-modal-index="1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+         <h4 class="modal-title">Household Data</h4>
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #fff">&times;</span><span class="sr-only">Close</span></button>
+       
+      </div>
+      <div class="modal-body">
+           <!-- modal 1 design -->
+           <div class="row">
+      <div class="col-md-4">Filter
+        <div class="col-md-12 express">
+          <div class="row">
+            <div class="col-md-12 tst"><label>
+    <input type="radio" name="fil" value="big"/>
+    <p class="exp text-center"> Size </p>
+  </label></div>
+   <div class="col-md-12 tst"><label>
+    <input type="radio" name="fil" value="big"/>
+    <p class="exp text-center"> Owner</p>
+  </label></div>
+   <div class="col-md-12 tst"><label>
+    <input type="radio" name="fil" value="big"/>
+    <p class="exp text-center"> Type </p>
+  </label></div>
+   <div class="col-md-12 tst"><label>
+    <input type="radio" name="fil" value="big"/>
+    <p class="exp text-center"> Size </p>
+  </label></div>
+   <div class="col-md-12 tst"><label>
+    <input type="radio" name="fil" value="big"/>
+    <p class="exp text-center"> Occupation </p>
+  </label></div>
+          </div>
+        </div></div>
+      <div class="col-md-4">Expression<div class="col-md-12 express">
+        <div class="row">
+            <div class="col-md-6"><label>
+    <input type="radio" name="fb" value="big"/>
+    <p class="ex text-center"> = </p>
+  </label></div>
+   <div class="col-md-6"><label>
+    <input type="radio" name="fb" value="big"/>
+    <p class="ex text-center"> + </p>
+  </label></div>
+   <div class="col-md-6"><label>
+    <input type="radio" name="fb" value="big"/>
+    <p class="ex text-center"> - </p>
+  </label></div>
+   <div class="col-md-6"><label>
+    <input type="radio" name="fb" value="big"/>
+    <p class="ex text-center"> > </p>
+  </label></div>
+   <div class="col-md-6"><label>
+    <input type="radio" name="fb" value="big"/>
+    <p class="ex text-center"> < </p>
+  </label></div>
+  <div class="col-md-6"><label>
+    <input type="radio" name="fb" value="big"/>
+    <p class="ex text-center"> AND </p>
+  </label></div>
+  <div class="col-md-6"><label>
+    <input type="radio" name="fb" value="big"/>
+    <p class="ex text-center"> OR </p>
+  </label></div>
+  <div class="col-md-6"><label>
+    <input type="radio" name="fb" value="big"/>
+    <p class="ex text-center"> NOT </p>
+  </label></div>
+          </div>
+      </div></div>
+      <div class="col-md-4"><input type="checkbox" name="check1"> Values<div class="col-md-12 express">   <div class="row">
+            <div class="col-md-12 tst"><label>
+    <input type="radio" name="fi" value="big"/>
+    <p class="exp text-center"> 1 </p>
+  </label></div>
+   <div class="col-md-12 tst"><label>
+    <input type="radio" name="fi" value="big"/>
+    <p class="exp text-center"> 2</p>
+  </label></div>
+   <div class="col-md-12 tst"><label>
+    <input type="radio" name="fi" value="big"/>
+    <p class="exp text-center"> 3 </p>
+  </label></div>
+   <div class="col-md-12 tst"><label>
+    <input type="radio" name="fi" value="big"/>
+    <p class="exp text-center"> 4 </p>
+  </label></div>
+   </div>
+ </div>
+<input type="number" name="value1" style="width: 135px" placeholder="Or Input Value">
+</div>
+
+<div class="container">
+  <div class="text-size">
+    <a href="#"  style="color: grey"> clear</a>
+    <input type="text" name="size" class="size-box">
+  </div>
+</div>
+
+ <button class="btn btn-default btn-sm applie" data-toggle="modal" data-target="#test-modal-2">Apply</button>
+    </div>
+           <!--  -->
+      </div>
+      <div class=" left-apply">
+        <div class="container">
+      <h6><b>Applied Filters</b></h6>
+      <!-- applied filters -->
+     <table class="table">
+ 
+  <tbody class="applied-list">
+    <tr>
+      <th scope="row">1</th>
+      <td>Size > 3</td>
+      <td><i class="fa fa-eye"></i></td>
+      <td><i class="fa fa-minus"></i></td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Occupation=Farmer</td>
+     <td><i class="fa fa-eye"></i></td>
+      <td><i class="fa fa-minus"></i></td>
+    </tr>
+  </tbody>
+</table>
+      <!--  -->
+      </div>
+        
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+    <div class="modal fade" id="test-modal-2" data-modal-index="2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Household Data</h4>
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #fff">&times;</span><span class="sr-only">Close</span></button>
+        
+      </div>
+      <div class="modal-body">
+        <h4>Size > 3</h4>
+        <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+<!--         <button class="btn btn-default" data-toggle="modal" data-target="#test-modal-3">Launch Modal 3</button>
+ -->      </div>
+      <div class="modal-footer modal2">
+        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+       <a href=""> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download"></i> Download</button></a>
+       <a href=""> <button type="button" class="btn btn-info btn-sm"> <i class="fa fa-eye"></i> Map</button></a>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+    <div class="modal fade" id="test-modal-3">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Modal title 3</h4>
+      </div>
+      <div class="modal-body">
+      
+        
+        <!-- <button class="btn btn-default" data-toggle="modal" data-target="#test-modal-4">Launch Modal 4</button> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Download</button>
+        <button type="button" class="btn btn-primary btn-sm">Map</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
 
 
 
@@ -2350,4 +2565,10 @@ $(this).siblings("ul").toggleClass('show');
 });
 
 
+</script>
+
+<script type="text/javascript">
+  $('.specific').click(function(){
+$(this).siblings("ul").toggleClass('show');
+});
 </script>
