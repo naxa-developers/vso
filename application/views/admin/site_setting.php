@@ -288,7 +288,7 @@
                                   <label for="project_name" class="control-label col-md-4">Facebook:</label>
 
                                   <div class="col-md-8">
-                                    <input type="text" name="fb"  id="facebook_link" placeholder="Chnagunarayan" class="form-control" value="<?php echo $site_info['facebook']?>"/>
+                                    <input type="text" name="facebook"  id="facebook_link" placeholder="Chnagunarayan" class="form-control" value="<?php echo $site_info['facebook']?>"/>
 
 
                                   </div>
@@ -307,6 +307,11 @@
                                       <input type="text" name="google"  id="twitter_link" placeholder="Chnagunarayan" class="form-control" value="<?php echo $site_info['google']?>"/>
 
                                     </div>
+
+                                  </div>
+
+                                  <div class="col-md-11">
+                                    <button type="submit" name="submit" class="btn btn-primary">Update</button>
                                   </div>
 
                           </form>
