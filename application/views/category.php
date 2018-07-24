@@ -32,6 +32,7 @@ input.size-box {
 .treeview ul.show{
 height: auto;
 max-height: 100px;
+overflow-y: scroll;
 }
 
 .text-size {
@@ -400,7 +401,9 @@ div#over_map1 {
   font-size: 12px;
   padding-left: 25px;
 }
-
+.treeview-content-p{
+overflow-y: auto;
+}
 .control.pull-right{
   margin-left: auto;
 }
@@ -1125,12 +1128,11 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                   </label></div> -->
                           </div>
                       </div></div>
-                      <div class="col-md-4 "><input type="checkbox" name="check1"> Values<div class="col-md-12 express">
+                      <div class="col-md-4 "> Values<div class="col-md-12 express">
                         <div class="row filter_values">
 
                    </div>
                  </div>
-                <input type="number" name="value1" style="width: 135px" placeholder="Or Input Value">
                 </div>
 
                 <div class="container">
@@ -1195,7 +1197,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                  -->      </div>
                       <div class="modal-footer modal2">
                         <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                       <a href=""> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download"></i> Downloads</button></a>
+                       <a href=""> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download"></i> Download</button></a>
                        <!-- <a href=""> <button type="button" class="btn btn-info btn-sm"> <i class="fa fa-eye"></i> Map</button></a> -->
                       </div>
                     </div><!-- /.modal-content -->
@@ -2129,7 +2131,7 @@ $('.applied_filter').on('click',function(){
   $('#filter_tbl_name').text(show_qry);
 
 
-  $('.applied-list').append('<tr class="'+qry_tbl+count_filter+'list"><th scope="row"></th><td>'+qry_tbl+'</td><td>'+show_qry+'</td><td><i class="fa fa-eye"></i></td><td><i class="fa fa-minus delete_filter" id="'+qry_tbl+count_filter+'"></i></td></tr>');
+  $('.applied-list').append('<tr class="'+qry_tbl+count_filter+'list"><th scope="row"></th><td>'+qry_tbl+'</td><td>'+show_qry+'</td><td><i class="fa fa-trash delete_filter" style="color:#ff7979;" id="'+qry_tbl+count_filter+'"></i></td></tr>');
   //console.log('result');
   $.ajax({
     type: "GET",
