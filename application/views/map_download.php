@@ -66,6 +66,113 @@ p.para {
 h6.base {
     font-weight: bold;
 }
+.myUL:hover .edit {
+	display: block;
+}
+
+.edit {
+	/*padding-top: 128px; */
+    /* padding-right: 36px; */
+    position: absolute;
+    right: 36px;
+    top: 120px;
+    display: none;
+    color: red;
+    background-color: #fff;
+    
+}
+
+.edit a {
+	color: #000;
+}
+i.fa.fa-download.dwn {
+    background-color: #1f5cb2;
+    color: #fff;
+    padding: 7px;
+}
+/**/
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+
+
+/* Add Animation */
+.modal-content {    
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+.downlink{
+	color: #1f5cb2;
+	padding-left: 50px;
+}
+.downlink:hover{
+	color: #1F5C84;
+}
 </style>
 
 <div id="map_download">
@@ -109,9 +216,20 @@ h6.base {
 <?php  foreach ($data as $v){ ?>
 
 		<div class="col-sm-3 basemap myUL">
-		<a href="<?php echo $v['photo']?>"  target="_blank"><img src="<?php echo $v['photo']  ?>" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img1"></a>
+		<img src="<?php echo $v['photo']  ?>" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img1">
+		<!-- The Modal -->
+
+			<div class="edit"><a href="#"><i class="fa fa-download dwn"></i></a></div>
 			<h6 class="base" id="<?php echo $v['id']  ?>"><?php echo $v['title']  ?></h6>
 			 <p class="para"><?php echo $v['summary']  ?></p>
+
+<div id="myModal" class="modal" style="overflow:hidden">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div class="downlk"><a href=""><i class="fa fa-download fa-2x downlink"></i></a>
+  </div>
+  
+</div>
 
 		</div>
 
@@ -152,4 +270,26 @@ function myFunction() {
 	}
 }
 
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementsByClassName('mapp-image');
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+$('.mapp-image').on('click',function(){ 
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+});
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+    modal.style.display = "none";
+}
 </script>

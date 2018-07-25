@@ -399,6 +399,7 @@ div#over_map1 {
 .treeview .desc{
   font-size: 12px;
   padding-left: 25px;
+  overflow-y: scroll;
 }
 
 .control.pull-right{
@@ -1194,7 +1195,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                  -->      </div>
                       <div class="modal-footer modal2">
                         <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                       <a href=""> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download"></i> Downloads</button></a>
+                       <a href=""> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download" style="background-color: #002b59"></i> Download</button></a>
                        <!-- <a href=""> <button type="button" class="btn btn-info btn-sm"> <i class="fa fa-eye"></i> Map</button></a> -->
                       </div>
                     </div><!-- /.modal-content -->
