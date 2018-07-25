@@ -179,6 +179,7 @@
                 </div>
                 <div class="panel-body space ">
                   <div class="row">
+                      <form method="POST" action="Admin/SiteController/important_link">
                     <div class="col-md-6">
                       <label for="project_name" class="control-label col-md-4">1st Site Name:</label>
 
@@ -189,6 +190,7 @@
                       </div>
                     </div>
                     <div class="col-md-6">
+
                       <label for="project_name" class="control-label col-md-4">1st Site Link:</label>
 
                       <div class="col-md-8">
@@ -260,7 +262,7 @@
                                   </div>
 
 
-
+                </form>
 
 
 
@@ -274,6 +276,7 @@
                               </div>
 
                               <div class="panel panel-info class">
+                                  <form method="POST" action="Admin/SiteController/find_us_links">
                                 <div class="panel-heading">
                                 Find us links
                                 </div>
@@ -285,7 +288,7 @@
                                   <label for="project_name" class="control-label col-md-4">Facebook:</label>
 
                                   <div class="col-md-8">
-                                    <input type="text" name="fb"  id="facebook_link" placeholder="Chnagunarayan" class="form-control" value="<?php echo $site_info['facebook']?>"/>
+                                    <input type="text" name="facebook"  id="facebook_link" placeholder="Chnagunarayan" class="form-control" value="<?php echo $site_info['facebook']?>"/>
 
 
                                   </div>
@@ -304,14 +307,20 @@
                                       <input type="text" name="google"  id="twitter_link" placeholder="Chnagunarayan" class="form-control" value="<?php echo $site_info['google']?>"/>
 
                                     </div>
+
                                   </div>
 
+                                  <div class="col-md-11">
+                                    <button type="submit" name="submit" class="btn btn-primary">Update</button>
+                                  </div>
 
+                          </form>
 
                                 </div>
                               </div>
 
                               <div class="panel panel-warning class">
+                                  <form method="POST" action="Admin/SiteController/copyright">
                                 <div class="panel-heading">
                                   Copy right Text
                                 </div>
@@ -325,7 +334,7 @@
                                   <div class="col-md-11">
                                     <button type="submit" name="submit" class="btn btn-primary">Update</button>
                                   </div>
-
+                                    </form>
                                 </div>
                               </div>
 
@@ -333,7 +342,7 @@
 
 
 
-                          </form>
+
 
 
 
@@ -342,7 +351,7 @@
 
 
                       </div>
-                    </form>
+
                   </div>
                 </section>
 
