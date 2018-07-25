@@ -167,11 +167,13 @@ i.fa.fa-download.dwn {
     }
 }
 .downlink{
-	color: #1f5cb2;
-	padding-left: 50px;
+	background-color: #1f5cb2;
+	color: #fff;
+	margin-left: 50px;
+	padding: 10px;
 }
 .downlink:hover{
-	color: #1F5C84;
+	color:#e8e8e8;
 }
 </style>
 
