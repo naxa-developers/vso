@@ -19,6 +19,30 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 .rim {
     padding-left: 30px;
     padding-bottom: 10px;
+    margin-left: 218px;
+}
+button#show {
+    background-color: #1fb5ad;
+    border-color: transparent;
+    border-radius: 4px;
+    margin-left: 30px;
+}
+span.btn.btn-white.btn-file {
+    background-color: #1fb5ad;
+    color: #fff;
+    margin-left: 15px;
+}
+div#select-img {
+    margin-left: 15px;
+}
+.form-group.nam {
+    margin-left: 30px;
+}
+label.control-label.col-md-3.nn {
+    margin-left: 15px;
+}
+.kk {
+    margin-left: 230px;
 }
 </style>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -50,7 +74,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
             }
             ?> -->
 
-            <div class="form-group">
+            <div class="form-group nam">
               <label for="exampleInputEmail1">Category Name</label>
               <input type="text" name="cat_name" class="form-control" id="exampleInputEmail1" placeholder="Category Name" required>
             </div>
@@ -94,31 +118,41 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 
 
               </div>
-                <div class="computer">
-            <button type="button" id="show"  >Select From Computer</button>
-          </div>
+                <!-- <div class="computer"> -->
+                  <!--  <span id = "show" class="btn btn-white btn-file">
+                        <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
+                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                        <input type="file" name="cat_pic" class="default" />
+                      </span> -->
+            <!-- <button type="button" id="show"  > <span class="btn btn-white btn-file">
+                        <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select From Computer</span>
+                        <!-- <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span> -->
+                        <!-- <input type="file" name="cat_pic" class="default" />
+                      </span></button> -->
+          <!-- </div> -->
             </div>
-             <div class="col-md-12" id="select-img">
-                  Upload Image
+             <div class="col-md-12" >
+                  OR
                   <div class="fileupload fileupload-new" data-provides="fileupload">
-                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"  id="select-img">
                       <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
                     </div>
                     <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
                     <br>
-                      <span class="btn btn-white btn-file">
-                        <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
+                       <span class="btn btn-white btn-file">
+                        <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select from computer</span>
                         <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
                         <input type="file" name="cat_pic" class="default" />
-                      </span>
-
+                      </span> 
+                      <br/><br/><br/>
 
                     </div>
                   </div>
                 </div>
 
-            <div class='row col-md-12' >
-              <div class="form-group col-md-6">
+            <div class='row' >
+              <div class="form-group col-md-12 ">
+                <div class="kk">
                 <label for="exampleInputFile">Category Type</label>
                 <select name="category_type">
 
@@ -127,14 +161,17 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
                   <option value="Baseline_Data">Base Data</option>
                 </select>
               </div>
+              </div>
 
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-12">
+                <div class="kk">
                 <label for="exampleInputFile">File Type</label>
                 <select name="upload_type">
 
                   <option value="csv">CSV File</option>
                   <option value="shapefile">Shapefile</option>
                 </select>
+              </div>
               </div>
             </div>
         </div>
@@ -153,7 +190,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 
 <!-- page end-->
 </section>
-</section></
+</section>
 <!--main content end-->
 
 <script type="text/javascript">
