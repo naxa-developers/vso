@@ -175,7 +175,7 @@ class Map_model extends CI_Model {
     $field_name                     ='map_pic';
     $config['upload_path']          = './uploads/map_download/';
     $config['allowed_types']        = 'gif|jpg|png';
-    $config['max_size']             = 7000;
+    $config['max_size']             = 15000;
     $config['overwrite']             = TRUE;
     $config['file_name']           = $name;
 
@@ -184,6 +184,7 @@ class Map_model extends CI_Model {
     if ( ! $this->upload->do_upload($field_name))
     {
       $error = array('error' => $this->upload->display_errors());
+      $error['status']=0;
       return $error;
 
 
@@ -193,6 +194,8 @@ class Map_model extends CI_Model {
 
 
       $data = array('upload_data' => $this->upload->data());
+
+      $data['status']=1;
 
       return $data;
 

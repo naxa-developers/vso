@@ -35,4 +35,20 @@ public function mail()
 }
 
 
+public function download(){
+
+  $this->load->dbutil();
+  $this->load->helper('file');
+  $this->load->helper('download');
+
+$id=$this->input->get('id');
+$n=$this->input->get('name');
+$name=$n.'.jpg';
+$data=file_get_contents('uploads/map_download/'.$id.'.jpg');
+force_download($name,$data);
+echo $id;
+
+
+
+}
 }//end

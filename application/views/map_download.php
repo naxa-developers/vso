@@ -79,7 +79,7 @@ h6.base {
     display: none;
     color: red;
     background-color: #fff;
-    
+
 }
 
 .edit a {
@@ -125,7 +125,7 @@ i.fa.fa-download.dwn {
 
 
 /* Add Animation */
-.modal-content {    
+.modal-content {
     -webkit-animation-name: zoom;
     -webkit-animation-duration: 0.6s;
     animation-name: zoom;
@@ -133,12 +133,12 @@ i.fa.fa-download.dwn {
 }
 
 @-webkit-keyframes zoom {
-    from {-webkit-transform:scale(0)} 
+    from {-webkit-transform:scale(0)}
     to {-webkit-transform:scale(1)}
 }
 
 @keyframes zoom {
-    from {transform:scale(0)} 
+    from {transform:scale(0)}
     to {transform:scale(1)}
 }
 
@@ -218,19 +218,19 @@ i.fa.fa-download.dwn {
 <?php  foreach ($data as $v){ ?>
 
 		<div class="col-sm-3 basemap myUL">
-		<img src="<?php echo $v['photo']  ?>" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img1">
+		<img src="<?php echo $v['photo_thumb']  ?>" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img1">
 		<!-- The Modal -->
 
-			<div class="edit"><a href="#"><i class="fa fa-download dwn"></i></a></div>
+			<div class="edit"><a href="NewsletterController/download?name=<?php echo $v['title']?> && id=<?php echo $v['id'] ?>"><i class="fa fa-download dwn"></i></a></div>
 			<h6 class="base" id="<?php echo $v['id']  ?>"><?php echo $v['title']  ?></h6>
 			 <p class="para"><?php echo $v['summary']  ?></p>
 
 <div id="myModal" class="modal" style="overflow:hidden">
   <span class="close">&times;</span>
   <img class="modal-content" id="img01">
-  <div class="downlk"><a href=""><i class="fa fa-download fa-2x downlink"></i></a>
+  <div class="downlk"><a href="NewsletterController/download?name=<?php echo $v['title']?> && id=<?php echo $v['id'] ?>"><i class="fa fa-download fa-2x downlink"></i></a>
   </div>
-  
+
 </div>
 
 		</div>
@@ -239,7 +239,7 @@ i.fa.fa-download.dwn {
 
 	</div>
 
-	
+
 
 </div>
 </div>
@@ -281,7 +281,7 @@ var modal = document.getElementById('myModal');
 var img = document.getElementsByClassName('mapp-image');
 var modalImg = document.getElementById("img01");
 var captionText = document.getElementById("caption");
-$('.mapp-image').on('click',function(){ 
+$('.mapp-image').on('click',function(){
     modal.style.display = "block";
     modalImg.src = this.src;
     captionText.innerHTML = this.alt;
@@ -291,7 +291,7 @@ $('.mapp-image').on('click',function(){
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() { 
+span.onclick = function() {
     modal.style.display = "none";
 }
 </script>
