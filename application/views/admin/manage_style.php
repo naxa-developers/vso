@@ -70,7 +70,7 @@
         <span class="input-group-btn "><button type="button" class="btn btn-default value-control opac" data-action="plus" data-target="font-size"><span class="glyphicon glyphicon-plus"></span></button></span>
     </div>
                   <span class="help-block">
-                    with max value: 10
+                    with max value: 1
                   </span>
                 </div>
               </div>
@@ -85,7 +85,7 @@
         <span class="input-group-btn"><button type="button"  class="btn btn-default value-control fillopac" data-action="plus" data-target="fillopac"><span class="glyphicon glyphicon-plus"></span></button></span>
     </div>
                   <span class="help-block">
-                    with max value: 10
+                    with max value: 1
                   </span>
                 </div>
               </div>
@@ -272,8 +272,6 @@ $(document).ready(function(){
 
       var val=Math.round(value*100)/100;
 
-      console.log(val);
-
 
 
     }else{
@@ -284,7 +282,10 @@ $(document).ready(function(){
 
      }
     // $('[id="'+target+'"]').val(value);
-    $("#font-size").val(val);
+
+    if( ( val >= 0 ) && ( val <= 1) ){
+      $("#font-size").val(val);
+    }
 });
 
 
@@ -315,7 +316,9 @@ $(document).ready(function(){
 
      }
     // $('[id="'+target+'"]').val(value);
+    if( ( val >= 0 ) && ( val <= 1) ){
     $("#fillopac").val(val);
+  }
 });
 
     $(".weight").on('click',function(){
@@ -342,7 +345,9 @@ $(document).ready(function(){
 
      }
     // $('[id="'+target+'"]').val(value);
+    if( ( val >= 0 ) && ( val <= 10) ){
     $("#weight").val(val);
+  }
 });
 
 

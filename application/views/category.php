@@ -179,7 +179,7 @@ span.ic {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 9;
+  z-index: 7;
   opacity: 0;
   pointer-events: none;
   -webkit-transition: all 0.3s;
@@ -240,7 +240,7 @@ div#over_map1 {
   width: 250px;
 }
 #wrap { position: relative; }
-#over_map { position: absolute; left: 0px; z-index: 99; top: 33px;width: 0px;}
+#over_map { position: absolute; left: 0px; z-index: 6; top: 33px;width: 0px;}
 
 .icon-bar{
   background-color:#0056b3;
@@ -908,7 +908,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
 
 }
 .modal-body.mdl2 {
-    width: 500px;
+    width: 100%;
     overflow-x: scroll;
     overflow-y: scroll;
   }
@@ -930,6 +930,10 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
     padding: 10px;
 }
 /**/
+.modal-content.no2 {
+    width: 1050px;
+    margin-left: -260px;
+}
 </style>
 
 
@@ -1172,7 +1176,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
 
                     <div class="modal fade" id="<?php echo $data['category_table']?>_mod_dat" data-modal-index="2">
                   <div class="modal-dialog">
-                    <div class="modal-content">
+                    <div class="modal-content no2">
                       <div class="modal-header">
                         <h4 class="modal-title"><?php echo $data['category_name']?></h4>
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #fff">&times;</span><span class="sr-only">Close</span></button>
@@ -1195,7 +1199,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                  -->      </div>
                       <div class="modal-footer modal2">
                         <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                       <a href=""> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download" style="background-color: #002b59"></i> Download</button></a>
+                       <a href=""> <button type="button" class="btn btn-primary btn-sm" style="background-color: #002b59"><i class="fa fa-download" ></i> Download</button></a>
                        <!-- <a href=""> <button type="button" class="btn btn-info btn-sm"> <i class="fa fa-eye"></i> Map</button></a> -->
                       </div>
                     </div><!-- /.modal-content -->
