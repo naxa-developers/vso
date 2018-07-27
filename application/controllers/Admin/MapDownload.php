@@ -48,15 +48,15 @@ class MapDownload extends CI_Controller
         $data=array(
 
           'photo'=>$image_path,
-          'photo_thumb'=>base_url() . 'uploads/map_download/'.$insert.'_thumb'.$ext
+          'photo_thumb'=>base_url() . 'uploads/map_download/'.$id.'_thumb'.$ext
 
         );
 
 
 
         $config['image_library'] = 'gd2';
-        $config['source_image'] = './uploads/map_download/'.$insert.$ext;
-        $config['new_image'] = './uploads/map_download/'.$insert.$ext;
+        $config['source_image'] = './uploads/map_download/'.$id.$ext;
+        $config['new_image'] = './uploads/map_download/'.$id.$ext;
         $config['create_thumb'] = TRUE;
         $config['maintain_ratio'] = TRUE;
         $config['width']         = 800;
