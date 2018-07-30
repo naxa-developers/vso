@@ -1043,7 +1043,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
 
                           <?php if($data['sub_categories']==''){  ?>
 
-                            <p> No sub categories </p>
+                            <!-- <p> No sub categories </p> -->
 
                           <?php  }else{
 
@@ -2347,5 +2347,13 @@ $('.specific').click(function(){
 $(this).siblings("ul").toggleClass('show');
 });
 
+//expand view
+
+//auto expand selected category_map
+$("label[for='"+selected_category+"']").siblings("ul").toggleClass('show');
+
+//end
+
+//
 
 </script>

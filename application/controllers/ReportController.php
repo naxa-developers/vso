@@ -229,9 +229,31 @@ class ReportController extends CI_Controller
 
         $data=array(
 
-          'photo'=>$image_path
+          'photo'=>$image_path,
+          'photo_thumb'=>base_url() . 'uploads/report/'.$insert.'_thumb'.$ext
 
         );
+
+        $config['image_library'] = 'gd2';
+        $config['source_image'] = './uploads/report/'.$insert.$ext;
+        $config['new_image'] = './uploads/report/'.$insert.$ext;
+        $config['create_thumb'] = TRUE;
+        $config['maintain_ratio'] = TRUE;
+        $config['width']         = 800;
+       $config['height']       = 800;
+
+        $this->load->library('image_lib', $config);
+        $this->image_lib->initialize($config);
+
+
+          $this->image_lib->resize();
+          //var_dump($this->image_lib->resize());
+          //var_dump($this->image_lib->display_errors());
+        //  exit();
+          if(!$this->image_lib->resize())
+ {
+     echo $this->image_lib->display_errors();
+ }
 
         $this->Report_model->update_img_path($insert,$data);
         $response['status']=200;

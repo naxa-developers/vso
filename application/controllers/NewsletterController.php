@@ -46,7 +46,7 @@ $n=$this->input->get('name');
 $name=$n.'.jpg';
 $data=file_get_contents('uploads/map_download/'.$id.'.jpg');
 force_download($name,$data);
-echo $id;
+//echo $id;
 
 
 
