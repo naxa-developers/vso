@@ -1179,7 +1179,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
 
                       </div>
                       <div class="modal-body mdl2">
-                        <h4 id='filter_tbl_name'></h4>
+                        <h6 id='filter_tbl_name'>uuuu</h6>
                         <table class="table table-striped" id="table_filter">
                   <thead>
                     <tr>
@@ -1193,9 +1193,9 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                 </table>
                 <!--         <button class="btn btn-default" data-toggle="modal" data-target="#test-modal-3">Launch Modal 3</button>
                  -->      </div>
-                      <div class="modal-footer modal2">
+                      <div class="modal-footer modal2" >
                         <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                       <a href=""> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download" style="background-color: #002b59"></i> Download</button></a>
+                        <a href="abc" id="filter_download"> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download" style="background-color: #002b59"></i> Download</button></a>
                        <!-- <a href=""> <button type="button" class="btn btn-info btn-sm"> <i class="fa fa-eye"></i> Map</button></a> -->
                       </div>
                     </div><!-- /.modal-content -->
@@ -1439,6 +1439,10 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip();
 });
 
+ var map_lat='<?php echo $map_zoom_center['map_lat'] ?>';
+ var map_long='<?php echo $map_zoom_center['map_long'] ?>';
+ var map_zoom='<?php echo $map_zoom_center['map_zoom'] ?>';
+
 
 var default_loadd = '<?php echo $default_load; ?>';
 
@@ -1475,7 +1479,7 @@ $(document).ready(function(){
 
   //map part
 
-  var map = L.map('map').setView([27.693547,85.440240], 13);
+  var map = L.map('map').setView([map_lat,map_long], map_zoom);
   map.attributionControl.addAttribution("<a href='http://www.naxa.com.np' title = 'Contributor'>NAXA</a>");
   // map.scrollWheelZoom.disable();
   map.options.maxBounds;  // remove the maxBounds object from the map options
@@ -1525,6 +1529,31 @@ $(document).ready(function(){
     return spaced;
 
   }
+
+//check if the value is url
+function ValidURL(str) {
+    var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+    if(!regex .test(str)) {
+      //alert("Please enter valid URL.");
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+
+//chcek if the url contains image or not
+function isValidImg( url ) {
+    return new Promise( function ( resolve, reject ) {
+
+        var image = new Image;
+
+        image.onload = function ( ) { resolve( image ) };
+        image.onerror = image.onabort = reject;
+
+        image.src = url;
+    } );
+}
 
 
   styles=JSON.parse('<?php echo $style ?>');
@@ -1609,9 +1638,20 @@ $(document).ready(function(){
 
           for(data in pop.a){
             //console.log(data);
+
             pop1 = pop.a[data].col;
             name = pop.a[data].name;
+
+
+            if(ValidURL(feature.properties[pop1])){
+
+                if(isValidImg(feature.properties[pop1])){
+                    popUpContent += "<img src = "+feature.properties[pop1]+"></img>";
+                }
+
+            }
             popUpContent += "<tr>" + "<td>"+name+"</td>" + "<td>" +  feature.properties[pop1]  + "</td></tr>";
+
           }
 
 
@@ -1945,6 +1985,9 @@ $(document).ready(function(){
                 //console.log(data);
                 pop1 = pop.a[data].col;
                 name = pop.a[data].name;
+
+                // console.log(feature.properties[pop1].match(/\.(jpeg|jpg|gif|png)$/) != null);
+
                 popUpContent += "<tr>" + "<td>"+name+"</td>" + "<td>" +  feature.properties[pop1]  + "</td></tr>";
               }
 
@@ -2120,13 +2163,17 @@ $('.applied_filter').on('click',function(){
   var qry=$(".selected_filter_query").val();
   var qry_tbl=$(".selected_filter_query").attr('id');
 
+$('a#filter_download').attr("href","MapController/csv_filter_query?qry="+qry+"&&tbl="+qry_tbl+"&&s_qry="+show_qry);
+
+
   $('#'+qry_tbl+'_treeview').append('<div class="form-check" id="'+qry_tbl+count_filter+'filter">'+
 
     '<input type="checkbox" name="" class="form-check-input filterswitch" value="'+qry_tbl+count_filter+'" checked><label class="form-check-label">'+show_qry+'</label>'+
 
   '</div>');
 
-  $('#filter_tbl_name').text(show_qry);
+console.log($('#filter_tbl_name'));
+  $('h6#filter_tbl_name').html(""+show_qry+"");
 
 
   $('.applied-list').append('<tr class="'+qry_tbl+count_filter+'list"><th scope="row"></th><td>'+qry_tbl+'</td><td>'+show_qry+'</td><td><i class="fa fa-trash delete_filter" id="'+qry_tbl+count_filter+'"></i></td></tr>');
@@ -2156,8 +2203,6 @@ $('.applied_filter').on('click',function(){
   // console.log(popup_content_parsed);
 
 
-document.getElementById("filter_tbl_name").innerHTML = 'aaa';
-//$('h4').html(show_qry);
 $('#table_filter >tbody').html('');
 for(var i=0;i<modal_table.length;i++){
 
@@ -2187,6 +2232,9 @@ $('#table_filter >tbody').append(tbl_body);
 
 
 }//loop for table end
+
+$('#filter_download').attr("href","change");
+
 
 $('#'+table_n+'_toggle').removeClass('active');
 

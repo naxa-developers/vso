@@ -274,6 +274,7 @@ if(!$this->db->table_exists($tbl['category_table'])){
   $this->body['default_selected_cat_tbl']=$def_select['category_table'];
 
   $this->data['site_info']=$this->Report_model->site_setting();
+  $this->body['map_zoom_center']=$this->Report_model->site_setting();
 
   //views add end
 //  exit();
@@ -905,6 +906,39 @@ public function filter_query()
 
 }
 
+public function csv_filter_query()
+{
+array_map('unlink', glob("uploads/map_filter_csv/*.csv"));
+
+ $tbl=$this->input->get('tbl');
+
+ $filter_qry=$this->input->get('qry');
+ $s_qry=$this->input->get('s_qry');
+  //echo $filter_qry;
+ //  $tbl='health_facilities';
+ //   $filterr_qry ="a0 = '8'";
+   //echo $tbl;
+   //exit();
+  $d=$this->Map_model->get_lang_map_data($tbl);
+  $get=$this->Map_model->get_map_filter_data_csv($tbl,$filter_qry,$d);
+  //$get_map=$this->Dash_model->filter_map_data($tbl,$filter_qry);
+
+  $this->load->dbutil();
+  $this->load->helper('file');
+  $this->load->helper('download');
+
+  $new_report = $this->dbutil->csv_from_result($get);
+  $name = $tbl.'.csv';
+  /*  Now use it to write file. write_file helper function will do it */
+  write_file('uploads/map_filter_csv/'.$name,$new_report);
+
+  $data=file_get_contents('uploads/map_filter_csv/'.$name);
+  force_download($name,$data);
+
+
+
+//var_dump($get);
+}
 
 
 }//end

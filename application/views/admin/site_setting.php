@@ -338,6 +338,33 @@
                                 </div>
                               </div>
 
+
+                              <div class="panel panel-info class">
+                                  <form method="POST" action="Admin/SiteController/map_zoom">
+                                <div class="panel-heading">
+                                  Map Zoom level and center
+                                </div>
+                                <div class="panel-body space">
+                                  <label for="project_name" class="control-label col-md-2">Map Center:</label>
+                                  <div class="col-md-4">
+                                    <input type="text" name="map_lat"  id="system_mail" placeholder="Latitude" class="form-control" value="<?php echo $site_info['map_lat']?>"/>
+                                    <input type="text" name="map_long"  id="system_mail" placeholder="Longitude" class="form-control" value="<?php echo $site_info['map_long']?>"/>
+
+                                  </div>
+                                  <label for="project_name" class="control-label col-md-2">Map Zoom:</label>
+                                  <div class="col-md-4">
+                                    <input type="text" name="map_zoom"  id="system_mail" placeholder="Changu Narayan Municipality" class="form-control" value="<?php echo $site_info['map_zoom']?>"/>
+
+                                  </div>
+
+                                  <div class="col-md-11">
+                                    <button type="submit" name="submit" class="btn btn-primary">Update</button>
+                                  </div>
+                                    </form>
+                                </div>
+                              </div>
+
+
                             </div>
 
 

@@ -192,15 +192,18 @@ i.fa.fa-download.dwn {
 				<div class="col-md-4">
 
 					<div class="form-group">
-						<select class="custom-select">
-							<option value="0" selected disabled>Document Type</option>
-							<option value="3" >Research</option>
-							<option value="1" >Plans and Policies</option>
-							<option value="2" >Papers</option>
+						<select class="custom-select" id="map_download_fil">
+							<option value="0">All Type</option>
+							<option value="admin" >Administrative Maps</option>
+							<option value="risk" >Risk and Hazard Maps</option>
+							<option value="socio" >Socio Economic Maps</option>
+							<option value="tourist" >Tourist Maps</option>
+							<option value="land" >Land use and Land Cover</option>
+							<option value="other" >Others</option>
 						</select>
 					</div>
 				</div>
-				<div class="col-md-4"><div class="form-group">
+				<!-- <div class="col-md-4"><div class="form-group">
 					<select class="custom-select">
 						<option value="0" selected disabled>Select Document</option>
 						<option value="3" >Document 1</option>
@@ -208,12 +211,12 @@ i.fa.fa-download.dwn {
 						<option value="2" >Document 3</option>
 					</select>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 
 
-	<div class="row">
+	<div class="row" id="map_download_filter_data">
 
 <?php  foreach ($data as $v){ ?>
 
@@ -294,4 +297,66 @@ var span = document.getElementsByClassName("close")[0];
 span.onclick = function() {
     modal.style.display = "none";
 }
+
+//filter map_download
+
+$('#map_download_fil').change(function(){
+
+var category = $(this).val();
+console.log(category);
+$.ajax({
+  type: "GET",
+  //  data: name,
+  url:  "NewsletterController/get_category_mapdownload?cat="+category,
+  beforeSend: function() {
+      $('#map_download_filter_data').empty();
+      $('#map_download_filter_data').html('<h2>Loading</h2>');
+  },
+  complete: function() {
+    // $('#filter_pub').empty();
+    // $('#filter_pub').append('<h2>Loading</h2>');
+  },
+  success: function (result) {
+		//console.log(result);
+
+    $('#map_download_filter_data').html('');
+		var data = JSON.parse(result);
+
+	  var i;
+
+
+	  for(i=0; i<data.length; i++){
+			var div_map_download = " ";
+
+			div_map_download += '<div class="col-sm-3 basemap myUL">';
+			div_map_download +='<img src="'+data[i].photo_thumb+'" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img1">';
+
+
+				div_map_download +='<div class="edit"><a href="NewsletterController/download?name='+data[i].title+' && id='+data[i].id+'"><i class="fa fa-download dwn"></i></a></div>';
+				div_map_download +='<h6 class="base" id="'+data[i].id+'">'+data[i].title+'</h6>';
+				 div_map_download +='<p class="para">'+data[i].summary+'</p>';
+
+	div_map_download +='<div id="myModal" class="modal" style="overflow:hidden">';
+	  div_map_download +='<span class="close">&times;</span>';
+	  div_map_download +='<img class="modal-content" id="img01">';
+	  div_map_download +='<div class="downlk"><a href="NewsletterController/download?name='+data[i].title+' && id='+data[i].id+'"><i class="fa fa-download fa-2x downlink"></i></a>';
+	  div_map_download +='</div>';
+
+	div_map_download +='</div>';
+
+			div_map_download +='</div>';
+
+			console.log(div_map_download);
+
+  $('#map_download_filter_data').append(div_map_download);
+
+
+
+		}
+}
+
+});
+});
+
+//filter end s
 </script>

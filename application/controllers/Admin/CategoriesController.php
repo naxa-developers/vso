@@ -168,12 +168,12 @@ class CategoriesController extends CI_Controller
 
   public function edit_categories(){
 
-    $tbl_name= base64_decode($this->input->get('tbl'));
+    $tbl_namee= base64_decode($this->input->get('tbl'));
+    $tbl_name='categories_tbl';
 
     $fields=$this->db->list_fields($tbl_name);
 
-    //  var_dump($nep);
-    //var_dump($_POST);
+
 
     //for($i=0;$i<sizeof($fields);$i++){
       //  echo $nep['eng_lang'];
@@ -203,6 +203,9 @@ class CategoriesController extends CI_Controller
 
     }else{
 
+
+      if($_FILES['cat_pic']['name']==''){
+
       $data=$_POST;
       unset($data['id']);
 
@@ -214,6 +217,32 @@ class CategoriesController extends CI_Controller
       }else{
         redirect('categories_edit');
       }
+
+
+}else{
+
+    $file_name = $_FILES['cat_pic']['name'];
+
+  $img_upload=$this->Dash_model->do_upload($file_name,$tbl_namee);
+  //var_dump ($img_upload);
+  if($img_upload != ""){
+
+    $ext=$img_upload['upload_data']['file_ext'];
+
+
+    $image_path=base_url() . 'uploads/categories/'.$tbl_namee.$ext ;
+    //  var_dump ($image_path);
+    $data=$_POST;
+    unset($data['id']);
+    $data['category_photo']=$image_path;
+
+    $update=$this->Dash_model->update($_POST['id'],$data,$tbl_name);
+
+    $this->session->set_flashdata('msg','Id number '.$_POST['id'].' row data was updated successfully');
+    redirect('categories_tbl?tbl_name='.base64_encode($tbl_name));
+
+}
+}
 
 
     }

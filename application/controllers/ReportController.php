@@ -375,10 +375,11 @@ class ReportController extends CI_Controller
 
   public function map_reports_table(){
 
-     $this->data['site_info']=$this->Report_model->site_setting();
+    $this->data['site_info']=$this->Report_model->site_setting();
+    $this->body['data']=$this->Report_model->get_map_reports_table();
 
     $this->load->view('header',$this->data);
-    $this->load->view('map_reports_table');
+    $this->load->view('map_reports_table',$this->body);
     $this->load->view('footer',$this->data);
   }
 

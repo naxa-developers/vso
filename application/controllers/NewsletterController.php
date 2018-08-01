@@ -35,6 +35,8 @@ public function mail()
 }
 
 
+//mapdownload code
+
 public function download(){
 
   $this->load->dbutil();
@@ -51,4 +53,40 @@ force_download($name,$data);
 
 
 }
+
+//end
+
+public function get_category_pub(){
+
+$cat=$this->input->get('cat');
+$tbl='publication';
+//$cat='muni_pub';
+
+if ($cat=='0') {
+  $pub_fil=$this->Newsletter->get_pub_all($tbl);
+} else {
+  $pub_fil=$this->Newsletter->get_pub_filter($cat,$tbl);
+}
+
+echo json_encode($pub_fil);
+
+
+}
+
+public function get_category_mapdownload(){
+
+  $cat=$this->input->get('cat');
+  $tbl='maps_download';
+  //$cat='muni_pub';
+
+  if ($cat=='0') {
+    $pub_fil=$this->Newsletter->get_pub_all($tbl);
+  } else {
+    $pub_fil=$this->Newsletter->get_pub_filter($cat,$tbl);
+  }
+
+  echo json_encode($pub_fil);
+}
+
+
 }//end

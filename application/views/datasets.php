@@ -106,7 +106,7 @@ p.about {
 				<!--advance Search ends-->
 
 
-
+<?php //var_dump($data); ?>
 <?php foreach ($data as $d) { ?>
 
 
@@ -117,9 +117,17 @@ p.about {
 
 						<p class="small" >
 							<span class="fa fa-eye"></span> <?php echo $d['views']?> views
-							<span class="fa fa-save"></span> <?php echo $d['download']?> download
-							<span class="fa fa-calendar"></span> Last update
-							2012-01-09 T11:59:0
+							<span class="fa fa-save"></span> <?php
+
+
+							if($d['download']!=NULL){
+							echo $d['download'];
+						} else{
+							 echo 0 ;
+						 }
+							 ?> download
+							<span class="fa fa-calendar"></span> Last update: 
+							<?php echo $d['last_updated']?>
 						</p>
 						<p class="about">
 							<?php echo $d['summary'] ?>

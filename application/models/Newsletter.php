@@ -67,5 +67,27 @@ public function register($data)
 }
 
 
+//publication part
 
+
+
+public function get_pub_all($tbl) {
+ $this->db->select('*');
+ $res=$this->db->get($tbl);
+ return $res->result_array();
+
+
+}
+
+public function  get_pub_filter($cat,$tbl){
+  $this->db->select('*');
+  $this->db->where('category',$cat);
+  $res=$this->db->get($tbl);
+  return $res->result_array();
+
+
+
+}
+
+//end
 }
