@@ -252,6 +252,13 @@ return $query->row_array();
 
 }
 
+public function get_icon(){
 
+ $this->db->select('*');
+ $res=$this->db->get('map_marker');
+ return $res->result_array();
+
+
+}
 
 }//end

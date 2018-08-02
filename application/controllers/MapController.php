@@ -706,6 +706,7 @@ public function location_marker(){
 
     $this->body['style_array']=$style_array;
     $this->body['tbl']=$tbl;
+    $this->body['icons']=$this->Map_model->get_icon();
 
     $this->load->view('admin/header');
     $this->load->view('admin/choose_icon',$this->body);
