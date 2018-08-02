@@ -22,7 +22,7 @@ public function send_mail($message,$mail_subject)
   $config['smtp_port']='465';
   $config['smtp_timeout']='30';
   $config['smtp_user']='warhead2556@gmail.com';
-  $config['smtp_pass']='Jupiter255678';
+  $config['smtp_pass']='Jupiter255678...';
   $config['charset']='utf-8';
   $config['newline']="\r\n";
   $config['wordwrap'] = TRUE;

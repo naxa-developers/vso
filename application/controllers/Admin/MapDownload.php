@@ -232,7 +232,7 @@ class MapDownload extends CI_Controller
 
       $this->body['e_data']=$this->Map_model->e_data_map(base64_decode($this->input->get('id')));
       //echo base64_decode($this->input->get('id'));
-      var_dump($this->body['e_data']);
+      //var_dump($this->body['e_data']);
 
       $this->load->view('admin/header');
       $this->load->view('admin/edit_map_download',$this->body);

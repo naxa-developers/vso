@@ -122,6 +122,7 @@ class ReportController extends CI_Controller
 
          $this->data['site_info']=$this->Report_model->site_setting();
 
+
       $this->load->view('header',$this->data);
       $this->load->view('report_page',$this->body);
       $this->load->view('footer',$this->data);
@@ -185,6 +186,9 @@ class ReportController extends CI_Controller
 
       //var_dump($this->body['report_map_layer']);
       $this->data['site_info']=$this->Report_model->site_setting();
+      $this->body['map_set']=$this->Report_model->site_setting();
+
+    
 
       $this->load->view('header',$this->data);
       $this->load->view('report_page',$this->body);

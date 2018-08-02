@@ -11,7 +11,9 @@
                      <b><?php echo $name ?> Emergency Contact</b>
 
                       <span class="tools pull-right">
+
           <a href="<?php echo base_url()?>add_emergency_personnel?cat=<?php echo $cat ?>"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-plus"></i> Add Emergency Contact</button></a>
+          <a href="<?php echo base_url()?>upload_csv_emerg?cat=<?php echo $cat ?>&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-plus"></i> Upload Csv</button></a>
                         </span>
                   </header>
                   <div class="panel-body">

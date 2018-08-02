@@ -146,6 +146,7 @@ $route['edit_emergency_personnel'] = 'Admin/UploadController/edit_emerg_personne
 $route['add_emergency'] = 'Admin/UploadController/add_emergency';
 $route['add_emergency_personnel'] = 'Admin/UploadController/add_emergency_personnel';
 $route['add_icon'] = 'Admin/UploadController/add_icon';
+$route['upload_csv_emerg'] = 'Admin/UploadController/upload_csv_emerg';
 
 
 $route['view_publication'] = 'Admin/PublicationController/view_publication';

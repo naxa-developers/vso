@@ -553,7 +553,9 @@ button.btn.btn-light.btn-sm {
   <script>
 
     var report = '<?php echo $report_map_layer ;?>';
-      console.log(report);
+    var map_lat='<?php echo $map_set['map_lat'] ?>';
+    var map_long='<?php echo $map_set['map_long'] ?>';
+    var map_zoom='<?php echo $map_set['map_zoom'] ?>';
     report_layer = JSON.parse(report);
     //console.log(report_layer);
     /*-- LayerJS--*/
@@ -565,7 +567,7 @@ button.btn.btn-light.btn-sm {
 
       //map part
 
-      var map = L.map('map');//.setView([27.7005033, 85.4328162], 13);
+      var map = L.map('map').setView([map_lat,map_long], map_zoom);
       map.attributionControl.addAttribution("<a href='http://www.naxa.com.np' title = 'Contributor'>NAXA</a>");
       L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
