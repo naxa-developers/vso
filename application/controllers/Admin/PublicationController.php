@@ -44,6 +44,7 @@ class PublicationController extends CI_Controller
       $data=array(
         'title'=>$this->input->post('title'),
         'summary'=>$this->input->post('summary'),
+        'category'=>$this->input->post('category'),
 
 
       );

@@ -39,7 +39,7 @@ class MapDownload extends CI_Controller
       $img_upload=$this->Map_model->do_upload($file_name,$id);
 
 
-      if($img_upload != ""){
+      if($img_upload['status']== 1){
 
           $ext=$img_upload['upload_data']['file_ext'];
 
@@ -47,9 +47,33 @@ class MapDownload extends CI_Controller
 
         $data=array(
 
-          'photo'=>$image_path
+          'photo'=>$image_path,
+          'photo_thumb'=>base_url() . 'uploads/map_download/'.$id.'_thumb'.$ext
 
         );
+
+
+
+        $config['image_library'] = 'gd2';
+        $config['source_image'] = './uploads/map_download/'.$id.$ext;
+        $config['new_image'] = './uploads/map_download/'.$id.$ext;
+        $config['create_thumb'] = TRUE;
+        $config['maintain_ratio'] = TRUE;
+        $config['width']         = 800;
+       $config['height']       = 800;
+
+        $this->load->library('image_lib', $config);
+        $this->image_lib->initialize($config);
+
+
+          $this->image_lib->resize();
+          //var_dump($this->image_lib->resize());
+          //var_dump($this->image_lib->display_errors());
+        //  exit();
+          if(!$this->image_lib->resize())
+ {
+     echo $this->image_lib->display_errors();
+ }
 
         $update=$this->Map_model->update_map_download($id,$data,'maps_download');
         $this->session->set_flashdata('msg','successfully Photo Changed');
@@ -85,7 +109,6 @@ class MapDownload extends CI_Controller
     if(isset($_POST['submit'])){
 
 
-
       unset($_POST['submit']);
       unset($_POST['map_pic']);
       //var_dump($_POST);
@@ -105,7 +128,7 @@ class MapDownload extends CI_Controller
         $img_upload=$this->Map_model->do_upload($file_name,$insert);
 
 
-        if($img_upload != ""){
+        if($img_upload['status'] == 1){
 
             $ext=$img_upload['upload_data']['file_ext'];
 
@@ -114,12 +137,37 @@ class MapDownload extends CI_Controller
 
           $data=array(
 
-            'photo'=>$image_path
+            'photo'=>$image_path,
+            'photo_thumb'=>base_url() . 'uploads/map_download/'.$insert.'_thumb'.$ext
 
           );
 
+
+
+          $config['image_library'] = 'gd2';
+          $config['source_image'] = './uploads/map_download/'.$insert.$ext;
+          $config['new_image'] = './uploads/map_download/'.$insert.$ext;
+          $config['create_thumb'] = TRUE;
+          $config['maintain_ratio'] = TRUE;
+          $config['width']         = 800;
+         $config['height']       = 800;
+
+          $this->load->library('image_lib', $config);
+          $this->image_lib->initialize($config);
+
+
+            $this->image_lib->resize();
+            //var_dump($this->image_lib->resize());
+            //var_dump($this->image_lib->display_errors());
+          //  exit();
+            if(!$this->image_lib->resize())
+   {
+       echo $this->image_lib->display_errors();
+   }
+
+
           $update=$this->Map_model->update_map_download($insert,$data,'maps_download');
-          $this->session->set_flashdata('msg','Emergency Contact Added successfully');
+          $this->session->set_flashdata('msg','Map Added successfully');
           redirect('map_show');
         }else{
 
@@ -184,7 +232,7 @@ class MapDownload extends CI_Controller
 
       $this->body['e_data']=$this->Map_model->e_data_map(base64_decode($this->input->get('id')));
       //echo base64_decode($this->input->get('id'));
-      var_dump($this->body['e_data']);
+      //var_dump($this->body['e_data']);
 
       $this->load->view('admin/header');
       $this->load->view('admin/edit_map_download',$this->body);
@@ -205,6 +253,8 @@ class MapDownload extends CI_Controller
 
 
   }
+
+
 
 
 }

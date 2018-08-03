@@ -16,6 +16,7 @@ class UploadController extends CI_Controller
 
 
     $this->load->model('Upload_model');
+    $this->load->model('Table_model');
   }
 
 
@@ -116,7 +117,7 @@ class UploadController extends CI_Controller
     $this->body['data']=$this->Upload_model->get_emergency_con($cat);
     $this->body['cat']=$cat;
     $this->body['name']=$name;
-
+//var_dump($this->body['data']);
     $this->load->view('admin/header');
     $this->load->view('admin/emergency_contact_tbl',$this->body);
     $this->load->view('admin/footer');
@@ -501,5 +502,98 @@ class UploadController extends CI_Controller
     }
 
   }
+
+
+
+
+  public function upload_csv_emerg(){
+
+
+
+$table_name = $this->input->get('tbl');
+$cat= $this->input->get('cat');
+if (isset($_POST['submit'])) {
+
+$max_id=$this->Table_model->get_max_id($table_name);
+
+
+
+
+
+  $fields=$this->db->list_fields($table_name);
+
+  unset($fields[0]);
+if($table_name == 'emergency_contact'){
+
+
+
+  unset($fields[10]);
+
+}else{
+
+unset($fields[8]);
+
+}
+  $field_name=implode(",",$fields);
+  //var_dump($field_name);
+
+
+
+
+
+  $f=$_FILES["uploadedfile"];
+  $path=$f["tmp_name"];
+  chmod($path, 0777);
+  $filename=$f["name"];
+
+
+// var_dump($path);
+// var_dump($filename);
+// var_dump($field_name);
+// var_dump($table_name);
+
+  $c=$this->Table_model->table_copy($path,$filename,$field_name,$table_name);
+
+
+  if($c==1){
+
+
+      $data=array(
+        'category'=>$cat,
+      );
+      $up=$this->Table_model->update_cat($max_id['id'],$data,$table_name);
+
+    $this->session->set_flashdata('msg','Csv Was successfully Added');
+
+    if($table_name == 'emergency_contact'){
+
+        redirect('emergency_contact?cat='.$cat);
+
+    }else{
+
+          redirect('emergency_personnel?cat='.$cat);
+    }
+
+
+  }else{
+
+    // $this->session->set_flashdata('msg','Id number '.$id.' row data was deleted successfully');
+    // //redirect('data_tables?tbl_name='.base64_encode($table_name));
+
+  }
+
+  // code...
+} else {
+
+
+  $this->load->view('admin/header');
+  $this->load->view('admin/upload_csv_emerg');
+  $this->load->view('admin/footer');
+}
+
+
+  }
+
+
 
 }//main

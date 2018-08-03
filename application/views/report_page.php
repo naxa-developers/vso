@@ -448,8 +448,8 @@ button.btn.btn-light.btn-sm {
                     <div class="col-md-12">
                       <ul class="list-inline tiny">
                         <li class="list-inline-item"><i class="fa fa-user" aria-hidden="true"></i> Category: <a href="#"><?php echo $data['incident_type'] ;?></a> </li>
-                        <li class="list-inline-item"><i class="icon-calendar" aria-hidden="true"></i> Status: <a href="#"> problem</a></li>
-                        <li class="list-inline-item"><i class="fa fa-calendar" aria-hidden="true"></i> 2 hours ago</li>
+                        <li class="list-inline-item"><i class="icon-calendar" aria-hidden="true"></i> Status: <a href="#"> <?php echo $data['status'] ;?></a></li>
+                        <li class="list-inline-item"><i class="fa fa-calendar" aria-hidden="true"></i> <?php echo $data['incident_time'] ;?></li>
                       </ul>
                     </div>
                   </div>
@@ -553,7 +553,9 @@ button.btn.btn-light.btn-sm {
   <script>
 
     var report = '<?php echo $report_map_layer ;?>';
-      console.log(report);
+    var map_lat='<?php echo $map_set['map_lat'] ?>';
+    var map_long='<?php echo $map_set['map_long'] ?>';
+    var map_zoom='<?php echo $map_set['map_zoom'] ?>';
     report_layer = JSON.parse(report);
     //console.log(report_layer);
     /*-- LayerJS--*/
@@ -565,10 +567,44 @@ button.btn.btn-light.btn-sm {
 
       //map part
 
-      var map = L.map('map');//.setView([27.7005033, 85.4328162], 13);
+      var map = L.map('map').setView([map_lat,map_long], map_zoom);
       map.attributionControl.addAttribution("<a href='http://www.naxa.com.np' title = 'Contributor'>NAXA</a>");
       L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+
+        var osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+        });
+
+        googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+          maxZoom: 20,
+          subdomains:['mt0','mt1','mt2','mt3']
+        });
+        googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+          maxZoom: 20,
+          subdomains:['mt0','mt1','mt2','mt3']
+        });
+        googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+          maxZoom: 20,
+          subdomains:['mt0','mt1','mt2','mt3']
+        });
+        googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{
+          maxZoom: 20,
+          subdomains:['mt0','mt1','mt2','mt3']
+        });
+        //var none = "";
+        var baseLayers = {
+          "OpenStreetMap": osm,
+          "Google Streets": googleStreets,
+          "Google Hybrid": googleHybrid,
+          "Google Satellite": googleSat,
+          "Google Terrain": googleTerrain//,
+          //"None": none
+        };
+
+        map.addLayer(googleStreets);
+        layerswitcher = L.control.layers(baseLayers, {}, {collapsed: true}).addTo(map);
+
       $(".layer-toggle").click(function(){
         $(".panel.panel-success").toggle(1000);
         $(".layer-toggle i").toggleClass("fa-chevron-right");
@@ -614,7 +650,7 @@ button.btn.btn-light.btn-sm {
 
           },
           onEachFeature: function(feature, layer) {
-            layer.bindPopup(feature.properties.name);
+            layer.bindPopup(feature.properties.type);
             //feature.properties.layer_name = "transit_stops";
 
           }

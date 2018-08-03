@@ -29,11 +29,12 @@
                                       <label for="exampleInputFile">Map Category</label>
                                     <select name="category">
 
-                                      <option value="admin_map">Administrative Map</option>
-                                      <option value="land_map">Landuse Map</option>
-                                      <option value="socio_map">Socio Economic Map</option>
-                                      <option value="risk_map">Risk And Hazard Map</option>
-                                      <option value="resdource_map">Resource Map</option>
+                                      <option value="admin" >Administrative Maps</option>
+                        							<option value="risk" >Risk and Hazard Maps</option>
+                        							<option value="socio" >Socio Economic Maps</option>
+                        							<option value="tourist" >Tourist Maps</option>
+                        							<option value="land" >Land use and Land Cover</option>
+                        							<option value="other" >Others</option>
 
                                     </select>
                                       </div>

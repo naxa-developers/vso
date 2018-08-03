@@ -89,6 +89,11 @@ $route['report/delete'] = 'ReportController/delete_data';
 $route['map_reports_table'] ='ReportController/map_reports_table';
 $route['map_reports'] ='ReportController/map_reports';
 
+$route['ghatana'] ='Admin/GhatanaController/view_ghatana';
+$route['add_ghatana'] ='Admin/GhatanaController/add_ghatana';
+$route['ghatana_edit'] ='Admin/GhatanaController/ghatana_edit';
+$route['ghatana_delete'] ='Admin/GhatanaController/ghatana_delete';
+
 // Admin routes
 
 $route['admin'] = 'Admin/LoginController';
@@ -141,6 +146,7 @@ $route['edit_emergency_personnel'] = 'Admin/UploadController/edit_emerg_personne
 $route['add_emergency'] = 'Admin/UploadController/add_emergency';
 $route['add_emergency_personnel'] = 'Admin/UploadController/add_emergency_personnel';
 $route['add_icon'] = 'Admin/UploadController/add_icon';
+$route['upload_csv_emerg'] = 'Admin/UploadController/upload_csv_emerg';
 
 
 $route['view_publication'] = 'Admin/PublicationController/view_publication';

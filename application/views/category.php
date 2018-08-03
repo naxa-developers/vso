@@ -1202,10 +1202,9 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                 </table>
                 <!--         <button class="btn btn-default" data-toggle="modal" data-target="#test-modal-3">Launch Modal 3</button>
                  -->      </div>
-                      <div class="modal-footer modal2">
-                        <button type="button" class="btn btn-default btn-sm" style="background-color: #002b59;color: #fff" data-dismiss="modal">Close</button>
-                       <a href=""> <button type="button" class="btn btn-primary btn-sm" style="background-color: #002b59"><i class="fa fa-download" ></i> Download</button></a>
-                       <a href=""> <button type="button" class="btn btn-primary btn-sm" style="background-color: #002b59"><i class="fa fa-eye" ></i> Map</button></a>
+                        <div class="modal-footer modal2" >
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" style="background-color: #002b59>Close</button>
+                        <a href="abc" id="filter_download"> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download" style="background-color: #002b59"></i> Download</button></a>
                        <!-- <a href=""> <button type="button" class="btn btn-info btn-sm"> <i class="fa fa-eye"></i> Map</button></a> -->
                       </div>
                     </div><!-- /.modal-content -->
