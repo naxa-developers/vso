@@ -7,11 +7,11 @@
         <div class="col-lg-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Layer Upload
+                        Edit Map
                     </header>
                     <div class="panel-body">
                         <div class="position-center">
-                          <h5><i class="fa fa-info-circle"></i> Note: Select a Layer File to Upload to Table</h5><br>
+                          <h5><i class="fa fa-info-circle"></i> Note: Edit Map Download Part</h5><br>
                             <form role="form" method="POST" action="" enctype="multipart/form-data">
 
                               <?php
@@ -27,10 +27,15 @@
 
                                   <div class="form-group" >
                                       <label for="exampleInputFile">Map Category</label>
-                                    <select name="category" disabled>
+                                    <select name="category">
 
                                       <option value="<?php echo $e_data['category'] ?>"><?php echo $e_data['category'] ?></option>
-
+                                      <option value="admin" >Administrative Maps</option>
+                        							<option value="risk" >Risk and Hazard Maps</option>
+                        							<option value="socio" >Socio Economic Maps</option>
+                        							<option value="tourist" >Tourist Maps</option>
+                        							<option value="land" >Land use and Land Cover</option>
+                        							<option value="other" >Others</option>
 
                                     </select>
                                       </div>

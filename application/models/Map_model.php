@@ -33,6 +33,16 @@ class Map_model extends CI_Model {
 
 
   }
+  public function get_map_filter_data_csv($tbl,$query,$d){
+    foreach($d as $v){
+    $this->db->select($v['eng_lang'].' AS '.pg_escape_string(preg_replace('/[^A-Za-z0-9\-]/', ' ', $v['nepali_lang'])));
+    }
+   $this->db->where($query);
+   $res=$this->db->get($tbl);
+   return $res;
+
+
+  }
 
   public function get_map_download_data()
   {
@@ -175,7 +185,7 @@ class Map_model extends CI_Model {
     $field_name                     ='map_pic';
     $config['upload_path']          = './uploads/map_download/';
     $config['allowed_types']        = 'gif|jpg|png';
-    $config['max_size']             = 7000;
+    $config['max_size']             = 15000;
     $config['overwrite']             = TRUE;
     $config['file_name']           = $name;
 
@@ -184,6 +194,7 @@ class Map_model extends CI_Model {
     if ( ! $this->upload->do_upload($field_name))
     {
       $error = array('error' => $this->upload->display_errors());
+      $error['status']=0;
       return $error;
 
 
@@ -193,6 +204,8 @@ class Map_model extends CI_Model {
 
 
       $data = array('upload_data' => $this->upload->data());
+
+      $data['status']=1;
 
       return $data;
 
@@ -239,6 +252,13 @@ return $query->row_array();
 
 }
 
+public function get_icon(){
 
+ $this->db->select('*');
+ $res=$this->db->get('map_marker');
+ return $res->result_array();
+
+
+}
 
 }//end

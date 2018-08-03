@@ -15,6 +15,17 @@ return $q->result_array();
 
 
 }
+public function get_map_reports_table(){
+
+
+$this->db->select('*');
+$this->db->order_by('id','DESC');
+$q=$this->db->get('map_reports_table');
+return $q->result_array();
+
+
+
+}
 
 public function site_setting(){
 

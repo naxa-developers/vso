@@ -22,7 +22,7 @@ public function send_mail($message,$mail_subject)
   $config['smtp_port']='465';
   $config['smtp_timeout']='30';
   $config['smtp_user']='warhead2556@gmail.com';
-  $config['smtp_pass']='Jupiter255678';
+  $config['smtp_pass']='Jupiter255678...';
   $config['charset']='utf-8';
   $config['newline']="\r\n";
   $config['wordwrap'] = TRUE;
@@ -67,5 +67,27 @@ public function register($data)
 }
 
 
+//publication part
 
+
+
+public function get_pub_all($tbl) {
+ $this->db->select('*');
+ $res=$this->db->get($tbl);
+ return $res->result_array();
+
+
+}
+
+public function  get_pub_filter($cat,$tbl){
+  $this->db->select('*');
+  $this->db->where('category',$cat);
+  $res=$this->db->get($tbl);
+  return $res->result_array();
+
+
+
+}
+
+//end
 }

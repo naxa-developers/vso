@@ -82,38 +82,19 @@ div#exampleModal {
                           <div class="form-group">
 
                             <div class="row">
+
+                              <?php foreach($icons as $v){ ?>
+
                               <div class="col-md-3">
 
                                   <label>
-                                    <input id="fb3" type="radio" value="<?php echo base_url();?>assets/img/mark.png" name="icon" value="med" />
-                                    <img class="map-marker" src="<?php echo base_url();?>assets/img/mark.png"  alt="Logo"  >
+                                    <input id="fb3" type="radio" value="<?php echo $v['marker_path']?>" name="icon" value="med" />
+                                    <img class="map-marker" src="<?php echo $v['marker_path']?>"  alt="Logo"  >
 
                                   </label>
                                 </div>
 
-                                <div class="col-md-3">
-                                  <label>
-                                    <input id="fb3" type="radio" value="<?php echo base_url();?>assets/img/mark.png" name="icon" value="med" />
-                                    <img class="map-marker" src="<?php echo base_url();?>assets/img/mark.png" alt="Logo" >
-
-                                  </label>
-                                </div>
-
-                                <div class="col-md-3">
-                                  <label>
-                                    <input id="fb3" type="radio" value="<?php echo base_url();?>assets/img/mark.png" name="icon" value="med" />
-                                    <img class="map-marker" src="<?php echo base_url();?>assets/img/mark.png" alt="Logo" >
-
-                                  </label>
-                                </div>
-
-                                <div class="col-md-3">
-                                  <label>
-                                    <input id="fb3" type="radio" value="<?php echo base_url();?>assets/img/mark.png" name="icon" value="med" />
-                                    <img class="map-marker" src="<?php echo base_url();?>assets/img/mark.png" alt="Logo">
-
-                                  </label>
-                                </div>
+                              <?php } ?>
 
 
 

@@ -88,6 +88,21 @@ public function get_lang($tbl){
 
 }
 
+public function get_max_id($tbl){
+
+  $this->db->select_max('id');
+  $query = $this->db->get($tbl);
+   return $query->row_array();
+
 
 
 }
+ public function update_cat($id,$data,$tbl){
+
+   $this->db->where('id >',$id);
+   $u=$this->db->update($tbl,$data);
+   return $u;
+
+ }
+
+}//end

@@ -320,6 +320,32 @@ public function copyright(){
 
 }
 
+public function map_zoom(){
+
+
+  unset($_POST['submit']);
+
+
+
+
+  $update=$this->Site_model->update_data($_POST);
+  echo $update;
+
+  if($update){
+
+    $this->session->set_flashdata('msg','Map zoom and center  successfully Updated');
+    redirect('site_setting');
+
+  }else{
+
+
+    //error
+  }
+
+
+
+}
+
 
 
 }//end

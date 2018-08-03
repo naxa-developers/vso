@@ -70,21 +70,34 @@
 	<div class="publish-srch">
     <div class="row">
 
+
+
     <div class="col-md-6 col-md-offset-3">
           <div class="input-group">
             <input class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here...">
 
           </div>
+
+
         </div>
 
-    <div class="col-md-6">
+        <div class="col-md-4">
+           <select class="custom-select multiselect-icon" id="pub_cat">
 
-</div>
+                   <option value=0>ALL</option>
+                   <option value="muni_pub">Municipal Publications</option>
+                   <option value="law_act">Laws and Acts</option>
+                   <option value="plan_politics">Plans and Policies</option>
+                   <option value="others">Others</option>
+           </select>
+         </div>
+
+
 
 </div>
 
 <!-- data Column -->
-<div class="row">
+<div class="row" id="filter_pub">
 
 
     <?php foreach($data as $d ){ ?>
@@ -102,22 +115,6 @@
   <?php } ?>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 
 
@@ -131,7 +128,7 @@
 <script type="text/javascript">
 
 function myFunction() {
-  console.log('adas');
+
   // Declare variables
   var input, filter, div, h5, a, i;
   input = document.getElementById('myInput');
@@ -156,5 +153,57 @@ function myFunction() {
       }
   }
 }
+
+$('#pub_cat').change(function(){
+
+var category = $(this).val();
+$.ajax({
+  type: "GET",
+  //  data: name,
+  url:  "NewsletterController/get_category_pub?cat="+category,
+  beforeSend: function() {
+      $('#filter_pub').empty();
+      $('#filter_pub').html('<h2>Loading</h2>');
+  },
+  complete: function() {
+    // $('#filter_pub').empty();
+    // $('#filter_pub').append('<h2>Loading</h2>');
+  },
+  success: function (result) {
+
+    $('#filter_pub').html('');
+
+
+  var data = JSON.parse(result);
+  console.log(data.length);
+//console.log (data[0].summary);
+  var i;
+
+
+  for(i=0; i<data.length; i++){
+      var div_pub = "";
+    console.log(data.length);
+
+  div_pub +='<div class="col-md-6 myUL" >';
+    div_pub +='<div class="col-md-12 publish">';
+    div_pub +='<div class="row">';
+     div_pub +='<div class="col-md-4"><img src="'+data[i].photo+'" id="publish"> </div>';
+    div_pub +='<div class="col-md-8"><h5 id="'+data[i].id+'">'+data[i].title+'</h5>';
+     div_pub +='<p class="publish-des">'+data[i].summary+'</p>';
+  div_pub +='<a href="<?php echo base_url()?>download?file='+data[i].file+' && title='+data[i].title+'"><button type="button" class="btn btn-sm pull-right btn-primary"><i class="fa fa-download"></i> Download</button></a>';
+    div_pub +='</div>';
+  div_pub +='</div>';
+div_pub +='</div>';
+div_pub +='</div>';
+
+$('#filter_pub').append(div_pub);
+console.log(div_pub);
+}
+
+
+  }
+
+})
+});
 
 </script>

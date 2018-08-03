@@ -25,6 +25,19 @@
             <div class="position-center">
               <form role="form" method="POST" action="" enctype="multipart/form-data">
 
+                <div class="form-group">
+                    <label for="exampleInputFile">Publication category</label>
+                  <select name="category">
+
+
+                    <option value="muni_pub">Municipal Publications</option>
+                    <option value="law_act">Laws and Acts</option>
+                    <option value="plan_politics">Plans and Policies</option>
+                    <option value="others">Others</option>
+                  </select>
+                    </div>
+
+
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Title</label>
