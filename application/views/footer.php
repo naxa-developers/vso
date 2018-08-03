@@ -13,6 +13,9 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 div#exampleModal {
     overflow: hidden;
 }
+button.btn.btn-secondary {
+    z-index: 0;
+}
      </style>
 
       <footer id="website-footer" class="bg-dark">
@@ -37,7 +40,7 @@ div#exampleModal {
                     <div class="input-group">
                       <input type="email" class="form-control" name="email" placeholder="Email Address" aria-label="Email Address" aria-describedby="basic-addon2">
                       <div class="input-group-append">
-                                           <button class="btn btn-secondary" name="submit"  type="submit" data-toggle="modal" data-target="#exampleModal">Subscribe</button>
+                                           <button class="btn btn-secondary" name="submit"  type="submit" data-toggle="modal"  data-target="#exampleModal">Subscribe</button>
                         <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

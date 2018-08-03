@@ -109,6 +109,11 @@
     overflow-x: hidden;
   }
 
+li.nav-item.active {
+    border-bottom: 3px solid #d20b0b;
+}
+
+
 </style>
 </head>
 
@@ -140,8 +145,7 @@
                     <li class="nav-item active">
                       <a class="nav-link" href="index.php"><i class="fa fa-home"></i><span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                    </li>
+                    
                     <li class="nav-item">
                       <a class="nav-link" href="<?php echo base_url()?>category?tbl=">Maps</a>
                     </li>

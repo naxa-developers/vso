@@ -47,7 +47,7 @@
 .responstable {
   margin: 1em 0em;
   width: 100%;
-  overflow: hidden;
+  overflow:auto;
   background: #FFF;
   color: #000;
   border-radius: 0px;

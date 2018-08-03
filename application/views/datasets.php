@@ -2,6 +2,7 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/tokml.js"></script>
 <script src="<?php echo base_url();?>assets/js/download.js"></script>
+<script src="<?php echo base_url();?>assets/js/pagination.js"></script>
 <link rel="stylesheet" type="text/css" href="assets/css/datasets.css">
 <style type="text/css">
 
@@ -34,6 +35,49 @@ p.about {
 	color: #222;
 	font-weight: 600;
 }
+.pagination {
+  display: block;
+  width: 75%;
+  margin: 1em auto;
+  text-align: center;
+  
+  &:after {
+    content: '';
+    clear: both;
+  }
+}
+
+.pagination-button {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #e0e0e0;  
+  background-color: #eee;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s;
+  
+  &:hover {
+    background-color: #ddd;
+    color: #3366cc;
+  }
+  
+  &.active {
+    background-color: #bbb;
+    border-color: #bbb;
+    color: #3366cc;
+  }
+  
+  $border-radius: 18px;  
+  
+  &:first-of-type {
+    border-radius: $border-radius 0 0 $border-radius;
+  }
+
+  &:last-of-type {
+    border-radius: 0 $border-radius $border-radius 0;
+  }
+}
+
 </style>
 
 
@@ -110,7 +154,7 @@ p.about {
 <?php foreach ($data as $d) { ?>
 
 
-				<div class="row">
+				<div class="row article-loop">
 
 
 					<div class="col-sm-8 myUL"> <h5 id="<?php echo $d['id']?>" class="dataset-head"><?php echo $d['category_name']?></h5>
@@ -128,6 +172,7 @@ p.about {
 						<a href="<?php echo base_url()?>get_csv_dataset?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm"><span class="fa fa-download"></span> CSV</button></a>
 						<a href="<?php echo base_url()?>get_geojson_dataset?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm"><span class="fa fa-download"></span> Geojson</button></a>
 						<a href="<?php echo base_url()?>category?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm"><span class="fa fa-eye"></span> Map</button></a>
+						<a href="<?php echo base_url()?>category?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm"><span class="fa fa-table"></span> Table</button></a>
 
 
 							<hr>
@@ -258,3 +303,6 @@ p.about {
 			}
 
 			</script>
+<script>
+$('.article-loop').paginate(7);
+</script>

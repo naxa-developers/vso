@@ -15,6 +15,9 @@
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/leaflet.label.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/changunarayan.js"></script>
 <style>
+a#viewall {
+    width: 235px;
+}
 .modal-content{
   background-color: #f5f4f4;
 }
@@ -28,7 +31,9 @@ input.size-box {
     margin-top: 215px !important;
     margin-left: -505px !important;
 } */
-
+.fa-trash{
+  color: red;
+}
 .treeview ul.show{
 height: auto;
 max-height: 100px;
@@ -1198,8 +1203,9 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                 <!--         <button class="btn btn-default" data-toggle="modal" data-target="#test-modal-3">Launch Modal 3</button>
                  -->      </div>
                       <div class="modal-footer modal2">
-                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default btn-sm" style="background-color: #002b59;color: #fff" data-dismiss="modal">Close</button>
                        <a href=""> <button type="button" class="btn btn-primary btn-sm" style="background-color: #002b59"><i class="fa fa-download" ></i> Download</button></a>
+                       <a href=""> <button type="button" class="btn btn-primary btn-sm" style="background-color: #002b59"><i class="fa fa-eye" ></i> Map</button></a>
                        <!-- <a href=""> <button type="button" class="btn btn-info btn-sm"> <i class="fa fa-eye"></i> Map</button></a> -->
                       </div>
                     </div><!-- /.modal-content -->

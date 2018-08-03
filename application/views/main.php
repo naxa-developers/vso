@@ -1,3 +1,4 @@
+
 <div class="banner-item">
           <img src="<?php echo $site_info['cover_photo'] ?>" class="banner-img">
           <div class="container clearfix">
