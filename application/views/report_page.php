@@ -406,7 +406,7 @@ button.btn.btn-light.btn-sm {
                   <div class="row">
                     <div class="col-md-3 blog-panel">
                       <a href="#" class="thumbnail">
-                        <img src="<?php echo $data['photo'] ;?>" alt="image">
+                        <img src="<?php echo $data['photo_thumb'] ;?>" alt="image">
                       </a>
                     </div>
                     <div class="fancy col-md-9">
@@ -424,7 +424,7 @@ button.btn.btn-light.btn-sm {
     <h3>Incident Type : <?php echo $data['incident_type'] ;?></h3>
     <hr>
     <div class="row">
-      <div class="col-md-4"><img src="<?php echo $data['photo'] ;?>" alt="image" class="read-mor"></div>
+      <div class="col-md-4"><img src="<?php echo $data['photo_thumb'] ;?>" alt="image" class="read-mor"></div>
       <div class="col-md-8">
       <?php echo $data['message'] ;?>
         <div class="row sent">

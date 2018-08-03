@@ -188,7 +188,7 @@ class ReportController extends CI_Controller
       $this->data['site_info']=$this->Report_model->site_setting();
       $this->body['map_set']=$this->Report_model->site_setting();
 
-    
+
 
       $this->load->view('header',$this->data);
       $this->load->view('report_page',$this->body);
@@ -234,17 +234,17 @@ class ReportController extends CI_Controller
         $data=array(
 
           'photo'=>$image_path,
-          'photo_thumb'=>base_url() . 'uploads/report/'.$insert.'_thumb'.$ext
+          'photo_thumb'=>base_url() . 'uploads/report/'.$insert.'_thumb.'.$ext
 
         );
 
         $config['image_library'] = 'gd2';
-        $config['source_image'] = './uploads/report/'.$insert.$ext;
-        $config['new_image'] = './uploads/report/'.$insert.$ext;
+        $config['source_image'] = './uploads/report/'.$insert.'.'.$ext;
+        $config['new_image'] = './uploads/report/'.$insert.'.'.$ext;
         $config['create_thumb'] = TRUE;
         $config['maintain_ratio'] = TRUE;
-        $config['width']         = 800;
-       $config['height']       = 800;
+        $config['width']         = 500;
+       $config['height']       = 500;
 
         $this->load->library('image_lib', $config);
         $this->image_lib->initialize($config);
