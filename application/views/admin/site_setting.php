@@ -21,6 +21,13 @@
         <section class="panel">
           <header class="panel-heading">
             Site Setting
+
+            <span class="tools pull-right">
+              switch Language
+  <a class="nav-link" href="<?php echo base_url();?>site_setting_nep"><img src="<?php echo base_url();?>assets/img/nep.png" height="15"></a>
+  <a class="nav-link" href="<?php echo base_url();?>site_setting"><img src="<?php echo base_url();?>assets/img/uk.png" height="15"></a>
+  </span>
+
           </header>
 
           <?php

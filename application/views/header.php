@@ -143,26 +143,30 @@
                     <li class="nav-item">
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url()?>category?tbl=">Maps</a>
+                      <a class="nav-link" href="<?php echo base_url()?>category?tbl="><?php echo $site_info['nav_1'] ?></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url()?>report_page">Incident Reports</a>
+                      <a class="nav-link" href="<?php echo base_url()?>report_page"><?php echo $site_info['nav_2'] ?></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url()?>contact">Contacts</a>
+                      <a class="nav-link" href="<?php echo base_url()?>contact"><?php echo $site_info['nav_3'] ?></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url()?>inventory">Inventory</a>
+                      <a class="nav-link" href="<?php echo base_url()?>inventory"><?php echo $site_info['nav_4'] ?></a>
                     </li>
                     <li class="nav-item">
-                     <a class="nav-link" href="<?php echo base_url()?>datasets">Datasets</a>
+                     <a class="nav-link" href="<?php echo base_url()?>datasets"><?php echo $site_info['nav_5'] ?></a>
                    </li>
                       <li class="nav-item">
-                     <a class="nav-link" href="<?php echo base_url()?>publication">Publication</a>
+                     <a class="nav-link" href="<?php echo base_url()?>publication"><?php echo $site_info['nav_6'] ?></a>
                     </li>
 
                      <li class="nav-item">
-                      <span class="nav-link"><img src="<?php echo base_url();?>assets/img/uk.png" height="15"> / <img src="<?php echo base_url();?>assets/img/nep.png" height="15"></span>
+                   <a class="nav-link" href="<?php echo base_url();?>en" ><img src="<?php echo base_url();?>assets/img/uk.png" height="15"></a>
+
+                    </li>
+                     <li class="nav-item">
+                  <a class="nav-link" href="<?php echo base_url();?>nep"><img src="<?php echo base_url();?>assets/img/nep.png" height="15"></a>
                     </li>
 
                   </ul>

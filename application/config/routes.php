@@ -55,6 +55,10 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 // user routes
+
+$route['en'] ='Lang/eng';
+$route['nep'] ='Lang/nep';
+
 $route['main'] ='MainController/default_page';
 $route['datasets'] ='MainController/dataset_page';
 $route['about'] ='MainController/about_page';
@@ -75,7 +79,9 @@ $route['location_marker'] ='MapController/location_marker';
 $route['data_map'] ='MapController/data_map';
 
 $route['news_register'] ='NewsletterController/register';
+
 $route['site_setting'] ='Admin/SiteController/site_setting';
+$route['site_setting_nep'] ='Admin/SiteController/site_setting_nep';
 
 
 

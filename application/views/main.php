@@ -6,7 +6,7 @@
               <p>
                <?php echo $site_info['cover_big'] ?>
               </p>
-              <button class="btn btn-lg btn-outline-white margin-top-sm" id="started">Get Started</button>
+              <button class="btn btn-lg btn-outline-white margin-top-sm" id="started"> <?php echo $site_info['get_started'] ?></button>
             </div>
             <!--<div class="banner-infograph d-none d-md-block pull-right">
               <img src="assets/img/info5.png" alt="">
@@ -20,12 +20,12 @@
             <div class="row justify-content-md-center">
               <div class="col-md-6">
                 <div class="search-wrap text-center">
-                  <h3 class="mb-3">Search For <strong>Datasets</strong></h3>
+                  <h3 class="mb-3"><?php echo $site_info['search_dataset'] ?><strong></strong></h3>
                   <form method="POST" action="<?php echo base_url()?>datasets">
                     <div class="input-group input-group-lg">
                   <input type="text" class="form-control" name="search" placeholder="Keywords" aria-label="Keywords" aria-describedby="basic-addon2">
                   <div class="input-group-append">
-                    <button class="btn btn-secondary" name="submit_search" type="submit">Search</button>
+                    <button class="btn btn-secondary" name="submit_search" type="submit"><?php echo $site_info['search']?></button>
                   </div>
                 </div>
                   </form>
@@ -40,13 +40,13 @@
 
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active" id="hazard-tab" data-toggle="tab" href="#hazard" role="tab" aria-controls="hazard" aria-selected="true">Resources</a>
+            <a class="nav-link active" id="hazard-tab" data-toggle="tab" href="#hazard" role="tab" aria-controls="hazard" aria-selected="true"><?php echo $site_info['cat_1'] ?></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="exposure-tab" data-toggle="tab" href="#exposure" role="tab" aria-controls="exposure" aria-selected="false">Hazard & Vulnerability</a>
+            <a class="nav-link" id="exposure-tab" data-toggle="tab" href="#exposure" role="tab" aria-controls="exposure" aria-selected="false"><?php echo $site_info['cat_2'] ?></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="baseline-tab" data-toggle="tab" href="#baseline" role="tab" aria-controls="baseline" aria-selected="false">Base Data</a>
+            <a class="nav-link" id="baseline-tab" data-toggle="tab" href="#baseline" role="tab" aria-controls="baseline" aria-selected="false"><?php echo $site_info['cat_3'] ?></a>
           </li>
         </ul>
         <div class="tab-content" id="myTabContent">
