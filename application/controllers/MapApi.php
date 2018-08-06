@@ -26,7 +26,14 @@ echo json_encode($response);
 public function geojson(){
 
 
-  $tbl=$_POST['table'];;
+  $tbl=$_POST['table'];
+  
+if(!$this->db->table_exists($tbl)){
+
+$response['msg']='Data table does not exists';
+echo json_encode($response)
+
+}else{
   $d=$this->Table_model->get_lang($tbl);
   /* get the object   */
   $report = $this->Table_model->get_asjson($d,$tbl);
@@ -60,7 +67,7 @@ public function geojson(){
 $dataset_geojson=json_encode($dataset_array);
 echo $dataset_geojson;
 
-
+}
 
 
 }
