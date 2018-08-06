@@ -27,11 +27,11 @@ public function geojson(){
 
 
   $tbl=$_POST['table'];
-  
+
 if(!$this->db->table_exists($tbl)){
 
 $response['msg']='Data table does not exists';
-echo json_encode($response)
+echo json_encode($response);
 
 }else{
   $d=$this->Table_model->get_lang($tbl);
