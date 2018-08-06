@@ -9,6 +9,8 @@ class MainController extends CI_Controller
     $this->load->helper('url');
     $this->load->model('Main_model');
     $this->load->model('Upload_model');
+
+
   }
 
 
@@ -23,12 +25,32 @@ class MainController extends CI_Controller
     $this->body['ddr']=$this->Main_model->get_contact('ddr','emergency_personnel');
     $this->body['personnel']=$this->Main_model->get_contact('personnel','emergency_personnel');
     $this->body['members']=$this->Main_model->get_contact('members','emergency_personnel');
-    $this->data['site_info']=$this->Main_model->site_setting();
+    //language
+    if($this->session->userdata('Language')==NULL){
 
-    $this->load->view('header',$this->data);
+      $this->session->set_userdata('Language','nep');
+    }
+
+    $lang=$this->session->get_userdata('Language');
+
+
+    if($lang['Language']=='en'){
+
+      $this->body['site_info']=$this->Main_model->site_setting_en();
+
+    }else{
+
+     $this->body['site_info']=$this->Main_model->site_setting_nep();
+
+
+    }
+
+    //language
+
+    $this->load->view('header',$this->body);
     //$this->load->view('contact',$this->body);
     $this->load->view('contact_static',$this->body);
-    $this->load->view('footer',$this->data);
+    $this->load->view('footer',$this->body);
 
   }
 
@@ -47,10 +69,30 @@ class MainController extends CI_Controller
     $this->load->model('Publication_model');
     $this->body['data']=$this->Publication_model->get_all_data();
 
-     $this->data['site_info']=$this->Main_model->site_setting();
-    $this->load->view('header',$this->data);
+    //language
+    if($this->session->userdata('Language')==NULL){
+
+      $this->session->set_userdata('Language','nep');
+    }
+
+    $lang=$this->session->get_userdata('Language');
+
+
+    if($lang['Language']=='en'){
+
+      $this->body['site_info']=$this->Main_model->site_setting_en();
+
+    }else{
+
+     $this->body['site_info']=$this->Main_model->site_setting_nep();
+
+
+    }
+
+    //language
+    $this->load->view('header',$this->body);
     $this->load->view('publication',$this->body);
-    $this->load->view('footer',$this->data);
+    $this->load->view('footer',$this->body);
   }
 
 
@@ -84,12 +126,35 @@ class MainController extends CI_Controller
 
     //views add end
 
-  $this->data['site_info']=$this->Main_model->site_setting();
+
+    //language
+    if($this->session->userdata('Language')==NULL){
+
+      $this->session->set_userdata('Language','nep');
+    }
+
+    $lang=$this->session->get_userdata('Language');
+
+
+    if($lang['Language']=='en'){
+
+      $this->body['site_info']=$this->Main_model->site_setting_en();
+
+    }else{
+
+     $this->body['site_info']=$this->Main_model->site_setting_nep();
+
+
+    }
+
+    //language
+
+
     //$this->body['emerg_contact']=$this->Upload_model->get_emergency_con();
 
-    $this->load->view('header',$this->data);
+    $this->load->view('header',$this->body);
     $this->load->view('main',$this->body);
-    $this->load->view('footer',$this->data);
+    $this->load->view('footer',$this->body);
 
 
 
@@ -126,12 +191,32 @@ class MainController extends CI_Controller
 
 
     $this->Report_model->update_views($count['id'],$data);
-     $this->data['site_info']=$this->Main_model->site_setting();
+    //language
+    if($this->session->userdata('Language')==NULL){
+
+      $this->session->set_userdata('Language','nep');
+    }
+
+    $lang=$this->session->get_userdata('Language');
+
+
+    if($lang['Language']=='en'){
+
+      $this->body['site_info']=$this->Main_model->site_setting_en();
+
+    }else{
+
+     $this->body['site_info']=$this->Main_model->site_setting_nep();
+
+
+    }
+
+    //language
     //views add end
 
-    $this->load->view('header',$this->data);
+    $this->load->view('header',$this->body);
     $this->load->view('about',$this->body);
-    $this->load->view('footer',$this->data);
+    $this->load->view('footer',$this->body);
 
 
 
@@ -180,11 +265,31 @@ class MainController extends CI_Controller
 
     }
     //var_dump($this->body['data']);
-     $this->data['site_info']=$this->Main_model->site_setting();
+    //language
+    if($this->session->userdata('Language')==NULL){
 
-    $this->load->view('header', $this->data);
+      $this->session->set_userdata('Language','nep');
+    }
+
+    $lang=$this->session->get_userdata('Language');
+
+
+    if($lang['Language']=='en'){
+
+      $this->body['site_info']=$this->Main_model->site_setting_en();
+
+    }else{
+
+     $this->body['site_info']=$this->Main_model->site_setting_nep();
+
+
+    }
+
+    //language
+
+    $this->load->view('header', $this->body);
     $this->load->view('datasets',$this->body);
-    $this->load->view('footer', $this->data);
+    $this->load->view('footer', $this->body);
 
 
   }
@@ -234,10 +339,30 @@ class MainController extends CI_Controller
   }
 
   public function inventory(){
-$this->data['site_info']=$this->Main_model->site_setting();
-    $this->load->view('header', $this->data);
+    //language
+    if($this->session->userdata('Language')==NULL){
+
+      $this->session->set_userdata('Language','nep');
+    }
+
+    $lang=$this->session->get_userdata('Language');
+
+
+    if($lang['Language']=='en'){
+
+      $this->body['site_info']=$this->Main_model->site_setting_en();
+
+    }else{
+
+     $this->body['site_info']=$this->Main_model->site_setting_nep();
+
+
+    }
+
+    //language
+    $this->load->view('header', $this->body);
     $this->load->view('inventory');
-    $this->load->view('footer', $this->data);
+    $this->load->view('footer', $this->body);
 
 
   }

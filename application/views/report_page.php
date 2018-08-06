@@ -368,13 +368,13 @@ button.btn.btn-light.btn-sm {
     <nav class="navbar navbar-expand-sm">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="#"><i class="fa fa-map" aria-hidden="true"></i> Map</a>
+          <a class="nav-link" href="#"><i class="fa fa-map" aria-hidden="true"></i><?php echo $site_info['map'] ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="map_reports"><i class="fa fa-database" aria-hidden="true"></i> Data</a>
+          <a class="nav-link" href="map_reports"><i class="fa fa-database" aria-hidden="true"></i><?php echo $site_info['data'] ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="map_reports_table"><i class="fa fa-pencil-square" aria-hidden="true"></i> Ghatana Bibaran</a>
+          <a class="nav-link" href="map_reports_table"><i class="fa fa-pencil-square" aria-hidden="true"></i><?php echo $site_info['ghatana_bib'] ?></a>
         </li>
       </ul>
     </nav>
@@ -406,7 +406,7 @@ button.btn.btn-light.btn-sm {
                   <div class="row">
                     <div class="col-md-3 blog-panel">
                       <a href="#" class="thumbnail">
-                        <img src="<?php echo $data['photo'] ;?>" alt="image">
+                        <img src="<?php echo $data['photo_thumb'] ;?>" alt="image">
                       </a>
                     </div>
                     <div class="fancy col-md-9">
@@ -424,7 +424,7 @@ button.btn.btn-light.btn-sm {
     <h3>Incident Type : <?php echo $data['incident_type'] ;?></h3>
     <hr>
     <div class="row">
-      <div class="col-md-4"><img src="<?php echo $data['photo'] ;?>" alt="image" class="read-mor"></div>
+      <div class="col-md-4"><img src="<?php echo $data['photo_thumb'] ;?>" alt="image" class="read-mor"></div>
       <div class="col-md-8">
       <?php echo $data['message'] ;?>
         <div class="row sent">
@@ -533,7 +533,7 @@ button.btn.btn-light.btn-sm {
 
           <div class="col-md-2 no-padding">
             <div class="text-center dropdown-category_dropdown filter-check">
-              <button name="submit" class="btn btn-light btn-sm" type="submit">Apply</button>
+              <button name="submit" class="btn btn-light btn-sm" type="submit"><?php echo $site_info['apply'] ?></button>
             </div>
           </div>
 

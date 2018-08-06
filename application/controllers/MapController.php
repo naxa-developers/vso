@@ -10,6 +10,7 @@ class MapController extends CI_Controller
     $this->load->model('Map_model');
     $this->load->model('Dash_model');
     $this->load->model('Report_model');
+    $this->load->model('Main_model');
   }
 
   public function data_map(){
@@ -34,11 +35,31 @@ public function map_download()
 {
 
  $this->body['data']=$this->Map_model->get_map_download_data();
- $this->data['site_info']=$this->Report_model->site_setting();
+ //language
+ if($this->session->userdata('Language')==NULL){
 
-  $this->load->view('header',$this->data);
+   $this->session->set_userdata('Language','nep');
+ }
+
+ $lang=$this->session->get_userdata('Language');
+
+
+ if($lang['Language']=='en'){
+
+   $this->body['site_info']=$this->Main_model->site_setting_en();
+
+ }else{
+
+  $this->body['site_info']=$this->Main_model->site_setting_nep();
+
+
+ }
+
+ //language
+
+  $this->load->view('header',$this->body);
   $this->load->view('map_download',$this->body);
-  $this->load->view('footer',$this->data);
+  $this->load->view('footer',$this->body);
 
 }
 
@@ -273,15 +294,37 @@ if(!$this->db->table_exists($tbl['category_table'])){
   $def_select=$this->Dash_model->get_default_cat_data('categories_tbl');
   $this->body['default_selected_cat_tbl']=$def_select['category_table'];
 
-  $this->data['site_info']=$this->Report_model->site_setting();
+ //language
+
+ if($this->session->userdata('Language')==NULL){
+
+   $this->session->set_userdata('Language','nep');
+ }
+
+ $lang=$this->session->get_userdata('Language');
+
+
+ if($lang['Language']=='en'){
+
+   $this->body['site_info']=$this->Main_model->site_setting_en();
+
+ }else{
+
+  $this->body['site_info']=$this->Main_model->site_setting_nep();
+
+
+ }
+
+//language
+
   $this->body['map_zoom_center']=$this->Report_model->site_setting();
 
   //views add end
 //  exit();
 
-    $this->load->view('header',$this->data);
+    $this->load->view('header',$this->body);
     $this->load->view('category.php',$this->body);
-    $this->load->view('footer',$this->data);
+    $this->load->view('footer',$this->body);
 
 
 
@@ -872,6 +915,8 @@ public function filter_query()
   $get=$this->Map_model->get_map_filter_data($tbl,$filter_qry,$d);
   $get_map=$this->Dash_model->filter_map_data($tbl,$filter_qry);
   $get_style=$this->Dash_model->get_sub_cat_style($tbl);
+
+
 
   foreach($get_map as $cat_data){
 

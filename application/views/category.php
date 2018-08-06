@@ -956,7 +956,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
           <ul class="nav nav-tabs" role="tablist">
             <li class="basemap chevron1" id="close-panel-left"><img src="<?php echo base_url()?>assets/img/up-arrow.png" class="test-icon chevron"></li>
             <!-- <li role="presentation" class="basemap"><a href="#layers" aria-controls="profile" role="tab" data-toggle="tab"><img src="<?php echo base_url()?>assets/img/layers-icon.png" class="test-icon"></a></li> -->
-            <li role="presentation" class="basemap"><a href="<?php echo base_url()?>map_download"><img src="<?php echo base_url()?>assets/img/map-down.png" class="test-icon">&nbsp;<sub class="text-light" style="font-size: 13px;">Maps</sub></a></li>
+            <li role="presentation" class="basemap"><a href="<?php echo base_url()?>map_download"><img src="<?php echo base_url()?>assets/img/map-down.png" class="test-icon">&nbsp;<sub class="text-light" style="font-size: 13px;"><?php echo $site_info['map']?></sub></a></li>
           </ul>
         </div>
       </div>
@@ -2122,6 +2122,7 @@ $(document).on('click','.filter_value_item',function(){
 
 
 var count_filter = 0;
+
 $('.applied_filter').on('click',function(){
 
   //console.log('click');
@@ -2135,7 +2136,8 @@ $('.applied_filter').on('click',function(){
 
   '</div>');
 
-  $('#filter_tbl_name').text(show_qry);
+  $('h6#filter_tbl_name').html(""+show_qry+"");
+
 
 
   $('.applied-list').append('<tr class="'+qry_tbl+count_filter+'list"><th scope="row"></th><td>'+qry_tbl+'</td><td>'+show_qry+'</td><td><i class="fa fa-trash delete_filter" id="'+qry_tbl+count_filter+'"></i></td></tr>');
@@ -2151,6 +2153,8 @@ $('.applied_filter').on('click',function(){
       //  $.LoadingOverlay("hide", true);
     },
     success: function (result) {
+
+      console.log(result);
 
      var data=JSON.parse(result);
   var modal_table=JSON.parse(data.table_data);
