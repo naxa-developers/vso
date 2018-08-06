@@ -101,7 +101,7 @@ table.responstable {
 
 <div class="container">
 <div id="map-table-jana">
-<form  method="POST" action="ReportController/date_test">
+<!-- <form  method="POST" action="ReportController/date_test"> -->
   <div class="row">
     <div class="col-md-12">
       <div class="report-down">
@@ -288,8 +288,8 @@ table.responstable {
   </div>
 </div>
   </div>
-  <button type="submit" name="submit" class="btn btn-info">Submit</button>
-  </form>
+  <!-- <button type="submit" name="submit" class="btn btn-info">Submit</button>
+  </form> -->
 <div class="row" id="reportable">
  <!-- responsive table for displaying contact directory -->
  <table class="responstable">
