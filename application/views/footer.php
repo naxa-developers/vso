@@ -35,18 +35,19 @@ button.btn.btn-secondary {
 
               <div class="col-md-4">
                 <div class="fbox">
-                  <h4>Subscribe To Our Newsletter</h4>
+                  <h4><?php echo $site_info['subscribe'] ?></h4>
                   <form action="" method="">
                     <div class="input-group">
                       <input type="email" class="form-control" name="email" placeholder="Email Address" aria-label="Email Address" aria-describedby="basic-addon2">
                       <div class="input-group-append">
-                                           <button class="btn btn-secondary" name="submit"  type="submit" data-toggle="modal"  data-target="#exampleModal">Subscribe</button>
+                            <button class="btn btn-secondary" name="submit"  type="submit" data-toggle="modal" data-target="#exampleModal"><?php echo $site_info['subscribe_btn'] ?></button>
+
                         <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="color: #111">SUBSCRIBE</h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="color: #111">Subscribe</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -108,7 +109,7 @@ button.btn.btn-secondary {
 
               <div class="col-md-4">
                 <div class="fbox">
-                  <h4>Importatant Links</h4>
+                  <h4><?php echo $site_info['imp_link'] ?></h4>
                   <ul class="list-group">
                     <li><a href="<?php echo $site_info['1_link'] ?>" target="_blank"><?php echo $site_info['1_name'] ?></a></li>
                     <li><a href="<?php echo $site_info['2_link'] ?>" target="_blank"><?php echo $site_info['2_name'] ?></a></li>

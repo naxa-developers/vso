@@ -9,6 +9,7 @@ class ReportController extends CI_Controller
     $this->load->helper('url');
     $this->load->model('Report_model');
     $this->load->model('Dash_model');
+    $this->load->model('Main_model');
 
   }
 
@@ -120,12 +121,33 @@ class ReportController extends CI_Controller
 
       //var_dump($this->body['report_map_layer']);
 
-         $this->data['site_info']=$this->Report_model->site_setting();
+      //language
+      if($this->session->userdata('Language')==NULL){
+
+        $this->session->set_userdata('Language','nep');
+      }
+
+      $lang=$this->session->get_userdata('Language');
 
 
-      $this->load->view('header',$this->data);
+
+      if($lang['Language']=='en'){
+
+        $this->body['site_info']=$this->Main_model->site_setting_en();
+
+      }else{
+
+       $this->body['site_info']=$this->Main_model->site_setting_nep();
+
+
+      }
+
+      //language
+
+
+      $this->load->view('header',$this->body);
       $this->load->view('report_page',$this->body);
-      $this->load->view('footer',$this->data);
+      $this->load->view('footer',$this->body);
 
 
 
@@ -185,14 +207,36 @@ class ReportController extends CI_Controller
     //views add end
 
       //var_dump($this->body['report_map_layer']);
-      $this->data['site_info']=$this->Report_model->site_setting();
+      //language
+      if($this->session->userdata('Language')==NULL){
+
+        $this->session->set_userdata('Language','nep');
+      }
+
+      $lang=$this->session->get_userdata('Language');
+
+
+
+      if($lang['Language']=='en'){
+
+        $this->body['site_info']=$this->Main_model->site_setting_en();
+
+      }else{
+
+       $this->body['site_info']=$this->Main_model->site_setting_nep();
+
+
+      }
+
+      //language
+
       $this->body['map_set']=$this->Report_model->site_setting();
 
-    
 
-      $this->load->view('header',$this->data);
+
+      $this->load->view('header',$this->body);
       $this->load->view('report_page',$this->body);
-      $this->load->view('footer',$this->data);
+      $this->load->view('footer',$this->body);
 
     }
   }
@@ -234,17 +278,17 @@ class ReportController extends CI_Controller
         $data=array(
 
           'photo'=>$image_path,
-          'photo_thumb'=>base_url() . 'uploads/report/'.$insert.'_thumb'.$ext
+          'photo_thumb'=>base_url() . 'uploads/report/'.$insert.'_thumb.'.$ext
 
         );
 
         $config['image_library'] = 'gd2';
-        $config['source_image'] = './uploads/report/'.$insert.$ext;
-        $config['new_image'] = './uploads/report/'.$insert.$ext;
+        $config['source_image'] = './uploads/report/'.$insert.'.'.$ext;
+        $config['new_image'] = './uploads/report/'.$insert.'.'.$ext;
         $config['create_thumb'] = TRUE;
         $config['maintain_ratio'] = TRUE;
-        $config['width']         = 800;
-       $config['height']       = 800;
+        $config['width']         = 500;
+       $config['height']       = 500;
 
         $this->load->library('image_lib', $config);
         $this->image_lib->initialize($config);
@@ -379,22 +423,62 @@ class ReportController extends CI_Controller
 
   public function map_reports_table(){
 
-    $this->data['site_info']=$this->Report_model->site_setting();
+    //language
+    if($this->session->userdata('Language')==NULL){
+
+      $this->session->set_userdata('Language','nep');
+    }
+
+    $lang=$this->session->get_userdata('Language');
+
+
+    if($lang['Language']=='en'){
+
+      $this->body['site_info']=$this->Main_model->site_setting_en();
+
+    }else{
+
+     $this->body['site_info']=$this->Main_model->site_setting_nep();
+
+
+    }
+
+    //language
     $this->body['data']=$this->Report_model->get_map_reports_table();
 
-    $this->load->view('header',$this->data);
+    $this->load->view('header',$this->body);
     $this->load->view('map_reports_table',$this->body);
-    $this->load->view('footer',$this->data);
+    $this->load->view('footer',$this->body);
   }
 
   public function map_reports(){
 
-     $this->data['site_info']=$this->Report_model->site_setting();
+    //language
+    if($this->session->userdata('Language')==NULL){
+
+      $this->session->set_userdata('Language','nep');
+    }
+
+    $lang=$this->session->get_userdata('Language');
+
+
+    if($lang['Language']=='en'){
+
+      $this->body['site_info']=$this->Main_model->site_setting_en();
+
+    }else{
+
+     $this->body['site_info']=$this->Main_model->site_setting_nep();
+
+
+    }
+
+    //language
 
     $this->body['data']=$this->Report_model->get_report_data();
-    $this->load->view('header',$this->data);
+    $this->load->view('header',$this->body);
     $this->load->view('map_reports',$this->body);
-    $this->load->view('footer',$this->data);
+    $this->load->view('footer',$this->body);
   }
 
 

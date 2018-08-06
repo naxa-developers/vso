@@ -24,9 +24,19 @@ class Main_model extends CI_Model {
 
   }
 
-  public function site_setting(){
+  public function site_setting_en(){
 
   $this->db->select('*');
+  $this->db->where('id',1);
+  $q=$this->db->get('site_setting');
+  return $q->row_array();
+
+
+  }
+  public function site_setting_nep(){
+
+  $this->db->select('*');
+  $this->db->where('id',2);
   $q=$this->db->get('site_setting');
   return $q->row_array();
 

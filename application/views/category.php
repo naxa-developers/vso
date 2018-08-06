@@ -956,7 +956,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
           <ul class="nav nav-tabs" role="tablist">
             <li class="basemap chevron1" id="close-panel-left"><img src="<?php echo base_url()?>assets/img/up-arrow.png" class="test-icon chevron"></li>
             <!-- <li role="presentation" class="basemap"><a href="#layers" aria-controls="profile" role="tab" data-toggle="tab"><img src="<?php echo base_url()?>assets/img/layers-icon.png" class="test-icon"></a></li> -->
-            <li role="presentation" class="basemap"><a href="<?php echo base_url()?>map_download"><img src="<?php echo base_url()?>assets/img/map-down.png" class="test-icon">&nbsp;<sub class="text-light" style="font-size: 13px;">Maps</sub></a></li>
+            <li role="presentation" class="basemap"><a href="<?php echo base_url()?>map_download"><img src="<?php echo base_url()?>assets/img/map-down.png" class="test-icon">&nbsp;<sub class="text-light" style="font-size: 13px;"><?php echo $site_info['map']?></sub></a></li>
           </ul>
         </div>
       </div>
@@ -1052,7 +1052,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
 
                           <?php if($data['sub_categories']==''){  ?>
 
-                            <!-- <p> No sub categories </p> -->
+                            <p> No sub categories </p>
 
                           <?php  }else{
 
@@ -1188,7 +1188,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
 
                       </div>
                       <div class="modal-body mdl2">
-                        <h6 id='filter_tbl_name'>uuuu</h6>
+                        <h4 id='filter_tbl_name'></h4>
                         <table class="table table-striped" id="table_filter">
                   <thead>
                     <tr>
@@ -1205,6 +1205,8 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
 
                       <div class="modal-footer modal2" >
                         <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+
+
                         <a href="abc" id="filter_download"> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download" style="background-color: #002b59"></i> Download</button></a>
                        <!-- <a href=""> <button type="button" class="btn btn-info btn-sm"> <i class="fa fa-eye"></i> Map</button></a> -->
                       </div>
@@ -1449,10 +1451,6 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip();
 });
 
- var map_lat='<?php echo $map_zoom_center['map_lat'] ?>';
- var map_long='<?php echo $map_zoom_center['map_long'] ?>';
- var map_zoom='<?php echo $map_zoom_center['map_zoom'] ?>';
-
 
 var default_loadd = '<?php echo $default_load; ?>';
 
@@ -1489,7 +1487,7 @@ $(document).ready(function(){
 
   //map part
 
-  var map = L.map('map').setView([map_lat,map_long], map_zoom);
+  var map = L.map('map').setView([27.693547,85.440240], 13);
   map.attributionControl.addAttribution("<a href='http://www.naxa.com.np' title = 'Contributor'>NAXA</a>");
   // map.scrollWheelZoom.disable();
   map.options.maxBounds;  // remove the maxBounds object from the map options
@@ -1539,31 +1537,6 @@ $(document).ready(function(){
     return spaced;
 
   }
-
-//check if the value is url
-function ValidURL(str) {
-    var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
-    if(!regex .test(str)) {
-      //alert("Please enter valid URL.");
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-
-//chcek if the url contains image or not
-function isValidImg( url ) {
-    return new Promise( function ( resolve, reject ) {
-
-        var image = new Image;
-
-        image.onload = function ( ) { resolve( image ) };
-        image.onerror = image.onabort = reject;
-
-        image.src = url;
-    } );
-}
 
 
   styles=JSON.parse('<?php echo $style ?>');
@@ -1648,20 +1621,9 @@ function isValidImg( url ) {
 
           for(data in pop.a){
             //console.log(data);
-
             pop1 = pop.a[data].col;
             name = pop.a[data].name;
-
-
-            if(ValidURL(feature.properties[pop1])){
-
-                if(isValidImg(feature.properties[pop1])){
-                    popUpContent += "<img src = "+feature.properties[pop1]+"></img>";
-                }
-
-            }
             popUpContent += "<tr>" + "<td>"+name+"</td>" + "<td>" +  feature.properties[pop1]  + "</td></tr>";
-
           }
 
 
@@ -1995,9 +1957,6 @@ function isValidImg( url ) {
                 //console.log(data);
                 pop1 = pop.a[data].col;
                 name = pop.a[data].name;
-
-                // console.log(feature.properties[pop1].match(/\.(jpeg|jpg|gif|png)$/) != null);
-
                 popUpContent += "<tr>" + "<td>"+name+"</td>" + "<td>" +  feature.properties[pop1]  + "</td></tr>";
               }
 
@@ -2166,6 +2125,7 @@ $(document).on('click','.filter_value_item',function(){
 
 
 var count_filter = 0;
+
 $('.applied_filter').on('click',function(){
 
   //console.log('click');
@@ -2173,17 +2133,14 @@ $('.applied_filter').on('click',function(){
   var qry=$(".selected_filter_query").val();
   var qry_tbl=$(".selected_filter_query").attr('id');
 
-$('a#filter_download').attr("href","MapController/csv_filter_query?qry="+qry+"&&tbl="+qry_tbl+"&&s_qry="+show_qry);
-
-
   $('#'+qry_tbl+'_treeview').append('<div class="form-check" id="'+qry_tbl+count_filter+'filter">'+
 
     '<input type="checkbox" name="" class="form-check-input filterswitch" value="'+qry_tbl+count_filter+'" checked><label class="form-check-label">'+show_qry+'</label>'+
 
   '</div>');
 
-console.log($('#filter_tbl_name'));
   $('h6#filter_tbl_name').html(""+show_qry+"");
+
 
 
   $('.applied-list').append('<tr class="'+qry_tbl+count_filter+'list"><th scope="row"></th><td>'+qry_tbl+'</td><td>'+show_qry+'</td><td><i class="fa fa-trash delete_filter" id="'+qry_tbl+count_filter+'"></i></td></tr>');
@@ -2200,6 +2157,8 @@ console.log($('#filter_tbl_name'));
     },
     success: function (result) {
 
+      console.log(result);
+
      var data=JSON.parse(result);
   var modal_table=JSON.parse(data.table_data);
   map_json=JSON.parse(data.geojson);
@@ -2213,6 +2172,8 @@ console.log($('#filter_tbl_name'));
   // console.log(popup_content_parsed);
 
 
+document.getElementById("filter_tbl_name").innerHTML = 'aaa';
+//$('h4').html(show_qry);
 $('#table_filter >tbody').html('');
 for(var i=0;i<modal_table.length;i++){
 
@@ -2242,9 +2203,6 @@ $('#table_filter >tbody').append(tbl_body);
 
 
 }//loop for table end
-
-$('#filter_download').attr("href","change");
-
 
 $('#'+table_n+'_toggle').removeClass('active');
 
@@ -2405,13 +2363,5 @@ $('.specific').click(function(){
 $(this).siblings("ul").toggleClass('show');
 });
 
-//expand view
-
-//auto expand selected category_map
-$("label[for='"+selected_category+"']").siblings("ul").toggleClass('show');
-
-//end
-
-//
 
 </script>

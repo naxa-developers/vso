@@ -21,14 +21,12 @@
         <section class="panel">
           <header class="panel-heading">
             Site Setting
-
-            <span class="tools pull-right">
-              switch Language
-  <a class="nav-link" href="<?php echo base_url();?>site_setting_nep"><img src="<?php echo base_url();?>assets/img/nep.png" height="15"></a>
-  <a class="nav-link" href="<?php echo base_url();?>site_setting"><img src="<?php echo base_url();?>assets/img/uk.png" height="15"></a>
-  </span>
-
-          </header>
+          <span class="tools pull-right">
+            switch Language
+<a class="nav-link" href="<?php echo base_url();?>site_setting_nep"><img src="<?php echo base_url();?>assets/img/nep.png" height="15"></a>
+<a class="nav-link" href="<?php echo base_url();?>site_setting"><img src="<?php echo base_url();?>assets/img/uk.png" height="15"></a>
+</span>
+</header>
 
           <?php
             $error=	$this->session->flashdata('msg');
@@ -55,7 +53,7 @@
 
                   <div class="panel-body space">
 
-                      <form method="post" action ="Admin/SiteController/update_site_text" enctype="multipart/form-data" >
+                      <form method="post" action ="Admin/SiteController/update_site_text_nep" enctype="multipart/form-data" >
 
                     <div class="form-group ">
                       <label class="control-label col-md-3">Site Logo </label>
@@ -108,7 +106,7 @@
 
                 <div class="panel-body space">
 
-                  <form method="post" action ="Admin/SiteController/update_cover" enctype="multipart/form-data" >
+                  <form method="post" action ="Admin/SiteController/update_cover_nep" enctype="multipart/form-data" >
 
                   <div class="form-group ">
                     <label class="control-label col-md-3">Site Cover Photo </label>
@@ -160,7 +158,7 @@
                   Footer Right Text
                 </div>
                 <div class="panel-body">
-                  <form method="POST" action="Admin/SiteController/footer_text">
+                  <form method="POST" action="Admin/SiteController/footer_text_nep">
                   <label for="project_name" class="control-label col-md-2">Big Text:</label>
                   <div class="col-md-4">
                     <textarea type="text" name="footer_big"  id="system_mail" placeholder="Disaster Information Management Platform" class="form-control" ><?php echo $site_info['footer_big']?></textarea>
@@ -186,7 +184,7 @@
                 </div>
                 <div class="panel-body space ">
                   <div class="row">
-                      <form method="POST" action="Admin/SiteController/important_link">
+                      <form method="POST" action="Admin/SiteController/important_link_nep">
                     <div class="col-md-6">
                       <label for="project_name" class="control-label col-md-4">1st Site Name:</label>
 
@@ -283,7 +281,7 @@
                               </div>
 
                               <div class="panel panel-info class">
-                                  <form method="POST" action="Admin/SiteController/find_us_links">
+                                  <form method="POST" action="Admin/SiteController/find_us_links_nep">
                                 <div class="panel-heading">
                                 Find us links
                                 </div>
@@ -327,7 +325,7 @@
                               </div>
 
                               <div class="panel panel-warning class">
-                                  <form method="POST" action="Admin/SiteController/copyright">
+                                  <form method="POST" action="Admin/SiteController/copyright_nep">
                                 <div class="panel-heading">
                                   Copy right Text
                                 </div>
