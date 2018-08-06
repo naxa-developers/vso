@@ -101,7 +101,7 @@ table.responstable {
 
 <div class="container">
 <div id="map-table-jana">
-
+<form  method="POST" action="ReportController/date_test">
   <div class="row">
     <div class="col-md-12">
       <div class="report-down">
@@ -274,19 +274,22 @@ table.responstable {
 
         <div class="col-md-2">Date(From)
           <div class="form-group" style="margin-bottom: 0;">
-                  <input class="form-control" type="date" id="datepicker1" placeholder="To">
+                  <input class="form-control" type="date" name="from" id="datepicker1" placeholder="To">
           </div>
         </div>
         <div class="col-md-2">Date(To)
           <div class="form-group" style="margin-bottom: 0;">
-                  <input class="form-control" type="date" id="datepicker2" placeholder="To">
+                  <input class="form-control" type="date" name="to" id="datepicker2" placeholder="To">
+
           </div>
         </div>
+
     </div>
   </div>
 </div>
   </div>
-
+  <button type="submit" name="submit" class="btn btn-info">Submit</button>
+  </form>
 <div class="row" id="reportable">
  <!-- responsive table for displaying contact directory -->
  <table class="responstable">

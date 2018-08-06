@@ -39,6 +39,7 @@ if(isset($_POST['submit'])){
 
 unset($_POST['submit']);
 //var_dump($_POST);
+$_POST['date']=date("Y/m/d");
 $insert = $this->Ghatana_model->add_ghatana('map_reports_table',$_POST);
 
 if($insert != " "){
@@ -70,6 +71,7 @@ $id=base64_decode($this->input->get('id'));
   if(isset($_POST['submit'])){
 
    unset($_POST['submit']);
+   $_POST['date']=date("Y-m-d");
 
 $update=$this->Ghatana_model->update_data($id,$_POST);
 

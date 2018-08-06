@@ -482,6 +482,14 @@ class ReportController extends CI_Controller
   }
 
 
+public function date_test(){
+
+echo date("Y-m-d");
+var_dump($_POST);
+
+}
+
+
 
 
 }
