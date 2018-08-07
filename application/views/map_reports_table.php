@@ -101,18 +101,21 @@ table.responstable {
 
 <div class="container">
 <div id="map-table-jana">
-<!-- <form  method="POST" action="ReportController/date_test"> -->
+
+<form  method="POST" action="">
+
+
   <div class="row">
     <div class="col-md-12">
       <div class="report-down">
             <div class="text-center"><h3>Total Reports</h3></div>
             <div class="col-md-3 pull-right">
               <ul class="list-inline">
-                <li class="list-inline-item"><i class="fa fa-cloud-download"></i> Download :</li>
-                <li class="list-inline-item"><a href="#" title="pdf"><i class="fa fa-file-pdf-o"></i></a></li>
+                <a href="ReportController/ghatana_download?qry=<?php echo $query ?>"><li class="list-inline-item"><i class="fa fa-cloud-download"></i> Download </li></a>
+                <!-- <li class="list-inline-item"><a href="#" title="pdf"><i class="fa fa-file-pdf-o"></i></a></li>
                 <li class="list-inline-item"><a href="#" title="excel"><i class="fa fa-file-excel-o"></i></a></li>
                 <li class="list-inline-item"><a href="#" title="image"><i class="fa fa-file-image-o"></i></a></li>
-                <li class="list-inline-item"><a href="#" title="word"><i class="fa fa-file-word-o"></i></a></li>
+                <li class="list-inline-item"><a href="#" title="word"><i class="fa fa-file-word-o"></i></a></li> -->
               </ul>
             </div>
       </div>
@@ -122,153 +125,153 @@ table.responstable {
     <div class="container">
     <div class="row repo_filter">
        <div class="col-md-2">Source
-          <select class="custom-select multiselect-icon">
+          <select class="custom-select multiselect-icon" name="source">
                   <option value="0" selected disabled>Select an option</option>
-                  <option value="2" >Moha</option>
-                  <option value="1" >Disinventar</option>
+                  <option value="Moha" >Moha</option>
+                  <option value="Disinventar" >Disinventar</option>
           </select>
         </div>
 
         <div class="col-md-2">Incident Type
-          <select class="custom-select multiselect-icon">
+          <select class="custom-select multiselect-icon" name="incident">
                   <option value="0" selected disabled>Select an incident</option>
-                  <option value="39">Flash Flood</option>
-                  <option value="38">Leak</option>
-                  <option value="37">Sedimentation</option>
-                  <option value="36">Accident</option>
-                  <option value="35">Biological</option>
-                  <option value="34">Frost</option>
-                  <option value="33">Pollution</option>
-                  <option value="32">Famine</option>
-                  <option value="31">Panic</option>
-                  <option value="30">Explosion</option>
-                  <option value="29">Drought</option>
-                  <option value="28">Strong Wind</option>
-                  <option value="27">Forest Fire</option>
-                  <option value="26">Snow Storm</option>
-                  <option value="25">Heat Wave</option>
-                  <option value="24">Plague</option>
-                  <option value="23">Hail Storm</option>
-                  <option value="22">Structure Collapse</option>
-                  <option value="21">Tuin Chudera</option>
-                  <option value="20">Bridge Collapse</option>
-                  <option value="19">Air Crash</option>
-                  <option value="18">Avalanche</option>
-                  <option value="17">Cold Wave</option>
-                  <option value="16">Boat Capsize</option>
-                  <option value="15">High Altitude</option>
-                  <option value="14">Heavy Rainfall</option>
-                  <option value="13">Drowning</option>
-                  <option value="12">Wind storm</option>
-                  <option value="11">Hailstone</option>
-                  <option value="10">Epidemic</option>
-                  <option value="9">Other</option>
-                  <option value="8">storm</option>
-                  <option value="7">Bus accident</option>
-                  <option value="6">Lightning</option>
-                  <option value="5">Thunderbolt</option>
-                  <option value="4">Fire</option>
-                  <option value="3">Landslide</option>
-                  <option value="2">Flood</option>
-                  <option value="1">Earthquake</option>
+                  <option value="Flash Flood">Flash Flood</option>
+                  <option value="Leak">Leak</option>
+                  <option value="Sedimentation">Sedimentation</option>
+                  <option value="Accident">Accident</option>
+                  <option value="Biological">Biological</option>
+                  <option value="Frost">Frost</option>
+                  <option value="Pollution">Pollution</option>
+                  <option value="Famine">Famine</option>
+                  <option value="Panic">Panic</option>
+                  <option value="Explosion">Explosion</option>
+                  <option value="Drought">Drought</option>
+                  <option value="Strong_Wind">Strong Wind</option>
+                  <option value="Forest Fire">Forest Fire</option>
+                  <option value="Snow Storm">Snow Storm</option>
+                  <option value="Heat Wave">Heat Wave</option>
+                  <option value="Plague">Plague</option>
+                  <option value="Hail Storm">Hail Storm</option>
+                  <option value="Structure Collapse">Structure Collapse</option>
+                  <option value="Tuin Chudera">Tuin Chudera</option>
+                  <option value="Bridge Collapse">Bridge Collapse</option>
+                  <option value="Air Crash">Air Crash</option>
+                  <option value="Avalanche">Avalanche</option>
+                  <option value="Cold Wave">Cold Wave</option>
+                  <option value="Boat Capsize">Boat Capsize</option>
+                  <option value="High Altitude">High Altitude</option>
+                  <option value="Heavy Rainfall">Heavy Rainfall</option>
+                  <option value="Drowning">Drowning</option>
+                  <option value="Wind storm">Wind storm</option>
+                  <option value="Hailstone">Hailstone</option>
+                  <option value="Epidemic">Epidemic</option>
+                  <option value="Other">Other</option>
+                  <option value="storm">storm</option>
+                  <option value="Bus accident">Bus accident</option>
+                  <option value="Lightning">Lightning</option>
+                  <option value="Thunderbolt">Thunderbolt</option>
+                  <option value="Fire">Fire</option>
+                  <option value="Landslide">Landslide</option>
+                  <option value="Flood">Flood</option>
+                  <option value="Earthquake">Earthquake</option>
               </select>
         </div>
 
         <div class="col-md-2">District
-            <select class="custom-select multiselect-icon">
+            <select class="custom-select multiselect-icon" name="district">
                       <option value="0" selected disabled>Select a district</option>
-                      <option value="1">Taplejung</option>
-                      <option value="2">Panchthar</option>
-                      <option value="3">Ilaam</option>
-                      <option value="4">Jhapa</option>
-                      <option value="5">Morang</option>
-                      <option value="6">Sunsari</option>
-                      <option value="7">Dhankuta</option>
-                      <option value="8">Terhathum</option>
-                      <option value="9">Bhojpur</option>
-                      <option value="10">Shankhuwasabha</option>
-                      <option value="11">Solukhumbu</option>
-                      <option value="12">Khotang</option>
-                      <option value="13">Okhaldhunga</option>
-                      <option value="14">Udayapur</option>
-                      <option value="15">Siraha</option>
-                      <option value="16">Saptari</option>
-                      <option value="17">Dhanusha</option>
-                      <option value="18">Mahottari</option>
-                      <option value="19">Sarlahi</option>
-                      <option value="20">Sindhuli</option>
-                      <option value="21">Ramechhap</option>
-                      <option value="22">Dolakha</option>
-                      <option value="23">RASUWA</option>
-                      <option value="24">Sindhupalchowk</option>
-                      <option value="25">Nuwakot</option>
-                      <option value="26">Dhading</option>
-                      <option value="27">Kathmandu</option>
-                      <option value="28">Lalitpur</option>
-                      <option value="29">Bhaktapur</option>
-                      <option value="30">Kavrepalanchowk</option>
-                      <option value="31">Makawanpur</option>
-                      <option value="32">Rautahat</option>
-                      <option value="33">Bara</option>
-                      <option value="34">Parsa</option>
-                      <option value="35">Chitawan</option>
-                      <option value="36">Nawalparasi</option>
-                      <option value="37">Rupandehi</option>
-                      <option value="38">Kapilbastu</option>
-                      <option value="39">Palpa</option>
-                      <option value="40">Arghakhanchi</option>
-                      <option value="41">Gulmi</option>
-                      <option value="42">Shyanja</option>
+                      <option value="Taplejung">Taplejung</option>
+                      <option value="Panchthar">Panchthar</option>
+                      <option value="Ilaam">Ilaam</option>
+                      <option value="Jhapa">Jhapa</option>
+                      <option value="Morang">Morang</option>
+                      <option value="Sunsari">Sunsari</option>
+                      <option value="Dhankuta">Dhankuta</option>
+                      <option value="Terhathum">Terhathum</option>
+                      <option value="Bhojpur">Bhojpur</option>
+                      <option value="Shankhuwasabha">Shankhuwasabha</option>
+                      <option value="Solukhumbu">Solukhumbu</option>
+                      <option value="Khotang">Khotang</option>
+                      <option value="Okhaldhunga">Okhaldhunga</option>
+                      <option value="Udayapur">Udayapur</option>
+                      <option value="Siraha">Siraha</option>
+                      <option value="Saptari">Saptari</option>
+                      <option value="Dhanusha">Dhanusha</option>
+                      <option value="Mahottari">Mahottari</option>
+                      <option value="Sarlahi">Sarlahi</option>
+                      <option value="Sindhuli">Sindhuli</option>
+                      <option value="Ramechhap">Ramechhap</option>
+                      <option value="Dolakha">Dolakha</option>
+                      <option value="RASUWA">RASUWA</option>
+                      <option value="Sindhupalchowk">Sindhupalchowk</option>
+                      <option value="Nuwakot">Nuwakot</option>
+                      <option value="Dhading">Dhading</option>
+                      <option value="Kathmandu">Kathmandu</option>
+                      <option value="Lalitpur">Lalitpur</option>
+                      <option value="Bhaktapur">Bhaktapur</option>
+                      <option value="Kavrepalanchowk">Kavrepalanchowk</option>
+                      <option value="Makawanpur">Makawanpur</option>
+                      <option value="Rautahat">Rautahat</option>
+                      <option value="Bara">Bara</option>
+                      <option value="Parsa">Parsa</option>
+                      <option value="Chitawan">Chitawan</option>
+                      <option value="Nawalparasi">Nawalparasi</option>
+                      <option value="Rupandehi">Rupandehi</option>
+                      <option value="Kapilbastu">Kapilbastu</option>
+                      <option value="Palpa">Palpa</option>
+                      <option value="Arghakhanchi">Arghakhanchi</option>
+                      <option value="Gulmi">Gulmi</option>
+                      <option value="Tanahu">Shyanja</option>
                       <option value="43">Tanahu</option>
-                      <option value="44">Gorkha</option>
-                      <option value="45">Lamjung</option>
-                      <option value="46">Kaski</option>
-                      <option value="47">Manang</option>
-                      <option value="48">Mustang</option>
-                      <option value="49">Myagdi</option>
-                      <option value="50">Baglung</option>
-                      <option value="51">Parbat</option>
-                      <option value="52">Dang</option>
-                      <option value="53">Pyuthan</option>
-                      <option value="54">Rolpa</option>
-                      <option value="55">Salyan</option>
-                      <option value="56">Rukum</option>
-                      <option value="57">Dolpa</option>
-                      <option value="58">Mugu</option>
-                      <option value="59">Humla</option>
-                      <option value="60">Jumla</option>
-                      <option value="61">Kalikot</option>
-                      <option value="62">Jajarkot</option>
-                      <option value="63">Dailekh</option>
-                      <option value="64">Surkhet</option>
-                      <option value="65">Bardiya</option>
-                      <option value="66">Banke</option>
-                      <option value="67">Kailali</option>
-                      <option value="68">Doti</option>
-                      <option value="69">Achhaam</option>
-                      <option value="70">Bajura</option>
-                      <option value="71">Bajhang</option>
-                      <option value="72">Darchula</option>
-                      <option value="73">Baitadi</option>
-                      <option value="74">Dadeldhura</option>
-                      <option value="75">Kanchanpur</option>
+                      <option value="Gorkha">Gorkha</option>
+                      <option value="Lamjung">Lamjung</option>
+                      <option value="Kaski">Kaski</option>
+                      <option value="Manang">Manang</option>
+                      <option value="Mustang">Mustang</option>
+                      <option value="Myagdi">Myagdi</option>
+                      <option value="Baglung">Baglung</option>
+                      <option value="Parbat">Parbat</option>
+                      <option value="Dang">Dang</option>
+                      <option value="Pyuthan">Pyuthan</option>
+                      <option value="Rolpa">Rolpa</option>
+                      <option value="Salyan">Salyan</option>
+                      <option value="Rukum">Rukum</option>
+                      <option value="Dolpa">Dolpa</option>
+                      <option value="Mugu">Mugu</option>
+                      <option value="Humla">Humla</option>
+                      <option value="Jumla">Jumla</option>
+                      <option value="Kalikot">Kalikot</option>
+                      <option value="Jajarkot">Jajarkot</option>
+                      <option value="Dailekh">Dailekh</option>
+                      <option value="Surkhet">Surkhet</option>
+                      <option value="Bardiya">Bardiya</option>
+                      <option value="Banke">Banke</option>
+                      <option value="Kailali">Kailali</option>
+                      <option value="Doti">Doti</option>
+                      <option value="Achhaam">Achhaam</option>
+                      <option value="Bajura">Bajura</option>
+                      <option value="Bajhang">Bajhang</option>
+                      <option value="Darchula">Darchula</option>
+                      <option value="Baitadi">Baitadi</option>
+                      <option value="Dadeldhura">Dadeldhura</option>
+                      <option value="Kanchanpur">Kanchanpur</option>
                       <option value="76">None</option>
             </select>
         </div>
 
         <div class="col-md-2">Ward
-          <select class="custom-select multiselect-icon">
+          <select class="custom-select multiselect-icon" name="ward">
                   <option value="0" selected disabled>Select ward</option>
-                  <option value="10" >ward no1 </option>
-                  <option value="9" >ward no1 </option>
-                  <option value="8" >ward no1 </option>
-                  <option value="7" >ward no1 </option>
-                  <option value="6" >ward no1 </option>
-                  <option value="5" >ward no1 </option>
-                  <option value="4" >ward no1 </option>
-                  <option value="3" >ward no1 </option>
-                  <option value="2" >ward no1 </option>
-                  <option value="1" >ward no1 </option>          1
+                  <option value="10" >ward no 10 </option>
+                  <option value="9" >ward no 9 </option>
+                  <option value="8" >ward no 8 </option>
+                  <option value="7" >ward no 7 </option>
+                  <option value="6" >ward no 6 </option>
+                  <option value="5" >ward no 5 </option>
+                  <option value="4" >ward no 4 </option>
+                  <option value="3" >ward no 3 </option>
+                  <option value="2" >ward no 2 </option>
+                  <option value="1" >ward no 1 </option>          1
           </select>
         </div>
 
@@ -288,8 +291,12 @@ table.responstable {
   </div>
 </div>
   </div>
-  <!-- <button type="submit" name="submit" class="btn btn-info">Submit</button>
-  </form> -->
+
+
+  <button type="submit" name="submit" class="btn btn-info">Submit</button>
+  </form>
+
+
 <div class="row" id="reportable">
  <!-- responsive table for displaying contact directory -->
  <table class="responstable">

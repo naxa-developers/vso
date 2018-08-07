@@ -95,6 +95,8 @@ $route['report/delete'] = 'ReportController/delete_data';
 $route['map_reports_table'] ='ReportController/map_reports_table';
 $route['map_reports'] ='ReportController/map_reports';
 
+$route['filter'] ='ReportController/date_test';
+
 $route['ghatana'] ='Admin/GhatanaController/view_ghatana';
 $route['add_ghatana'] ='Admin/GhatanaController/add_ghatana';
 $route['ghatana_edit'] ='Admin/GhatanaController/ghatana_edit';

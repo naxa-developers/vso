@@ -424,6 +424,43 @@ class ReportController extends CI_Controller
   public function map_reports_table(){
 
     //language
+    if(isset($_POST['submit'])){
+
+      $sql="select * FROM map_reports_table WHERE ";
+      unset($_POST['submit']);
+      foreach($_POST as $key => $value ){
+
+        //echo $value;
+        //echo $key;
+        if($_POST[$key]!='0'){
+          //echo $key;
+          if($key == "from" && $_POST['from'] != ""){
+            $sql.="date >= '".$value."' AND ";
+          }
+          elseif($key == "to" && $_POST['to'] != ""){
+            $sql.="date <= '".$value."' AND ";
+          }
+          elseif($key != "from" && $key != "to"){
+            $sql.=$key."='".$value."' AND ";
+          }
+
+
+        }
+
+      }
+      $query=substr($sql, 0, strlen($sql)-4);
+
+      $queryy=$this->db->query($query);
+      $this->body['data']= $queryy->result_array();
+      $this->body['query']=$query;
+
+    }else{
+
+$this->body['data']=$this->Report_model->get_map_reports_table();
+$this->body['query']="select * FROM map_reports_table";
+
+
+    }
     if($this->session->userdata('Language')==NULL){
 
       $this->session->set_userdata('Language','nep');
@@ -444,7 +481,7 @@ class ReportController extends CI_Controller
     }
 
     //language
-    $this->body['data']=$this->Report_model->get_map_reports_table();
+
 
     $this->load->view('header',$this->body);
     $this->load->view('map_reports_table',$this->body);
@@ -482,10 +519,23 @@ class ReportController extends CI_Controller
   }
 
 
-public function date_test(){
+public function ghatana_download(){
 
-echo date("Y-m-d");
-var_dump($_POST);
+  $this->load->dbutil();
+  $this->load->helper('file');
+  $this->load->helper('download');
+array_map('unlink', glob("uploads/ghatana/*.csv"));
+$query=$this->input->get('qry');
+$queryy=$this->db->query($query);
+
+$new_report = $this->dbutil->csv_from_result($queryy);
+$name = 'ghatana_bibaran.csv';
+/*  Now use it to write file. write_file helper function will do it */
+write_file('uploads/ghatana/'.$name,$new_report);
+
+$data=file_get_contents('uploads/ghatana/'.$name);
+force_download($name,$data);
+
 
 }
 
