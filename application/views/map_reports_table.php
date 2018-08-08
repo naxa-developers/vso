@@ -1,6 +1,9 @@
 
   <style>
-
+button.btn.btn-info.hit {
+    margin-left: 1035px;
+    background-color: #7696c7;
+}
    #map-table-jana{
         margin: 20px 0px 60px;
         background: #fff;
@@ -293,7 +296,7 @@ table.responstable {
   </div>
 
 
-  <button type="submit" name="submit" class="btn btn-info">Submit</button>
+  <button type="submit" name="submit" class="btn btn-info hit">Submit</button>
   </form>
 
 

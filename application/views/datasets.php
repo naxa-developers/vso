@@ -35,17 +35,7 @@ p.about {
 	color: #222;
 	font-weight: 600;
 }
-.pagination {
-  display: block;
-  width: 75%;
-  margin: 1em auto;
-  text-align: center;
-  
-  &:after {
-    content: '';
-    clear: both;
-  }
-}
+
 
 .pagination-button {
   display: inline-block;
