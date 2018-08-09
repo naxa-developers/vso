@@ -166,7 +166,9 @@ li.nav-item.active {
                     </li>
 
                      <li class="nav-item">
-                   <a class="nav-link" href="<?php echo base_url();?>en" ><img src="<?php echo base_url();?>assets/img/uk.png" height="15" width="18"></a>
+
+                   <a class="nav-link" href="<?php echo base_url();?>en" ><img src="<?php echo base_url();?>assets/img/uk.png" height="15" width="20"></a>
+
 
                     </li>
                      <li class="nav-item">
