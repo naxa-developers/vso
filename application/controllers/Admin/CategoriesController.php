@@ -47,7 +47,14 @@ class CategoriesController extends CI_Controller
     $this->body['tbl_name']=$tbl_name;
     $this->body['name']=$name;
 
-    $this->load->view('admin/header');
+    //admin check
+    $admin_type=$this->session->userdata('user_type');
+
+    $this->body['admin']=$admin_type;
+    //admin check
+
+
+    $this->load->view('admin/header',$this->body);
     $this->load->view('admin/data_tables',$this->body);
     $this->load->view('admin/footer');
 
@@ -59,7 +66,13 @@ class CategoriesController extends CI_Controller
     $this->body['data']=$this->Dash_model->get_tables_data('categories_tbl');
     $this->body['tbl_name']='categories_tbl';
 
-    $this->load->view('admin/header');
+    //admin check
+    $admin_type=$this->session->userdata('user_type');
+
+    $this->body['admin']=$admin_type;
+    //admin check
+
+    $this->load->view('admin/header',$this->body);
     $this->load->view('admin/categories_tbl',$this->body);
     $this->load->view('admin/footer');
 
@@ -72,7 +85,12 @@ class CategoriesController extends CI_Controller
   public function view_cat_tables(){  // getting all list of cat table
 
     $this->body['data']=$this->Dash_model->view_cat_tables();
-    $this->load->view('admin/header');
+    //admin check
+    $admin_type=$this->session->userdata('user_type');
+
+    $this->body['admin']=$admin_type;
+    //admin check
+    $this->load->view('admin/header',$this->body);
     $this->load->view('admin/cat_tables',$this->body);
     $this->load->view('admin/footer');
 
@@ -136,7 +154,13 @@ class CategoriesController extends CI_Controller
 
       $this->body['edit_data']=$this->Dash_model->edit_get_data($e_id,$tbl_name);
 
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/tbl_edit_form',$this->body);
       $this->load->view('admin/footer');
 
@@ -195,7 +219,13 @@ class CategoriesController extends CI_Controller
 
       $this->body['edit_data']=$this->Dash_model->edit_get_data($e_id,$tbl_name);
 
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/categories_edit',$this->body);
       $this->load->view('admin/footer');
 
@@ -319,7 +349,14 @@ class CategoriesController extends CI_Controller
       }
 
     }else{
-      $this->load->view('admin/header');
+
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/create_col',$this->body);
       $this->load->view('admin/footer');
 
@@ -370,7 +407,14 @@ class CategoriesController extends CI_Controller
       $tbl_name= base64_decode($this->input->get('tbl'));
       $tbl=strtolower(str_replace(" ","_",$tbl_name));
       $this->body['tbl']=$tbl;
-      $this->load->view('admin/header');
+
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/create_categories_tbl',$this->body);
       $this->load->view('admin/footer');
 
@@ -510,8 +554,13 @@ class CategoriesController extends CI_Controller
           $code= strip_tags($img_upload['error']);
           $this->body['error']=$code;
 
+          //admin check
+          $admin_type=$this->session->userdata('user_type');
 
-          $this->load->view('admin/header');
+          $this->body['admin']=$admin_type;
+          //admin check
+
+          $this->load->view('admin/header',$this->body);
           $this->load->view('admin/create_categories',$this->body);
           $this->load->view('admin/footer');
         }
@@ -527,7 +576,13 @@ class CategoriesController extends CI_Controller
 
       $this->body['icon']=$this->Dash_model->get_tables_data('icons');
 
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/create_categories',$this->body);
       $this->load->view('admin/footer');
 
@@ -544,7 +599,13 @@ class CategoriesController extends CI_Controller
 
   public function add_data_categories_tbl(){
 
-    $this->load->view('admin/header');
+    //admin check
+    $admin_type=$this->session->userdata('user_type');
+
+    $this->body['admin']=$admin_type;
+    //admin check
+
+    $this->load->view('admin/header',$this->body);
     $this->load->view('admin/csv_upload');
     $this->load->view('admin/footer');
 
@@ -594,7 +655,13 @@ class CategoriesController extends CI_Controller
     $this->body['tbl']=$this->input->get('tbl_name');
     $this->body['id']=$this->input->get('id');
 
-    $this->load->view('admin/header');
+    //admin check
+    $admin_type=$this->session->userdata('user_type');
+
+    $this->body['admin']=$admin_type;
+    //admin check
+
+    $this->load->view('admin/header',$this->body);
     $this->load->view('admin/csv_data_tbl',$this->body);
     $this->load->view('admin/footer');
 
@@ -621,7 +688,14 @@ class CategoriesController extends CI_Controller
   $this->body['data']=$this->Dash_model->get_tables_data_lang('tbl_lang',$tbl_name);
   $sel_colum=$this->Dash_model->get_sub_cat_style($tbl_name);
   $this->body['selected_column']=$sel_colum['sub_col'];
-  $this->load->view('admin/header');
+
+  //admin check
+  $admin_type=$this->session->userdata('user_type');
+
+  $this->body['admin']=$admin_type;
+  //admin check
+
+  $this->load->view('admin/header',$this->body);
   $this->load->view('admin/select_column',$this->body);
   $this->load->view('admin/footer');
 

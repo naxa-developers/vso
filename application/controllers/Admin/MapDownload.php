@@ -95,7 +95,14 @@ class MapDownload extends CI_Controller
     }else{
       $this->body['data']= $this->Map_model->get_map_download_data();
 
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/map_download',$this->body);
       $this->load->view('admin/footer');
     }
@@ -189,7 +196,14 @@ class MapDownload extends CI_Controller
 
     }else{
 
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/add_map_download');
       $this->load->view('admin/footer');
 
@@ -234,7 +248,14 @@ class MapDownload extends CI_Controller
       //echo base64_decode($this->input->get('id'));
       //var_dump($this->body['e_data']);
 
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/edit_map_download',$this->body);
       $this->load->view('admin/footer');
 

@@ -131,8 +131,8 @@
 
 
                         <li><a href="<?php echo base_url()?>view_proj">Project Partners</a></li>
-                        <li><a href="<?php echo base_url()?>emergency_contact">Emergency Contact</a></li>
-                        <li><a href="<?php echo base_url()?>background">Background Image</a></li>
+                        <!-- <li><a href="<?php echo base_url()?>emergency_contact">Emergency Contact</a></li> -->
+                        <!-- <li><a href="<?php echo base_url()?>background">Background Image</a></li> -->
                         <li><a href="<?php echo base_url();?>feature">Featured Datasets</a></li>
                     </ul>
                 </li>
@@ -170,6 +170,12 @@
                           <li><a href="<?php echo base_url()?>emergency_personnel?name=DRR Volunteers&&cat=ddr">DRR Volunteers</a></li>
                           <li><a href="<?php echo base_url()?>emergency_personnel?name=Municipality Personnel&&cat=personnel">Municipality Personnel</a></li>
                           <li><a href="<?php echo base_url()?>emergency_personnel?name=Members of Municipal Assemblysss&&cat=members">Members of Municipal Assemblysss</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Chairpersons of Local Units&&cat=chairpersons">Chairpersons of Local Units</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Chief of local level offices&&cat=chief">Chief of local level offices</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Elected Representatives&&cat=elected">Elected Representatives</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Municipal Executive Members&&cat=municipal_ex">Municipal Executive Members</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Municipality Level Disaster Management Committee&&cat=disaster">Municipality Level Disaster Management Committee</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Municipality Level Disaster Management Committee&&cat=nntds">NNTDS's Executive Committee</a></li>
 
                     </ul>
                 </li>
@@ -188,6 +194,7 @@
 
                     </ul>
                 </li>
+
 
 
                   <li class="sub-menu">
@@ -246,6 +253,7 @@
                         <li><a href="c3_chart.html">C3 Chart</a></li>
                     </ul>
                 </li> -->
+                <?php //if($admin==2){?>
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class=" fa fa-bar-chart-o"></i>
@@ -256,7 +264,9 @@
                         <!-- <li><a href="vector_map.html">Vector Map</a></li> -->
                     </ul>
                 </li>
+          <?php  //} else{
 
+          //} ?>
 
             </ul>
           </div>

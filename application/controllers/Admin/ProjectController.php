@@ -29,7 +29,14 @@ class ProjectController extends CI_Controller
 
     if($this->form_validation->run() == FALSE){
 
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/create_project');
       $this->load->view('admin/footer');
 
@@ -103,7 +110,14 @@ class ProjectController extends CI_Controller
     $this->body['tbl_name']= 'project_tbl';
 
 
-    $this->load->view('admin/header');
+    //admin check
+    $admin_type=$this->session->userdata('user_type');
+
+    $this->body['admin']=$admin_type;
+    //admin check
+
+
+    $this->load->view('admin/header',$this->body);
     $this->load->view('admin/project_tbl',$this->body);
     $this->load->view('admin/footer');
 
@@ -243,7 +257,14 @@ class ProjectController extends CI_Controller
 
       $this->body['edit_data']=$this->Project_model->get_edit_data(base64_decode($this->input->get('id')),'project_tbl');
 
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/proj_edit',$this->body);
       $this->load->view('admin/footer');
 

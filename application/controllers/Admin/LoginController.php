@@ -42,7 +42,7 @@ public function index(){
          $newdata = array(
 
    					'logged_in' => TRUE,
-
+            'user_type'=>$user_data['user_type']
    					);
 
 

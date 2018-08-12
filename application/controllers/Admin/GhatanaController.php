@@ -26,7 +26,14 @@ class GhatanaController extends CI_Controller
 
     $this->body['data']=$this->Ghatana_model->get_data();
 
-    $this->load->view('admin/header');
+    //admin check
+    $admin_type=$this->session->userdata('user_type');
+
+    $this->body['admin']=$admin_type;
+    //admin check
+
+
+    $this->load->view('admin/header',$this->body);
     $this->load->view('admin/ghatana',$this->body);
     $this->load->view('admin/footer');
 
@@ -56,7 +63,14 @@ if($insert != " "){
 
   $this->body['fields']= $this->db->list_fields('map_reports_table');
 
-  $this->load->view('admin/header');
+  //admin check
+  $admin_type=$this->session->userdata('user_type');
+
+  $this->body['admin']=$admin_type;
+  //admin check
+
+
+  $this->load->view('admin/header',$this->body);
   $this->load->view('admin/add_ghatana',$this->body);
   $this->load->view('admin/footer');
 }
@@ -97,7 +111,14 @@ $this->body['fields']= $this->db->list_fields('map_reports_table');
  //var_dump($this->body['e_data']);
 // exit();
 
-  $this->load->view('admin/header');
+//admin check
+$admin_type=$this->session->userdata('user_type');
+
+$this->body['admin']=$admin_type;
+//admin check
+
+
+$this->load->view('admin/header',$this->body);
   $this->load->view('admin/edit_ghatana',$this->body);
   $this->load->view('admin/footer');
 }

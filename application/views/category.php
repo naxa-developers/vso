@@ -1145,7 +1145,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                 <div class="container">
                   <div class="text-size">
                     <a href="#"  style="color: grey"> clear</a>
-                    <input type="text" name="" class="size-box selected_filter_ex">
+                    <input type="text" name="" class="size-box selected_filter_ex" disabled>
                     <input type="text" name="" class="size-box selected_filter_query" hidden>
                   </div>
                 </div>
@@ -1155,7 +1155,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                            <!--  -->
                       </div>
                       <div class=" left-apply">
-                        <div class="container">
+                        <div class="container" >
                       <h6><b>Applied Filters</b></h6>
                       <!-- applied filters -->
                      <table class="table">
@@ -1187,7 +1187,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #fff">&times;</span><span class="sr-only">Close</span></button>
 
                       </div>
-                      <div class="modal-body mdl2">
+                      <div class="modal-body mdl2" id="applied_filter_content">
                         <h4 id='filter_tbl_name'></h4>
                         <table class="table table-striped" id="table_filter">
                   <thead>
@@ -2030,7 +2030,9 @@ $('.filterthis').on('click',function(){
     //  data: name,
     url:  "MapController/get_map_filter?tbl="+tbl,
     beforeSend: function() {
-      //  $.LoadingOverlay("show");
+      $(".filter_values").html(' ');
+       $(".filter_column_name").html(' ');
+       $(".filter_column_name").append('<b>Loading Data</b>');
     },
     complete: function() {
       //  $.LoadingOverlay("hide", true);
@@ -2039,7 +2041,8 @@ $('.filterthis').on('click',function(){
 
       var filter_column = JSON.parse(result);
      //console.log(filter_column);
-$(".filter_column_name").html(' ');
+     $(".filter_values").html(' ');
+     $(".filter_column_name").html(' ');
       for(var i=0;i<filter_column.length;i++){
 
       //  console.log(filter_column[i].nepali_lang);
@@ -2066,7 +2069,10 @@ $(document).on('click','.filter_value',function(){
     //  data: name,
     url:  "MapController/get_map_filter_value?tbl="+data_tbl+"&&col="+col_name,
     beforeSend: function() {
+
       //  $.LoadingOverlay("show");
+      $(".filter_values").html(' ');
+      $(".filter_values").append('<b>Loading<b>');
     },
     complete: function() {
       //  $.LoadingOverlay("hide", true);
@@ -2129,6 +2135,7 @@ var count_filter = 0;
 $('.applied_filter').on('click',function(){
 
   //console.log('click');
+  $('#table_filter >tbody').html('');
   var show_qry=$(".selected_filter_ex").val();
   var qry=$(".selected_filter_query").val();
   var qry_tbl=$(".selected_filter_query").attr('id');
@@ -2145,8 +2152,13 @@ $('.applied_filter').on('click',function(){
 
   $('.applied-list').append('<tr class="'+qry_tbl+count_filter+'list"><th scope="row"></th><td>'+qry_tbl+'</td><td>'+show_qry+'</td><td><i class="fa fa-trash delete_filter" id="'+qry_tbl+count_filter+'"></i></td></tr>');
   //console.log('result');
+
+  var success_qry ;
+  success_qry = 0;
+
   $.ajax({
     type: "GET",
+    async : false,
     //  data: name,
     url:  "MapController/filter_query?qry="+qry+"&&tbl="+qry_tbl,
     beforeSend: function() {
@@ -2157,7 +2169,6 @@ $('.applied_filter').on('click',function(){
     },
     success: function (result) {
 
-      console.log(result);
 
      var data=JSON.parse(result);
   var modal_table=JSON.parse(data.table_data);
@@ -2174,7 +2185,7 @@ $('.applied_filter').on('click',function(){
 
 document.getElementById("filter_tbl_name").innerHTML = 'aaa';
 //$('h4').html(show_qry);
-$('#table_filter >tbody').html('');
+
 for(var i=0;i<modal_table.length;i++){
 
 var tbl_body=""
@@ -2293,11 +2304,22 @@ $(".selected_filter_ex").val('');
 //map for filter end
 
 
-
+success_qry = 1;
+//console.log(success_qry);
 }//succes end
 
 });//ajaxa end
 
+
+
+console.log(success_qry);
+if(success_qry==0){
+$("div#applied_filter_content").html("<h4>Filter Query wrong or No data to respective filter</h4>");
+}else{
+
+}
+// console.log($("div#applied_filter_content"));
+//
 
 });
 

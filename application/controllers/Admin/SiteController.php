@@ -26,7 +26,12 @@ class SiteController extends CI_Controller
     $this->body['site_info']=$this->Site_model->site_setting(1);
     //var_dump($this->body['site_info']);
 
-    $this->load->view('admin/header');
+    //admin check
+    $admin_type=$this->session->userdata('user_type');
+
+    $this->body['admin']=$admin_type;
+    //admin check
+    $this->load->view('admin/header',$this->body);
     $this->load->view('admin/site_setting',$this->body);
     $this->load->view('admin/footer');
   }
@@ -44,7 +49,7 @@ class SiteController extends CI_Controller
 
 
 
-      $update=$this->Site_model->update_data($_POST);
+      $update=$this->Site_model->update_data($_POST,1);
       echo $update;
 
       if($update){
@@ -85,7 +90,7 @@ class SiteController extends CI_Controller
         $image_path=base_url().'uploads/site_setting/site_logo'.$ext ;
         $_POST['site_logo']=$image_path;
 
-        $update=$this->Site_model->update_data($_POST);
+        $update=$this->Site_model->update_data($_POST,1);
 
         if($update){
           $this->session->set_flashdata('msg','Site Logo and Site Text successfully Updated');
@@ -143,7 +148,7 @@ class SiteController extends CI_Controller
 
 
 
-      $update=$this->Site_model->update_data($_POST);
+      $update=$this->Site_model->update_data($_POST,1);
       echo $update;
 
       if($update){
@@ -186,7 +191,7 @@ class SiteController extends CI_Controller
 
 
 
-        $update=$this->Site_model->update_data($_POST);
+        $update=$this->Site_model->update_data($_POST,1);
 
         if($update){
           $this->session->set_flashdata('msg','Cover Photo and Cover Text successfully Updated');
@@ -224,7 +229,7 @@ class SiteController extends CI_Controller
 
 
 
-    $update=$this->Site_model->update_data($_POST);
+    $update=$this->Site_model->update_data($_POST,1);
     echo $update;
 
     if($update){
@@ -250,7 +255,7 @@ public function important_link(){
 
 
 
-  $update=$this->Site_model->update_data($_POST);
+  $update=$this->Site_model->update_data($_POST,1);
   echo $update;
 
   if($update){
@@ -276,7 +281,7 @@ public function find_us_links(){
 
 
 
-  $update=$this->Site_model->update_data($_POST);
+  $update=$this->Site_model->update_data($_POST,1);
   echo $update;
 
   if($update){
@@ -304,7 +309,7 @@ public function copyright(){
 
 
 
-  $update=$this->Site_model->update_data($_POST);
+  $update=$this->Site_model->update_data($_POST,1);
   echo $update;
 
   if($update){
@@ -330,7 +335,8 @@ public function map_zoom(){
 
 
 
-  $update=$this->Site_model->update_data($_POST);
+  $update=$this->Site_model->update_data($_POST,1);
+  $update=$this->Site_model->update_data($_POST,2);
   echo $update;
 
   if($update){
@@ -357,7 +363,12 @@ public function site_setting_nep(){
   $this->body['site_info']=$this->Site_model->site_setting(2);
   //var_dump($this->body['site_info']);
 
-  $this->load->view('admin/header');
+  //admin check
+  $admin_type=$this->session->userdata('user_type');
+
+  $this->body['admin']=$admin_type;
+  //admin check
+  $this->load->view('admin/header',$this->body);
   $this->load->view('admin/site_setting_nep',$this->body);
   $this->load->view('admin/footer');
 }

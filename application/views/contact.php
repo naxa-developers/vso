@@ -139,7 +139,26 @@
 <div class="container" id="emergency_no">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" id="health-tab" data-toggle="tab" href="#health" role="tab" aria-controls="health" aria-selected="true">Health Institutions</a>
+      <a class="nav-link active" id="chairperson-tab" data-toggle="tab" href="#chairpersons" role="tab" aria-controls="chairpersons" aria-selected="true">Chairpersons of Local Units</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="chief-tab" data-toggle="tab" href="#cheif" role="tab" aria-controls="cheif" aria-selected="false">Chief of local level offices</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="elected-tab" data-toggle="tab" href="#elected" role="tab" aria-controls="elected" aria-selected="false">Elected Representatives</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="municipal_ex-tab" data-toggle="tab" href="#municipal_ex" role="tab" aria-controls="municipal_ex" aria-selected="false">Municipal Executive Members</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="disaster-tab" data-toggle="tab" href="#disaster" role="tab" aria-controls="disaster" aria-selected="false">Municipality Level Disaster Management Committee,</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="nntds-tab" data-toggle="tab" href="#nntds" role="tab" aria-controls="nntds" aria-selected="false">NNTDS's Executive Committee</a>
+    </li>
+    <!-- break -->
+    <li class="nav-item">
+      <a class="nav-link" id="health-tab" data-toggle="tab" href="#health" role="tab" aria-controls="health" aria-selected="true">Health Institutions</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" id="emergency-tab" data-toggle="tab" href="#emergency" role="tab" aria-controls="emergency" aria-selected="false">Emergency Responders</a>
@@ -166,7 +185,240 @@
 
 
   <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="health" role="tabpanel" aria-labelledby="health-tab">
+
+  <div class="tab-pane fade show active" id="chairpersons" role="tabpanel" aria-labelledby="chairpersons-tab">
+  <br>
+    <a href="get_csv_emergency?type=ddr&&name=DRR_Volunteers&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button></a>
+      <br>
+  <div class="row" id="reportable">
+   <!-- responsive table for displaying contact directory -->
+   <table class="responstable">
+    <tr>
+      <th><span>S.N</span></th>
+      <th data-th="DRR Volunteers"><span>Photo</span></th>
+      <th><span>Name</span></th>
+      <th><span>Organization</span></th>
+      <th><span>Post</span></th>
+      <th><span>Address</span></th>
+      <th><span>Phone No.</span></th>
+      <th><span>Email</span></th>
+    </tr>
+    <?php foreach ($chairpersons as $chairpersons) {
+      // code...
+     ?>
+
+     <tr class="tr_tbl">
+       <td id="<?php echo $chairpersons['id'] ?>idchairpersons"><?php echo $chairpersons['id'] ?></td>
+       <td id="<?php echo $chairpersons['id'] ?>photochairpersons" ><img src="<?php echo $chairpersons['photo']?>" height="50" width="50"></td>
+       <td id="<?php echo $chairpersons['id'] ?>namechairpersons"><?php echo $chairpersons['name'] ?></td>
+       <td id="<?php echo $chairpersons['id'] ?>organizationchairpersons"><?php echo $chairpersons['organization'] ?></td>
+       <td id="<?php echo $chairpersons['id'] ?>postchairpersons"><?php echo $chairpersons['post'] ?></td>
+       <td id="<?php echo $chairpersons['id'] ?>achairpersonsesschairpersons"><?php echo $chairpersons['achairpersonsess'] ?></td>
+       <td id="<?php echo $chairpersons['id'] ?>phone_nochairpersons"><?php echo $chairpersons['phone_no'] ?></td>
+       <td id="<?php echo $chairpersons['id'] ?>emailchairpersons"><?php echo $chairpersons['email'] ?></td>
+
+     </tr>
+
+   <?php } ?>
+  </table>
+</div>
+</div>
+
+   <div class="tab-pane fade show" id="cheif" role="tabpanel" aria-labelledby="cheif-tab">
+  <br>
+    <a href="get_csv_emergency?type=ddr&&name=DRR_Volunteers&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button></a>
+      <br>
+  <div class="row" id="reportable">
+   <!-- responsive table for displaying contact directory -->
+   <table class="responstable">
+    <tr>
+      <th><span>S.N</span></th>
+      <th data-th="DRR Volunteers"><span>Photo</span></th>
+      <th><span>Name</span></th>
+      <th><span>Organization</span></th>
+      <th><span>Post</span></th>
+      <th><span>Address</span></th>
+      <th><span>Phone No.</span></th>
+      <th><span>Email</span></th>
+    </tr>
+    <?php foreach ($chief as $chief) {
+      // code...
+     ?>
+
+     <tr class="tr_tbl">
+       <td id="<?php echo $chief['id'] ?>idcheif"><?php echo $chief['id'] ?></td>
+       <td id="<?php echo $chief['id'] ?>photocheif" ><img src="<?php echo $chief['photo']?>" height="50" width="50"></td>
+       <td id="<?php echo $chief['id'] ?>namecheif"><?php echo $chief['name'] ?></td>
+       <td id="<?php echo $chief['id'] ?>organizationcheif"><?php echo $chief['organization'] ?></td>
+       <td id="<?php echo $chief['id'] ?>postcheif"><?php echo $chief['post'] ?></td>
+       <td id="<?php echo $chief['id'] ?>acheifesscheif"><?php echo $chief['acheifess'] ?></td>
+       <td id="<?php echo $chief['id'] ?>phone_nocheif"><?php echo $chief['phone_no'] ?></td>
+       <td id="<?php echo $chief['id'] ?>emailcheif"><?php echo $chief['email'] ?></td>
+
+     </tr>
+
+   <?php } ?>
+  </table>
+</div>
+</div>
+
+
+ <div class="tab-pane fade show" id="elected" role="tabpanel" aria-labelledby="elected-tab">
+  <br>
+    <a href="get_csv_emergency?type=ddr&&name=DRR_Volunteers&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button></a>
+      <br>
+  <div class="row" id="reportable">
+   <!-- responsive table for displaying contact directory -->
+   <table class="responstable">
+    <tr>
+      <th><span>S.N</span></th>
+      <th data-th="DRR Volunteers"><span>Photo</span></th>
+      <th><span>Name</span></th>
+      <th><span>Organization</span></th>
+      <th><span>Post</span></th>
+      <th><span>Address</span></th>
+      <th><span>Phone No.</span></th>
+      <th><span>Email</span></th>
+    </tr>
+    <?php foreach ($elected as $elected) {
+      // code...
+     ?>
+
+     <tr class="tr_tbl">
+       <td id="<?php echo $elected['id'] ?>idelected"><?php echo $elected['id'] ?></td>
+       <td id="<?php echo $elected['id'] ?>photoelected" ><img src="<?php echo $elected['photo']?>" height="50" width="50"></td>
+       <td id="<?php echo $elected['id'] ?>nameelected"><?php echo $elected['name'] ?></td>
+       <td id="<?php echo $elected['id'] ?>organizationelected"><?php echo $elected['organization'] ?></td>
+       <td id="<?php echo $elected['id'] ?>postelected"><?php echo $elected['post'] ?></td>
+       <td id="<?php echo $elected['id'] ?>aelectedesselected"><?php echo $elected['aelectedess'] ?></td>
+       <td id="<?php echo $elected['id'] ?>phone_noelected"><?php echo $elected['phone_no'] ?></td>
+       <td id="<?php echo $elected['id'] ?>emailelected"><?php echo $elected['email'] ?></td>
+
+     </tr>
+
+   <?php } ?>
+  </table>
+</div>
+</div>
+<!-- elected -->
+
+ <div class="tab-pane fade show" id="municipal_ex" role="tabpanel" aria-labelledby="municipal_ex-tab">
+  <br>
+    <a href="get_csv_emergency?type=ddr&&name=DRR_Volunteers&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button></a>
+      <br>
+  <div class="row" id="reportable">
+   <!-- responsive table for displaying contact directory -->
+   <table class="responstable">
+    <tr>
+      <th><span>S.N</span></th>
+      <th data-th="DRR Volunteers"><span>Photo</span></th>
+      <th><span>Name</span></th>
+      <th><span>Organization</span></th>
+      <th><span>Post</span></th>
+      <th><span>Address</span></th>
+      <th><span>Phone No.</span></th>
+      <th><span>Email</span></th>
+    </tr>
+    <?php foreach ($municipal_ex as $municipal_ex) {
+      // code...
+     ?>
+
+     <tr class="tr_tbl">
+       <td id="<?php echo $municipal_ex['id'] ?>idmunicipal_ex"><?php echo $municipal_ex['id'] ?></td>
+       <td id="<?php echo $municipal_ex['id'] ?>photomunicipal_ex" ><img src="<?php echo $municipal_ex['photo']?>" height="50" width="50"></td>
+       <td id="<?php echo $municipal_ex['id'] ?>namemunicipal_ex"><?php echo $municipal_ex['name'] ?></td>
+       <td id="<?php echo $municipal_ex['id'] ?>organizationmunicipal_ex"><?php echo $municipal_ex['organization'] ?></td>
+       <td id="<?php echo $municipal_ex['id'] ?>postmunicipal_ex"><?php echo $municipal_ex['post'] ?></td>
+       <td id="<?php echo $municipal_ex['id'] ?>amunicipal_exessmunicipal_ex"><?php echo $municipal_ex['amunicipal_exess'] ?></td>
+       <td id="<?php echo $municipal_ex['id'] ?>phone_nomunicipal_ex"><?php echo $municipal_ex['phone_no'] ?></td>
+       <td id="<?php echo $municipal_ex['id'] ?>emailmunicipal_ex"><?php echo $municipal_ex['email'] ?></td>
+
+     </tr>
+
+   <?php } ?>
+  </table>
+</div>
+</div>
+
+
+    <div class="tab-pane fade show" id="disaster" role="tabpanel" aria-labelledby="disaster-tab">
+  <br>
+    <a href="get_csv_emergency?type=ddr&&name=DRR_Volunteers&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button></a>
+      <br>
+  <div class="row" id="reportable">
+   <!-- responsive table for displaying contact directory -->
+   <table class="responstable">
+    <tr>
+      <th><span>S.N</span></th>
+      <th data-th="DRR Volunteers"><span>Photo</span></th>
+      <th><span>Name</span></th>
+      <th><span>Organization</span></th>
+      <th><span>Post</span></th>
+      <th><span>Address</span></th>
+      <th><span>Phone No.</span></th>
+      <th><span>Email</span></th>
+    </tr>
+    <?php foreach ($disaster as $disaster) {
+      // code...
+     ?>
+
+     <tr class="tr_tbl">
+       <td id="<?php echo $disaster['id'] ?>iddisaster"><?php echo $disaster['id'] ?></td>
+       <td id="<?php echo $disaster['id'] ?>photodisaster" ><img src="<?php echo $disaster['photo']?>" height="50" width="50"></td>
+       <td id="<?php echo $disaster['id'] ?>namedisaster"><?php echo $disaster['name'] ?></td>
+       <td id="<?php echo $disaster['id'] ?>organizationdisaster"><?php echo $disaster['organization'] ?></td>
+       <td id="<?php echo $disaster['id'] ?>postdisaster"><?php echo $disaster['post'] ?></td>
+       <td id="<?php echo $disaster['id'] ?>adisasteressdisaster"><?php echo $disaster['adisasteress'] ?></td>
+       <td id="<?php echo $disaster['id'] ?>phone_nodisaster"><?php echo $disaster['phone_no'] ?></td>
+       <td id="<?php echo $disaster['id'] ?>emaildisaster"><?php echo $disaster['email'] ?></td>
+
+     </tr>
+
+   <?php } ?>
+  </table>
+</div>
+</div>
+        <div class="tab-pane fade show" id="nntds" role="tabpanel" aria-labelledby="nntds-tab">
+  <br>
+    <a href="get_csv_emergency?type=ddr&&name=DRR_Volunteers&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button></a>
+      <br>
+  <div class="row" id="reportable">
+   <!-- responsive table for displaying contact directory -->
+   <table class="responstable">
+    <tr>
+      <th><span>S.N</span></th>
+      <th data-th="DRR Volunteers"><span>Photo</span></th>
+      <th><span>Name</span></th>
+      <th><span>Organization</span></th>
+      <th><span>Post</span></th>
+      <th><span>Address</span></th>
+      <th><span>Phone No.</span></th>
+      <th><span>Email</span></th>
+    </tr>
+    <?php foreach ($nntds as $nntds) {
+      // code...
+     ?>
+
+     <tr class="tr_tbl">
+       <td id="<?php echo $nntds['id'] ?>idnntds"><?php echo $nntds['id'] ?></td>
+       <td id="<?php echo $nntds['id'] ?>photonntds" ><img src="<?php echo $nntds['photo']?>" height="50" width="50"></td>
+       <td id="<?php echo $nntds['id'] ?>namenntds"><?php echo $nntds['name'] ?></td>
+       <td id="<?php echo $nntds['id'] ?>organizationnntds"><?php echo $nntds['organization'] ?></td>
+       <td id="<?php echo $nntds['id'] ?>postnntds"><?php echo $nntds['post'] ?></td>
+       <td id="<?php echo $nntds['id'] ?>anntdsessnntds"><?php echo $nntds['address'] ?></td>
+       <td id="<?php echo $nntds['id'] ?>phone_nonntds"><?php echo $nntds['phone_no'] ?></td>
+       <td id="<?php echo $nntds['id'] ?>emailnntds"><?php echo $nntds['email'] ?></td>
+
+     </tr>
+
+   <?php } ?>
+  </table>
+</div>
+</div>
+
+
+
+    <div class="tab-pane fade show" id="health" role="tabpanel" aria-labelledby="health-tab">
       <br>
       <a href="get_csv_emergency?type=health&&name=Health_Institutions&&tbl=emergency_contact"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px; float: right;"><i class="fa fa-download"></i> Download</button></a>
       <br>

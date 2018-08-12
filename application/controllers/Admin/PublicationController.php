@@ -24,7 +24,14 @@ class PublicationController extends CI_Controller
 
     $this->body['data']=$this->Publication_model->get_all_data();
 
-    $this->load->view('admin/header');
+    //admin check
+    $admin_type=$this->session->userdata('user_type');
+
+    $this->body['admin']=$admin_type;
+    //admin check
+
+
+    $this->load->view('admin/header',$this->body);
     $this->load->view('admin/publication_tbl',$this->body);
     $this->load->view('admin/footer');
 
@@ -110,7 +117,14 @@ class PublicationController extends CI_Controller
 
     }else{
 
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/add_publication');
       $this->load->view('admin/footer');
 
@@ -231,7 +245,14 @@ class PublicationController extends CI_Controller
 
       $this->body['edit_data']=$this->Publication_model->get_edit_data(base64_decode($this->input->get('id')),'publication');
 
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/edit_publication',$this->body);
       $this->load->view('admin/footer');
 

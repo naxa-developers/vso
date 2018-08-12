@@ -26,7 +26,14 @@ public function view_about()
 {
 
   $this->body['data']=$this->About_model->get_about();
-  $this->load->view('admin/header');
+  //admin check
+  $admin_type=$this->session->userdata('user_type');
+
+  $this->body['admin']=$admin_type;
+  //admin check
+
+
+  $this->load->view('admin/header',$this->body);
   $this->load->view('admin/about',$this->body);
   $this->load->view('admin/footer');
 }
@@ -130,7 +137,14 @@ public function edit_about()
 
     $this->body['edit_data']=$this->About_model->get_edit_data(base64_decode($this->input->get('id')),'about');
 
-    $this->load->view('admin/header');
+    //admin check
+    $admin_type=$this->session->userdata('user_type');
+
+    $this->body['admin']=$admin_type;
+    //admin check
+
+
+    $this->load->view('admin/header',$this->body);
     $this->load->view('admin/edit_publication',$this->body);
     $this->load->view('admin/footer');
 

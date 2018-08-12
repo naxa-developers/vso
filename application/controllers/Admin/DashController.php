@@ -42,7 +42,14 @@ class DashController extends CI_Controller
     //var_dump($this->body['user']);
 
 
-    $this->load->view('admin/header');
+    //admin check
+    $admin_type=$this->session->userdata('user_type');
+
+    $this->body['admin']=$admin_type;
+    //admin check
+
+
+    $this->load->view('admin/header',$this->body);
     $this->load->view('admin/dash.php',$this->body);
     $this->load->view('admin/footer');
 

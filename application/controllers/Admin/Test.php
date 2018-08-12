@@ -37,6 +37,26 @@ class Test extends CI_Controller
   }
 
 
+public function admin_type(){
+
+  if(($this->session->userdata('logged_in'))!=TRUE)
+  {
+
+    redirect('admin');
+  }else{
+
+
+
+
+}
+
+$admin_type=$this->session->userdata('user_type');
+
+$this->body['admin']=$admin_type;
+$this->load->view('admin/header.php',$this->body);
+$this->load->view('admin/footer.php');
+
+}
 
 
   public function index(){
@@ -448,7 +468,7 @@ class Test extends CI_Controller
       //      $lang_insert=$this->Dash_model->insert_lang('tbl_lang',$data_lang);
       //
       //
-      //
+      
       //   }
       //
       //   if($add_column==true){

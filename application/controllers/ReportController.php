@@ -367,6 +367,17 @@ class ReportController extends CI_Controller
   public function report_manage()
   {
 
+    if(($this->session->userdata('logged_in'))!=TRUE)
+    {
+
+      redirect('admin');
+    }else{
+
+
+
+
+  }
+
 
     if(isset($_POST['submit'])){
 
@@ -394,7 +405,14 @@ class ReportController extends CI_Controller
 
       //var_dump($this->body['data']);
 
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/report_tbl',$this->body);
       $this->load->view('admin/footer');
 

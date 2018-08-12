@@ -96,7 +96,14 @@ class FeatureDataset extends CI_Controller
     }else{
       $this->body['data']=$this->Feature_model->get_feature();
       //var_dump($this->body['data']);
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/feature_dataset',$this->body);
       $this->load->view('admin/footer');
     }
@@ -171,7 +178,14 @@ class FeatureDataset extends CI_Controller
     }else{
       $this->body['cat']=$this->Feature_model->get_tables_data('categories_tbl');
       //  var_dump($this->body['cat']);
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/add_feature',$this->body);
       $this->load->view('admin/footer');
 
@@ -225,7 +239,14 @@ class FeatureDataset extends CI_Controller
       //echo base64_decode($this->input->get('id'));
       var_dump($this->body['e_data']);
 
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/edit_feature',$this->body);
       $this->load->view('admin/footer');
 

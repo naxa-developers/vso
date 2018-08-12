@@ -25,6 +25,15 @@ class MainController extends CI_Controller
     $this->body['ddr']=$this->Main_model->get_contact('ddr','emergency_personnel');
     $this->body['personnel']=$this->Main_model->get_contact('personnel','emergency_personnel');
     $this->body['members']=$this->Main_model->get_contact('members','emergency_personnel');
+
+    $this->body['chairpersons']=$this->Main_model->get_contact('chairpersons','emergency_personnel');
+    $this->body['chief']=$this->Main_model->get_contact('chief','emergency_personnel');
+    $this->body['elected']=$this->Main_model->get_contact('elected','emergency_personnel');
+    $this->body['municipal_ex']=$this->Main_model->get_contact('municipal_ex','emergency_personnel');
+    $this->body['disaster']=$this->Main_model->get_contact('disaster','emergency_personnel');
+    $this->body['nntds']=$this->Main_model->get_contact('nntds','emergency_personnel');
+    $this->body['nntds']=$this->Main_model->get_contact('nntds','emergency_personnel');
+
     //language
     if($this->session->userdata('Language')==NULL){
 
@@ -48,8 +57,8 @@ class MainController extends CI_Controller
     //language
 
     $this->load->view('header',$this->body);
-    //$this->load->view('contact',$this->body);
-    $this->load->view('contact_static',$this->body);
+    $this->load->view('contact',$this->body);
+  //  $this->load->view('contact_static',$this->body);
     $this->load->view('footer',$this->body);
 
   }

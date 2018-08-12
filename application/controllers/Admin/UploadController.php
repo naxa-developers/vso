@@ -27,7 +27,14 @@ class UploadController extends CI_Controller
   public function csv_upload(){
 
     echo $this->input->get("tbl");
-    $this->load->view("admin/header");
+    //admin check
+    $admin_type=$this->session->userdata('user_type');
+
+    $this->body['admin']=$admin_type;
+    //admin check
+
+
+    $this->load->view('admin/header',$this->body);
     $this->load->view("admin/csv_file");
     $this->load->view("admin/footer");
 
@@ -92,7 +99,14 @@ class UploadController extends CI_Controller
 
     }else{
 
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/upload_bck_img');
       $this->load->view('admin/footer');
 
@@ -118,7 +132,14 @@ class UploadController extends CI_Controller
     $this->body['cat']=$cat;
     $this->body['name']=$name;
 //var_dump($this->body['data']);
-    $this->load->view('admin/header');
+//admin check
+$admin_type=$this->session->userdata('user_type');
+
+$this->body['admin']=$admin_type;
+//admin check
+
+
+$this->load->view('admin/header',$this->body);
     $this->load->view('admin/emergency_contact_tbl',$this->body);
     $this->load->view('admin/footer');
 
@@ -191,7 +212,14 @@ class UploadController extends CI_Controller
       //echo base64_decode($this->input->get('id'));
       // var_dump($this->body['e_data']);
 
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/edit_emerg',$this->body);
       $this->load->view('admin/footer');
 
@@ -228,7 +256,14 @@ class UploadController extends CI_Controller
 
     }else{
 
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/add_emergency');
       $this->load->view('admin/footer');
 
@@ -312,7 +347,14 @@ class UploadController extends CI_Controller
       $name=$this->input->get('name');
       $this->body['name']=$name;
 
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/emergency_personnel_tbl',$this->body);
       $this->load->view('admin/footer');
     }
@@ -383,7 +425,14 @@ class UploadController extends CI_Controller
 
     }else{
 
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/add_emergency_personnel');
       $this->load->view('admin/footer');
 
@@ -424,7 +473,14 @@ class UploadController extends CI_Controller
       //echo base64_decode($this->input->get('id'));
       // var_dump($this->body['e_data']);
 
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/edit_emerg_personnel',$this->body);
       $this->load->view('admin/footer');
 
@@ -495,7 +551,14 @@ class UploadController extends CI_Controller
     }else{
 
 
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      //admin check
+
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/icons');
       $this->load->view('admin/footer');
 
@@ -586,7 +649,14 @@ unset($fields[8]);
 } else {
 
 
-  $this->load->view('admin/header');
+  //admin check
+  $admin_type=$this->session->userdata('user_type');
+
+  $this->body['admin']=$admin_type;
+  //admin check
+
+
+  $this->load->view('admin/header',$this->body);
   $this->load->view('admin/upload_csv_emerg');
   $this->load->view('admin/footer');
 }
