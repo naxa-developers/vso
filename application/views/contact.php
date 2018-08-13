@@ -213,7 +213,7 @@
        <td id="<?php echo $chairpersons['id'] ?>namechairpersons"><?php echo $chairpersons['name'] ?></td>
        <td id="<?php echo $chairpersons['id'] ?>organizationchairpersons"><?php echo $chairpersons['organization'] ?></td>
        <td id="<?php echo $chairpersons['id'] ?>postchairpersons"><?php echo $chairpersons['post'] ?></td>
-       <td id="<?php echo $chairpersons['id'] ?>achairpersonsesschairpersons"><?php echo $chairpersons['achairpersonsess'] ?></td>
+       <td id="<?php echo $chairpersons['id'] ?>addresschairpersons"><?php echo $chairpersons['address'] ?></td>
        <td id="<?php echo $chairpersons['id'] ?>phone_nochairpersons"><?php echo $chairpersons['phone_no'] ?></td>
        <td id="<?php echo $chairpersons['id'] ?>emailchairpersons"><?php echo $chairpersons['email'] ?></td>
 
@@ -251,7 +251,7 @@
        <td id="<?php echo $chief['id'] ?>namecheif"><?php echo $chief['name'] ?></td>
        <td id="<?php echo $chief['id'] ?>organizationcheif"><?php echo $chief['organization'] ?></td>
        <td id="<?php echo $chief['id'] ?>postcheif"><?php echo $chief['post'] ?></td>
-       <td id="<?php echo $chief['id'] ?>acheifesscheif"><?php echo $chief['acheifess'] ?></td>
+       <td id="<?php echo $chief['id'] ?>addresscheif"><?php echo $chief['address'] ?></td>
        <td id="<?php echo $chief['id'] ?>phone_nocheif"><?php echo $chief['phone_no'] ?></td>
        <td id="<?php echo $chief['id'] ?>emailcheif"><?php echo $chief['email'] ?></td>
 
@@ -285,12 +285,12 @@
      ?>
 
      <tr class="tr_tbl">
-       <td id="<?php echo $elected['id'] ?>idelected"><?php echo $elected['id'] ?></td>
-       <td id="<?php echo $elected['id'] ?>photoelected" ><img src="<?php echo $elected['photo']?>" height="50" width="50"></td>
-       <td id="<?php echo $elected['id'] ?>nameelected"><?php echo $elected['name'] ?></td>
+       <td id="<?php echo $elected['id'] ?>idselected"><?php echo $elected['id'] ?></td>
+       <td id="<?php echo $elected['id'] ?>photoselected" ><img src="<?php echo $elected['photo']?>" height="50" width="50"></td>
+       <td id="<?php echo $elected['id'] ?>nameselected"><?php echo $elected['name'] ?></td>
        <td id="<?php echo $elected['id'] ?>organizationelected"><?php echo $elected['organization'] ?></td>
-       <td id="<?php echo $elected['id'] ?>postelected"><?php echo $elected['post'] ?></td>
-       <td id="<?php echo $elected['id'] ?>aelectedesselected"><?php echo $elected['aelectedess'] ?></td>
+       <td id="<?php echo $elected['id'] ?>postselected"><?php echo $elected['post'] ?></td>
+       <td id="<?php echo $elected['id'] ?>addressselected"><?php echo $elected['address'] ?></td>
        <td id="<?php echo $elected['id'] ?>phone_noelected"><?php echo $elected['phone_no'] ?></td>
        <td id="<?php echo $elected['id'] ?>emailelected"><?php echo $elected['email'] ?></td>
 
@@ -329,7 +329,7 @@
        <td id="<?php echo $municipal_ex['id'] ?>namemunicipal_ex"><?php echo $municipal_ex['name'] ?></td>
        <td id="<?php echo $municipal_ex['id'] ?>organizationmunicipal_ex"><?php echo $municipal_ex['organization'] ?></td>
        <td id="<?php echo $municipal_ex['id'] ?>postmunicipal_ex"><?php echo $municipal_ex['post'] ?></td>
-       <td id="<?php echo $municipal_ex['id'] ?>amunicipal_exessmunicipal_ex"><?php echo $municipal_ex['amunicipal_exess'] ?></td>
+       <td id="<?php echo $municipal_ex['id'] ?>addressmunicipal_ex"><?php echo $municipal_ex['address'] ?></td>
        <td id="<?php echo $municipal_ex['id'] ?>phone_nomunicipal_ex"><?php echo $municipal_ex['phone_no'] ?></td>
        <td id="<?php echo $municipal_ex['id'] ?>emailmunicipal_ex"><?php echo $municipal_ex['email'] ?></td>
 
