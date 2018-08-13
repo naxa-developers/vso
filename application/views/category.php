@@ -1187,7 +1187,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #fff">&times;</span><span class="sr-only">Close</span></button>
 
                       </div>
-                      <div class="modal-body mdl2" id="applied_filter_content">
+                      <div class="modal-body mdl2" >
                         <h4 id='filter_tbl_name'></h4>
                         <table class="table table-striped" id="table_filter">
                   <thead>
@@ -1200,6 +1200,8 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
 
                   </tbody>
                 </table>
+                <div id="applied_filter_content">
+                </div>
                 <!--         <button class="btn btn-default" data-toggle="modal" data-target="#test-modal-3">Launch Modal 3</button>
                  -->      </div>
 
@@ -2135,7 +2137,9 @@ var count_filter = 0;
 $('.applied_filter').on('click',function(){
 
   //console.log('click');
+  $('#table_filter >thead tr').html('');
   $('#table_filter >tbody').html('');
+  $("div#applied_filter_content").html("");
   var show_qry=$(".selected_filter_ex").val();
   var qry=$(".selected_filter_query").val();
   var qry_tbl=$(".selected_filter_query").attr('id');
