@@ -301,6 +301,12 @@ table.responstable {
 
 
 <div class="row" id="reportable">
+  <?php if($data == NUll){
+
+ echo "<p>No Matching Data Found For respective Filter</p>";
+
+
+  }else{ ?>
  <!-- responsive table for displaying contact directory -->
  <table class="responstable">
   <tr>
@@ -371,6 +377,7 @@ table.responstable {
     </nav>
   </div>
 </div>
+<?php  }?>
 
 </div>
 </div>

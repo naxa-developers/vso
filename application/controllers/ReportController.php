@@ -470,6 +470,15 @@ class ReportController extends CI_Controller
 
       $queryy=$this->db->query($query);
       $this->body['data']= $queryy->result_array();
+      // var_dump($this->body['data']);
+      // if($this->body['data']== NUll){
+      //
+      //   echo 'empty';
+      // }else{
+      //   echo 'Not-empty';
+      //
+      // }
+      // exit();
       $this->body['query']=$query;
 
     }else{
