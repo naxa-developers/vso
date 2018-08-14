@@ -200,6 +200,9 @@ $this->data['site_info']=$this->Report_model->site_setting();
 
 if(!$this->db->table_exists($tbl['category_table'])){
 
+}elseif($tbl['public_view']=='0'){
+
+
 }else{
       $cat_tbles[]=$tbl['category_table'];
       //$popup[]=$tbl['popup_content'];
@@ -769,6 +772,17 @@ public function location_marker(){
 
     $data=array(
       'default_load'=>$this->input->get('value'),
+
+    );
+    $this->Map_model->update_value($this->input->get('id'),$data);
+
+  }
+  public function update_public_view(){
+
+
+
+    $data=array(
+      'public_view'=>$this->input->get('value'),
 
     );
     $this->Map_model->update_value($this->input->get('id'),$data);

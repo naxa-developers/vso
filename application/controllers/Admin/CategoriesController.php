@@ -70,6 +70,16 @@ class CategoriesController extends CI_Controller
     $admin_type=$this->session->userdata('user_type');
 
     $this->body['admin']=$admin_type;
+    if($this->session->userdata('user_type')=='1'){
+
+      $this->body['disable']="";
+
+    }else{
+
+   $this->body['disable']="disabled";
+
+    }
+
     //admin check
 
     $this->load->view('admin/header',$this->body);

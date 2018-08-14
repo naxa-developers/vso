@@ -43,25 +43,25 @@ p.about {
 .pagination-button {
   display: inline-block;
   padding: 5px 10px;
-  border: 1px solid #e0e0e0;  
+  border: 1px solid #e0e0e0;
   background-color: #eee;
   color: #333;
   cursor: pointer;
   transition: background 0.1s, color 0.1s;
-  
+
   &:hover {
     background-color: #ddd;
     color: #3366cc;
   }
-  
+
   &.active {
     background-color: #bbb;
     border-color: #bbb;
     color: #3366cc;
   }
-  
-  $border-radius: 18px;  
-  
+
+  $border-radius: 18px;
+
   &:first-of-type {
     border-radius: $border-radius 0 0 $border-radius;
   }
@@ -144,7 +144,15 @@ p.about {
 
 
 <?php //var_dump($data); ?>
-<?php foreach ($data as $d) { ?>
+<?php foreach ($data as $d) {
+
+    if($d['public_view']=='0'){
+
+
+    }else{
+
+
+  ?>
 
 
 				<div class="row article-loop">
@@ -163,7 +171,7 @@ p.about {
 							 echo 0 ;
 						 }
 							 ?> download
-							<span class="fa fa-calendar"></span> Last update: 
+							<span class="fa fa-calendar"></span> Last update:
 							<?php echo $d['last_updated']?>
 						</p>
 						<p class="about">
@@ -182,7 +190,7 @@ p.about {
 
 				</div>
 
-		<?php	} ?>
+		<?php	}} ?>
 							<div class="col-md-10">
 								<ul class="pagination pull-right" style="padding-top: 20px; padding-bottom: 30px;">
 									<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>

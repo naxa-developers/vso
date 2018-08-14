@@ -62,6 +62,10 @@
 
                           <td>Default Load</td>
 
+                        <?php }elseif($key == 'public_view'){?>
+
+                          <td>Public view</td>
+
                         <?php }elseif($key == 'summary'){?>
 
 
@@ -128,9 +132,25 @@
 
                                 <td><label class="switch"><input type="checkbox" id="<?php echo $v['id'] ?>" class="default_switch" checked><span class="slider round"></span></label></td>
 
+
+
                               <?php }else{ ?>
 
                                 <td><label class="switch"><input type="checkbox" id="<?php echo $v['id'] ?>" class="default_switch" ><span class="slider round"></span></label></td>
+
+                              <?php  } ?>
+
+                            <?php }elseif($key == 'public_view'){?>
+
+                              <?php if($v['public_view']=='1'){  ?>
+
+                                <td><label class="switch"><input type="checkbox" id="<?php echo $v['id'] ?>" class="public_view" checked <?php echo $disable ?>><span class="slider round"></span></label></td>
+
+
+
+                              <?php }else{ ?>
+
+                                <td><label class="switch"><input type="checkbox" id="<?php echo $v['id'] ?>" class="public_view" <?php echo $disable ?>><span class="slider round"></span></label></td>
 
                               <?php  } ?>
 
@@ -216,7 +236,7 @@
 <script>
   $(document).ready(function(){
 
-
+//default switch
 
   $('.default_switch').on('change',function(){
   console.log($(this).is(':checked'));
@@ -238,11 +258,34 @@
    change_default(id,def);
   }
 
+  });
+  //end
+
+//public view switch
+  $('.public_view').on('change',function(){
+ console.log($(this).is(':checked'));
+  var id = $(this).attr('id');
 
 
+  if($(this).is(':checked')){
+    console.log('checked');
+     var def = 1;
+
+     change_public_view(id,def);
+
+  //$('.'+Class).attr('checked',true);
+
+
+  }else{
+  console.log('not-checked');
+  var def=0;
+   change_public_view(id,def);
+  }
 
   });
+//end
 
+//default load chnage function
   function change_default(id,value)
   {
 
@@ -265,6 +308,32 @@ success: function(response)
 
   }
 
+  //end
+
+  //pulic view change function
+
+  function change_public_view(id,value)
+  {
+
+//console.log(id);
+//console.log(value);
+
+$.ajax
+({
+type: "GET",
+url: "<?php echo base_url(); ?>MapController/update_public_view?id="+id+"&value="+value,
+
+
+
+success: function(response)
+{
+//alert(response);
+
+}
+});
+
+  }
+//end
 
 
   });

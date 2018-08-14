@@ -985,10 +985,10 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
 
                 <?php  foreach ($data as $data){
 
-              //   if($data['category_table']=='health_facilities'){
+                if($data['public_view']=='0'){
 
-                //
-              //  }else{ ?>
+
+                }else{ ?>
 
                   <li class="card inter-list-panel">
                     <div class="head-panel">
@@ -1258,7 +1258,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                 </div>
                 <!-- new moadal -->
 
-              <?php }//}?>
+              <?php }}?>
 
               </ul>
 

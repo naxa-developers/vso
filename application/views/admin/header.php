@@ -253,7 +253,7 @@
                         <li><a href="c3_chart.html">C3 Chart</a></li>
                     </ul>
                 </li> -->
-                <?php //if($admin==2){?>
+                <?php if($admin==2){?>
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class=" fa fa-bar-chart-o"></i>
@@ -264,9 +264,9 @@
                         <!-- <li><a href="vector_map.html">Vector Map</a></li> -->
                     </ul>
                 </li>
-          <?php  //} else{
+          <?php  } else{
 
-          //} ?>
+          } ?>
 
             </ul>
           </div>
