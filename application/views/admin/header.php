@@ -253,7 +253,7 @@
                         <li><a href="c3_chart.html">C3 Chart</a></li>
                     </ul>
                 </li> -->
-                <?php if($admin==2){?>
+                <?php if($admin==1){?>
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class=" fa fa-bar-chart-o"></i>
