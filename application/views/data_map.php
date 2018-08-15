@@ -144,7 +144,7 @@
 
         <tr class="tr_tbl">
            <?php foreach ($v as $key => $value ) { ?>
-          <td><?php echo $value ?></td>
+          <td><div style="height: 30px; overflow:auto;"><?php echo $value ?></div></td>
 <?php } ?>
         </tr>
  <?php } ?>
