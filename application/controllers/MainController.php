@@ -54,6 +54,8 @@ class MainController extends CI_Controller
 
     }
 
+    $this->body['urll']=$this->uri->segment(1);
+
     //language
 
     $this->load->view('header',$this->body);
@@ -97,7 +99,7 @@ class MainController extends CI_Controller
 
 
     }
-
+   $this->body['urll']=$this->uri->segment(1);
     //language
     $this->load->view('header',$this->body);
     $this->load->view('publication',$this->body);
@@ -155,7 +157,7 @@ class MainController extends CI_Controller
 
 
     }
-
+    $this->body['urll']=$this->uri->segment(1);
     //language
 
 
@@ -219,7 +221,7 @@ class MainController extends CI_Controller
 
 
     }
-
+   $this->body['urll']=$this->uri->segment(1);
     //language
     //views add end
 
@@ -293,7 +295,7 @@ class MainController extends CI_Controller
 
 
     }
-
+    $this->body['urll']=$this->uri->segment(1);
     //language
 
     $this->load->view('header', $this->body);
@@ -367,7 +369,7 @@ class MainController extends CI_Controller
 
 
     }
-
+    $this->body['urll']=$this->uri->segment(1);
     //language
     $this->load->view('header', $this->body);
     $this->load->view('inventory');

@@ -145,7 +145,7 @@ li.nav-item.active {
                     <li class="nav-item active">
                       <a class="nav-link" href="index.php"><i class="fa fa-home"></i><span class="sr-only">(current)</span></a>
                     </li>
-                    
+
                     <li class="nav-item">
                       <a class="nav-link" href="<?php echo base_url()?>category?tbl="><?php echo $site_info['nav_1'] ?></a>
                     </li>
@@ -167,12 +167,12 @@ li.nav-item.active {
 
                      <li class="nav-item">
 
-                   <a class="nav-link" href="<?php echo base_url();?>en" ><img src="<?php echo base_url();?>assets/img/uk.png" height="15" width="20"></a>
+                   <a class="nav-link" href="<?php echo base_url();?>en?urll=<?php echo $urll ?>" ><img src="<?php echo base_url();?>assets/img/uk.png" height="15" width="20"></a>
 
 
                     </li>
                      <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url();?>nep"><img src="<?php echo base_url();?>assets/img/nep.png" height="15"></a>
+                  <a class="nav-link" href="<?php echo base_url();?>nep?urll=<?php echo $urll ?>"><img src="<?php echo base_url();?>assets/img/nep.png" height="15"></a>
                     </li>
 
                   </ul>

@@ -54,7 +54,7 @@ public function map_download()
 
 
  }
-
+$this->body['urll']=$this->uri->segment(1);
  //language
 
   $this->load->view('header',$this->body);
@@ -317,7 +317,9 @@ if(!$this->db->table_exists($tbl['category_table'])){
 
 
  }
-
+$tokens = explode('/', $_SERVER['REQUEST_URI']);
+   $urly=$tokens[sizeof($tokens)-1];
+$this->body['urll']=$urly;
 //language
 
   $this->body['map_zoom_center']=$this->Report_model->site_setting();
@@ -409,7 +411,23 @@ if(!$this->db->table_exists($tbl['category_table'])){
       $this->body['popup']=$this->Map_model->get_popup($tbl);
       $this->body['table']=$tbl;
 
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      if($this->session->userdata('user_type')=='1'){
+
+        $this->body['disable']="";
+
+      }else{
+
+     $this->body['disable']="disabled";
+
+      }
+
+      //admin check
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('maplabel',$this->body);
       $this->load->view('admin/footer');
     }
@@ -529,13 +547,40 @@ if(!$this->db->table_exists($tbl['category_table'])){
 
 
     $data=$this->Dash_model->get_tbl_type($tbl);
+    var_dump($data);
     $map_data_type=json_decode($data['st_asgeojson'],TRUE)['type'];
 
-    if($map_data_type=='Point'){
+    var_dump($tbl);
+    var_dump($map_data_type);
+    if($map_data_type=='Point' || $map_data_type=='point' || $map_data_type=='node'){
+      echo 'point';
+    }else{
+      echo 'ntpoint';
+    }
+    exit();
+
+    if($map_data_type=='Point' || $map_data_type=='point' || $map_data_type=='node'){
+    //if($map_data_type=='Point' ){
 
       $this->body['tbl']=$tbl;
 
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      if($this->session->userdata('user_type')=='1'){
+
+        $this->body['disable']="";
+
+      }else{
+
+     $this->body['disable']="disabled";
+
+      }
+
+      //admin check
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/choose_style',$this->body);
       $this->load->view('admin/footer');
 
@@ -550,8 +595,23 @@ if(!$this->db->table_exists($tbl['category_table'])){
       $this->body['style_array']=$style_array;
       $this->body['table']=$tbl;
 
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
 
-      $this->load->view('admin/header');
+      $this->body['admin']=$admin_type;
+      if($this->session->userdata('user_type')=='1'){
+
+        $this->body['disable']="";
+
+      }else{
+
+     $this->body['disable']="disabled";
+
+      }
+
+      //admin check
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/manage_style',$this->body);
       $this->load->view('admin/footer');
 
@@ -643,7 +703,23 @@ public function circle_marker(){
     $this->body['style_array']=$style_array;
     $this->body['tbl']=$tbl;
 
-    $this->load->view('admin/header');
+    //admin check
+    $admin_type=$this->session->userdata('user_type');
+
+    $this->body['admin']=$admin_type;
+    if($this->session->userdata('user_type')=='1'){
+
+      $this->body['disable']="";
+
+    }else{
+
+   $this->body['disable']="disabled";
+
+    }
+
+    //admin check
+
+    $this->load->view('admin/header',$this->body);
     $this->load->view('admin/circle_manage',$this->body);
     $this->load->view('admin/footer');
 
@@ -754,7 +830,23 @@ public function location_marker(){
     $this->body['tbl']=$tbl;
     $this->body['icons']=$this->Map_model->get_icon();
 
-    $this->load->view('admin/header');
+    //admin check
+    $admin_type=$this->session->userdata('user_type');
+
+    $this->body['admin']=$admin_type;
+    if($this->session->userdata('user_type')=='1'){
+
+      $this->body['disable']="";
+
+    }else{
+
+   $this->body['disable']="disabled";
+
+    }
+
+    //admin check
+
+    $this->load->view('admin/header',$this->body);
     $this->load->view('admin/choose_icon',$this->body);
     $this->load->view('admin/footer');
 
@@ -823,7 +915,23 @@ public function location_marker(){
       $this->body['selected']=$summary_single;
 
 
-      $this->load->view('admin/header');
+      //admin check
+      $admin_type=$this->session->userdata('user_type');
+
+      $this->body['admin']=$admin_type;
+      if($this->session->userdata('user_type')=='1'){
+
+        $this->body['disable']="";
+
+      }else{
+
+     $this->body['disable']="disabled";
+
+      }
+
+      //admin check
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/summary',$this->body);
       $this->load->view('admin/footer');
 

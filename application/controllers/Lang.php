@@ -13,15 +13,15 @@ class Lang extends CI_Controller
         }
 
 public function eng(){
-
+$url=$this->input->get('urll');
 $this->session->set_userdata('Language','en');
-redirect('main');
+redirect($url);
 
 }
 public function nep(){
-
+$url=$this->input->get('urll');
 $this->session->set_userdata('Language','nep');
-redirect('main');
+redirect($url);
 
 }
 

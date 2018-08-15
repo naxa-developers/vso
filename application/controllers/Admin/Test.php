@@ -6,13 +6,13 @@ class Test extends CI_Controller
   {
     parent::__construct();
 
-    if(($this->session->userdata('logged_in'))!=TRUE)
-    {
-
-      redirect('admin');
-    }else{
-
-    }
+    // if(($this->session->userdata('logged_in'))!=TRUE)
+    // {
+    //
+    //   redirect('admin');
+    // }else{
+    //
+    // }
 
     $this->load->dbforge();
     $this->load->helper('url');
@@ -468,7 +468,7 @@ $this->load->view('admin/footer.php');
       //      $lang_insert=$this->Dash_model->insert_lang('tbl_lang',$data_lang);
       //
       //
-      
+
       //   }
       //
       //   if($add_column==true){
@@ -598,7 +598,12 @@ $this->load->view('admin/footer.php');
     unlink("uploads/csv/csv_filee.csv");
   }
 
+public function url_segment(){
 
+  //echo $_SERVER['REQUEST_URI'];
+  $tokens = explode('/', $_SERVER['REQUEST_URI']);
+echo $tokens[sizeof($tokens)-1];
+}
 
 
 }//end

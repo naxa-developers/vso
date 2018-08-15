@@ -141,6 +141,8 @@ class ReportController extends CI_Controller
 
 
       }
+     $this->body['map_set']=$this->Report_model->site_setting();
+     $this->body['urll']=$this->uri->segment(1);
 
       //language
 
@@ -227,7 +229,7 @@ class ReportController extends CI_Controller
 
 
       }
-
+      $this->body['urll']=$this->uri->segment(1);
       //language
 
       $this->body['map_set']=$this->Report_model->site_setting();
@@ -506,7 +508,7 @@ $this->body['query']="select * FROM map_reports_table";
 
 
     }
-
+    $this->body['urll']=$this->uri->segment(1);
     //language
 
 
@@ -536,7 +538,7 @@ $this->body['query']="select * FROM map_reports_table";
 
 
     }
-
+    $this->body['urll']=$this->uri->segment(1);
     //language
 
     $this->body['data']=$this->Report_model->get_report_data();

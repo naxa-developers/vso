@@ -112,6 +112,22 @@ class TableController extends CI_Controller
 
   public function csv_tbl(){
 
+    //admin check
+    $admin_type=$this->session->userdata('user_type');
+
+    $this->body['admin']=$admin_type;
+    if($this->session->userdata('user_type')=='1'){
+
+      $this->body['disable']="";
+
+    }else{
+
+   $this->body['disable']="disabled";
+
+    }
+
+    //admin check
+
 
     $tbl_name=base64_decode($this->input->get('tbl')) ;
 
@@ -215,7 +231,7 @@ class TableController extends CI_Controller
       $this->body['row']=$row;
 
 
-      $this->load->view('admin/header');
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/csv_row',$this->body);
       $this->load->view('admin/footer');
 
@@ -242,7 +258,8 @@ class TableController extends CI_Controller
 
 
     }else{
-      $this->load->view('admin/header');
+
+      $this->load->view('admin/header',$this->body);
       $this->load->view('admin/csv_file');
       $this->load->view('admin/footer');
 
@@ -275,7 +292,7 @@ class TableController extends CI_Controller
     $d=$this->Table_model->get_lang($tbl);
     /* get the object   */
     $report = $this->Table_model->get_as($d,$tbl);
-    
+
     /*  pass it to db utility function  */
     $new_report = $this->dbutil->csv_from_result($report);
     $name = $tbl.'.csv';
