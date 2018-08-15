@@ -123,18 +123,37 @@
 
 <div class="container">
 
+
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="health" role="tabpanel" aria-labelledby="health-tab">
       <br>
+
+      <div class="text-center">
+        <h3> <?php echo $name ?> Data Table </h3>
+      </div>
       <!-- <a href="get_csv_emergency?type=health&&name=Health_Institutions&&tbl=emergency_contact"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px; float: right;"><i class="fa fa-download"></i> Download</button></a> -->
       <br>
       <div class="row" id="reportable">
+
+
        <!-- responsive table for displaying contact directory -->
        <table class="responstable">
         <tr>
-        <?php foreach ($data[0] as $key => $value){ ?>
+        <?php foreach ($data[0] as $key => $value){
+
+            if($key == "the geom"){
+
+
+
+            }else{
+
+            
+
+
+          ?>
+
           <th><span><?php echo $key ?></span></th>
-        <?php }?>
+        <?php }}?>
         </tr>
 
 
@@ -143,9 +162,15 @@
         ?>
 
         <tr class="tr_tbl">
-           <?php foreach ($v as $key => $value ) { ?>
+           <?php foreach ($v as $key => $value ) {
+
+             if($key == 'the geom'){
+
+             }else{
+
+             ?>
           <td><?php echo $value ?></td>
-<?php } ?>
+<?php } }?>
         </tr>
  <?php } ?>
 

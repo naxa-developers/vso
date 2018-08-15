@@ -17,6 +17,7 @@ class MapController extends CI_Controller
 
 
 $tbl=$this->input->get('tbl');
+
 //echo $tbl;
  $d=$this->Map_model->get_lang_map_data($tbl);
 
@@ -24,7 +25,35 @@ $this->body['data']=$this->Map_model->get_as_map_data($d,$tbl);
    $this->data['site_info']=$this->Report_model->site_setting();
 //var_dump($this->body['data']);
 //
-  $this->load->view('header',$this->data);
+//language
+if($this->session->userdata('Language')==NULL){
+
+  $this->session->set_userdata('Language','nep');
+}
+
+$lang=$this->session->get_userdata('Language');
+
+
+if($lang['Language']=='en'){
+
+  $this->body['site_info']=$this->Main_model->site_setting_en();
+
+}else{
+
+ $this->body['site_info']=$this->Main_model->site_setting_nep();
+
+
+}
+$tokens = explode('/', $_SERVER['REQUEST_URI']);
+   $urly=$tokens[sizeof($tokens)-1];
+$this->body['urll']=$urly;
+//language
+
+$name=str_replace("_"," ",$tbl);
+
+$this->body['name']=ucwords($name);
+
+  $this->load->view('header',$this->body);
   $this->load->view('data_map',$this->body);
   $this->load->view('footer',$this->data);
 

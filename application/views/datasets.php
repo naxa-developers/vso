@@ -181,7 +181,7 @@ p.about {
 						<a href="<?php echo base_url()?>get_csv_dataset?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm"><span class="fa fa-download"></span> CSV</button></a>
 						<a href="<?php echo base_url()?>get_geojson_dataset?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm"><span class="fa fa-download"></span> Geojson</button></a>
 						<a href="<?php echo base_url()?>category?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm"><span class="fa fa-eye"></span> Map</button></a>
-						<a href="<?php echo base_url()?>category?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm"><span class="fa fa-table"></span> Table</button></a>
+						<a href="<?php echo base_url()?>data_map?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm"><span class="fa fa-table"></span> Table</button></a>
 
 
 							<hr>
