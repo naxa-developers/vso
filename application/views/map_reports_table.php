@@ -99,6 +99,31 @@ button.btn.btn-info.hit {
 table.responstable {
     overflow-x: scroll;
 }
+.col-md-2.dell {
+    margin-top: 52px;
+}
+select.custom-select.multiselect-icon {
+    width: 140px;
+}
+input#datepicker1 {
+    padding-bottom: 3px;
+    width: 168px;
+}
+input#datepicker2 {
+    padding-bottom: 3px;
+    margin-left: 25px;
+    width: 168px;
+}
+button.btn.btn-info.rp {
+    float: right;
+    margin-right: 20px;
+    background-color: #7696c7;
+}
+li.btn.btn-info.list-inline-item.repo {
+    margin-top: -14px;
+    float: right;
+    background-color: #7696c7;
+}
 </style>
 
 
@@ -114,7 +139,7 @@ table.responstable {
             <div class="text-center"><h3>Total Reports</h3></div>
             <div class="col-md-3 pull-right">
               <ul class="list-inline">
-                <a href="ReportController/ghatana_download?qry=<?php echo $query ?>"><li class="list-inline-item"><i class="fa fa-cloud-download"></i> Download </li></a>
+                <a href="ReportController/ghatana_download?qry=<?php echo $query ?>"><li class="btn btn-info list-inline-item repo"><i class="fa fa-download"></i> Download </li></a>
                 <!-- <li class="list-inline-item"><a href="#" title="pdf"><i class="fa fa-file-pdf-o"></i></a></li>
                 <li class="list-inline-item"><a href="#" title="excel"><i class="fa fa-file-excel-o"></i></a></li>
                 <li class="list-inline-item"><a href="#" title="image"><i class="fa fa-file-image-o"></i></a></li>
@@ -124,12 +149,12 @@ table.responstable {
       </div>
   </div>
 
-    <div class="col-md-12">
-    <div class="container">
+    <div class="col-md-10">
+   
     <div class="row repo_filter">
        <div class="col-md-2">Source
           <select class="custom-select multiselect-icon" name="source">
-                  <option value="0" selected disabled>Select an option</option>
+                  <option value="0" selected disabled>Select option</option>
                   <option value="Moha" >Moha</option>
                   <option value="Disinventar" >Disinventar</option>
           </select>
@@ -137,7 +162,7 @@ table.responstable {
 
         <div class="col-md-2">Incident Type
           <select class="custom-select multiselect-icon" name="incident">
-                  <option value="0" selected disabled>Select an incident</option>
+                  <option value="0" selected disabled>Select incident</option>
                   <option value="Flash Flood">Flash Flood</option>
                   <option value="Leak">Leak</option>
                   <option value="Sedimentation">Sedimentation</option>
@@ -182,7 +207,7 @@ table.responstable {
 
         <div class="col-md-2">District
             <select class="custom-select multiselect-icon" name="district">
-                      <option value="0" selected disabled>Select a district</option>
+                      <option value="0" selected disabled>Select district</option>
                       <option value="Taplejung">Taplejung</option>
                       <option value="Panchthar">Panchthar</option>
                       <option value="Ilaam">Ilaam</option>
@@ -289,15 +314,22 @@ table.responstable {
 
           </div>
         </div>
+        
 
-    </div>
+
+   
+
   </div>
+
+</div>
+<div class="col-md-2 dell">
+<button type="submit" name="submit" class="btn btn-info rp">Submit</button>
 </div>
   </div>
 
 
-  <button type="submit" name="submit" class="btn btn-info hit">Submit</button>
-  </form>
+<!--   <button type="submit" name="submit" class="btn btn-info hit">Submit</button>
+ -->  </form>
 
 
 <div class="row" id="reportable">
