@@ -122,8 +122,9 @@ button.btn.btn-info.rp {
 li.btn.btn-info.list-inline-item.repo {
     margin-top: -14px;
     float: right;
-    background-color: #7696c7;
-}
+        background-color: #ffffff;
+    color: #111;
+    border-color: #111;
 </style>
 
 
