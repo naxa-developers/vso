@@ -745,5 +745,7 @@ $('.report_div').click(function(){
 
 
       }); //document --ends
-
+      $('#datepicker').datepicker({
+          dateFormat: 'dd/mm/yy'
+       });
     </script>

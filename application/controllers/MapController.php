@@ -200,14 +200,39 @@ $this->Dash_model->cat_update($count_dataset['id'],$data_dataset);
 $def_select=$this->Dash_model->get_default_cat_data('categories_tbl');
 $this->body['default_selected_cat_tbl']=$def_select['category_table'];
 
-$this->data['site_info']=$this->Report_model->site_setting();
+//language
 
-//views add end
+if($this->session->userdata('Language')==NULL){
+
+  $this->session->set_userdata('Language','nep');
+}
+
+$lang=$this->session->get_userdata('Language');
+
+
+if($lang['Language']=='en'){
+
+  $this->body['site_info']=$this->Main_model->site_setting_en();
+
+}else{
+
+ $this->body['site_info']=$this->Main_model->site_setting_nep();
+
+
+}
+$tokens = explode('/', $_SERVER['REQUEST_URI']);
+  $urly=$tokens[sizeof($tokens)-1];
+$this->body['urll']=$urly;
+//language
+
+ $this->body['map_zoom_center']=$this->Report_model->site_setting();
+
+ //views add end
 //  exit();
 
-  $this->load->view('header',$this->data);
+   $this->load->view('header',$this->body);
   $this->load->view('admin_category.php',$this->body);
-  $this->load->view('footer',$this->data);
+  $this->load->view('footer',$this->body);
 
 
 
@@ -576,17 +601,10 @@ $this->body['urll']=$urly;
 
 
     $data=$this->Dash_model->get_tbl_type($tbl);
-    var_dump($data);
+
     $map_data_type=json_decode($data['st_asgeojson'],TRUE)['type'];
 
-    var_dump($tbl);
-    var_dump($map_data_type);
-    if($map_data_type=='Point' || $map_data_type=='point' || $map_data_type=='node'){
-      echo 'point';
-    }else{
-      echo 'ntpoint';
-    }
-    exit();
+
 
     if($map_data_type=='Point' || $map_data_type=='point' || $map_data_type=='node'){
     //if($map_data_type=='Point' ){

@@ -48,7 +48,7 @@ class ReportController extends CI_Controller
 
       //echo $sql;
       $query=substr($sql, 0, strlen($sql)-4);
-      //echo $query;
+      
       $queryy=$this->db->query($query);
       $filter= $queryy->result_array();
       //var_dump($filter);

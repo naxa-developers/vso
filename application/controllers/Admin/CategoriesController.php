@@ -34,13 +34,15 @@ class CategoriesController extends CI_Controller
 
   public function data_tables() // view table
   {
-
+    ini_set('max_execution_time', 0);
     $tbl_name=base64_decode($this->input->get('tbl_name'));
     $name=str_replace('_'," ",$tbl_name);
 
 
 
     $this->body['data']=$this->Dash_model->get_tables_data($tbl_name);
+    //var_dump($this->body['data']);
+
 
     $this->body['data_nep']=$this->Dash_model->get_tables_data_lang('tbl_lang',$tbl_name);
     $this->body['fields']=$this->db->list_fields($tbl_name);
@@ -55,7 +57,9 @@ class CategoriesController extends CI_Controller
 
 
     $this->load->view('admin/header',$this->body);
+  
     $this->load->view('admin/data_tables',$this->body);
+
     $this->load->view('admin/footer');
 
 
