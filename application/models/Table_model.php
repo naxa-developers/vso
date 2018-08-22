@@ -57,6 +57,8 @@ public function get_as($d,$tbl){
 
 }
 
+
+
 public function get_asjson($d,$tbl){
 
   foreach($d as $v){

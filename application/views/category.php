@@ -46,7 +46,7 @@ max-height: 100px;
   left: 21.5%;
 }
 .leaflet-right{
-  right:260px;
+  /*right:260px;*/
 }
 
 ul.nav.nav-tabs{
@@ -1340,12 +1340,11 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                     <div class="counter_cat">
                       <a>
 
-                        <span class="counti text-center " id="count_summary"> 70</span><span class="ic"> Open Spaces </span>
+                        <span class="counti text-center " id="count_summary"></span><span class="ic"></span>
                       </a>
                     </div>
                     <div class="counter-desc">
-                      <p>this is the description of individual category
-                        this is the description of individual category this is the description of individual category this is the description of individual category</p>
+                      <p></p>
                       </div>
                     </div>
 
@@ -1457,11 +1456,14 @@ $(function () {
 var default_loadd = '<?php echo $default_load; ?>';
 
 //
-var cat_layer = '<?php echo $cat_map_layer; ?>';
+var cat_layer = '<?php echo addslashes($cat_map_layer); ?>';
 var cat_tbl_array = '<?php echo $category_tbl; ?>';
-
+var map_lat='<?php echo $map_zoom_center['map_lat']; ?>'
+var map_long='<?php echo $map_zoom_center['map_long']; ?>'
+var map_zoom='<?php echo $map_zoom_center['map_zoom']; ?>'
 
 //
+
 
 
 
@@ -1489,7 +1491,7 @@ $(document).ready(function(){
 
   //map part
 
-  var map = L.map('map').setView([27.693547,85.440240], 13);
+  var map = L.map('map').setView([map_lat,map_long], map_zoom);
   map.attributionControl.addAttribution("<a href='http://www.naxa.com.np' title = 'Contributor'>NAXA</a>");
   // map.scrollWheelZoom.disable();
   map.options.maxBounds;  // remove the maxBounds object from the map options
@@ -1670,6 +1672,7 @@ $(document).ready(function(){
       if($('#'+cat_tbl_array_name[i]+'_toggle').hasClass('active')){
         //console.log(cat_tbl_array_name[i]);
         window[''+cat_tbl_array_name[i]].addTo(map);
+
         //$('#active_layers').append('<option>Select layer</option>');
 
         var table_name=cat_tbl_array_name[i].replace( '_',' ');
@@ -1805,7 +1808,7 @@ $(document).ready(function(){
     $("#ListGroup").on('click', '.zoomTo', function(){ //console.log("fadsdfasfd");
     var lat = parseFloat($(this).attr('id'));
     var lon = parseFloat($(this).attr('name'));
-    map.setView([lon,lat],16);
+    map.setView([lon,lat],18);
   });
 
 
@@ -1828,11 +1831,15 @@ $(document).ready(function(){
           $('.drop').children()[i].remove();
         }
       }
+      if(Loadlist($('.drop').children()[0] != 'undefined')){
       Loadlist($('.drop').children()[0].id);
+      }
     }
     else{
       map.addLayer(layerClicked);
 
+      $(".leaflet-right").css("right","260px");
+      $('#right-panel-toggle').css('display','block');
 
       $('.drop option:selected').removeClass('active');
       $('.drop').prepend("<option id="+layertoggled+" selected>"+togglename+"</option>");
@@ -2187,7 +2194,7 @@ $('.applied_filter').on('click',function(){
   // console.log(popup_content_parsed);
 
 
-document.getElementById("filter_tbl_name").innerHTML = 'aaa';
+document.getElementById("filter_tbl_name").innerHTML = ''+qry;
 //$('h4').html(show_qry);
 
 for(var i=0;i<modal_table.length;i++){
@@ -2220,6 +2227,7 @@ $('#table_filter >tbody').append(tbl_body);
 }//loop for table end
 
 $('#'+table_n+'_toggle').removeClass('active');
+$('a#filter_download').attr('href', 'csv_filter_query?qry='+qry+'&&tbl='+qry_tbl);
 
 //map for filter
 //console.log(qry_tbl+count_filter);
@@ -2371,6 +2379,7 @@ $('#close-panel-left').click(function(){
 </script>
 
 <script>
+$('#right-panel-toggle').toggle();
 
 $('#close-panel-right').click(function(){
   $('#right-panel-toggle').slideToggle('fast', function(){

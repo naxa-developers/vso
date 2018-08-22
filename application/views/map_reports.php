@@ -105,11 +105,12 @@
             <div class="text-center"><h3>Total Reports</h3></div>
             <div class="col-md-3 pull-right">
               <ul class="list-inline">
-                <li class="list-inline-item"><i class="fa fa-cloud-download"></i> Download :</li>
-                <li class="list-inline-item"><a href="#" title="pdf"><i class="fa fa-file-pdf-o"></i></a></li>
+                <a href="ReportController/map_data_download"><li class="list-inline-item"><i class="fa fa-cloud-download"></i> Download </li></a>
+
+                <!-- <li class="list-inline-item"><a href="#" title="pdf"><i class="fa fa-file-pdf-o"></i></a></li>
                 <li class="list-inline-item"><a href="#" title="excel"><i class="fa fa-file-excel-o"></i></a></li>
                 <li class="list-inline-item"><a href="#" title="image"><i class="fa fa-file-image-o"></i></a></li>
-                <li class="list-inline-item"><a href="#" title="word"><i class="fa fa-file-word-o"></i></a></li>
+                <li class="list-inline-item"><a href="#" title="word"><i class="fa fa-file-word-o"></i></a></li> -->
               </ul>
             </div>
       </div>

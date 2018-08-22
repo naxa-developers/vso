@@ -48,7 +48,7 @@ class ReportController extends CI_Controller
 
       //echo $sql;
       $query=substr($sql, 0, strlen($sql)-4);
-      
+
       $queryy=$this->db->query($query);
       $filter= $queryy->result_array();
       //var_dump($filter);
@@ -568,7 +568,25 @@ force_download($name,$data);
 
 }
 
+public function map_data_download(){
 
+  $this->load->dbutil();
+  $this->load->helper('file');
+  $this->load->helper('download');
+array_map('unlink', glob("uploads/ghatana/*.csv"));
+$query="select * FROM report_tbl";
+$queryy=$this->db->query($query);
+
+$new_report = $this->dbutil->csv_from_result($queryy);
+$name = 'total_incident_report.csv';
+/*  Now use it to write file. write_file helper function will do it */
+write_file('uploads/ghatana/'.$name,$new_report);
+
+$data=file_get_contents('uploads/ghatana/'.$name);
+force_download($name,$data);
+
+
+}
 
 
 }

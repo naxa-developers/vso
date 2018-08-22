@@ -105,6 +105,42 @@
                   </span>
                 </div>
               </div>
+              </div>
+
+
+
+              <div class="form-group">
+                <label class="control-label col-md-3">Dash Array</label>
+                <div class="col-md-9">
+                  <div id="spinner3">
+        <div class="input-group" style="width: 150px">
+        <span class="input-group-btn"><button type="button" class="btn btn-default value-control dashArray" data-action="minus" data-target="dashArray"><span class="glyphicon glyphicon-minus"></span></button></span>
+        <input type="text" name="dashArray" min="1" max="10" value="2" class="form-control" id="dashArray">
+        <span class="input-group-btn"><button type="button" class="btn btn-default value-control dashArray" data-action="plus" data-target="dashArray"><span class="glyphicon glyphicon-plus"></span></button></span>
+           </div>
+                  <span class="help-block">
+                    with max value: 10
+                  </span>
+                </div>
+              </div>
+              </div>
+
+
+              <div class="form-group">
+                <label class="control-label col-md-3">Dash Offset</label>
+                <div class="col-md-9">
+                  <div id="spinner3">
+        <div class="input-group" style="width: 150px">
+        <span class="input-group-btn"><button type="button" class="btn btn-default value-control dashOffset" data-action="minus" data-target="dashOffset"><span class="glyphicon glyphicon-minus"></span></button></span>
+        <input type="text" name="dashOffset" min="1" max="10" value="2" class="form-control" id="dashOffset">
+        <span class="input-group-btn"><button type="button" class="btn btn-default value-control dashOffset" data-action="plus" data-target="dashOffset"><span class="glyphicon glyphicon-plus"></span></button></span>
+           </div>
+                  <span class="help-block">
+                    with max value: 10
+                  </span>
+                </div>
+              </div>
+              </div>
 
 
 
@@ -308,7 +344,7 @@ $(document).ready(function(){
        var val=Math.round(value*100)/100;
 
 
-       console.log(value);
+       
     }else{
 
         value=value-0.1;
@@ -337,7 +373,7 @@ $(document).ready(function(){
        var val=Math.round(value*100)/100;
 
 
-       console.log(value);
+
     }else{
 
         value=value-1;
@@ -348,6 +384,68 @@ $(document).ready(function(){
     if( ( val >= 0 ) && ( val <= 10) ){
     $("#weight").val(val);
   }
+});
+
+
+
+$(".dashArray").on('click',function(){
+var action = $(this).attr('data-action')
+var target = $(this).attr('data-target')
+var value  = parseFloat($('[id="'+target+'"]').val());
+
+// console.log('action');
+// console.log(action);
+// //console.log(target);
+// console.log(value);
+
+if ( action == "plus" ) {
+
+  value=value+1;
+   var val=Math.round(value*100)/100;
+
+
+
+}else{
+
+    value=value-1;
+     var val=Math.round(value*100)/100;
+
+ }
+// $('[id="'+target+'"]').val(value);
+if( ( val >= 0 ) && ( val <= 10) ){
+$("#dashArray").val(val);
+}
+});
+
+
+
+$(".dashOffset").on('click',function(){
+var action = $(this).attr('data-action')
+var target = $(this).attr('data-target')
+var value  = parseFloat($('[id="'+target+'"]').val());
+
+// console.log('action');
+// console.log(action);
+// //console.log(target);
+// console.log(value);
+
+if ( action == "plus" ) {
+
+  value=value+1;
+   var val=Math.round(value*100)/100;
+
+
+
+}else{
+
+    value=value-1;
+     var val=Math.round(value*100)/100;
+
+ }
+// $('[id="'+target+'"]').val(value);
+if( ( val >= 0 ) && ( val <= 10) ){
+$("#dashOffset").val(val);
+}
 });
 
 

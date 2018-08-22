@@ -39,6 +39,8 @@ public function get_sub_cat_style($tbl){
       return $query->result_array();
     }
 
+
+
     public function get_tbl_type($tbl){
 
 

@@ -287,6 +287,10 @@ if(!$this->db->table_exists($tbl['category_table'])){
         $cat_ddata=$cat_data ;
         unset($cat_data['st_asgeojson']);
 
+
+
+
+
         $features_cat[]= array(
           'type' =>'Feature',
           'properties'=>$cat_data,
@@ -296,6 +300,8 @@ if(!$this->db->table_exists($tbl['category_table'])){
 
 
       }
+      //echo addslashes(json_encode($features_cat));
+      //exit();
 
       $category= $cat_tbles[$i];
 
