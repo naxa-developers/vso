@@ -2227,7 +2227,7 @@ $('#table_filter >tbody').append(tbl_body);
 }//loop for table end
 
 $('#'+table_n+'_toggle').removeClass('active');
-$('a#filter_download').attr('href', 'csv_filter_query?qry='+qry+'&&tbl='+qry_tbl);
+$('a#filter_download').attr('href', 'MapController/csv_filter_query?qry='+qry+'&&tbl='+qry_tbl);
 
 //map for filter
 //console.log(qry_tbl+count_filter);

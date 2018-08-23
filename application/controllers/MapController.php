@@ -44,6 +44,8 @@ if($lang['Language']=='en'){
 
 
 }
+
+
 $tokens = explode('/', $_SERVER['REQUEST_URI']);
    $urly=$tokens[sizeof($tokens)-1];
 $this->body['urll']=$urly;
@@ -55,7 +57,7 @@ $this->body['name']=ucwords($name);
 
   $this->load->view('header',$this->body);
   $this->load->view('data_map',$this->body);
-  $this->load->view('footer',$this->data);
+  $this->load->view('footer',$this->body);
 
 
   }
