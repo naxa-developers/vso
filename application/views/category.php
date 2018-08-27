@@ -1609,7 +1609,10 @@ $(document).ready(function(){
 
 
         onEachFeature: function(feature,layer){
+console.log(popup_content_parsed[i]);
+if(popup_content_parsed[i]==0){
 
+}else{
           //console.log(feature);
           if(marker_type !='icon'){
             layer.setStyle(style);
@@ -1661,6 +1664,7 @@ $(document).ready(function(){
           }).setContent(popUpContent));
 
 
+}
 
         },
 

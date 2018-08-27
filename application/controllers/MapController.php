@@ -432,7 +432,28 @@ $this->body['urll']=$urly;
   public function manage_popup(){
 
 
+
+
     if(isset($_POST['submit'])){
+
+      if(isset($_POST['none'])){
+            $table=$_POST['table'];
+        $data= array(
+
+          'popup_content'=>0,
+        );
+        $this->Map_model->update_popup($table,$data);
+
+        $this->session->set_flashdata('msg',$table.' Popup was successfully updated');
+
+        redirect('manage_popup?tbl='.$table);
+
+      }else{
+
+      echo 'not-none';
+
+
+      exit();
       $table=$_POST['table'];
       unset($_POST['submit']);
       unset($_POST['table']);
@@ -463,6 +484,8 @@ $this->body['urll']=$urly;
       $this->session->set_flashdata('msg',$table.' Popup was successfully updated');
 
       redirect('manage_popup?tbl='.$table);
+
+      }
       //end
     }else{
 
@@ -533,6 +556,9 @@ $this->body['urll']=$urly;
     }
 
     $html="";
+    if($checked2==0);{
+    $html=$html.'<input type="checkbox" name="none" value="" checked/>None <br><br>';
+  }
 
 
     for ($i=0;$i<sizeof($col_name);$i++) {

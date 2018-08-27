@@ -51,6 +51,7 @@
 
                                         <div class="minimal col-md-12">
                                             <div id="checkbox_div" class="checkbox col-md-12">
+                                              
 
                                             </div>
                                         </div>
