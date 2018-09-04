@@ -188,7 +188,7 @@
 
   <div class="tab-pane fade show active" id="chairpersons" role="tabpanel" aria-labelledby="chairpersons-tab">
   <br>
-    <a href="get_csv_emergency?type=ddr&&name=DRR_Volunteers&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button></a>
+    <a href="get_csv_emergency?type=chairpersons&&name=Chairpersons_of_Local_Units&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button></a>
       <br>
   <div class="row" id="reportable">
    <!-- responsive table for displaying contact directory -->
@@ -209,7 +209,11 @@
 
      <tr class="tr_tbl">
        <td id="<?php echo $chairpersons['id'] ?>idchairpersons"><?php echo $chairpersons['id'] ?></td>
+      <?php if($chairpersons['photo']==NULL){ ?>
+          <td id="<?php echo $chairpersons['id'] ?>photochairpersons" ><img src="<?php echo base_url()?>/assets/img/admin.png" height="50" width="50"></td>
+      <?php }else{ ?>
        <td id="<?php echo $chairpersons['id'] ?>photochairpersons" ><img src="<?php echo $chairpersons['photo']?>" height="50" width="50"></td>
+     <?php  } ?>
        <td id="<?php echo $chairpersons['id'] ?>namechairpersons"><?php echo $chairpersons['name'] ?></td>
        <td id="<?php echo $chairpersons['id'] ?>organizationchairpersons"><?php echo $chairpersons['organization'] ?></td>
        <td id="<?php echo $chairpersons['id'] ?>postchairpersons"><?php echo $chairpersons['post'] ?></td>
@@ -226,7 +230,7 @@
 
    <div class="tab-pane fade show" id="cheif" role="tabpanel" aria-labelledby="cheif-tab">
   <br>
-    <a href="get_csv_emergency?type=ddr&&name=DRR_Volunteers&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button></a>
+    <a href="get_csv_emergency?type=cheif&&name=Chief_of_local_level_offices&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button></a>
       <br>
   <div class="row" id="reportable">
    <!-- responsive table for displaying contact directory -->
@@ -247,7 +251,16 @@
 
      <tr class="tr_tbl">
        <td id="<?php echo $chief['id'] ?>idcheif"><?php echo $chief['id'] ?></td>
-       <td id="<?php echo $chief['id'] ?>photocheif" ><img src="<?php echo $chief['photo']?>" height="50" width="50"></td>
+
+       <?php if($chief['photo']==NULL){ ?>
+       <td id="<?php echo $chief['id'] ?>photocheif" ><img src="<?php echo base_url()?>/assets/img/admin.png" height="50" width="50"></td>
+      <?php }else{ ?>
+     <td id="<?php echo $chief['id'] ?>photocheif" ><img src="<?php echo $chief['photo']?>" height="50" width="50"></td>
+
+      <?php  } ?>
+
+
+
        <td id="<?php echo $chief['id'] ?>namecheif"><?php echo $chief['name'] ?></td>
        <td id="<?php echo $chief['id'] ?>organizationcheif"><?php echo $chief['organization'] ?></td>
        <td id="<?php echo $chief['id'] ?>postcheif"><?php echo $chief['post'] ?></td>
@@ -265,7 +278,7 @@
 
  <div class="tab-pane fade show" id="elected" role="tabpanel" aria-labelledby="elected-tab">
   <br>
-    <a href="get_csv_emergency?type=ddr&&name=DRR_Volunteers&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button></a>
+    <a href="get_csv_emergency?type=elected&&name=Elected_Representatives&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button></a>
       <br>
   <div class="row" id="reportable">
    <!-- responsive table for displaying contact directory -->
@@ -285,12 +298,20 @@
      ?>
 
      <tr class="tr_tbl">
-       <td id="<?php echo $elected['id'] ?>idselected"><?php echo $elected['id'] ?></td>
-       <td id="<?php echo $elected['id'] ?>photoselected" ><img src="<?php echo $elected['photo']?>" height="50" width="50"></td>
-       <td id="<?php echo $elected['id'] ?>nameselected"><?php echo $elected['name'] ?></td>
+       <td id="<?php echo $elected['id'] ?>idelected"><?php echo $elected['id'] ?></td>
+
+       <?php if($elected['photo']==NULL){ ?>
+       <td id="<?php echo $elected['id'] ?>photoelected" ><img src="<?php echo base_url()?>/assets/img/admin.png" height="50" width="50"></td>
+      <?php }else{ ?>
+        <td id="<?php echo $elected['id'] ?>photoelected" ><img src="<?php echo $elected['photo']?>" height="50" width="50"></td>
+
+      <?php  } ?>
+
+
+       <td id="<?php echo $elected['id'] ?>nameelected"><?php echo $elected['name'] ?></td>
        <td id="<?php echo $elected['id'] ?>organizationelected"><?php echo $elected['organization'] ?></td>
-       <td id="<?php echo $elected['id'] ?>postselected"><?php echo $elected['post'] ?></td>
-       <td id="<?php echo $elected['id'] ?>addressselected"><?php echo $elected['address'] ?></td>
+       <td id="<?php echo $elected['id'] ?>postelected"><?php echo $elected['post'] ?></td>
+       <td id="<?php echo $elected['id'] ?>addresselected"><?php echo $elected['address'] ?></td>
        <td id="<?php echo $elected['id'] ?>phone_noelected"><?php echo $elected['phone_no'] ?></td>
        <td id="<?php echo $elected['id'] ?>emailelected"><?php echo $elected['email'] ?></td>
 
@@ -304,7 +325,7 @@
 
  <div class="tab-pane fade show" id="municipal_ex" role="tabpanel" aria-labelledby="municipal_ex-tab">
   <br>
-    <a href="get_csv_emergency?type=ddr&&name=DRR_Volunteers&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button></a>
+    <a href="get_csv_emergency?type=municipal_ex&&name=Municipal_Executive_Members&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button></a>
       <br>
   <div class="row" id="reportable">
    <!-- responsive table for displaying contact directory -->
@@ -325,7 +346,17 @@
 
      <tr class="tr_tbl">
        <td id="<?php echo $municipal_ex['id'] ?>idmunicipal_ex"><?php echo $municipal_ex['id'] ?></td>
-       <td id="<?php echo $municipal_ex['id'] ?>photomunicipal_ex" ><img src="<?php echo $municipal_ex['photo']?>" height="50" width="50"></td>
+
+       <?php if($municipal_ex['photo']==NULL){ ?>
+       <td id="<?php echo $municipal_ex['id'] ?>photomunicipal_ex" ><img src="<?php echo base_url()?>/assets/img/admin.png" height="50" width="50"></td>
+      <?php }else{ ?>
+        <td id="<?php echo $municipal_ex['id'] ?>photomunicipal_ex" ><img src="<?php echo $municipal_ex['photo']?>" height="50" width="50"></td>
+
+      <?php  } ?>
+
+
+
+
        <td id="<?php echo $municipal_ex['id'] ?>namemunicipal_ex"><?php echo $municipal_ex['name'] ?></td>
        <td id="<?php echo $municipal_ex['id'] ?>organizationmunicipal_ex"><?php echo $municipal_ex['organization'] ?></td>
        <td id="<?php echo $municipal_ex['id'] ?>postmunicipal_ex"><?php echo $municipal_ex['post'] ?></td>
@@ -343,7 +374,7 @@
 
     <div class="tab-pane fade show" id="disaster" role="tabpanel" aria-labelledby="disaster-tab">
   <br>
-    <a href="get_csv_emergency?type=ddr&&name=DRR_Volunteers&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button></a>
+    <a href="get_csv_emergency?type=disaster&&name=Municipality_Level_Disaster_Management_Committee&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button></a>
       <br>
   <div class="row" id="reportable">
    <!-- responsive table for displaying contact directory -->
@@ -364,7 +395,18 @@
 
      <tr class="tr_tbl">
        <td id="<?php echo $disaster['id'] ?>iddisaster"><?php echo $disaster['id'] ?></td>
+
+       <?php if($disaster['photo']==NULL){ ?>
+       <td id="<?php echo $disaster['id'] ?>photodisaster" ><img src="<?php echo base_url()?>/assets/img/admin.png" height="50" width="50"></td>
+      <?php }else{ ?>
+        <td id="<?php echo $disaster['id'] ?>photodisaster" ><img src="<?php echo $disaster['photo']?>" height="50" width="50"></td>
+
+      <?php  } ?>
+
+
        <td id="<?php echo $disaster['id'] ?>photodisaster" ><img src="<?php echo $disaster['photo']?>" height="50" width="50"></td>
+
+
        <td id="<?php echo $disaster['id'] ?>namedisaster"><?php echo $disaster['name'] ?></td>
        <td id="<?php echo $disaster['id'] ?>organizationdisaster"><?php echo $disaster['organization'] ?></td>
        <td id="<?php echo $disaster['id'] ?>postdisaster"><?php echo $disaster['post'] ?></td>
@@ -380,7 +422,7 @@
 </div>
         <div class="tab-pane fade show" id="nntds" role="tabpanel" aria-labelledby="nntds-tab">
   <br>
-    <a href="get_csv_emergency?type=ddr&&name=DRR_Volunteers&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button></a>
+    <a href="get_csv_emergency?type=nntds&&name=NNTDS_Executive_Committee&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button></a>
       <br>
   <div class="row" id="reportable">
    <!-- responsive table for displaying contact directory -->
@@ -401,7 +443,13 @@
 
      <tr class="tr_tbl">
        <td id="<?php echo $nntds['id'] ?>idnntds"><?php echo $nntds['id'] ?></td>
-       <td id="<?php echo $nntds['id'] ?>photonntds" ><img src="<?php echo $nntds['photo']?>" height="50" width="50"></td>
+       <?php if($nntds['photo']==NULL){ ?>
+       <td id="<?php echo $nntds['id'] ?>photonntds" ><img src="<?php echo base_url()?>/assets/img/admin.png" height="50" width="50"></td>
+      <?php }else{ ?>
+        <td id="<?php echo $nntds['id'] ?>photonntds" ><img src="<?php echo $nntds['photo']?>" height="50" width="50"></td>
+
+      <?php  } ?>
+
        <td id="<?php echo $nntds['id'] ?>namenntds"><?php echo $nntds['name'] ?></td>
        <td id="<?php echo $nntds['id'] ?>organizationnntds"><?php echo $nntds['organization'] ?></td>
        <td id="<?php echo $nntds['id'] ?>postnntds"><?php echo $nntds['post'] ?></td>
@@ -609,7 +657,15 @@
 
      <tr class="tr_tbl">
        <td id="<?php echo $ddr['id'] ?>idddr"><?php echo $ddr['id'] ?></td>
-       <td id="<?php echo $ddr['id'] ?>photoddr" ><img src="<?php echo $ddr['photo']?>" height="50" width="50"></td>
+
+       <?php if($ddr['photo']==NULL){ ?>
+           <td id="<?php echo $ddr['id'] ?>photoddr" ><img src="<?php echo base_url()?>/assets/img/admin.png" height="50" width="50"></td>
+        <?php }else{ ?>
+        <td id="<?php echo $ddr['id'] ?>photoddr" ><img src="<?php echo $ddr['photo']?>" height="50" width="50"></td>
+        <?php  } ?>
+
+    
+
        <td id="<?php echo $ddr['id'] ?>nameddr"><?php echo $ddr['name'] ?></td>
        <td id="<?php echo $ddr['id'] ?>organizationddr"><?php echo $ddr['organization'] ?></td>
        <td id="<?php echo $ddr['id'] ?>postddr"><?php echo $ddr['post'] ?></td>
@@ -647,7 +703,14 @@
 
      <tr class="tr_tbl">
        <td id="<?php echo $personnel['id'] ?>idpersonnel"><?php echo $personnel['id'] ?></td>
-       <td id="<?php echo $personnel['id'] ?>photopersonnel"><img src="<?php echo $personnel['photo']?>" height="50" width="50"></td>
+
+       <?php if($personnel['photo']==NULL){ ?>
+           <td id="<?php echo $personnel['id'] ?>photopersonnel" ><img src="<?php echo base_url()?>/assets/img/admin.png" height="50" width="50"></td>
+        <?php }else{ ?>
+        <td id="<?php echo $personnel['id'] ?>photopersonnel" ><img src="<?php echo $personnel['photo']?>" height="50" width="50"></td>
+        <?php  } ?>
+
+
        <td id="<?php echo $personnel['id'] ?>namepersonnel"><?php echo $personnel['name'] ?></td>
        <td id="<?php echo $personnel['id'] ?>organizationpersonnel"><?php echo $personnel['organization'] ?></td>
        <td id="<?php echo $personnel['id'] ?>postpersonnel"><?php echo $personnel['post'] ?></td>
@@ -685,7 +748,14 @@
 
         <tr class="tr_tbl">
           <td id="<?php echo $members['id'] ?>idmembers"><?php echo $members['id'] ?></td>
-          <td id="<?php echo $members['id'] ?>photomembers"><img src="<?php echo $members['photo']?>" height="50" width="50"></td>
+
+          <?php if($members['photo']==NULL){ ?>
+              <td id="<?php echo $members['id'] ?>photomembers" ><img src="<?php echo base_url()?>/assets/img/admin.png" height="50" width="50"></td>
+           <?php }else{ ?>
+           <td id="<?php echo $members['id'] ?>photomembers" ><img src="<?php echo $members['photo']?>" height="50" width="50"></td>
+           <?php  } ?>
+
+
           <td id="<?php echo $members['id'] ?>namemembers"><?php echo $members['name'] ?></td>
           <td id="<?php echo $members['id'] ?>organizationmembers"><?php echo $members['organization'] ?></td>
           <td id="<?php echo $members['id'] ?>postmembers"><?php echo $members['post'] ?></td>

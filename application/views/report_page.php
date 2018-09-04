@@ -602,7 +602,7 @@ button.btn.btn-light.btn-sm {
           //"None": none
         };
 
-        map.addLayer(googleStreets);
+        map.addLayer(osm);
         layerswitcher = L.control.layers(baseLayers, {}, {collapsed: true}).addTo(map);
 
       $(".layer-toggle").click(function(){

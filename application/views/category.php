@@ -1094,8 +1094,12 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                       <div class="col-md-4">Filter
                         <div class="col-md-12 express">
                           <div class="row filter_column_name">
-
-
+                            
+      <div class="col-md-12">
+        <label><input class="filter_value" type="radio" name=" " id="" value=" "/>
+        <p class="exp text-center"></p>
+      </label>
+      </div>
 
                           </div>
                         </div></div>
@@ -1344,7 +1348,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                       </a>
                     </div>
                     <div class="counter-desc">
-                      <p></p>
+                      <!-- <p id="cont_text_p"></p> -->
                       </div>
                     </div>
 
@@ -1529,7 +1533,7 @@ $(document).ready(function(){
     //"None": none
   };
 
-  map.addLayer(googleStreets);
+  map.addLayer(osm);
   layerswitcher = L.control.layers(baseLayers, {}, {collapsed: true}).addTo(map);
 
   function underscoreToSpace(naaaaame) {
@@ -1760,12 +1764,18 @@ if(popup_content_parsed[i]==0){
         //  data: name,
         url:  "MapController/get_summary_list?selected_list_id="+selected_list_id,
         beforeSend: function() {
-          //  $.LoadingOverlay("show");
+          $("#ListGroup").html('');
+          $(".counter-desc").html('');
+          $("#count_summary").html('');
+          $(".ic").html('');
+        //  $("#ListGroup").html('Loading');
+
         },
         complete: function() {
-          //  $.LoadingOverlay("hide", true);
+
         },
         success: function (result) {
+        $(".ic").html('');
           //	console.log(result);
           $("#ListGroup").html('');
           var result_parsed = JSON.parse(result);
