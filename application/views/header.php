@@ -14,7 +14,10 @@
 
   <title>Municipal GIS</title>
 
+
   <!-- Bootstrap core CSS -->
+
+
   <link href="<?php echo base_url();?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <script>window.jQuery || document.write('<script src="<?php echo base_url();?>assets/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
@@ -45,7 +48,10 @@
 
 <!--   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/new.css"> -->
 
-
+<!-- datatable -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
+<!-- datatable end -->
+<!-- end data -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/leaflet.label.css">
   <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>

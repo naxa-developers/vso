@@ -1,4 +1,6 @@
 
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
   <style>
 button.btn.btn-info.hit {
     margin-left: 1035px;
@@ -308,13 +310,16 @@ table.responstable {
 
   }else{ ?>
  <!-- responsive table for displaying contact directory -->
- <table class="responstable">
+ <table id="hydropower" class="responstable">
+     <thead>
   <tr>
     <?php foreach($data[0] as $key => $value){
 
 
                   ?>
-      <th>
+
+
+      <td>
 
         <?php
 
@@ -323,11 +328,13 @@ table.responstable {
           echo ucfirst($r)." ";
                         }?>
 
-    </th>
-    <?php  } ?>
+    </td>
+  <?php  } ?>
 
 
   </tr>
+</thead>
+<tbody>
   <?php foreach ($data as  $v) {
     // code...
  ?>
@@ -338,7 +345,7 @@ table.responstable {
   </tr>
 
 <?php  } ?>
-
+<tr >
     <td colspan="5">Total</td>
     <td>4639</td>
     <td>5463</td>
@@ -355,12 +362,26 @@ table.responstable {
     <td>4</td>
     <td>0</td>
     <td>0</td>
-    <td colspan="3">&nbsp;</td>
-  </tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td style="display:none;"></td>
+    <td style="display:none;"></td>
+    <td style="display:none;"></td>
+    <td style="display:none;"></td>
 
+
+  </tr>
+</tbody>
 </table>
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-offset-12 text-center">
     <nav aria-label="Page navigation example" class="">
       <ul class="pagination justify-content-center">
@@ -376,7 +397,7 @@ table.responstable {
       </ul>
     </nav>
   </div>
-</div>
+</div> -->
 <?php  }?>
 
 </div>

@@ -8,12 +8,12 @@
             <section class="panel">
               <section class="panel">
                   <header class="panel-heading">
-                     <b>Feature Datasets</b>
+                     <b>फीचर दतासेट</b>
 
 
 
              <span class="tools pull-right">
-               <a href="<?php echo base_url()?>add_feature"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-plus"></i> Add Feature Dataset</button></a>
+               <a href="<?php echo base_url()?>add_feature_nep"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-plus"></i> थप्नुहोस</button></a>
               </span>
 
               <span class="tools pull-right">
@@ -50,7 +50,7 @@
 
                             <?php foreach($data[0] as $key => $value){
 
-                                if($key=='table' || $key=='default' || $key=='lang' || $key=='default_nep' || $key=='nepali_title' ||$key=='nepali_summary' ){}else{
+                                if($key=='table' || $key=='default_nep' || $key=='default' || $key=='title'  || $key=='lang' ||$key=='summary'){}else{
 
                                           ?>
                               <td>
@@ -82,12 +82,12 @@
 
             echo '<td><button type="button" class="btn btn-round btn-danger" data-toggle="modal" data-target="#myModal'.$v['id'].'"> change  Photo</button></td>';
                                       ?>
-                              <?php   }elseif($key=='table' || $key=='default' || $key=='lang' || $key=='default_nep' || $key=='nepali_title' ||$key=='nepali_summary' ){}else{ ?>
+                              <?php   }elseif($key=='table' || $key=='default_nep' || $key=='default' || $key=='lang' || $key=='title' ||$key=='summary'){}else{ ?>
 
                               <td><?php echo $value;?></td>
                             <?php }}  ?>
                               <td>
-                                <a href="<?php echo base_url()?>edit_feature?id=<?php echo base64_encode($v['id']);?> ">Edit</a> /
+                                <a href="<?php echo base_url()?>edit_feature_nep?id=<?php echo base64_encode($v['id']);?> ">Edit</a> /
                                 <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>delete_feature?id=<?php echo $v['id'];?>">Delete</a></td>
 
 
@@ -199,14 +199,14 @@
 
                                       <div class="minimal single-row">
                                         <div class="radio ">
-                                        <?php   if($data['default']=='1'){ ?>
-                                          <input tabindex="3" type="radio" value="<?php echo  $data['id'];?>"  name="default" checked>
+                                        <?php   if($data['default_nep']=='1'){ ?>
+                                          <input tabindex="3" type="radio" value="<?php echo  $data['id'];?>"  name="default_nep" checked>
 
                                       <?php  }else{ ?>
-                                          <input tabindex="3" type="radio" value="<?php echo  $data['id'];?>"  name="default">
+                                          <input tabindex="3" type="radio" value="<?php echo  $data['id'];?>"  name="default_nep">
 
                                       <?php  } ?>
-                                          <label><?php echo $data['title'] ?></label>
+                                          <label><?php echo $data['nepali_title'] ?></label>
 
 
                                         </div>

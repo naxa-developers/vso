@@ -7,7 +7,7 @@
         <div class="col-lg-12">
                 <section class="panel">
                     <header class="panel-heading">
-                      Feature Dataset
+                      फीचर दतासेट
                     </header>
                     <div class="panel-body">
                         <div class="position-center">
@@ -37,7 +37,7 @@
 
                                   <div class="form-group">
                                     <label for="exampleInputEmail1">Title</label>
-                                    <input type="text" name="title" class="form-control" id="exampleInputEmail1"  required>
+                                    <input type="text" name="nepali_title" class="form-control" id="exampleInputEmail1"  required>
                                     <input type="hidden" name="default" value="1" class="form-control" id="exampleInputEmail1">
                                   </div>
 
@@ -47,7 +47,7 @@
                                   <div class="form-group">
                                     <label class="col-sm-3 control-label col-sm-2">Summary</label>
                                     <div class="col-sm-10">
-                                      <textarea class="form-control" name="summary" rows="5" required></textarea>
+                                      <textarea class="form-control" name="nepali_summary" rows="5" required></textarea>
                                     </div>
                                   </div>
 

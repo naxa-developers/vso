@@ -23,6 +23,9 @@ class Map_model extends CI_Model {
 
   }
 
+
+
+
   public function get_map_filter_data($tbl,$query,$d){
     foreach($d as $v){
     $this->db->select($v['eng_lang'].' AS '.pg_escape_string(preg_replace('/[^A-Za-z0-9\-]/', ' ', $v['nepali_lang'])));
@@ -94,6 +97,21 @@ class Map_model extends CI_Model {
 
   public function get_layer($tbl){
     $this->db->select('*');
+    $this->db->order_by('id','ASC');
+    $query=$this->db->get($tbl);
+    return $query->result_array();
+  }
+
+  public function get_layer_en($tbl){
+    $this->db->select('*');
+    $this->db->where('language','en');
+    $this->db->order_by('id','ASC');
+    $query=$this->db->get($tbl);
+    return $query->result_array();
+  }
+  public function get_layer_nep($tbl){
+    $this->db->select('*');
+    $this->db->where('language','nep');
     $this->db->order_by('id','ASC');
     $query=$this->db->get($tbl);
     return $query->result_array();

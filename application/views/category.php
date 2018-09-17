@@ -1094,23 +1094,18 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                       <div class="col-md-4">Filter
                         <div class="col-md-12 express">
                           <div class="row filter_column_name">
-                            
-      <div class="col-md-12">
-        <label><input class="filter_value" type="radio" name=" " id="" value=" "/>
-        <p class="exp text-center"></p>
-      </label>
-      </div>
+
 
                           </div>
                         </div></div>
                       <div class="col-md-4">Expression<div class="col-md-12 express">
                         <div class="row">
                             <div class="col-md-6"><label>
-                    <input type="radio" name="fb" class="ex_map" value="="/>
+                    <input type="radio" name="fb" class="ex_map" value="=" disabled/>
                     <p class="ex text-center"> = </p>
                   </label></div>
                    <div class="col-md-6"><label>
-                    <input type="radio" name="fb" class="ex_map" value="+"/>
+                    <input type="radio" name="fb" class="ex_map" value="+" disabled/>
                     <p class="ex text-center"> + </p>
                   </label></div>
                    <!-- <div class="col-md-6"><label>
@@ -1118,11 +1113,11 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                     <p class="ex text-center"> - </p>
                   </label></div> -->
                    <div class="col-md-6"><label>
-                    <input type="radio" name="fb" class="ex_map" value=">"/>
+                    <input type="radio" name="fb" class="ex_map" value=">" disabled/>
                     <p class="ex text-center"> > </p>
                   </label></div>
                    <div class="col-md-6"><label>
-                    <input type="radio" name="fb" class="ex_map" value="<"/>
+                    <input type="radio" name="fb" class="ex_map" value="<" disabled/>
                     <p class="ex text-center"> < </p>
                   </label></div>
                   <!-- <div class="col-md-6"><label>
@@ -2101,7 +2096,7 @@ $(document).on('click','.filter_value',function(){
       //  $.LoadingOverlay("hide", true);
     },
     success: function (result) {
-
+   $('.ex_map').prop("disabled", false);
       var values = JSON.parse(result);
 
       $(".filter_values").html(' ');
@@ -2111,7 +2106,7 @@ $(document).on('click','.filter_value',function(){
 
           //console.log(values[i][col_name]);
 
-            $(".filter_values").append('<div class="col-md-12"><label><input class="filter_value_item" type="radio" name="" value="'+values[i][col_name]+'"/><p class="exp text-center">'+values[i][col_name]+'</p></label></div>');
+            $(".filter_values").append('<div class="col-md-12"><label><input class="filter_value_item" type="radio" name="" value="'+values[i][col_name]+'"disabled/><p class="exp text-center">'+values[i][col_name]+'</p></label></div>');
 
 
 
@@ -2136,7 +2131,7 @@ $(document).on('click','.filter_value',function(){
   $('.ex_map').on('click',function(){
 
 //  console.log($(this).val());
-
+    $('.filter_value_item').prop("disabled", false);
     $(".selected_filter_ex").val($(".selected_filter_ex").val()+' '+$(this).val());
     $(".selected_filter_query").val($(".selected_filter_query").val()+' '+$(this).val());
 
@@ -2202,7 +2197,7 @@ $('.applied_filter').on('click',function(){
   marker_type=data.marker_type;
   popup_content_parsed=data.popup_content;
   table_n=data.table_name;
-  // console.log(map_json);
+  // console.log(modal_table);
   // console.log(sub_style);
   // console.log(marker_type);
   // console.log(popup_content_parsed);
@@ -2218,12 +2213,16 @@ var tbl_body=""
 
   $.each(modal_table[i], function(k, v) {
 
+if(k=='the geom'){
 
+}else{
     $('#table_filter >thead tr').append('<th scope="col">'+k+'</th>');
 
 
 
+
      tbl_body += '<td>'+v+'</td>';
+       }
 
 
     //display the key and value pair

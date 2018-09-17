@@ -9,8 +9,20 @@ class Feature_model extends CI_Model {
 public function get_feature()
 {
 
-$this->db->select('*');
-// $this->db->where('default_load','1');
+$this->db->select('id,title,summary,photo,default');
+$this->db->where('lang','en');
+$q=$this->db->get('featured_dataset');
+return $q->result_array();
+
+
+}
+
+
+public function get_feature_nep()
+{
+
+$this->db->select('id,nepali_title,nepali_summary,photo,default_nep');
+$this->db->where('lang','nep');
 $q=$this->db->get('featured_dataset');
 return $q->result_array();
 

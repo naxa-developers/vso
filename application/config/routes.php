@@ -109,8 +109,12 @@ $route['logout'] = 'Admin/LoginController/logout';
 
 $route['feature'] = 'Admin/FeatureDataset/feature';
 $route['add_feature'] = 'Admin/FeatureDataset/add_feature';
+$route['add_feature_nep'] = 'Admin/FeatureDataset/add_feature_nep';
 $route['delete_feature'] = 'Admin/FeatureDataset/delete_feature';
 $route['edit_feature'] = 'Admin/FeatureDataset/edit_feature';
+$route['edit_feature_nep'] = 'Admin/FeatureDataset/edit_feature_nep';
+$route['feature_nep'] = 'Admin/FeatureDataset/feature_nep';
+
 
 $route['table_create'] = 'Admin/TableController/create_table';
 $route['dashboard'] = 'Admin/CategoriesController';
@@ -120,8 +124,10 @@ $route['edit'] = 'Admin/CategoriesController/edit';
 $route['create_col'] = 'Admin/CategoriesController/create_col';
 $route['create_categories_tbl'] = 'Admin/CategoriesController/create_categories_tbl';
 $route['create_categories'] = 'Admin/CategoriesController/create_categories';
+$route['create_categories_nep'] = 'Admin/CategoriesController/create_categories_nep';
 $route['view_cat_tables'] = 'Admin/CategoriesController/view_cat_tables';
 $route['categories_tbl'] = 'Admin/CategoriesController/categories_tbl';
+$route['categories_tbl_nep'] = 'Admin/CategoriesController/categories_tbl_nep';
 $route['edit_categories'] = 'Admin/CategoriesController/edit_categories';
 $route['drop_cat_table'] = 'Admin/CategoriesController/drop_cat_table';
 $route['delete_data'] = 'Admin/CategoriesController/delete_data';

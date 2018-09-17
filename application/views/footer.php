@@ -149,7 +149,8 @@ button.btn.btn-secondary {
         </div>
 
       </footer>
-
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
       <script type="text/javascript">
           document.onreadystatechange = function () {
@@ -168,6 +169,15 @@ button.btn.btn-secondary {
 
       <!--counter-->
       <script type="text/javascript">
+
+      $(document).ready(function() {
+        $('#hydropower').DataTable({
+           dom: 'Bfrtip',
+
+
+
+        });
+      } );
 
         $('.count').each(function () {
           $(this).prop('Counter',0).animate({

@@ -137,7 +137,7 @@
 
 
        <!-- responsive table for displaying contact directory -->
-       <table class="responstable">
+       <table  class="responstable">
         <tr>
         <?php foreach ($data[0] as $key => $value){
 
@@ -147,7 +147,7 @@
 
             }else{
 
-            
+
 
 
           ?>

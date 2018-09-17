@@ -10,6 +10,7 @@
     #reportable{
         overflow: auto;
         margin: 0.5em;
+        margin-left: 253px;
     }
     .responstable {
   margin: 1em 0em;
@@ -119,17 +120,21 @@
 
 <div class="row" id="reportable">
  <!-- responsive table for displaying contact directory -->
- <table class="responstable">
+ <table class="responstable"  id="hydropower"  style="width:100%">
+   <thead>
   <tr>
-    <th><span>#</span></th>
+
     <th data-th="Incident detail"><span>Recieved Date</span></th>
     <!-- <th><span>Recieved Time</span></th> -->
     <th><span>Type of Incident</span></th>
     <th><span>Location</span></th>
     <th><span>Status</span></th>
     <th><span>Remarks</span></th>
+
+
   </tr>
-  <tr>
+
+  </thead>
     <!-- <td></td>
     <td><span class="report-form"><input type="date" class="form-control form-control-sm"></span></td>
     <td><span class="report-form"><input type="time" class="form-control form-control-sm"></span></td>
@@ -145,10 +150,10 @@
       </select></span></td> -->
     <!-- <td><span class="report-form"><input type="text" class="form-control form-control-sm" placeholder="place of incident"></span></td> -->
 
-  </tr>
+<tbody>
   <?php foreach($data as $report){ ?>
   <tr>
-    <td><a href="#" name="open_element" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-open"></i> Open</a></td>
+
 
 
     <td><?php echo $report['incident_time']?></td>
@@ -157,12 +162,14 @@
     <td><?php echo $report['status']?></td>
     <td><?php echo $report['message']?></td>
 
+
+
   </tr>
 <?php } ?>
-
+</tbody>
 </table>
 
-<div class="container">
+<!-- <div class="container">
 <div class="row">
   <div class="col-md-12">
      <ul class="pagination  pull-right" style="padding-top: 20px; padding-bottom: 30px;">
@@ -174,7 +181,7 @@
     </ul>
   </div>
 </div>
-</div>
+</div> -->
 
 </div>
 </div>

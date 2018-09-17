@@ -6,7 +6,21 @@ class Main_model extends CI_Model {
   {
 
   $this->db->select('*');
+  $this->db->where('lang','en');
   $this->db->where('default','1');
+  $q=$this->db->get('featured_dataset');
+  return $q->row_array();
+
+
+  }
+
+
+  public function get_feature_nep()
+  {
+
+  $this->db->select('*');
+  $this->db->where('lang','nep');
+  $this->db->where('default_nep','1');
   $q=$this->db->get('featured_dataset');
   return $q->row_array();
 
@@ -120,30 +134,30 @@ public function get_contact_csv($cat,$tbl)
 
 
 
-  public function get_cat_exposure($tbl){
+  public function get_cat_exposure($tbl,$lang){
 
     $this->db->select('*');
-
+  $this->db->where('language',$lang);
     $this->db->where('category_type','Exposure_Data');
     $this->db->order_by('id','ASC');
     $query=$this->db->get($tbl);
     return $query->result_array();
   }
 
-  public function get_cat_baseline($tbl){
+  public function get_cat_baseline($tbl,$lang){
 
     $this->db->select('*');
-
+  $this->db->where('language',$lang);
     $this->db->where('category_type','Baseline_Data');
     $this->db->order_by('id','ASC');
     $query=$this->db->get($tbl);
     return $query->result_array();
   }
 
-  public function get_cat_hazard($tbl){
+  public function get_cat_hazard($tbl,$lang){
 
     $this->db->select('*');
-
+  $this->db->where('language',$lang);
     $this->db->where('category_type','Hazard_Data');
     $this->db->order_by('id','ASC');
     $query=$this->db->get($tbl);

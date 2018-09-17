@@ -605,5 +605,12 @@ public function url_segment(){
 echo $tokens[sizeof($tokens)-1];
 }
 
+public function dash_tbl(){
+  $this->load->view('header');
+  $this->load->view('test_tbl');
+  $this->load->view('footer');
+  //$this->load->view('admin/footer');
+}
+
 
 }//end

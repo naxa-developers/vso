@@ -116,9 +116,9 @@ class MainController extends CI_Controller
 
     //echo base_url();
     $tbl='categories_tbl';
-    $this->body['hazard_data']=$this->Main_model->get_cat_hazard($tbl);
-    $this->body['exposure_data']=$this->Main_model->get_cat_exposure($tbl);
-    $this->body['baseline_data']=$this->Main_model->get_cat_baseline($tbl);
+    // $this->body['hazard_data']=$this->Main_model->get_cat_hazard($tbl);
+    // $this->body['exposure_data']=$this->Main_model->get_cat_exposure($tbl);
+    // $this->body['baseline_data']=$this->Main_model->get_cat_baseline($tbl);
     $this->body['feature']=$this->Main_model->get_feature();
 
 
@@ -148,12 +148,22 @@ class MainController extends CI_Controller
 
 
     if($lang['Language']=='en'){
-
+      $language='en';
       $this->body['site_info']=$this->Main_model->site_setting_en();
+      $this->body['feature']=$this->Main_model->get_feature();
+      $this->body['feat_lang']='en';
+      $this->body['hazard_data']=$this->Main_model->get_cat_hazard($tbl,$language);
+      $this->body['exposure_data']=$this->Main_model->get_cat_exposure($tbl,$language);
+      $this->body['baseline_data']=$this->Main_model->get_cat_baseline($tbl,$language);
 
     }else{
-
+       $language='nep';
      $this->body['site_info']=$this->Main_model->site_setting_nep();
+     $this->body['feature']=$this->Main_model->get_feature_nep();
+     $this->body['feat_lang']='nep';
+     $this->body['hazard_data']=$this->Main_model->get_cat_hazard($tbl,$language);
+     $this->body['exposure_data']=$this->Main_model->get_cat_exposure($tbl,$language);
+     $this->body['baseline_data']=$this->Main_model->get_cat_baseline($tbl,$language);
 
 
     }

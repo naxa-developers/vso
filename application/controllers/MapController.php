@@ -108,6 +108,9 @@ public function  admin_category_map(){
 
 if(!$this->db->table_exists($tbl['category_table'])){
 
+
+
+
 }else{
     $cat_tbles[]=$tbl['category_table'];
     //$popup[]=$tbl['popup_content'];
@@ -138,6 +141,10 @@ if(!$this->db->table_exists($tbl['category_table'])){
       $cat_ddata=$cat_data ;
       unset($cat_data['st_asgeojson']);
 
+
+
+
+
       $features_cat[]= array(
         'type' =>'Feature',
         'properties'=>$cat_data,
@@ -147,6 +154,8 @@ if(!$this->db->table_exists($tbl['category_table'])){
 
 
     }
+    //echo addslashes(json_encode($features_cat));
+    //exit();
 
     $category= $cat_tbles[$i];
 
@@ -206,7 +215,7 @@ $this->body['default_selected_cat_tbl']=$def_select['category_table'];
 
 if($this->session->userdata('Language')==NULL){
 
-  $this->session->set_userdata('Language','nep');
+ $this->session->set_userdata('Language','nep');
 }
 
 $lang=$this->session->get_userdata('Language');
@@ -214,25 +223,25 @@ $lang=$this->session->get_userdata('Language');
 
 if($lang['Language']=='en'){
 
-  $this->body['site_info']=$this->Main_model->site_setting_en();
+ $this->body['site_info']=$this->Main_model->site_setting_en();
 
 }else{
 
- $this->body['site_info']=$this->Main_model->site_setting_nep();
+$this->body['site_info']=$this->Main_model->site_setting_nep();
 
 
 }
 $tokens = explode('/', $_SERVER['REQUEST_URI']);
-  $urly=$tokens[sizeof($tokens)-1];
+ $urly=$tokens[sizeof($tokens)-1];
 $this->body['urll']=$urly;
 //language
 
- $this->body['map_zoom_center']=$this->Report_model->site_setting();
+$this->body['map_zoom_center']=$this->Report_model->site_setting();
 
- //views add end
+//views add end
 //  exit();
 
-   $this->load->view('header',$this->body);
+  $this->load->view('header',$this->body);
   $this->load->view('admin_category.php',$this->body);
   $this->load->view('footer',$this->body);
 
@@ -245,6 +254,27 @@ $this->body['urll']=$urly;
 
   public function  category_map(){
 
+ //language
+ if($this->session->userdata('Language')==NULL){
+
+   $this->session->set_userdata('Language','nep');
+ }
+
+ $lang=$this->session->get_userdata('Language');
+
+ if($lang['Language']=='en'){
+
+     $cat_tbl=$this->Map_model->get_layer_en('categories_tbl');
+
+ }else{
+
+  $cat_tbl=$this->Map_model->get_layer_nep('categories_tbl');
+
+
+ }
+
+
+//language
 
     $cat_tbl=$this->Map_model->get_layer('categories_tbl');
 
@@ -252,7 +282,10 @@ $this->body['urll']=$urly;
     $popup = array();
     $style = array();
     $marker_type = array();
+
     foreach($cat_tbl as $tbl){
+
+
 
 if(!$this->db->table_exists($tbl['category_table'])){
 
@@ -266,6 +299,7 @@ if(!$this->db->table_exists($tbl['category_table'])){
       array_push($style, trim(trim(json_encode($tbl['style'],JSON_NUMERIC_CHECK),'"['),']"'));
       array_push($marker_type, trim(trim(json_encode($tbl['marker_type'],JSON_NUMERIC_CHECK),'"['),']"'));
 }
+
     }
 
 
@@ -361,24 +395,19 @@ if(!$this->db->table_exists($tbl['category_table'])){
 
  //language
 
- if($this->session->userdata('Language')==NULL){
-
-   $this->session->set_userdata('Language','nep');
- }
-
- $lang=$this->session->get_userdata('Language');
 
 
  if($lang['Language']=='en'){
 
    $this->body['site_info']=$this->Main_model->site_setting_en();
-
+  $this->body['data']=$this->Map_model->get_layer_en('categories_tbl');
  }else{
 
   $this->body['site_info']=$this->Main_model->site_setting_nep();
-
+  $this->body['data']=$this->Map_model->get_layer_nep('categories_tbl');
 
  }
+ //var_dump($this->body['data']);
 $tokens = explode('/', $_SERVER['REQUEST_URI']);
    $urly=$tokens[sizeof($tokens)-1];
 $this->body['urll']=$urly;
@@ -450,10 +479,7 @@ $this->body['urll']=$urly;
 
       }else{
 
-      echo 'not-none';
 
-
-      exit();
       $table=$_POST['table'];
       unset($_POST['submit']);
       unset($_POST['table']);
@@ -536,7 +562,7 @@ $this->body['urll']=$urly;
 
     $checked=json_decode($checked2,TRUE);
     //($checked1);
-    //var_dump($col_name);
+  //  var_dump($checked2);
 
 
     $checked_column_array=array();
@@ -556,8 +582,11 @@ $this->body['urll']=$urly;
     }
 
     $html="";
-    if($checked2==0);{
+    if($checked2 == '0'){
     $html=$html.'<input type="checkbox" name="none" value="" checked/>None <br><br>';
+  }else{
+  $html=$html.'<input type="checkbox" name="none" value="" />None <br><br>';
+
   }
 
 
@@ -956,6 +985,19 @@ public function location_marker(){
 
     $data=array(
       'public_view'=>$this->input->get('value'),
+
+    );
+    $this->Map_model->update_value($this->input->get('id'),$data);
+
+  }
+
+
+  public function update_download_allow(){
+
+
+
+    $data=array(
+      'allow_download'=>$this->input->get('value'),
 
     );
     $this->Map_model->update_value($this->input->get('id'),$data);

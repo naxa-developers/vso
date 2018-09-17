@@ -89,6 +89,9 @@ p.about {
 				<form method="POST" action="" >
 
          <?php foreach ($data_panel as $d) {
+          if($d['public_view']=='0'){
+
+          }else{
 
 					if (in_array($d['category_table'], $checked_data)){
 						?>
@@ -108,7 +111,7 @@ p.about {
 					</p></a>
 
 
-				<?php } }?>
+				<?php } }}?>
 
 
 				</div>
@@ -177,9 +180,20 @@ p.about {
 						<p class="about">
 							<?php echo $d['summary'] ?>
 						</p>
-			<button id="" name="<?php echo $d['category_table']?>" class="btn btn-light btn-sm kml"><span class="fa fa-download"></span> KML</button>
-						<a href="<?php echo base_url()?>get_csv_dataset?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm"><span class="fa fa-download"></span> CSV</button></a>
+            <?php if($d['allow_download']=='1'){ ?>
+			     <button id="" name="<?php echo $d['category_table']?>" class="btn btn-light btn-sm kml" ><span class="fa fa-download" ></span> KML</button>
+						<a href="<?php echo base_url()?>get_csv_dataset?tbl=<?php echo $d['category_table']?>" ><button class="btn btn-light btn-sm" ><span class="fa fa-download" ></span> CSV</button></a>
 						<a href="<?php echo base_url()?>get_geojson_dataset?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm"><span class="fa fa-download"></span> Geojson</button></a>
+
+          <?php }else{ ?>
+
+            <button id="" name="<?php echo $d['category_table']?>" class="btn btn-light btn-sm kml" disabled><span class="fa fa-download" ></span> KML</button>
+ 						<a href="<?php echo base_url()?>get_csv_dataset?tbl=<?php echo $d['category_table']?>" ><button class="btn btn-light btn-sm" disabled><span class="fa fa-download" ></span> CSV</button></a>
+ 						<a href="<?php echo base_url()?>get_geojson_dataset?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm" disabled><span class="fa fa-download"></span> Geojson</button></a>
+
+
+          <?php }  ?>
+
 						<a href="<?php echo base_url()?>category?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm"><span class="fa fa-eye"></span> Map</button></a>
 						<a href="<?php echo base_url()?>data_map?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm"><span class="fa fa-table"></span> Table</button></a>
 

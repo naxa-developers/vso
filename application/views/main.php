@@ -93,6 +93,7 @@
 
       </div>
         </div>
+        <?php if($feat_lang=='en'){ ?>
 <a href="category?tbl=<?php echo $feature['table'] ?>">
     <div class="bg-white feature-section">
       <div class="container">
@@ -107,6 +108,23 @@
       </div>
     </div>
 </a>
+<?php }else{ ?>
+
+  <a href="category?tbl=<?php echo $feature['table'] ?>">
+      <div class="bg-white feature-section">
+        <div class="container">
+          <div class="featured-post clearfix">
+            <h5 class="post-ribbon">Featured Dataset Nepali</h5>
+            <img src="<?php echo $feature['photo'] ?>" alt="">
+            <h3><?php echo $feature['nepali_title'] ?></h3>
+            <p>
+            <?php echo $feature['nepali_summary'] ?>
+            </p>
+          </div>
+        </div>
+      </div>
+  </a>
+<?php } ?>
     <script type="text/javascript">
 $("#started").click(function() {
     $('html, body').animate({

@@ -9,13 +9,13 @@
         <section class="panel">
           <section class="panel">
             <header class="panel-heading">
-              Categories
+              Categories Nepali
 
 
 
               <span class="tools pull-right">
 
-                <a href="<?php echo base_url()?>create_categories"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-plus"></i> Add Category</button></a>
+                <a href="<?php echo base_url()?>create_categories_nep"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-plus"></i> थप्नुहोस</button></a>
                 <a href="<?php echo base_url()?>admin_category?tbl=" target="_blank"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-map-marker"></i> View In Map</button></a>
                 </span>
                 <span class="tools pull-right">

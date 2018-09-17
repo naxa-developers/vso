@@ -168,6 +168,17 @@ return $res->result_array();
   public function get_tables_data($tbl){ //get data of table
 
     $this->db->select('*');
+  
+    $this->db->order_by('id','ASC');
+    $q=$this->db->get($tbl);
+    return $q->result_array();
+
+
+  }
+  public function get_tables_data_cat($tbl,$lang){ //get data of table
+
+    $this->db->select('*');
+    $this->db->where('language',$lang);
     $this->db->order_by('id','ASC');
     $q=$this->db->get($tbl);
     return $q->result_array();

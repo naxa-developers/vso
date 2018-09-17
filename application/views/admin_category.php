@@ -6,9 +6,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.2/randomColor.js"></script>
 
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/leaflet.label.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/changunarayan.js"></script>
 <style>
+a#viewall {
+    width: 235px;
+}
 .modal-content{
   background-color: #f5f4f4;
 }
@@ -18,6 +27,13 @@ input.size-box {
 
 }
 
+/* div#dialog {
+    margin-top: 215px !important;
+    margin-left: -505px !important;
+} */
+.fa-trash{
+  color: red;
+}
 .treeview ul.show{
 height: auto;
 max-height: 100px;
@@ -30,7 +46,7 @@ max-height: 100px;
   left: 21.5%;
 }
 .leaflet-right{
-  right:260px;
+  /*right:260px;*/
 }
 
 ul.nav.nav-tabs{
@@ -168,7 +184,7 @@ span.ic {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 9;
+  z-index: 7;
   opacity: 0;
   pointer-events: none;
   -webkit-transition: all 0.3s;
@@ -224,12 +240,12 @@ span.ic {
 
 div#over_map1 {
   position: absolute;
-  z-index: 8;
+  z-index: 4;
   right: 0px;
   width: 250px;
 }
 #wrap { position: relative; }
-#over_map { position: absolute; left: 0px; z-index: 8; top: 33px;width: 0px;}
+#over_map { position: absolute; left: 0px; z-index: 6; top: 33px;width: 0px;}
 
 .icon-bar{
   background-color:#0056b3;
@@ -388,6 +404,7 @@ div#over_map1 {
 .treeview .desc{
   font-size: 12px;
   padding-left: 25px;
+  overflow-y: scroll;
 }
 
 .control.pull-right{
@@ -650,6 +667,7 @@ div#map{
   height:545px;
   z-index:1;
   margin-top: 0px;
+
 }
 
 #legend .cate{
@@ -895,7 +913,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
 
 }
 .modal-body.mdl2 {
-    width: 500px;
+    width: 100%;
     overflow-x: scroll;
     overflow-y: scroll;
   }
@@ -903,8 +921,29 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
     z-index: 5;
     opacity: .5;
 }
+
+.overlay {
+    left: 21.5%;
+    /* height: 500px; */
+    width: 200px;
+    position: absolute;
+    /* right: 0px; */
+    z-index: 2000;
+    bottom: 0px;
+    background-color: white;
+    pointer-events: auto;
+    padding: 10px;
+}
 /**/
+.modal-content.no2 {
+    width: 1050px;
+    margin-left: -260px;
+}
 </style>
+
+
+
+
 
 <div id="wrap">
 
@@ -917,7 +956,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
           <ul class="nav nav-tabs" role="tablist">
             <li class="basemap chevron1" id="close-panel-left"><img src="<?php echo base_url()?>assets/img/up-arrow.png" class="test-icon chevron"></li>
             <!-- <li role="presentation" class="basemap"><a href="#layers" aria-controls="profile" role="tab" data-toggle="tab"><img src="<?php echo base_url()?>assets/img/layers-icon.png" class="test-icon"></a></li> -->
-            <li role="presentation" class="basemap"><a href="<?php echo base_url()?>map_download"><img src="<?php echo base_url()?>assets/img/map-down.png" class="test-icon">&nbsp;<sub class="text-light" style="font-size: 13px;">Maps</sub></a></li>
+            <li role="presentation" class="basemap"><a href="<?php echo base_url()?>map_download"><img src="<?php echo base_url()?>assets/img/map-down.png" class="test-icon">&nbsp;<sub class="text-light" style="font-size: 13px;"><?php echo $site_info['map']?></sub></a></li>
           </ul>
         </div>
       </div>
@@ -944,9 +983,12 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
               <ul class="treeview checklist">
 
 
-                <?php  foreach ($data as $data){ ?>
+                <?php  foreach ($data as $data){
+
+                if($data['public_view']=='0'){
 
 
+                }else{ ?>
 
                   <li class="card inter-list-panel">
                     <div class="head-panel">
@@ -1006,7 +1048,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                           <input type="range" name="range" min="1" max="100" value="50" onchange="rangePrimary.value=value">
                           <output id="rangePrimary">50</output>
                         </div> -->
-                        <div class="treeview-content-p">
+                        <div class="treeview-content-p" id="<?php echo $data['category_table']?>_treeview">
 
                           <?php if($data['sub_categories']==''){  ?>
 
@@ -1054,17 +1096,16 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                           <div class="row filter_column_name">
 
 
-
                           </div>
                         </div></div>
                       <div class="col-md-4">Expression<div class="col-md-12 express">
                         <div class="row">
                             <div class="col-md-6"><label>
-                    <input type="radio" name="fb" class="ex_map" value="="/>
+                    <input type="radio" name="fb" class="ex_map" value="=" disabled/>
                     <p class="ex text-center"> = </p>
                   </label></div>
                    <div class="col-md-6"><label>
-                    <input type="radio" name="fb" class="ex_map" value="+"/>
+                    <input type="radio" name="fb" class="ex_map" value="+" disabled/>
                     <p class="ex text-center"> + </p>
                   </label></div>
                    <!-- <div class="col-md-6"><label>
@@ -1072,11 +1113,11 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                     <p class="ex text-center"> - </p>
                   </label></div> -->
                    <div class="col-md-6"><label>
-                    <input type="radio" name="fb" class="ex_map" value=">"/>
+                    <input type="radio" name="fb" class="ex_map" value=">" disabled/>
                     <p class="ex text-center"> > </p>
                   </label></div>
                    <div class="col-md-6"><label>
-                    <input type="radio" name="fb" class="ex_map" value="<"/>
+                    <input type="radio" name="fb" class="ex_map" value="<" disabled/>
                     <p class="ex text-center"> < </p>
                   </label></div>
                   <!-- <div class="col-md-6"><label>
@@ -1093,18 +1134,17 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                   </label></div> -->
                           </div>
                       </div></div>
-                      <div class="col-md-4 "><input type="checkbox" name="check1"> Values<div class="col-md-12 express">
+                      <div class="col-md-4 "> Values<div class="col-md-12 express">
                         <div class="row filter_values">
 
                    </div>
                  </div>
-                <input type="number" name="value1" style="width: 135px" placeholder="Or Input Value">
                 </div>
 
                 <div class="container">
                   <div class="text-size">
                     <a href="#"  style="color: grey"> clear</a>
-                    <input type="text" name="" class="size-box selected_filter_ex">
+                    <input type="text" name="" class="size-box selected_filter_ex" disabled>
                     <input type="text" name="" class="size-box selected_filter_query" hidden>
                   </div>
                 </div>
@@ -1114,7 +1154,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                            <!--  -->
                       </div>
                       <div class=" left-apply">
-                        <div class="container">
+                        <div class="container" >
                       <h6><b>Applied Filters</b></h6>
                       <!-- applied filters -->
                      <table class="table">
@@ -1140,13 +1180,13 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
 
                     <div class="modal fade" id="<?php echo $data['category_table']?>_mod_dat" data-modal-index="2">
                   <div class="modal-dialog">
-                    <div class="modal-content">
+                    <div class="modal-content no2">
                       <div class="modal-header">
                         <h4 class="modal-title"><?php echo $data['category_name']?></h4>
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #fff">&times;</span><span class="sr-only">Close</span></button>
 
                       </div>
-                      <div class="modal-body mdl2">
+                      <div class="modal-body mdl2" >
                         <h4 id='filter_tbl_name'></h4>
                         <table class="table table-striped" id="table_filter">
                   <thead>
@@ -1159,11 +1199,16 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
 
                   </tbody>
                 </table>
+                <div id="applied_filter_content">
+                </div>
                 <!--         <button class="btn btn-default" data-toggle="modal" data-target="#test-modal-3">Launch Modal 3</button>
                  -->      </div>
-                      <div class="modal-footer modal2">
+
+                      <div class="modal-footer modal2" >
                         <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                       <a href=""> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download"></i> Downloads</button></a>
+
+
+                        <a href="abc" id="filter_download"> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download" style="background-color: #002b59"></i> Download</button></a>
                        <!-- <a href=""> <button type="button" class="btn btn-info btn-sm"> <i class="fa fa-eye"></i> Map</button></a> -->
                       </div>
                     </div><!-- /.modal-content -->
@@ -1212,7 +1257,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                 </div>
                 <!-- new moadal -->
 
-              <?php }?>
+              <?php }}?>
 
               </ul>
 
@@ -1294,12 +1339,11 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                     <div class="counter_cat">
                       <a>
 
-                        <span class="counti text-center " id="count_summary"> 70</span><span class="ic"> Open Spaces </span>
+                        <span class="counti text-center " id="count_summary"></span><span class="ic"></span>
                       </a>
                     </div>
                     <div class="counter-desc">
-                      <p>this is the description of individual category
-                        this is the description of individual category this is the description of individual category this is the description of individual category</p>
+                      <!-- <p id="cont_text_p"></p> -->
                       </div>
                     </div>
 
@@ -1390,7 +1434,13 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
   </div>
 </div>
 
-<div id="map" class="col-sm-12 no-padding"></div>
+<div id="map" class="col-sm-12 no-padding">
+
+  <!-- sub-data pop -->
+  <div id="dialog_sub_cat" class="overlay" style="display:none" title="Data Number!" ></div>
+  <!-- sub-data pop -->
+
+</div>
 
 
 
@@ -1405,11 +1455,14 @@ $(function () {
 var default_loadd = '<?php echo $default_load; ?>';
 
 //
-var cat_layer = '<?php echo $cat_map_layer; ?>';
+var cat_layer = '<?php echo addslashes($cat_map_layer); ?>';
 var cat_tbl_array = '<?php echo $category_tbl; ?>';
-
+var map_lat='<?php echo $map_zoom_center['map_lat']; ?>'
+var map_long='<?php echo $map_zoom_center['map_long']; ?>'
+var map_zoom='<?php echo $map_zoom_center['map_zoom']; ?>'
 
 //
+
 
 
 
@@ -1437,7 +1490,7 @@ $(document).ready(function(){
 
   //map part
 
-  var map = L.map('map').setView([27.693547,85.440240], 13);
+  var map = L.map('map').setView([map_lat,map_long], map_zoom);
   map.attributionControl.addAttribution("<a href='http://www.naxa.com.np' title = 'Contributor'>NAXA</a>");
   // map.scrollWheelZoom.disable();
   map.options.maxBounds;  // remove the maxBounds object from the map options
@@ -1475,7 +1528,7 @@ $(document).ready(function(){
     //"None": none
   };
 
-  map.addLayer(googleStreets);
+  map.addLayer(osm);
   layerswitcher = L.control.layers(baseLayers, {}, {collapsed: true}).addTo(map);
 
   function underscoreToSpace(naaaaame) {
@@ -1555,7 +1608,10 @@ $(document).ready(function(){
 
 
         onEachFeature: function(feature,layer){
+console.log(popup_content_parsed[i]);
+if(popup_content_parsed[i]==0){
 
+}else{
           //console.log(feature);
           if(marker_type !='icon'){
             layer.setStyle(style);
@@ -1607,6 +1663,7 @@ $(document).ready(function(){
           }).setContent(popUpContent));
 
 
+}
 
         },
 
@@ -1618,6 +1675,7 @@ $(document).ready(function(){
       if($('#'+cat_tbl_array_name[i]+'_toggle').hasClass('active')){
         //console.log(cat_tbl_array_name[i]);
         window[''+cat_tbl_array_name[i]].addTo(map);
+
         //$('#active_layers').append('<option>Select layer</option>');
 
         var table_name=cat_tbl_array_name[i].replace( '_',' ');
@@ -1692,7 +1750,7 @@ $(document).ready(function(){
 
 
     function Loadlist(selected_list_id){
-      console.log(selected_list_id);
+      //console.log(selected_list_id);
       if(selected_list_id==""){
       selected_list_id='<?php echo $default_selected_cat_tbl ?>';
       }
@@ -1701,12 +1759,18 @@ $(document).ready(function(){
         //  data: name,
         url:  "MapController/get_summary_list?selected_list_id="+selected_list_id,
         beforeSend: function() {
-          //  $.LoadingOverlay("show");
+          $("#ListGroup").html('');
+          $(".counter-desc").html('');
+          $("#count_summary").html('');
+          $(".ic").html('');
+        //  $("#ListGroup").html('Loading');
+
         },
         complete: function() {
-          //  $.LoadingOverlay("hide", true);
+
         },
         success: function (result) {
+        $(".ic").html('');
           //	console.log(result);
           $("#ListGroup").html('');
           var result_parsed = JSON.parse(result);
@@ -1753,7 +1817,7 @@ $(document).ready(function(){
     $("#ListGroup").on('click', '.zoomTo', function(){ //console.log("fadsdfasfd");
     var lat = parseFloat($(this).attr('id'));
     var lon = parseFloat($(this).attr('name'));
-    map.setView([lon,lat],16);
+    map.setView([lon,lat],18);
   });
 
 
@@ -1776,11 +1840,15 @@ $(document).ready(function(){
           $('.drop').children()[i].remove();
         }
       }
+      if(Loadlist($('.drop').children()[0] != 'undefined')){
       Loadlist($('.drop').children()[0].id);
+      }
     }
     else{
       map.addLayer(layerClicked);
 
+      $(".leaflet-right").css("right","260px");
+      $('#right-panel-toggle').css('display','block');
 
       $('.drop option:selected').removeClass('active');
       $('.drop').prepend("<option id="+layertoggled+" selected>"+togglename+"</option>");
@@ -1802,21 +1870,23 @@ $(document).ready(function(){
   });
 
   //sub-cat
-  $('.sub-cat').click(function(){
+  $('.sub-cat').on('click',function(){
     //$('.treeview-content-p input:checked')
-
+  //  console.log("entered");
     var data=$(this).val() ;
+    var data_count=$(this).val() ;
     var col= $(this).attr('id') ;
     var tbl=$(this).attr('name') ;
     //  console.log($(this).name()) ;
     single_map=data.replace(/ /g, "_");
-
+    $('#'+tbl+'_toggle').removeClass('active');
     if(map.hasLayer(window[single_map])){
+    //  console.log("if");
       map.removeLayer(window[single_map]);
       //console.log('if');
     }
     else {
-
+//console.log("else");
       //console.log('else');
       $.ajax({
         type: "GET",
@@ -1838,8 +1908,9 @@ $(document).ready(function(){
           sub_style=JSON.parse(data.style);
           marker_type=data.marker_type;
           popup_content_parsed=data.popup_content;
-        //  console.log(popup_content_parsed);
-          //console.log(sub_style);
+          count=data.count_data;
+         //console.log(count);
+        //  console.log(data_count);
           //layers
 
 
@@ -1848,9 +1919,9 @@ $(document).ready(function(){
 
 
           //  map.addLayer(googleStreets);
+   $('#dialog_sub_cat').show();
 
-
-
+  $('#dialog_sub_cat').html('<b>'+count+'</b> '+data_count+' found');
 
           //layer
           //console.log(data.replace(/ /g, "_"));
@@ -1928,7 +1999,8 @@ $(document).ready(function(){
               }).setContent(popUpContent));
             }
           }).addTo(map);
-          map.removeLayer(window[''+cat_tbl_array_name[i]]);
+          // map.removeLayer(window[''+cat_tbl_array_name[i]]);
+          map.removeLayer(window[tbl]);
 
 
 
@@ -1949,9 +2021,22 @@ $(document).ready(function(){
 
 //filter
 
+  $('.treeview-content-p').on('click','.form-check > .filterswitch',function(event){
+    var layerClickedFilter = window[event.target.value];
+    if(map.hasLayer(layerClickedFilter)){
+        map.removeLayer(layerClickedFilter)
+    }
+    else {
+        map.addLayer(layerClickedFilter);
+    }
+
+
+  });
+
+
 $('.filterthis').on('click',function(){
 
-    $('.applied-list').html('');
+    //$('.applied-list').html('');
     $(".selected_filter_ex").val('');
     $(".selected_filter_query").val('');
   var tbl=($(this).attr("id"));
@@ -1963,7 +2048,9 @@ $('.filterthis').on('click',function(){
     //  data: name,
     url:  "MapController/get_map_filter?tbl="+tbl,
     beforeSend: function() {
-      //  $.LoadingOverlay("show");
+      $(".filter_values").html(' ');
+       $(".filter_column_name").html(' ');
+       $(".filter_column_name").append('<b>Loading Data</b>');
     },
     complete: function() {
       //  $.LoadingOverlay("hide", true);
@@ -1972,7 +2059,8 @@ $('.filterthis').on('click',function(){
 
       var filter_column = JSON.parse(result);
      //console.log(filter_column);
-$(".filter_column_name").html(' ');
+     $(".filter_values").html(' ');
+     $(".filter_column_name").html(' ');
       for(var i=0;i<filter_column.length;i++){
 
       //  console.log(filter_column[i].nepali_lang);
@@ -1999,13 +2087,16 @@ $(document).on('click','.filter_value',function(){
     //  data: name,
     url:  "MapController/get_map_filter_value?tbl="+data_tbl+"&&col="+col_name,
     beforeSend: function() {
+
       //  $.LoadingOverlay("show");
+      $(".filter_values").html(' ');
+      $(".filter_values").append('<b>Loading<b>');
     },
     complete: function() {
       //  $.LoadingOverlay("hide", true);
     },
     success: function (result) {
-
+   $('.ex_map').prop("disabled", false);
       var values = JSON.parse(result);
 
       $(".filter_values").html(' ');
@@ -2015,7 +2106,7 @@ $(document).on('click','.filter_value',function(){
 
           //console.log(values[i][col_name]);
 
-            $(".filter_values").append('<div class="col-md-12"><label><input class="filter_value_item" type="radio" name="" value="'+values[i][col_name]+'"/><p class="exp text-center">'+values[i][col_name]+'</p></label></div>');
+            $(".filter_values").append('<div class="col-md-12"><label><input class="filter_value_item" type="radio" name="" value="'+values[i][col_name]+'"disabled/><p class="exp text-center">'+values[i][col_name]+'</p></label></div>');
 
 
 
@@ -2039,8 +2130,8 @@ $(document).on('click','.filter_value',function(){
 
   $('.ex_map').on('click',function(){
 
-  console.log($(this).val());
-
+//  console.log($(this).val());
+    $('.filter_value_item').prop("disabled", false);
     $(".selected_filter_ex").val($(".selected_filter_ex").val()+' '+$(this).val());
     $(".selected_filter_query").val($(".selected_filter_query").val()+' '+$(this).val());
 
@@ -2055,20 +2146,39 @@ $(document).on('click','.filter_value_item',function(){
 
   });
 
+
+
+var count_filter = 0;
+
 $('.applied_filter').on('click',function(){
 
   //console.log('click');
+  $('#table_filter >thead tr').html('');
+  $('#table_filter >tbody').html('');
+  $("div#applied_filter_content").html("");
   var show_qry=$(".selected_filter_ex").val();
   var qry=$(".selected_filter_query").val();
   var qry_tbl=$(".selected_filter_query").attr('id');
 
-  $('#filter_tbl_name').text(show_qry);
+  $('#'+qry_tbl+'_treeview').append('<div class="form-check" id="'+qry_tbl+count_filter+'filter">'+
+
+    '<input type="checkbox" name="" class="form-check-input filterswitch" value="'+qry_tbl+count_filter+'" checked><label class="form-check-label">'+show_qry+'</label>'+
+
+  '</div>');
+
+  $('h6#filter_tbl_name').html(""+show_qry+"");
 
 
-  $('.applied-list').append('<tr><th scope="row"></th><td>'+show_qry+'</td><td><i class="fa fa-eye"></i></td><td><i class="fa fa-minus"></i></td></tr>');
+
+  $('.applied-list').append('<tr class="'+qry_tbl+count_filter+'list"><th scope="row"></th><td>'+qry_tbl+'</td><td>'+show_qry+'</td><td><i class="fa fa-trash delete_filter" id="'+qry_tbl+count_filter+'"></i></td></tr>');
   //console.log('result');
+
+  var success_qry ;
+  success_qry = 0;
+
   $.ajax({
     type: "GET",
+    async : false,
     //  data: name,
     url:  "MapController/filter_query?qry="+qry+"&&tbl="+qry_tbl,
     beforeSend: function() {
@@ -2079,6 +2189,7 @@ $('.applied_filter').on('click',function(){
     },
     success: function (result) {
 
+
      var data=JSON.parse(result);
   var modal_table=JSON.parse(data.table_data);
   map_json=JSON.parse(data.geojson);
@@ -2086,15 +2197,15 @@ $('.applied_filter').on('click',function(){
   marker_type=data.marker_type;
   popup_content_parsed=data.popup_content;
   table_n=data.table_name;
-  console.log(map_json);
-  console.log(sub_style);
-  console.log(marker_type);
-  console.log(popup_content_parsed);
+  // console.log(modal_table);
+  // console.log(sub_style);
+  // console.log(marker_type);
+  // console.log(popup_content_parsed);
 
 
-document.getElementById("filter_tbl_name").innerHTML = 'aaa';
+document.getElementById("filter_tbl_name").innerHTML = ''+qry;
 //$('h4').html(show_qry);
-$('#table_filter >tbody').html('');
+
 for(var i=0;i<modal_table.length;i++){
 
 var tbl_body=""
@@ -2102,12 +2213,16 @@ var tbl_body=""
 
   $.each(modal_table[i], function(k, v) {
 
+if(k=='the geom'){
 
+}else{
     $('#table_filter >thead tr').append('<th scope="col">'+k+'</th>');
 
 
 
+
      tbl_body += '<td>'+v+'</td>';
+       }
 
 
     //display the key and value pair
@@ -2125,9 +2240,11 @@ $('#table_filter >tbody').append(tbl_body);
 }//loop for table end
 
 $('#'+table_n+'_toggle').removeClass('active');
+$('a#filter_download').attr('href', 'MapController/csv_filter_query?qry='+qry+'&&tbl='+qry_tbl);
 
 //map for filter
-var filter_map=new L.GeoJSON(map_json,{
+//console.log(qry_tbl+count_filter);
+window[qry_tbl+count_filter] =new L.GeoJSON(map_json,{
   pointToLayer: function(feature, latlng) {
     if(marker_type=='icon'){
 
@@ -2199,10 +2316,11 @@ var filter_map=new L.GeoJSON(map_json,{
     }).setContent(popUpContent));
   }
 }).addTo(map);
+count_filter = count_filter+1;
 map.removeLayer(window[table_n]);
 
 
-
+$(".selected_filter_ex").val('');
 
 
 
@@ -2211,14 +2329,44 @@ map.removeLayer(window[table_n]);
 //map for filter end
 
 
-
+success_qry = 1;
+//console.log(success_qry);
 }//succes end
 
 });//ajaxa end
 
 
+
+console.log(success_qry);
+if(success_qry==0){
+$("div#applied_filter_content").html("<h4>Filter Query wrong or No data to respective filter</h4>");
+}else{
+
+}
+// console.log($("div#applied_filter_content"));
+//
+
 });
 
+
+$('.applied-list').on('click','tr > td > .delete_filter',function(){
+
+//console.log($(this).closest('tr'));
+  //$(this).closest('tr').remove();
+  var classs = $(this).closest('tr')[0].className;
+  //console.log(classs);
+  $('.applied-list > .'+classs).remove();
+  var id = $(this)[0].id+"filter";
+  var mapLayerId = $(this)[0].id;
+  $("#"+id).remove();
+
+  map.removeLayer(window[mapLayerId]);
+
+
+
+
+
+});
 //filter
 
 
@@ -2244,6 +2392,7 @@ $('#close-panel-left').click(function(){
 </script>
 
 <script>
+$('#right-panel-toggle').toggle();
 
 $('#close-panel-right').click(function(){
   $('#right-panel-toggle').slideToggle('fast', function(){
