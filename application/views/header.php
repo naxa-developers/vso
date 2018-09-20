@@ -153,7 +153,7 @@ li.nav-item.active {
                     </li>
 
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url()?>category?tbl="><?php echo $site_info['nav_1'] ?></a>
+                      <a class="nav-link" href="<?php echo base_url()?>category?tbl=0 && name=0"><?php echo $site_info['nav_1'] ?></a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="<?php echo base_url()?>report_page"><?php echo $site_info['nav_2'] ?></a>

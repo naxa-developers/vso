@@ -276,7 +276,7 @@ $this->body['map_zoom_center']=$this->Report_model->site_setting();
 
 //language
 
-    $cat_tbl=$this->Map_model->get_layer('categories_tbl');
+  //  $cat_tbl=$this->Map_model->get_layer('categories_tbl');
 
     $this->body['category_name']=$cat_tbl;
     $popup = array();
@@ -294,6 +294,7 @@ if(!$this->db->table_exists($tbl['category_table'])){
 
 }else{
       $cat_tbles[]=$tbl['category_table'];
+      $cat_names[]=$tbl['category_name'];
       //$popup[]=$tbl['popup_content'];
       array_push($popup, trim(trim(json_encode($tbl['popup_content'],JSON_NUMERIC_CHECK),'"['),']"'));
       array_push($style, trim(trim(json_encode($tbl['style'],JSON_NUMERIC_CHECK),'"['),']"'));
@@ -351,7 +352,7 @@ if(!$this->db->table_exists($tbl['category_table'])){
 
     }
 
-
+//var_dump($category_data);
 
     //var_dump($this->body['field']);
 
@@ -362,6 +363,7 @@ if(!$this->db->table_exists($tbl['category_table'])){
 
     $this->body['cat_map_layer']= json_encode($category_data, JSON_NUMERIC_CHECK);
     $this->body['category_tbl']= json_encode($cat_tbles, JSON_NUMERIC_CHECK);
+    $this->body['category_names']= json_encode($cat_names, JSON_NUMERIC_CHECK);
     $this->body['popup_content']= json_encode($popup, JSON_NUMERIC_CHECK);
     $this->body['style']= json_encode($style, JSON_NUMERIC_CHECK);
     $this->body['marker_type']= json_encode($marker_type, JSON_NUMERIC_CHECK);
@@ -392,6 +394,7 @@ if(!$this->db->table_exists($tbl['category_table'])){
   $this->Dash_model->cat_update($count_dataset['id'],$data_dataset);
   $def_select=$this->Dash_model->get_default_cat_data('categories_tbl');
   $this->body['default_selected_cat_tbl']=$def_select['category_table'];
+  $this->body['default_selected_cat_name']=$def_select['category_name'];
 
  //language
 
@@ -408,8 +411,9 @@ if(!$this->db->table_exists($tbl['category_table'])){
 
  }
  //var_dump($this->body['data']);
-$tokens = explode('/', $_SERVER['REQUEST_URI']);
-   $urly=$tokens[sizeof($tokens)-1];
+//$tokens = explode('/', $_SERVER['REQUEST_URI']);
+  //$urly=$tokens[sizeof($tokens)-1];
+   $urly='category?tbl=0&&name=0 ';
 $this->body['urll']=$urly;
 //language
 

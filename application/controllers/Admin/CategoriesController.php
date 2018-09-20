@@ -133,11 +133,19 @@ class CategoriesController extends CI_Controller
 
     if(isset($_POST['submit_cat'])){
 
+    //creting table name
+    $this->load->helper('string');
+    // $a = random_string('alnum', 16);
+    // $b = random_string('unique');
+    $c = uniqid();
+    $d =  time();
+    $e='tbl_'.$c.$d.'_tbl';
+    //end
 
       $cat_name=$this->input->post('cat_name');
       $cat_type=$this->input->post('category_type');
       $upload_type=$this->input->post('upload_type');
-      $cat_table=strtolower(str_replace(" ","_",$cat_name));
+      $cat_table=$e;
 
       if( $this->db->table_exists($cat_table)==true ){
 

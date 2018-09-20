@@ -613,4 +613,20 @@ public function dash_tbl(){
 }
 
 
+
+
+public function test_table_name(){
+ $this->load->helper('string');
+ $a = random_string('alnum', 16);
+ $b = random_string('unique');
+ $c = uniqid();
+ $d =  time();
+$e='tbl_'.$a.$b.$c.$d;
+echo $e;
+
+
+  
+
+}
+
 }//end

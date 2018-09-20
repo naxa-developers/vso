@@ -1016,9 +1016,9 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                         <img src="<?php echo base_url()?>assets/img/filter.png" class="filter-icon"></a>
 
                             <?php	if($data['default_load']=='0'){ ?>
-                              <button type="button" value = "<?php echo $data['category_table'];?>" id = "<?php echo $data['category_table'].'_toggle'?>" class="btn btn-xs btn-toggle  CheckBox" data-toggle="button" aria-pressed="false" autocomplete="off">
+                              <button type="button" name="<?php echo $data['category_name'];?>" value = "<?php echo $data['category_table'];?>" id = "<?php echo $data['category_table'].'_toggle'?>" class="btn btn-xs btn-toggle  CheckBox" data-toggle="button" aria-pressed="false" autocomplete="off">
                               <?php	}else{ ?>
-                                <button type="button" value = "<?php echo $data['category_table'];?>" id = "<?php echo $data['category_table'].'_toggle'?>" class="btn btn-xs btn-toggle  active CheckBox" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                <button type="button" name="<?php echo $data['category_name'];?>" value = "<?php echo $data['category_table'];?>" id = "<?php echo $data['category_table'].'_toggle'?>" class="btn btn-xs btn-toggle  active CheckBox" data-toggle="button" aria-pressed="false" autocomplete="off">
                                 <?php	} ?>
                                 <div class="handle"></div>
                               </button>
@@ -1029,7 +1029,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
                       </div>
 
 
-                      <input type="checkbox" name="tall" class="checker" id="<?php echo $data['category_table']?>">
+                      <input type="checkbox" name="<?php echo $data['category_name']?>" class="checker" id="<?php echo $data['category_table']?>">
 
                       <label for="<?php echo $data['category_table']?>" class="specific">
                         <!-- <div class="ball" data-id="1"></div> -->
@@ -1052,7 +1052,7 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
 
                           <?php if($data['sub_categories']==''){  ?>
 
-                            <p> No sub categories </p>
+                            <!-- <p> No sub categories </p> -->
 
                           <?php  }else{
 
@@ -1457,12 +1457,13 @@ var default_loadd = '<?php echo $default_load; ?>';
 //
 var cat_layer = '<?php echo addslashes($cat_map_layer); ?>';
 var cat_tbl_array = '<?php echo $category_tbl; ?>';
+var cat_names = '<?php echo $category_names; ?>';
 var map_lat='<?php echo $map_zoom_center['map_lat']; ?>'
 var map_long='<?php echo $map_zoom_center['map_long']; ?>'
 var map_zoom='<?php echo $map_zoom_center['map_zoom']; ?>'
 
 //
-
+//console.log(cat_layer);
 
 
 
@@ -1474,12 +1475,38 @@ default_load = JSON.parse(default_loadd);
 
 cat_layer_data = JSON.parse(cat_layer);
 cat_tbl_array_name = JSON.parse(cat_tbl_array);
+cat_array_name = JSON.parse(cat_names);
 
-var selected_category='<?php echo $_GET['tbl'] ?>';
+
+var selected_category='<?php echo trim($_GET['tbl']," ") ?>';
+
+// var selected_category_name = "0";
+// console.log(selected_category);
+
+
+  selected_category_name='<?php
+
+if($_GET['tbl']=='0'){
+echo 'NO data Selected';
+}else{
+  echo trim($_GET['name']," ");
+}
+?>';
+
+
+//console.log(selected_category_name);
+
+// if(selected_category.length > 1){
+// console.log('adasdad');
+// }else{
+//   var selected_category_name=name_map_cat;
+// console.log('notag');
+//
+// }
 
 //clicked category_map
-$('#<?php echo $_GET['tbl'] ?>').prop('checked',true);
-$('#<?php echo $_GET['tbl'].'_toggle'?>').addClass('active');
+$('#'+selected_category).prop('checked',true);
+$('#'+selected_category+'_toggle').addClass('active');
 
 /*-- LayerJS--*/
 $(document).ready(function(){
@@ -1551,7 +1578,7 @@ $(document).ready(function(){
   //popup end
   //selected cat empty
   if(selected_category==""){}else{
-    $('#active_layers').append('<option id = '+selected_category+' >'+selected_category.replace( "_"," ")+'</option>');
+    $('#active_layers').append('<option id = '+selected_category+' >'+selected_category_name+'</option>');
   }
   //cat map load
   for(i=0; i<cat_tbl_array_name.length; i++){
@@ -1608,7 +1635,7 @@ $(document).ready(function(){
 
 
         onEachFeature: function(feature,layer){
-console.log(popup_content_parsed[i]);
+//console.log(popup_content_parsed[i]);
 if(popup_content_parsed[i]==0){
 
 }else{
@@ -1678,7 +1705,7 @@ if(popup_content_parsed[i]==0){
 
         //$('#active_layers').append('<option>Select layer</option>');
 
-        var table_name=cat_tbl_array_name[i].replace( '_',' ');
+        var table_name=cat_array_name[i];
         if(cat_tbl_array_name[i]==selected_category){
 
         }else{
@@ -1749,11 +1776,13 @@ if(popup_content_parsed[i]==0){
 
 
 
-    function Loadlist(selected_list_id){
-      //console.log(selected_list_id);
+    function Loadlist(selected_list_id,selected_category_name){
+
       if(selected_list_id==""){
       selected_list_id='<?php echo $default_selected_cat_tbl ?>';
+      selected_category_name='<?php echo $default_selected_cat_name ?>'
       }
+
       $.ajax({
         type: "GET",
         //  data: name,
@@ -1777,10 +1806,10 @@ if(popup_content_parsed[i]==0){
           //
           //console.log(result_parsed['rowcount']);
           //	console.log(result);
-          selected_list_id1=	selected_list_id.replace('_',' ');
-          selected_list_id2=toTitleCase(selected_list_id1);
+          // selected_list_id1=	selected_category_name.replace('_',' ');
+          // selected_list_id2=toTitleCase(selected_list_id1);
           $("#count_summary").html("<b>"+result_parsed['rowcount']+"</b>");
-          $(".ic").html(" <b>"+ selected_list_id2+"</b>");
+          $(".ic").html(" <b>"+selected_category_name+"</b>");
 
          //console.log(result_parsed['summary']);
 
@@ -1805,11 +1834,13 @@ if(popup_content_parsed[i]==0){
     }
 
 
-    Loadlist(selected_category);
+    Loadlist(selected_category,selected_category_name);
 
     $('#active_layers').on('change',function(){
       var selected_list_id=$('#active_layers option:selected').attr('id');
-
+   //    var selected_category_name=$('#active_layers option:selected').attr('name');
+   // console.log(selected_category_name);
+   // console.log(selected_list_id);
       Loadlist(selected_list_id);
     });
 
@@ -1828,8 +1859,9 @@ if(popup_content_parsed[i]==0){
     layerClicked = window[$(this)[0].value];
 
     var layertoggled = ($(this).attr('id')).replace("_toggle","");
+    var layertoggled_cat_name = ($(this).attr('name'));
     var	togglename=toTitleCase(layertoggled.replace("_"," "));
-
+ console.log(layertoggled_cat_name);
 
     if (map.hasLayer(layerClicked)) {
       map.removeLayer(layerClicked);
@@ -1851,10 +1883,10 @@ if(popup_content_parsed[i]==0){
       $('#right-panel-toggle').css('display','block');
 
       $('.drop option:selected').removeClass('active');
-      $('.drop').prepend("<option id="+layertoggled+" selected>"+togglename+"</option>");
+      $('.drop').prepend("<option id="+layertoggled+" selected>"+layertoggled_cat_name+"</option>");
       //s$('#'+layertoggled).attr({'selected':true});
 
-      Loadlist(layertoggled);
+      Loadlist(layertoggled,layertoggled_cat_name);
 
 
     } ;
@@ -2337,7 +2369,7 @@ success_qry = 1;
 
 
 
-console.log(success_qry);
+//console.log(success_qry);
 if(success_qry==0){
 $("div#applied_filter_content").html("<h4>Filter Query wrong or No data to respective filter</h4>");
 }else{
