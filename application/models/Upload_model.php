@@ -8,21 +8,49 @@ class Upload_model extends CI_Model {
 public function get_emergency_con($cat){
 
 $this->db->select('*');
+$this->db->where('language','en');
 $this->db->where('category',$cat);
 $query=$this->db->get('emergency_contact');
 return $query->result_array();
 
 
 }
+
+public function get_emergency_con_nep($cat){
+
+$this->db->select('*');
+$this->db->where('language','nep');
+$this->db->where('category',$cat);
+$query=$this->db->get('emergency_contact');
+return $query->result_array();
+
+
+}
+
+
 public function get_emergency_per($cat){
 
 $this->db->select('*');
+$this->db->where('language','en');
 $this->db->where('category',$cat);
 $query=$this->db->get('emergency_personnel');
 return $query->result_array();
 
 
 }
+
+public function get_emergency_per_nep($cat){
+
+$this->db->select('*');
+$this->db->where('language','nep');
+$this->db->where('category',$cat);
+$query=$this->db->get('emergency_personnel');
+return $query->result_array();
+
+
+}
+
+
 
 public function delete($id,$tbl){
 

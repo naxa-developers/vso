@@ -132,6 +132,7 @@ class TableController extends CI_Controller
     $tbl_name=base64_decode($this->input->get('tbl')) ;
 
 
+
     if(isset($_POST['submit'])){
 
 
@@ -240,7 +241,7 @@ class TableController extends CI_Controller
 
     }elseif(isset($_POST['submit_row'])){
 
-      var_dump($_POST);
+      //var_dump($_POST);
       $fields = array(
         'the_geom' => array('type' => 'geometry')
       );

@@ -479,7 +479,17 @@ $this->body['urll']=$urly;
 
         $this->session->set_flashdata('msg',$table.' Popup was successfully updated');
 
-        redirect('manage_popup?tbl='.$table);
+          $lang=$this->session->get_userdata('cat_language');
+          if($lang['cat_language']=='en'){
+          redirect('categories_tbl');
+
+      }else{
+      redirect('categories_tbl_nep');
+
+      }
+
+      //  redirect('manage_popup?tbl='.$table);
+
 
       }else{
 
@@ -513,7 +523,16 @@ $this->body['urll']=$urly;
 
       $this->session->set_flashdata('msg',$table.' Popup was successfully updated');
 
-      redirect('manage_popup?tbl='.$table);
+
+      $lang=$this->session->get_userdata('cat_language');
+      if($lang['cat_language']=='en'){
+      redirect('categories_tbl');
+
+  }else{
+  redirect('categories_tbl_nep');
+
+  }
+  //  redirect('manage_popup?tbl='.$table);
 
       }
       //end

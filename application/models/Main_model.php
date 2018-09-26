@@ -67,9 +67,10 @@ class Main_model extends CI_Model {
   }
 
 
-public function get_contact($cat,$tbl)
+public function get_contact($cat,$tbl,$lang)
 {
   $this->db->select('*');
+  $this->db->where('language',$lang);
   $this->db->where('category',$cat);
   $q=$this->db->get($tbl);
   return $q->result_array();
@@ -98,6 +99,16 @@ public function get_contact_csv($cat,$tbl)
   public function get_category(){
 
     $this->db->select('*');
+    $this->db->where('language','en');
+    $q=$this->db->get('categories_tbl');
+    return $q->result_array();
+
+  }
+
+  public function get_category_nep(){
+
+    $this->db->select('*');
+    $this->db->where('language','nep');
     $q=$this->db->get('categories_tbl');
     return $q->result_array();
 

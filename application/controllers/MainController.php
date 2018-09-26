@@ -18,21 +18,21 @@ class MainController extends CI_Controller
 
   public function contact(){
 
-    $this->body['health']=$this->Main_model->get_contact('health','emergency_contact');
-    $this->body['responders']=$this->Main_model->get_contact('responders','emergency_contact');
-    $this->body['security']=$this->Main_model->get_contact('security','emergency_contact');
-    $this->body['ngo']=$this->Main_model->get_contact('ngo','emergency_contact');
-    $this->body['ddr']=$this->Main_model->get_contact('ddr','emergency_personnel');
-    $this->body['personnel']=$this->Main_model->get_contact('personnel','emergency_personnel');
-    $this->body['members']=$this->Main_model->get_contact('members','emergency_personnel');
-
-    $this->body['chairpersons']=$this->Main_model->get_contact('chairpersons','emergency_personnel');
-    $this->body['chief']=$this->Main_model->get_contact('chief','emergency_personnel');
-    $this->body['elected']=$this->Main_model->get_contact('elected','emergency_personnel');
-    $this->body['municipal_ex']=$this->Main_model->get_contact('municipal_ex','emergency_personnel');
-    $this->body['disaster']=$this->Main_model->get_contact('disaster','emergency_personnel');
-    $this->body['nntds']=$this->Main_model->get_contact('nntds','emergency_personnel');
-    $this->body['nntds']=$this->Main_model->get_contact('nntds','emergency_personnel');
+    // $this->body['health']=$this->Main_model->get_contact('health','emergency_contact');
+    // $this->body['responders']=$this->Main_model->get_contact('responders','emergency_contact');
+    // $this->body['security']=$this->Main_model->get_contact('security','emergency_contact');
+    // $this->body['ngo']=$this->Main_model->get_contact('ngo','emergency_contact');
+    // $this->body['ddr']=$this->Main_model->get_contact('ddr','emergency_personnel');
+    // $this->body['personnel']=$this->Main_model->get_contact('personnel','emergency_personnel');
+    // $this->body['members']=$this->Main_model->get_contact('members','emergency_personnel');
+    //
+    // $this->body['chairpersons']=$this->Main_model->get_contact('chairpersons','emergency_personnel');
+    // $this->body['chief']=$this->Main_model->get_contact('chief','emergency_personnel');
+    // $this->body['elected']=$this->Main_model->get_contact('elected','emergency_personnel');
+    // $this->body['municipal_ex']=$this->Main_model->get_contact('municipal_ex','emergency_personnel');
+    // $this->body['disaster']=$this->Main_model->get_contact('disaster','emergency_personnel');
+    // $this->body['nntds']=$this->Main_model->get_contact('nntds','emergency_personnel');
+  //  $this->body['nntds']=$this->Main_model->get_contact('nntds','emergency_personnel');
 
     //language
     if($this->session->userdata('Language')==NULL){
@@ -46,9 +46,52 @@ class MainController extends CI_Controller
     if($lang['Language']=='en'){
 
       $this->body['site_info']=$this->Main_model->site_setting_en();
+      //eng contact
+   $emerg_lang='en';
+
+      $this->body['health']=$this->Main_model->get_contact('health','emergency_contact',$emerg_lang);
+      $this->body['responders']=$this->Main_model->get_contact('responders','emergency_contact',$emerg_lang);
+      $this->body['security']=$this->Main_model->get_contact('security','emergency_contact',$emerg_lang);
+      $this->body['ngo']=$this->Main_model->get_contact('ngo','emergency_contact',$emerg_lang);
+      $this->body['ddr']=$this->Main_model->get_contact('ddr','emergency_personnel',$emerg_lang);
+      $this->body['personnel']=$this->Main_model->get_contact('personnel','emergency_personnel',$emerg_lang);
+      $this->body['members']=$this->Main_model->get_contact('members','emergency_personnel',$emerg_lang);
+
+      $this->body['chairpersons']=$this->Main_model->get_contact('chairpersons','emergency_personnel',$emerg_lang);
+      $this->body['chief']=$this->Main_model->get_contact('chief','emergency_personnel',$emerg_lang);
+      $this->body['elected']=$this->Main_model->get_contact('elected','emergency_personnel',$emerg_lang);
+      $this->body['municipal_ex']=$this->Main_model->get_contact('municipal_ex','emergency_personnel',$emerg_lang);
+      $this->body['disaster']=$this->Main_model->get_contact('disaster','emergency_personnel',$emerg_lang);
+      $this->body['nntds']=$this->Main_model->get_contact('nntds','emergency_personnel',$emerg_lang);
+
+
+
+
+      //eng end
+
 
     }else{
 
+      $emerg_lang='nep';
+
+      $this->body['health']=$this->Main_model->get_contact('health','emergency_contact',$emerg_lang);
+      $this->body['responders']=$this->Main_model->get_contact('responders','emergency_contact',$emerg_lang);
+      $this->body['security']=$this->Main_model->get_contact('security','emergency_contact',$emerg_lang);
+      $this->body['ngo']=$this->Main_model->get_contact('ngo','emergency_contact',$emerg_lang);
+      $this->body['ddr']=$this->Main_model->get_contact('ddr','emergency_personnel',$emerg_lang);
+      $this->body['personnel']=$this->Main_model->get_contact('personnel','emergency_personnel',$emerg_lang);
+      $this->body['members']=$this->Main_model->get_contact('members','emergency_personnel',$emerg_lang);
+
+      $this->body['chairpersons']=$this->Main_model->get_contact('chairpersons','emergency_personnel',$emerg_lang);
+      $this->body['chief']=$this->Main_model->get_contact('chief','emergency_personnel',$emerg_lang);
+      $this->body['elected']=$this->Main_model->get_contact('elected','emergency_personnel',$emerg_lang);
+      $this->body['municipal_ex']=$this->Main_model->get_contact('municipal_ex','emergency_personnel',$emerg_lang);
+      $this->body['disaster']=$this->Main_model->get_contact('disaster','emergency_personnel',$emerg_lang);
+      $this->body['nntds']=$this->Main_model->get_contact('nntds','emergency_personnel',$emerg_lang);
+
+
+    // var_dump($this->body['security']);
+    // var_dump($this->body['ngo']);
      $this->body['site_info']=$this->Main_model->site_setting_nep();
 
 
@@ -247,44 +290,44 @@ class MainController extends CI_Controller
 
   public function dataset_page(){
 
-    if(isset($_POST['submit_search'])){
-
-      $this->body['checked_data']=array();
-      $this->body['search']=$this->input->post('search');
-      $this->body['data']=$this->Main_model->get_category();
-      $this->body['data_panel']=$this->Main_model->get_category();
-
-    }else{
-
-      $this->body['search']="";
-      $this->body['checked_data']=array();
-      $this->body['data']=$this->Main_model->get_category();
-      $this->body['data_panel']=$this->Main_model->get_category();
-
-    }
-    if(isset($_POST['submit'])){
-
-    unset($_POST['submit']);
-    //var_dump($_POST);
-
-     if($_POST == NULL){
-         $this->body['checked_data']=array();
-         $this->body['data']=$this->Main_model->get_category();
-     }else{
-        $checked_dataset=$_POST['dataset'];
-        $this->body['data']=$this->Main_model->get_checked_dataset($checked_dataset);
-        $this->body['checked_data']=$checked_dataset;
-
-     }
-
-
-
-
-
-      $this->body['data_panel']=$this->Main_model->get_category();
-      //var_dump($get_checked);
-
-    }
+    // if(isset($_POST['submit_search'])){
+    //
+    //   $this->body['checked_data']=array();
+    //   $this->body['search']=$this->input->post('search');
+    //   $this->body['data']=$this->Main_model->get_category();
+    //   $this->body['data_panel']=$this->Main_model->get_category();
+    //
+    // }else{
+    //
+    //   $this->body['search']="";
+    //   $this->body['checked_data']=array();
+    //   $this->body['data']=$this->Main_model->get_category();
+    //   $this->body['data_panel']=$this->Main_model->get_category();
+    //
+    // }
+    // if(isset($_POST['submit'])){
+    //
+    // unset($_POST['submit']);
+    // //var_dump($_POST);
+    //
+    //  if($_POST == NULL){
+    //      $this->body['checked_data']=array();
+    //      $this->body['data']=$this->Main_model->get_category();
+    //  }else{
+    //     $checked_dataset=$_POST['dataset'];
+    //     $this->body['data']=$this->Main_model->get_checked_dataset($checked_dataset);
+    //     $this->body['checked_data']=$checked_dataset;
+    //
+    //  }
+    //
+    //
+    //
+    //
+    //
+    //   $this->body['data_panel']=$this->Main_model->get_category();
+    //   var_dump($this->body['data_panel']);
+    //
+    // }
     //var_dump($this->body['data']);
     //language
     if($this->session->userdata('Language')==NULL){
@@ -297,9 +340,97 @@ class MainController extends CI_Controller
 
     if($lang['Language']=='en'){
 
-      $this->body['site_info']=$this->Main_model->site_setting_en();
+
+  //datasetss english start
+  if(isset($_POST['submit_search'])){
+
+    $this->body['checked_data']=array();
+    $this->body['search']=$this->input->post('search');
+    $this->body['data']=$this->Main_model->get_category();
+    $this->body['data_panel']=$this->Main_model->get_category();
+
+  }else{
+
+    $this->body['search']="";
+    $this->body['checked_data']=array();
+    $this->body['data']=$this->Main_model->get_category();
+    $this->body['data_panel']=$this->Main_model->get_category();
+
+  }
+  if(isset($_POST['submit'])){
+
+  unset($_POST['submit']);
+  //var_dump($_POST);
+
+   if($_POST == NULL){
+       $this->body['checked_data']=array();
+       $this->body['data']=$this->Main_model->get_category();
+   }else{
+      $checked_dataset=$_POST['dataset'];
+      $this->body['data']=$this->Main_model->get_checked_dataset($checked_dataset);
+      $this->body['checked_data']=$checked_dataset;
+
+   }
+
+
+
+
+
+    $this->body['data_panel']=$this->Main_model->get_category();
+
+
+  }
+
+  //datasetss english end
+
+  $this->body['site_info']=$this->Main_model->site_setting_en();
+
 
     }else{
+
+      //datasetss nepali start
+
+      if(isset($_POST['submit_search'])){
+
+        $this->body['checked_data']=array();
+        $this->body['search']=$this->input->post('search');
+        $this->body['data']=$this->Main_model->get_category_nep();
+        $this->body['data_panel']=$this->Main_model->get_category_nep();
+
+      }else{
+
+        $this->body['search']="";
+        $this->body['checked_data']=array();
+        $this->body['data']=$this->Main_model->get_category_nep();
+        $this->body['data_panel']=$this->Main_model->get_category_nep();
+
+      }
+      if(isset($_POST['submit'])){
+
+      unset($_POST['submit']);
+      //var_dump($_POST);
+
+       if($_POST == NULL){
+           $this->body['checked_data']=array();
+           $this->body['data']=$this->Main_model->get_category_nep();
+       }else{
+          $checked_dataset=$_POST['dataset'];
+          $this->body['data']=$this->Main_model->get_checked_dataset($checked_dataset);
+          $this->body['checked_data']=$checked_dataset;
+
+       }
+
+
+
+
+
+        $this->body['data_panel']=$this->Main_model->get_category();
+
+
+      }
+
+      //datasetss nepali end
+
 
      $this->body['site_info']=$this->Main_model->site_setting_nep();
 

@@ -134,51 +134,151 @@
 </div>
 </div>
 <!--advance Search ends-->
+<?php $lang=$this->session->get_userdata('Language');
+$con_lang=$lang['Language'];
+$heading_en='<th><span>S.N</span></th>
+<th data-th="DRR Volunteers"><span>Photo</span></th>
+<th><span>Name</span></th>
+<th><span>Organization</span></th>
+<th><span>Post</span></th>
+<th><span>Address</span></th>
+<th><span>Phone No.</span></th>
+<th><span>Email</span></th>';
 
+$heading_nep='<th><span>क्र.स</span></th>
+<th data-th="DRR Volunteers"><span>फोटो</span></th>
+<th><span>नाम</span></th>
+<th><span>संस्था</span></th>
+<th><span>पद </span></th>
+<th><span>ठेगाना</span></th>
+<th><span>फोन नम्बर</span></th>
+<th><span>इमेल</span></th>';
+
+$heading_en_personnel='<th><span>S.N</span></th>
+          <th data-th="Health Institutions"><span>Organization</span></th>
+          <th><span>Address</span></th>
+          <th><span>Phone No.</span></th>
+          <th><span>Alternate Phone No.</span></th>
+          <th><span>Contact Person</span></th>
+          <th><span>Post</span></th>
+          <th><span>Phone No.</span></th>
+          <th><span>Email</span></th>
+          <th><span>Website</span></th>';
+
+
+$heading_nep_personnel='<th><span>क्र.स</span></th>
+                <th data-th="Health Institutions"><span>संस्था</span></th>
+                <th><span>ठेगाना</span></th>
+                <th><span>फोन नम्बर.</span></th>
+                <th><span>Alternate Phone No.</span></th>
+                <th><span>Contact Person</span></th>
+                <th><span>पद</span></th>
+                <th><span>Personal No.</span></th>
+                <th><span>इमेल</span></th>
+                <th><span>Website</span></th>';
+
+
+?>
 <!-- table List -->
 <div class="container" id="emergency_no">
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link active" id="chairperson-tab" data-toggle="tab" href="#chairpersons" role="tab" aria-controls="chairpersons" aria-selected="true">Chairpersons of Local Units</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="chief-tab" data-toggle="tab" href="#cheif" role="tab" aria-controls="cheif" aria-selected="false">Chief of local level offices</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="elected-tab" data-toggle="tab" href="#elected" role="tab" aria-controls="elected" aria-selected="false">Elected Representatives</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="municipal_ex-tab" data-toggle="tab" href="#municipal_ex" role="tab" aria-controls="municipal_ex" aria-selected="false">Municipal Executive Members</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="disaster-tab" data-toggle="tab" href="#disaster" role="tab" aria-controls="disaster" aria-selected="false">Municipality Level Disaster Management Committee,</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="nntds-tab" data-toggle="tab" href="#nntds" role="tab" aria-controls="nntds" aria-selected="false">NNTDS's Executive Committee</a>
-    </li>
-    <!-- break -->
-    <li class="nav-item">
-      <a class="nav-link" id="health-tab" data-toggle="tab" href="#health" role="tab" aria-controls="health" aria-selected="true">Health Institutions</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="emergency-tab" data-toggle="tab" href="#emergency" role="tab" aria-controls="emergency" aria-selected="false">Emergency Responders</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="security-tab" data-toggle="tab" href="#security" role="tab" aria-controls="security" aria-selected="false">Security</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="ngo-tab" data-toggle="tab" href="#ngo" role="tab" aria-controls="ngo" aria-selected="false">NGOs and INGOs</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="volunter-tab" data-toggle="tab" href="#volunter" role="tab" aria-controls="volunter" aria-selected="false">DRR Volunteers</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="person-tab" data-toggle="tab" href="#person" role="tab" aria-controls="person" aria-selected="false">Municipality Personnel</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="member-tab" data-toggle="tab" href="#member" role="tab" aria-controls="member" aria-selected="false">Members of Municipal Assemblysss</a>
-    </li>
-  </ul>
+
+  <?php  if ($con_lang=='en'){ ?>
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="chairperson-tab" data-toggle="tab" href="#chairpersons" role="tab" aria-controls="chairpersons" aria-selected="true">Chairpersons of Local Units</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="chief-tab" data-toggle="tab" href="#cheif" role="tab" aria-controls="cheif" aria-selected="false">Chief of local level offices</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="elected-tab" data-toggle="tab" href="#elected" role="tab" aria-controls="elected" aria-selected="false">Elected Representatives</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="municipal_ex-tab" data-toggle="tab" href="#municipal_ex" role="tab" aria-controls="municipal_ex" aria-selected="false">Municipal Executive Members</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="disaster-tab" data-toggle="tab" href="#disaster" role="tab" aria-controls="disaster" aria-selected="false">Municipality Level Disaster Management Committee,</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="nntds-tab" data-toggle="tab" href="#nntds" role="tab" aria-controls="nntds" aria-selected="false">NNTDS's Executive Committee</a>
+      </li>
+      <!-- break -->
+      <li class="nav-item">
+        <a class="nav-link" id="health-tab" data-toggle="tab" href="#health" role="tab" aria-controls="health" aria-selected="true">Health Institutions</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="emergency-tab" data-toggle="tab" href="#emergency" role="tab" aria-controls="emergency" aria-selected="false">Emergency Responders</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="security-tab" data-toggle="tab" href="#security" role="tab" aria-controls="security" aria-selected="false">Security</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="ngo-tab" data-toggle="tab" href="#ngo" role="tab" aria-controls="ngo" aria-selected="false">NGOs and INGOs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="volunter-tab" data-toggle="tab" href="#volunter" role="tab" aria-controls="volunter" aria-selected="false">DRR Volunteers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="person-tab" data-toggle="tab" href="#person" role="tab" aria-controls="person" aria-selected="false">Municipality Personnel</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="member-tab" data-toggle="tab" href="#member" role="tab" aria-controls="member" aria-selected="false">Members of Municipal Assemblysss</a>
+      </li>
+    </ul>
+
+
+
+
+  <?php }else{ ?>
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="chairperson-tab" data-toggle="tab" href="#chairpersons" role="tab" aria-controls="chairpersons" aria-selected="true">स्थानिय तहका अध्यक्षहरु</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="chief-tab" data-toggle="tab" href="#cheif" role="tab" aria-controls="cheif" aria-selected="false">स्थानिय कार्यालयका प्रमुखहरु</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="elected-tab" data-toggle="tab" href="#elected" role="tab" aria-controls="elected" aria-selected="false">निर्वाचित जनप्रतिनिधीहरु</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="municipal_ex-tab" data-toggle="tab" href="#municipal_ex" role="tab" aria-controls="municipal_ex" aria-selected="false">पालिकाका कार्यकारी सदस्यहरु</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="disaster-tab" data-toggle="tab" href="#disaster" role="tab" aria-controls="disaster" aria-selected="false">नगरपालिका तहको प्रकोप व्यवस्थापन समिति,</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="nntds-tab" data-toggle="tab" href="#nntds" role="tab" aria-controls="nntds" aria-selected="false">NNTDS को कार्यसमिति</a>
+      </li>
+      <!-- break -->
+      <li class="nav-item">
+        <a class="nav-link" id="health-tab" data-toggle="tab" href="#health" role="tab" aria-controls="health" aria-selected="true">स्वास्थ्य संस्थाहरु</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="emergency-tab" data-toggle="tab" href="#emergency" role="tab" aria-controls="emergency" aria-selected="false">आपतकालिन परिचालकहरु</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="security-tab" data-toggle="tab" href="#security" role="tab" aria-controls="security" aria-selected="false">सुरक्षा निकाय</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="ngo-tab" data-toggle="tab" href="#ngo" role="tab" aria-controls="ngo" aria-selected="false">गैर सरकारी संस्थाहरु & अन्तराष्ट्रिय गैर सरकारी संस्थाहरु
+</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="volunter-tab" data-toggle="tab" href="#volunter" role="tab" aria-controls="volunter" aria-selected="false">प्रकोप जोखिम न्युनिकरणमा खटिएका स्वयंसेवकहरु</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="person-tab" data-toggle="tab" href="#person" role="tab" aria-controls="person" aria-selected="false">प्रकोप जोखिम न्युनिकरणमा खटिएका स्वयंसेवकहरु</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="member-tab" data-toggle="tab" href="#member" role="tab" aria-controls="member" aria-selected="false">प्रकोप जोखिम न्युनिकरणमा खटिएका स्वयंसेवकहरु</a>
+      </li>
+    </ul>
+
+
+
+  <?php } ?>
 
 
 
@@ -194,14 +294,23 @@
    <!-- responsive table for displaying contact directory -->
    <table class="responstable">
     <tr>
-      <th><span>S.N</span></th>
+      <?php if($con_lang=='en'){
+
+        echo $heading_en;
+
+       }else{
+
+       echo $heading_nep;
+
+      } ?>
+      <!-- <th><span>S.N</span></th>
       <th data-th="DRR Volunteers"><span>Photo</span></th>
       <th><span>Name</span></th>
       <th><span>Organization</span></th>
       <th><span>Post</span></th>
       <th><span>Address</span></th>
       <th><span>Phone No.</span></th>
-      <th><span>Email</span></th>
+      <th><span>Email</span></th> -->
     </tr>
     <?php foreach ($chairpersons as $chairpersons) {
       // code...
@@ -236,14 +345,15 @@
    <!-- responsive table for displaying contact directory -->
    <table class="responstable">
     <tr>
-      <th><span>S.N</span></th>
-      <th data-th="DRR Volunteers"><span>Photo</span></th>
-      <th><span>Name</span></th>
-      <th><span>Organization</span></th>
-      <th><span>Post</span></th>
-      <th><span>Address</span></th>
-      <th><span>Phone No.</span></th>
-      <th><span>Email</span></th>
+      <?php if($con_lang=='en'){
+
+        echo $heading_en;
+
+       }else{
+
+       echo $heading_nep;
+
+      } ?>
     </tr>
     <?php foreach ($chief as $chief) {
       // code...
@@ -284,14 +394,15 @@
    <!-- responsive table for displaying contact directory -->
    <table class="responstable">
     <tr>
-      <th><span>S.N</span></th>
-      <th data-th="DRR Volunteers"><span>Photo</span></th>
-      <th><span>Name</span></th>
-      <th><span>Organization</span></th>
-      <th><span>Post</span></th>
-      <th><span>Address</span></th>
-      <th><span>Phone No.</span></th>
-      <th><span>Email</span></th>
+      <?php if($con_lang=='en'){
+
+        echo $heading_en;
+
+       }else{
+
+       echo $heading_nep;
+
+      } ?>
     </tr>
     <?php foreach ($elected as $elected) {
       // code...
@@ -331,14 +442,15 @@
    <!-- responsive table for displaying contact directory -->
    <table class="responstable">
     <tr>
-      <th><span>S.N</span></th>
-      <th data-th="DRR Volunteers"><span>Photo</span></th>
-      <th><span>Name</span></th>
-      <th><span>Organization</span></th>
-      <th><span>Post</span></th>
-      <th><span>Address</span></th>
-      <th><span>Phone No.</span></th>
-      <th><span>Email</span></th>
+      <?php if($con_lang=='en'){
+
+        echo $heading_en;
+
+       }else{
+
+       echo $heading_nep;
+
+      } ?>
     </tr>
     <?php foreach ($municipal_ex as $municipal_ex) {
       // code...
@@ -380,14 +492,15 @@
    <!-- responsive table for displaying contact directory -->
    <table class="responstable">
     <tr>
-      <th><span>S.N</span></th>
-      <th data-th="DRR Volunteers"><span>Photo</span></th>
-      <th><span>Name</span></th>
-      <th><span>Organization</span></th>
-      <th><span>Post</span></th>
-      <th><span>Address</span></th>
-      <th><span>Phone No.</span></th>
-      <th><span>Email</span></th>
+      <?php if($con_lang=='en'){
+
+        echo $heading_en;
+
+       }else{
+
+       echo $heading_nep;
+
+      } ?>
     </tr>
     <?php foreach ($disaster as $disaster) {
       // code...
@@ -429,13 +542,15 @@
    <table class="responstable">
     <tr>
       <th><span>S.N</span></th>
-      <th data-th="DRR Volunteers"><span>Photo</span></th>
-      <th><span>Name</span></th>
-      <th><span>Organization</span></th>
-      <th><span>Post</span></th>
-      <th><span>Address</span></th>
-      <th><span>Phone No.</span></th>
-      <th><span>Email</span></th>
+      <?php if($con_lang=='en'){
+
+        echo $heading_en;
+
+       }else{
+
+       echo $heading_nep;
+
+      } ?>
     </tr>
     <?php foreach ($nntds as $nntds) {
       // code...
@@ -474,7 +589,16 @@
        <!-- responsive table for displaying contact directory -->
        <table class="responstable">
         <tr>
-          <th><span>S.N</span></th>
+          <?php if($con_lang=='en'){
+
+            echo $heading_en_personnel;
+
+           }else{
+
+           echo $heading_nep_personnel;
+
+          } ?>
+          <!-- <th><span>S.N</span></th>
           <th data-th="Health Institutions"><span>Organization</span></th>
           <th><span>Address</span></th>
           <th><span>Phone No.</span></th>
@@ -483,7 +607,7 @@
           <th><span>Post</span></th>
           <th><span>Phone No.</span></th>
           <th><span>Email</span></th>
-          <th><span>Website</span></th>
+          <th><span>Website</span></th> -->
         </tr>
 
 
@@ -518,16 +642,15 @@
      <!-- responsive table for displaying contact directory -->
      <table class="responstable">
       <tr>
-        <th><span>S.N</span></th>
-        <th data-th="Emergency Responders"><span>Organization</span></th>
-        <th><span>Address</span></th>
-        <th><span>Phone No.</span></th>
-        <th><span>Alternate Phone No.</span></th>
-        <th><span>Contact Person</span></th>
-        <th><span>Post</span></th>
-        <th><span>Phone No.</span></th>
-        <th><span>Email</span></th>
-        <th><span>Website</span></th>
+        <?php if($con_lang=='en'){
+
+          echo $heading_en_personnel;
+
+         }else{
+
+         echo $heading_nep_personnel;
+
+        } ?>
       </tr>
 
   <?php foreach ($responders as $responders) {
@@ -561,16 +684,15 @@
    <!-- responsive table for displaying contact directory -->
    <table class="responstable">
     <tr>
-      <th><span>S.N</span></th>
-      <th data-th="Security"><span>Organization</span></th>
-      <th><span>Address</span></th>
-      <th><span>Phone No.</span></th>
-      <th><span>Alternate Phone No.</span></th>
-      <th><span>Contact Person</span></th>
-      <th><span>Post</span></th>
-      <th><span>Phone No.</span></th>
-      <th><span>Email</span></th>
-      <th><span>Website</span></th>
+      <?php if($con_lang=='en'){
+
+        echo $heading_en_personnel;
+
+       }else{
+
+       echo $heading_nep_personnel;
+
+      } ?>
     </tr>
 
 
@@ -601,16 +723,15 @@
    <!-- responsive table for displaying contact directory -->
    <table class="responstable">
     <tr>
-      <th><span>S.N</span></th>
-      <th data-th="NGOs and INGOs"><span>Organization</span></th>
-      <th><span>Address</span></th>
-      <th><span>Phone No.</span></th>
-      <th><span>Alternate Phone No.</span></th>
-      <th><span>Contact Person</span></th>
-      <th><span>Post</span></th>
-      <th><span>Phone No.</span></th>
-      <th><span>Email</span></th>
-      <th><span>Website</span></th>
+      <?php if($con_lang=='en'){
+
+        echo $heading_en_personnel;
+
+       }else{
+
+       echo $heading_nep_personnel;
+
+      } ?>
     </tr>
     <?php foreach ($ngo as $ngo) {
       // code...
@@ -642,14 +763,15 @@
    <!-- responsive table for displaying contact directory -->
    <table class="responstable">
     <tr>
-      <th><span>S.N</span></th>
-      <th data-th="DRR Volunteers"><span>Photo</span></th>
-      <th><span>Name</span></th>
-      <th><span>Organization</span></th>
-      <th><span>Post</span></th>
-      <th><span>Address</span></th>
-      <th><span>Phone No.</span></th>
-      <th><span>Email</span></th>
+      <?php if($con_lang=='en'){
+
+        echo $heading_en;
+
+       }else{
+
+       echo $heading_nep;
+
+      } ?>
     </tr>
     <?php foreach ($ddr as $ddr) {
       // code...
@@ -664,7 +786,7 @@
         <td id="<?php echo $ddr['id'] ?>photoddr" ><img src="<?php echo $ddr['photo']?>" height="50" width="50"></td>
         <?php  } ?>
 
-    
+
 
        <td id="<?php echo $ddr['id'] ?>nameddr"><?php echo $ddr['name'] ?></td>
        <td id="<?php echo $ddr['id'] ?>organizationddr"><?php echo $ddr['organization'] ?></td>
@@ -688,14 +810,15 @@
    <!-- responsive table for displaying contact directory -->
    <table class="responstable">
     <tr>
-      <th><span>S.N</span></th>
-      <th data-th="Municipality Personnel"><span>Photo</span></th>
-      <th><span>Name</span></th>
-      <th><span>Organization</span></th>
-      <th><span>Post</span></th>
-      <th><span>Address</span></th>
-      <th><span>Phone No.</span></th>
-      <th><span>Email</span></th>
+      <?php if($con_lang=='en'){
+
+        echo $heading_en;
+
+       }else{
+
+       echo $heading_nep;
+
+      } ?>
     </tr>
     <?php foreach ($personnel as $personnel) {
 
@@ -733,14 +856,15 @@
    <!-- responsive table for displaying contact directory -->
    <table class="responstable">
     <tr>
-      <th><span>S.N</span></th>
-      <th data-th="Members of Municipal Assembly"><span>Photo</span></th>
-      <th><span>Name</span></th>
-      <th><span>Organization</span></th>
-      <th><span>Post</span></th>
-      <th><span>Address</span></th>
-      <th><span>Phone No.</span></th>
-      <th><span>Email</span></th>
+      <?php if($con_lang=='en'){
+
+        echo $heading_en;
+
+       }else{
+
+       echo $heading_nep;
+
+      } ?>
     </tr>
     <?php foreach ($members as $members) {
 
@@ -801,7 +925,7 @@
   //   // Loop through all list items, and hide those who don't match the search query
  // var ab='Juddha Barun Yantra Karyalaya'
  // console.log(ab.toUpperCase().indexOf(filter));
-console.log(tr);
+//console.log(tr);
  for(j = 0; j < tr.length; j++){
    //console.log(tr);
    var closeit = 0;

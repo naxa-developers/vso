@@ -121,7 +121,44 @@ class UploadController extends CI_Controller
 
   //emergency contact start
 
+  //nepali
+  public function  emergency_contact_nep(){
+
+    $this->session->set_userdata('emerg_language','nep');
+
+    $cat=$this->input->get('cat');
+    // var_dump($cat);
+    $name=$this->input->get('name');
+
+
+    $this->body['data']=$this->Upload_model->get_emergency_con_nep($cat);
+    $this->body['cat']=$cat;
+    $this->body['name']=$name;
+  //var_dump($this->body['data']);
+  //admin check
+  $admin_type=$this->session->userdata('user_type');
+
+  $this->body['admin']=$admin_type;
+  //admin check
+
+
+  $this->load->view('admin/header',$this->body);
+    $this->load->view('admin/emergency_contact_tbl_nep',$this->body);
+    $this->load->view('admin/footer');
+
+
+
+  }
+
+
+
+
+
+  //end nepali
+
   public function  emergency_contact(){
+
+   $this->session->set_userdata('emerg_language','en');
 
     $cat=$this->input->get('cat');
     // var_dump($cat);
@@ -139,7 +176,7 @@ $this->body['admin']=$admin_type;
 //admin check
 
 
-$this->load->view('admin/header',$this->body);
+    $this->load->view('admin/header',$this->body);
     $this->load->view('admin/emergency_contact_tbl',$this->body);
     $this->load->view('admin/footer');
 
@@ -147,11 +184,14 @@ $this->load->view('admin/header',$this->body);
 
   }
 
+
+
+
   public function delete_emerg(){
 
     $cat=$this->input->get('cat');
     $tbl=$this->input->get('tbl');
-
+  $lang=$this->session->get_userdata('emerg_language');
 
     $delete=$this->Upload_model->delete($this->input->get('id'),$tbl);
 
@@ -161,10 +201,36 @@ $this->load->view('admin/header',$this->body);
       $this->session->set_flashdata('msg','Successfully Deleted');
 
       if($tbl=='emergency_contact'){
-        redirect('emergency_contact?cat='.$cat);
+
+
+
+
+        if($lang['emerg_language']=='en'){
+
+       redirect('emergency_contact?cat='.$cat);
+
+        }else{
+
+          redirect('emergency_contact_nep?cat='.$cat);
+
+        }
+
+
 
       }else{
-        redirect('emergency_personnel?cat='.$cat);
+
+        if($lang['emerg_language']=='en'){
+
+      redirect('emergency_personnel?cat='.$cat);
+
+         }else{
+
+          redirect('emergency_personnel_nep?cat='.$cat);
+
+         }
+
+
+
       }
 
 
@@ -182,7 +248,7 @@ $this->load->view('admin/header',$this->body);
     $cat=$this->input->get('cat');
     $tbl=$this->input->get('tbl');
     $name=$this->input->get('name');
-
+    $lang=$this->session->get_userdata('emerg_language');
     if(isset($_POST['submit'])){
 
       unset($_POST['submit']);
@@ -195,7 +261,14 @@ $this->load->view('admin/header',$this->body);
 
 
         $this->session->set_flashdata('msg','Updated successfully');
-        redirect('emergency_contact?cat='.$cat);
+        if($lang['emerg_language']=='en'){
+
+            redirect('emergency_contact?cat='.$cat);
+        }else{
+            redirect('emergency_contact_nep?cat='.$cat);
+
+        }
+
 
       }else{
 
@@ -291,7 +364,7 @@ $this->load->view('admin/header',$this->body);
   {
 
 
-
+ $this->session->set_userdata('emerg_language','en');
 
     $cat=$this->input->get('cat');
 
@@ -361,7 +434,83 @@ $this->load->view('admin/header',$this->body);
 
   }
 
+//nepali personnel start
 
+public function emergency_personnel_nep(){
+
+  $this->session->set_userdata('emerg_language','nep');
+  $cat=$this->input->get('cat');
+
+  //echo $cat ;
+  if(isset($_POST['submit']))
+  {
+
+    $id=$this->input->post('id');
+    $file_name = $_FILES['emerg_pic']['name'];
+
+
+
+    //$ext = pathinfo($file_name, PATHINFO_EXTENSION);
+
+
+
+    $img_upload=$this->Upload_model->do_upload_emerg($file_name,$id);
+
+
+    if($img_upload != ""){
+
+      $ext=$img_upload['upload_data']['file_ext'];
+
+      $image_path=base_url() . 'uploads/emergency_personnel/'.$id.$ext ;
+
+      $data=array(
+
+        'photo'=>$image_path
+
+      );
+
+      $update=$this->Upload_model->update_emerg($id,$data,'emergency_personnel');
+      $this->session->set_flashdata('msg','successfully Photo Changed');
+      redirect('emergency_personnel_nep?cat='.$cat);
+
+    }else{
+
+      $code= strip_tags($img_upload['error']);
+
+
+
+      $this->session->set_flashdata('msg', $code);
+      redirect('emergency_personnel?cat='.$cat);
+
+
+    }
+
+
+  }else{
+
+    $this->body['data']=$this->Upload_model->get_emergency_per_nep($cat);
+    $this->body['cat']=$cat;
+    $name=$this->input->get('name');
+    $this->body['name']=$name;
+
+    //admin check
+    $admin_type=$this->session->userdata('user_type');
+
+    $this->body['admin']=$admin_type;
+    //admin check
+
+
+    $this->load->view('admin/header',$this->body);
+    $this->load->view('admin/emergency_personnel_tbl_nep',$this->body);
+    $this->load->view('admin/footer');
+  }
+
+
+
+
+}
+
+//nepali personnel end
 
   public function add_emergency_personnel(){
 
@@ -443,7 +592,7 @@ $this->load->view('admin/header',$this->body);
 
     $cat=$this->input->get('cat');
     $tbl=$this->input->get('tbl');
-
+    $lang=$this->session->get_userdata('emerg_language');
     if(isset($_POST['submit'])){
 
       unset($_POST['submit']);
@@ -456,7 +605,15 @@ $this->load->view('admin/header',$this->body);
 
 
         $this->session->set_flashdata('msg','Updated successfully');
-        redirect('emergency_personnel?cat='.$cat);
+        if($lang['emerg_language']=='en'){
+
+          redirect('emergency_personnel?cat='.$cat);
+
+        }else{
+
+          redirect('emergency_personnel_nep?cat='.$cat);
+        }
+
 
       }else{
 
@@ -575,6 +732,7 @@ $this->load->view('admin/header',$this->body);
 
 $table_name = $this->input->get('tbl');
 $cat= $this->input->get('cat');
+$lang= $this->input->get('lang');
 if (isset($_POST['submit'])) {
 
 $max_id=$this->Table_model->get_max_id($table_name);
@@ -623,6 +781,7 @@ unset($fields[8]);
 
       $data=array(
         'category'=>$cat,
+        'language'=>$lang,
       );
       $up=$this->Table_model->update_cat($max_id['id'],$data,$table_name);
 

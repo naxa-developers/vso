@@ -67,6 +67,12 @@ class CategoriesController extends CI_Controller
 
   public function categories_tbl(){
 
+    //set session eng
+
+    $this->session->set_userdata('cat_language','en');
+
+     //end
+
     $this->body['data']=$this->Dash_model->get_tables_data_cat('categories_tbl','en');
     $this->body['tbl_name']='categories_tbl';
 
@@ -99,6 +105,10 @@ class CategoriesController extends CI_Controller
 //nepali
 
   public function categories_tbl_nep(){
+
+    // set session nepali
+    $this->session->set_userdata('cat_language','nep');
+    //end
 
     $this->body['data']=$this->Dash_model->get_tables_data_cat('categories_tbl','nep');
     $this->body['tbl_name']='categories_tbl';
@@ -866,6 +876,18 @@ class CategoriesController extends CI_Controller
       $this->Dash_model->delete_lang($cat_tbl);
 
       $this->session->set_flashdata('msg','Id number '.$id.' row data was deleted successfully');
+      // check language
+            $lang=$this->session->get_userdata('cat_language');
+
+
+            if($lang['cat_language']=='en'){
+            redirect('categories_tbl?tbl_name='.base64_encode($tbl_name));
+
+        }else{
+        redirect('categories_tbl_nep?tbl_name='.base64_encode($tbl_name));
+
+        }
+        //languague end
       redirect('categories_tbl?tbl_name='.base64_encode($tbl_name));
     }else{
 
@@ -884,6 +906,7 @@ class CategoriesController extends CI_Controller
 
     $this->body['tbl']=$this->input->get('tbl_name');
     $this->body['id']=$this->input->get('id');
+
 
     //admin check
     $admin_type=$this->session->userdata('user_type');
