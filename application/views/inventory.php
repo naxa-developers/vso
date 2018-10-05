@@ -110,8 +110,8 @@
 <div class="container">
   <div class="row">
    <!-- left pane -->
-   <div class="col-md-4">
-     <div class="col-md-12 upalab">
+   <div class="col-md-3">
+     <div class="upalab">
       <div class="card">
         <div class="card-header bg-primary" style="color:#fff;">
           <h6>उपलब्ध उद्धार सामग्री</h6>
@@ -131,8 +131,7 @@
 
   <!-- left pane -->
 
-  <div class="col-md-8">
-    <div class="container">
+  <div class="col-md-9">
       <div id="map-table-jana">
 
         <div class="row">
@@ -154,80 +153,84 @@
 
       <div class="row" id="reportable">
        <!-- responsive table for displaying contact directory -->
-       <table class="responstable">
-        <tr>
-          <th><span>#</span></th>
-          <th data-th="Inventory details"><span>सामाग्रीको नाम</span></th>
-          <th><span>सामाग्री भएको संस्था</span></th>
-          <th><span>सम्पर्क व्यक्ति</span></th>
-          <th><span>फोन नं</span></th>
-          <th><span>ठेगाना</span></th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>रबर बुट</td>
-          <td>स प्र बल ज्वालामाइ गण<br>राप्ती गाउपलिका </td>
-          <td>जय बहादुर खड्का </td>
-          <td>9851272051</td>
-          <td>काठमाडौं</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>रबर बुट</td>
-          <td>स प्र बल ज्वालामाइ गण<br>राप्ती गाउपलिका </td>
-          <td>जय बहादुर खड्का </td>
-          <td>9851272051</td>
-          <td>काठमाडौं</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>रबर बुट</td>
-          <td>स प्र बल ज्वालामाइ गण<br>राप्ती गाउपलिका </td>
-          <td>जय बहादुर खड्का </td>
-          <td>9851272051</td>
-          <td>काठमाडौं</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>रबर बुट</td>
-          <td>स प्र बल ज्वालामाइ गण<br>राप्ती गाउपलिका </td>
-          <td>जय बहादुर खड्का </td>
-          <td>9851272051</td>
-          <td>काठमाडौं</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>रबर बुट</td>
-          <td>स प्र बल ज्वालामाइ गण<br>राप्ती गाउपलिका </td>
-          <td>जय बहादुर खड्का </td>
-          <td>9851272051</td>
-          <td>काठमाडौं</td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>रबर बुट</td>
-          <td>स प्र बल ज्वालामाइ गण<br>राप्ती गाउपलिका </td>
-          <td>जय बहादुर खड्का </td>
-          <td>9851272051</td>
-          <td>काठमाडौं</td>
-        </tr>
-        <tr>
-          <td>7</td>
-          <td>रबर बुट</td>
-          <td>स प्र बल ज्वालामाइ गण<br>राप्ती गाउपलिका </td>
-          <td>जय बहादुर खड्का </td>
-          <td>9851272051</td>
-          <td>काठमाडौं</td>
-        </tr>
+       <table class=" table table-striped">
+        <thead>
+          <tr>
+            <th><strong>#</strong></th>
+            <th data-th="Inventory details"><strong>सामाग्रीको नाम</strong></th>
+            <th><strong>सामाग्री भएको संस्था</strong></th>
+            <th><strong>सम्पर्क व्यक्ति</strong></th>
+            <th><strong>फोन नं</strong></th>
+            <th><strong>ठेगाना</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>रबर बुट</td>
+            <td>स प्र बल ज्वालामाइ गण<br>राप्ती गाउपलिका </td>
+            <td>जय बहादुर खड्का </td>
+            <td>9851272051</td>
+            <td>काठमाडौं</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>रबर बुट</td>
+            <td>स प्र बल ज्वालामाइ गण<br>राप्ती गाउपलिका </td>
+            <td>जय बहादुर खड्का </td>
+            <td>9851272051</td>
+            <td>काठमाडौं</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>रबर बुट</td>
+            <td>स प्र बल ज्वालामाइ गण<br>राप्ती गाउपलिका </td>
+            <td>जय बहादुर खड्का </td>
+            <td>9851272051</td>
+            <td>काठमाडौं</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>रबर बुट</td>
+            <td>स प्र बल ज्वालामाइ गण<br>राप्ती गाउपलिका </td>
+            <td>जय बहादुर खड्का </td>
+            <td>9851272051</td>
+            <td>काठमाडौं</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>रबर बुट</td>
+            <td>स प्र बल ज्वालामाइ गण<br>राप्ती गाउपलिका </td>
+            <td>जय बहादुर खड्का </td>
+            <td>9851272051</td>
+            <td>काठमाडौं</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>रबर बुट</td>
+            <td>स प्र बल ज्वालामाइ गण<br>राप्ती गाउपलिका </td>
+            <td>जय बहादुर खड्का </td>
+            <td>9851272051</td>
+            <td>काठमाडौं</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>रबर बुट</td>
+            <td>स प्र बल ज्वालामाइ गण<br>राप्ती गाउपलिका </td>
+            <td>जय बहादुर खड्का </td>
+            <td>9851272051</td>
+            <td>काठमाडौं</td>
+          </tr>
 
-        <tr>
-          <td>8</td>
-          <td>रबर बुट</td>
-          <td>स प्र बल ज्वालामाइ गण<br>राप्ती गाउपलिका </td>
-          <td>जय बहादुर खड्का </td>
-          <td>9851272051</td>
-          <td>काठमाडौं</td>
-        </tr>
+          <tr>
+            <td>8</td>
+            <td>रबर बुट</td>
+            <td>स प्र बल ज्वालामाइ गण<br>राप्ती गाउपलिका </td>
+            <td>जय बहादुर खड्का </td>
+            <td>9851272051</td>
+            <td>काठमाडौं</td>
+          </tr>
+        </tbody>
 
       </table>
 
@@ -246,7 +249,6 @@
     </div>
 
   </div>
-</div>
 </div>
 </div>
 

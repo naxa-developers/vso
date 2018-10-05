@@ -66,10 +66,10 @@
   <div class="mt-2 pt-4 pb-4">
             <div class="row">
               <div class="col-md-6">
-                <label for="pub_cat"><strong>प्रकाशन प्रकार</strong></label>
+                <label for="pub_cat"><strong><?php echo $site_info['publ_type'] ?></strong></label>
               </div>
               <div class="col-md-6">
-                <label for="myInput"><strong>खोजशब्द</strong></label>
+                <label for="myInput"><strong><?php echo $site_info['search'] ?></strong></label>
               </div>
             </div>
             <div class="row">
@@ -110,7 +110,7 @@
                 <div class="thumb"><img src="<?php echo $d['photo']?>" ></div>
                 <h6 class="name" id="<?php echo $d['id'] ?>"><?php echo $d['title']?></h6>
                 <p><?php echo $d['summary']?></p>
-                <a href="<?php echo base_url()?>download?file=<?php echo $d['file']?> && title="<?php echo $d['title']?>" class="btn btn-primary btn-block">डाउनलोड <i class="la la-download"></i></a>
+                <a href="<?php echo base_url()?>download?file=<?php echo $d['file']?> && title="<?php echo $d['title']?>" class="btn btn-primary btn-block"><?php echo $site_info['download'] ?> <i class="la la-download"></i></a>
               </div>
             </div>
 

@@ -120,7 +120,7 @@
     <div class="contact-search-1">
 	<div class="row">
     <div class="col-sm-12">
-        <input class="form-control" type="search" placeholder="Search For.." id="myInput" onkeyup="myFunction()">
+        <input class="form-control" type="search" placeholder="<?php echo  $site_info['search'] ?>" id="myInput" onkeyup="myFunction()">
       </div>
   </div>
 </div>
@@ -326,7 +326,7 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
   </table>
 </div>
   <div class="text-center mb-3">
-    <a href="get_csv_emergency?type=chairpersons&&name=Chairpersons_of_Local_Units&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> Download</button></a>
+    <a href="get_csv_emergency?type=chairpersons&&name=Chairpersons_of_Local_Units&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
     </div>
 </div>
 
@@ -375,7 +375,7 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
   </table>
 </div>
 <div class="text-center mb-3">
-    <a href="get_csv_emergency?type=cheif&&name=Chief_of_local_level_offices&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> Download</button></a>
+    <a href="get_csv_emergency?type=cheif&&name=Chief_of_local_level_offices&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
       </div>
 </div>
 
@@ -424,7 +424,7 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
   </table>
 </div>
 <div class="text-center mb-3">
-    <a href="get_csv_emergency?type=elected&&name=Elected_Representatives&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> Download</button></a>
+    <a href="get_csv_emergency?type=elected&&name=Elected_Representatives&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
       </div>
 </div>
 <!-- elected -->
@@ -475,14 +475,14 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
   </table>
 </div>
 <div class="text-center mb-3">
-    <a href="get_csv_emergency?type=municipal_ex&&name=Municipal_Executive_Members&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> Download</button></a>
+    <a href="get_csv_emergency?type=municipal_ex&&name=Municipal_Executive_Members&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
       </div>
 </div>
 
 
     <div class="tab-pane fade show" id="disaster" role="tabpanel" aria-labelledby="disaster-tab">
   <br>
-    <a href="get_csv_emergency?type=disaster&&name=Municipality_Level_Disaster_Management_Committee&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button></a>
+    <a href="get_csv_emergency?type=disaster&&name=Municipality_Level_Disaster_Management_Committee&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
       <br>
   <div class="row" id="reportable">
    <!-- responsive table for displaying contact directory -->
@@ -572,7 +572,7 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
   </table>
 </div>
 <div class="text-center mb-3">
-    <a href="get_csv_emergency?type=nntds&&name=NNTDS_Executive_Committee&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> Download</button></a>
+    <a href="get_csv_emergency?type=nntds&&name=NNTDS_Executive_Committee&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
   </div>
 </div>
 
@@ -629,7 +629,7 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
     </div>
     <div class="text-center mb-3">
 
-      <a href="get_csv_emergency?type=health&&name=Health_Institutions&&tbl=emergency_contact"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> Download</button></a>
+      <a href="get_csv_emergency?type=health&&name=Health_Institutions&&tbl=emergency_contact"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
     </div>
   </div>
 
@@ -673,7 +673,7 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
     </table>
   </div>
   <div class="text-center mb-3">
-    <a href="get_csv_emergency?type=responders&&name=Emergency_Responders&&tbl=emergency_contact"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> Download</button></a>
+    <a href="get_csv_emergency?type=responders&&name=Emergency_Responders&&tbl=emergency_contact"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
   </div>
 </div>
 
@@ -713,7 +713,7 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
   </table>
 </div>
 <div class="text-center mb-3">
-    <a href="get_csv_emergency?type=security&&name=Security&&tbl=emergency_contact"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> Download</button></a>
+    <a href="get_csv_emergency?type=security&&name=Security&&tbl=emergency_contact"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
   </div>
 </div>
 
@@ -754,7 +754,7 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
   </table>
 </div>
 <div class="text-center mb-3">
-      <a href="get_csv_emergency?type=ngo&&name=NGOs_INGOs&&tbl=emergency_contact"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> Download</button></a>
+      <a href="get_csv_emergency?type=ngo&&name=NGOs_INGOs&&tbl=emergency_contact"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
   </div>
 </div>
 
@@ -802,7 +802,7 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
   </table>
 </div>
 <div class="text-center mb-3">
-    <a href="get_csv_emergency?type=ddr&&name=DRR_Volunteers&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> Download</button></a>
+    <a href="get_csv_emergency?type=ddr&&name=DRR_Volunteers&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
   </div>
 </div>
 
@@ -849,7 +849,7 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
   </table>
 </div>
 <div class="text-center mb-3">
-      <a href="get_csv_emergency?type=personnel&&name=Municipality_Personnel&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> Download</button></a>
+      <a href="get_csv_emergency?type=personnel&&name=Municipality_Personnel&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
   </div>
 </div>
 
@@ -896,7 +896,7 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
   </table>
 </div>
 <div class="text-center mb-3">
-      <a href="get_csv_emergency?type=members&&name=Members_of_Municipal_Assembly&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> Download</button></a>
+      <a href="get_csv_emergency?type=members&&name=Members_of_Municipal_Assembly&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
   </div>
 </div>
 </div>
