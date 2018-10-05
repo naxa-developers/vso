@@ -40,7 +40,7 @@
   }
 
 .publish-srch {
-    padding: 35px;
+    /* padding: 35px; */
     border-bottom: 1px solid #eee;
 }
 .publish{
@@ -175,21 +175,88 @@ i.fa.fa-download.dwn {
 .downlink:hover{
 	color:#e8e8e8;
 }
+#conten-map {
+  padding: 0px;
+  transition: all 0.3s;
+  position: relative;
+  width: 100%;
+  background: #fff;
+}
+
+#conten-map .navbar {
+  padding: 0;
+  background: #002052;
+  border: none;
+  border-radius: 0;
+  margin: 0px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+#conten-map .navbar.navbar-default{
+  min-height: 25px;
+  font-size: 13px;
+}
+
+#conten-map .nav {
+  text-align: center;
+  color: #fff;
+}
+
+#conten-map .navbar-header .navbar-nav li{
+  padding: 0;
+  color: white;
+}
+#conten-map .navbar-header .navbar-nav li>a{
+  color:#fff;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+#conten-map .navbar-header .navbar-nav li>a:hover{
+  text-decoration: none;
+  color: #002052;
+  background: #f5f5f5;
+}
+#conten-map .navbar-default .navbar-nav > li > a:focus{
+  text-decoration: none;
+  color: #002052;
+  background: #f5f5f5;
+}
+#conten-map .navbar-expand-sm{
+  background: #1f5cb2;
+  height: 32px;
+}
+#conten-map .nav-item .nav-link{
+  color: #fff;
+  font-size: 13px;
+}
+
 </style>
+
+<div id="conten-map">
+  <nav class="navbar navbar-expand-sm">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="<?php echo base_url()?>category?tbl=0 && name=0"><i class="fa fa-map" aria-hidden="true"></i> <?php echo $site_info['map'] ?></a>
+      </li>
+
+    </ul>
+  </nav>
+</div>
 
 <div id="map_download">
 	<div class="container">
 		<!-- search bar -->
 		<div class="publish-srch">
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<div class="input-group">
 						<input class="form-control" placeholder="Search here..." id="myInput" onkeyup="myFunction()">
 						<div class="input-group-addon" ><i class="fa fa-search"></i></div>
 					</div>
 				</div>
 
-				<div class="col-md-4">
+				<div class="col-md-6">
 
 					<div class="form-group">
 						<select class="custom-select" id="map_download_fil">
@@ -219,12 +286,12 @@ i.fa.fa-download.dwn {
 	<div class="row" id="map_download_filter_data">
 
 <?php  foreach ($data as $v){ ?>
-
-		<div class="col-sm-3 basemap myUL">
-		<img src="<?php echo $v['photo_thumb']  ?>" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img1">
+<div class="col-sm-3">
+		<div class="basemap myUL padding bg-white" data-mh="downloadMap">
+		<img src="<?php echo $v['photo_thumb']  ?>" class="mapp-image mb-3" id="myImg" alt="cangunarayan municipality" name="img1">
 		<!-- The Modal -->
 
-			<div class="edit"><a href="NewsletterController/download?name=<?php echo $v['title']?> && id=<?php echo $v['id'] ?>"><i class="fa fa-download dwn"></i></a></div>
+			<!-- <div class="edit"></div> -->
 			<h6 class="base" id="<?php echo $v['id']  ?>"><?php echo $v['title']  ?></h6>
 			 <p class="para"><?php echo $v['summary']  ?></p>
 
@@ -235,9 +302,9 @@ i.fa.fa-download.dwn {
   </div>
 
 </div>
-
+<a href="NewsletterController/download?name=<?php echo $v['title']?> && id=<?php echo $v['id'] ?>" class="btn btn-primary btn-sm btn-block"><i class="fa fa-download dwn"></i> Download</a>
 		</div>
-
+</div>
 	<?php } ?>
 
 	</div>
@@ -328,7 +395,7 @@ $.ajax({
 	  for(i=0; i<data.length; i++){
 			var div_map_download = " ";
 
-			div_map_download += '<div class="col-sm-3 basemap myUL">';
+			div_map_download += '<div class="col-sm-4 basemap myUL">';
 			div_map_download +='<img src="'+data[i].photo_thumb+'" class="mapp-image" id="myImg" alt="cangunarayan municipality" name="img1">';
 
 

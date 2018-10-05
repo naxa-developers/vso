@@ -128,4 +128,37 @@ else
 
 }
 
+public function count_incident(){
+  $this->db->select('ward');
+  $this->db->distinct();
+  $q=$this->db->get('report_tbl');
+  return $q->result_array();
+
+
 }
+public function count_ward(){
+
+  $this->db->select('ward as name, COUNT(ward) as value');
+  $this->db->group_by('ward');
+  $result_set=$this->db->get('report_tbl');
+  return $result_set->result();
+}
+
+public function count_cat(){
+
+  $this->db->select('incident_type as name, COUNT(incident_type) as value');
+  $this->db->group_by('incident_type');
+  $result_set=$this->db->get('report_tbl');
+  return $result_set->result();
+}
+
+public function count_stat(){
+
+  $this->db->select('status as name, COUNT(status) as value');
+  $this->db->group_by('status');
+  $result_set=$this->db->get('report_tbl');
+  return $result_set->result();
+}
+
+
+}//end

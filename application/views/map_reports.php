@@ -10,9 +10,9 @@
     #reportable{
         overflow: auto;
         margin: 0.5em;
-        margin-left: 253px;
+        /* margin-left: 253px; */
     }
-    .responstable {
+    .table table-striped table-bordered table-hover {
   margin: 1em 0em;
   width: 100%;
   overflow: hidden;
@@ -22,61 +22,61 @@
   border: 1px solid #1f5cb2;
   font-size: 16px;
 }
-.responstable tr {
+.table table-striped table-bordered table-hover tr {
   border: 1px solid #D9E4E6;
 }
-.responstable tr:nth-child(odd) {
+.table table-striped table-bordered table-hover tr:nth-child(odd) {
   background-color: #EAF3F3;
 }
-.responstable th {
+.table table-striped table-bordered table-hover th {
   display: none;
   border: 1px solid #FFF;
   background-color: #7696c7;
   color: #FFF;
   padding: 1em;
 }
-.responstable th:first-child {
+.table table-striped table-bordered table-hover th:first-child {
   display: table-cell;
   text-align: center;
 }
-.responstable th:nth-child(2) {
+.table table-striped table-bordered table-hover th:nth-child(2) {
   display: table-cell;
 }
-.responstable th:nth-child(2) span {
+.table table-striped table-bordered table-hover th:nth-child(2) span {
   display: none;
 }
-.responstable th:nth-child(2):after {
+.table table-striped table-bordered table-hover th:nth-child(2):after {
   content: attr(data-th);
 }
 @media (min-width: 480px) {
-  .responstable th:nth-child(2) span {
+  .table table-striped table-bordered table-hover th:nth-child(2) span {
     display: block;
 }
-.responstable th:nth-child(2):after {
+.table table-striped table-bordered table-hover th:nth-child(2):after {
     display: none;
 }
 }
-.responstable td {
+.table table-striped table-bordered table-hover td {
   display: block;
   word-wrap: break-word;
   max-width: 7em;
 }
-.responstable td:first-child {
+.table table-striped table-bordered table-hover td:first-child {
   display: table-cell;
   text-align: center;
   border-right: 1px solid #D9E4E6;
 }
 @media (min-width: 480px) {
-  .responstable td {
+  .table table-striped table-bordered table-hover td {
     border: 1px solid #D9E4E6;
 }
 }
-.responstable th, .responstable td {
+.table table-striped table-bordered table-hover th, .table table-striped table-bordered table-hover td {
   text-align: left;
   margin: .5em 1em;
 }
 @media (min-width: 480px) {
-  .responstable th, .responstable td {
+  .table table-striped table-bordered table-hover th, .table table-striped table-bordered table-hover td {
     display: table-cell;
     padding: 0.3em;
 }
@@ -93,35 +93,126 @@
 #map-table-jana .repo_filter{
   margin: 30px auto 15px;
 }
+#conten-map {
+  padding: 0px;
+  transition: all 0.3s;
+  position: relative;
+  width: 100%;
+  background: #fff;
+}
 
+#conten-map .navbar {
+  padding: 0;
+  background: #002052;
+  border: none;
+  border-radius: 0;
+  margin: 0px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+#conten-map .navbar.navbar-default{
+  min-height: 25px;
+  font-size: 13px;
+}
+
+#conten-map .nav {
+  text-align: center;
+  color: #fff;
+}
+
+#conten-map .navbar-header .navbar-nav li{
+  padding: 0;
+  color: white;
+}
+#conten-map .navbar-header .navbar-nav li>a{
+  color:#fff;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+#conten-map .navbar-header .navbar-nav li>a:hover{
+  text-decoration: none;
+  color: #002052;
+  background: #f5f5f5;
+}
+#conten-map .navbar-default .navbar-nav > li > a:focus{
+  text-decoration: none;
+  color: #002052;
+  background: #f5f5f5;
+}
+#conten-map .navbar-expand-sm{
+  background: #1f5cb2;
+  height: 32px;
+}
+#conten-map .nav-item .nav-link{
+  color: #fff;
+  font-size: 13px;
+}
+table.dataTable.no-footer{
+  border-bottom: 0;
+}
+.dataTables_filter label > input{
+visibility: visible;
+position: relative;
+   padding: .1rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .1rem;
+    -webkit-transition: border-color 0.15s ease-in-out,-webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out,-webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out,-webkit-box-shadow 0.15s ease-in-out;
+}
 </style>
 
-
+<div id="conten-map">
+  <nav class="navbar navbar-expand-sm">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="report_page"><i class="fa fa-map" aria-hidden="true"></i> <?php echo $site_info['map'] ?></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="map_reports"><i class="fa fa-database" aria-hidden="true"></i> <?php echo $site_info['data'] ?></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="map_reports_table"><i class="fa fa-pencil-square" aria-hidden="true"></i> <?php echo $site_info['ghatana_bib'] ?></a>
+      </li>
+    </ul>
+  </nav>
+</div>
 <div class="container">
+
 <div id="map-table-jana">
 
   <div class="row">
     <div class="col-md-12">
-      <div class="report-down">
-            <div class="text-center"><h3>Total Reports</h3></div>
-            <div class="col-md-3 pull-right">
-              <ul class="list-inline">
-                <a href="ReportController/map_data_download"><li class="list-inline-item"><i class="fa fa-cloud-download"></i> Download </li></a>
+      <div class="p-4">
+        <div class="row">
+              <div class="col-md-9"><h4 class="text-uppercase m-0"><strong>Total Reports</strong></h4></div>
+              <div class="col-md-3 clearfix">
+                <a class="btn btn-primary btn-sm pull-right" href="ReportController/map_data_download"><i class="fa fa-cloud-download"></i> Download</a>
+                <!-- <ul class="list-inline"> -->
 
-                <!-- <li class="list-inline-item"><a href="#" title="pdf"><i class="fa fa-file-pdf-o"></i></a></li>
-                <li class="list-inline-item"><a href="#" title="excel"><i class="fa fa-file-excel-o"></i></a></li>
-                <li class="list-inline-item"><a href="#" title="image"><i class="fa fa-file-image-o"></i></a></li>
-                <li class="list-inline-item"><a href="#" title="word"><i class="fa fa-file-word-o"></i></a></li> -->
-              </ul>
-            </div>
+
+                  <!-- <li class="list-inline-item"><a href="#" title="pdf"><i class="fa fa-file-pdf-o"></i></a></li>
+                  <li class="list-inline-item"><a href="#" title="excel"><i class="fa fa-file-excel-o"></i></a></li>
+                  <li class="list-inline-item"><a href="#" title="image"><i class="fa fa-file-image-o"></i></a></li>
+                  <li class="list-inline-item"><a href="#" title="word"><i class="fa fa-file-word-o"></i></a></li> -->
+                <!-- </ul> -->
+              </div>
+        </div>
       </div>
   </div>
   </div>
 
-<div class="row" id="reportable">
+<div class="" id="reportable">
  <!-- responsive table for displaying contact directory -->
- <table class="responstable"  id="hydropower"  style="width:100%">
-   <thead>
+ <table class="table table-striped table-bordered table-hover"  id="hydropower"  style="width:100%">
+   <thead class='thead-light'>
   <tr>
 
     <th data-th="Incident detail"><span>Recieved Date</span></th>

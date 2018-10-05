@@ -111,6 +111,48 @@
 .tabdrop .dropdown-menu a{
   padding: 20px;
 }
+#map-table-jana{
+     margin: 20px 0px 60px;
+     background: #fff;
+     overflow: hidden;
+ }
+
+ #reportable{
+     overflow: auto;
+     margin: 0.5em;
+     /* margin-left: 253px; */
+ }
+ #map-table-jana .text-center h3{
+
+ }
+
+ #map-table-jana .report-down{
+   padding: 25px;
+   border-bottom: 1px solid #e7e7e7;
+ }
+
+ #map-table-jana .repo_filter{
+   margin: 30px auto 15px;
+ }
+ table.dataTable.no-footer{
+   border-bottom: 0;
+ }
+ .dataTables_filter label > input{
+ visibility: visible;
+ position: relative;
+    padding: .1rem .75rem;
+     font-size: 1rem;
+     line-height: 1.5;
+     color: #495057;
+     background-color: #fff;
+     background-clip: padding-box;
+     border: 1px solid #ced4da;
+     border-radius: .1rem;
+     -webkit-transition: border-color 0.15s ease-in-out,-webkit-box-shadow 0.15s ease-in-out;
+     transition: border-color 0.15s ease-in-out,-webkit-box-shadow 0.15s ease-in-out;
+     transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+     transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out,-webkit-box-shadow 0.15s ease-in-out;
+ }
 </style>
 
 
@@ -122,23 +164,30 @@
 
 
 <div class="container">
-
+<div id="map-table-jana">
 
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="health" role="tabpanel" aria-labelledby="health-tab">
-      <br>
-
-      <div class="text-center">
-        <h3> <?php echo $name ?> Data Table </h3>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="p-4">
+            <div class="row">
+                  <div class="col-md-9"><h4 class="text-uppercase m-0"><strong><?php echo $name ?> Data Table </strong></h4></div>
+                  <div class="col-md-3 clearfix">
+                    <!-- <a href="get_csv_emergency?type=health&&name=Health_Institutions&&tbl=emergency_contact"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px; float: right;"><i class="fa fa-download"></i> Download</button></a> -->
+                  </div>
+            </div>
+          </div>
       </div>
-      <!-- <a href="get_csv_emergency?type=health&&name=Health_Institutions&&tbl=emergency_contact"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px; float: right;"><i class="fa fa-download"></i> Download</button></a> -->
-      <br>
+      </div>
       <div class="row" id="reportable">
 
 
        <!-- responsive table for displaying contact directory -->
-       <table  class="responstable">
+       <table  class="table table-striped table-bordered table-hover"  id="hydropower">
+         <thead class='thead-light' >
         <tr>
+
         <?php foreach ($data[0] as $key => $value){
 
             if($key == "the geom"){
@@ -152,9 +201,11 @@
 
           ?>
 
-          <th><span><?php echo $key ?></span></th>
+          <th><strong><?php echo $key ?></strong></th>
         <?php }}?>
+
         </tr>
+        </thead>
 
 
        <?php foreach ($data as $v) {
@@ -181,6 +232,7 @@
 
 
 
+</div>
 </div>
 </div>
 

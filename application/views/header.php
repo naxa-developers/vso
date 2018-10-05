@@ -59,9 +59,9 @@
 
   <script src="<?php echo base_url();?>assets/js/carousels.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/sitemapstyler.js"></script>
-
+  <script src="<?php echo base_url();?>assets/js/vendor/jquery.matchHeight.js"></script>
   <script src="<?php echo base_url();?>assets/js/plugins.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Mukta:200,300,400,500,600,700,800" rel="stylesheet">
 
   <script>
     $(document).ready(function(){
@@ -74,7 +74,9 @@
 
   <!-- div is created to keep the map in its certain area whichever amount of area is located to display the map -->
   <style type="text/css">
-
+.scrolling-wrap{
+  overflow-x: hidden !important;
+}
   .leaflet-popup-content {
 
     overflow: auto;
@@ -94,6 +96,8 @@
   }
 
 
+
+
   }
   #over_map {
     position: absolute;
@@ -106,18 +110,13 @@
   color: #fff;
   }
 
-  .subscribe-wrap .fbox .list-group li{
-    /*list-style: square inside none;*/
-    text-decoration: underline;
-  }
 
   body {
     overflow-x: hidden;
   }
 
-li.nav-item.active {
-    border-bottom: 3px solid #d20b0b;
-}
+/**/
+
 
 
 </style>
@@ -149,7 +148,7 @@ li.nav-item.active {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                      <a class="nav-link" href="index.php"><i class="fa fa-home"></i><span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="index.php"><?php echo $site_info['nav_7'] ?> <span class="sr-only">(current)</span></a>
                     </li>
 
                     <li class="nav-item">
@@ -170,16 +169,53 @@ li.nav-item.active {
                       <li class="nav-item">
                      <a class="nav-link" href="<?php echo base_url()?>publication"><?php echo $site_info['nav_6'] ?></a>
                     </li>
+                      <!-- <li class="nav-item">
+                     <a class="nav-link" href="<?php echo base_url()?>about">About</a>
+                    </li> -->
+                    <!-- <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="la la-language"></i> : ने
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">अङ्रेजी</a>
+                      </div>
+                    </li> -->
+                    <!-- <li class="nav-item" > -->
+                      <!-- <ul class="lang-switcher">
+                        <a href="#" class="is-active">En</a> | <a href="#">Fr</a>
 
-                     <li class="nav-item">
+                      </ul> -->
+                      <?php
+                      if($this->session->userdata('Language')==NULL){
 
-                   <a class="nav-link" href="<?php echo base_url();?>en?urll=<?php echo $urll ?>" ><img src="<?php echo base_url();?>assets/img/uk.png" height="15" width="20"></a>
+                        $this->session->set_userdata('Language','nep');
+                      }
 
+                      $lang=$this->session->get_userdata('Language');
 
-                    </li>
-                     <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url();?>nep?urll=<?php echo $urll ?>"><img src="<?php echo base_url();?>assets/img/nep.png" height="15"></a>
-                    </li>
+                        if($lang['Language']=='en'){
+
+                      ?>
+                      <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="<?php echo base_url();?>nep?urll=<?php echo $urll ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="la la-language"></i> : En
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="<?php echo base_url();?>nep?urll=<?php echo $urll ?>">Nepali</a>
+                      </div>
+                      </li>
+                    <?php }else{ ?>
+                      <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="<?php echo base_url();?>nep?urll=<?php echo $urll ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="la la-language"></i> : ने
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="<?php echo base_url();?>en?urll=<?php echo $urll ?>">अङ्रेजी</a>
+                      </div>
+                      </li>
+                    <?php } ?>
+                  <!-- </li> -->
+
 
                   </ul>
                 </div>
@@ -188,3 +224,19 @@ li.nav-item.active {
             </nav>
 
           </header>
+
+          <script>
+          // console.log('header');
+          // $('.lang-nav').click(function(){
+          // var lang_name=$(this).attr('name');
+          // console.log(lang_name);
+          // if(lang_name =='en'){
+          //   $(this).attr("id","nep");
+          //   $('.lang-name').html('nep').trigger('change');
+          // }else{
+          //   $(this).attr("id","en");
+          //   $('.lang-name').html('en').trigger('change');
+          // }
+          //
+          // });
+          </script>

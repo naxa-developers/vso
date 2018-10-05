@@ -62,7 +62,13 @@ ul.nav.nav-tabs{
 ul.nav.nav-tabs a{
 
   padding:10px;
+  color: white;
+}
+
+ul.nav.nav-tabs a.active, ul.nav.nav-tabs a.active:hover, ul.nav.nav-tabs a.active:focus{
+  background: white;
   color: black;
+  border-color: white;
 }
 
 ul.nav.nav-tabs a:hover{
@@ -358,6 +364,7 @@ div#over_map1 {
   transition: 0.3s ease;
   position: absolute;
   margin-left: -11px;
+  margin-top: 10px;
 }
 
 .treeview li label.specific:not(.child):before {
@@ -939,8 +946,55 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
     width: 1050px;
     margin-left: -260px;
 }
+
+.nav-tabs .nav-link{
+min-height: 68px;
+}
+
+.nav-fill .nav-item{
+max-width: 33.333%;
+}
+.treeview li.card{
+display: block;
+padding: .5rem;
+}
+
+.head-panel{
+float: right;
+display: inline-block;
+}
+
+.treeview li label.specific{
+display: inline-block;
+float: left;
+margin: 0;
+}
+
+.card:after{
+content: '';
+display: table;
+clear: both;
+}
 </style>
 
+
+<script>
+$(document).ready(function(){
+        fixMHeight();
+            window.onresize = function(event) {
+                 fixMHeight();
+             }
+
+              function fixMHeight() {
+                  vph = $(window).height();
+                  headerHeight = $("#website-header").height();
+                  vph = vph - headerHeight;
+                  $("#map").height(vph);
+$("#left-panel-toggle").height(vph);
+              }
+     });
+
+</script>
 
 
 
@@ -977,338 +1031,1035 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
       <div class="panel-body cate">
         <div>
           <!-- Tab panes -->
-          <div class="tab-content cate">
-            <!-- categories -->
-            <div role="tabpanel" class="tab-pane active" id="categories">
-              <ul class="treeview checklist">
-
-
-                <?php  foreach ($data as $data){
-
-                if($data['public_view']=='0'){
-
-
-                }else{ ?>
-
-                  <li class="card inter-list-panel">
-                    <div class="head-panel">
-                      <div class="control">
-                        <div class="row">
-                          <!-- <div class="col-md-1 pull-left">
-                          <a href="#"><i class="fa fa-info-circle"></i></a>
-                        </div> -->
-
-                        <div class="col-md-12">
-                          <?php if($data['category_type']=='Exposure_Data'){ ?>
-
-                            <span class="indicator" style="background-color:<?php echo 'green' ?>" data-toggle="tooltip" data-placement="top" title="Exposure Data"></span>
-
-
-                          <?php }elseif($data['category_type']=='Baseline_Data'){ ?>
-
-                            <span class="indicator" style="background-color:<?php echo 'blue' ?>" data-toggle="tooltip" data-placement="top" title="Baseline Data"></span>
-
-                          <?php }else{ ?>
-                            <span class="indicator" style="background-color:<?php echo 'red' ?>" data-toggle="tooltip" data-placement="top" title="Hazard Data"></span>
-
-                          <?php } ?>
-                          <a data-toggle="modal" href="#<?php echo $data['category_table'];?>_" class = "filterthis" id="<?php echo $data['category_table'];?>">
-                        <img src="<?php echo base_url()?>assets/img/filter.png" class="filter-icon"></a>
-
-                            <?php	if($data['default_load']=='0'){ ?>
-                              <button type="button" name="<?php echo $data['category_name'];?>" value = "<?php echo $data['category_table'];?>" id = "<?php echo $data['category_table'].'_toggle'?>" class="btn btn-xs btn-toggle  CheckBox" data-toggle="button" aria-pressed="false" autocomplete="off">
-                              <?php	}else{ ?>
-                                <button type="button" name="<?php echo $data['category_name'];?>" value = "<?php echo $data['category_table'];?>" id = "<?php echo $data['category_table'].'_toggle'?>" class="btn btn-xs btn-toggle  active CheckBox" data-toggle="button" aria-pressed="false" autocomplete="off">
-                                <?php	} ?>
-                                <div class="handle"></div>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-
-
-                      <input type="checkbox" name="<?php echo $data['category_name']?>" class="checker" id="<?php echo $data['category_table']?>">
-
-                      <label for="<?php echo $data['category_table']?>" class="specific">
-                        <!-- <div class="ball" data-id="1"></div> -->
-                        <p><?php echo $data['category_name']; ?></p>
-                        <!-- <div class="action-list">
-                        <i class="fa fa-info-circle"></i>
-                        <i class="fa fa-plus"></i>
-                      </div> -->
-                    </label>
-
-                    <ul>
-                      <li>
-                        <div class="desc">
-                          <!-- <div class="range range-primary">
-                          <small>Transparency</small>
-                          <input type="range" name="range" min="1" max="100" value="50" onchange="rangePrimary.value=value">
-                          <output id="rangePrimary">50</output>
-                        </div> -->
-                        <div class="treeview-content-p" id="<?php echo $data['category_table']?>_treeview">
-
-                          <?php if($data['sub_categories']==''){  ?>
-
-                            <!-- <p> No sub categories </p> -->
-
-                          <?php  }else{
-
-                            $data_array=json_decode($data['sub_categories'],TRUE);
-
-                            for($i=0;sizeof($data_array)>$i;$i++){
-
-                              ?>
-
-                              <div class="form-check">
-
-                                <input type="checkbox" id="<?php echo $data['sub_col'] ?>" name="<?php echo $data['category_table'] ?>" class="form-check-input sub-cat" value="<?php echo $data_array[$i] ?>"><label class="form-check-label"><?php echo $data_array[$i] ?></label>
-
-                              </div>
-
-                            <?php }} ?>
-                          </div>
-
-
-                        </div>
-                      </li>
-                    </ul>
-
+          <ul class="nav nav-tabs nav-fill" id="filterTab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center active" id="tab001-tab" data-toggle="tab" href="#tab001" role="tab" aria-controls="tab001" aria-selected="true">
+                      <?php echo $site_info['cat_1'] ?>
+                    </a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center" id="tab002-tab" data-toggle="tab" href="#tab002" role="tab" aria-controls="tab002" aria-selected="false">
+                      <?php echo $site_info['cat_2'] ?>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center" id="tab003-tab" data-toggle="tab" href="#tab003" role="tab" aria-controls="tab003" aria-selected="false">
+                      <?php echo $site_info['cat_3'] ?>
+                    </a>
+                  </li>
+                </ul>
+                <div class="tab-content scrolling-wrap" id="filterTabContent">
+                    <div class="tab-pane fade show active" id="tab001" role="tabpanel" aria-labelledby="tab001-tab">
+                      <div class="tab-content cate">
+                        <!-- categories -->
+                        <div role="tabpanel" class="tab-pane active" id="categories">
+                          <ul class="treeview checklist">
 
-                  <!-- new moadal -->
-                <div class="container">
-                    <div class="modal fade" id="<?php echo $data['category_table']?>_" data-modal-index="999999999999999999">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                         <h4 class="modal-title"><?php echo $data['category_name']?></h4>
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #fff">&times;</span><span class="sr-only">Close</span></button>
+
+                            <?php  foreach ($data_ex as $data){
+
+                            if($data['public_view']=='0'){
+
+
+                            }else{ ?>
+
+                              <li class="card inter-list-panel">
+                                <div class="head-panel">
+                                  <div class="control">
+                                    <div class="row">
+                                      <!-- <div class="col-md-1 pull-left">
+                                      <a href="#"><i class="fa fa-info-circle"></i></a>
+                                    </div> -->
+
+                                    <div class="col-md-12">
+                                      <!-- <?php if($data['category_type']=='Exposure_Data'){ ?>
+
+                                        <span class="indicator" style="background-color:<?php echo 'green' ?>" data-toggle="tooltip" data-placement="top" title="Exposure Data"></span>
+
+
+                                      <?php }elseif($data['category_type']=='Baseline_Data'){ ?>
+
+                                        <span class="indicator" style="background-color:<?php echo 'blue' ?>" data-toggle="tooltip" data-placement="top" title="Baseline Data"></span>
+
+                                      <?php }else{ ?>
+                                        <span class="indicator" style="background-color:<?php echo 'red' ?>" data-toggle="tooltip" data-placement="top" title="Hazard Data"></span>
+
+                                      <?php } ?> -->
+                                      <a data-toggle="modal" href="#<?php echo $data['category_table'];?>_" class = "filterthis" name="<?php echo $data['category_name'];?>" id="<?php echo $data['category_table'];?>">
+                                    <img src="<?php echo base_url()?>assets/img/filter.png" class="filter-icon"></a>
+
+                                        <?php	if($data['default_load']=='0'){ ?>
+                                          <button type="button" name="<?php echo $data['category_name'];?>" value = "<?php echo $data['category_table'];?>" id = "<?php echo $data['category_table'].'_toggle'?>" class="btn btn-xs btn-toggle  CheckBox" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                          <?php	}else{ ?>
+                                            <button type="button" name="<?php echo $data['category_name'];?>" value = "<?php echo $data['category_table'];?>" id = "<?php echo $data['category_table'].'_toggle'?>" class="btn btn-xs btn-toggle  active CheckBox" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                            <?php	} ?>
+                                            <div class="handle"></div>
+                                          </button>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                  </div>
+
+
+                                  <input type="checkbox" name="<?php echo $data['category_name']?>" class="checker" id="<?php echo $data['category_table']?>">
+
+                                  <label for="<?php echo $data['category_table']?>" class="specific">
+                                    <!-- <div class="ball" data-id="1"></div> -->
+                                    <p><?php echo $data['category_name']; ?></p>
+                                    <!-- <div class="action-list">
+                                    <i class="fa fa-info-circle"></i>
+                                    <i class="fa fa-plus"></i>
+                                  </div> -->
+                                </label>
+                                <div class="clearfix"></div>
+                                <ul>
+                                  <li>
+                                    <div class="desc">
+                                      <!-- <div class="range range-primary">
+                                      <small>Transparency</small>
+                                      <input type="range" name="range" min="1" max="100" value="50" onchange="rangePrimary.value=value">
+                                      <output id="rangePrimary">50</output>
+                                    </div> -->
+                                    <div class="treeview-content-p" id="<?php echo $data['category_table']?>_treeview">
+
+                                      <?php if($data['sub_categories']==''){  ?>
+
+                                        <!-- <p> No sub categories </p> -->
+
+                                      <?php  }else{
+
+                                        $data_array=json_decode($data['sub_categories'],TRUE);
+
+                                        for($i=0;sizeof($data_array)>$i;$i++){
+
+                                          ?>
+
+                                          <div class="form-check">
+
+                                            <input type="checkbox" id="<?php echo $data['sub_col'] ?>" name="<?php echo $data['category_table'] ?>" class="form-check-input sub-cat" value="<?php echo $data_array[$i] ?>"><label class="form-check-label"><?php echo $data_array[$i] ?></label>
+
+                                          </div>
+
+                                        <?php }} ?>
+                                      </div>
+
+
+                                    </div>
+                                  </li>
+                                </ul>
+
+                              </li>
+
+                              <!-- new moadal -->
+                            <div class="container">
+                                <div class="modal fade" id="<?php echo $data['category_table']?>_" data-modal-index="999999999999999999">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                     <h4 class="modal-title"><?php echo $data['category_name']?></h4>
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #fff">&times;</span><span class="sr-only">Close</span></button>
+
+                                  </div>
+                                  <div class="modal-body">
+                                       <!-- modal 1 design -->
+                                       <div class="row">
+                                  <div class="col-md-4">Filter
+                                    <div class="col-md-12 express">
+                                      <div class="row filter_column_name">
+
+
+                                      </div>
+                                    </div></div>
+                                  <div class="col-md-4">Expression<div class="col-md-12 express">
+                                    <div class="row">
+                                        <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value="=" disabled/>
+                                <p class="ex text-center"> = </p>
+                              </label></div>
+                               <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value="+" disabled/>
+                                <p class="ex text-center"> + </p>
+                              </label></div>
+                               <!-- <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value="-"/>
+                                <p class="ex text-center"> - </p>
+                              </label></div> -->
+                               <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value=">" disabled/>
+                                <p class="ex text-center"> > </p>
+                              </label></div>
+                               <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value="<" disabled/>
+                                <p class="ex text-center"> < </p>
+                              </label></div>
+                              <!-- <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value="AND"/>
+                                <p class="ex text-center"> AND </p>
+                              </label></div>
+                              <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value="OR"/>
+                                <p class="ex text-center"> OR </p>
+                              </label></div>
+                              <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value="NOT"/>
+                                <p class="ex text-center"> NOT </p>
+                              </label></div> -->
+                                      </div>
+                                  </div></div>
+                                  <div class="col-md-4 "> Values<div class="col-md-12 express">
+                                    <div class="row filter_values">
+
+                               </div>
+                             </div>
+                            </div>
+
+                            <div class="container">
+                              <div class="text-size">
+                                <a href="#"  style="color: grey"> clear</a>
+                                <input type="text" name="" class="size-box selected_filter_ex" disabled>
+                                <input type="text" name="" class="size-box selected_filter_query" hidden>
+                              </div>
+                            </div>
+
+                             <button class="btn btn-default btn-sm applie applied_filter" data-toggle="modal" data-target="#<?php echo $data['category_table']?>_mod_dat">Apply</button>
+                                </div>
+                                       <!--  -->
+                                  </div>
+                                  <div class=" left-apply">
+                                    <div class="container" >
+                                  <h6><b>Applied Filters</b></h6>
+                                  <!-- applied filters -->
+                                 <table class="table">
+
+                              <tbody class="applied-list">
+                                <!-- <tr>
+                                  <th scope="row">1</th>
+                                  <td>Size > 3</td>
+                                  <td><i class="fa fa-eye"></i></td>
+                                  <td><i class="fa fa-minus"></i></td>
+                                </tr> -->
+
+                              </tbody>
+                            </table>
+                                  <!--  -->
+                                  </div>
+
+                                  </div>
+                                </div><!-- /.modal-content -->
+                              </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+
+
+                                <div class="modal fade" id="<?php echo $data['category_table']?>_mod_dat" data-modal-index="2">
+                              <div class="modal-dialog">
+                                <div class="modal-content no2">
+                                  <div class="modal-header">
+                                    <h4 class="modal-title"><?php echo $data['category_name']?></h4>
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #fff">&times;</span><span class="sr-only">Close</span></button>
+
+                                  </div>
+                                  <div class="modal-body mdl2" >
+                                    <h4 id='filter_tbl_name'></h4>
+                                    <table class="table table-striped" id="table_filter">
+                              <thead>
+                                <tr>
+
+                                </tr>
+                              </thead>
+                              <tbody>
+
+
+                              </tbody>
+                            </table>
+                            <div id="applied_filter_content">
+                            </div>
+                            <!--         <button class="btn btn-default" data-toggle="modal" data-target="#test-modal-3">Launch Modal 3</button>
+                             -->      </div>
+
+                                  <div class="modal-footer modal2" >
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+
+
+                                    <a href="abc" id="filter_download"> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download" style="background-color: #002b59"></i> Download</button></a>
+                                   <!-- <a href=""> <button type="button" class="btn btn-info btn-sm"> <i class="fa fa-eye"></i> Map</button></a> -->
+                                  </div>
+                                </div><!-- /.modal-content -->
+                              </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+
+                                <div class="modal fade" id="test-modal-3">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h4 class="modal-title">Modal title 3</h4>
+                                  </div>
+                                  <div class="modal-body">
+
+
+                                    <!-- <button class="btn btn-default" data-toggle="modal" data-target="#test-modal-4">Launch Modal 4</button> -->
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Download</button>
+                                    <button type="button" class="btn btn-primary btn-sm">Map</button>
+                                  </div>
+                                </div><!-- /.modal-content -->
+                              </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+
+
+                                <div class="modal fade" id="test-modal-4">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h4 class="modal-title">Modal title 4</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>One fine body&hellip;</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                  </div>
+                                </div><!-- /.modal-content -->
+                              </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+                            </div>
+                            <!-- new moadal -->
+
+                          <?php }}?>
+
+                          </ul>
+
+
+                        </div>
+
+
+                        <!-- filter -->
+                        <div role="tabpanel" class="tab-pane" id="filter">
+                          <div class="form-group">
+                            <label for="usr"></label>
+                            <input type="text" class="form-control" id="usr"  placeholder="Enter text eg. Text">
+                          </div>
+                          <div class="form-group">
+                            <label for="sel1">Select list:</label>
+                            <select class="form-control " id="sel1">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="sel1">Select list:</label>
+                            <select class="form-control" id="sel1" >
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                            </select>
+                          </div>
+
+                          <button type="button" class="btn btn-default btn-sm"> Filter</button>
+
+                        </div>
+
+                        <!-- legend -->
+                        <div role="tabpanel" class="tab-pane" id="legend">
+                          <ul class="list-group cate">
+                            <li class="list-group-item"><i class="fa fa-square" style='color:#8DD3C7;'></i> Roads</li>
+                            <li class="list-group-item"><i class="fa fa-square" style='color:#FFFFB3;'></i> Rivers</li>
+                            <li class="list-group-item"><i class="fa fa-square" style='color:#BEBADA;'></i> Mountain</li>
+                            <li class="list-group-item"><i class="fa fa-square" style='color:#FB8072;'></i> Forest</li>
+                            <li class="list-group-item"><i class="fa fa-square" style='color:#80B1D3;'></i> Lake</li>
+                          </ul>
+                        </div>
+                        <!-- legend -->
+
+                        <!-- categories -->
 
                       </div>
-                      <div class="modal-body">
-                           <!-- modal 1 design -->
-                           <div class="row">
-                      <div class="col-md-4">Filter
-                        <div class="col-md-12 express">
-                          <div class="row filter_column_name">
-
-
-                          </div>
-                        </div></div>
-                      <div class="col-md-4">Expression<div class="col-md-12 express">
-                        <div class="row">
-                            <div class="col-md-6"><label>
-                    <input type="radio" name="fb" class="ex_map" value="=" disabled/>
-                    <p class="ex text-center"> = </p>
-                  </label></div>
-                   <div class="col-md-6"><label>
-                    <input type="radio" name="fb" class="ex_map" value="+" disabled/>
-                    <p class="ex text-center"> + </p>
-                  </label></div>
-                   <!-- <div class="col-md-6"><label>
-                    <input type="radio" name="fb" class="ex_map" value="-"/>
-                    <p class="ex text-center"> - </p>
-                  </label></div> -->
-                   <div class="col-md-6"><label>
-                    <input type="radio" name="fb" class="ex_map" value=">" disabled/>
-                    <p class="ex text-center"> > </p>
-                  </label></div>
-                   <div class="col-md-6"><label>
-                    <input type="radio" name="fb" class="ex_map" value="<" disabled/>
-                    <p class="ex text-center"> < </p>
-                  </label></div>
-                  <!-- <div class="col-md-6"><label>
-                    <input type="radio" name="fb" class="ex_map" value="AND"/>
-                    <p class="ex text-center"> AND </p>
-                  </label></div>
-                  <div class="col-md-6"><label>
-                    <input type="radio" name="fb" class="ex_map" value="OR"/>
-                    <p class="ex text-center"> OR </p>
-                  </label></div>
-                  <div class="col-md-6"><label>
-                    <input type="radio" name="fb" class="ex_map" value="NOT"/>
-                    <p class="ex text-center"> NOT </p>
-                  </label></div> -->
-                          </div>
-                      </div></div>
-                      <div class="col-md-4 "> Values<div class="col-md-12 express">
-                        <div class="row filter_values">
-
-                   </div>
-                 </div>
-                </div>
-
-                <div class="container">
-                  <div class="text-size">
-                    <a href="#"  style="color: grey"> clear</a>
-                    <input type="text" name="" class="size-box selected_filter_ex" disabled>
-                    <input type="text" name="" class="size-box selected_filter_query" hidden>
-                  </div>
-                </div>
-
-                 <button class="btn btn-default btn-sm applie applied_filter" data-toggle="modal" data-target="#<?php echo $data['category_table']?>_mod_dat">Apply</button>
                     </div>
-                           <!--  -->
+                    <div class="tab-pane  fade" id="tab002" role="tabpanel" aria-labelledby="tab002-tab">
+                      <div class="tab-content cate">
+                        <!-- categories -->
+                        <div role="tabpanel" class="tab-pane active" id="categories">
+                          <ul class="treeview checklist">
+
+
+                            <?php  foreach ($data_haza as $data){
+
+                            if($data['public_view']=='0'){
+
+
+                            }else{ ?>
+
+                              <li class="card inter-list-panel">
+                                <div class="head-panel">
+                                  <div class="control">
+                                    <div class="row">
+                                      <!-- <div class="col-md-1 pull-left">
+                                      <a href="#"><i class="fa fa-info-circle"></i></a>
+                                    </div> -->
+
+                                    <div class="col-md-12">
+                                      <!-- <?php if($data['category_type']=='Exposure_Data'){ ?>
+
+                                        <span class="indicator" style="background-color:<?php echo 'green' ?>" data-toggle="tooltip" data-placement="top" title="Exposure Data"></span>
+
+
+                                      <?php }elseif($data['category_type']=='Baseline_Data'){ ?>
+
+                                        <span class="indicator" style="background-color:<?php echo 'blue' ?>" data-toggle="tooltip" data-placement="top" title="Baseline Data"></span>
+
+                                      <?php }else{ ?>
+                                        <span class="indicator" style="background-color:<?php echo 'red' ?>" data-toggle="tooltip" data-placement="top" title="Hazard Data"></span>
+
+                                      <?php } ?> -->
+                                      <a data-toggle="modal" href="#<?php echo $data['category_table'];?>_" class = "filterthis" name="<?php echo $data['category_name'];?>" id="<?php echo $data['category_table'];?>">
+                                    <img src="<?php echo base_url()?>assets/img/filter.png" class="filter-icon"></a>
+
+                                        <?php	if($data['default_load']=='0'){ ?>
+                                          <button type="button" name="<?php echo $data['category_name'];?>" value = "<?php echo $data['category_table'];?>" id = "<?php echo $data['category_table'].'_toggle'?>" class="btn btn-xs btn-toggle  CheckBox" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                          <?php	}else{ ?>
+                                            <button type="button" name="<?php echo $data['category_name'];?>" value = "<?php echo $data['category_table'];?>" id = "<?php echo $data['category_table'].'_toggle'?>" class="btn btn-xs btn-toggle  active CheckBox" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                            <?php	} ?>
+                                            <div class="handle"></div>
+                                          </button>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                  </div>
+
+
+                                  <input type="checkbox" name="<?php echo $data['category_name']?>" class="checker" id="<?php echo $data['category_table']?>">
+
+                                  <label for="<?php echo $data['category_table']?>" class="specific">
+                                    <!-- <div class="ball" data-id="1"></div> -->
+                                    <p><?php echo $data['category_name']; ?></p>
+                                    <!-- <div class="action-list">
+                                    <i class="fa fa-info-circle"></i>
+                                    <i class="fa fa-plus"></i>
+                                  </div> -->
+                                </label>
+                                <div class="clearfix"></div>
+                                <ul>
+                                  <li>
+                                    <div class="desc">
+                                      <!-- <div class="range range-primary">
+                                      <small>Transparency</small>
+                                      <input type="range" name="range" min="1" max="100" value="50" onchange="rangePrimary.value=value">
+                                      <output id="rangePrimary">50</output>
+                                    </div> -->
+                                    <div class="treeview-content-p" id="<?php echo $data['category_table']?>_treeview">
+
+                                      <?php if($data['sub_categories']==''){  ?>
+
+                                        <!-- <p> No sub categories </p> -->
+
+                                      <?php  }else{
+
+                                        $data_array=json_decode($data['sub_categories'],TRUE);
+
+                                        for($i=0;sizeof($data_array)>$i;$i++){
+
+                                          ?>
+
+                                          <div class="form-check">
+
+                                            <input type="checkbox" id="<?php echo $data['sub_col'] ?>" name="<?php echo $data['category_table'] ?>" class="form-check-input sub-cat" value="<?php echo $data_array[$i] ?>"><label class="form-check-label"><?php echo $data_array[$i] ?></label>
+
+                                          </div>
+
+                                        <?php }} ?>
+                                      </div>
+
+
+                                    </div>
+                                  </li>
+                                </ul>
+
+                              </li>
+
+                              <!-- new moadal -->
+                            <div class="container">
+                                <div class="modal fade" id="<?php echo $data['category_table']?>_" data-modal-index="999999999999999999">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                     <h4 class="modal-title"><?php echo $data['category_name']?></h4>
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #fff">&times;</span><span class="sr-only">Close</span></button>
+
+                                  </div>
+                                  <div class="modal-body">
+                                       <!-- modal 1 design -->
+                                       <div class="row">
+                                  <div class="col-md-4">Filter
+                                    <div class="col-md-12 express">
+                                      <div class="row filter_column_name">
+
+
+                                      </div>
+                                    </div></div>
+                                  <div class="col-md-4">Expression<div class="col-md-12 express">
+                                    <div class="row">
+                                        <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value="=" disabled/>
+                                <p class="ex text-center"> = </p>
+                              </label></div>
+                               <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value="+" disabled/>
+                                <p class="ex text-center"> + </p>
+                              </label></div>
+                               <!-- <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value="-"/>
+                                <p class="ex text-center"> - </p>
+                              </label></div> -->
+                               <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value=">" disabled/>
+                                <p class="ex text-center"> > </p>
+                              </label></div>
+                               <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value="<" disabled/>
+                                <p class="ex text-center"> < </p>
+                              </label></div>
+                              <!-- <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value="AND"/>
+                                <p class="ex text-center"> AND </p>
+                              </label></div>
+                              <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value="OR"/>
+                                <p class="ex text-center"> OR </p>
+                              </label></div>
+                              <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value="NOT"/>
+                                <p class="ex text-center"> NOT </p>
+                              </label></div> -->
+                                      </div>
+                                  </div></div>
+                                  <div class="col-md-4 "> Values<div class="col-md-12 express">
+                                    <div class="row filter_values">
+
+                               </div>
+                             </div>
+                            </div>
+
+                            <div class="container">
+                              <div class="text-size">
+                                <a href="#"  style="color: grey"> clear</a>
+                                <input type="text" name="" class="size-box selected_filter_ex" disabled>
+                                <input type="text" name="" class="size-box selected_filter_query" hidden>
+                              </div>
+                            </div>
+
+                             <button class="btn btn-default btn-sm applie applied_filter" data-toggle="modal" data-target="#<?php echo $data['category_table']?>_mod_dat">Apply</button>
+                                </div>
+                                       <!--  -->
+                                  </div>
+                                  <div class=" left-apply">
+                                    <div class="container" >
+                                  <h6><b>Applied Filters</b></h6>
+                                  <!-- applied filters -->
+                                 <table class="table">
+
+                              <tbody class="applied-list">
+                                <!-- <tr>
+                                  <th scope="row">1</th>
+                                  <td>Size > 3</td>
+                                  <td><i class="fa fa-eye"></i></td>
+                                  <td><i class="fa fa-minus"></i></td>
+                                </tr> -->
+
+                              </tbody>
+                            </table>
+                                  <!--  -->
+                                  </div>
+
+                                  </div>
+                                </div><!-- /.modal-content -->
+                              </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+
+
+                                <div class="modal fade" id="<?php echo $data['category_table']?>_mod_dat" data-modal-index="2">
+                              <div class="modal-dialog">
+                                <div class="modal-content no2">
+                                  <div class="modal-header">
+                                    <h4 class="modal-title"><?php echo $data['category_name']?></h4>
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #fff">&times;</span><span class="sr-only">Close</span></button>
+
+                                  </div>
+                                  <div class="modal-body mdl2" >
+                                    <h4 id='filter_tbl_name'></h4>
+                                    <table class="table table-striped" id="table_filter">
+                              <thead>
+                                <tr>
+
+                                </tr>
+                              </thead>
+                              <tbody>
+
+
+                              </tbody>
+                            </table>
+                            <div id="applied_filter_content">
+                            </div>
+                            <!--         <button class="btn btn-default" data-toggle="modal" data-target="#test-modal-3">Launch Modal 3</button>
+                             -->      </div>
+
+                                  <div class="modal-footer modal2" >
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+
+
+                                    <a href="abc" id="filter_download"> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download" style="background-color: #002b59"></i> Download</button></a>
+                                   <!-- <a href=""> <button type="button" class="btn btn-info btn-sm"> <i class="fa fa-eye"></i> Map</button></a> -->
+                                  </div>
+                                </div><!-- /.modal-content -->
+                              </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+
+                                <div class="modal fade" id="test-modal-3">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h4 class="modal-title">Modal title 3</h4>
+                                  </div>
+                                  <div class="modal-body">
+
+
+                                    <!-- <button class="btn btn-default" data-toggle="modal" data-target="#test-modal-4">Launch Modal 4</button> -->
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Download</button>
+                                    <button type="button" class="btn btn-primary btn-sm">Map</button>
+                                  </div>
+                                </div><!-- /.modal-content -->
+                              </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+
+
+                                <div class="modal fade" id="test-modal-4">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h4 class="modal-title">Modal title 4</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>One fine body&hellip;</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                  </div>
+                                </div><!-- /.modal-content -->
+                              </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+                            </div>
+                            <!-- new moadal -->
+
+                          <?php }}?>
+
+                          </ul>
+
+
+                        </div>
+
+
+                        <!-- filter -->
+                        <div role="tabpanel" class="tab-pane" id="filter">
+                          <div class="form-group">
+                            <label for="usr"></label>
+                            <input type="text" class="form-control" id="usr"  placeholder="Enter text eg. Text">
+                          </div>
+                          <div class="form-group">
+                            <label for="sel1">Select list:</label>
+                            <select class="form-control " id="sel1">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="sel1">Select list:</label>
+                            <select class="form-control" id="sel1" >
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                            </select>
+                          </div>
+
+                          <button type="button" class="btn btn-default btn-sm"> Filter</button>
+
+                        </div>
+
+                        <!-- legend -->
+                        <div role="tabpanel" class="tab-pane" id="legend">
+                          <ul class="list-group cate">
+                            <li class="list-group-item"><i class="fa fa-square" style='color:#8DD3C7;'></i> Roads</li>
+                            <li class="list-group-item"><i class="fa fa-square" style='color:#FFFFB3;'></i> Rivers</li>
+                            <li class="list-group-item"><i class="fa fa-square" style='color:#BEBADA;'></i> Mountain</li>
+                            <li class="list-group-item"><i class="fa fa-square" style='color:#FB8072;'></i> Forest</li>
+                            <li class="list-group-item"><i class="fa fa-square" style='color:#80B1D3;'></i> Lake</li>
+                          </ul>
+                        </div>
+                        <!-- legend -->
+
+                        <!-- categories -->
+
                       </div>
-                      <div class=" left-apply">
-                        <div class="container" >
-                      <h6><b>Applied Filters</b></h6>
-                      <!-- applied filters -->
-                     <table class="table">
 
-                  <tbody class="applied-list">
-                    <!-- <tr>
-                      <th scope="row">1</th>
-                      <td>Size > 3</td>
-                      <td><i class="fa fa-eye"></i></td>
-                      <td><i class="fa fa-minus"></i></td>
-                    </tr> -->
 
-                  </tbody>
-                </table>
-                      <!--  -->
+                    </div>
+                    <div class="tab-pane fade" id="tab003" role="tabpanel" aria-labelledby="tab003-tab">
+
+                      <div class="tab-content cate">
+                        <!-- categories -->
+                        <div role="tabpanel" class="tab-pane active" id="categories">
+                          <ul class="treeview checklist">
+
+
+                            <?php  foreach ($data_base as $data){
+
+                            if($data['public_view']=='0'){
+
+
+                            }else{ ?>
+
+                              <li class="card inter-list-panel">
+                                <div class="head-panel">
+                                  <div class="control">
+                                    <div class="row">
+                                      <!-- <div class="col-md-1 pull-left">
+                                      <a href="#"><i class="fa fa-info-circle"></i></a>
+                                    </div> -->
+
+                                    <div class="col-md-12">
+                                      <!-- <?php if($data['category_type']=='Exposure_Data'){ ?>
+
+                                        <span class="indicator" style="background-color:<?php echo 'green' ?>" data-toggle="tooltip" data-placement="top" title="Exposure Data"></span>
+
+
+                                      <?php }elseif($data['category_type']=='Baseline_Data'){ ?>
+
+                                        <span class="indicator" style="background-color:<?php echo 'blue' ?>" data-toggle="tooltip" data-placement="top" title="Baseline Data"></span>
+
+                                      <?php }else{ ?>
+                                        <span class="indicator" style="background-color:<?php echo 'red' ?>" data-toggle="tooltip" data-placement="top" title="Hazard Data"></span>
+
+                                      <?php } ?> -->
+                                      <a data-toggle="modal" href="#<?php echo $data['category_table'];?>_" class = "filterthis" name="<?php echo $data['category_name'];?>" id="<?php echo $data['category_table'];?>">
+                                    <img src="<?php echo base_url()?>assets/img/filter.png" class="filter-icon"></a>
+
+                                        <?php	if($data['default_load']=='0'){ ?>
+                                          <button type="button" name="<?php echo $data['category_name'];?>" value = "<?php echo $data['category_table'];?>" id = "<?php echo $data['category_table'].'_toggle'?>" class="btn btn-xs btn-toggle  CheckBox" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                          <?php	}else{ ?>
+                                            <button type="button" name="<?php echo $data['category_name'];?>" value = "<?php echo $data['category_table'];?>" id = "<?php echo $data['category_table'].'_toggle'?>" class="btn btn-xs btn-toggle  active CheckBox" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                            <?php	} ?>
+                                            <div class="handle"></div>
+                                          </button>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                  </div>
+
+
+                                  <input type="checkbox" name="<?php echo $data['category_name']?>" class="checker" id="<?php echo $data['category_table']?>">
+
+                                  <label for="<?php echo $data['category_table']?>" class="specific">
+                                    <!-- <div class="ball" data-id="1"></div> -->
+                                    <p><?php echo $data['category_name']; ?></p>
+                                    <!-- <div class="action-list">
+                                    <i class="fa fa-info-circle"></i>
+                                    <i class="fa fa-plus"></i>
+                                  </div> -->
+                                </label>
+                                <div class="clearfix"></div>
+                                <ul>
+                                  <li>
+                                    <div class="desc">
+                                      <!-- <div class="range range-primary">
+                                      <small>Transparency</small>
+                                      <input type="range" name="range" min="1" max="100" value="50" onchange="rangePrimary.value=value">
+                                      <output id="rangePrimary">50</output>
+                                    </div> -->
+                                    <div class="treeview-content-p" id="<?php echo $data['category_table']?>_treeview">
+
+                                      <?php if($data['sub_categories']==''){  ?>
+
+                                        <!-- <p> No sub categories </p> -->
+
+                                      <?php  }else{
+
+                                        $data_array=json_decode($data['sub_categories'],TRUE);
+
+                                        for($i=0;sizeof($data_array)>$i;$i++){
+
+                                          ?>
+
+                                          <div class="form-check">
+
+                                            <input type="checkbox" id="<?php echo $data['sub_col'] ?>" name="<?php echo $data['category_table'] ?>" class="form-check-input sub-cat" value="<?php echo $data_array[$i] ?>"><label class="form-check-label"><?php echo $data_array[$i] ?></label>
+
+                                          </div>
+
+                                        <?php }} ?>
+                                      </div>
+
+
+                                    </div>
+                                  </li>
+                                </ul>
+
+                              </li>
+
+                              <!-- new moadal -->
+                            <div class="container">
+                                <div class="modal fade" id="<?php echo $data['category_table']?>_" data-modal-index="999999999999999999">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                     <h4 class="modal-title"><?php echo $data['category_name']?></h4>
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #fff">&times;</span><span class="sr-only">Close</span></button>
+
+                                  </div>
+                                  <div class="modal-body">
+                                       <!-- modal 1 design -->
+                                       <div class="row">
+                                  <div class="col-md-4">Filter
+                                    <div class="col-md-12 express">
+                                      <div class="row filter_column_name">
+
+
+                                      </div>
+                                    </div></div>
+                                  <div class="col-md-4">Expression<div class="col-md-12 express">
+                                    <div class="row">
+                                        <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value="=" disabled/>
+                                <p class="ex text-center"> = </p>
+                              </label></div>
+                               <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value="+" disabled/>
+                                <p class="ex text-center"> + </p>
+                              </label></div>
+                               <!-- <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value="-"/>
+                                <p class="ex text-center"> - </p>
+                              </label></div> -->
+                               <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value=">" disabled/>
+                                <p class="ex text-center"> > </p>
+                              </label></div>
+                               <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value="<" disabled/>
+                                <p class="ex text-center"> < </p>
+                              </label></div>
+                              <!-- <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value="AND"/>
+                                <p class="ex text-center"> AND </p>
+                              </label></div>
+                              <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value="OR"/>
+                                <p class="ex text-center"> OR </p>
+                              </label></div>
+                              <div class="col-md-6"><label>
+                                <input type="radio" name="fb" class="ex_map" value="NOT"/>
+                                <p class="ex text-center"> NOT </p>
+                              </label></div> -->
+                                      </div>
+                                  </div></div>
+                                  <div class="col-md-4 "> Values<div class="col-md-12 express">
+                                    <div class="row filter_values">
+
+                               </div>
+                             </div>
+                            </div>
+
+                            <div class="container">
+                              <div class="text-size">
+                                <a href="#"  style="color: grey"> clear</a>
+                                <input type="text" name="" class="size-box selected_filter_ex" disabled>
+                                <input type="text" name="" class="size-box selected_filter_query" hidden>
+                              </div>
+                            </div>
+
+                             <button class="btn btn-default btn-sm applie applied_filter" data-toggle="modal" data-target="#<?php echo $data['category_table']?>_mod_dat">Apply</button>
+                                </div>
+                                       <!--  -->
+                                  </div>
+                                  <div class=" left-apply">
+                                    <div class="container" >
+                                  <h6><b>Applied Filters</b></h6>
+                                  <!-- applied filters -->
+                                 <table class="table">
+
+                              <tbody class="applied-list">
+                                <!-- <tr>
+                                  <th scope="row">1</th>
+                                  <td>Size > 3</td>
+                                  <td><i class="fa fa-eye"></i></td>
+                                  <td><i class="fa fa-minus"></i></td>
+                                </tr> -->
+
+                              </tbody>
+                            </table>
+                                  <!--  -->
+                                  </div>
+
+                                  </div>
+                                </div><!-- /.modal-content -->
+                              </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+
+
+                                <div class="modal fade" id="<?php echo $data['category_table']?>_mod_dat" data-modal-index="2">
+                              <div class="modal-dialog">
+                                <div class="modal-content no2">
+                                  <div class="modal-header">
+                                    <h4 class="modal-title"><?php echo $data['category_name']?></h4>
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #fff">&times;</span><span class="sr-only">Close</span></button>
+
+                                  </div>
+                                  <div class="modal-body mdl2" >
+                                    <h4 id='filter_tbl_name'></h4>
+                                    <table class="table table-striped" id="table_filter">
+                              <thead>
+                                <tr>
+
+                                </tr>
+                              </thead>
+                              <tbody>
+
+
+                              </tbody>
+                            </table>
+                            <div id="applied_filter_content">
+                            </div>
+                            <!--         <button class="btn btn-default" data-toggle="modal" data-target="#test-modal-3">Launch Modal 3</button>
+                             -->      </div>
+
+                                  <div class="modal-footer modal2" >
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+
+
+                                    <a href="abc" id="filter_download"> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download" style="background-color: #002b59"></i> Download</button></a>
+                                   <!-- <a href=""> <button type="button" class="btn btn-info btn-sm"> <i class="fa fa-eye"></i> Map</button></a> -->
+                                  </div>
+                                </div><!-- /.modal-content -->
+                              </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+
+                                <div class="modal fade" id="test-modal-3">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h4 class="modal-title">Modal title 3</h4>
+                                  </div>
+                                  <div class="modal-body">
+
+
+                                    <!-- <button class="btn btn-default" data-toggle="modal" data-target="#test-modal-4">Launch Modal 4</button> -->
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Download</button>
+                                    <button type="button" class="btn btn-primary btn-sm">Map</button>
+                                  </div>
+                                </div><!-- /.modal-content -->
+                              </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+
+
+                                <div class="modal fade" id="test-modal-4">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h4 class="modal-title">Modal title 4</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>One fine body&hellip;</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                  </div>
+                                </div><!-- /.modal-content -->
+                              </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+                            </div>
+                            <!-- new moadal -->
+
+                          <?php }}?>
+
+                          </ul>
+
+
+                        </div>
+
+
+                        <!-- filter -->
+                        <div role="tabpanel" class="tab-pane" id="filter">
+                          <div class="form-group">
+                            <label for="usr"></label>
+                            <input type="text" class="form-control" id="usr"  placeholder="Enter text eg. Text">
+                          </div>
+                          <div class="form-group">
+                            <label for="sel1">Select list:</label>
+                            <select class="form-control " id="sel1">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="sel1">Select list:</label>
+                            <select class="form-control" id="sel1" >
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                            </select>
+                          </div>
+
+                          <button type="button" class="btn btn-default btn-sm"> Filter</button>
+
+                        </div>
+
+                        <!-- legend -->
+                        <div role="tabpanel" class="tab-pane" id="legend">
+                          <ul class="list-group cate">
+                            <li class="list-group-item"><i class="fa fa-square" style='color:#8DD3C7;'></i> Roads</li>
+                            <li class="list-group-item"><i class="fa fa-square" style='color:#FFFFB3;'></i> Rivers</li>
+                            <li class="list-group-item"><i class="fa fa-square" style='color:#BEBADA;'></i> Mountain</li>
+                            <li class="list-group-item"><i class="fa fa-square" style='color:#FB8072;'></i> Forest</li>
+                            <li class="list-group-item"><i class="fa fa-square" style='color:#80B1D3;'></i> Lake</li>
+                          </ul>
+                        </div>
+                        <!-- legend -->
+
+                        <!-- categories -->
+
                       </div>
 
-                      </div>
-                    </div><!-- /.modal-content -->
-                  </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
 
-
-                    <div class="modal fade" id="<?php echo $data['category_table']?>_mod_dat" data-modal-index="2">
-                  <div class="modal-dialog">
-                    <div class="modal-content no2">
-                      <div class="modal-header">
-                        <h4 class="modal-title"><?php echo $data['category_name']?></h4>
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #fff">&times;</span><span class="sr-only">Close</span></button>
-
-                      </div>
-                      <div class="modal-body mdl2" >
-                        <h4 id='filter_tbl_name'></h4>
-                        <table class="table table-striped" id="table_filter">
-                  <thead>
-                    <tr>
-
-                    </tr>
-                  </thead>
-                  <tbody>
-
-
-                  </tbody>
-                </table>
-                <div id="applied_filter_content">
+                    </div>
                 </div>
-                <!--         <button class="btn btn-default" data-toggle="modal" data-target="#test-modal-3">Launch Modal 3</button>
-                 -->      </div>
-
-                      <div class="modal-footer modal2" >
-                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
 
 
-                        <a href="abc" id="filter_download"> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download" style="background-color: #002b59"></i> Download</button></a>
-                       <!-- <a href=""> <button type="button" class="btn btn-info btn-sm"> <i class="fa fa-eye"></i> Map</button></a> -->
-                      </div>
-                    </div><!-- /.modal-content -->
-                  </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
 
-                    <div class="modal fade" id="test-modal-3">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title">Modal title 3</h4>
-                      </div>
-                      <div class="modal-body">
-
-
-                        <!-- <button class="btn btn-default" data-toggle="modal" data-target="#test-modal-4">Launch Modal 4</button> -->
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Download</button>
-                        <button type="button" class="btn btn-primary btn-sm">Map</button>
-                      </div>
-                    </div><!-- /.modal-content -->
-                  </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
-
-
-                    <div class="modal fade" id="test-modal-4">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title">Modal title 4</h4>
-                      </div>
-                      <div class="modal-body">
-                        <p>One fine body&hellip;</p>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                      </div>
-                    </div><!-- /.modal-content -->
-                  </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
-                </div>
-                <!-- new moadal -->
-
-              <?php }}?>
-
-              </ul>
-
-
-            </div>
-
-
-            <!-- filter -->
-            <div role="tabpanel" class="tab-pane" id="filter">
-              <div class="form-group">
-                <label for="usr"></label>
-                <input type="text" class="form-control" id="usr"  placeholder="Enter text eg. Text">
-              </div>
-              <div class="form-group">
-                <label for="sel1">Select list:</label>
-                <select class="form-control " id="sel1">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="sel1">Select list:</label>
-                <select class="form-control" id="sel1" >
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                </select>
-              </div>
-
-              <button type="button" class="btn btn-default btn-sm"> Filter</button>
-
-            </div>
-
-            <!-- legend -->
-            <div role="tabpanel" class="tab-pane" id="legend">
-              <ul class="list-group cate">
-                <li class="list-group-item"><i class="fa fa-square" style='color:#8DD3C7;'></i> Roads</li>
-                <li class="list-group-item"><i class="fa fa-square" style='color:#FFFFB3;'></i> Rivers</li>
-                <li class="list-group-item"><i class="fa fa-square" style='color:#BEBADA;'></i> Mountain</li>
-                <li class="list-group-item"><i class="fa fa-square" style='color:#FB8072;'></i> Forest</li>
-                <li class="list-group-item"><i class="fa fa-square" style='color:#80B1D3;'></i> Lake</li>
-              </ul>
-            </div>
-            <!-- legend -->
-
-            <!-- categories -->
-
-          </div>
         </div>
       </div>
     </div>
@@ -1318,8 +2069,8 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
 
   <div id="over_map1" class="col-sm-12 col-md-4 no-padding">
 
-    <div class="panel panel-info col-sm-12 no-padding" id="right-panel-toggle">
-      <div class="panel-body">
+    <div class="panel panel-info col-sm-12 no-padding" id="right-panel-toggle" style="overflow-y:auto;">
+      <div id="summary_container" class="panel-body">
 
         <!-- Tab panes -->
         <div class="tab-content right">
@@ -1373,7 +2124,11 @@ label > input:checked + .ex{ /* (RADIO CHECKED) IMAGE STYLES */
             <!-- categories -->
           </div>
         </div>
+        <div id="popup_container" class="panel-body" style="display:hidden" >
+
+        </div>
       </div>
+
     </div>
   </div>
 
@@ -1588,6 +2343,16 @@ $(document).ready(function(){
     //console.log(marker_type);
     //style end
 
+
+//mapon click
+// map.on('click',function(){
+// $("#summary_container").css('display','block');
+// $("#popup_container").css('display','none');
+//
+// });
+
+//map end
+
     //console.log(cat_tbl_array_name[i]);
     window[''+cat_tbl_array_name[i]]= new L.GeoJSON(cat_layer_data[i],
       {
@@ -1647,7 +2412,7 @@ if(popup_content_parsed[i]==0){
 
           var popUpContent = "";
 
-          popUpContent += '<table style="width:100%;" id="District-popup" class="popuptable">';
+          popUpContent += '<table style="width:100%;" id="District-popup" class="table table-hover">';
 
           //for (data in popup_content_parsed) {
           pop = JSON.parse(popup_content_parsed[i]);
@@ -1656,7 +2421,7 @@ if(popup_content_parsed[i]==0){
             //console.log(data);
             pop1 = pop.a[data].col;
             name = pop.a[data].name;
-            popUpContent += "<tr>" + "<td>"+name+"</td>" + "<td>" +  feature.properties[pop1]  + "</td></tr>";
+            popUpContent += "<tr>" + "<th><strong>"+name+"</strong></th>" + "<td>" +  feature.properties[pop1]  + "</td></tr>";
           }
 
 
@@ -1673,30 +2438,56 @@ if(popup_content_parsed[i]==0){
 
 
 
-          layer.bindPopup(L.popup({
+          // var popup_div = L.popup({
+          //
+          //   closeOnClick: true,
+          //
+          //   closeButton: true,
+          //
+          //   keepInView: true,
+          //
+          //   autoPan: true,
+          //
+          //   maxHeight: 200,
+          //
+          //   minWidth: 250
+          //
+          // }).setContent(popUpContent);
 
-            closeOnClick: true,
+        //feature.popup_div = popUpContent;
+          layer.on('click',function(){
+            console.log(popUpContent);
+            $("#summary_container").css('display','none');
+            $("#popup_container").css('display','block');
+            $("#popup_container").html(popUpContent);
 
-            closeButton: true,
-
-            keepInView: true,
-
-            autoPan: true,
-
-            maxHeight: 200,
-
-            minWidth: 250
-
-          }).setContent(popUpContent));
+          });
 
 
 }
 
-        },
+},
 
 
 
       });
+ //console.log(feature.popup_div);
+
+      // var popup_div = L.popup({
+      //
+      //   closeOnClick: true,
+      //
+      //   closeButton: true,
+      //
+      //   keepInView: true,
+      //
+      //   autoPan: true,
+      //
+      //   maxHeight: 200,
+      //
+      //   minWidth: 250
+      //
+      // }).setContent(popUpContent);
 
       //add layer if the admin has set the layer to load by default on page load
       if($('#'+cat_tbl_array_name[i]+'_toggle').hasClass('active')){
@@ -1734,45 +2525,45 @@ if(popup_content_parsed[i]==0){
 
 
 
-    //    L.Mask = L.Polygon.extend({
-    //     options: {
-    //      stroke: false,
-    //      color: '#333',
-    //      fillOpacity: 0.5,
-    //      clickable: true,
-    //
-    //      outerBounds: new L.LatLngBounds([-90, -360], [90, 360])
-    //    },
-    //
-    //    initialize: function (latLngs, options) {
-    //
-    //     var outerBoundsLatLngs = [
-    //     this.options.outerBounds.getSouthWest(),
-    //     this.options.outerBounds.getNorthWest(),
-    //     this.options.outerBounds.getNorthEast(),
-    //     this.options.outerBounds.getSouthEast()
-    //     ];
-    //     L.Polygon.prototype.initialize.call(this, [outerBoundsLatLngs, latLngs], options);
-    //   },
-    //
-    // });
-    //    L.mask = function (latLngs, options) {
-    //     return new L.Mask(latLngs, options);
-    //   };
-    //
-    //
-    //   var coordinates = changu1[0].features[0].geometry.coordinates[0];
-    //
-    //   var latLngs = [];
-    //   for (i=0; i<coordinates.length; i++) {
-    //     for(j=0; j<coordinates[i].length;j++){
-    // 					// console.log(coordinates[i][j]);
-    // 					latLngs.push(new L.LatLng(coordinates[i][j][1], coordinates[i][j][0]));
-    // 				}
-    // 			}
-    //
-    //
-    // 			L.mask(latLngs).addTo(map);
+       L.Mask = L.Polygon.extend({
+        options: {
+         stroke: false,
+         color: '#333',
+         fillOpacity: 0.5,
+         clickable: true,
+
+         outerBounds: new L.LatLngBounds([-90, -360], [90, 360])
+       },
+
+       initialize: function (latLngs, options) {
+
+        var outerBoundsLatLngs = [
+        this.options.outerBounds.getSouthWest(),
+        this.options.outerBounds.getNorthWest(),
+        this.options.outerBounds.getNorthEast(),
+        this.options.outerBounds.getSouthEast()
+        ];
+        L.Polygon.prototype.initialize.call(this, [outerBoundsLatLngs, latLngs], options);
+      },
+
+    });
+       L.mask = function (latLngs, options) {
+        return new L.Mask(latLngs, options);
+      };
+
+
+      var coordinates = changu1[0].features[0].geometry.coordinates[0];
+
+      var latLngs = [];
+      for (i=0; i<coordinates.length; i++) {
+        for(j=0; j<coordinates[i].length;j++){
+    					// console.log(coordinates[i][j]);
+    					latLngs.push(new L.LatLng(coordinates[i][j][1], coordinates[i][j][0]));
+    				}
+    			}
+
+
+    			L.mask(latLngs).addTo(map);
 
 
 
@@ -1881,6 +2672,8 @@ if(popup_content_parsed[i]==0){
 
       $(".leaflet-right").css("right","260px");
       $('#right-panel-toggle').css('display','block');
+      $("#summary_container").css('display','block');
+      $("#popup_container").css('display','none');
 
       $('.drop option:selected').removeClass('active');
       $('.drop').prepend("<option id="+layertoggled+" selected>"+layertoggled_cat_name+"</option>");
@@ -1997,7 +2790,7 @@ if(popup_content_parsed[i]==0){
 
               var popUpContent = "";
 
-              popUpContent += '<table style="width:100%;" id="District-popup" class="popuptable">';
+              popUpContent += '<table style="width:100%;" id="District-popup" class="popuptable table table-hover table-striped">';
 
               //for (data in popup_content_parsed) {
               pop = JSON.parse(popup_content_parsed);
@@ -2007,7 +2800,7 @@ if(popup_content_parsed[i]==0){
                 //console.log(data);
                 pop1 = pop.a[data].col;
                 name = pop.a[data].name;
-                popUpContent += "<tr>" + "<td>"+name+"</td>" + "<td>" +  feature.properties[pop1]  + "</td></tr>";
+                popUpContent += "<tr>" + "<th><strong>"+name+"</strong></th>" + "<td>" +  feature.properties[pop1]  + "</td></tr>";
               }
 
               popUpContent += '</table>';
@@ -2072,6 +2865,8 @@ $('.filterthis').on('click',function(){
     $(".selected_filter_ex").val('');
     $(".selected_filter_query").val('');
   var tbl=($(this).attr("id"));
+  var name_cat=($(this).attr("name"));
+  console.log(name_cat);
 
 
 
@@ -2096,7 +2891,7 @@ $('.filterthis').on('click',function(){
       for(var i=0;i<filter_column.length;i++){
 
       //  console.log(filter_column[i].nepali_lang);
-          $(".filter_column_name").append('<div class="col-md-12"><label><input class="filter_value" type="radio" name="'+tbl+'" id="'+filter_column[i].nepali_lang+'" value="'+filter_column[i].eng_lang+'"/><p class="exp text-center">'+filter_column[i].nepali_lang+' </p></label></div>');
+          $(".filter_column_name").append('<div class="col-md-12"><label><input class="filter_value" type="radio" name="'+tbl+'" id="'+filter_column[i].nepali_lang+'" value="'+filter_column[i].eng_lang+'"/><p class="exp text-center filterthis_side_p" id="'+name_cat+'">'+filter_column[i].nepali_lang+' </p></label></div>');
 
     }
 
@@ -2221,15 +3016,17 @@ $('.applied_filter').on('click',function(){
     },
     success: function (result) {
 
+ //Sconsole.log(result);
 
      var data=JSON.parse(result);
+     console.log(data);
   var modal_table=JSON.parse(data.table_data);
   map_json=JSON.parse(data.geojson);
   sub_style=JSON.parse(data.style);
   marker_type=data.marker_type;
   popup_content_parsed=data.popup_content;
   table_n=data.table_name;
-  // console.log(modal_table);
+
   // console.log(sub_style);
   // console.log(marker_type);
   // console.log(popup_content_parsed);
@@ -2244,6 +3041,7 @@ var tbl_body=""
  tbl_body += '<tr>';
 
   $.each(modal_table[i], function(k, v) {
+console.log(k);
 
 if(k=='the geom'){
 
@@ -2331,21 +3129,13 @@ window[qry_tbl+count_filter] =new L.GeoJSON(map_json,{
 
 
 
-    layer.bindPopup(L.popup({
+    layer.on('click',function(){
+      console.log(popUpContent);
+      $("#summary_container").css('display','none');
+      $("#popup_container").css('display','block');
+      $("#popup_container").html(popUpContent);
 
-      closeOnClick: true,
-
-      closeButton: true,
-
-      keepInView: true,
-
-      autoPan: true,
-
-      maxHeight: 200,
-
-      minWidth: 250
-
-    }).setContent(popUpContent));
+    });
   }
 }).addTo(map);
 count_filter = count_filter+1;

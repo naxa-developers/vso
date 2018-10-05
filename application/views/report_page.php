@@ -6,6 +6,7 @@
 <!--<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.2/randomColor.js"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
 
 <!-- date -->
 
@@ -135,13 +136,7 @@ font-size: 14px;
       background: #f5f5f5;
     }
 
-    .news-panel{
-      font-weight: 400;
-      box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
-      border-radius: 0;
-      padding: 8px;
-      margin-bottom: 10px;
-    }
+
 
     .blog-panel .thumbnail img{
       width: 100%;
@@ -211,7 +206,7 @@ font-size: 14px;
     }
 
     .dropdown-category_dropdown{
-      background-color: #eee;
+      background-color: #fff;
       position: relative;
     }
 
@@ -356,25 +351,56 @@ font-size: 14px;
       color: #fff;
       font-size: 13px;
     }
+
 button.btn.btn-light.btn-sm {
    color: #fff;
     background-color: #5cb85c;
     border-color: #4cae4c;
 }
+.bar {
+    fill: #2086d9;
 }
+
+.holders{
+padding: .5rem;
+background: rgba(0,0,0,.1);
+margin-bottom: 1rem;
+text-align: center;
+font-size: 13px;
+}
+
+.holders >h6{
+padding: .2rem 0;
+}
+
+.holders >div{
+background: white;
+padding: .5rem 0;
+}
+
+.news-panel{
+      font-weight: 400;
+      box-shadow: none;
+      border-radius: 0;
+      padding: .7rem;
+      margin-bottom: 10px;
+  border: 2px solid rgba(0,0,0,.06);
+background: rgba(0,0,0,.03);
+    }
+
   </style>
 
   <div id="conten-map">
     <nav class="navbar navbar-expand-sm">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="#"><i class="fa fa-map" aria-hidden="true"></i><?php echo $site_info['map'] ?></a>
+          <a class="nav-link" href="#"><i class="fa fa-map" aria-hidden="true"></i> <?php echo $site_info['map'] ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="map_reports"><i class="fa fa-database" aria-hidden="true"></i><?php echo $site_info['data'] ?></a>
+          <a class="nav-link" href="map_reports"><i class="fa fa-database" aria-hidden="true"></i> <?php echo $site_info['data'] ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="map_reports_table"><i class="fa fa-pencil-square" aria-hidden="true"></i><?php echo $site_info['ghatana_bib'] ?></a>
+          <a class="nav-link" href="map_reports_table"><i class="fa fa-pencil-square" aria-hidden="true"></i> <?php echo $site_info['ghatana_bib'] ?></a>
         </li>
       </ul>
     </nav>
@@ -447,9 +473,9 @@ button.btn.btn-light.btn-sm {
                   <div class="row">
                     <div class="col-md-12">
                       <ul class="list-inline tiny">
-                        <li class="list-inline-item"><i class="fa fa-user" aria-hidden="true"></i> Category: <a href="#"><?php echo $data['incident_type'] ;?></a> </li>
+                        <li class="list-inline-item"><i class="fa fa-list" aria-hidden="true"></i> Category: <a href="#"><?php echo $data['incident_type'] ;?></a> </li>
                         <li class="list-inline-item"><i class="icon-calendar" aria-hidden="true"></i> Status: <a href="#"> <?php echo $data['status'] ;?></a></li>
-                        <li class="list-inline-item"><i class="fa fa-calendar" aria-hidden="true"></i> <?php echo $data['incident_time'] ;?></li>
+                        <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $data['incident_time'] ;?></li>
                       </ul>
                     </div>
                   </div>
@@ -457,6 +483,9 @@ button.btn.btn-light.btn-sm {
 
                   <?php } ?>
 <!-- //end -->
+<div class="text-center mt-3 mb-3">
+  <a href="#" title="" class="btn btn-primary btn-sm">View All <i class="la la-arrow-right"></i></a>
+</div>
               </div>
             </div>
             <!-- problems reposrting sections ends -->
@@ -475,81 +504,221 @@ button.btn.btn-light.btn-sm {
              <?php
              }
               ?>
-        <form action="" method="post">
+          <div id="filter-section" class="filter-wrap">
 
-          <div class="row" style="margin-left: 0; margin-right: 0;">
+            <form action="" method="post">
+
+              <div class="row" style="margin-left: 0; margin-right: 0;">
 
 
 
-          <!-- map contrl items -->
-          <div class="col-md-4 no-padding">
-            <div class="text-center dropdown-category_dropdown filter-check">
-              <div class="form-group" style="margin-bottom: 0;">
-                  <input name="from_date" class="form-control" type="date" id="datepicker" placeholder="From">
-                  <input name="to_date" class="form-control" type="date" id="datepicker1" placeholder="To">
+              <!-- map contrl items -->
+              <div class="col-md-4 no-padding">
+                <div class="text-center dropdown-category_dropdown filter-check">
+                  <div class="form-group" style="margin-bottom: 0;">
+                      <input name="from_date" class="form-control" type="date" id="datepicker" placeholder="From">
+                      <input name="to_date" class="form-control" type="date" id="datepicker1" placeholder="To">
+                  </div>
+                </div>
               </div>
+
+              <div class="col-md-2 no-padding">
+                <div class="text-center dropdown-category_dropdown filter-check">
+                  <select name="ward" class="custom-select multiselect-icon">
+                    <option value="0" selected>Select ward</option>
+                    <option value="1" >ward no 1</option>
+                    <option value="2" >ward no 2</option>
+                    <option value="3" >ward no 3</option>
+                    <option value="4" >ward no 4</option>
+                    <option value="5" >ward no 5</option>
+                    <option value="6" >ward no 6</option>
+                    <option value="7" >ward no 7</option>
+                    <option value="8" >ward no 8</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-2 no-padding">
+                <div class="text-center dropdown-category_dropdown filter-check">
+                  <select name="incident_type" class="custom-select multiselect-icon">
+                    <option value="0" selected>Select Category</option>
+                    <option value="Fire" >Fire</option>
+                    <option value="Earth" >Earth</option>
+                    <option value="Water" >Water</option>
+
+                  </select>
+                </div>
+              </div>
+
+
+              <div class="col-md-2 no-padding">
+                <div class="text-center dropdown-category_dropdown filter-check">
+                  <select name="status" class="custom-select multiselect-icon">
+                    <option value="0" selected>Status</option>
+                    <option value="ongoing" >Ongoing</option>
+                    <option value="pending" >Pending</option>
+                    <option value="completed" >Completed</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-2 no-padding">
+                <div class="text-center dropdown-category_dropdown filter-check">
+                  <button name="submit" class="btn btn-light btn-sm" type="submit"><?php echo $site_info['apply'] ?></button>
+                </div>
+              </div>
+
+
             </div>
+      </form>
           </div>
-
-          <div class="col-md-2 no-padding">
-            <div class="text-center dropdown-category_dropdown filter-check">
-              <select name="ward" class="custom-select multiselect-icon">
-                <option value="0" selected>Select ward</option>
-                <option value="1" >ward no 1</option>
-                <option value="2" >ward no 2</option>
-                <option value="3" >ward no 3</option>
-                <option value="4" >ward no 4</option>
-                <option value="5" >ward no 5</option>
-                <option value="6" >ward no 6</option>
-                <option value="7" >ward no 7</option>
-                <option value="8" >ward no 8</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="col-md-2 no-padding">
-            <div class="text-center dropdown-category_dropdown filter-check">
-              <select name="incident_type" class="custom-select multiselect-icon">
-                <option value="0" selected>Select Category</option>
-                <option value="Fire" >Fire</option>
-                <option value="Earth" >Earth</option>
-                <option value="Water" >Water</option>
-
-              </select>
-            </div>
-          </div>
-
-
-          <div class="col-md-2 no-padding">
-            <div class="text-center dropdown-category_dropdown filter-check">
-              <select name="status" class="custom-select multiselect-icon">
-                <option value="0" selected>Status</option>
-                <option value="ongoing" >Ongoing</option>
-                <option value="pending" >Pending</option>
-                <option value="completed" >Completed</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="col-md-2 no-padding">
-            <div class="text-center dropdown-category_dropdown filter-check">
-              <button name="submit" class="btn btn-light btn-sm" type="submit"><?php echo $site_info['apply'] ?></button>
-            </div>
-          </div>
-
-
-        </div>
-  </form>
 
           <!-- main map -->
-          <div id="map" style="margin-top: 0;"></div>
+          <div class="position-relative">
+            <div class="row no-gutters">
+              <div class="col-md-9">
+                <div id="filter-section-toggle" class="filter-toggle">
+                <i class="la la-filter"></i> Filter
+              </div>
+                <div id="map" style="margin-top: 0;"></div>
+              </div>
+              <div class="col-md-3">
+                <!-- <div class="info-panel bg-white"> -->
+                  <div class="bg-white">
+            <!-- <div class="panel-toggle"><i class="la la-close"></i></div> -->
+            <div class="panel-content padding">
+              <div id="bar_graph" style="display:block;" >
+                       <div class="holders">
+                           <h6><strong>Wards</strong></h6>
+                         <div id="graphic"></div>
+                       </div>
+                       <div class="holders">
+                           <h6><strong>Incident Type</strong></h6>
+                           <div id="graphic1"></div>
+                           </div>
+                       <div class="holders">
+                           <h6><strong>Report status</strong></h6>
+                           <div id="graphic2"></div>
+                       </div>
+                       </div>
+              <!-- <ul class="chart-panel-list">
+                <li class="chart-wrap">
+                  <h6>Ward</h6>
+                  <ul class="h-chart-list">
+                    <li>
+                      <label>Ward 1</label>
+                      <div class="progress bg-white" style="height: 13px;">
+                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </li>
+                    <li>
+                      <label>Ward 2</label>
+                      <div class="progress bg-white" style="height: 13px;">
+                        <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </li>
+                    <li>
+                      <label>Ward 1</label>
+                      <div class="progress bg-white" style="height: 13px;">
+                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </li>
+                    <li>
+                      <label>Ward 2</label>
+                      <div class="progress bg-white" style="height: 13px;">
+                        <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </li>
+                    <li>
+                      <label>Ward 1</label>
+                      <div class="progress bg-white" style="height: 13px;">
+                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </li>
+                    <li>
+                      <label>Ward 2</label>
+                      <div class="progress bg-white" style="height: 13px;">
+                        <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+                <li class="chart-wrap">
+                  <h6>Type</h6>
+                  <ul class="h-chart-list">
+                    <li>
+                      <label>Fire</label>
+                      <div class="progress bg-white" style="height: 13px;">
+                        <div class="progress-bar" role="progressbar" style="width: 55%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </li>
+                    <li>
+                      <label>Flood</label>
+                      <div class="progress bg-white" style="height: 13px;">
+                        <div class="progress-bar" role="progressbar" style="width: 35%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </li>
+                    <li>
+                      <label>Fire</label>
+                      <div class="progress bg-white" style="height: 13px;">
+                        <div class="progress-bar" role="progressbar" style="width: 55%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </li>
+                    <li>
+                      <label>Flood</label>
+                      <div class="progress bg-white" style="height: 13px;">
+                        <div class="progress-bar" role="progressbar" style="width: 35%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+                <li class="chart-wrap">
+                  <h6>Status</h6>
+                  <ul class="h-chart-list">
+                    <li>
+                      <label>Pending</label>
+                      <div class="progress bg-white" style="height: 13px;">
+                        <div class="progress-bar" role="progressbar" style="width: 55%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </li>
+                    <li>
+                      <label>Ongoing</label>
+                      <div class="progress bg-white" style="height: 13px;">
+                        <div class="progress-bar" role="progressbar" style="width: 35%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </li>
+                    <li>
+                      <label>Completed</label>
+                      <div class="progress bg-white" style="height: 13px;">
+                        <div class="progress-bar" role="progressbar" style="width: 55%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+              </ul> -->
+            </div>
+          </div>
+              </div>
+            </div>
 
+
+          </div>
         </div>
       </div>
 
     </div>
   </div>
-
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#filter-section-toggle').click(function(){
+      $('#filter-section').toggleClass('active');
+      $(this).find('i').toggleClass('la-close');
+    });
+    $('.panel-toggle').click(function(){
+      $(this).parent('.info-panel').addClass('d-none');
+    });
+  });
+</script>
   <script>
 
     var report = '<?php echo $report_map_layer ;?>';
@@ -737,8 +906,130 @@ $('.report_div').click(function(){
 
 
 
+//start chart
+chart_dataa='<?php echo $bar_ward ?>'
+ chart_data=(JSON.parse(chart_dataa));
 
+chart_dataa1='<?php echo $bar_cat ?>'
+ chart_data1=(JSON.parse(chart_dataa1));
 
+chart_dataa2='<?php echo $bar_stat ?>'
+ chart_data2=(JSON.parse(chart_dataa2));
+console.log(chart_data2);
+// chart_data=[
+//          {"name": "1", "value": 201 },
+//          {"name": "2", "value": 20 },
+//          {"name": "3", "value": 80 },
+//          {"name": "4", "value": 102 },
+//          {"name": "5", "value": 300 },
+//          {"name": "6", "value": 233 },
+//          {"name": "7", "value": 100 }
+//          ];
+function CreateChart(chart_data, bar_id){
+        data = chart_data.sort(function (a, b) {
+              // console.log(d3.ascending(a.value, b.value));
+              return d3.descending(a.name, b.name);
+          })
+          var hig=75;
+          if(bar_id=="graphic"){
+            hig=160;
+          }
+          //set up svg using margin conventions - we'll need plenty of room on the left for labels
+          var margin = {
+              top: 5,
+              right: 10,
+              bottom: 5,
+              left: 70
+          };
+
+          var width = 120 - margin.left - margin.right,
+              height = hig - margin.top - margin.bottom;
+
+          var svg = d3.select("#"+bar_id).append("svg")
+              .attr("width", width + margin.left + margin.right + 110)
+              .attr("height", height + margin.top + margin.bottom)
+              .append("g")
+              .style("margin-top", "30px")
+              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+          var x = d3.scale.linear()
+              .range([0, width])
+              .domain([0, d3.max(chart_data, function (d) {
+                  return d.value;
+              })]);
+
+          var y = d3.scale.ordinal()
+              .rangeRoundBands([height, 0], .3)
+              .domain(chart_data.map(function (d) {
+                if(bar_id=="graphic"){
+                  return 'Ward'+' '+d.name;
+                }else{
+                    return d.name;
+                }
+
+              }));
+
+          //make y axis to show bar names
+          var yAxis = d3.svg.axis()
+              .scale(y)
+              //no tick marks
+              .tickSize(0)
+              .orient("left");
+
+          var gy = svg.append("g")
+              .attr("class", "y axis")
+              .call(yAxis)
+
+          var bars = svg.selectAll(".bar")
+              .data(chart_data)
+              .enter()
+              .append("g")
+
+          //append rects
+          bars.append("rect")
+              .attr("class", "bar")
+              .attr("y", function (d) {
+                if(bar_id=="graphic"){
+                  return y('Ward'+' '+d.name);
+                }else{
+                    return y(d.name);
+                }
+
+              })
+              .attr("height", y.rangeBand())
+              .attr("x", 0)
+              .attr("width", function (d) {
+                  return x(d.value);
+              });
+
+          //add a value label to the right of each bar
+          bars.append("text")
+              .attr("class", "label")
+              //y position of the label is halfway down the bar
+              .attr("y", function (d) {
+                if(bar_id=="graphic"){
+                  return y('Ward'+' '+d.name) + y.rangeBand() / 2 + 4;
+                }else{
+                    return y(d.name) + y.rangeBand() / 2 + 4;
+                }
+
+              })
+              //x position is 3 pixels to the right of the bar
+              .attr("x", function (d) {
+                  return x(d.value) + 3;
+              })
+              .text(function (d) {
+                  return d.value;
+              });
+
+  }
+  bar_id="graphic";
+  bar_idd="graphic1";
+  bar_iddd="graphic2";
+CreateChart(chart_data, bar_id);
+CreateChart(chart_data1, bar_idd);
+CreateChart(chart_data2, bar_iddd);
+//chart end
 
 
 

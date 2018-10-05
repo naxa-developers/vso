@@ -125,16 +125,16 @@ p.about {
 
 				<!--advance Search starts-->
 				<div class="row">
-					<div class="col-md-10">
-						<div class="row no-gutters">
-							<div class="col">
-								<input value="<?php echo $search ?>" class="form-control border-secondary border-right-0 rounded-0" type="search" id="myInput" onkeyup="myFunction()"  >
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-8">
+								<input value="<?php echo $search ?>" class="form-control" placeholder="<?php echo $site_info['search'] ?>" type="search" id="myInput" onkeyup="myFunction()"  >
 							</div>
-							<div class="col-auto">
-								<button class="btn btn-secondary border-left-0 rounded-0 rounded-right" type="button">
+							<!-- <div class="col-md-4">
+								<button class="btn btn-primary btn-block" type="button">
 									<i class="fa fa-search"></i>
 								</button>
-							</div>
+							</div> -->
 						</div>
 
 						<!-- <div class="found text-center" style="font-size: 12px;"><b>aaaaaa</b></div> -->

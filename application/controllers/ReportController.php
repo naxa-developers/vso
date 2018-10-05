@@ -207,8 +207,21 @@ class ReportController extends CI_Controller
     $this->Report_model->update_views($count['id'],$data);
 
     //views add end
+ //$count_report_ward=$this->Report_model->count_incident();
+//  foreach($count_report_ward as $count_incidnt){
+//
+// $count_cat=$this->Report_model->count_cat($count_incidnt['ward']);
+// var_dump($count_cat);
+//
+//  }
+      $count_ward=$this->Report_model->count_ward();
+      $count_category=$this->Report_model->count_cat();
+      $count_stat=$this->Report_model->count_stat();
+      $this->body['bar_ward']=json_encode($count_ward);
+      $this->body['bar_cat']=json_encode($count_category);
+      $this->body['bar_stat']=json_encode($count_stat);
+//var_dump($this->body['bar_cat']);
 
-      //var_dump($this->body['report_map_layer']);
       //language
       if($this->session->userdata('Language')==NULL){
 

@@ -105,6 +105,14 @@ public function get_contact_csv($cat,$tbl)
 
   }
 
+  public function count_dat_tbl($tbl){
+
+    $this->db->select('COUNT(*) as '.$tbl);
+    $this->db->distinct();
+    $result_set=$this->db->get($tbl);
+    return $result_set->row_array();
+  }
+
   public function get_category_nep(){
 
     $this->db->select('*');

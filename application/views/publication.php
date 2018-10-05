@@ -27,17 +27,7 @@
   text-align: justify;
 }
 
-/* search */
-#myInput {
-  background-image: url('/css/searchicon.png'); /* Add a search icon to input */
-  background-position: 10px 12px; /* Position the search icon */
-  background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 100%; /* Full-width */
-  font-size: 16px; /* Increase font-size */
-  padding: 12px 20px 12px 40px; /* Add some padding */
-  border: 1px solid #ddd; /* Add a grey border */
-  margin-bottom: 12px; /* Add some space below the input */
-}
+
 
 #myUL {
   /* Remove default list styling */
@@ -60,6 +50,12 @@
 #myUL li a:hover:not(.header) {
   background-color: #eee; /* Add a hover effect to all links, except for headers */
 }
+.publication-item .thumb{
+  height: 120px;
+}
+.publication-item .thumb img{
+
+}
 
 </style>
 
@@ -67,51 +63,57 @@
 
 <div class="container" >
 	<!-- search bar -->
-	<div class="publish-srch">
-    <div class="row">
-
-
-
-    <div class="col-md-6 col-md-offset-3">
-          <div class="input-group">
-            <input class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here...">
-
-          </div>
-
-
-        </div>
-
-        <div class="col-md-4">
-           <select class="custom-select multiselect-icon" id="pub_cat">
-
-                   <option value=0>ALL</option>
+  <div class="mt-2 pt-4 pb-4">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="pub_cat"><strong>प्रकाशन प्रकार</strong></label>
+              </div>
+              <div class="col-md-6">
+                <label for="myInput"><strong>खोजशब्द</strong></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                <select class="form-control" id="pub_cat">
+                    <option value=0>ALL</option>
                    <option value="muni_pub">Municipal Publications</option>
                    <option value="law_act">Laws and Acts</option>
                    <option value="plan_politics">Plans and Policies</option>
                    <option value="others">Others</option>
-           </select>
-         </div>
+                </select>
+              </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                <input type="text" class="form-control" id="myInput" onkeyup="myFunction()">
+              </div>
+              </div>
+            </div>
+          </div>
 
 
 
-</div>
+
+
+
 
 <!-- data Column -->
-<div class="row" id="filter_pub">
+<div class="row justify-content-center mb-4 pb-3" id="filter_pub">
 
 
     <?php foreach($data as $d ){ ?>
-    <div class="col-md-6 myUL" >
-     <div class="col-md-12 publish">
-      <div class="row">
-       <div class="col-md-4"><img src="<?php echo $d['photo']?>" id="publish"> </div>
-       <div class="col-md-8"><h5 id="<?php echo $d['id'] ?>"><?php echo $d['title']?></h5>
-        <p class="publish-des"><?php echo $d['summary']?></p>
-      <a href="<?php echo base_url()?>download?file=<?php echo $d['file']?> && title=<?php echo $d['title']?> "><button type="button" class="btn btn-sm pull-right btn-primary"><i class="fa fa-download"></i> Download</button></a>
-      </div>
-    </div>
-  </div>
-  </div>
+
+
+  <div class="col-md-4 col-xl-3">
+              <div class="publication-item padding bg-white" data-mh="publication">
+                <div class="thumb"><img src="<?php echo $d['photo']?>" ></div>
+                <h6 class="name" id="<?php echo $d['id'] ?>"><?php echo $d['title']?></h6>
+                <p><?php echo $d['summary']?></p>
+                <a href="<?php echo base_url()?>download?file=<?php echo $d['file']?> && title="<?php echo $d['title']?>" class="btn btn-primary btn-block">डाउनलोड <i class="la la-download"></i></a>
+              </div>
+            </div>
+
   <?php } ?>
 
 
@@ -120,8 +122,6 @@
 
 <!-- data Column -->
 
-
-</div>
 </div>
 
 
@@ -184,17 +184,18 @@ $.ajax({
       var div_pub = "";
     console.log(data.length);
 
-  div_pub +='<div class="col-md-6 myUL" >';
-    div_pub +='<div class="col-md-12 publish">';
-    div_pub +='<div class="row">';
-     div_pub +='<div class="col-md-4"><img src="'+data[i].photo+'" id="publish"> </div>';
-    div_pub +='<div class="col-md-8"><h5 id="'+data[i].id+'">'+data[i].title+'</h5>';
-     div_pub +='<p class="publish-des">'+data[i].summary+'</p>';
-  div_pub +='<a href="<?php echo base_url()?>download?file='+data[i].file+' && title='+data[i].title+'"><button type="button" class="btn btn-sm pull-right btn-primary"><i class="fa fa-download"></i> Download</button></a>';
-    div_pub +='</div>';
-  div_pub +='</div>';
-div_pub +='</div>';
-div_pub +='</div>';
+
+
+div_pub +='<div class="col-md-4 col-xl-3">';
+              div_pub +='<div class="publication-item" data-mh="publication">';
+                div_pub +='<div class="thumb"><img src="'+data[i].photo+'"></div>';
+                div_pub +='<h6 class="name" id="'+data[i].id+'">'+data[i].title+'</h6>';
+                div_pub +='<p>'+data[i].summary+'</p>';
+                div_pub +='<a href="<?php echo base_url()?>download?file=<?php echo $d['file']?> && title="'+data[i].title+'" class="btn btn-primary btn-block">डाउनलोड <i class="la la-download"></i></a>';
+              div_pub +='</div>';
+            div_pub +='</div>';
+
+
 
 $('#filter_pub').append(div_pub);
 console.log(div_pub);

@@ -199,6 +199,22 @@ class MainController extends CI_Controller
       $this->body['exposure_data']=$this->Main_model->get_cat_exposure($tbl,$language);
       $this->body['baseline_data']=$this->Main_model->get_cat_baseline($tbl,$language);
 
+      $cat_tbl_list=$this->Main_model->get_category();
+
+      $tbl_list=array();
+
+      foreach($cat_tbl_list as $list){
+          if(!$this->db->table_exists($list['category_table'])){}else{
+
+
+
+       array_push($tbl_list,$this->Main_model->count_dat_tbl($list['category_table']));
+}
+      }
+      $data_count_cat = call_user_func_array('array_merge', $tbl_list);
+ $this->body['data_count_cat']=$data_count_cat;
+
+
     }else{
        $language='nep';
      $this->body['site_info']=$this->Main_model->site_setting_nep();
@@ -208,6 +224,17 @@ class MainController extends CI_Controller
      $this->body['exposure_data']=$this->Main_model->get_cat_exposure($tbl,$language);
      $this->body['baseline_data']=$this->Main_model->get_cat_baseline($tbl,$language);
 
+     $cat_tbl_list=$this->Main_model->get_category_nep();
+
+     $tbl_list=array();
+
+     foreach($cat_tbl_list as $list){
+
+      array_push($tbl_list,$this->Main_model->count_dat_tbl($list['category_table']));
+
+     }
+     $data_count_cat = call_user_func_array('array_merge', $tbl_list);
+$this->body['data_count_cat']=$data_count_cat;
 
     }
     $this->body['urll']=$this->uri->segment(1);

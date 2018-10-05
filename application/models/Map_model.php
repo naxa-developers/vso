@@ -28,7 +28,9 @@ class Map_model extends CI_Model {
 
   public function get_map_filter_data($tbl,$query,$d){
     foreach($d as $v){
-    $this->db->select($v['eng_lang'].' AS '.pg_escape_string(preg_replace('/[^A-Za-z0-9\-]/', ' ', $v['nepali_lang'])));
+      //$this->db->select($v['eng_lang'].' AS '.pg_escape_string(preg_replace('/[^A-Za-z0-9\-]/', ' ', $v['nepali_lang'])));
+
+      $this->db->select($v['eng_lang'].' AS '. $v['nepali_lang']);
     }
    $this->db->where($query);
    $res=$this->db->get($tbl);
@@ -36,6 +38,21 @@ class Map_model extends CI_Model {
 
 
   }
+
+  public function get_map_filter_data_en($tbl,$query,$d){
+    foreach($d as $v){
+     $this->db->select($v['eng_lang'].' AS '.pg_escape_string(preg_replace('/[^A-Za-z0-9\-]/', ' ', $v['nepali_lang'])));
+
+      //$this->db->select($v['eng_lang'].' AS '. $v['nepali_lang']);
+    }
+   $this->db->where($query);
+   $res=$this->db->get($tbl);
+   return $res->result_array();
+
+
+  }
+
+
   public function get_map_filter_data_csv($tbl,$query,$d){
     foreach($d as $v){
     $this->db->select($v['eng_lang'].' AS '.pg_escape_string(preg_replace('/[^A-Za-z0-9\-]/', ' ', $v['nepali_lang'])));
@@ -102,20 +119,42 @@ class Map_model extends CI_Model {
     return $query->result_array();
   }
 
-  public function get_layer_en($tbl){
+  public function get_layer_en($tbl,$cat){
+    $this->db->select('*');
+    $this->db->where('language','en');
+      $this->db->where('category_type',$cat);
+    $this->db->order_by('id','ASC');
+    $query=$this->db->get($tbl);
+    return $query->result_array();
+  }
+
+  public function get_layer_all_en($tbl){
     $this->db->select('*');
     $this->db->where('language','en');
     $this->db->order_by('id','ASC');
     $query=$this->db->get($tbl);
     return $query->result_array();
   }
-  public function get_layer_nep($tbl){
+
+  public function get_layer_nep($tbl,$cat){
     $this->db->select('*');
     $this->db->where('language','nep');
+    $this->db->where('category_type',$cat);
     $this->db->order_by('id','ASC');
     $query=$this->db->get($tbl);
     return $query->result_array();
   }
+
+  public function get_layer_all_nep($tbl){
+    $this->db->select('*');
+    $this->db->where('language','nep');
+
+    $this->db->order_by('id','ASC');
+    $query=$this->db->get($tbl);
+    return $query->result_array();
+  }
+
+
 
   public function get_popup($tbl){
     $this->db->select('*');

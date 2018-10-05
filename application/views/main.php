@@ -1,21 +1,69 @@
+    <script>
+       $(document).ready(function(){
+          bannerHeight();
+              window.onresize = function(event) {
+                   bannerHeight();
+               }
 
-<div class="banner-item">
+                function bannerHeight() {
+                    vph = $(window).height();
+                    headerHeight = $("#website-header").height();
+                    vph = vph - headerHeight;
+                    $("#banner").height(vph);
+                    vph = (vph - $(".banner-item").height())/2;
+                    $(".banner-item").css('padding-top', vph);
+                    $(".banner-item").css('padding-bottom', vph);
+                }
+       });
+    </script>
+<div id="banner">
+  <div class="banner-item">
           <img src="<?php echo $site_info['cover_photo'] ?>" class="banner-img">
           <div class="container clearfix">
-            <div class="banner-caption pull-left">
+            <div class="banner-caption text-center mb-4">
               <h2><strong><?php echo $site_info['cover_big'] ?></strong></h2>
               <p>
-               <?php echo $site_info['cover_big'] ?>
+                <?php echo $site_info['cover_small'] ?>
               </p>
-              <button class="btn btn-lg btn-outline-white margin-top-sm" id="started"> <?php echo $site_info['get_started'] ?></button>
             </div>
-            <!--<div class="banner-infograph d-none d-md-block pull-right">
-              <img src="assets/img/info5.png" alt="">
-            </div>-->
+            <div class="row justify-content-center">
+              <div class="col-md-2">
+                <div class="disaster-summary-item" data-mh="summary-item">
+                  <i class="la la-fire"></i>
+                  <h6>बाडी</h6>
+                  <h4>२०</h4>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="disaster-summary-item" data-mh="summary-item">
+                  <i class="la la-fire"></i>
+                  <h6>आगलागी</h6>
+                  <h4>२५</h4>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="disaster-summary-item" data-mh="summary-item">
+                  <i class="la la-fire"></i>
+                  <h6>पहिरो</h6>
+                  <h4>१०</h4>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="disaster-summary-item" data-mh="summary-item">
+                  <i class="la la-fire"></i>
+                  <h6>चट्याङ</h6>
+                  <h4>४०</h4>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <a href="<?php echo base_url() ?>report_page" class="disaster-summary-item" data-mh="summary-item">
+                  <p>थप +</p>
+                </a>
+              </div>
+            </div>
           </div>
-
         </div>
-
+      </div>
         <div class="bg-dark" id="nextDiv">
           <div class="container">
             <div class="row justify-content-md-center">
@@ -24,7 +72,7 @@
                   <h3 class="mb-3"><?php echo $site_info['search_dataset'] ?><strong></strong></h3>
                   <form method="POST" action="<?php echo base_url()?>datasets">
                     <div class="input-group input-group-lg">
-                  <input type="text" class="form-control" name="search" placeholder="Keywords" aria-label="Keywords" aria-describedby="basic-addon2">
+                  <input type="text" class="form-control" name="search" placeholder="<?php echo $site_info['search']?>" aria-label="Keywords" aria-describedby="basic-addon2">
                   <div class="input-group-append">
                     <button class="btn btn-secondary" name="submit_search" type="submit"><?php echo $site_info['search']?></button>
                   </div>
@@ -50,18 +98,30 @@
             <a class="nav-link" id="baseline-tab" data-toggle="tab" href="#baseline" role="tab" aria-controls="baseline" aria-selected="false"><?php echo $site_info['cat_3'] ?></a>
           </li>
         </ul>
-        <div class="tab-content" id="myTabContent">
+        <div class="tab-content scrolling-wrap" style="height: 280px;" id="myTabContent">
           <div class="tab-pane fade show active" id="hazard" role="tabpanel" aria-labelledby="hazard-tab">
-            <ul class="row">
-                <?php foreach($exposure_data as $data){ ?>
-              <li class="col-md-3 col-lg-2">
-                <a href="<?php echo base_url()?>category?tbl=<?php echo $data['category_table'] ?> && name=<?php echo $data['category_name'] ?> " class="dataset-item-wrap margin-top-large" data-mh="eq-item">
-                  <img src="<?php echo $data['category_photo'] ?>">
-                  <h6><?php echo  $data['category_name'] ?></h6>
-                </a>
-              </li>
-          <?php } ?>
-              </ul>
+            <div class="container-fluid">
+              <ul class="row">
+                  <?php foreach($exposure_data as $data){ ?>
+                <li class="col-md-3 col-lg-2">
+                  <a href="<?php echo base_url()?>category?tbl=<?php echo $data['category_table'] ?> && name=<?php echo $data['category_name'] ?> " class="dataset-item-wrap margin-top-large" data-mh="eq-item">
+                    <img src="<?php echo $data['category_photo'] ?>">
+                    <h6><?php echo  $data['category_name'] ?></h6>
+                      <span class="count"><?php
+
+                        if(!$this->db->table_exists($data['category_table'])){
+                           echo 0;
+
+                        }else{
+
+                      echo $data_count_cat[$data['category_table']];
+                        }
+                      ?></span>
+                  </a>
+                </li>
+            <?php } ?>
+          </ul>
+            </div>
           </div>
           <div class="tab-pane fade" id="exposure" role="tabpanel" aria-labelledby="exposure-tab">
 <ul class="row">
@@ -71,6 +131,16 @@
                 <img src="<?php echo $data['category_photo'] ?>">
 
                 <h6><?php echo  $data['category_name'] ?></h6>
+                  <span class="count"><?php
+
+                    if(!$this->db->table_exists($data['category_table'])){
+                       echo 0;
+
+                    }else{
+
+                  echo $data_count_cat[$data['category_table']];
+                    }
+                  ?></span>
               </a>
             </li>
           <?php }?>
@@ -83,6 +153,16 @@
               <a href="<?php echo base_url()?>category?tbl=<?php echo $data['category_table']?>&&name=<?php echo $data['category_name'] ?>" class="dataset-item-wrap margin-top-large" data-mh="eq-item">
                 <img src="<?php echo $data['category_photo'] ?>">
                 <h6><?php echo  $data['category_name'] ?></h6>
+                <span class="count"><?php
+
+                  if(!$this->db->table_exists($data['category_table'])){
+                     echo 0;
+
+                  }else{
+
+                echo $data_count_cat[$data['category_table']];
+                  }
+                ?></span>
               </a>
             </li>
 
@@ -114,12 +194,13 @@
       <div class="bg-white feature-section">
         <div class="container">
           <div class="featured-post clearfix">
-            <h5 class="post-ribbon">Featured Dataset Nepali</h5>
+            <h5 class="post-ribbon">विशेष डाटासेट</h5>
             <img src="<?php echo $feature['photo'] ?>" alt="">
-            <h3><?php echo $feature['nepali_title'] ?></h3>
+            <h3><a href="#" title=""><?php echo $feature['nepali_title'] ?></a></h3>
             <p>
             <?php echo $feature['nepali_summary'] ?>
             </p>
+            <!-- <a href="#" title="" class="btn btn-primary">पुरा पढ्नुहोस्</a> -->
           </div>
         </div>
       </div>
@@ -131,4 +212,22 @@ $("#started").click(function() {
         scrollTop: $("#nextDiv").offset().top
     }, 1000);
 });
+
+$(document).ready(function(){
+  if ($.fn.niceScroll) {
+
+
+      $(".scrolling-wrap").niceScroll({
+          cursorcolor: "#2057af",
+          cursorborder: "0px solid #fff",
+          cursorborderradius: "0px",
+          cursorwidth: "8px"
+      });
+
+      $(".scrolling-wrap").getNiceScroll().resize();
+      $(".scrolling-wrap").getNiceScroll().show();
+
+  }
+});
+
     </script>
