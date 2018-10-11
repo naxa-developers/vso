@@ -601,5 +601,69 @@ force_download($name,$data);
 
 }
 
+// push notification api
+public function send_msg(){
+
+  $reply = $_POST['ans'];
+  $tok = $_POST['token'];
+
+
+  $message = array(
+             'title' => 'Reply To Report',
+             'notification' =>$reply,
+
+             );
+  $token=$tok;
+  $tokens=array($token);
+  // $msg=array($message);
+  // var_dump($tokens);
+  // var_dump($msg);
+  $url = 'https://fcm.googleapis.com/fcm/send';
+  $fields = array(
+
+     'registration_ids' =>$tokens,
+     'data' => $message
+    );
+  $headers = array(
+    'Authorization:key = AAAAu_RCTVA:APA91bGrs9xsCcuBXee9rTF1m3CDsmwjhv4wT86PSD0j7Lc59dfKvI4WFVNeQFj6M6vOU38HdUYbcvVndUd4umuMWoY_77FfAAzoCw4bRI6xo8AcOCrmuEEdJ3qLknRw1G5M7XEGHcpO',
+    'Content-Type: application/json'
+    );
+   $ch = curl_init();
+     curl_setopt($ch, CURLOPT_URL, $url);
+     curl_setopt($ch, CURLOPT_POST, true);
+     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
+     $result = curl_exec($ch);
+     if ($result === FALSE) {
+         die('Curl failed: ' . curl_error($ch));
+     }
+     curl_close($ch);
+  //var_dump($result);
+  // exit();
+  $res=json_decode($result,TRUE)['success'];
+  if($res==1){
+    $this->session->set_flashdata('msg','Successfully Notification Sent ');
+    redirect('report_manage');
+    // $response['status']=200;
+    // $response['success']=$res;
+    // $response['reply']=$reply;
+//echo json_encode($response);
+  }else{
+
+    $this->session->set_flashdata('msg','Notification Could Not Be Sent At The moment');
+    redirect('report_manage');
+    // $response['status']=404;
+    // $response['success']=0;
+
+    // echo json_encode($response);
+
+  }
+     //return $result;
+  }
+//end
+
 
 }

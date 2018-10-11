@@ -173,6 +173,7 @@ div#filter {
   float: right;
   height: 545px;
   font-size: 11px;
+  border: 1px solid #dbdbdb !important;
 }
 span.ic {
   font-size: 14px;
@@ -285,6 +286,7 @@ div#over_map1 {
   float:left;
   overflow-y: auto;
   overflow-x: hidden;
+  border: 1px solid #dbdbdb !important;
 }
 
 .treeview input[type="checkbox"].checker{
@@ -510,7 +512,7 @@ div#over_map1 {
 }
 
 .right-content-info{
-  height: 462px;
+  max-height: 440px;
   overflow-y: auto;
   overflow-x: hidden;
   border-bottom: 1px solid #ddd;
@@ -975,6 +977,10 @@ content: '';
 display: table;
 clear: both;
 }
+
+
+
+
 </style>
 
 
@@ -991,6 +997,7 @@ $(document).ready(function(){
                   vph = vph - headerHeight;
                   $("#map").height(vph);
 $("#left-panel-toggle").height(vph);
+$("#right-panel-toggle").height(vph);
               }
      });
 
@@ -1029,7 +1036,7 @@ $("#left-panel-toggle").height(vph);
   <div class="half col-sm-12 col-md-4 no-padding" id ="over_map">
     <div class="panel panel-success categories" id="left-panel-toggle">
       <div class="panel-body cate">
-        <div>
+        <div style="position: relative; z-index: 999;">
           <!-- Tab panes -->
           <ul class="nav nav-tabs nav-fill" id="filterTab" role="tablist">
                   <li class="nav-item">
@@ -1050,9 +1057,9 @@ $("#left-panel-toggle").height(vph);
                 </ul>
                 <div class="tab-content scrolling-wrap" id="filterTabContent">
                     <div class="tab-pane fade show active" id="tab001" role="tabpanel" aria-labelledby="tab001-tab">
-                      <div class="tab-content cate">
+                      <!-- <div class="tab-content cate"> -->
                         <!-- categories -->
-                        <div role="tabpanel" class="tab-pane active" id="categories">
+                        <div id="categories">
                           <ul class="treeview checklist">
 
 
@@ -1339,7 +1346,7 @@ $("#left-panel-toggle").height(vph);
 
 
                         <!-- filter -->
-                        <div role="tabpanel" class="tab-pane" id="filter">
+                        <!-- <div role="tabpanel" class="tab-pane" id="filter">
                           <div class="form-group">
                             <label for="usr"></label>
                             <input type="text" class="form-control" id="usr"  placeholder="Enter text eg. Text">
@@ -1365,10 +1372,10 @@ $("#left-panel-toggle").height(vph);
 
                           <button type="button" class="btn btn-default btn-sm"> Filter</button>
 
-                        </div>
+                        </div> -->
 
                         <!-- legend -->
-                        <div role="tabpanel" class="tab-pane" id="legend">
+                        <!-- <div role="tabpanel" class="tab-pane" id="legend">
                           <ul class="list-group cate">
                             <li class="list-group-item"><i class="fa fa-square" style='color:#8DD3C7;'></i> Roads</li>
                             <li class="list-group-item"><i class="fa fa-square" style='color:#FFFFB3;'></i> Rivers</li>
@@ -1376,17 +1383,17 @@ $("#left-panel-toggle").height(vph);
                             <li class="list-group-item"><i class="fa fa-square" style='color:#FB8072;'></i> Forest</li>
                             <li class="list-group-item"><i class="fa fa-square" style='color:#80B1D3;'></i> Lake</li>
                           </ul>
-                        </div>
+                        </div> -->
                         <!-- legend -->
 
                         <!-- categories -->
 
-                      </div>
+                      <!-- </div> -->
                     </div>
                     <div class="tab-pane  fade" id="tab002" role="tabpanel" aria-labelledby="tab002-tab">
-                      <div class="tab-content cate">
+                      <!-- <div class="tab-content cate"> -->
                         <!-- categories -->
-                        <div role="tabpanel" class="tab-pane active" id="categories">
+                        <div id="categories">
                           <ul class="treeview checklist">
 
 
@@ -1673,7 +1680,7 @@ $("#left-panel-toggle").height(vph);
 
 
                         <!-- filter -->
-                        <div role="tabpanel" class="tab-pane" id="filter">
+                        <!-- <div role="tabpanel" class="tab-pane" id="filter">
                           <div class="form-group">
                             <label for="usr"></label>
                             <input type="text" class="form-control" id="usr"  placeholder="Enter text eg. Text">
@@ -1699,10 +1706,10 @@ $("#left-panel-toggle").height(vph);
 
                           <button type="button" class="btn btn-default btn-sm"> Filter</button>
 
-                        </div>
+                        </div> -->
 
                         <!-- legend -->
-                        <div role="tabpanel" class="tab-pane" id="legend">
+                        <!-- <div role="tabpanel" class="tab-pane" id="legend">
                           <ul class="list-group cate">
                             <li class="list-group-item"><i class="fa fa-square" style='color:#8DD3C7;'></i> Roads</li>
                             <li class="list-group-item"><i class="fa fa-square" style='color:#FFFFB3;'></i> Rivers</li>
@@ -1710,20 +1717,20 @@ $("#left-panel-toggle").height(vph);
                             <li class="list-group-item"><i class="fa fa-square" style='color:#FB8072;'></i> Forest</li>
                             <li class="list-group-item"><i class="fa fa-square" style='color:#80B1D3;'></i> Lake</li>
                           </ul>
-                        </div>
+                        </div> -->
                         <!-- legend -->
 
                         <!-- categories -->
 
-                      </div>
+                      <!-- </div> -->
 
 
                     </div>
                     <div class="tab-pane fade" id="tab003" role="tabpanel" aria-labelledby="tab003-tab">
 
-                      <div class="tab-content cate">
+                      <!-- <div class="tab-content cate"> -->
                         <!-- categories -->
-                        <div role="tabpanel" class="tab-pane active" id="categories">
+                        <div id="categories">
                           <ul class="treeview checklist">
 
 
@@ -2006,11 +2013,12 @@ $("#left-panel-toggle").height(vph);
                           </ul>
 
 
+                        <!-- </div> -->
                         </div>
 
 
                         <!-- filter -->
-                        <div role="tabpanel" class="tab-pane" id="filter">
+                        <!-- <div role="tabpanel" class="tab-pane" id="filter">
                           <div class="form-group">
                             <label for="usr"></label>
                             <input type="text" class="form-control" id="usr"  placeholder="Enter text eg. Text">
@@ -2036,10 +2044,10 @@ $("#left-panel-toggle").height(vph);
 
                           <button type="button" class="btn btn-default btn-sm"> Filter</button>
 
-                        </div>
+                        </div> -->
 
                         <!-- legend -->
-                        <div role="tabpanel" class="tab-pane" id="legend">
+                        <!-- <div role="tabpanel" class="tab-pane" id="legend">
                           <ul class="list-group cate">
                             <li class="list-group-item"><i class="fa fa-square" style='color:#8DD3C7;'></i> Roads</li>
                             <li class="list-group-item"><i class="fa fa-square" style='color:#FFFFB3;'></i> Rivers</li>
@@ -2047,7 +2055,7 @@ $("#left-panel-toggle").height(vph);
                             <li class="list-group-item"><i class="fa fa-square" style='color:#FB8072;'></i> Forest</li>
                             <li class="list-group-item"><i class="fa fa-square" style='color:#80B1D3;'></i> Lake</li>
                           </ul>
-                        </div>
+                        </div> -->
                         <!-- legend -->
 
                         <!-- categories -->
@@ -2528,7 +2536,7 @@ if(popup_content_parsed[i]==0){
        L.Mask = L.Polygon.extend({
         options: {
          stroke: false,
-         color: '#333',
+         color: '#0056b3',
          fillOpacity: 0.5,
          clickable: true,
 
@@ -2564,6 +2572,7 @@ if(popup_content_parsed[i]==0){
 
 
     			L.mask(latLngs).addTo(map);
+        $("path.leaflet-interactive").css({"fill":"#f3f3f3","stroke":"#759dc3","stroke-width":"2px","fillOpacity":"1"});
 
 
 

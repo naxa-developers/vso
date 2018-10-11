@@ -41,7 +41,7 @@
 
                             <?php foreach($data[0] as $key => $value){
 
-                                if ($key=='id'||$key=='latitude'||$key=='longitude'||$key=='photo') {
+                                if ($key=='id'||$key=='latitude'||$key=='longitude'||$key=='photo'||$key=='token_id') {
                                   // code...
                                 }else{
                                           ?>
@@ -57,6 +57,9 @@
                               </td>
                             <?php  }} ?>
                             <td>
+                            Reply
+                            </td>
+                            <td>
                               Operations
                             </td>
                           </tr>
@@ -69,7 +72,7 @@
 
                               <?php foreach($v as $key => $value) {
 
-                                if ($key=='id'||$key=='latitude'||$key=='longitude'||$key=='photo') {
+                                if ($key=='id'||$key=='latitude'||$key=='longitude'||$key=='photo'||$key=='token_id') {
                                   // code...
                                 }elseif($key=='status'){
 
@@ -98,9 +101,14 @@
 
                               <td><?php echo $value;?></td>
                             <?php }}  ?>
+                            <td>
+                              <button type="button" class="btn btn-round btn-primary" data-toggle="modal" data-target="#myModal_rep<?php echo $v['id'] ?>"><i class="fa fa-mail-reply"></i> Reply</button>
+                            </td>
+
                               <td>
 
                           <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>report/delete?id=<?php echo  $v['id'];?>">Delete</a>
+
                         </td>
 
 
@@ -177,6 +185,74 @@
                               </div>
                             </div>
                           <!-- modal end -->
+
+
+                          <!-- modal reply start -->
+
+
+                          <!-- modal start -->
+
+
+                          <!-- Modal -->
+                            <div class="modal fade" id="myModal_rep<?php echo  $v['id'];?>" role="dialog">
+                              <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">REPLY REPORT</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="col-md-16">
+                                                   <div class="card">
+
+                                                       <div class="content">
+                                                           <form method="post" action="ReportController/send_msg">
+
+                                                             <div class="header">
+                                                      <h4 class="title">Message Received</h4>
+                                                           </div>
+                                             <p><strong><?php echo  $v['incident_type'];?></strong><p>
+                                               <br> <br>
+
+                                                             <div class="header">
+                                                      <h4 class="title">Message Received</h4>
+                                                           </div>
+                                             <p><strong><?php echo  $v['message'];?></strong><p>
+                                               <br> <br>
+
+                                                                  <div class="header">
+                                                           <h4 class="title">Write Reply</h4>
+                                                                </div>
+
+                                                               <div class="row">
+                                                                   <div class="col-md-12">
+                                                                       <div class="form-group">
+                                                                           <label></label>
+                                                                          <input type="hidden" name="id" value="<?php echo  $v['id'];?>">
+                                                                          <input type="hidden" name="token" value="<?php echo  $v['token_id'];?>">
+                                                                           <textarea rows="10" class="form-control" id="ans" name="ans" placeholder="Here you can write your Reply"></textarea>
+                                                                       </div>
+                                                                   </div>
+                                                               </div>
+
+                                                               <button type="submit" name="send" class="btn btn-info  pull-right">Reply</button>
+                                                               <div class="clearfix"></div>
+                                                           </form>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                  <div class="modal-footer">
+                                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div>
+                          <!-- modal end -->
+                          <!-- modal end -->
+
 
 
 
