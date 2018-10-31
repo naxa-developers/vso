@@ -1,4 +1,4 @@
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+<!-- <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script> -->
 <style type="text/css">
 .input-group-addon {
     position: absolute;
@@ -86,7 +86,7 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                <input type="text" class="form-control" id="myInput" onkeyup="myFunction()">
+                <input  class="form-control" id="myInput" onkeyup="myFunction()">
               </div>
               </div>
             </div>
@@ -110,7 +110,7 @@
                 <div class="thumb"><img src="<?php echo $d['photo']?>" ></div>
                 <h6 class="name" id="<?php echo $d['id'] ?>"><?php echo $d['title']?></h6>
                 <p><?php echo $d['summary']?></p>
-                <a href="<?php echo base_url()?>download?file=<?php echo $d['file']?> && title="<?php echo $d['title']?>" class="btn btn-primary btn-block"><?php echo $site_info['download'] ?> <i class="la la-download"></i></a>
+                <a href="<?php echo base_url()?>download?file=<?php echo $d['file']?> && title=<?php echo $d['title']?>" class="btn btn-primary btn-block"><?php echo $site_info['download'] ?> <i class="la la-download"></i></a>
               </div>
             </div>
 
@@ -129,27 +129,31 @@
 
 function myFunction() {
 
+  
+
   // Declare variables
-  var input, filter, div, h5, a, i;
+  var input, filter, div, h6, a, i;
   input = document.getElementById('myInput');
+
+
 
   filter = input.value.toUpperCase();
 
   div = document.getElementsByClassName("myUL");
 
-  h5 = document.getElementsByTagName('h5');
-  //console.log(h5);
+  h6 = document.getElementsByTagName('h6');
+
 
   // Loop through all list items, and hide those who don't match the search query
-  for (i = 0; i < h5.length; i++) {
-      // a = h5[i].getElementsByTagName("a")[0];
-       //console.log(h5[i].innerHTML.toUpperCase().indexOf(filter));
-      if (h5[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-      // console.log('if');
-          $("#"+h5[i].id).parent().parent().parent().parent().css('display','');
+  for (i = 0; i < h6.length; i++) {
+      // a = h6[i].getElementsByTagName("a")[0];
+
+      if (h6[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+
+          $("#"+h6[i].id).parent().parent().css('display','');
       } else {
-//console.log('else');
-              $("#"+h5[i].id).parent().parent().parent().parent().css('display','none');
+
+              $("#"+h6[i].id).parent().parent().css('display','none');
       }
   }
 }

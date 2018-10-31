@@ -30,34 +30,34 @@
               <div class="col-md-2">
                 <div class="disaster-summary-item" data-mh="summary-item">
                   <i class="la la-fire"></i>
-                  <h6>बाडी</h6>
-                  <h4>२०</h4>
+                  <h6><?php echo $site_info['flood']?></h6>
+                  <h4>20</h4>
                 </div>
               </div>
               <div class="col-md-2">
                 <div class="disaster-summary-item" data-mh="summary-item">
                   <i class="la la-fire"></i>
-                  <h6>आगलागी</h6>
-                  <h4>२५</h4>
+                  <h6><?php echo $site_info['fire']?></h6>
+                  <h4>25</h4>
                 </div>
               </div>
               <div class="col-md-2">
                 <div class="disaster-summary-item" data-mh="summary-item">
                   <i class="la la-fire"></i>
-                  <h6>पहिरो</h6>
-                  <h4>१०</h4>
+                  <h6><?php echo $site_info['landslide']?></h6>
+                  <h4>10</h4>
                 </div>
               </div>
               <div class="col-md-2">
                 <div class="disaster-summary-item" data-mh="summary-item">
                   <i class="la la-fire"></i>
-                  <h6>चट्याङ</h6>
-                  <h4>४०</h4>
+                  <h6><?php echo $site_info['lightning']?></h6>
+                  <h4>45</h4>
                 </div>
               </div>
               <div class="col-md-2">
                 <a href="<?php echo base_url() ?>report_page" class="disaster-summary-item" data-mh="summary-item">
-                  <p>थप +</p>
+                  <p><?php echo $site_info['more']?> +</p>
                 </a>
               </div>
             </div>
