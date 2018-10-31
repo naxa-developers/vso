@@ -16,9 +16,23 @@ public function get_category(){
 
 $category=$this->Mapapi_model->get_list();
 //var_dump($category);
+$final=array();
+$i=0;
+foreach($category as $data){
+
+
+$sum=$this->Mapapi_model->get_sum_name($data['category_table'],$data['summary_list']);
+$sum_name=$sum['nepali_lang'];
+
+$da=array('summary_name'=>$sum_name);
+//}
+$a=array_merge($category[$i],$da);
+array_push($final,$a);
+$i++;
+}
 
 $response['status']=200;
-$response['data']=$category;
+$response['data']=$final;
 echo json_encode($response);
 }
 
