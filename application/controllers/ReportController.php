@@ -51,38 +51,7 @@ class ReportController extends CI_Controller
 
       $queryy=$this->db->query($query);
       $filter= $queryy->result_array();
-      //var_dump($filter);
-      // foreach($filter as $f){
-      //
-      // echo $f['name'];
-      //
-      // }
-
-      // if($this->input->post('category')== '0'){
-      //
-      //   $fiter_param=array(
-      //
-      //     'incident_time >=' => $this->input->post('from_date'),
-      //     'incident_time <=' => $this->input->post('to_date'),
-      //
-      //   );
-      //   $filter=$this->Report_model->filter_data($fiter_param);
-      // //  var_dump($filter);
-      //
-      // }else{
-      //
-      //   $fiter_param=array(
-      //     'incident_type =' => $this->input->post('category'),
-      //     'incident_time >=' => $this->input->post('from_date'),
-      //     'incident_time <=' => $this->input->post('to_date'),
-      //
-      //   );
-      //   $filter=$this->Report_model->filter_data($fiter_param);
-      //var_dump($filter);
-      //
-      //
-      // }
-
+    
 
 
       if($filter==NULL){
@@ -134,10 +103,12 @@ class ReportController extends CI_Controller
       if($lang['Language']=='en'){
 
         $this->body['site_info']=$this->Main_model->site_setting_en();
+        $this->body['report_lang']='en';
 
       }else{
 
        $this->body['site_info']=$this->Main_model->site_setting_nep();
+       $this->body['report_lang']='nep';
 
 
       }
@@ -145,6 +116,13 @@ class ReportController extends CI_Controller
      $this->body['urll']=$this->uri->segment(1);
 
       //language
+
+      $count_ward=$this->Report_model->count_ward();
+      $count_category=$this->Report_model->count_cat();
+      $count_stat=$this->Report_model->count_stat();
+      $this->body['bar_ward']=json_encode($count_ward);
+      $this->body['bar_cat']=json_encode($count_category);
+      $this->body['bar_stat']=json_encode($count_stat);
 
 
       $this->load->view('header',$this->body);
@@ -206,21 +184,14 @@ class ReportController extends CI_Controller
 
     $this->Report_model->update_views($count['id'],$data);
 
-    //views add end
- //$count_report_ward=$this->Report_model->count_incident();
-//  foreach($count_report_ward as $count_incidnt){
-//
-// $count_cat=$this->Report_model->count_cat($count_incidnt['ward']);
-// var_dump($count_cat);
-//
-//  }
+
       $count_ward=$this->Report_model->count_ward();
       $count_category=$this->Report_model->count_cat();
       $count_stat=$this->Report_model->count_stat();
       $this->body['bar_ward']=json_encode($count_ward);
       $this->body['bar_cat']=json_encode($count_category);
       $this->body['bar_stat']=json_encode($count_stat);
-//var_dump($this->body['bar_cat']);
+
 
       //language
       if($this->session->userdata('Language')==NULL){
@@ -235,10 +206,12 @@ class ReportController extends CI_Controller
       if($lang['Language']=='en'){
 
         $this->body['site_info']=$this->Main_model->site_setting_en();
+        $this->body['report_lang']='en';
 
       }else{
 
        $this->body['site_info']=$this->Main_model->site_setting_nep();
+       $this->body['report_lang']='nep';
 
 
       }

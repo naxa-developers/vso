@@ -77,9 +77,13 @@ class MapController extends CI_Controller
 
     if($lang['Language']=='en'){
 
+      $this->body['map_dwnld_lang']='en';
+
       $this->body['site_info']=$this->Main_model->site_setting_en();
 
     }else{
+
+      $this->body['map_dwnld_lang']='nep';
 
       $this->body['site_info']=$this->Main_model->site_setting_nep();
 

@@ -59,6 +59,21 @@
 
 </style>
 
+<?php
+
+$pub_cat_nep='  <option value=0>सबै</option>
+ <option value="muni_pub">नगरपालिकाको प्रकाशनहरु</option>
+ <option value="law_act">नियम कानुनहरु</option>
+ <option value="plan_politics">योजनाहरु तथा नीतिहरु</option>
+ <option value="others">अन्य</option>';
+
+$pub_cat_en='<option value=0>ALL</option>
+ <option value="muni_pub">Municipal Publications</option>
+ <option value="law_act">Laws and Acts</option>
+ <option value="plan_politics">Plans and Policies</option>
+ <option value="others">Others</option>';
+
+ ?>
 
 
 <div class="container" >
@@ -76,11 +91,13 @@
               <div class="col-md-6">
                 <div class="form-group">
                 <select class="form-control" id="pub_cat">
-                    <option value=0>ALL</option>
-                   <option value="muni_pub">Municipal Publications</option>
-                   <option value="law_act">Laws and Acts</option>
-                   <option value="plan_politics">Plans and Policies</option>
-                   <option value="others">Others</option>
+
+                  <?php if ($pub_lang=='en') {
+                    echo $pub_cat_en;
+                  }else {
+                  echo $pub_cat_nep;
+                  } ?>
+
                 </select>
               </div>
               </div>
@@ -129,7 +146,7 @@
 
 function myFunction() {
 
-  
+
 
   // Declare variables
   var input, filter, div, h6, a, i;

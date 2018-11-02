@@ -231,6 +231,27 @@ i.fa.fa-download.dwn {
   font-size: 13px;
 }
 
+<?php
+
+$map_nep='<option value="0">सबै</option>
+<option value="admin">प्रशासनिक नक्सा</option>
+<option value="risk">जोखिम र प्रकोप नक्सा</option>
+<option value="socio">सामाजिक आर्थिक नक्सा</option>
+<option value="tourist">पर्यटक नक्सा</option>
+<option value="land">जमिनको प्रयोग र आवरण नक्सा</option>
+<option value="other">अन्य</option>';
+
+$map_eng='	<option value="0">All</option>
+	<option value="admin" >Administrative Maps</option>
+	<option value="risk" >Risk and Hazard Maps</option>
+	<option value="socio" >Socio Economic Maps</option>
+	<option value="tourist" >Tourist Maps</option>
+	<option value="land" >Land use and Land Cover</option>
+	<option value="other" >Others</option>';
+
+
+ ?>
+
 </style>
 
 <div id="conten-map">
@@ -251,7 +272,7 @@ i.fa.fa-download.dwn {
 			<div class="row">
 				<div class="col-md-6">
 					<div class="input-group">
-						<input class="form-control" placeholder="Search here..." id="myInput" onkeyup="myFunction()">
+						<input class="form-control" placeholder="<?php echo $site_info['search'] ?>" id="myInput" onkeyup="myFunction()">
 						<div class="input-group-addon" ><i class="fa fa-search"></i></div>
 					</div>
 				</div>
@@ -260,13 +281,19 @@ i.fa.fa-download.dwn {
 
 					<div class="form-group">
 						<select class="custom-select" id="map_download_fil">
-							<option value="0">All Type</option>
-							<option value="admin" >Administrative Maps</option>
-							<option value="risk" >Risk and Hazard Maps</option>
-							<option value="socio" >Socio Economic Maps</option>
-							<option value="tourist" >Tourist Maps</option>
-							<option value="land" >Land use and Land Cover</option>
-							<option value="other" >Others</option>
+             <?php
+
+							if($map_dwnld_lang=='en'){
+
+								echo $map_eng;
+
+							}else {
+
+								echo $map_nep;
+
+							}
+
+						 ?>
 						</select>
 					</div>
 				</div>

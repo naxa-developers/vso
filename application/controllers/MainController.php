@@ -18,21 +18,7 @@ class MainController extends CI_Controller
 
   public function contact(){
 
-    // $this->body['health']=$this->Main_model->get_contact('health','emergency_contact');
-    // $this->body['responders']=$this->Main_model->get_contact('responders','emergency_contact');
-    // $this->body['security']=$this->Main_model->get_contact('security','emergency_contact');
-    // $this->body['ngo']=$this->Main_model->get_contact('ngo','emergency_contact');
-    // $this->body['ddr']=$this->Main_model->get_contact('ddr','emergency_personnel');
-    // $this->body['personnel']=$this->Main_model->get_contact('personnel','emergency_personnel');
-    // $this->body['members']=$this->Main_model->get_contact('members','emergency_personnel');
-    //
-    // $this->body['chairpersons']=$this->Main_model->get_contact('chairpersons','emergency_personnel');
-    // $this->body['chief']=$this->Main_model->get_contact('chief','emergency_personnel');
-    // $this->body['elected']=$this->Main_model->get_contact('elected','emergency_personnel');
-    // $this->body['municipal_ex']=$this->Main_model->get_contact('municipal_ex','emergency_personnel');
-    // $this->body['disaster']=$this->Main_model->get_contact('disaster','emergency_personnel');
-    // $this->body['nntds']=$this->Main_model->get_contact('nntds','emergency_personnel');
-  //  $this->body['nntds']=$this->Main_model->get_contact('nntds','emergency_personnel');
+
 
     //language
     if($this->session->userdata('Language')==NULL){
@@ -47,7 +33,7 @@ class MainController extends CI_Controller
 
       $this->body['site_info']=$this->Main_model->site_setting_en();
       //eng contact
-   $emerg_lang='en';
+       $emerg_lang='en';
 
       $this->body['health']=$this->Main_model->get_contact('health','emergency_contact',$emerg_lang);
       $this->body['responders']=$this->Main_model->get_contact('responders','emergency_contact',$emerg_lang);
@@ -90,8 +76,7 @@ class MainController extends CI_Controller
       $this->body['nntds']=$this->Main_model->get_contact('nntds','emergency_personnel',$emerg_lang);
 
 
-    // var_dump($this->body['security']);
-    // var_dump($this->body['ngo']);
+
      $this->body['site_info']=$this->Main_model->site_setting_nep();
 
 
@@ -133,12 +118,14 @@ class MainController extends CI_Controller
 
 
     if($lang['Language']=='en'){
+        $this->body['pub_lang']='en';
 
       $this->body['site_info']=$this->Main_model->site_setting_en();
 
     }else{
 
      $this->body['site_info']=$this->Main_model->site_setting_nep();
+       $this->body['pub_lang']='nep';
 
 
     }
