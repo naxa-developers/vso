@@ -6,13 +6,7 @@ class PublicationController extends CI_Controller
   {
     parent::__construct();
 
-    if(($this->session->userdata('logged_in'))!=TRUE)
-    {
 
-      redirect('admin');
-    }else{
-
-    }
 
     $this->load->dbforge();
     $this->load->helper('url');
@@ -21,6 +15,16 @@ class PublicationController extends CI_Controller
   }
 
   public function view_publication(){
+
+
+    if(($this->session->userdata('logged_in'))!=TRUE)
+    {
+
+      redirect('admin');
+    }else{
+
+    }
+
 
     $this->body['data']=$this->Publication_model->get_all_data();
 
@@ -38,6 +42,14 @@ class PublicationController extends CI_Controller
   }
 
   public function add_publication(){
+
+    if(($this->session->userdata('logged_in'))!=TRUE)
+    {
+
+      redirect('admin');
+    }else{
+
+    }
 
     if(isset($_POST['submit'])){
 
@@ -135,6 +147,14 @@ class PublicationController extends CI_Controller
 
   public function delete_publication(){
 
+    if(($this->session->userdata('logged_in'))!=TRUE)
+    {
+
+      redirect('admin');
+    }else{
+
+    }
+
     $id = $this->input->get('id');
     $delete=$this->Publication_model->delete_data($id);
 
@@ -149,6 +169,15 @@ class PublicationController extends CI_Controller
 
 
   public function edit_publication(){
+
+    if(($this->session->userdata('logged_in'))!=TRUE)
+    {
+
+      redirect('admin');
+    }else{
+
+    }
+
     $id=base64_decode($this->input->get('id'));
     if(isset($_POST['submit'])){
 
