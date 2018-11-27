@@ -1017,7 +1017,7 @@ $("#right-panel-toggle").height(vph);
           <ul class="nav nav-tabs" role="tablist">
             <li class="basemap chevron1" id="close-panel-left"><img src="<?php echo base_url()?>assets/img/up-arrow.png" class="test-icon chevron"></li>
             <!-- <li role="presentation" class="basemap"><a href="#layers" aria-controls="profile" role="tab" data-toggle="tab"><img src="<?php echo base_url()?>assets/img/layers-icon.png" class="test-icon"></a></li> -->
-            <li role="presentation" class="basemap"><a href="<?php echo base_url()?>map_download"><img src="<?php echo base_url()?>assets/img/map-down.png" class="test-icon">&nbsp;<sub class="text-light" style="font-size: 13px;"><?php echo $site_info['map']?></sub></a></li>
+            <li role="presentation" class="basemap"><a href="<?php echo base_url()?>map_download"><img src="<?php echo base_url()?>assets/img/map-down.png" class="test-icon">&nbsp;<sub class="text-light" style="font-size: 13px;"><?php echo $site_info['download']?> <?php echo $site_info['map']?></sub></a></li>
           </ul>
         </div>
       </div>
@@ -1111,7 +1111,7 @@ $("#right-panel-toggle").height(vph);
 
                                   <input type="checkbox" name="<?php echo $data['category_name']?>" class="checker" id="<?php echo $data['category_table']?>">
 
-                                  <label for="<?php echo $data['category_table']?>" class="specific">
+                                  <label for="<?php echo $data['category_table']?>" id="<?php echo $data['category_table']?>_sub" class="specific">
                                     <!-- <div class="ball" data-id="1"></div> -->
                                     <p><?php echo $data['category_name']; ?></p>
                                     <!-- <div class="action-list">
@@ -1445,8 +1445,8 @@ $("#right-panel-toggle").height(vph);
 
                                   <input type="checkbox" name="<?php echo $data['category_name']?>" class="checker" id="<?php echo $data['category_table']?>">
 
-                                  <label for="<?php echo $data['category_table']?>" class="specific">
-                                    <!-- <div class="ball" data-id="1"></div> -->
+                                  <label for="<?php echo $data['category_table']?>" id="<?php echo $data['category_table']?>_sub"   class="specific">
+                                    <!-- <div class="ballassss" data-id="1"></div> -->
                                     <p><?php echo $data['category_name']; ?></p>
                                     <!-- <div class="action-list">
                                     <i class="fa fa-info-circle"></i>
@@ -1782,7 +1782,7 @@ $("#right-panel-toggle").height(vph);
 
                                   <input type="checkbox" name="<?php echo $data['category_name']?>" class="checker" id="<?php echo $data['category_table']?>">
 
-                                  <label for="<?php echo $data['category_table']?>" class="specific">
+                                  <label for="<?php echo $data['category_table']?>" id="<?php echo $data['category_table']?>_sub" class="specific">
                                     <!-- <div class="ball" data-id="1"></div> -->
                                     <p><?php echo $data['category_name']; ?></p>
                                     <!-- <div class="action-list">
@@ -2661,7 +2661,7 @@ if(popup_content_parsed[i]==0){
     var layertoggled = ($(this).attr('id')).replace("_toggle","");
     var layertoggled_cat_name = ($(this).attr('name'));
     var	togglename=toTitleCase(layertoggled.replace("_"," "));
- console.log(layertoggled_cat_name);
+// console.log(layertoggled_cat_name);
 
     if (map.hasLayer(layerClicked)) {
       map.removeLayer(layerClicked);
@@ -2985,7 +2985,7 @@ $(document).on('click','.filter_value_item',function(){
 
 
 var count_filter = 0;
-
+applied_filter_tbl_list=[];
 $('.applied_filter').on('click',function(){
 
   //console.log('click');
@@ -3006,7 +3006,8 @@ $('.applied_filter').on('click',function(){
 
 
 
-  $('.applied-list').append('<tr class="'+qry_tbl+count_filter+'list"><th scope="row"></th><td>'+qry_tbl+'</td><td>'+show_qry+'</td><td><i class="fa fa-trash delete_filter" id="'+qry_tbl+count_filter+'"></i></td></tr>');
+  $('.applied-list').append('<tr id = "'+qry_tbl+'" class="'+qry_tbl+count_filter+'list"><th scope="row"></th><td>'+qry_tbl+'</td><td>'+show_qry+'</td><td><i class="fa fa-trash delete_filter" id="'+qry_tbl+count_filter+'"></i></td></tr>');
+   applied_filter_tbl_list.push(qry_tbl);
   //console.log('result');
 
   var success_qry ;
@@ -3025,7 +3026,7 @@ $('.applied_filter').on('click',function(){
     },
     success: function (result) {
 
- //Sconsole.log(result);
+ //console.log(result);
 
      var data=JSON.parse(result);
      console.log(data);
@@ -3036,7 +3037,7 @@ $('.applied_filter').on('click',function(){
   popup_content_parsed=data.popup_content;
   table_n=data.table_name;
 
-  // console.log(sub_style);
+   //console.log(modal_table);
   // console.log(marker_type);
   // console.log(popup_content_parsed);
 
@@ -3174,18 +3175,22 @@ $("div#applied_filter_content").html("<h4>Filter Query wrong or No data to respe
 }else{
 
 }
-// console.log($("div#applied_filter_content"));
-//
+ console.log('#');
+ console.log($('#'+qry_tbl).children());
+
+//changing filter icon  after filter
+$('#'+qry_tbl).children('img')[0].src='http://localhost/vso/assets/img/';
 
 });
 
-
+//deleting the row  of filter list
 $('.applied-list').on('click','tr > td > .delete_filter',function(){
 
 //console.log($(this).closest('tr'));
   //$(this).closest('tr').remove();
   var classs = $(this).closest('tr')[0].className;
-  //console.log(classs);
+  console.log($(this).closest('tr')[0].id);
+
   $('.applied-list > .'+classs).remove();
   var id = $(this)[0].id+"filter";
   var mapLayerId = $(this)[0].id;
@@ -3193,7 +3198,15 @@ $('.applied-list').on('click','tr > td > .delete_filter',function(){
 
   map.removeLayer(window[mapLayerId]);
 
-
+  var deleted_tr_id = $(this).closest('tr')[0].id;
+  console.log(deleted_tr_id);
+  if(jQuery.inArray(deleted_tr_id, applied_filter_tbl_list) !== -1){
+    var index_id = jQuery.inArray(deleted_tr_id, applied_filter_tbl_list);
+    applied_filter_tbl_list.splice(index_id,1);
+    if(jQuery.inArray(deleted_tr_id, applied_filter_tbl_list) == -1){ console.log("entereeeeeeeeeeeeeeeeeeeeed");
+      $('#'+deleted_tr_id).children('img')[0].src='http://localhost/vso/assets/img/filter.png';
+    }
+  }
 
 
 
@@ -3241,6 +3254,10 @@ $('#close-panel-right').click(function(){
 $('.specific').click(function(){
 $(this).siblings("ul").toggleClass('show');
 });
+
+//sub cat show
+$('#'+selected_category+"_sub").siblings("ul").toggleClass('show');
+console.log(selected_category);
 
 
 </script>

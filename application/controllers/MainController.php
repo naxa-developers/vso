@@ -142,13 +142,9 @@ class MainController extends CI_Controller
   {
 
     $this->load->model('Report_model');
-    // echo $this->db->query("SELECT VERSION()")->row('version');
 
-    //echo base_url();
     $tbl='categories_tbl';
-    // $this->body['hazard_data']=$this->Main_model->get_cat_hazard($tbl);
-    // $this->body['exposure_data']=$this->Main_model->get_cat_exposure($tbl);
-    // $this->body['baseline_data']=$this->Main_model->get_cat_baseline($tbl);
+
     $this->body['feature']=$this->Main_model->get_feature();
 
 
@@ -167,6 +163,24 @@ class MainController extends CI_Controller
 
     //views add end
 
+ //incident type count
+
+$incident_count=$this->Report_model->get_incident_count();
+//var_dump($incident_count);
+$incident_count_list=array();
+foreach($incident_count as $c){
+
+
+  $d=array($c['incident_type']=>$c['count']);
+  array_push($incident_count_list,$d);
+}
+
+ $incident_count_datas = call_user_func_array('array_merge', $incident_count_list);
+ //var_dump($incident_count_datas);
+ $this->body['report_inci']=$incident_count_datas;
+//exit();
+
+// incident count end
 
     //language
     if($this->session->userdata('Language')==NULL){

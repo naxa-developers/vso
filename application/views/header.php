@@ -12,7 +12,7 @@
   <link rel="shortcut icon" href="<?php echo base_url();?>assets/img/ng.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-  <title>Municipal GIS</title>
+  <title><?php echo $site_info['site_name'] ?></title>
 
 
   <!-- Bootstrap core CSS -->

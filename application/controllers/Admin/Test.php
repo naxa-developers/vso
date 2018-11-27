@@ -625,8 +625,14 @@ $e='tbl_'.$a.$b.$c.$d;
 echo $e;
 
 
-  
 
+
+}
+
+public function test_preg(){
+
+
+echo   preg_replace('/[^A-Za-z0-9\-]/', ' ', 'S/?."|\,N');
 }
 
 }//end

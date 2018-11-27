@@ -690,15 +690,15 @@ $status_nep='<option value="0" selected>स्थिति छान्नुह
                 <div class="panel-content padding">
                   <div id="bar_graph" style="display:block;" >
                     <div class="holders">
-                      <h6><strong>Wards</strong></h6>
+                      <h6 class="clearfix"><strong class="pull-left">Wards</strong>  <span class="indicator pull-right badge badge-primary" data-toggle="tooltip" data-placement="top" title="Exposure Data">?</span></h6>
                       <div id="graphic"></div>
                     </div>
                     <div class="holders">
-                      <h6><strong>Incident Type</strong></h6>
+                      <h6 class="clearfix"><strong>Incident Type</strong class="pull-left"><span class="indicator pull-right badge badge-primary" data-toggle="tooltip" data-placement="top" title="Exposure Data">?</span></h6>
                       <div id="graphic1"></div>
                     </div>
                     <div class="holders">
-                      <h6><strong>Report status</strong></h6>
+                      <h6 class="clearfix"><strong>Report status</strong class="pull-left"><span class="indicator pull-right badge badge-primary" data-toggle="tooltip" data-placement="top" title="Exposure Data">?</span></h6>
                       <div id="graphic2"></div>
                     </div>
                   </div>
@@ -811,6 +811,9 @@ $status_nep='<option value="0" selected>स्थिति छान्नुह
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
+
+ $('[data-toggle="tooltip"]').tooltip();
+
   $('#filter-section-toggle').click(function(){
     $('#filter-section').toggleClass('active');
     $(this).find('i').toggleClass('la-close');

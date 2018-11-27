@@ -160,5 +160,17 @@ public function count_stat(){
   return $result_set->result();
 }
 
+public function get_incident_count(){
+
+   $this->db->select('incident_type,COUNT(incident_type)');
+     $this->db->distinct('incident_type');
+     $this->db->group_by('incident_type');
+     $result_set=$this->db->get('report_tbl');
+     return $result_set->result_array();
+
+
+
+}
+
 
 }//end

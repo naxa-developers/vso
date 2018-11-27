@@ -51,9 +51,9 @@ class MapController extends CI_Controller
     $this->body['urll']=$urly;
     //language
 
-    $name=str_replace("_"," ",$tbl);
+    //$name=str_replace("_"," ",$this->input->get('n'));
 
-    $this->body['name']=ucwords($name);
+    $this->body['name']=ucwords($this->input->get('name'));
 
     $this->load->view('header',$this->body);
     $this->load->view('data_map',$this->body);
@@ -1193,8 +1193,8 @@ class MapController extends CI_Controller
 
     $filter_qry=$this->input->get('qry');
     // echo $filter_qry;
-    //  $tbl='health_facilities';
-    //   $filterr_qry ="a0 = '8'";
+     // $tbl='pharmacy';
+     //  $filter_qry ="a0 = '2'";
     //echo $filterr_qry;
     $d=$this->Map_model->get_lang_map_data($tbl);
     if($this->session->userdata('Language')==NULL){

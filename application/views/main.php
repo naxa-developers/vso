@@ -29,30 +29,30 @@
             <div class="row justify-content-center">
               <div class="col-md-2">
                 <div class="disaster-summary-item" data-mh="summary-item">
-                  <i class="la la-fire"></i>
+                  <img src="<?php echo base_url()?>assets/icon/floods1.png" height="64">
                   <h6><?php echo $site_info['flood']?></h6>
-                  <h4>20</h4>
+                  <h4><?php echo $report_inci['Flood']?></h4>
                 </div>
               </div>
               <div class="col-md-2">
                 <div class="disaster-summary-item" data-mh="summary-item">
-                  <i class="la la-fire"></i>
+                    <img src="<?php echo base_url()?>assets/icon/fire1.png" height="64">
                   <h6><?php echo $site_info['fire']?></h6>
-                  <h4>25</h4>
+                  <h4><?php echo $report_inci['Fire']?></h4>
                 </div>
               </div>
               <div class="col-md-2">
                 <div class="disaster-summary-item" data-mh="summary-item">
-                  <i class="la la-fire"></i>
+                    <img src="<?php echo base_url()?>assets/icon/landslide1.png" height="64">
                   <h6><?php echo $site_info['landslide']?></h6>
-                  <h4>10</h4>
+                  <h4><?php echo $report_inci['Landslide']?></h4>
                 </div>
               </div>
               <div class="col-md-2">
                 <div class="disaster-summary-item" data-mh="summary-item">
-                  <i class="la la-fire"></i>
+                    <img src="<?php echo base_url()?>assets/icon/lightning1.png" height="64">
                   <h6><?php echo $site_info['lightning']?></h6>
-                  <h4>45</h4>
+                  <h4><?php echo $report_inci['Lightning']?></h4>
                 </div>
               </div>
               <div class="col-md-2">

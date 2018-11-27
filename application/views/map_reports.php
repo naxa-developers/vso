@@ -192,9 +192,9 @@ position: relative;
     <div class="col-md-12">
       <div class="p-4">
         <div class="row">
-              <div class="col-md-9"><h4 class="text-uppercase m-0"><strong>Total Reports</strong></h4></div>
+              <div class="col-md-9"><h4 class="text-uppercase m-0"><strong><?php echo $site_info['total_reports'] ?></strong></h4></div>
               <div class="col-md-3 clearfix">
-                <a class="btn btn-primary btn-sm pull-right" href="ReportController/map_data_download"><i class="fa fa-cloud-download"></i> Download</a>
+                <a class="btn btn-primary btn-sm pull-right" href="ReportController/map_data_download"><i class="fa fa-cloud-download"></i> <?php echo $site_info['download'] ?></a>
                 <!-- <ul class="list-inline"> -->
 
 

@@ -51,7 +51,7 @@ class ReportController extends CI_Controller
 
       $queryy=$this->db->query($query);
       $filter= $queryy->result_array();
-    
+
 
 
       if($filter==NULL){
@@ -486,10 +486,12 @@ $this->body['query']="select * FROM map_reports_table";
 
     if($lang['Language']=='en'){
 
+      $this->body['reports_tbl_lang']='en';
+
       $this->body['site_info']=$this->Main_model->site_setting_en();
 
     }else{
-
+      $this->body['reports_tbl_lang']='nep';
      $this->body['site_info']=$this->Main_model->site_setting_nep();
 
 

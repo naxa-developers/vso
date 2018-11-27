@@ -202,9 +202,9 @@ position: relative;
     <div class="col-md-12">
       <div class="p-4">
         <div class="row">
-              <div class="col-md-9"><h4 class="text-uppercase m-0"><strong>Incident Detail</strong></h4></div>
+              <div class="col-md-9"><h4 class="text-uppercase m-0"><strong><?php echo $site_info['incident_detail'] ?></strong></h4></div>
               <div class="col-md-3 clearfix">
-                <a class="btn btn-primary btn-sm pull-right" href="ReportController/ghatana_download?qry=<?php echo $query ?>"><i class="fa fa-cloud-download"></i> Download</a>
+                <a class="btn btn-primary btn-sm pull-right" href="ReportController/ghatana_download?qry=<?php echo $query ?>"><i class="fa fa-cloud-download"></i> <?php echo $site_info['download'] ?> </a>
                 <!-- <ul class="list-inline"> -->
 
 
@@ -236,18 +236,193 @@ position: relative;
       </div>
   </div> -->
 
+  <?php
+
+
+$en_src_en='<div class="col-md-2">Source
+   <select class="custom-select multiselect-icon" name="source">
+           <option value="0" selected disabled>Select an option</option>
+           <option value="Moha" >Moha</option>
+           <option value="Disinventar" >Disinventar</option>
+   </select>
+ </div>';
+
+ $inci_type_en='<div class="col-md-2">Incident Type
+   <select class="custom-select multiselect-icon" name="incident">
+           <option value="0" selected disabled>Select an incident</option>
+           <option value="Flash Flood">Flash Flood</option>
+           <option value="Leak">Leak</option>
+           <option value="Sedimentation">Sedimentation</option>
+           <option value="Accident">Accident</option>
+           <option value="Biological">Biological</option>
+           <option value="Frost">Frost</option>
+           <option value="Pollution">Pollution</option>
+           <option value="Famine">Famine</option>
+           <option value="Panic">Panic</option>
+           <option value="Explosion">Explosion</option>
+           <option value="Drought">Drought</option>
+           <option value="Strong_Wind">Strong Wind</option>
+           <option value="Forest Fire">Forest Fire</option>
+           <option value="Snow Storm">Snow Storm</option>
+           <option value="Heat Wave">Heat Wave</option>
+           <option value="Plague">Plague</option>
+           <option value="Hail Storm">Hail Storm</option>
+           <option value="Structure Collapse">Structure Collapse</option>
+           <option value="Tuin Chudera">Tuin Chudera</option>
+           <option value="Bridge Collapse">Bridge Collapse</option>
+           <option value="Air Crash">Air Crash</option>
+           <option value="Avalanche">Avalanche</option>
+           <option value="Cold Wave">Cold Wave</option>
+           <option value="Boat Capsize">Boat Capsize</option>
+           <option value="High Altitude">High Altitude</option>
+           <option value="Heavy Rainfall">Heavy Rainfall</option>
+           <option value="Drowning">Drowning</option>
+           <option value="Wind storm">Wind storm</option>
+           <option value="Hailstone">Hailstone</option>
+           <option value="Epidemic">Epidemic</option>
+           <option value="Other">Other</option>
+           <option value="storm">storm</option>
+           <option value="Bus accident">Bus accident</option>
+           <option value="Lightning">Lightning</option>
+           <option value="Thunderbolt">Thunderbolt</option>
+           <option value="Fire">Fire</option>
+           <option value="Landslide">Landslide</option>
+           <option value="Flood">Flood</option>
+           <option value="Earthquake">Earthquake</option>
+       </select>
+ </div>';
+
+ $ward_en='<div class="col-md-2">Ward
+   <select class="custom-select multiselect-icon" name="ward">
+           <option value="0" selected disabled>Select ward</option>
+           <option value="10" >ward no 10 </option>
+           <option value="9" >ward no 9 </option>
+           <option value="8" >ward no 8 </option>
+           <option value="7" >ward no 7 </option>
+           <option value="6" >ward no 6 </option>
+           <option value="5" >ward no 5 </option>
+           <option value="4" >ward no 4 </option>
+           <option value="3" >ward no 3 </option>
+           <option value="2" >ward no 2 </option>
+           <option value="1" >ward no 1 </option>
+   </select>
+ </div>';
+
+
+
+  $en_src_nep='<div class="col-md-2">Source nepali
+     <select class="custom-select multiselect-icon" name="source">
+             <option value="0" selected disabled>Select an option</option>
+             <option value="Moha" >Moha</option>
+             <option value="Disinventar" >Disinventar</option>
+     </select>
+   </div>';
+
+   $inci_type_nep='<div class="col-md-2">Incident Type nepali
+     <select class="custom-select multiselect-icon" name="incident">
+             <option value="0" selected disabled>Select an incident</option>
+             <option value="Flash Flood">Flash Flood</option>
+             <option value="Leak">Leak</option>
+             <option value="Sedimentation">Sedimentation</option>
+             <option value="Accident">Accident</option>
+             <option value="Biological">Biological</option>
+             <option value="Frost">Frost</option>
+             <option value="Pollution">Pollution</option>
+             <option value="Famine">Famine</option>
+             <option value="Panic">Panic</option>
+             <option value="Explosion">Explosion</option>
+             <option value="Drought">Drought</option>
+             <option value="Strong_Wind">Strong Wind</option>
+             <option value="Forest Fire">Forest Fire</option>
+             <option value="Snow Storm">Snow Storm</option>
+             <option value="Heat Wave">Heat Wave</option>
+             <option value="Plague">Plague</option>
+             <option value="Hail Storm">Hail Storm</option>
+             <option value="Structure Collapse">Structure Collapse</option>
+             <option value="Tuin Chudera">Tuin Chudera</option>
+             <option value="Bridge Collapse">Bridge Collapse</option>
+             <option value="Air Crash">Air Crash</option>
+             <option value="Avalanche">Avalanche</option>
+             <option value="Cold Wave">Cold Wave</option>
+             <option value="Boat Capsize">Boat Capsize</option>
+             <option value="High Altitude">High Altitude</option>
+             <option value="Heavy Rainfall">Heavy Rainfall</option>
+             <option value="Drowning">Drowning</option>
+             <option value="Wind storm">Wind storm</option>
+             <option value="Hailstone">Hailstone</option>
+             <option value="Epidemic">Epidemic</option>
+             <option value="Other">Other</option>
+             <option value="storm">storm</option>
+             <option value="Bus accident">Bus accident</option>
+             <option value="Lightning">Lightning</option>
+             <option value="Thunderbolt">Thunderbolt</option>
+             <option value="Fire">Fire</option>
+             <option value="Landslide">Landslide</option>
+             <option value="Flood">Flood</option>
+             <option value="Earthquake">Earthquake</option>
+         </select>
+   </div>';
+
+   $ward_nep='<div class="col-md-2">Ward nepali
+     <select class="custom-select multiselect-icon" name="ward">
+             <option value="0" selected disabled>Select ward</option>
+             <option value="10" >ward no 10 </option>
+             <option value="9" >ward no 9 </option>
+             <option value="8" >ward no 8 </option>
+             <option value="7" >ward no 7 </option>
+             <option value="6" >ward no 6 </option>
+             <option value="5" >ward no 5 </option>
+             <option value="4" >ward no 4 </option>
+             <option value="3" >ward no 3 </option>
+             <option value="2" >ward no 2 </option>
+             <option value="1" >ward no 1 </option>
+     </select>
+   </div>';
+
+
+
+
+
+
+
+   ?>
+
     <div class="row">
     <div class="container">
     <div class="row repo_filter">
-       <div class="col-md-2">Source
+
+
+<?php if($reports_tbl_lang == 'en'){
+
+
+  echo $en_src_en;
+   echo $inci_type_en;
+   echo $ward_en;
+
+}else{
+
+  echo $en_src_nep;
+   echo $inci_type_nep;
+   echo $ward_nep;
+
+
+
+}
+
+
+  ?>
+
+
+
+       <!-- <div class="col-md-2">Source
           <select class="custom-select multiselect-icon" name="source">
                   <option value="0" selected disabled>Select an option</option>
                   <option value="Moha" >Moha</option>
                   <option value="Disinventar" >Disinventar</option>
           </select>
-        </div>
+        </div> -->
 
-        <div class="col-md-2">Incident Type
+        <!-- <div class="col-md-2">Incident Type
           <select class="custom-select multiselect-icon" name="incident">
                   <option value="0" selected disabled>Select an incident</option>
                   <option value="Flash Flood">Flash Flood</option>
@@ -290,7 +465,7 @@ position: relative;
                   <option value="Flood">Flood</option>
                   <option value="Earthquake">Earthquake</option>
               </select>
-        </div>
+        </div> -->
 
         <!-- <div class="col-md-2">District
             <select class="custom-select multiselect-icon" name="district">
@@ -374,7 +549,7 @@ position: relative;
             </select>
         </div>
 -->
-        <div class="col-md-2">Ward
+        <!-- <div class="col-md-2">Ward
           <select class="custom-select multiselect-icon" name="ward">
                   <option value="0" selected disabled>Select ward</option>
                   <option value="10" >ward no 10 </option>
@@ -386,9 +561,9 @@ position: relative;
                   <option value="4" >ward no 4 </option>
                   <option value="3" >ward no 3 </option>
                   <option value="2" >ward no 2 </option>
-                  <option value="1" >ward no 1 </option>          1
+                  <option value="1" >ward no 1 </option>          
           </select>
-        </div>
+        </div> -->
 
         <div class="col-md-2">Date(From)
           <div class="form-group" style="margin-bottom: 0;">
@@ -402,7 +577,7 @@ position: relative;
           </div>
         </div>
         <div class="col-md-2">
-          <button type="submit" name="submit" class="btn btn-primary hit btn-block mt-4">Apply</button>
+          <button type="submit" name="submit" class="btn btn-primary hit btn-block mt-4"><?php echo $site_info['apply']?></button>
         </div>
 
     </div>

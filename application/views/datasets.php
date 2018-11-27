@@ -175,7 +175,7 @@ p.about {
 						 }
 							 ?> download
 							<span class="fa fa-calendar"></span> Last update:
-							<?php echo $d['last_updated']?>
+							<?php echo substr($d['last_updated'], 0, strrpos($d['last_updated'], ' '));?>
 						</p>
 						<p class="about">
 							<?php echo $d['summary'] ?>
@@ -195,7 +195,7 @@ p.about {
           <?php }  ?>
 
 						<a href="<?php echo base_url()?>category?tbl=<?php echo $d['category_table']?>&& name=<?php echo $d['category_name']?>"><button class="btn btn-light btn-sm"><span class="fa fa-eye"></span> Map</button></a>
-						<a href="<?php echo base_url()?>data_map?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm"><span class="fa fa-table"></span> Table</button></a>
+						<a href="<?php echo base_url()?>data_map?tbl=<?php echo $d['category_table']?>&& name=<?php echo $d['category_name']?>"><button class="btn btn-light btn-sm"><span class="fa fa-table"></span> Table</button></a>
 
 
 							<hr>
