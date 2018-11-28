@@ -2533,46 +2533,46 @@ if(popup_content_parsed[i]==0){
 
 
 
-       L.Mask = L.Polygon.extend({
-        options: {
-         stroke: false,
-         color: '#0056b3',
-         fillOpacity: 0.5,
-         clickable: true,
-
-         outerBounds: new L.LatLngBounds([-90, -360], [90, 360])
-       },
-
-       initialize: function (latLngs, options) {
-
-        var outerBoundsLatLngs = [
-        this.options.outerBounds.getSouthWest(),
-        this.options.outerBounds.getNorthWest(),
-        this.options.outerBounds.getNorthEast(),
-        this.options.outerBounds.getSouthEast()
-        ];
-        L.Polygon.prototype.initialize.call(this, [outerBoundsLatLngs, latLngs], options);
-      },
-
-    });
-       L.mask = function (latLngs, options) {
-        return new L.Mask(latLngs, options);
-      };
-
-
-      var coordinates = changu1[0].features[0].geometry.coordinates[0];
-
-      var latLngs = [];
-      for (i=0; i<coordinates.length; i++) {
-        for(j=0; j<coordinates[i].length;j++){
-    					// console.log(coordinates[i][j]);
-    					latLngs.push(new L.LatLng(coordinates[i][j][1], coordinates[i][j][0]));
-    				}
-    			}
-
-
-    			L.mask(latLngs).addTo(map);
-        $("path.leaflet-interactive").css({"fill":"#f3f3f3","stroke":"#759dc3","stroke-width":"2px","fillOpacity":"1"});
+    //    L.Mask = L.Polygon.extend({
+    //     options: {
+    //      stroke: false,
+    //      color: '#0056b3',
+    //      fillOpacity: 0.5,
+    //      clickable: true,
+    //
+    //      outerBounds: new L.LatLngBounds([-90, -360], [90, 360])
+    //    },
+    //
+    //    initialize: function (latLngs, options) {
+    //
+    //     var outerBoundsLatLngs = [
+    //     this.options.outerBounds.getSouthWest(),
+    //     this.options.outerBounds.getNorthWest(),
+    //     this.options.outerBounds.getNorthEast(),
+    //     this.options.outerBounds.getSouthEast()
+    //     ];
+    //     L.Polygon.prototype.initialize.call(this, [outerBoundsLatLngs, latLngs], options);
+    //   },
+    //
+    // });
+    //    L.mask = function (latLngs, options) {
+    //     return new L.Mask(latLngs, options);
+    //   };
+    //
+    //
+    //   var coordinates = changu1[0].features[0].geometry.coordinates[0];
+    //
+    //   var latLngs = [];
+    //   for (i=0; i<coordinates.length; i++) {
+    //     for(j=0; j<coordinates[i].length;j++){
+    // 					// console.log(coordinates[i][j]);
+    // 					latLngs.push(new L.LatLng(coordinates[i][j][1], coordinates[i][j][0]));
+    // 				}
+    // 			}
+    //
+    //
+    // 			L.mask(latLngs).addTo(map);
+    //     $("path.leaflet-interactive").css({"fill":"#f3f3f3","stroke":"#759dc3","stroke-width":"2px","fillOpacity":"1"});
 
 
 
