@@ -10,6 +10,7 @@ class MainController extends CI_Controller
     $this->load->model('Main_model');
     $this->load->model('Upload_model');
     $this->load->library('general');
+    $this->load->library('general');
 
   }
 
@@ -139,6 +140,8 @@ class MainController extends CI_Controller
 
   public function default_page()
   {
+    echo 'assadasd';
+    die;
     $this->load->model('Report_model');
     $tbl='categories_tbl';
     $this->body['feature']=$this->general->get_tbl_data_result('*','featured_dataset',array('lang'=>'en','default'=>'1'));
