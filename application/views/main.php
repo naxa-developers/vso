@@ -1,21 +1,21 @@
-    <script>
-       $(document).ready(function(){
-          bannerHeight();
-              window.onresize = function(event) {
-                   bannerHeight();
-               }
+<script>
+   $(document).ready(function(){
+      bannerHeight();
+          window.onresize = function(event) {
+               bannerHeight();
+           }
 
-                function bannerHeight() {
-                    vph = $(window).height();
-                    headerHeight = $("#website-header").height();
-                    vph = vph - headerHeight;
-                    $("#banner").height(vph);
-                    vph = (vph - $(".banner-item").height())/2;
-                    $(".banner-item").css('padding-top', vph);
-                    $(".banner-item").css('padding-bottom', vph);
-                }
-       });
-    </script>
+            function bannerHeight() {
+                vph = $(window).height();
+                headerHeight = $("#website-header").height();
+                vph = vph - headerHeight;
+                $("#banner").height(vph);
+                vph = (vph - $(".banner-item").height())/2;
+                $(".banner-item").css('padding-top', vph);
+                $(".banner-item").css('padding-bottom', vph);
+            }
+   });
+</script>
 <div id="banner">
   <div class="banner-item">
           <img src="<?php echo $site_info['cover_photo'] ?>" class="banner-img">

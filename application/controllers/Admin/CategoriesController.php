@@ -22,8 +22,6 @@ class CategoriesController extends CI_Controller
 
 
   public function index(){
-
-
     $this->load->view('admin/header');
     $this->load->view('admin/footer');
 
@@ -447,7 +445,6 @@ class CategoriesController extends CI_Controller
   //  }
 
     if ($this->form_validation->run() == FALSE){
-
 
 
       $e_id=base64_decode($this->input->get('id'));

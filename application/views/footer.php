@@ -43,63 +43,63 @@ button.btn.btn-secondary {
                             <button class="btn btn-secondary" name="submit"  type="submit" data-toggle="modal" data-target="#exampleModal"><?php echo $site_info['subscribe_btn'] ?></button>
 
                         <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="color: #111">Subscribe</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" style="margin-left: 25px;">
-        <div class="row">
-          <div class="col-md-6">
-            <form>
-              <label>
-                <input id="fb3" type="radio" name="fb" value="med" />
-                <img src="<?php echo base_url();?>assets/img/dataset.png"  alt="Logo" height="90" >
-                <p class="text-center" style="color: #111"> Datasets</p>
-              </label>
-            </div>
+                          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel" style="color: #111">Subscribe</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body" style="margin-left: 25px;">
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                      <form>
+                                        <label>
+                                          <input id="fb3" type="radio" name="fb" value="med" />
+                                          <img src="<?php echo base_url();?>assets/img/dataset.png"  alt="Logo" height="90" >
+                                          <p class="text-center" style="color: #111"> Datasets</p>
+                                        </label>
+                                      </div>
 
-            <div class="col-md-6">
-             <label>
-              <input id="fb3" type="radio" name="fb" value="med" />
-              <img src="<?php echo base_url();?>assets/img/dataset.png" alt="Logo" height="90">
-              <p class="text-center"  style="color: #111"> Maps</p>
-            </label>
-          </div>
+                                      <div class="col-md-6">
+                                       <label>
+                                        <input id="fb3" type="radio" name="fb" value="med" />
+                                        <img src="<?php echo base_url();?>assets/img/dataset.png" alt="Logo" height="90">
+                                        <p class="text-center"  style="color: #111"> Maps</p>
+                                      </label>
+                                    </div>
 
-          <div class="col-md-6">
-           <label>
-            <input id="fb3" type="radio" name="fb" value="med" />
-            <img src="<?php echo base_url();?>assets/img/dataset.png" alt="Logo" height="90">
-            <p class="text-center" style="color: #111"> Publications</p>
-          </label>
-        </div>
+                                    <div class="col-md-6">
+                                     <label>
+                                      <input id="fb3" type="radio" name="fb" value="med" />
+                                      <img src="<?php echo base_url();?>assets/img/dataset.png" alt="Logo" height="90">
+                                      <p class="text-center" style="color: #111"> Publications</p>
+                                    </label>
+                                  </div>
 
-        <div class="col-md-6">
-         <label>
-          <input id="fb3" type="radio" name="fb" value="med" />
-          <img src="<?php echo base_url();?>assets/img/dataset.png" alt="Logo" height="90">
-          <p class="text-center" style="color: #111">Contact</p>
-        </label>
-      </div>
+                                  <div class="col-md-6">
+                                   <label>
+                                    <input id="fb3" type="radio" name="fb" value="med" />
+                                    <img src="<?php echo base_url();?>assets/img/dataset.png" alt="Logo" height="90">
+                                    <p class="text-center" style="color: #111">Contact</p>
+                                  </label>
+                                </div>
 
-      <div class="all-select" style="color: #111">
-        <input type="radio" name="allselect"> Subscribe All
-      </div>
-    </div>
+                                <div class="all-select" style="color: #111">
+                                  <input type="radio" name="allselect"> Subscribe All
+                                </div>
+                              </div>
 
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-primary">Subscribe</button>
-  </form>
-      </div>
-    </div>
-  </div>
-</div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-primary">Subscribe</button>
+                            </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
 
                       </div>
                     </div>

@@ -6,15 +6,13 @@ class LoginController extends CI_Controller
     {
       parent::__construct();
 
-    $this->load->library('form_validation');
-		$this->load->helper('url');
-		$this->load->model('Login_model');
-        }
+      $this->load->library('form_validation');
+  		$this->load->helper('url');
+  		$this->load->model('Login_model');
+    }
 
 
-public function index(){
-
-
+public function index() {
    $this->form_validation->set_rules('username', 'Username', 'required');
    $this->form_validation->set_rules('password', 'Password', 'required');
 

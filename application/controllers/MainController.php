@@ -17,9 +17,8 @@ class MainController extends CI_Controller
 
 
   public function contact(){
-
-
-
+    // echo "<pre>";
+    // print_r($this->general->get_count_table_rows('*','emergency_contact'));die;
     //language
     if($this->session->userdata('Language')==NULL){
 
@@ -140,57 +139,36 @@ class MainController extends CI_Controller
 
   public function default_page()
   {
-
     $this->load->model('Report_model');
-
     $tbl='categories_tbl';
-
     $this->body['feature']=$this->Main_model->get_feature();
-
-
     //views add
     $count=$this->Report_model->get_count_views('home');
-
     $add_count=$count['views_count']+1;
-
     $data=array(
       'views_count'=>$add_count,
-
     );
-
-
     $this->Report_model->update_views($count['id'],$data);
-
     //views add end
+    //incident type count
+    $incident_count=$this->Report_model->get_incident_count();
+    //var_dump($incident_count);
+    $incident_count_list=array();
+    foreach($incident_count as $c){
 
- //incident type count
-
-$incident_count=$this->Report_model->get_incident_count();
-//var_dump($incident_count);
-$incident_count_list=array();
-foreach($incident_count as $c){
-
-
-  $d=array($c['incident_type']=>$c['count']);
-  array_push($incident_count_list,$d);
-}
-
- $incident_count_datas = call_user_func_array('array_merge', $incident_count_list);
- //var_dump($incident_count_datas);
- $this->body['report_inci']=$incident_count_datas;
-//exit();
-
-// incident count end
-
+      $d=array($c['incident_type']=>$c['count']);
+      array_push($incident_count_list,$d);
+    }
+    $incident_count_datas = call_user_func_array('array_merge', $incident_count_list);
+    //var_dump($incident_count_datas);
+    $this->body['report_inci']=$incident_count_datas;
+    //exit();
+    // incident count end
     //language
     if($this->session->userdata('Language')==NULL){
-
       $this->session->set_userdata('Language','nep');
     }
-
     $lang=$this->session->get_userdata('Language');
-
-
     if($lang['Language']=='en'){
       $language='en';
       $this->body['site_info']=$this->Main_model->site_setting_en();
@@ -199,57 +177,39 @@ foreach($incident_count as $c){
       $this->body['hazard_data']=$this->Main_model->get_cat_hazard($tbl,$language);
       $this->body['exposure_data']=$this->Main_model->get_cat_exposure($tbl,$language);
       $this->body['baseline_data']=$this->Main_model->get_cat_baseline($tbl,$language);
-
       $cat_tbl_list=$this->Main_model->get_category();
-
       $tbl_list=array();
-
       foreach($cat_tbl_list as $list){
-          if(!$this->db->table_exists($list['category_table'])){}else{
+          if(!$this->db->table_exists($list['category_table'])){
 
-
-
-       array_push($tbl_list,$this->Main_model->count_dat_tbl($list['category_table']));
-}
+          }else{
+            array_push($tbl_list,$this->Main_model->count_dat_tbl($list['category_table']));
+          }
       }
       $data_count_cat = call_user_func_array('array_merge', $tbl_list);
- $this->body['data_count_cat']=$data_count_cat;
-
-
+      $this->body['data_count_cat']=$data_count_cat;
     }else{
-       $language='nep';
-     $this->body['site_info']=$this->Main_model->site_setting_nep();
-     $this->body['feature']=$this->Main_model->get_feature_nep();
-     $this->body['feat_lang']='nep';
-     $this->body['hazard_data']=$this->Main_model->get_cat_hazard($tbl,$language);
-     $this->body['exposure_data']=$this->Main_model->get_cat_exposure($tbl,$language);
-     $this->body['baseline_data']=$this->Main_model->get_cat_baseline($tbl,$language);
-
-     $cat_tbl_list=$this->Main_model->get_category_nep();
-
-     $tbl_list=array();
-
-     foreach($cat_tbl_list as $list){
-
-      array_push($tbl_list,$this->Main_model->count_dat_tbl($list['category_table']));
-
-     }
-     $data_count_cat = call_user_func_array('array_merge', $tbl_list);
-$this->body['data_count_cat']=$data_count_cat;
-
+      $language='nep';
+      $this->body['site_info']=$this->Main_model->site_setting_nep();
+      $this->body['feature']=$this->Main_model->get_feature_nep();
+      $this->body['feat_lang']='nep';
+      $this->body['hazard_data']=$this->Main_model->get_cat_hazard($tbl,$language);
+      $this->body['exposure_data']=$this->Main_model->get_cat_exposure($tbl,$language);
+      $this->body['baseline_data']=$this->Main_model->get_cat_baseline($tbl,$language);
+      $cat_tbl_list=$this->Main_model->get_category_nep();
+      $tbl_list=array();
+      foreach($cat_tbl_list as $list){
+        array_push($tbl_list,$this->Main_model->count_dat_tbl($list['category_table']));
+      }
+      $data_count_cat = call_user_func_array('array_merge', $tbl_list);
+      $this->body['data_count_cat']=$data_count_cat;
     }
     $this->body['urll']=$this->uri->segment(1);
     //language
-
-
     //$this->body['emerg_contact']=$this->Upload_model->get_emergency_con();
-
     $this->load->view('header',$this->body);
     $this->load->view('main',$this->body);
     $this->load->view('footer',$this->body);
-
-
-
   }
 
 

@@ -11,79 +11,58 @@ class MapApi extends CI_Controller
   }
 
 
-public function get_category(){
+public function get_category() {
+  $category=$this->Mapapi_model->get_list();
+  //var_dump($category);
+  $final=array();
+  $i=0;
+  foreach($category as $data){
 
 
-$category=$this->Mapapi_model->get_list();
-//var_dump($category);
-$final=array();
-$i=0;
-foreach($category as $data){
+  $sum=$this->Mapapi_model->get_sum_name($data['category_table'],$data['summary_list']);
+  $sum_name=$sum['nepali_lang'];
 
-
-$sum=$this->Mapapi_model->get_sum_name($data['category_table'],$data['summary_list']);
-$sum_name=$sum['nepali_lang'];
-
-$da=array('summary_name'=>$sum_name);
-//}
-$a=array_merge($category[$i],$da);
-array_push($final,$a);
-$i++;
-}
-
-$response['status']=200;
-$response['data']=$final;
-echo json_encode($response);
-}
-
-
-public function geojson(){
-
-
-  $tbl=$_POST['table'];
-
-if(!$this->db->table_exists($tbl)){
-
-$response['msg']='Data table does not exists';
-echo json_encode($response);
-
-}else{
-  $d=$this->Table_model->get_lang($tbl);
-  /* get the object   */
-  $report = $this->Table_model->get_asjson($d,$tbl);
-  $dataset_data=$report->result_array();
-
-
-  foreach($dataset_data as $data){
-
-    $ddata=$data ;
-    unset($data['st_asgeojson']);
-
-
-
-    $features_cat[]= array(
-      'type' =>'Feature',
-      'properties'=>$data,
-      'geometry'=>json_decode($ddata['st_asgeojson'],JSON_NUMERIC_CHECK)
-
-    );
-
-
+  $da=array('summary_name'=>$sum_name);
+  //}
+  $a=array_merge($category[$i],$da);
+  array_push($final,$a);
+  $i++;
   }
 
-
-
-  $dataset_array= array(
-    'type' => 'FeatureCollection',
-    'features' => $features_cat,
-  );
-
-$dataset_geojson=json_encode($dataset_array);
-echo $dataset_geojson;
-
+  $response['status']=200;
+  $response['data']=$final;
+  echo json_encode($response);
+  // echo "<pre>";
+  // print_r($response);die;
 }
 
 
+public function geojson() {
+  $tbl=$_POST['table'];
+  if(!$this->db->table_exists($tbl)){
+    $response['msg']='Data table does not exists';
+    echo json_encode($response);
+  }else{
+    $d=$this->Table_model->get_lang($tbl);
+    /* get the object   */
+    $report = $this->Table_model->get_asjson($d,$tbl);
+    $dataset_data=$report->result_array();
+    foreach($dataset_data as $data){
+      $ddata=$data ;
+      unset($data['st_asgeojson']);
+      $features_cat[]= array(
+        'type' =>'Feature',
+        'properties'=>$data,
+        'geometry'=>json_decode($ddata['st_asgeojson'],JSON_NUMERIC_CHECK)
+      );
+    }
+      $dataset_array= array(
+        'type' => 'FeatureCollection',
+        'features' => $features_cat,
+      );
+    $dataset_geojson=json_encode($dataset_array);
+    echo $dataset_geojson;
+  }
 }
 
 public function send_msg(){

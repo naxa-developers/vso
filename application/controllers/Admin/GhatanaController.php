@@ -44,20 +44,20 @@ public function add_ghatana(){
 
 if(isset($_POST['submit'])){
 
-unset($_POST['submit']);
-//var_dump($_POST);
-$_POST['date']=date("Y/m/d");
-$insert = $this->Ghatana_model->add_ghatana('map_reports_table',$_POST);
+  unset($_POST['submit']);
+  //var_dump($_POST);
+  $_POST['date']=date("Y/m/d");
+  $insert = $this->Ghatana_model->add_ghatana('map_reports_table',$_POST);
 
-if($insert != " "){
+  if($insert != " "){
 
-  $this->session->set_flashdata('msg','New data was added successfully');
-  redirect('ghatana');
+      $this->session->set_flashdata('msg','New data was added successfully');
+      redirect('ghatana');
 
-}else{
+    }else{
 
-  // db error
-}
+      // db error
+    }
 
   }else{
 
@@ -105,7 +105,7 @@ if ($update==1) {
 
 
 
- $this->body['e_data']=$this->Ghatana_model->edit_data($id);
+$this->body['e_data']=$this->Ghatana_model->edit_data($id);
 $this->body['fields']= $this->db->list_fields('map_reports_table');
  //echo $id;
  //var_dump($this->body['e_data']);
@@ -118,7 +118,7 @@ $this->body['admin']=$admin_type;
 //admin check
 
 
-$this->load->view('admin/header',$this->body);
+  $this->load->view('admin/header',$this->body);
   $this->load->view('admin/edit_ghatana',$this->body);
   $this->load->view('admin/footer');
 }
