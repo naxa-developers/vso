@@ -128,8 +128,8 @@
 <!--advance Search ends-->
 <?php $lang=$this->session->get_userdata('Language');
 $con_lang=$lang['Language'];
-$heading_en='<th><strong>S.N</strong></th>
-<th data-th="DRR Volunteers"><strong>Photo</strong></th>
+
+$heading_en_personnel='<th><strong>S.N</strong></th>
 <th><strong>Name</strong></th>
 <th><strong>Organization</strong></th>
 <th><strong>Post</strong></th>
@@ -137,8 +137,8 @@ $heading_en='<th><strong>S.N</strong></th>
 <th><strong>Phone No.</strong></th>
 <th><strong>Email</strong></th>';
 
-$heading_nep='<th><strong>क्र.स</strong></th>
-<th data-th="DRR Volunteers"><strong>फोटो</strong></th>
+$heading_nep_personnel='<th><strong>क्र.स</strong></th>
+
 <th><strong>नाम</strong></th>
 <th><strong>संस्था</strong></th>
 <th><strong>पद </strong></th>
@@ -146,7 +146,7 @@ $heading_nep='<th><strong>क्र.स</strong></th>
 <th><strong>फोन नम्बर</strong></th>
 <th><strong>इमेल</strong></th>';
 
-$heading_en_personnel='<th><strong>S.N</strong></th>
+$heading_en='<th><strong>S.N</strong></th>
           <th data-th="Health Institutions"><strong>Organization</strong></th>
           <th><strong>Address</strong></th>
           <th><strong>Phone No.</strong></th>
@@ -158,7 +158,7 @@ $heading_en_personnel='<th><strong>S.N</strong></th>
           <th><strong>Website</strong></th>';
 
 
-$heading_nep_personnel='<th><strong>क्र.स</strong></th>
+$heading_nep='<th><strong>क्र.स</strong></th>
                 <th data-th="Health Institutions"><strong>संस्था</strong></th>
                 <th><strong>ठेगाना</strong></th>
                 <th><strong>फोन नम्बर.</strong></th>
@@ -286,11 +286,11 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
     <thead class="thead-light">
       <?php if($con_lang=='en'){
 
-        echo $heading_en;
+        echo $heading_en_personnel;
 
        }else{
 
-       echo $heading_nep;
+       echo $heading_nep_personnel;
 
       } ?>
       <!-- <th><span>S.N</span></th>
@@ -308,11 +308,11 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
 
      <tr class="tr_tbl">
        <td id="<?php echo $chairpersons['id'] ?>idchairpersons"><?php echo $chairpersons['id'] ?></td>
-      <?php if($chairpersons['photo']==NULL){ ?>
+      <!-- <?php if($chairpersons['photo']==NULL){ ?>
           <td id="<?php echo $chairpersons['id'] ?>photochairpersons" ><img src="<?php echo base_url()?>/assets/img/profile_person.png" height="50" width="50"></td>
       <?php }else{ ?>
        <td id="<?php echo $chairpersons['id'] ?>photochairpersons" ><img src="<?php echo $chairpersons['photo']?>" height="50" width="50"></td>
-     <?php  } ?>
+     <?php  } ?> -->
        <td id="<?php echo $chairpersons['id'] ?>namechairpersons"><?php echo $chairpersons['name'] ?></td>
        <td id="<?php echo $chairpersons['id'] ?>organizationchairpersons"><?php echo $chairpersons['organization'] ?></td>
        <td id="<?php echo $chairpersons['id'] ?>postchairpersons"><?php echo $chairpersons['post'] ?></td>
@@ -338,11 +338,11 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
     <thead class="thead-light">
       <?php if($con_lang=='en'){
 
-        echo $heading_en;
+        echo $heading_en_personnel;
 
        }else{
 
-       echo $heading_nep;
+       echo $heading_nep_personnel;
 
       } ?>
     </thead>
@@ -353,12 +353,12 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
      <tr class="tr_tbl">
        <td id="<?php echo $chief['id'] ?>idcheif"><?php echo $chief['id'] ?></td>
 
-       <?php if($chief['photo']==NULL){ ?>
+       <!-- <?php if($chief['photo']==NULL){ ?>
        <td id="<?php echo $chief['id'] ?>photocheif" ><img src="<?php echo base_url()?>/assets/img/profile_person.png" height="50" width="50"></td>
       <?php }else{ ?>
      <td id="<?php echo $chief['id'] ?>photocheif" ><img src="<?php echo $chief['photo']?>" height="50" width="50"></td>
 
-      <?php  } ?>
+      <?php  } ?> -->
 
 
 
@@ -388,11 +388,11 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
     <thead class="thead-light">
       <?php if($con_lang=='en'){
 
-        echo $heading_en;
+        echo $heading_en_personnel;
 
        }else{
 
-       echo $heading_nep;
+       echo $heading_nep_personnel;
 
       } ?>
     </thead>
@@ -403,12 +403,12 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
      <tr class="tr_tbl">
        <td id="<?php echo $elected['id'] ?>idelected"><?php echo $elected['id'] ?></td>
 
-       <?php if($elected['photo']==NULL){ ?>
+       <!-- <?php if($elected['photo']==NULL){ ?>
        <td id="<?php echo $elected['id'] ?>photoelected" ><img src="<?php echo base_url()?>/assets/img/profile_person.png" height="50" width="50"></td>
       <?php }else{ ?>
         <td id="<?php echo $elected['id'] ?>photoelected" ><img src="<?php echo $elected['photo']?>" height="50" width="50"></td>
 
-      <?php  } ?>
+      <?php  } ?> -->
 
 
        <td id="<?php echo $elected['id'] ?>nameelected"><?php echo $elected['name'] ?></td>
@@ -437,11 +437,11 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
     <thead class="thead-light">  <tr>
       <?php if($con_lang=='en'){
 
-        echo $heading_en;
+        echo $heading_en_personnel;
 
        }else{
 
-       echo $heading_nep;
+       echo $heading_nep_personnel;
 
       } ?>
     </thead>
@@ -452,12 +452,12 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
      <tr class="tr_tbl">
        <td id="<?php echo $municipal_ex['id'] ?>idmunicipal_ex"><?php echo $municipal_ex['id'] ?></td>
 
-       <?php if($municipal_ex['photo']==NULL){ ?>
+       <!-- <?php if($municipal_ex['photo']==NULL){ ?>
        <td id="<?php echo $municipal_ex['id'] ?>photomunicipal_ex" ><img src="<?php echo base_url()?>/assets/img/profile_person.png" height="50" width="50"></td>
       <?php }else{ ?>
         <td id="<?php echo $municipal_ex['id'] ?>photomunicipal_ex" ><img src="<?php echo $municipal_ex['photo']?>" height="50" width="50"></td>
 
-      <?php  } ?>
+      <?php  } ?> -->
 
 
 
@@ -488,15 +488,15 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
    <!-- responsive table for displaying contact directory -->
    <table class="table table-striped table-bordered table-hover bg-white mt-3">
       <thead class="thead-light">
-      <?php if($con_lang=='en'){
+        <?php if($con_lang=='en'){
 
-        echo $heading_en;
+          echo $heading_en_personnel;
 
-       }else{
+         }else{
 
-       echo $heading_nep;
+         echo $heading_nep_personnel;
 
-      } ?>
+        } ?>
     </thead>
     <?php foreach ($disaster as $disaster) {
       // code...
@@ -505,12 +505,12 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
      <tr class="tr_tbl">
        <td id="<?php echo $disaster['id'] ?>iddisaster"><?php echo $disaster['id'] ?></td>
 
-       <?php if($disaster['photo']==NULL){ ?>
+       <!-- <?php if($disaster['photo']==NULL){ ?>
        <td id="<?php echo $disaster['id'] ?>photodisaster" ><img src="<?php echo base_url()?>/assets/img/profile_person.png" height="50" width="50"></td>
       <?php }else{ ?>
         <td id="<?php echo $disaster['id'] ?>photodisaster" ><img src="<?php echo $disaster['photo']?>" height="50" width="50"></td>
 
-      <?php  } ?>
+      <?php  } ?> -->
 
 
        <td id="<?php echo $disaster['id'] ?>photodisaster" ><img src="<?php echo $disaster['photo']?>" height="50" width="50"></td>
@@ -538,11 +538,11 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
       <th><span>S.N</span></th>
       <?php if($con_lang=='en'){
 
-        echo $heading_en;
+        echo $heading_en_personnel;
 
        }else{
 
-       echo $heading_nep;
+       echo $heading_nep_personnel;
 
       } ?>
     </thead>
@@ -552,12 +552,13 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
 
      <tr class="tr_tbl">
        <td id="<?php echo $nntds['id'] ?>idnntds"><?php echo $nntds['id'] ?></td>
-       <?php if($nntds['photo']==NULL){ ?>
+
+       <!-- <?php if($nntds['photo']==NULL){ ?>
        <td id="<?php echo $nntds['id'] ?>photonntds" ><img src="<?php echo base_url()?>/assets/img/profile_person.png" height="50" width="50"></td>
       <?php }else{ ?>
         <td id="<?php echo $nntds['id'] ?>photonntds" ><img src="<?php echo $nntds['photo']?>" height="50" width="50"></td>
 
-      <?php  } ?>
+      <?php  } ?> -->
 
        <td id="<?php echo $nntds['id'] ?>namenntds"><?php echo $nntds['name'] ?></td>
        <td id="<?php echo $nntds['id'] ?>organizationnntds"><?php echo $nntds['organization'] ?></td>
@@ -586,11 +587,11 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
          <thead class="thead-light">
           <?php if($con_lang=='en'){
 
-            echo $heading_en_personnel;
+            echo $heading_en;
 
            }else{
 
-           echo $heading_nep_personnel;
+           echo $heading_nep;
 
           } ?>
           <!-- <th><span>S.N</span></th>
@@ -639,15 +640,15 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
      <!-- responsive table for displaying contact directory -->
      <table class="table table-striped table-bordered table-hover bg-white mt-3">
         <thead class="thead-light">
-        <?php if($con_lang=='en'){
+          <?php if($con_lang=='en'){
 
-          echo $heading_en_personnel;
+            echo $heading_en;
 
-         }else{
+           }else{
 
-         echo $heading_nep_personnel;
+           echo $heading_nep;
 
-        } ?>
+          } ?>
       </thead>
 
   <?php foreach ($responders as $responders) {
@@ -683,15 +684,15 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
    <!-- responsive table for displaying contact directory -->
    <table class="table table-striped table-bordered table-hover bg-white mt-3">
       <thead class="thead-light">
-      <?php if($con_lang=='en'){
+        <?php if($con_lang=='en'){
 
-        echo $heading_en_personnel;
+          echo $heading_en;
 
-       }else{
+         }else{
 
-       echo $heading_nep_personnel;
+         echo $heading_nep;
 
-      } ?>
+        } ?>
     </thead>
 
 
@@ -705,6 +706,7 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
     <td id="<?php echo $security['id'] ?>phone_noSecurity"><?php echo $security['phone_no'] ?></td>
     <td id="<?php echo $security['id'] ?>alternate_phone_noSecurity"><?php echo $security['alternate_phone_no'] ?></td>
     <td id="<?php echo $security['id'] ?>contact_personSecurity"><?php echo $security['contact_person'] ?></td>
+    <td id="<?php echo $security['id'] ?>contact_personSecurity"><?php echo $security['post'] ?></td>
     <td id="<?php echo $security['id'] ?>personal_noSecurity"><?php echo $security['personal_no'] ?></td>
     <td id="<?php echo $security['id'] ?>emailSecurity"><?php echo $security['email'] ?></td>
     <td id="<?php echo $security['id'] ?>websiteSecurity"><?php echo $security['website'] ?></td>
@@ -723,15 +725,15 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
    <!-- responsive table for displaying contact directory -->
    <table class="table table-striped table-bordered table-hover bg-white mt-3">
       <thead class="thead-light">
-      <?php if($con_lang=='en'){
+        <?php if($con_lang=='en'){
 
-        echo $heading_en_personnel;
+          echo $heading_en;
 
-       }else{
+         }else{
 
-       echo $heading_nep_personnel;
+         echo $heading_nep;
 
-      } ?>
+        } ?>
     </thead>
     <?php foreach ($ngo as $ngo) {
       // code...
@@ -766,11 +768,11 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
     <thead class="thead-light">
       <?php if($con_lang=='en'){
 
-        echo $heading_en;
+        echo $heading_en_personnel;
 
        }else{
 
-       echo $heading_nep;
+       echo $heading_nep_personnel;
 
       } ?>
     </thead>
@@ -781,11 +783,11 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
      <tr class="tr_tbl">
        <td id="<?php echo $ddr['id'] ?>idddr"><?php echo $ddr['id'] ?></td>
 
-       <?php if($ddr['photo']==NULL){ ?>
+       <!-- <?php if($ddr['photo']==NULL){ ?>
            <td id="<?php echo $ddr['id'] ?>photoddr" ><img src="<?php echo base_url()?>/assets/img/profile_person.png" height="50" width="50"></td>
         <?php }else{ ?>
         <td id="<?php echo $ddr['id'] ?>photoddr" ><img src="<?php echo $ddr['photo']?>" height="50" width="50"></td>
-        <?php  } ?>
+        <?php  } ?> -->
 
 
 
@@ -814,11 +816,11 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
     <thead class="thead-light">
       <?php if($con_lang=='en'){
 
-        echo $heading_en;
+        echo $heading_en_personnel;
 
        }else{
 
-       echo $heading_nep;
+       echo $heading_nep_personnel;
 
       } ?>
     </thead>
@@ -829,11 +831,11 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
      <tr class="tr_tbl">
        <td id="<?php echo $personnel['id'] ?>idpersonnel"><?php echo $personnel['id'] ?></td>
 
-       <?php if($personnel['photo']==NULL){ ?>
+       <!-- <?php if($personnel['photo']==NULL){ ?>
            <td id="<?php echo $personnel['id'] ?>photopersonnel" ><img src="<?php echo base_url()?>/assets/img/profile_person.png" height="50" width="50"></td>
         <?php }else{ ?>
         <td id="<?php echo $personnel['id'] ?>photopersonnel" ><img src="<?php echo $personnel['photo']?>" height="50" width="50"></td>
-        <?php  } ?>
+        <?php  } ?> -->
 
 
        <td id="<?php echo $personnel['id'] ?>namepersonnel"><?php echo $personnel['name'] ?></td>
@@ -876,11 +878,11 @@ $heading_nep_personnel='<th><strong>क्र.स</strong></th>
         <tr class="tr_tbl">
           <td id="<?php echo $members['id'] ?>idmembers"><?php echo $members['id'] ?></td>
 
-          <?php if($members['photo']==NULL){ ?>
+          <!-- <?php if($members['photo']==NULL){ ?>
               <td id="<?php echo $members['id'] ?>photomembers" ><img src="<?php echo base_url()?>/assets/img/profile_person.png" height="50" width="50"></td>
            <?php }else{ ?>
            <td id="<?php echo $members['id'] ?>photomembers" ><img src="<?php echo $members['photo']?>" height="50" width="50"></td>
-           <?php  } ?>
+           <?php  } ?> -->
 
 
           <td id="<?php echo $members['id'] ?>namemembers"><?php echo $members['name'] ?></td>

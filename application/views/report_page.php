@@ -455,15 +455,15 @@ $status_nep='<option value="0" selected>स्थिति छान्नुह
 <div id="conten-map">
   <nav class="navbar navbar-expand-sm">
     <ul class="navbar-nav">
-      <li class="nav-item active">
+      <!-- <li class="nav-item active">
         <a class="nav-link" href="#"><i class="fa fa-map" aria-hidden="true"></i> <?php echo $site_info['map'] ?></a>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link" href="map_reports"><i class="fa fa-database" aria-hidden="true"></i> <?php echo $site_info['data'] ?></a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="map_reports_table"><i class="fa fa-pencil-square" aria-hidden="true"></i> <?php echo $site_info['ghatana_bib'] ?></a>
-      </li>
+      </li> -->
     </ul>
   </nav>
 

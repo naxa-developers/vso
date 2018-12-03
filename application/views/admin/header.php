@@ -190,7 +190,7 @@
 
                         <li><a href="<?php echo base_url();?>report_manage">View Reports</a></li>
                         <li><a href="<?php echo base_url();?>ghatana">Ghatana Bibaran Management</a></li>
-                        <!-- <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
+                        <li><a href="<?php echo base_url();?>map_reports_table">View Ghatana Bibaran Management </a></li>
 
                     </ul>
                 </li>
