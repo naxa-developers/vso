@@ -25,9 +25,9 @@ button.btn.btn-secondary {
             <div class="row clearfix">
               <div class="col-md-4">
                 <div class="fbox">
-                  <h4><?php echo $site_info['footer_big'] ?></h4>
+                  <h4><?php echo FOOTER_BIG_EN; ?></h4>
                   <p>
-                  <?php echo $site_info['footer_small'] ?> &nbsp;   <!--  <a href="<?php echo base_url()?>about" title="" class="btn btn-outline-light btn-sm">थप</a> -->
+                  <?php echo FOOTER_SMALL ?> &nbsp;   <!--  <a href="<?php echo base_url()?>about" title="" class="btn btn-outline-light btn-sm">थप</a> -->
                   </p>
 
                 </div>
@@ -35,12 +35,12 @@ button.btn.btn-secondary {
 
               <div class="col-md-4">
                 <div class="fbox">
-                  <h4><?php echo $site_info['subscribe'] ?></h4>
+                  <h4><?php echo SUBSCRIBE ?></h4>
                   <form action="" method="">
                     <div class="input-group">
-                      <input type="email" class="form-control" name="email" placeholder="<?php echo $site_info['email'] ?>" aria-label="Email Address" aria-describedby="basic-addon2">
+                      <input type="email" class="form-control" name="email" placeholder="<?php echo EMAIL ?>" aria-label="Email Address" aria-describedby="basic-addon2">
                       <div class="input-group-append">
-                            <button class="btn btn-secondary" name="submit"  type="submit" data-toggle="modal" data-target="#exampleModal"><?php echo $site_info['subscribe_btn'] ?></button>
+                            <button class="btn btn-secondary" name="submit"  type="submit" data-toggle="modal" data-target="#exampleModal"><?php echo SUBSCRIBE_BTN ?></button>
 
                         <!-- Modal -->
                           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -109,13 +109,10 @@ button.btn.btn-secondary {
 
               <div class="col-md-4">
                 <div class="fbox">
-                  <h4><?php echo $site_info['imp_link'] ?></h4>
+                  <h4><?php echo IMP_LINK ?></h4>
                   <ul class="list-group">
-                    <li><i class="la la-caret-right"></i><a href="<?php echo $site_info['1_link'] ?>" target="_blank"><?php echo $site_info['1_name'] ?></a></li>
-                    <li><i class="la la-caret-right"></i><a href="<?php echo $site_info['2_link'] ?>" target="_blank"><?php echo $site_info['2_name'] ?></a></li>
-                    <!-- <li><i class="la la-caret-right"></i><a href="<?php echo $site_info['3_link'] ?>" target="_blank"><?php echo $site_info['3_name'] ?></a></li>
-                    <li><i class="la la-caret-right"></i><a href="<?php echo $site_info['4_link'] ?>" target="_blank"><?php echo $site_info['4_name'] ?></a></li>
-                    <li><i class="la la-caret-right"></i><a href="<?php echo $site_info['5_link'] ?>" target="_blank"><?php echo $site_info['5_name'] ?></a></li> -->
+                    <li><i class="la la-caret-right"></i><a href="<?php echo LINK_ONE ?>" target="_blank"><?php echo TWO_NAME ?></a></li>
+                    <li><i class="la la-caret-right"></i><a href="<?php echo LINK_TWO ?>" target="_blank"><?php echo TWO_NAME ?></a></li>
                   </ul>
                 </div>
               </div>
@@ -129,18 +126,21 @@ button.btn.btn-secondary {
             <div class="row">
               <div class="col-md-6 sec-left">
                 <p class="margin-top">
-                  &copy; <?php echo $site_info['copy_date'] ?> <a href="#" title=""></a><?php echo $site_info['copy_text'] ?>
-                  <!-- <a href="#" title="">हाम्रो बारेमा</a>
-                    <a href="#" title="">संपर्क</a>
-                    <a href="#" title="">प्रयोगका शर्तहरू</a>
-                    <a href="#" title="">गोपनीयता नीति</a> -->
+                  &copy; <?php echo COPY_DATE ?> <a href="#" title=""></a><?php echo COPY_TEXT ?>
                 </p>
               </div>
               <div class="col-md-6 sec-right">
                 <p class="margin-top social-icons">
-                  <a href="<?php echo $site_info['facebook'] ?>" title=""><i class="fa fa-facebook"></i></a>
-                  <a href="<?php echo $site_info['twitter'] ?>" title=""><i class="fa fa-twitter"></i></a>
-                  <a href="<?php echo $site_info['google'] ?>" title=""><i class="fa fa-google-plus"></i></a>
+
+                <?php if(FACEBOOK): ?>
+                  <a href="<?php echo FACEBOOK ?>" title=""><i class="fa fa-facebook"></i></a>
+                <?php endif; 
+                 if(TWITTER): ?>
+                  <a href="<?php echo TWITTER ?>" title=""><i class="fa fa-twitter"></i></a>
+                <?php endif; 
+                  if(GOOGLE): ?>
+                  <a href="<?php echo GOOGLE ?>" title=""><i class="fa fa-google-plus"></i></a>
+                <?php endif; ?>
                 </p>
               </div>
             </div>

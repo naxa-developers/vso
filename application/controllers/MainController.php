@@ -9,17 +9,14 @@ class MainController extends CI_Controller
     $this->load->helper('url');
     $this->load->model('Main_model');
     $this->load->model('Upload_model');
-
+    $this->load->library('general');
 
   }
-
-
-
 
   public function contact(){
     // echo "<pre>";
     // print_r($this->general->get_count_table_rows('*','emergency_contact'));die;
-    //language
+    // language
     if($this->session->userdata('Language')==NULL){
 
       $this->session->set_userdata('Language','nep');
@@ -33,6 +30,7 @@ class MainController extends CI_Controller
       $this->body['site_info']=$this->Main_model->site_setting_en();
       //eng contact
        $emerg_lang='en';
+
 
       $this->body['health']=$this->Main_model->get_contact('health','emergency_contact',$emerg_lang);
       $this->body['responders']=$this->Main_model->get_contact('responders','emergency_contact',$emerg_lang);
@@ -58,7 +56,9 @@ class MainController extends CI_Controller
     }else{
 
       $emerg_lang='nep';
-
+      $this->data['test'] = $this->general->get_tbl_data_result('*','emergency_contact',array('category'=>'health','language'=>'en'),'id');
+      // echo $this->db->last_query();die;
+      //pp($this->data['test']);
       $this->body['health']=$this->Main_model->get_contact('health','emergency_contact',$emerg_lang);
       $this->body['responders']=$this->Main_model->get_contact('responders','emergency_contact',$emerg_lang);
       $this->body['security']=$this->Main_model->get_contact('security','emergency_contact',$emerg_lang);

@@ -44,55 +44,70 @@ class General {
 		//define site settings info
 		$this->referer = (isset($_SERVER['HTTP_REFERER'])) ? $_SERVER['HTTP_REFERER'] : "";
 		$this->onpage = $_SERVER['REQUEST_URI'];
-		//$site_info = $this->get_site_settings_info();
+		$site_info = $this->get_site_settings_info();
 		$cur_date = date('Y/m/d');
 		// define('CURDATE_EN', $cur_date);
-		// define('ORGA_NAME', $site_info['site_name']);
-		// define('SITE_SLOGAN', $site_info['site_slogan']);
-		// define('ORGA_ADDRESS1', $site_info['address_line1']);
-		// define('ORGA_ADDRESS2', $site_info['address_line2']);
-		// define('WEBSITE_NAME', $site_info['site_name']);
-		// define('SITE_STATUS', $site_info['status']);
-		// define('GOOGLE_MAP_CODE', $site_info['google_map_code']);
-		// define('COMPANY_PHONE', $site_info['company_phone']);
-		// define('COMPANY_EMAIL', $site_info['company_email']);
-		// define('COMPANY_EMAIL1', $site_info['company_email1']);
-		// define('COMPANY_EMAIL2', $site_info['company_email2']);
-		// define('ADDRESS_lINE1', $site_info['address_line1']);
-		// define('ADDRESS_lINE2', $site_info['address_line2']);
-		// define('POBOXNO', $site_info['poboxno']);
-		// define('FAX', $site_info['fax']);
-		// define('MOBILENO', $site_info['mobileno']);
-		// define('LOGO_IMG', $site_info['logo_img']);
-		// define('LOG_ADMIN_ACTIVITY', $site_info['log_admin_activity']);
-		// define('LOG_ADMIN_INVALID_LOGIN', $site_info['log_admin_invalid_login']);
-		// define('FACEBOOK_EMBEDED_CODE', $site_info['facebook_embeded']);
-		// define('FACEBOOK_LINK', $site_info['facebook']);
-		// define('TWITTER_LINK', $site_info['twitter']);
-		// define('INSTAGRAM_LINK', $site_info['instagram']);
-		// define('YOUTUBE_LINK', $site_info['youtube']);
-		// define('LINKEDIN_LINK', $site_info['linkedin']);
-		// define('GOOGLEPLUS_LINK', $site_info['googleplus']);
+		define('SITE_NAME_EN', $site_info['site_name']);
+		define('SITE_SLOGAN_EN', $site_info['site_logo']);
+		define('SITE_TEXT_EN', $site_info['site_text']);
+		define('COVER_POHOTO_EN', $site_info['cover_photo']);
+		define('COVER_SMALL_EN', $site_info['cover_small']);
+		define('FOOTER_BIG_EN', $site_info['footer_big']);
+		define('FACEBOOK', $site_info['facebook']);
+		define('TWITTER', $site_info['twitter']);
+		define('GOOGLE', $site_info['google']);
+		define('COPYRIGHT', $site_info['copyright']);
+		define('COPY_TEXT', $site_info['copy_text']);
+		define('SUBSCRIBE_BTN', $site_info['subscribe_btn']);
+		define('COPY_DATE', $site_info['copy_date']);
+		define('TWO_NAME', $site_info['2_name']);
+		define('ONE_NAME', $site_info['1_name']);
+		define('IMP_LINK', $site_info['imp_link']);
+		define('EMAIL', $site_info['email']);
+		define('SUBSCRIBE', $site_info['subscribe']);
+		define('FOOTER_SMALL', $site_info['footer_small']);
+		define('LINK_ONE', $site_info['1_link']);
+		define('LINK_TWO', $site_info['2_link']);
+
+
+
+
+
 	}	
 	public function get_site_settings_info() {
-		$query = $this->ci->db->get("tbl_site_settings");
+		//pp($this->ci->session->userdata('Language'));
+		if($this->ci->session->userdata('Language')==NULL){
+      		$this->ci->session->set_userdata('Language','nep');
+    	}
+    	$lang=$this->ci->session->get_userdata('Language');
+    	if($lang== 'en')
+    	{
+    		$whr = '1';
+    	}else{
+    		$whr = '2';
+    	}
+    	if ($whr) {
+			$this->ci->db->where('id',$whr);
+		}
+		$query = $this->ci->db->get("site_setting");
 		if ($query->num_rows() > 0) {
 			$data = $query->row_array();
 		}
 		$query->free_result();
+		//echo $this->ci->db->last_query(); exit;
 		return $data;
 	}
 	// return result 
 	public function get_tbl_data_result($select, $table = false, $where = false, $order = false, $order_by = 'ASC') {
 		$this->ci->db->select($select);
 		if ($where) {
-			$this->ci->db->where($where, null, false);
+			$this->ci->db->where($where, false);
 		}
 		if ($order) {
 			$this->ci->db->order_by($order, $order_by);
 		}
 		$qry = $this->ci->db->get($table);
-		// echo $this->ci->db->last_query(); exit;
+		 //echo $this->ci->db->last_query(); exit;
 		if ($qry->num_rows() > 0) {
 			return $qry->result();
 		}

@@ -6,17 +6,12 @@
 <!-- Bootstrap core JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.2/randomColor.js"></script>
 <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
-
-
-
 <style>
 .leaflet-left{
 	left: 300px !important;
 }
 
 </style>
-
-
 		<!--sub-menu-->
 		<div class="icon-bar icon">
 			<a class="active" href="mapt.php"><i class="fa fa-map"></i> Maps</a>
@@ -35,7 +30,6 @@
 				<a href="#"><i class="fa fa-trash"></i></a>
 			</div>
 		</div>
-
 		<!--ends sub-menu-->
 		<div id="over_map">
 		<!-- <button class="layer-toggle" style="position:absolute;"><i class="fa fa-chevron-left" style="color: white";></i></button>
