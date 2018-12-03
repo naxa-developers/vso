@@ -276,45 +276,7 @@ class MainController extends CI_Controller
 
   public function dataset_page(){
 
-    // if(isset($_POST['submit_search'])){
-    //
-    //   $this->body['checked_data']=array();
-    //   $this->body['search']=$this->input->post('search');
-    //   $this->body['data']=$this->Main_model->get_category();
-    //   $this->body['data_panel']=$this->Main_model->get_category();
-    //
-    // }else{
-    //
-    //   $this->body['search']="";
-    //   $this->body['checked_data']=array();
-    //   $this->body['data']=$this->Main_model->get_category();
-    //   $this->body['data_panel']=$this->Main_model->get_category();
-    //
-    // }
-    // if(isset($_POST['submit'])){
-    //
-    // unset($_POST['submit']);
-    // //var_dump($_POST);
-    //
-    //  if($_POST == NULL){
-    //      $this->body['checked_data']=array();
-    //      $this->body['data']=$this->Main_model->get_category();
-    //  }else{
-    //     $checked_dataset=$_POST['dataset'];
-    //     $this->body['data']=$this->Main_model->get_checked_dataset($checked_dataset);
-    //     $this->body['checked_data']=$checked_dataset;
-    //
-    //  }
-    //
-    //
-    //
-    //
-    //
-    //   $this->body['data_panel']=$this->Main_model->get_category();
-    //   var_dump($this->body['data_panel']);
-    //
-    // }
-    //var_dump($this->body['data']);
+
     //language
     if($this->session->userdata('Language')==NULL){
 

@@ -102,7 +102,9 @@
           <div class="tab-pane fade show active" id="hazard" role="tabpanel" aria-labelledby="hazard-tab">
             <div class="container-fluid">
               <ul class="row">
-                  <?php foreach($exposure_data as $data){ ?>
+                  <?php
+                 if($exposure_data){
+                  foreach($exposure_data as $data){ ?>
                 <li class="col-md-3 col-lg-2">
                   <a href="<?php echo base_url()?>category?tbl=<?php echo $data['category_table'] ?> && name=<?php echo $data['category_name'] ?> " class="dataset-item-wrap margin-top-large" data-mh="eq-item">
                     <img src="<?php echo $data['category_photo'] ?>">
@@ -119,13 +121,15 @@
                       ?></span>
                   </a>
                 </li>
-            <?php } ?>
+            <?php }} ?>
           </ul>
             </div>
           </div>
           <div class="tab-pane fade" id="exposure" role="tabpanel" aria-labelledby="exposure-tab">
 <ul class="row">
-    <?php foreach($hazard_data as $data){ ?>
+    <?php
+    if($hazard_data) {
+    foreach($hazard_data as $data){ ?>
             <li class="col-md-3 col-lg-2">
               <a href="<?php echo base_url()?>category?tbl=<?php echo $data['category_table'] ?> && name=<?php echo $data['category_name'] ?> " class="dataset-item-wrap margin-top-large" data-mh="eq-item">
                 <img src="<?php echo $data['category_photo'] ?>">
@@ -143,12 +147,14 @@
                   ?></span>
               </a>
             </li>
-          <?php }?>
+          <?php }}?>
           </ul>
           </div>
           <div class="tab-pane fade" id="baseline" role="tabpanel" aria-labelledby="baseline-tab">
 <ul class="row">
-    <?php foreach($baseline_data as $data){ ?>
+    <?php
+if($baseline_data){
+    foreach($baseline_data as $data){ ?>
             <li class="col-md-3 col-lg-2">
               <a href="<?php echo base_url()?>category?tbl=<?php echo $data['category_table']?>&&name=<?php echo $data['category_name'] ?>" class="dataset-item-wrap margin-top-large" data-mh="eq-item">
                 <img src="<?php echo $data['category_photo'] ?>">
@@ -166,7 +172,7 @@
               </a>
             </li>
 
-          <?php } ?>
+          <?php }} ?>
           </ul>
           </div>
         </div>
