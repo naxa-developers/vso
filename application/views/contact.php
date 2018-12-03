@@ -302,7 +302,9 @@ $heading_nep='<th><strong>क्र.स</strong></th>
       <th><span>Phone No.</span></th>
       <th><span>Email</span></th> -->
     </thead>
-    <?php foreach ($chairpersons as $chairpersons) {
+    <?php
+if($chairpersons){
+    foreach ($chairpersons as $chairpersons) {
       // code...
      ?>
 
@@ -322,7 +324,7 @@ $heading_nep='<th><strong>क्र.स</strong></th>
 
      </tr>
 
-   <?php } ?>
+   <?php }} ?>
   </table>
 </div>
   <div class="text-center mb-3">
@@ -346,7 +348,9 @@ $heading_nep='<th><strong>क्र.स</strong></th>
 
       } ?>
     </thead>
-    <?php foreach ($chief as $chief) {
+    <?php
+if($chief){
+    foreach ($chief as $chief) {
       // code...
      ?>
 
@@ -371,7 +375,7 @@ $heading_nep='<th><strong>क्र.स</strong></th>
 
      </tr>
 
-   <?php } ?>
+   <?php }} ?>
   </table>
 </div>
 <div class="text-center mb-3">
@@ -396,7 +400,9 @@ $heading_nep='<th><strong>क्र.स</strong></th>
 
       } ?>
     </thead>
-    <?php foreach ($elected as $elected) {
+    <?php
+if($elected){
+    foreach ($elected as $elected) {
       // code...
      ?>
 
@@ -420,7 +426,7 @@ $heading_nep='<th><strong>क्र.स</strong></th>
 
      </tr>
 
-   <?php } ?>
+   <?php }} ?>
   </table>
 </div>
 <div class="text-center mb-3">
@@ -445,7 +451,9 @@ $heading_nep='<th><strong>क्र.स</strong></th>
 
       } ?>
     </thead>
-    <?php foreach ($municipal_ex as $municipal_ex) {
+    <?php
+if($municipal_ex){
+    foreach ($municipal_ex as $municipal_ex) {
       // code...
      ?>
 
@@ -471,7 +479,7 @@ $heading_nep='<th><strong>क्र.स</strong></th>
 
      </tr>
 
-   <?php } ?>
+   <?php }} ?>
   </table>
 </div>
 <div class="text-center mb-3">
@@ -498,7 +506,9 @@ $heading_nep='<th><strong>क्र.स</strong></th>
 
         } ?>
     </thead>
-    <?php foreach ($disaster as $disaster) {
+    <?php
+if($disaster){
+    foreach ($disaster as $disaster) {
       // code...
      ?>
 
@@ -525,7 +535,7 @@ $heading_nep='<th><strong>क्र.स</strong></th>
 
      </tr>
 
-   <?php } ?>
+   <?php }} ?>
   </table>
 </div>
 </div>
@@ -546,7 +556,9 @@ $heading_nep='<th><strong>क्र.स</strong></th>
 
       } ?>
     </thead>
-    <?php foreach ($nntds as $nntds) {
+    <?php
+    if($nntds){
+    foreach ($nntds as $nntds) {
       // code...
      ?>
 
@@ -569,7 +581,7 @@ $heading_nep='<th><strong>क्र.स</strong></th>
 
      </tr>
 
-   <?php } ?>
+   <?php }} ?>
   </table>
 </div>
 <div class="text-center mb-3">
@@ -607,7 +619,10 @@ $heading_nep='<th><strong>क्र.स</strong></th>
         </thead>
 
 
-       <?php foreach ($health as  $health) {
+       <?php
+
+if($health){
+       foreach ($health as  $health) {
 
         ?>
 
@@ -624,7 +639,7 @@ $heading_nep='<th><strong>क्र.स</strong></th>
           <td id="<?php echo $health['id'] ?>websitehealth"><?php echo $health['website'] ?></td>
 
         </tr>
- <?php } ?>
+ <?php } }?>
 
       </table>
     </div>
@@ -651,7 +666,9 @@ $heading_nep='<th><strong>क्र.स</strong></th>
           } ?>
       </thead>
 
-  <?php foreach ($responders as $responders) {
+  <?php
+if($responders){
+  foreach ($responders as $responders) {
     // code...
    ?>
 
@@ -669,7 +686,7 @@ $heading_nep='<th><strong>क्र.स</strong></th>
 
       </tr>
 
- <?php } ?>
+ <?php }} ?>
 
     </table>
   </div>
@@ -696,9 +713,11 @@ $heading_nep='<th><strong>क्र.स</strong></th>
     </thead>
 
 
-    <?php foreach ($security as $security) {
+    <?php
+if($security){
+    foreach ($security as $security) {
       // code...
-    } ?>
+     ?>
     <tr class="tr_tbl">
     <td id="<?php echo $security['id'] ?>idSecurity"><?php echo $security['id'] ?></td>
     <td id="<?php echo $security['id'] ?>organizationSecurity"><?php echo $security['organization'] ?></td>
@@ -711,7 +730,7 @@ $heading_nep='<th><strong>क्र.स</strong></th>
     <td id="<?php echo $security['id'] ?>emailSecurity"><?php echo $security['email'] ?></td>
     <td id="<?php echo $security['id'] ?>websiteSecurity"><?php echo $security['website'] ?></td>
   </tr>
-
+<?php}} ?>
   </table>
 </div>
 <div class="text-center mb-3">
@@ -735,7 +754,9 @@ $heading_nep='<th><strong>क्र.स</strong></th>
 
         } ?>
     </thead>
-    <?php foreach ($ngo as $ngo) {
+    <?php
+if($ngo){
+    foreach ($ngo as $ngo) {
       // code...
      ?>
 
@@ -752,7 +773,7 @@ $heading_nep='<th><strong>क्र.स</strong></th>
 
         </tr>
 
-   <?php } ?>
+   <?php }} ?>
   </table>
 </div>
 <div class="text-center mb-3">
@@ -776,7 +797,9 @@ $heading_nep='<th><strong>क्र.स</strong></th>
 
       } ?>
     </thead>
-    <?php foreach ($ddr as $ddr) {
+    <?php
+if($ddr){
+    foreach ($ddr as $ddr) {
       // code...
      ?>
 
@@ -800,7 +823,7 @@ $heading_nep='<th><strong>क्र.स</strong></th>
 
      </tr>
 
-   <?php } ?>
+   <?php }} ?>
   </table>
 </div>
 <div class="text-center mb-3">
@@ -824,7 +847,9 @@ $heading_nep='<th><strong>क्र.स</strong></th>
 
       } ?>
     </thead>
-    <?php foreach ($personnel as $personnel) {
+    <?php
+if($personnel){
+    foreach ($personnel as $personnel) {
 
      ?>
 
@@ -847,7 +872,7 @@ $heading_nep='<th><strong>क्र.स</strong></th>
 
      </tr>
 
-   <?php } ?>
+   <?php }} ?>
   </table>
 </div>
 <div class="text-center mb-3">
@@ -871,7 +896,9 @@ $heading_nep='<th><strong>क्र.स</strong></th>
 
       } ?>
     </thead>
-    <?php foreach ($members as $members) {
+    <?php
+if($members){
+    foreach ($members as $members) {
 
      ?>
 
@@ -894,7 +921,7 @@ $heading_nep='<th><strong>क्र.स</strong></th>
 
         </tr>
 
-   <?php } ?>
+   <?php }} ?>
   </table>
 </div>
 <div class="text-center mb-3">
