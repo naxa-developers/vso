@@ -68,22 +68,35 @@ class General {
 		define('FOOTER_SMALL', $site_info['footer_small']);
 		define('LINK_ONE', $site_info['1_link']);
 		define('LINK_TWO', $site_info['2_link']);
-
-
-
-
-
+		define('COVER_BIG', $site_info['cover_big']);
+		define('FLOOD', $site_info['flood']);
+		define('FIRE', $site_info['fire']);
+		define('LANDSLIDE', $site_info['landslide']);
+		define('LIGHTNING', $site_info['lightning']);
+		define('MORE', $site_info['more']);
+		define('SEARCH_DATASET', $site_info['search_dataset']);
+		define('SEARCH', $site_info['search']);
+		define('CAT_ONE', $site_info['cat_1']);
+		define('CAT_TWO', $site_info['cat_2']);
+		define('CAT_THREE', $site_info['cat_3']);
+		define('NAV_ONE', $site_info['nav_1']);
+		define('NAV_TWO', $site_info['nav_2']);
+		define('NAV_THREE', $site_info['nav_3']);
+		define('NAV_FOUR', $site_info['nav_4']);
+		define('NAV_FIVE', $site_info['nav_5']);
+		define('NAV_SIX', $site_info['nav_6']);
+		define('NAV_SEVEN', $site_info['nav_7']);
 	}	
 	public function get_site_settings_info() {
 		//pp($this->ci->session->userdata('Language'));
 		if($this->ci->session->userdata('Language')==NULL){
       		$this->ci->session->set_userdata('Language','nep');
     	}
-    	$lang=$this->ci->session->get_userdata('Language');
+    	$lang=$this->ci->session->userdata('Language');// pp($lang);
     	if($lang== 'en')
     	{
     		$whr = '1';
-    	}else{
+    	}elseif($lang== 'nep'){
     		$whr = '2';
     	}
     	if ($whr) {
@@ -109,7 +122,7 @@ class General {
 		$qry = $this->ci->db->get($table);
 		 //echo $this->ci->db->last_query(); exit;
 		if ($qry->num_rows() > 0) {
-			return $qry->result();
+			return $qry->result_array();
 		}
 		return false;
 	}

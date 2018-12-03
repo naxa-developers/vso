@@ -18,46 +18,46 @@
 </script>
 <div id="banner">
   <div class="banner-item">
-          <img src="<?php echo $site_info['cover_photo'] ?>" class="banner-img">
+          <img src="<?php echo COVER_POHOTO_EN ?>" class="banner-img">
           <div class="container clearfix">
             <div class="banner-caption text-center mb-4">
-              <h2><strong><?php echo $site_info['cover_big'] ?></strong></h2>
+              <h2><strong><?php echo COVER_BIG ?></strong></h2>
               <p>
-                <?php echo $site_info['cover_small'] ?>
+                <?php echo COVER_SMALL_EN ?>
               </p>
             </div>
             <div class="row justify-content-center">
               <div class="col-md-2">
                 <div class="disaster-summary-item" data-mh="summary-item">
                   <img src="<?php echo base_url()?>assets/icon/floods1.png" height="64">
-                  <h6><?php echo $site_info['flood']?></h6>
+                  <h6><?php echo FLOOD ?></h6>
                   <h4><?php echo $report_inci['Flood']?></h4>
                 </div>
               </div>
               <div class="col-md-2">
                 <div class="disaster-summary-item" data-mh="summary-item">
                     <img src="<?php echo base_url()?>assets/icon/fire1.png" height="64">
-                  <h6><?php echo $site_info['fire']?></h6>
+                  <h6><?php echo FIRE ?></h6>
                   <h4><?php echo $report_inci['Fire']?></h4>
                 </div>
               </div>
               <div class="col-md-2">
                 <div class="disaster-summary-item" data-mh="summary-item">
                     <img src="<?php echo base_url()?>assets/icon/landslide1.png" height="64">
-                  <h6><?php echo $site_info['landslide']?></h6>
+                  <h6><?php echo LANDSLIDE ?></h6>
                   <h4><?php echo $report_inci['Landslide']?></h4>
                 </div>
               </div>
               <div class="col-md-2">
                 <div class="disaster-summary-item" data-mh="summary-item">
                     <img src="<?php echo base_url()?>assets/icon/lightning1.png" height="64">
-                  <h6><?php echo $site_info['lightning']?></h6>
+                  <h6><?php echo LIGHTNING ?></h6>
                   <h4><?php echo $report_inci['Lightning']?></h4>
                 </div>
               </div>
               <div class="col-md-2">
                 <a href="<?php echo base_url() ?>report_page" class="disaster-summary-item" data-mh="summary-item">
-                  <p><?php echo $site_info['more']?> +</p>
+                  <p><?php echo MORE ?> +</p>
                 </a>
               </div>
             </div>
@@ -69,12 +69,12 @@
             <div class="row justify-content-md-center">
               <div class="col-md-6">
                 <div class="search-wrap text-center">
-                  <h3 class="mb-3"><?php echo $site_info['search_dataset'] ?><strong></strong></h3>
+                  <h3 class="mb-3"><?php echo SEARCH_DATASET ?><strong></strong></h3>
                   <form method="POST" action="<?php echo base_url()?>datasets">
                     <div class="input-group input-group-lg">
-                  <input type="text" class="form-control" name="search" placeholder="<?php echo $site_info['search']?>" aria-label="Keywords" aria-describedby="basic-addon2">
+                  <input type="text" class="form-control" name="search" placeholder="<?php echo SEARCH ?>" aria-label="Keywords" aria-describedby="basic-addon2">
                   <div class="input-group-append">
-                    <button class="btn btn-secondary" name="submit_search" type="submit"><?php echo $site_info['search']?></button>
+                    <button class="btn btn-secondary" name="submit_search" type="submit"><?php echo SEARCH ?></button>
                   </div>
                 </div>
                   </form>
@@ -89,13 +89,13 @@
 
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active" id="hazard-tab" data-toggle="tab" href="#hazard" role="tab" aria-controls="hazard" aria-selected="true"><?php echo $site_info['cat_1'] ?></a>
+            <a class="nav-link active" id="hazard-tab" data-toggle="tab" href="#hazard" role="tab" aria-controls="hazard" aria-selected="true"><?php echo CAT_ONE ?></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="exposure-tab" data-toggle="tab" href="#exposure" role="tab" aria-controls="exposure" aria-selected="false"><?php echo $site_info['cat_2'] ?></a>
+            <a class="nav-link" id="exposure-tab" data-toggle="tab" href="#exposure" role="tab" aria-controls="exposure" aria-selected="false"><?php echo CAT_TWO ?></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="baseline-tab" data-toggle="tab" href="#baseline" role="tab" aria-controls="baseline" aria-selected="false"><?php echo $site_info['cat_3'] ?></a>
+            <a class="nav-link" id="baseline-tab" data-toggle="tab" href="#baseline" role="tab" aria-controls="baseline" aria-selected="false"><?php echo CAT_THREE ?></a>
           </li>
         </ul>
         <div class="tab-content scrolling-wrap" style="height: 280px;" id="myTabContent">

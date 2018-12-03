@@ -12,7 +12,7 @@
   <link rel="shortcut icon" href="<?php echo base_url();?>assets/img/ng.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-  <title><?php echo $site_info['site_name'] ?></title>
+  <title><?php echo SITE_NAME_EN ?></title>
 
 
   <!-- Bootstrap core CSS -->
@@ -133,10 +133,10 @@
               <div class="container">
                 <a class="navbar-brand" href="<?php echo base_url();?>">
                   <div class="logo-gov clearfix">
-                    <img src="<?php echo $site_info['site_logo'] ?>" alt="Logo">
+                    <img src="<?php echo SITE_SLOGAN_EN ?>" alt="Logo">
                     <h6>
-                      <strong><?php echo $site_info['site_name'] ?></strong>
-                     <div class="sub-head"> <small><?php echo $site_info['site_text'] ?></small> </div>
+                      <strong><?php echo SITE_NAME_EN ?></strong>
+                     <div class="sub-head"> <small><?php echo SITE_TEXT_EN ?></small> </div>
                     </h6>
                   </div>
                 </a>
@@ -148,26 +148,26 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                      <a class="nav-link" href="index.php"><?php echo $site_info['nav_7'] ?> <span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="index.php"><?php echo NAV_SEVEN ?> <span class="sr-only">(current)</span></a>
                     </li>
 
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url()?>category?tbl=0 && name=0"><?php echo $site_info['nav_1'] ?></a>
+                      <a class="nav-link" href="<?php echo base_url()?>category?tbl=0 && name=0"><?php echo NAV_ONE ?></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url()?>report_page"><?php echo $site_info['nav_2'] ?></a>
+                      <a class="nav-link" href="<?php echo base_url()?>report_page"><?php echo NAV_TWO ?></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url()?>contact"><?php echo $site_info['nav_3'] ?></a>
+                      <a class="nav-link" href="<?php echo base_url()?>contact"><?php echo NAV_THREE ?></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url()?>inventory"><?php echo $site_info['nav_4'] ?></a>
+                      <a class="nav-link" href="<?php echo base_url()?>inventory"><?php echo NAV_FOUR ?></a>
                     </li>
                     <li class="nav-item">
-                     <a class="nav-link" href="<?php echo base_url()?>datasets"><?php echo $site_info['nav_5'] ?></a>
+                     <a class="nav-link" href="<?php echo base_url()?>datasets"><?php echo NAV_FIVE ?></a>
                    </li>
                       <li class="nav-item">
-                     <a class="nav-link" href="<?php echo base_url()?>publication"><?php echo $site_info['nav_6'] ?></a>
+                     <a class="nav-link" href="<?php echo base_url()?>publication"><?php echo NAV_SIX ?></a>
                     </li>
                       <!-- <li class="nav-item">
                      <a class="nav-link" href="<?php echo base_url()?>about">About</a>
@@ -201,7 +201,7 @@
                         <i class="la la-language"></i> : En
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="<?php echo base_url();?>nep?urll=<?php echo $urll ?>">Nepali</a>
+                        <a class="dropdown-item" href="<?php echo base_url();?>nep?urll=<?php echo $urll ?>">नेपाली</a>
                       </div>
                       </li>
                     <?php }else{ ?>
@@ -210,7 +210,7 @@
                         <i class="la la-language"></i> : ने
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="<?php echo base_url();?>en?urll=<?php echo $urll ?>">अङ्रेजी</a>
+                        <a class="dropdown-item" href="<?php echo base_url();?>en?urll=<?php echo $urll ?>">English</a>
                       </div>
                       </li>
                     <?php } ?>
