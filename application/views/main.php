@@ -189,7 +189,6 @@
     </div>
 </a>
 <?php }else{ ?>
-
   <a href="category?tbl=<?php echo $feature['table'] ?>">
       <div class="bg-white feature-section">
         <div class="container">
