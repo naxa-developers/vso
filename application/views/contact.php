@@ -730,7 +730,7 @@ if($security){
     <td id="<?php echo $security['id'] ?>emailSecurity"><?php echo $security['email'] ?></td>
     <td id="<?php echo $security['id'] ?>websiteSecurity"><?php echo $security['website'] ?></td>
   </tr>
-<?php}} ?>
+<?php }} ?>
   </table>
 </div>
 <div class="text-center mb-3">
