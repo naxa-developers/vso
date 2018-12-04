@@ -86,7 +86,8 @@ class General {
 		define('NAV_FIVE', $site_info['nav_5']);
 		define('NAV_SIX', $site_info['nav_6']);
 		define('NAV_SEVEN', $site_info['nav_7']);
-	}	
+		define('DOWNLOAD', $site_info['download']);
+	}
 	public function get_site_settings_info() {
 		//pp($this->ci->session->userdata('Language'));
 		if($this->ci->session->userdata('Language')==NULL){
@@ -110,7 +111,7 @@ class General {
 		//echo $this->ci->db->last_query(); exit;
 		return $data;
 	}
-	// return result 
+	// return result
 	public function get_tbl_data_result($select, $table = false, $where = false, $order = false, $order_by = 'ASC') {
 		$this->ci->db->select($select);
 		if ($where) {
@@ -151,4 +152,3 @@ class General {
 		return 0;
 	}
 }
-        

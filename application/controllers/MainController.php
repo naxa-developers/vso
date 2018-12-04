@@ -9,91 +9,57 @@ class MainController extends CI_Controller
     $this->load->helper('url');
     $this->load->model('Main_model');
     $this->load->model('Upload_model');
-    $this->load->library('general');
-
+    
 
   }
 
-  public function contact(){
-    // echo "<pre>";
-    // print_r($this->general->get_count_table_rows('*','emergency_contact'));die;
-    // language
+  public function contact() {
     if($this->session->userdata('Language')==NULL){
 
       $this->session->set_userdata('Language','nep');
     }
-
     $lang=$this->session->get_userdata('Language');
-
-
-    if($lang['Language']=='en'){
-
-      $this->body['site_info']=$this->Main_model->site_setting_en();
+    if($lang['Language']=='en') {
       //eng contact
-       $emerg_lang='en';
+      $emerg_lang='en';
+      $this->body['health']=$this->general->get_tbl_data_result('*','emergency_contact',array('category'=>'health','language'=>$emerg_lang));
+      $this->body['responders']=$this->general->get_tbl_data_result('*','emergency_contact',array('category'=>'responders','language'=>$emerg_lang));
+      $this->body['security']=$this->general->get_tbl_data_result('*','emergency_contact',array('category'=>'security','language'=>$emerg_lang));
+      $this->body['ngo']=$this->general->get_tbl_data_result('*','emergency_contact',array('category'=>'ngo','language'=>$emerg_lang));
 
-
-      $this->body['health']=$this->Main_model->get_contact('health','emergency_contact',$emerg_lang);
-      $this->body['responders']=$this->Main_model->get_contact('responders','emergency_contact',$emerg_lang);
-      $this->body['security']=$this->Main_model->get_contact('security','emergency_contact',$emerg_lang);
-      $this->body['ngo']=$this->Main_model->get_contact('ngo','emergency_contact',$emerg_lang);
-      $this->body['ddr']=$this->Main_model->get_contact('ddr','emergency_personnel',$emerg_lang);
-      $this->body['personnel']=$this->Main_model->get_contact('personnel','emergency_personnel',$emerg_lang);
-      $this->body['members']=$this->Main_model->get_contact('members','emergency_personnel',$emerg_lang);
-
-      $this->body['chairpersons']=$this->Main_model->get_contact('chairpersons','emergency_personnel',$emerg_lang);
-      $this->body['chief']=$this->Main_model->get_contact('chief','emergency_personnel',$emerg_lang);
-      $this->body['elected']=$this->Main_model->get_contact('elected','emergency_personnel',$emerg_lang);
-      $this->body['municipal_ex']=$this->Main_model->get_contact('municipal_ex','emergency_personnel',$emerg_lang);
-      $this->body['disaster']=$this->Main_model->get_contact('disaster','emergency_personnel',$emerg_lang);
-      $this->body['nntds']=$this->Main_model->get_contact('nntds','emergency_personnel',$emerg_lang);
-
-
-
-
+      $this->body['ddr']=$this->general->get_tbl_data_result('*','emergency_personnel',array('category'=>'ddr','language'=>$emerg_lang));
+      $this->body['personnel']=$this->general->get_tbl_data_result('*','emergency_personnel',array('category'=>'personnel','language'=>$emerg_lang));
+      $this->body['members']=$this->general->get_tbl_data_result('*','emergency_personnel',array('category'=>'members','language'=>$emerg_lang));
+      $this->body['chairpersons']=$this->general->get_tbl_data_result('*','emergency_personnel',array('category'=>'chairpersons','language'=>$emerg_lang));
+      $this->body['chief']=$this->general->get_tbl_data_result('*','emergency_personnel',array('category'=>'chief','language'=>$emerg_lang));
+      $this->body['elected']=$this->general->get_tbl_data_result('*','emergency_personnel',array('category'=>'elected','language'=>$emerg_lang));
+      $this->body['municipal_ex']=$this->general->get_tbl_data_result('*','emergency_personnel',array('category'=>'municipal_ex','language'=>$emerg_lang));
+      $this->body['disaster']=$this->general->get_tbl_data_result('*','emergency_personnel',array('category'=>'disaster','language'=>$emerg_lang));
+      $this->body['nntds']=$this->general->get_tbl_data_result('*','emergency_personnel',array('category'=>'nntds','language'=>$emerg_lang));
       //eng end
-
-
     }else{
-
       $emerg_lang='nep';
-      $this->data['test'] = $this->general->get_tbl_data_result('*','emergency_contact',array('category'=>'health','language'=>'en'),'id');
-      // echo $this->db->last_query();die;
-      //pp($this->data['test']);
-      $this->body['health']=$this->Main_model->get_contact('health','emergency_contact',$emerg_lang);
-      $this->body['responders']=$this->Main_model->get_contact('responders','emergency_contact',$emerg_lang);
-      $this->body['security']=$this->Main_model->get_contact('security','emergency_contact',$emerg_lang);
-      $this->body['ngo']=$this->Main_model->get_contact('ngo','emergency_contact',$emerg_lang);
-      $this->body['ddr']=$this->Main_model->get_contact('ddr','emergency_personnel',$emerg_lang);
-      $this->body['personnel']=$this->Main_model->get_contact('personnel','emergency_personnel',$emerg_lang);
-      $this->body['members']=$this->Main_model->get_contact('members','emergency_personnel',$emerg_lang);
+      $this->body['health']=$this->general->get_tbl_data_result('*','emergency_contact',array('category'=>'health','language'=>$emerg_lang));
+      $this->body['responders']=$this->general->get_tbl_data_result('*','emergency_contact',array('category'=>'responders','language'=>$emerg_lang));
+      $this->body['security']=$this->general->get_tbl_data_result('*','emergency_contact',array('category'=>'security','language'=>$emerg_lang));
+      $this->body['ngo']=$this->general->get_tbl_data_result('*','emergency_contact',array('category'=>'ngo','language'=>$emerg_lang));
 
-      $this->body['chairpersons']=$this->Main_model->get_contact('chairpersons','emergency_personnel',$emerg_lang);
-      $this->body['chief']=$this->Main_model->get_contact('chief','emergency_personnel',$emerg_lang);
-      $this->body['elected']=$this->Main_model->get_contact('elected','emergency_personnel',$emerg_lang);
-      $this->body['municipal_ex']=$this->Main_model->get_contact('municipal_ex','emergency_personnel',$emerg_lang);
-      $this->body['disaster']=$this->Main_model->get_contact('disaster','emergency_personnel',$emerg_lang);
-      $this->body['nntds']=$this->Main_model->get_contact('nntds','emergency_personnel',$emerg_lang);
-
-
-
-     $this->body['site_info']=$this->Main_model->site_setting_nep();
-
-
+      $this->body['ddr']=$this->general->get_tbl_data_result('*','emergency_personnel',array('category'=>'ddr','language'=>$emerg_lang));
+      $this->body['personnel']=$this->general->get_tbl_data_result('*','emergency_personnel',array('category'=>'personnel','language'=>$emerg_lang));
+      $this->body['members']=$this->general->get_tbl_data_result('*','emergency_personnel',array('category'=>'members','language'=>$emerg_lang));
+      $this->body['chairpersons']=$this->general->get_tbl_data_result('*','emergency_personnel',array('category'=>'chairpersons','language'=>$emerg_lang));
+      $this->body['chief']=$this->general->get_tbl_data_result('*','emergency_personnel',array('category'=>'chief','language'=>$emerg_lang));
+      $this->body['elected']=$this->general->get_tbl_data_result('*','emergency_personnel',array('category'=>'elected','language'=>$emerg_lang));
+      $this->body['municipal_ex']=$this->general->get_tbl_data_result('*','emergency_personnel',array('category'=>'municipal_ex','language'=>$emerg_lang));
+      $this->body['disaster']=$this->general->get_tbl_data_result('*','emergency_personnel',array('category'=>'disaster','language'=>$emerg_lang));
+      $this->body['nntds']=$this->general->get_tbl_data_result('*','emergency_personnel',array('category'=>'nntds','language'=>$emerg_lang));
     }
-
     $this->body['urll']=$this->uri->segment(1);
-
     //language
-
     $this->load->view('header',$this->body);
     $this->load->view('contact',$this->body);
-  //  $this->load->view('contact_static',$this->body);
     $this->load->view('footer',$this->body);
-
   }
-
-
   public function map_page(){
 
 
@@ -140,7 +106,6 @@ class MainController extends CI_Controller
 
   public function default_page()
   {
-
     $this->load->model('Report_model');
     $tbl='categories_tbl';
     $this->body['feature']=$this->general->get_tbl_data_result('*','featured_dataset',array('lang'=>'en','default'=>'1'));
