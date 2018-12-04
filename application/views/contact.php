@@ -1,126 +1,122 @@
-
-
 <style>
 
-.nav-tabs,
-.nav-pills {
-  position: relative;
-}
-.tabdrop{
-  width: 120px;
-  margin-top: .5rem;
-}
-
-.nav-tabs li li i{
-  visibility: hidden;
-}
-
-.hide {
-  display: none;
-}
-
-.input-group-addon {
-  position: absolute;
-  right: 10px;
-  bottom: 13px;
-  z-index: 2;
-}
-
-.contact-search-1 {
-  padding: 50px;
-  border-bottom: 1px solid #eee;
-  padding-left: 0px;
-}
-
-.table table-striped table-bordered table-hover bg-white mt-3 th {
-  display: none;
-  border: 1px solid transparent;
-  background-color: lightslategray;
-  color: #FFF;
-  padding: 1em;
-}
-
-#reportable{
-  overflow: auto;
-  margin: 0em auto 3em;
-}
-.table table-striped table-bordered table-hover bg-white mt-3 {
-  margin: 1em 0em;
-  width: 100%;
-  overflow: hidden;
-  background: #FFF;
-  color: #000;
-  border-radius: 0px;
-  border: 1px solid #1f5cb2;
-  font-size: 16px;
-}
-.table table-striped table-bordered table-hover bg-white mt-3 tr {
-  border: 1px solid #D9E4E6;
-}
-.table table-striped table-bordered table-hover bg-white mt-3 tr:nth-child(odd) {
-  background-color: #EAF3F3;
-}
-
-.table table-striped table-bordered table-hover bg-white mt-3 th:first-child {
-  display: table-cell;
-  text-align: center;
-}
-.table table-striped table-bordered table-hover bg-white mt-3 th:nth-child(2) {
-  display: table-cell;
-}
-.table table-striped table-bordered table-hover bg-white mt-3 th:nth-child(2) span {
-  display: none;
-}
-.table table-striped table-bordered table-hover bg-white mt-3 th:nth-child(2):after {
-  content: attr(data-th);
-}
-@media (min-width: 480px) {
-  .table table-striped table-bordered table-hover bg-white mt-3 th:nth-child(2) span {
-    display: block;
+  .nav-tabs,
+  .nav-pills {
+    position: relative;
   }
-  .table table-striped table-bordered table-hover bg-white mt-3 th:nth-child(2):after {
+  .tabdrop{
+    width: 120px;
+    margin-top: .5rem;
+  }
+
+  .nav-tabs li li i{
+    visibility: hidden;
+  }
+
+  .hide {
     display: none;
   }
-}
-.table table-striped table-bordered table-hover bg-white mt-3 td {
-  display: block;
-  word-wrap: break-word;
-  max-width: 7em;
-}
-.table table-striped table-bordered table-hover bg-white mt-3 td:first-child {
-  display: table-cell;
-  text-align: center;
-  border-right: 1px solid #D9E4E6;
-}
-@media (min-width: 480px) {
-  .table table-striped table-bordered table-hover bg-white mt-3 td {
+
+  .input-group-addon {
+    position: absolute;
+    right: 10px;
+    bottom: 13px;
+    z-index: 2;
+  }
+
+  .contact-search-1 {
+    padding: 50px;
+    border-bottom: 1px solid #eee;
+    padding-left: 0px;
+  }
+
+  .table table-striped table-bordered table-hover bg-white mt-3 th {
+    display: none;
+    border: 1px solid transparent;
+    background-color: lightslategray;
+    color: #FFF;
+    padding: 1em;
+  }
+
+  #reportable{
+    overflow: auto;
+    margin: 0em auto 3em;
+  }
+  .table table-striped table-bordered table-hover bg-white mt-3 {
+    margin: 1em 0em;
+    width: 100%;
+    overflow: hidden;
+    background: #FFF;
+    color: #000;
+    border-radius: 0px;
+    border: 1px solid #1f5cb2;
+    font-size: 16px;
+  }
+  .table table-striped table-bordered table-hover bg-white mt-3 tr {
     border: 1px solid #D9E4E6;
   }
-}
-.table table-striped table-bordered table-hover bg-white mt-3 th, .table table-striped table-bordered table-hover bg-white mt-3 td {
-  text-align: left;
-  margin: .5em 1em;
-}
-@media (min-width: 480px) {
-  .table table-striped table-bordered table-hover bg-white mt-3 th, .table table-striped table-bordered table-hover bg-white mt-3 td {
-    display: table-cell;
-    padding: 0.3em;
+  .table table-striped table-bordered table-hover bg-white mt-3 tr:nth-child(odd) {
+    background-color: #EAF3F3;
   }
-}
 
-.tabdrop .dropdown-menu a{
-  padding: 10px 13px;
-    font-size: 14px;
-}
+  .table table-striped table-bordered table-hover bg-white mt-3 th:first-child {
+    display: table-cell;
+    text-align: center;
+  }
+  .table table-striped table-bordered table-hover bg-white mt-3 th:nth-child(2) {
+    display: table-cell;
+  }
+  .table table-striped table-bordered table-hover bg-white mt-3 th:nth-child(2) span {
+    display: none;
+  }
+  .table table-striped table-bordered table-hover bg-white mt-3 th:nth-child(2):after {
+    content: attr(data-th);
+  }
+  @media (min-width: 480px) {
+    .table table-striped table-bordered table-hover bg-white mt-3 th:nth-child(2) span {
+      display: block;
+    }
+    .table table-striped table-bordered table-hover bg-white mt-3 th:nth-child(2):after {
+      display: none;
+    }
+  }
+  .table table-striped table-bordered table-hover bg-white mt-3 td {
+    display: block;
+    word-wrap: break-word;
+    max-width: 7em;
+  }
+  .table table-striped table-bordered table-hover bg-white mt-3 td:first-child {
+    display: table-cell;
+    text-align: center;
+    border-right: 1px solid #D9E4E6;
+  }
+  @media (min-width: 480px) {
+    .table table-striped table-bordered table-hover bg-white mt-3 td {
+      border: 1px solid #D9E4E6;
+    }
+  }
+  .table table-striped table-bordered table-hover bg-white mt-3 th, .table table-striped table-bordered table-hover bg-white mt-3 td {
+    text-align: left;
+    margin: .5em 1em;
+  }
+  @media (min-width: 480px) {
+    .table table-striped table-bordered table-hover bg-white mt-3 th, .table table-striped table-bordered table-hover bg-white mt-3 td {
+      display: table-cell;
+      padding: 0.3em;
+    }
+  }
+
+  .tabdrop .dropdown-menu a{
+    padding: 10px 13px;
+      font-size: 14px;
+  }
 </style>
-
-
 <!--advance Search starts-->
 <div class="container ">
     <div class="contact-search-1">
 	<div class="row">
     <div class="col-sm-12">
-        <input class="form-control" type="search" placeholder="<?php echo  $site_info['search'] ?>" id="myInput" onkeyup="myFunction()">
+        <input class="form-control" type="search" placeholder="<?php echo  SEARCH ?>" id="myInput" onkeyup="myFunction()">
       </div>
   </div>
 </div>
@@ -328,7 +324,7 @@ if($chairpersons){
   </table>
 </div>
   <div class="text-center mb-3">
-    <a href="get_csv_emergency?type=chairpersons&&name=Chairpersons_of_Local_Units&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
+    <a href="get_csv_emergency?type=chairpersons&&name=Chairpersons_of_Local_Units&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo DOWNLOAD ?></button></a>
     </div>
 </div>
 
@@ -379,7 +375,7 @@ if($chief){
   </table>
 </div>
 <div class="text-center mb-3">
-    <a href="get_csv_emergency?type=cheif&&name=Chief_of_local_level_offices&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
+    <a href="get_csv_emergency?type=cheif&&name=Chief_of_local_level_offices&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo DOWNLOAD ?></button></a>
       </div>
 </div>
 
@@ -430,7 +426,7 @@ if($elected){
   </table>
 </div>
 <div class="text-center mb-3">
-    <a href="get_csv_emergency?type=elected&&name=Elected_Representatives&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
+    <a href="get_csv_emergency?type=elected&&name=Elected_Representatives&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo DOWNLOAD ?></button></a>
       </div>
 </div>
 <!-- elected -->
@@ -483,14 +479,14 @@ if($municipal_ex){
   </table>
 </div>
 <div class="text-center mb-3">
-    <a href="get_csv_emergency?type=municipal_ex&&name=Municipal_Executive_Members&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
+    <a href="get_csv_emergency?type=municipal_ex&&name=Municipal_Executive_Members&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo DOWNLOAD ?></button></a>
       </div>
 </div>
 
 
     <div class="tab-pane fade show" id="disaster" role="tabpanel" aria-labelledby="disaster-tab">
   <br>
-    <a href="get_csv_emergency?type=disaster&&name=Municipality_Level_Disaster_Management_Committee&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
+    <a href="get_csv_emergency?type=disaster&&name=Municipality_Level_Disaster_Management_Committee&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> <?php echo DOWNLOAD ?></button></a>
       <br>
   <div class="row" id="reportable">
    <!-- responsive table for displaying contact directory -->
@@ -585,7 +581,7 @@ if($disaster){
   </table>
 </div>
 <div class="text-center mb-3">
-    <a href="get_csv_emergency?type=nntds&&name=NNTDS_Executive_Committee&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
+    <a href="get_csv_emergency?type=nntds&&name=NNTDS_Executive_Committee&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;float: right;"><i class="fa fa-download"></i> <?php echo DOWNLOAD ?></button></a>
   </div>
 </div>
 
@@ -645,7 +641,7 @@ if($health){
     </div>
     <div class="text-center mb-3">
 
-      <a href="get_csv_emergency?type=health&&name=Health_Institutions&&tbl=emergency_contact"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
+      <a href="get_csv_emergency?type=health&&name=Health_Institutions&&tbl=emergency_contact"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo DOWNLOAD ?></button></a>
     </div>
   </div>
 
@@ -691,7 +687,7 @@ if($responders){
     </table>
   </div>
   <div class="text-center mb-3">
-    <a href="get_csv_emergency?type=responders&&name=Emergency_Responders&&tbl=emergency_contact"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
+    <a href="get_csv_emergency?type=responders&&name=Emergency_Responders&&tbl=emergency_contact"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo DOWNLOAD ?></button></a>
   </div>
 </div>
 
@@ -730,11 +726,11 @@ if($security){
     <td id="<?php echo $security['id'] ?>emailSecurity"><?php echo $security['email'] ?></td>
     <td id="<?php echo $security['id'] ?>websiteSecurity"><?php echo $security['website'] ?></td>
   </tr>
-<?php}} ?>
+<?php }} ?>
   </table>
 </div>
 <div class="text-center mb-3">
-    <a href="get_csv_emergency?type=security&&name=Security&&tbl=emergency_contact"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
+    <a href="get_csv_emergency?type=security&&name=Security&&tbl=emergency_contact"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo DOWNLOAD ?></button></a>
   </div>
 </div>
 
@@ -777,7 +773,7 @@ if($ngo){
   </table>
 </div>
 <div class="text-center mb-3">
-      <a href="get_csv_emergency?type=ngo&&name=NGOs_INGOs&&tbl=emergency_contact"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
+      <a href="get_csv_emergency?type=ngo&&name=NGOs_INGOs&&tbl=emergency_contact"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo DOWNLOAD ?></button></a>
   </div>
 </div>
 
@@ -827,7 +823,7 @@ if($ddr){
   </table>
 </div>
 <div class="text-center mb-3">
-    <a href="get_csv_emergency?type=ddr&&name=DRR_Volunteers&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
+    <a href="get_csv_emergency?type=ddr&&name=DRR_Volunteers&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo DOWNLOAD ?></button></a>
   </div>
 </div>
 
@@ -876,7 +872,7 @@ if($personnel){
   </table>
 </div>
 <div class="text-center mb-3">
-      <a href="get_csv_emergency?type=personnel&&name=Municipality_Personnel&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
+      <a href="get_csv_emergency?type=personnel&&name=Municipality_Personnel&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo DOWNLOAD ?></button></a>
   </div>
 </div>
 
@@ -925,7 +921,7 @@ if($members){
   </table>
 </div>
 <div class="text-center mb-3">
-      <a href="get_csv_emergency?type=members&&name=Members_of_Municipal_Assembly&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo $site_info['download'] ?></button></a>
+      <a href="get_csv_emergency?type=members&&name=Members_of_Municipal_Assembly&&tbl=emergency_personnel"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px;"><i class="fa fa-download"></i> <?php echo DOWNLOAD ?></button></a>
   </div>
 </div>
 </div>
