@@ -187,7 +187,7 @@ class TableController extends CI_Controller
             $data_lang=array(
 
               'eng_lang'=>'a'.$i,
-              'nepali_lang'=>$row[$i],
+              'nepali_lang'=>preg_replace('/[^A-Za-z0-9\-]/', ' ',$row[$i]),
               'tbl_name'=>$tbl_name,
 
 

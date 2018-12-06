@@ -631,8 +631,8 @@ echo $e;
 
 public function test_preg(){
 
-
-echo   preg_replace('/[^A-Za-z0-9\-]/', ' ', 'S/?."|\,N');
+echo   preg_replace('/[^A-Za-z0-9\-]/', ' ', 'Office.-space_+*%$=?/)(&^)><>< status');
+//echo strip_tags('Office.space_-+*?/)(&^)><>< status');
 }
 
 }//end
