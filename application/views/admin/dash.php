@@ -105,7 +105,7 @@ h1.sub{
 var home=parseInt("<?php echo $home ?>");
 var map=parseInt("<?php echo $map ?>");
 var report=parseInt("<?php echo $reports ?>");
-var about=parseInt("<?php echo $about ?>");
+//var about=parseInt("<?php echo $about ?>");
 
 
 window.onload = function () {
@@ -128,7 +128,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
       { y: home, label: "Home" },
       { y: map,  label: "Map" },
       { y: report,  label: "Reports" },
-      { y: about,  label: "About" },
+      // { y: about,  label: "About" },
 
     ]
   }]
