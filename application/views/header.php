@@ -73,10 +73,10 @@
 
 
   <!-- div is created to keep the map in its certain area whichever amount of area is located to display the map -->
-  <style type="text/css">
-.scrolling-wrap{
-  overflow-x: hidden !important;
-}
+<style type="text/css">
+  .scrolling-wrap{
+    overflow-x: hidden !important;
+  }
   .leaflet-popup-content {
 
     overflow: auto;
@@ -115,10 +115,7 @@
     overflow-x: hidden;
   }
 
-/**/
-
-
-
+  /**/
 </style>
 </head>
 
@@ -144,31 +141,30 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="index.php"><?php echo NAV_SEVEN ?> <span class="sr-only">(current)</span></a>
+                    <li class="nav-item <?php if($this->uri->segment(1) == '') { echo "active"; } ?>">
+                      <a class="nav-link" href="<?php echo base_url()?>"><?php echo NAV_SEVEN ?> <span class="sr-only"></span></a>
                     </li>
-
-                    <li class="nav-item">
+                    <li class="nav-item <?php if($this->uri->segment(1) == 'category') { echo "active"; } ?>">
                       <a class="nav-link" href="<?php echo base_url()?>category?tbl=0 && name=0"><?php echo NAV_ONE ?></a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item <?php if($this->uri->segment(1) == 'report_page') { echo "active"; } ?>">
                       <a class="nav-link" href="<?php echo base_url()?>report_page"><?php echo NAV_TWO ?></a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item <?php if($this->uri->segment(1) == 'contact') { echo "active"; } ?>">
                       <a class="nav-link" href="<?php echo base_url()?>contact"><?php echo NAV_THREE ?></a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item <?php if($this->uri->segment(1) == 'inventory') { echo "active"; } ?>">
                       <a class="nav-link" href="<?php echo base_url()?>inventory"><?php echo NAV_FOUR ?></a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item <?php if($this->uri->segment(1) == 'datasets') { echo "active"; } ?>">
                      <a class="nav-link" href="<?php echo base_url()?>datasets"><?php echo NAV_FIVE ?></a>
-                   </li>
-                      <li class="nav-item">
+                    </li>
+                    <li class="nav-item <?php if($this->uri->segment(1) == 'publication') { echo "active"; } ?>">
                      <a class="nav-link" href="<?php echo base_url()?>publication"><?php echo NAV_SIX ?></a>
                     </li>
+
                       <!-- <li class="nav-item">
                      <a class="nav-link" href="<?php echo base_url()?>about">About</a>
                     </li> -->

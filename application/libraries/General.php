@@ -61,13 +61,19 @@ class General {
 		define('SUBSCRIBE_BTN', $site_info['subscribe_btn']);
 		define('COPY_DATE', $site_info['copy_date']);
 		define('TWO_NAME', $site_info['2_name']);
-		define('ONE_NAME', $site_info['1_name']);
+		define('ONE_NAME', $site_info['1_name']);		
 		define('IMP_LINK', $site_info['imp_link']);
 		define('EMAIL', $site_info['email']);
 		define('SUBSCRIBE', $site_info['subscribe']);
 		define('FOOTER_SMALL', $site_info['footer_small']);
 		define('LINK_ONE', $site_info['1_link']);
 		define('LINK_TWO', $site_info['2_link']);
+		define('NAME_THREE', $site_info['3_name']);
+		define('LINK_THREE', $site_info['3_link']);
+		define('NAME_FOUR', $site_info['4_name']);
+		define('LINK_FOUR', $site_info['4_link']);
+		define('NAME_FIVE', $site_info['5_name']);
+		define('LINK_FIVE', $site_info['5_link']);
 		define('COVER_BIG', $site_info['cover_big']);
 		define('FLOOD', $site_info['flood']);
 		define('FIRE', $site_info['fire']);
@@ -87,6 +93,24 @@ class General {
 		define('NAV_SIX', $site_info['nav_6']);
 		define('NAV_SEVEN', $site_info['nav_7']);
 		define('DOWNLOAD', $site_info['download']);
+		define('MAP_LAT', $site_info['map_lat']);
+		define('MAP_LONG', $site_info['map_long']);
+		define('MAP_ZOOM', $site_info['map_zoom']);
+		define('GET_STARTED', $site_info['get_started']);
+		define('MAP', $site_info['map']);
+		define('DATA', $site_info['data']);
+		define('GHATANA_BIB', $site_info['ghatana_bib']);
+		define('APPLY', $site_info['apply']);
+		define('PUBL_TYPE', $site_info['publ_type']);
+		
+
+
+
+
+
+
+
+
 	}
 	public function get_site_settings_info() {
 		//pp($this->ci->session->userdata('Language'));
