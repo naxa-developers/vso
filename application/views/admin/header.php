@@ -133,7 +133,7 @@
                         <li><a href="<?php echo base_url()?>view_proj">Project Partners</a></li>
                         <!-- <li><a href="<?php echo base_url()?>emergency_contact">Emergency Contact</a></li> -->
                         <!-- <li><a href="<?php echo base_url()?>background">Background Image</a></li> -->
-                        <li><a href="<?php echo base_url();?>feature">Featured Datasets</a></li>
+                        <li><a href="<?php echo base_url();?>feature_nep">Featured Datasets</a></li>
                     </ul>
                 </li>
 
@@ -145,7 +145,7 @@
                     </a>
                     <ul class="sub">
 
-                        <li><a href="<?php echo base_url();?>categories_tbl">Categories</a></li>
+                        <li><a href="<?php echo base_url();?>categories_tbl_nep">Categories</a></li>
                         <li><a href="<?php echo base_url();?>sub_categories"> Sub-Categories</a></li>
 
                     </ul>
@@ -163,19 +163,19 @@
 
                         <!-- <li><a href="<?php echo base_url();?>create_categories_tbl">Create Database Tables</a></li>
                         <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
-                          <li><a href="<?php echo base_url()?>emergency_contact?name=Health Institutions&&cat=health">Health Institutions</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_contact?name=Emergency Responders&&cat=responders">Emergency Responders</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_contact?name=Security&&cat=security">Security</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_contact?name=NGOs and INGOs&&cat=ngo">NGOs and INGOs</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel?name=DRR Volunteers&&cat=ddr">DRR Volunteers</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Municipality Personnel&&cat=personnel">Municipality Personnel</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Members of Municipal Assemblysss&&cat=members">Members of Municipal Assemblysss</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Chairpersons of Local Units&&cat=chairpersons">Chairpersons of Local Units</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Chief of local level offices&&cat=chief">Chief of local level offices</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Elected Representatives&&cat=elected">Elected Representatives</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Municipal Executive Members&&cat=municipal_ex">Municipal Executive Members</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Municipality Level Disaster Management Committee&&cat=disaster">Municipality Level Disaster Management Committee</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Municipality Level Disaster Management Committee&&cat=nntds">NNTDS's Executive Committee</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_contact_nep?name=Health Institutions&&cat=health">Health Institutions</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_contact_nep?name=Emergency Responders&&cat=responders">Emergency Responders</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_contact_nep?name=Security&&cat=security">Security</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_contact_nep?name=NGOs and INGOs&&cat=ngo">NGOs and INGOs</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=DRR Volunteers&&cat=ddr">DRR Volunteers</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Municipality Personnel&&cat=personnel">Municipality Personnel</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Members of Municipal Assemblysss&&cat=members">Members of Municipal Assemblysss</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Chairpersons of Local Units&&cat=chairpersons">Chairpersons of Local Units</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Chief of local level offices&&cat=chief">Chief of local level offices</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Elected Representatives&&cat=elected">Elected Representatives</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Municipal Executive Members&&cat=municipal_ex">Municipal Executive Members</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Municipality Level Disaster Management Committee&&cat=disaster">Municipality Level Disaster Management Committee</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Municipality Level Disaster Management Committee&&cat=nntds">NNTDS's Executive Committee</a></li>
 
                     </ul>
                 </li>
