@@ -187,9 +187,9 @@ p.about {
 
           <?php }else{ ?>
 
-            <button id="" name="<?php echo $d['category_table']?>" class="btn btn-light btn-sm kml" disabled><span class="fa fa-download" ></span> KML</button>
- 						<a href="<?php echo base_url()?>get_csv_dataset?tbl=<?php echo $d['category_table']?>" ><button class="btn btn-light btn-sm" disabled><span class="fa fa-download" ></span> CSV</button></a>
- 						<a href="<?php echo base_url()?>get_geojson_dataset?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm" disabled><span class="fa fa-download"></span> Geojson</button></a>
+            <button id="" name="<?php echo $d['category_table']?>" class="btn btn-light btn-sm kml" hidden><span class="fa fa-download" ></span> KML</button>
+ 						<a href="<?php echo base_url()?>get_csv_dataset?tbl=<?php echo $d['category_table']?>" ><button class="btn btn-light btn-sm" hidden><span class="fa fa-download" ></span> CSV</button></a>
+ 						<a href="<?php echo base_url()?>get_geojson_dataset?tbl=<?php echo $d['category_table']?>"><button class="btn btn-light btn-sm" hidden><span class="fa fa-download"></span> Geojson</button></a>
 
 
           <?php }  ?>
