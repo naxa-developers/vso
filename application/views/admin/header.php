@@ -45,18 +45,18 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
     <style>
-    section#wizard-p-0 {
-        overflow-y: scroll;
-    }
-    .panel-body {
+        section#wizard-p-0 {
+            overflow-y: scroll;
+        }
+        .panel-body {
 
-    overflow: auto;
-}
+            overflow: auto;
+        }
 
-.form-control {
+        .form-control {
 
-    color: #110000;
-}
+            color: #110000;
+        }
     </style>
 </head>
 <body>
@@ -73,7 +73,7 @@
         <div class="fa fa-bars"></div>
     </div>
 </div>
-<!--logo end-->
+    <!--logo end-->
 
 
     <!--  notification start -->
@@ -119,18 +119,17 @@
                 <li>
                     <a href="<?php echo base_url()?>dashboard" >
                         <i class="fa fa-dashboard"></i>
-                        <span>Dashboard</span>
+                        <span>Dashboard</span>  <?php echo $this->lang->line('test'); ?>
+
                     </a>
                 </li>
-                <li class="sub-menu">
+                <li class="sub-menu class="<?php if($this->uri->segment(1) == '') { echo "active open"; } ?>">
                     <a href="javascript:;">
                         <i class="fa fa-laptop"></i>
                         <span>Home Page</span>
                     </a>
-                    <ul class="sub">
-
-
-                        <li><a href="<?php echo base_url()?>view_proj">Project Partners</a></li>
+                    <ul class="sub"  style="<?php if($this->uri->segment(1) == 'view_proj') { echo "display: block"; } ?>">
+                        <li class="<?php if($this->uri->segment(1) == 'view_proj') { echo "active open"; } ?>"><a href="<?php echo base_url()?>view_proj">Project Partners</a></li>
                         <!-- <li><a href="<?php echo base_url()?>emergency_contact">Emergency Contact</a></li> -->
                         <!-- <li><a href="<?php echo base_url()?>background">Background Image</a></li> -->
                         <li><a href="<?php echo base_url();?>feature_nep">Featured Datasets</a></li>

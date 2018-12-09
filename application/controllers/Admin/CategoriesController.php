@@ -658,178 +658,110 @@ class CategoriesController extends CI_Controller
     }
   }
 
-  public function create_categories(){  // create categories
-
-    if(isset($_POST['submit_cat'])){
-
-
-      $cat_name=$this->input->post('cat_name');
-      $cat_type=$this->input->post('category_type');
-      $upload_type=$this->input->post('upload_type');
-      $cat_table=strtolower(str_replace(" ","_",$cat_name));
-
-      if( $this->db->table_exists($cat_table)==true ){
-
-
-        $this->session->set_flashdata('msg', 'Category Already Exists !! Please use another category name');
-        redirect('categories_tbl');
-      }else{
-
-
-
-      $file_name = $_FILES['cat_pic']['name'];
-
-      if($file_name = $_FILES['cat_pic']['name']==""){
-
-
-
-        $data=array(
-          'category_name'=>$cat_name,
-          'category_table'=>$cat_table,
-          'category_photo'=>$this->input->post('icon'),
-          'category_type'=>$cat_type,
-          'uplaod_type'=>$upload_type,
-          'language'=>'en'
-        );
-
-        $insert=$this->Dash_model->insert_cat('categories_tbl',$data);
-        if($insert!=""){
-
-
-
-
-
-          if($upload_type=='csv'){
-            $this->load->model('Newsletter');
-            $mail_subject='Data Map Added in VSO Webpage';
-            $m='New Data Map('.$cat_name.')has been added in VSO Webpage.Plese follow link to view new Map Data <br>'.base_url().'category?tbl='.$cat_table;
-            $this->Newsletter->send_mail($m,$mail_subject);
-            $this->session->set_flashdata('msg','Important!!!Create Table for the category '.$cat_name);
-            redirect('csv_data_tbl?tbl='.base64_encode($cat_name).'&& id='.base64_encode($insert).'&& tbl_name='.base64_encode($cat_table));
-
-          }else{
-            $this->load->model('Newsletter');
-            $mail_subject='Data Map Added in VSO Webpage';
-            $m='New Data Map('.$cat_name.')has been added in VSO Webpage.Plese follow link to view new Map Data <br>'.base_url().'category?tbl='.$cat_table;
-            $this->Newsletter->send_mail($m,$mail_subject);
-            $this->session->set_flashdata('msg','Note: The Shapefile Co-ordinate System Must Be In WGS84 ie. EPSG:4326 '.$cat_name);
-            redirect('add_layers?tbl_name='.$cat_table.'&& id='.$insert);
-          }
-
-
-
-        }else{
-          var_dump($insert);
-
-
-        }
-
-
-      }else{
-
-        // $info = new SplFileInfo($file_name);
-        // $ext=$info->getExtension();
-
-      //  $ext = pathinfo($file_name, PATHINFO_EXTENSION);
-
-
-        $img_upload=$this->Dash_model->do_upload($file_name,$cat_table);
-        //var_dump ($img_upload);
-        if($img_upload != ""){
-
-          $ext=$img_upload['upload_data']['file_ext'];
-
-
-          $image_path=base_url() . 'uploads/categories/'.$cat_table.$ext ;
-          //  var_dump ($image_path);
-
-          $data=array(
-            'category_name'=>$cat_name,
-            'category_table'=>$cat_table,
-            'category_photo'=>$image_path,
-            'category_type'=>$cat_type,
-            'uplaod_type'=>$upload_type,
-            'language'=>'en'
-
-          );
-
-          $insert=$this->Dash_model->insert_cat('categories_tbl',$data);
-          if($insert!=""){
-
-
-
-
-
-            if($upload_type=='csv'){
-              $this->load->model('Newsletter');
-              $mail_subject='Data Map Added in VSO Webpage';
-              $m='New Data Map('.$cat_name.')has been added in VSO Webpage.Plese follow link to view new Map Data <br>'.base_url().'category?tbl='.$cat_table;
-              $this->Newsletter->send_mail($m,$mail_subject);
-              $this->session->set_flashdata('msg','Important!!!Create Table for the category '.$cat_name);
-              redirect('csv_data_tbl?tbl='.base64_encode($cat_name).'&& id='.base64_encode($insert).'&& tbl_name='.base64_encode($cat_table));
-
+    public function create_categories(){  // create categories
+        if(isset($_POST['submit_cat'])){
+            $cat_name=$this->input->post('cat_name');
+            $cat_type=$this->input->post('category_type');
+            $upload_type=$this->input->post('upload_type');
+            $cat_table=strtolower(str_replace(" ","_",$cat_name));
+            if( $this->db->table_exists($cat_table)==true ){
+                $this->session->set_flashdata('msg', 'Category Already Exists !! Please use another category name');
+                redirect('categories_tbl');
             }else{
-              $this->load->model('Newsletter');
-              $mail_subject='Data Map Added in VSO Webpage';
-              $m='New Data Map('.$cat_name.')has been added in VSO Webpage.Plese follow link to view new Map Data <br>'.base_url().'category?tbl='.$cat_table;
-              $this->Newsletter->send_mail($m,$mail_subject);
-              $this->session->set_flashdata('msg','Note: The Shapefile Co-ordinate System Must Be In WGS84 ie. EPSG:4326 '.$cat_name);
-              redirect('add_layers?tbl_name='.$cat_table.'&& id='.$insert);
+                $file_name = $_FILES['cat_pic']['name'];
+                if($file_name = $_FILES['cat_pic']['name']==""){
+                    $data=array(
+                        'category_name'=>$cat_name,
+                        'category_table'=>$cat_table,
+                        'category_photo'=>$this->input->post('icon'),
+                        'category_type'=>$cat_type,
+                        'uplaod_type'=>$upload_type,
+                        'language'=>'en'
+                    );
+                    $insert=$this->Dash_model->insert_cat('categories_tbl',$data);
+                    if($insert!=""){
+                        if($upload_type=='csv'){
+                            $this->load->model('Newsletter');
+                            $mail_subject='Data Map Added in VSO Webpage';
+                            $m='New Data Map('.$cat_name.')has been added in VSO Webpage.Plese follow link to view new Map Data <br>'.base_url().'category?tbl='.$cat_table;
+                            $this->Newsletter->send_mail($m,$mail_subject);
+                            $this->session->set_flashdata('msg','Important!!!Create Table for the category '.$cat_name);
+                            redirect('csv_data_tbl?tbl='.base64_encode($cat_name).'&& id='.base64_encode($insert).'&& tbl_name='.base64_encode($cat_table));
+
+                        }else{
+                            $this->load->model('Newsletter');
+                            $mail_subject='Data Map Added in VSO Webpage';
+                            $m='New Data Map('.$cat_name.')has been added in VSO Webpage.Plese follow link to view new Map Data <br>'.base_url().'category?tbl='.$cat_table;
+                            $this->Newsletter->send_mail($m,$mail_subject);
+                            $this->session->set_flashdata('msg','Note: The Shapefile Co-ordinate System Must Be In WGS84 ie. EPSG:4326 '.$cat_name);
+                            redirect('add_layers?tbl_name='.$cat_table.'&& id='.$insert);
+                        }
+                    }else{
+                        var_dump($insert);
+                    }
+                }else{
+                    // $info = new SplFileInfo($file_name);
+                    // $ext=$info->getExtension();
+                    //  $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+                    $img_upload=$this->Dash_model->do_upload($file_name,$cat_table);
+                    //var_dump ($img_upload);
+                    if($img_upload != ""){
+                        $ext=$img_upload['upload_data']['file_ext'];
+                        $image_path=base_url() . 'uploads/categories/'.$cat_table.$ext ;
+                        //  var_dump ($image_path);
+                        $data=array(
+                            'category_name'=>$cat_name,
+                            'category_table'=>$cat_table,
+                            'category_photo'=>$image_path,
+                            'category_type'=>$cat_type,
+                            'uplaod_type'=>$upload_type,
+                            'language'=>'en'
+                          );
+                        $insert=$this->Dash_model->insert_cat('categories_tbl',$data);
+                        if($insert!=""){
+                            if($upload_type=='csv'){
+                                $this->load->model('Newsletter');
+                                $mail_subject='Data Map Added in VSO Webpage';
+                                $m='New Data Map('.$cat_name.')has been added in VSO Webpage.Plese follow link to view new Map Data <br>'.base_url().'category?tbl='.$cat_table;
+                                $this->Newsletter->send_mail($m,$mail_subject);
+                                $this->session->set_flashdata('msg','Important!!!Create Table for the category '.$cat_name);
+                                redirect('csv_data_tbl?tbl='.base64_encode($cat_name).'&& id='.base64_encode($insert).'&& tbl_name='.base64_encode($cat_table));
+                            }else{
+                                $this->load->model('Newsletter');
+                                $mail_subject='Data Map Added in VSO Webpage';
+                                $m='New Data Map('.$cat_name.')has been added in VSO Webpage.Plese follow link to view new Map Data <br>'.base_url().'category?tbl='.$cat_table;
+                                $this->Newsletter->send_mail($m,$mail_subject);
+                                $this->session->set_flashdata('msg','Note: The Shapefile Co-ordinate System Must Be In WGS84 ie. EPSG:4326 '.$cat_name);
+                                redirect('add_layers?tbl_name='.$cat_table.'&& id='.$insert);
+                            }
+                        }else{
+                            var_dump($insert);
+                        }
+                    }else{
+                        $code= strip_tags($img_upload['error']);
+                        $this->body['error']=$code;
+                        //admin check
+                        $admin_type=$this->session->userdata('user_type');
+                        $this->body['admin']=$admin_type;
+                        //admin check
+                        $this->load->view('admin/header',$this->body);
+                        $this->load->view('admin/create_categories',$this->body);
+                        $this->load->view('admin/footer');
+                    }
+                }
             }
-
-
-
-          }else{
-            var_dump($insert);
-
-
-          }
-
-
         }else{
-
-          $code= strip_tags($img_upload['error']);
-          $this->body['error']=$code;
-
-          //admin check
-          $admin_type=$this->session->userdata('user_type');
-
-          $this->body['admin']=$admin_type;
-          //admin check
-
-          $this->load->view('admin/header',$this->body);
-          $this->load->view('admin/create_categories',$this->body);
-          $this->load->view('admin/footer');
+            $this->body['icon']=$this->Dash_model->get_tables_data('icons');
+            //admin check
+            $admin_type=$this->session->userdata('user_type');
+            $this->body['admin']=$admin_type;
+            //admin check
+            $this->load->view('admin/header',$this->body);
+            $this->load->view('admin/create_categories',$this->body);
+            $this->load->view('admin/footer');
         }
-      }
-  }
-
-    }else{
-
-
-
-
-
-
-      $this->body['icon']=$this->Dash_model->get_tables_data('icons');
-
-      //admin check
-      $admin_type=$this->session->userdata('user_type');
-
-      $this->body['admin']=$admin_type;
-      //admin check
-
-      $this->load->view('admin/header',$this->body);
-      $this->load->view('admin/create_categories',$this->body);
-      $this->load->view('admin/footer');
-
-
-
     }
-
-
-  }
-  //creating categories with its table end
+    //creating categories with its table end
 
 
   // adding data to categoriess table

@@ -1,53 +1,51 @@
 <style>
-label > input{ /* HIDE RADIO */
-  visibility: hidden; /* Makes input not-clickable */
-  position: absolute; /* Remove input from document flow */
-}
-label > input + img{ /* IMAGE STYLES */
-  cursor:pointer;
-  border:2px solid transparent;
-}
-label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
-  border:2px solid #f00;
-}
-#select-img{
-  display: none;
-}
-.btn.btn-info{
-  background-color: #1fb5ad;
-}
-.rim {
-    padding-left: 30px;
-    padding-bottom: 10px;
-    margin-left: 218px;
-}
-button#show {
+  label > input{ /* HIDE RADIO */
+    visibility: hidden; /* Makes input not-clickable */
+    position: absolute; /* Remove input from document flow */
+  }
+  label > input + img{ /* IMAGE STYLES */
+    cursor:pointer;
+    border:2px solid transparent;
+  }
+  label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+    border:2px solid #f00;
+  }
+  #select-img{
+    display: none;
+  }
+  .btn.btn-info{
     background-color: #1fb5ad;
-    border-color: transparent;
-    border-radius: 4px;
-    margin-left: 30px;
-}
-span.btn.btn-white.btn-file {
-    background-color: #1fb5ad;
-    color: #fff;
-    margin-left: 15px;
-}
-div#select-img {
-    margin-left: 15px;
-}
-.form-group.nam {
-    margin-left: 30px;
-}
-label.control-label.col-md-3.nn {
-    margin-left: 15px;
-}
-.kk {
-    margin-left: 230px;
-}
+  }
+  .rim {
+      padding-left: 30px;
+      padding-bottom: 10px;
+      margin-left: 218px;
+  }
+  button#show {
+      background-color: #1fb5ad;
+      border-color: transparent;
+      border-radius: 4px;
+      margin-left: 30px;
+  }
+  span.btn.btn-white.btn-file {
+      background-color: #1fb5ad;
+      color: #fff;
+      margin-left: 15px;
+  }
+  div#select-img {
+      margin-left: 15px;
+  }
+  .form-group.nam {
+      margin-left: 30px;
+  }
+  label.control-label.col-md-3.nn {
+      margin-left: 15px;
+  }
+  .kk {
+      margin-left: 230px;
+  }
 </style>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-
 <!--main content start-->
 <section id="main-content" class="">
   <section class="wrapper">
