@@ -26,7 +26,7 @@
                         ?>
                     <?php  if($data == NULL){   ?>
 
-                      <h4> NO Data   </h4>
+                      <h4> <?php echo $this->lang->line('nodata'); ?>   </h4>
 
                     <?php }else{ ?>
                       <table class="table table-hover" id="tb1">
@@ -73,8 +73,8 @@
                               <td><?php echo $value;?></td>
                             <?php } ?>
                               <td>
-                                <a href="<?php echo base_url()?>ghatana_edit?id=<?php echo base64_encode($v['id']);?>">Edit</a> /
-                                <a href="<?php echo base_url()?>ghatana_delete?id=<?php echo  $v['id'];?>">Delete</a></td>
+                                <a href="<?php echo base_url()?>ghatana_edit?id=<?php echo base64_encode($v['id']);?>"><?php echo $this->lang->line('edit'); ?></a> /
+                                <a href="<?php echo base_url()?>ghatana_delete?id=<?php echo  $v['id'];?>"><?php echo $this->lang->line('delete'); ?></a></td>
 
 
 

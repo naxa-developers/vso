@@ -11,7 +11,7 @@
       <div class="col-lg-12">
         <section class="panel">
           <header class="panel-heading">
-            <b>Sub Categories</b>
+            <b><?php echo $this->lang->line('sub_categories'); ?></b>
           </header>
           <div class="panel-body">
 

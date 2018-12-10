@@ -7,9 +7,9 @@
             <section class="panel">
               <section class="panel">
                   <header class="panel-heading">
-                      <b>Project Partners </b>
+                      <b> <?php echo $this->lang->line('project_partners'); ?></b>
                       <span class="tools pull-right">
-                        <a href="<?php echo base_url()?>add_proj"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-plus"></i> Add Project Partner</button></a>
+                        <a href="<?php echo base_url()?>add_proj"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-plus"></i> <?php echo $this->lang->line('add_project_partners'); ?></button></a>
                        </span>
                   </header>
                   <div class="panel-body">
@@ -26,7 +26,7 @@
                         ?>
                     <?php  if($data == NULL){   ?>
 
-                      <h4> NO Data   </h4>
+                      <h4><?php echo $this->lang->line('nodata'); ?> </h4>
 
                     <?php }else{ ?>
                       <table class="table table-hover" id='tb1'>
@@ -54,7 +54,7 @@
                               </td>
                             <?php  } ?>
                             <td>
-                              Operations
+                              <?php echo $this->lang->line('operation'); ?>
                             </td>
                           </tr>
 
@@ -73,8 +73,8 @@
                               <td><?php echo $value;?></td>
                             <?php }  ?>
                               <td>
-                                <a href="<?php echo base_url()?>proj/edit_proj?id=<?php echo base64_encode($v['id']);?>&& tbl=<?php echo base64_encode($tbl_name);?>">Edit</a> /
-                                <a href="<?php echo base_url()?>proj/delete_data?id=<?php echo  $v['id'];?> && tbl=<?php echo ($tbl_name);?>">Delete</a></td>
+                                <a href="<?php echo base_url()?>proj/edit_proj?id=<?php echo base64_encode($v['id']);?>&& tbl=<?php echo base64_encode($tbl_name);?>"><?php echo $this->lang->line('edit'); ?></a> /
+                                <a href="<?php echo base_url()?>proj/delete_data?id=<?php echo  $v['id'];?> && tbl=<?php echo ($tbl_name);?>"><?php echo $this->lang->line('delete'); ?></a></td>
 
 
 

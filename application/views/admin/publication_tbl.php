@@ -9,10 +9,10 @@
             <section class="panel">
               <section class="panel">
                   <header class="panel-heading">
-                     <b>Publications</b>
+                     <b><?php echo $this->lang->line('publications'); ?></b>
 
                       <span class="tools pull-right">
-                        <a href="<?php echo base_url()?>add_publication"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-plus"></i> Add Publication</button></a>
+                        <a href="<?php echo base_url()?>add_publication"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-plus"></i> <?php echo $this->lang->line('add_publication'); ?></button></a>
                        </span>
                   </header>
                   <div class="panel-body">
@@ -29,7 +29,7 @@
                         ?>
                     <?php  if($data == NULL){   ?>
 
-                      <h4> NO Data   </h4>
+                      <h4> <?php echo $this->lang->line('nodata'); ?>  </h4>
 
                     <?php }else{ ?>
                       <table class="table table-hover" id="tb3">
@@ -57,7 +57,7 @@
                               </td>
                             <?php  } ?>
                             <td>
-                              Operations
+                              <?php echo $this->lang->line('operation'); ?>
                             </td>
                           </tr>
 
@@ -76,8 +76,8 @@
                               <td><?php echo $value;?></td>
                             <?php }  ?>
                               <td>
-                                <a href="<?php echo base_url()?>edit_publication?id=<?php echo base64_encode($v['id']);?>">Edit</a> /
-                                <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>delete_publication?id=<?php echo  $v['id'];?>">Delete</a></td>
+                                <a href="<?php echo base_url()?>edit_publication?id=<?php echo base64_encode($v['id']);?>"><?php echo $this->lang->line('edit'); ?></a> /
+                                <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>delete_publication?id=<?php echo  $v['id'];?>"><?php echo $this->lang->line('delete'); ?></a></td>
 
 
 

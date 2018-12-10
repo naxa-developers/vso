@@ -17,7 +17,7 @@
               </span>
 
               <span class="tools pull-right">
-                switch Language
+               <?php echo $this->lang->line('switch_language'); ?>
     <a class="nav-link" href="<?php echo base_url();?>feature_nep"><img src="<?php echo base_url();?>assets/img/nep.png" height="15"></a>
     <a class="nav-link" href="<?php echo base_url();?>feature"><img src="<?php echo base_url();?>assets/img/uk.png" height="15"></a>
     </span>
@@ -36,7 +36,7 @@
                         ?>
                     <?php  if($data == NULL){   ?>
 
-                      <h4> NO Data   </h4>
+                      <h4> <?php echo $this->lang->line('nodata'); ?>  </h4>
 
                     <?php }else{ ?>
                       <table class="table table-hover" id='tb1'>
@@ -65,7 +65,7 @@
                               </td>
                             <?php  } }?>
                             <td>
-                              Operations
+                              <?php echo $this->lang->line('operation'); ?>
                             </td>
                           </tr>
 
@@ -87,8 +87,8 @@
                               <td><?php echo $value;?></td>
                             <?php }}  ?>
                               <td>
-                                <a href="<?php echo base_url()?>edit_feature_nep?id=<?php echo base64_encode($v['id']);?> ">Edit</a> /
-                                <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>delete_feature?id=<?php echo $v['id'];?>">Delete</a></td>
+                                <a href="<?php echo base_url()?>edit_feature_nep?id=<?php echo base64_encode($v['id']);?> "><?php echo $this->lang->line('edit'); ?></a> /
+                                <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>delete_feature?id=<?php echo $v['id'];?>"><?php echo $this->lang->line('delete'); ?></a></td>
 
 
 
@@ -106,7 +106,7 @@
                                 <div class="modal-content">
                                   <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Change Photo</h4>
+                                    <h4 class="modal-title"><?php echo $this->lang->line('change_photo'); ?></h4>
                                   </div>
                                   <div class="modal-body">
                                     <p>.</p>
@@ -119,7 +119,7 @@
                                                     <div class="col-md-9">
                                                       <br>
                                                       <div class="col-md-6">
-                                                        Upload Image
+                                                        <?php echo $this->lang->line('upload_image'); ?>
                                                         <div class="fileupload fileupload-new" data-provides="fileupload">
                                                           <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
                                                             <img src="<?php echo  $v['photo'];?>" alt="" />
@@ -127,8 +127,8 @@
                                                           <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
                                                           <div>
                                                             <span class="btn btn-white btn-file">
-                                                              <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
-                                                              <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                                                              <span class="fileupload-new"><i class="fa fa-paper-clip"></i> <?php echo $this->lang->line('select_image'); ?></span>
+                                                              <span class="fileupload-exists"><i class="fa fa-undo"></i> <?php echo $this->lang->line('change'); ?></span>
                                                               <input type="file" name="map_pic" class="default" />
                                                             </span>
 
@@ -138,7 +138,7 @@
                                                       </div>
                                                       </div>
                                                       </div>
-                                <button type="submit" name="submit" class="btn btn-danger">Change</button>
+                                <button type="submit" name="submit" class="btn btn-danger"><?php echo $this->lang->line('change'); ?></button>
                               </form>
 
                                   </div>
@@ -167,7 +167,7 @@
         <section class="panel">
           <section class="panel">
               <header class="panel-heading">
-                 <b> Choose Feature Datasets</b>
+                 <b> <?php echo $this->lang->line('choose_featured_datasets'); ?></b>
                   <span class="tools pull-right">
                     <!-- <a href="<?php echo base_url()?>add_maps"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Maps</button></a> -->
                    </span>
@@ -187,7 +187,7 @@
                             <div class="col-md-12">
                               <form class="form-horizontal bucket-form" action=" " method="POST">
                                 <div class="form-group">
-                                  <label class="col-sm-3 ">Select Featured Dataset: </label>
+                                  <label class="col-sm-3 "><?php echo $this->lang->line('select_featured_datasets'); ?>: </label>
 
                                         <div class="row col-md-9">
                                         <!-- <?php var_dump($data) ?> -->
@@ -217,7 +217,7 @@
                                   <?php } ?>
                                       <br><br>
                                       <br><br>
-                                  <button type="submit" name="submit_feature" class="btn btn-info">Update</button>
+                                  <button type="submit" name="submit_feature" class="btn btn-info"><?php echo $this->lang->line('update'); ?></button>
                                 </form>
                                     </div>
 

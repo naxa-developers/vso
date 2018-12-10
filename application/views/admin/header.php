@@ -83,20 +83,52 @@
 <div class="top-nav clearfix">
     <!--search & user info start-->
     <ul class="nav pull-right top-menu">
+        <li class="nav-item dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <span class="username"><?php echo $this->lang->line('switch_language'); ?> </span>
+            </a>
+            <?php
+            $urll=$this->uri->segment(1);
+            if($this->session->userdata('Language')==NULL){
+                $this->session->set_userdata('Language','nep');
+            }
+            $lang=$this->session->get_userdata('Language');
+            if($lang['Language']=='en'){ ?>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="<?php echo base_url();?>nep?urll=<?php echo $urll ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="la la-language"></i> : En
+                <b class="caret"></b>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="<?php echo base_url();?>nep?urll=<?php echo $urll ?>">नेपाली</a>
+            </div>
+        </li>
+        <?php }else{ ?>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="<?php echo base_url();?>nep?urll=<?php echo $urll ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="la la-language"></i> : ने
+                    <b class="caret"></b>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="<?php echo base_url();?>en?urll=<?php echo $urll ?>">English</a>
+                </div>
+            </li>
+        <?php } ?>
+        </li>
         <li>
-            <input type="text" class="form-control search" placeholder=" Search">
+            <input type="text" class="form-control search" placeholder=" <?php echo $this->lang->line('search'); ?>">
         </li>
         <!-- user login dropdown start-->
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 
-                <span class="username"><i class="fa fa-user"></i>  Admin</span>
+                <span class="username"><i class="fa fa-user"></i>  <?php echo $this->lang->line('admin'); ?></span>
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
-                <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                <li><a href="<?php echo base_url()?>logout"><i class="fa fa-key"></i> Log Out</a></li>
+                <li><a href="#"><i class=" fa fa-suitcase"></i> <?php echo $this->lang->line('profile'); ?></a></li>
+                <li><a href="#"><i class="fa fa-cog"></i> <?php echo $this->lang->line('settings'); ?></a></li>
+                <li><a href="<?php echo base_url()?>logout"><i class="fa fa-key"></i> <?php echo $this->lang->line('logout'); ?></a></li>
             </ul>
         </li>
         <!-- user login dropdown end -->
@@ -119,20 +151,20 @@
                 <li>
                     <a href="<?php echo base_url()?>dashboard" >
                         <i class="fa fa-dashboard"></i>
-                        <span>Dashboard</span>  <?php echo $this->lang->line('test'); ?>
+                        <span><?php echo $this->lang->line('dashboard'); ?></span>
 
                     </a>
                 </li>
                 <li class="sub-menu class="<?php if($this->uri->segment(1) == '') { echo "active open"; } ?>">
                     <a href="javascript:;">
                         <i class="fa fa-laptop"></i>
-                        <span>Home Page</span>
+                        <span><?php echo $this->lang->line('home_page'); ?></span>
                     </a>
                     <ul class="sub"  style="<?php if($this->uri->segment(1) == 'view_proj') { echo "display: block"; } ?>">
-                        <li class="<?php if($this->uri->segment(1) == 'view_proj') { echo "active open"; } ?>"><a href="<?php echo base_url()?>view_proj">Project Partners</a></li>
+                        <li class="<?php if($this->uri->segment(1) == 'view_proj') { echo "active open"; } ?>"><a href="<?php echo base_url()?>view_proj"><?php echo $this->lang->line('project_partners'); ?></a></li>
                         <!-- <li><a href="<?php echo base_url()?>emergency_contact">Emergency Contact</a></li> -->
                         <!-- <li><a href="<?php echo base_url()?>background">Background Image</a></li> -->
-                        <li><a href="<?php echo base_url();?>feature_nep">Featured Datasets</a></li>
+                        <li><a href="<?php echo base_url();?>feature_nep"><?php echo $this->lang->line('featured_datasets'); ?></a></li>
                     </ul>
                 </li>
 
@@ -140,12 +172,12 @@
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-laptop"></i>
-                        <span>Categorie Management</span>
+                        <span><?php echo $this->lang->line('categories_management'); ?></span>
                     </a>
                     <ul class="sub">
 
-                        <li><a href="<?php echo base_url();?>categories_tbl_nep">Categories</a></li>
-                        <li><a href="<?php echo base_url();?>sub_categories"> Sub-Categories</a></li>
+                        <li><a href="<?php echo base_url();?>categories_tbl_nep"> <?php echo $this->lang->line('categories'); ?></a></li>
+                        <li><a href="<?php echo base_url();?>sub_categories"> <?php echo $this->lang->line('sub_categories'); ?></a></li>
 
                     </ul>
                 </li>
@@ -156,25 +188,25 @@
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-th"></i>
-                        <span>Emergency Contact</span>
+                        <span><?php echo $this->lang->line('emergency_contact'); ?></span>
                     </a>
                     <ul class="sub">
 
                         <!-- <li><a href="<?php echo base_url();?>create_categories_tbl">Create Database Tables</a></li>
                         <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
-                          <li><a href="<?php echo base_url()?>emergency_contact_nep?name=Health Institutions&&cat=health">Health Institutions</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_contact_nep?name=Emergency Responders&&cat=responders">Emergency Responders</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_contact_nep?name=Security&&cat=security">Security</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_contact_nep?name=NGOs and INGOs&&cat=ngo">NGOs and INGOs</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=DRR Volunteers&&cat=ddr">DRR Volunteers</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Municipality Personnel&&cat=personnel">Municipality Personnel</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Members of Municipal Assemblysss&&cat=members">Members of Municipal Assemblysss</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Chairpersons of Local Units&&cat=chairpersons">Chairpersons of Local Units</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Chief of local level offices&&cat=chief">Chief of local level offices</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Elected Representatives&&cat=elected">Elected Representatives</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Municipal Executive Members&&cat=municipal_ex">Municipal Executive Members</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Municipality Level Disaster Management Committee&&cat=disaster">Municipality Level Disaster Management Committee</a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Municipality Level Disaster Management Committee&&cat=nntds">NNTDS's Executive Committee</a></li>
+                          <li><a href="<?php echo base_url()?>emergency_contact_nep?name=Health Institutions&&cat=health"><?php echo $this->lang->line('health_institution'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_contact_nep?name=Emergency Responders&&cat=responders"><?php echo $this->lang->line('emergency_responder'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_contact_nep?name=Security&&cat=security"><?php echo $this->lang->line('security'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_contact_nep?name=NGOs and INGOs&&cat=ngo"><?php echo $this->lang->line('ngos_ingos'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=DRR Volunteers&&cat=ddr"><?php echo $this->lang->line('drr_volunteers'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Municipality Personnel&&cat=personnel"><?php echo $this->lang->line('municipality_personnel'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Members of Municipal Assemblysss&&cat=members"><?php echo $this->lang->line('member_of_municipal'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Chairpersons of Local Units&&cat=chairpersons"><?php echo $this->lang->line('chairperson_of_local'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Chief of local level offices&&cat=chief"><?php echo $this->lang->line('chief_of_local'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Elected Representatives&&cat=elected"><?php echo $this->lang->line('elected_representative'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Municipal Executive Members&&cat=municipal_ex"><?php echo $this->lang->line('municipal_executive_members'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Municipality Level Disaster Management Committee&&cat=disaster"><?php echo $this->lang->line('municipal_disaster'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Municipality Level Disaster Management Committee&&cat=nntds"><?php echo $this->lang->line('nntds_executive'); ?></a></li>
 
                     </ul>
                 </li>
@@ -183,13 +215,13 @@
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-th"></i>
-                        <span>Report Management</span>
+                        <span><?php echo $this->lang->line('report_management'); ?></span>
                     </a>
                     <ul class="sub">
 
-                        <li><a href="<?php echo base_url();?>report_manage">View Reports</a></li>
-                        <li><a href="<?php echo base_url();?>ghatana">Ghatana Bibaran Management</a></li>
-                        <li><a href="<?php echo base_url();?>map_reports_table">View Ghatana Bibaran Management </a></li>
+                        <li><a href="<?php echo base_url();?>report_manage"><?php echo $this->lang->line('view_reports'); ?></a></li>
+                        <li><a href="<?php echo base_url();?>ghatana"><?php echo $this->lang->line('ghatana_bibaran_management'); ?></a></li>
+                        <li><a href="<?php echo base_url();?>map_reports_table"><?php echo $this->lang->line('view_ghatana_bibaran_management'); ?></a></li>
 
                     </ul>
                 </li>
@@ -199,11 +231,11 @@
                   <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-th"></i>
-                        <span>Publication Management</span>
+                        <span><?php echo $this->lang->line('publication_management'); ?></span>
                     </a>
                     <ul class="sub">
 
-                        <li><a href="<?php echo base_url();?>view_publication">Publication</a></li>
+                        <li><a href="<?php echo base_url();?>view_publication"><?php echo $this->lang->line('publication'); ?></a></li>
                       <!--   <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
 
                     </ul>
@@ -215,11 +247,11 @@
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-th"></i>
-                        <span>Municipal Map</span>
+                        <span><?php echo $this->lang->line('municipal_map'); ?></span>
                     </a>
                     <ul class="sub">
 
-                         <li><a href="<?php echo base_url();?>map_show">Map Download Management</a></li>
+                         <li><a href="<?php echo base_url();?>map_show"><?php echo $this->lang->line('map_download_management'); ?></a></li>
                       <!--  <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
 
                     </ul>
@@ -230,11 +262,11 @@
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-th"></i>
-                        <span>About Us</span>
+                        <span><?php echo $this->lang->line('about_us'); ?></span>
                     </a>
                     <ul class="sub">
 
-                         <li><a href="<?php echo base_url();?>view_about">About Management</a></li>
+                         <li><a href="<?php echo base_url();?>view_about"><?php echo $this->lang->line('about_management'); ?></a></li>
                       <!--  <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
 
                     </ul>

@@ -19,7 +19,7 @@
                         </span>
 
                         <span class="tools pull-right">
-                                   switch Language
+                                   <?php echo $this->lang->line('switch_language'); ?>
                        <a class="nav-link" href="<?php echo base_url();?>emergency_personnel_nep?name=<?php echo $name?>&&cat=<?php echo $cat?>"><img src="<?php echo base_url();?>assets/img/nep.png" height="15"></a>
                        <a class="nav-link" href="<?php echo base_url();?>emergency_personnel?name=<?php echo $name?>&&cat=<?php echo $cat?>"><img src="<?php echo base_url();?>assets/img/uk.png" height="15"></a>
                        </span>
@@ -38,7 +38,7 @@
                         ?>
                     <?php  if($data == NULL){   ?>
 
-                      <h4> NO Data   </h4>
+                      <h4> <?php echo $this->lang->line('nodata'); ?>   </h4>
 
                     <?php }else{ ?>
                       <table class="table table-hover" id='tb1'>
@@ -67,7 +67,7 @@
                               </td>
                             <?php  } }?>
                             <td>
-                              Operations
+                                <?php echo $this->lang->line('operation'); ?>
                             </td>
                           </tr>
 
@@ -89,8 +89,8 @@
                               <td><?php echo $value;?></td>
                             <?php }}  ?>
                               <td>
-                                <a href="<?php echo base_url()?>edit_emergency_personnel?id=<?php echo base64_encode($v['id']);?> && cat=<?php echo $cat ?> && tbl=emergency_personnel">Edit</a> /
-                                <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>delete_emergency?id=<?php echo $v['id'];?> && cat=<?php echo $cat ?> && tbl=emergency_personnel">Delete</a></td>
+                                <a href="<?php echo base_url()?>edit_emergency_personnel?id=<?php echo base64_encode($v['id']);?> && cat=<?php echo $cat ?> && tbl=emergency_personnel"><?php echo $this->lang->line('edit'); ?></a> /
+                                <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>delete_emergency?id=<?php echo $v['id'];?> && cat=<?php echo $cat ?> && tbl=emergency_personnel"><?php echo $this->lang->line('delete'); ?></a></td>
 
 
 
@@ -121,7 +121,7 @@
                                                     <div class="col-md-9">
                                                       <br>
                                                       <div class="col-md-6">
-                                                        Upload Image
+                                                        <?php echo $this->lang->line('upload_image'); ?>
                                                         <div class="fileupload fileupload-new" data-provides="fileupload">
                                                           <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
                                                             <img src="<?php echo  $v['photo'];?>" alt="" />
@@ -129,8 +129,8 @@
                                                           <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
                                                           <div>
                                                             <span class="btn btn-white btn-file">
-                                                              <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
-                                                              <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                                                              <span class="fileupload-new"><i class="fa fa-paper-clip"></i> <?php echo $this->lang->line('select_image'); ?></span>
+                                                              <span class="fileupload-exists"><i class="fa fa-undo"></i> <?php echo $this->lang->line('change'); ?></span>
                                                               <input type="file" name="emerg_pic" class="default" />
                                                             </span>
 
@@ -140,7 +140,7 @@
                                                       </div>
                                                       </div>
                                                       </div>
-                                <button type="submit" name="submit" class="btn btn-danger">Change</button>
+                                <button type="submit" name="submit" class="btn btn-danger"><?php echo $this->lang->line('change'); ?></button>
                               </form>
 
                                   </div>
