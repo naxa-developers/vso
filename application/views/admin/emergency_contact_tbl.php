@@ -8,7 +8,7 @@
             <section class="panel">
               <section class="panel">
                   <header class="panel-heading">
-                     <b><?php echo $name ?> Emergency Contact</b>
+                     <b><?php echo $name ?> <?php echo $this->lang->line('emergency_contact'); ?></b>
 
 
 
@@ -18,7 +18,7 @@
                         </span>
 
                         <span class="tools pull-right">
-                                   switch Language
+                                   <?php echo $this->lang->line('switch_language'); ?>
                        <a class="nav-link" href="<?php echo base_url();?>emergency_contact_nep?name=<?php echo $name?>&&cat=<?php echo $cat?>"><img src="<?php echo base_url();?>assets/img/nep.png" height="15"></a>
                        <a class="nav-link" href="<?php echo base_url();?>emergency_contact?name=<?php echo $name?>&&cat=<?php echo $cat?>"><img src="<?php echo base_url();?>assets/img/uk.png" height="15"></a>
                        </span>
@@ -37,7 +37,7 @@
                         ?>
                     <?php  if($data == NULL){   ?>
 
-                      <h4> NO Data   </h4>
+                      <h4> <?php echo $this->lang->line('nodata'); ?>  </h4>
 
                     <?php }else{ ?>
                       <table class="table table-hover" id="tb2">
@@ -65,7 +65,7 @@
                               </td>
                             <?php  } ?>
                             <td>
-                              Operations
+                              <?php echo $this->lang->line('operation'); ?>
                             </td>
                           </tr>
 
@@ -84,8 +84,8 @@
                               <td><?php echo $value;?></td>
                             <?php }  ?>
                               <td>
-                                <a href="<?php echo base_url()?>edit_emergency?id=<?php echo base64_encode($v['id']);?> && cat=<?php echo $cat ?> && tbl=emergency_contact">Edit</a> /
-                                <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>delete_emergency?id=<?php echo $v['id'];?> && cat=<?php echo $cat ?> && tbl=emergency_contact">Delete</a></td>
+                                <a href="<?php echo base_url()?>edit_emergency?id=<?php echo base64_encode($v['id']);?> && cat=<?php echo $cat ?> && tbl=emergency_contact"><?php echo $this->lang->line('edit'); ?></a> /
+                                <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>delete_emergency?id=<?php echo $v['id'];?> && cat=<?php echo $cat ?> && tbl=emergency_contact"><?php echo $this->lang->line('delete'); ?></a></td>
 
 
 

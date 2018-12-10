@@ -7,7 +7,7 @@
             <section class="panel">
               <section class="panel">
                   <header class="panel-heading">
-                      <b>Reports</b>
+                      <b><?php echo $this->lang->line('reports'); ?></b>
 
                       <!-- <span class="tools pull-right">
                         <a href="<?php echo base_url()?>add_proj"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Project Partner</button></a>
@@ -27,7 +27,7 @@
                         ?>
                     <?php  if($data == NULL){   ?>
 
-                      <h4> NO Data   </h4>
+                      <h4> <?php echo $this->lang->line('nodata'); ?>   </h4>
 
                     <?php }else{ ?>
                       <table class="table table-hover" id='tb1'>
@@ -57,10 +57,10 @@
                               </td>
                             <?php  }} ?>
                             <td>
-                            Reply
+                            <?php echo $this->lang->line('reply'); ?>
                             </td>
                             <td>
-                              Operations
+                              <?php echo $this->lang->line('operation'); ?>
                             </td>
                           </tr>
 
@@ -69,7 +69,6 @@
                           <tbody>
                               <?php foreach($data as $v ){ ?>
                           <tr>
-
                               <?php foreach($v as $key => $value) {
 
                                 if ($key=='id'||$key=='latitude'||$key=='longitude'||$key=='photo'||$key=='token_id') {
@@ -77,7 +76,7 @@
                                 }elseif($key=='status'){
 
                                     if($value=='ongoing'){
-                                     echo '<td><button type="button" class="btn btn-round btn-primary" data-toggle="modal" data-target="#myModal'.$v['id'].'">Ongoing</button></td>';
+                                     echo '<td><button type="button" class="btn btn-round btn-primary" data-toggle="modal" data-target="#myModal'.$v['id'].'"> ongoing  </button></td>';
 
                                    } elseif($value=='completed'){
                                       echo '<td><button type="button" class="btn btn-round btn-success" data-toggle="modal" data-target="#myModal'.$v['id'].'">Completed</button></td>';
@@ -118,12 +117,12 @@
                               <td><?php echo $value;?></td>
                             <?php }}  ?>
                             <td>
-                              <button type="button" class="btn btn-round btn-primary" data-toggle="modal" data-target="#myModal_rep<?php echo $v['id'] ?>"><i class="fa fa-mail-reply"></i> Reply</button>
+                              <button type="button" class="btn btn-round btn-primary" data-toggle="modal" data-target="#myModal_rep<?php echo $v['id'] ?>"><i class="fa fa-mail-reply"></i> <?php echo $this->lang->line('reply'); ?></button>
                             </td>
 
                               <td>
 
-                          <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>report/delete?id=<?php echo  $v['id'];?>">Delete</a>
+                          <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>report/delete?id=<?php echo  $v['id'];?>"><?php echo $this->lang->line('delete'); ?></a>
 
                         </td>
 
@@ -144,52 +143,52 @@
                                 <div class="modal-content">
                                   <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Change Status</h4>
+                                    <h4 class="modal-title"><?php echo $this->lang->line('change_status'); ?></h4>
                                   </div>
                                   <div class="modal-body">
-                                    <p>Choose Status.</p>
+                                    <p><?php echo $this->lang->line('choose_status'); ?>.</p>
 
                                     <form action="" method="POST">
                                       <input type="text" name="id" value="<?php echo  $v['id'];?>" hidden>
                                     <?php  if($v['status']=='pending') { ?>
                                 <label class="radio-inline">
-                                  <input type="radio" name="status" value="pending" checked>Pending
+                                  <input type="radio" name="status" value="pending" checked> <?php echo $this->lang->line('pending'); ?>
                                 </label>
                                 <label class="radio-inline">
-                                  <input type="radio" name="status" value="ongoing" >Ongoing
+                                  <input type="radio" name="status" value="ongoing" > <?php echo $this->lang->line('ongoing'); ?>
                                 </label>
                                 <label class="radio-inline">
-                                  <input type="radio" name="status" value="completed" >Completed
+                                  <input type="radio" name="status" value="completed" > <?php echo $this->lang->line('completed'); ?>
                                 </label>
                               <?php }elseif($v['status']=='ongoing'){ ?>
 
                                 <label class="radio-inline">
-                                  <input type="radio" name="status" value="pending" >Pending
+                                  <input type="radio" name="status" value="pending" ><?php echo $this->lang->line('pending'); ?>
                                 </label>
 
                                 <label class="radio-inline">
-                                  <input type="radio" name="status" value="ongoing" checked>Ongoing
+                                  <input type="radio" name="status" value="ongoing" checked><?php echo $this->lang->line('ongoing'); ?>
                                 </label>
 
                                 <label class="radio-inline">
-                                  <input type="radio" name="status" value="completed" >Completed
+                                  <input type="radio" name="status" value="completed" ><?php echo $this->lang->line('completed'); ?>
                                 </label>
 
                               <?php }else{ ?>
                                 <label class="radio-inline">
-                                  <input type="radio" name="status" value="pending" >Pending
+                                  <input type="radio" name="status" value="pending" ><?php echo $this->lang->line('pending'); ?>
                                 </label>
 
                                 <label class="radio-inline">
-                                  <input type="radio" name="status" value="ongoing" >Ongoing
+                                  <input type="radio" name="status" value="ongoing" ><?php echo $this->lang->line('ongoing'); ?>
                                 </label>
 
                                 <label class="radio-inline">
-                                  <input type="radio" name="status" value="completed" checked>Completed
+                                  <input type="radio" name="status" value="completed" checked><?php echo $this->lang->line('completed'); ?>
                                 </label>
                               <?php } ?>
                                 <br><br>
-                                <button type="submit" name="submit" class="btn btn-danger">Change</button>
+                                <button type="submit" name="submit" class="btn btn-danger"><?php echo $this->lang->line('change'); ?></button>
                               </form>
 
                                   </div>

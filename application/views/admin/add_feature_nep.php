@@ -45,7 +45,7 @@
 
 
                                   <div class="form-group">
-                                    <label class="col-sm-3 control-label col-sm-2">Summary</label>
+                                    <label class="col-sm-3 control-label col-sm-2"><?php echo $this->lang->line('summary'); ?></label>
                                     <div class="col-sm-10">
                                       <textarea class="form-control" name="nepali_summary" rows="5" required></textarea>
                                     </div>
@@ -64,8 +64,8 @@
                                           <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
                                           <div>
                                             <span class="btn btn-white btn-file">
-                                              <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
-                                              <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                                              <span class="fileupload-new"><i class="fa fa-paper-clip"></i> <?php echo $this->lang->line('select_image'); ?></span>
+                                              <span class="fileupload-exists"><i class="fa fa-undo"></i> <?php echo $this->lang->line('change'); ?></span>
                                               <input type="file" name="map_pic" class="default" />
                                             </span>
 
@@ -80,7 +80,7 @@
 
 
 
-                            <button type="submit" name="submit" class="btn btn-info">Upload</button>
+                            <button type="submit" name="submit" class="btn btn-info"><?php echo $this->lang->line('upload'); ?></button>
                         </form>
                         </div>
 

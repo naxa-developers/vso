@@ -19,7 +19,7 @@ h1.sub{
         <div class="panel-body">
           <div class="top-stats-panel">
             <div class="daily-visit">
-              <h4 class="widget-h">Total Reports</h4>
+              <h4 class="widget-h"><?php echo $this->lang->line('total_reports'); ?></h4>
 
               <h1 class="sub" id="count"><?php echo $report ?></h1>
 
@@ -35,7 +35,7 @@ h1.sub{
         <div class="panel-body">
           <div class="top-stats-panel">
             <div class="daily-visit">
-              <h4 class="widget-h">Users</h4>
+              <h4 class="widget-h"><?php echo $this->lang->line('users'); ?></h4>
 
               <h1 class="sub" id="count1"><?php echo $user ?></h1>
 
@@ -50,7 +50,7 @@ h1.sub{
         <div class="panel-body">
           <div class="top-stats-panel">
 
-            <h4 class="widget-h">Data</h4>
+            <h4 class="widget-h"><?php echo $this->lang->line('data'); ?></h4>
             <h1 class="sub text-center" id="count2"><?php echo $map_data ?></h1>
 
           </div>
@@ -65,7 +65,7 @@ h1.sub{
       <!--earning graph start-->
       <section class="panel">
         <header class="panel-heading">
-          Graph <span class="tools pull-right">
+          <?php echo $this->lang->line('graph'); ?><span class="tools pull-right">
             <a href="javascript:;" class="fa fa-chevron-down"></a>
           </span>
         </header>
@@ -87,7 +87,7 @@ h1.sub{
          <!-- Tab panes -->
 
        </div>
-       <p class="text-center"><b>Most Visited </b></p>
+       <p class="text-center"><b><?php echo $this->lang->line('most_visited'); ?> </b></p>
 
 
      </section>
@@ -114,7 +114,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
   animationEnabled: true,
   theme: "light2", // "light1", "light2", "dark1", "dark2"
   title:{
-    text: "Page Visited"
+    text: "<?php echo $this->lang->line('page_visited'); ?>"
   },
   axisY: {
     title: ""
@@ -123,11 +123,11 @@ var chart = new CanvasJS.Chart("chartContainer", {
     type: "column",
     showInLegend: true,
     legendMarkerColor: "grey",
-    legendText: "Pages",
+    legendText: "<?php echo $this->lang->line('pages'); ?>",
     dataPoints: [
-      { y: home, label: "Home" },
-      { y: map,  label: "Map" },
-      { y: report,  label: "Reports" },
+      { y: home, label: "<?php echo $this->lang->line('home'); ?>" },
+      { y: map,  label: "<?php echo $this->lang->line('map'); ?>" },
+      { y: report,  label: "<?php echo $this->lang->line('reports'); ?>" },
       // { y: about,  label: "About" },
 
     ]

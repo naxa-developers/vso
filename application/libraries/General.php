@@ -102,6 +102,8 @@ class General {
 		define('GHATANA_BIB', $site_info['ghatana_bib']);
 		define('APPLY', $site_info['apply']);
 		define('PUBL_TYPE', $site_info['publ_type']);
+		define('INCIDENT_DETAIL', "incident_detail");
+
 		
 
 

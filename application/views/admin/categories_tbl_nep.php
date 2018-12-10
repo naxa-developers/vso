@@ -9,17 +9,18 @@
         <section class="panel">
           <section class="panel">
             <header class="panel-heading">
-              Categories Nepali
+<!--              Categories Nepali-->
+                श्रेणी नेपाली
 
 
 
               <span class="tools pull-right">
 
-                <a href="<?php echo base_url()?>create_categories_nep"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-plus"></i> थप्नुहोस</button></a>
-                <a href="<?php echo base_url()?>admin_category?tbl=" target="_blank"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-map-marker"></i> View In Map</button></a>
+                <a href="<?php echo base_url()?>create_categories_nep"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-plus"></i> श्रेणी थप्नुहोस</button></a>
+                <a href="<?php echo base_url()?>admin_category?tbl=" target="_blank"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-map-marker"></i> <?php echo $this->lang->line('view_in_map'); ?></button></a>
                 </span>
                 <span class="tools pull-right">
-                  switch Language
+                  <?php echo $this->lang->line('switch_language'); ?>
       <a class="nav-link" href="<?php echo base_url();?>categories_tbl_nep"><img src="<?php echo base_url();?>assets/img/nep.png" height="15"></a>
       <a class="nav-link" href="<?php echo base_url();?>categories_tbl"><img src="<?php echo base_url();?>assets/img/uk.png" height="15"></a>
       </span>
@@ -105,7 +106,7 @@
                           </td>
                         <?php  } }?>
                         <td>
-                          Operations
+                          <?php echo $this->lang->line('operation'); ?>
                         </td>
                       </tr>
 
@@ -201,9 +202,9 @@
 
                               <td><?php echo $value;?></td>
                             <?php } } ?>
-                            <td><a href="<?php echo base_url()?>data_tables?tbl_name=<?php echo base64_encode($v['category_table']);?>">View</a> /
-                              <a href="<?php echo base_url()?>edit_categories?id=<?php echo base64_encode($v['id']);?>&& tbl=<?php echo base64_encode($v['category_table']);?>">Edit</a> /
-                              <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>delete_data?id=<?php echo  $v['id'];?>&& tbl=<?php echo ($tbl_name);?>&& cat_tbl=<?php echo $v['category_table']  ?>">Delete</a>
+                            <td><a href="<?php echo base_url()?>data_tables?tbl_name=<?php echo base64_encode($v['category_table']);?>"><?php echo $this->lang->line('view'); ?></a> /
+                              <a href="<?php echo base_url()?>edit_categories?id=<?php echo base64_encode($v['id']);?>&& tbl=<?php echo base64_encode($v['category_table']);?>"><?php echo $this->lang->line('edit'); ?></a> /
+                              <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>delete_data?id=<?php echo  $v['id'];?>&& tbl=<?php echo ($tbl_name);?>&& cat_tbl=<?php echo $v['category_table']  ?>"><?php echo $this->lang->line('delete'); ?></a>
                             </td>
 
                           </tr>
@@ -220,10 +221,10 @@
                                 <div class="modal-content">
                                   <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Change Status</h4>
+                                    <h4 class="modal-title"><?php echo $this->lang->line('change_status'); ?></h4>
                                   </div>
                                   <div class="modal-body">
-                                    <p>Choose Status.</p>
+                                    <p><?php echo $this->lang->line('choose_status'); ?>.</p>
 
                                     <form action="" method="POST">
                                       <input type="text" name="id" value="<?php echo  $v['id'];?>" hidden>
@@ -231,7 +232,7 @@
 
 
                                     <br><br>
-                                <button type="submit" name="submit" class="btn btn-danger">Change</button>
+                                <button type="submit" name="submit" class="btn btn-danger"><?php echo $this->lang->line('change'); ?></button>
                               </form>
 
                                   </div>

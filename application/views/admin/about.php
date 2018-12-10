@@ -7,7 +7,7 @@
             <section class="panel">
               <section class="panel">
                   <header class="panel-heading">
-                      <b>About Management</b>
+                      <b><?php echo $this->lang->line('about_management'); ?></b>
                       <span class="tools pull-right">
                         <!-- <a href="<?php echo base_url()?>add_layers"><button type="submit" name="upload_data" class="btn btn-danger"><i class="fa fa-plus"></i> Add Layers</button></a> -->
                        </span>
@@ -26,7 +26,7 @@
                         ?>
                     <?php  if($data == NULL){   ?>
 
-                      <h4> NO Data   </h4>
+                      <h4> <?php echo $this->lang->line('nodata'); ?>  </h4>
 
                     <?php }else{ ?>
                       <table class="table table-hover">
@@ -54,7 +54,7 @@
                               </td>
                             <?php  } ?>
                             <td>
-                              Operations
+                              <?php echo $this->lang->line('operation'); ?>
                             </td>
                           </tr>
 
@@ -73,7 +73,7 @@
                               <td><?php echo $value;?></td>
                             <?php }  ?>
                               <td>
-                                <a href="<?php echo base_url()?>edit_about?id=<?php echo base64_encode($v['id']);?>">Edit</a>
+                                <a href="<?php echo base_url()?>edit_about?id=<?php echo base64_encode($v['id']);?>"><?php echo $this->lang->line('edit'); ?></a>
                                 <!-- <a href="<?php echo base_url()?>delete_data?id=<?php echo  $v['id'];?> && tbl=<?php echo ($tbl_name);?> && cat_tbl=<?php echo $v['layer_table']  ?>">Delete</a></td> -->
 
 

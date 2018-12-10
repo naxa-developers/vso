@@ -11,7 +11,7 @@
       <div class="col-lg-12">
         <section class="panel">
           <header class="panel-heading">
-            Sub-categories
+            <?php echo $this->lang->line('sub_categories'); ?>
           </header>
           <div class="panel-body">
 
@@ -22,7 +22,7 @@
                 <form class="form-horizontal bucket-form" action="sub_cat_insert" method="POST">
                   <div class="form-group">
 										<input type="hidden" name="tbl" value="<?php echo $tbl ?>">
-                    <label class="col-sm-3 ">Select Summary: </label>
+                    <label class="col-sm-3 "> <?php echo $this->lang->line('select_summary'); ?>:</label>
 
                           <div class="row col-md-9">
 
@@ -33,7 +33,7 @@
 
 
 														<input tabindex="3" type="radio" value=""  name="col" checked>
-														<label>None</label>
+														<label><?php echo $this->lang->line('none'); ?></label>
 
 
 
@@ -80,7 +80,7 @@
 
                   </div>
                   <br/>
-                  <button type="submit" name="submit" class="btn btn-info">Update</button>
+                  <button type="submit" name="submit" class="btn btn-info"><?php echo $this->lang->line('update'); ?></button>
                 </form>
               </div>
 
