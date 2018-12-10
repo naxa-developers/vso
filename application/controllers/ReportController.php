@@ -352,6 +352,35 @@ class ReportController extends CI_Controller
 
   //admin panel parent start
 
+
+  public function verify_status(){
+
+    if(($this->session->userdata('logged_in'))!=TRUE)
+    {
+
+      redirect('admin');
+    }else{
+
+
+
+
+    }
+
+$id=$this->input->get('id');
+$data=array(
+'verify' => 1,
+
+
+);
+
+$update_verify=$this->Report_model->update_img_path($id,$data);
+$this->session->set_flashdata('msg','Id number '.$id.' report  was verified successfully');
+redirect('report_manage');
+
+
+
+  }
+
   public function report_manage()
   {
 

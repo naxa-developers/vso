@@ -94,6 +94,7 @@ $route['report_manage'] ='ReportController/report_manage';
 $route['report/delete'] = 'ReportController/delete_data';
 $route['map_reports_table'] ='ReportController/map_reports_table';
 $route['map_reports'] ='ReportController/map_reports';
+$route['verify_status'] ='ReportController/verify_status';
 
 $route['filter'] ='ReportController/date_test';
 

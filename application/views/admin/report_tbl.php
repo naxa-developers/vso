@@ -93,7 +93,23 @@
 
 
 
-                                 }else{ ?>
+                                 }elseif($key=='verify'){
+
+                                  if($value=='0'){
+
+                                  echo '<td><a href="verify_status?id='.$v['id'].'" ><button type="button" class="btn btn-round btn-warning btn-sm"><i class="fa fa-circle"></i> Verify</button></a></td>';
+
+                                  }else{
+
+                                  echo '<td><button type="button" class="btn btn-round btn-success btn-sm" ><i class="fa fa-check"></i> Verified</button></td>';
+
+                                  }
+
+
+                                   }else{
+
+
+                                   ?>
 
 
 
