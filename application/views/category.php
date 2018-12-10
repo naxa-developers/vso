@@ -975,6 +975,23 @@
   display: table;
   clear: both;
   }
+  #District-popup tr td{
+max-width: 50%;
+min-width: 50%;
+word-break: break-word;
+}
+
+#District-popup tbody tr th{
+max-width: 150px;
+word-break: break-word;
+}
+.p-header{
+background: #0056b3;
+color: #FFF;
+padding: .5rem 1rem;
+font-size: 17px;
+margin-top: -4px;
+}
 </style>
 
 
@@ -990,8 +1007,8 @@ $(document).ready(function(){
                   headerHeight = $("#website-header").height();
                   vph = vph - headerHeight;
                   $("#map").height(vph);
-$("#left-panel-toggle").height(vph);
-$("#right-panel-toggle").height(vph);
+$("#left-panel-toggle").height(vph - 2);
+$("#right-panel-toggle").height(vph - 11);
               }
      });
 
@@ -2412,9 +2429,9 @@ if(popup_content_parsed[i]==0){
           }
 
 
-          var popUpContent = "";
+          var popUpContent = "<div class='p-header'>"+cat_tbl_array_name[i]+"</div>";
 
-          popUpContent += '<table style="width:100%;" id="District-popup" class="table table-hover">';
+          popUpContent += '<table id="District-popup" class="table table-striped table-hover">';
 
           //for (data in popup_content_parsed) {
           pop = JSON.parse(popup_content_parsed[i]);

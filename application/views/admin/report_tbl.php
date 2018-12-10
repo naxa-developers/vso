@@ -95,9 +95,11 @@
                                  }elseif($key=='verify'){
 
                                   if($value=='0'){
+                                    ?>
 
-                                  echo '<td><a href="verify_status?id='.$v['id'].'" ><button type="button" class="btn btn-round btn-warning btn-sm"><i class="fa fa-circle"></i> Verify</button></a></td>';
 
+                                <td><a onclick="return confirm('Are you sure you want to verify this Report ?')"   href="verify_status?id=<?php echo $v['id']?>" ><button  type="button" class="btn btn-round btn-warning btn-sm"><i class="fa fa-circle"></i> Verify</button></a></td>';
+                                <?php
                                   }else{
 
                                   echo '<td><button type="button" class="btn btn-round btn-success btn-sm" ><i class="fa fa-check"></i> Verified</button></td>';
