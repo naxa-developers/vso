@@ -19,6 +19,7 @@ public function get_category() {
   foreach($category as $data){
 
 
+
   $sum=$this->Mapapi_model->get_sum_name($data['category_table'],$data['summary_list']);
   $sum_name=$sum['nepali_lang'];
 
@@ -27,11 +28,14 @@ public function get_category() {
   $a=array_merge($category[$i],$da);
   array_push($final,$a);
   $i++;
-  }
+
+}
 
   $response['status']=200;
   $response['data']=$final;
   echo json_encode($response);
+
+
   // echo "<pre>";
   // print_r($response);die;
 }
