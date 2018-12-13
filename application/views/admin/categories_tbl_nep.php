@@ -129,7 +129,11 @@
 
                               <td><a href="<?php echo base_url()?>manage_style?tbl=<?php echo $v['category_table'];?>"><button type="submit" class="btn-sm btn-info">Style</button></a> </td>
 
-                            <?php }elseif($key == 'popup_content'){?>
+                            <?php }elseif($key == 'column_control'){ ?>
+                              <td>
+                                <a href="<?php echo base_url()?>manage_column_update?tbl=<?php echo $v['category_table'];?>"><button type="submit" class="btn-sm btn-primary">Manage Column</button></a>
+                              </td>
+                            <?php }elseif($key == 'popup_content'){ ?>
 
                               <td><a href="<?php echo base_url()?>manage_popup?tbl=<?php echo $v['category_table'];?>"><button type="submit" class="btn-sm btn-primary">Popup</button></a></td>
 

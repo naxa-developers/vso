@@ -51,7 +51,7 @@
 
                                         <div class="minimal col-md-12">
                                             <div id="checkbox_div" class="checkbox col-md-12">
-                                              
+
 
                                             </div>
                                         </div>
@@ -151,7 +151,7 @@ $("#checkbox_div").html("");
 $.ajax
 ({
 type: "GET",
-url: "<?php echo base_url(); ?>MapController/getcolumnss?tbl="+id,
+url: "<?php echo base_url(); ?>MapController/getcolumnsselected?tbl="+id,
 
 
 

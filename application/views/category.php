@@ -976,22 +976,22 @@
   clear: both;
   }
   #District-popup tr td{
-max-width: 50%;
-min-width: 50%;
-word-break: break-word;
-}
+  max-width: 50%;
+  min-width: 50%;
+  word-break: break-word;
+  }
 
-#District-popup tbody tr th{
-max-width: 150px;
-word-break: break-word;
-}
-.p-header{
-background: #0056b3;
-color: #FFF;
-padding: .5rem 1rem;
-font-size: 17px;
-margin-top: -4px;
-}
+  #District-popup tbody tr th{
+  max-width: 150px;
+  word-break: break-word;
+  }
+  .p-header{
+  background: #0056b3;
+  color: #FFF;
+  padding: .5rem 1rem;
+  font-size: 17px;
+  margin-top: -4px;
+  }
 </style>
 
 
@@ -1027,8 +1027,8 @@ $("#right-panel-toggle").height(vph - 11);
         <div class="panel-heading">
           <ul class="nav nav-tabs" role="tablist">
             <li class="basemap chevron1" id="close-panel-left"><img src="<?php echo base_url()?>assets/img/up-arrow.png" class="test-icon chevron"></li>
-            <!-- <li role="presentation" class="basemap"><a href="#layers" aria-controls="profile" role="tab" data-toggle="tab"><img src="<?php echo base_url()?>assets/img/layers-icon.png" class="test-icon"></a></li> -->
             <li role="presentation" class="basemap"><a href="<?php echo base_url()?>map_download"><img src="<?php echo base_url()?>assets/img/map-down.png" class="test-icon">&nbsp;<sub class="text-light" style="font-size: 13px;"><?php echo $site_info['download']?> <?php echo $site_info['map']?></sub></a></li>
+            <li role="presentation" class="basemap"><a href="<?php echo base_url('view_table')?>" aria-controls="profile" role="tab" data-toggle="tab"><sub class="text-light" style="font-size: 13px;">Datasets</sub></a></li>
           </ul>
         </div>
       </div>

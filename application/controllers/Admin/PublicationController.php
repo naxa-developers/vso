@@ -57,8 +57,11 @@ class PublicationController extends CI_Controller
       $file_name = $_FILES['proj_pic']['name'];
       $attachment=$_FILES['uploadedfile']['name'];
 
-    //  $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+    // $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+
       $ext_file = pathinfo($attachment, PATHINFO_EXTENSION);
+
+
 
       $data=array(
         'title'=>$this->input->post('title'),
@@ -83,9 +86,11 @@ class PublicationController extends CI_Controller
 
 
 
-        if($img_upload != ""){
-
+        if($img_upload['status']== 1){
+//var_dump($img_upload);
           $ext=$img_upload['upload_data']['file_ext'];
+        //echo $ext;
+      //  exit();
 
           $image_path=base_url() . 'uploads/publication/'.$insert.$ext ;
           $file_path=base_url() . 'uploads/publication/file/'.$insert.'.'.$ext_file ;

@@ -696,6 +696,7 @@ class CategoriesController extends CI_Controller
                             $this->session->set_flashdata('msg','Note: The Shapefile Co-ordinate System Must Be In WGS84 ie. EPSG:4326 '.$cat_name);
                             redirect('add_layers?tbl_name='.$cat_table.'&& id='.$insert);
                         }
+                        
                     }else{
                         var_dump($insert);
                     }

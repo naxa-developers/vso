@@ -155,16 +155,38 @@
 
                     </a>
                 </li>
-                <li class="sub-menu class="<?php if($this->uri->segment(1) == '') { echo "active open"; } ?>">
+                <!-- <li class="sub-menu <?php if($this->uri->segment(1) == '') { echo "active open"; } ?>">
                     <a href="javascript:;">
                         <i class="fa fa-laptop"></i>
                         <span><?php echo $this->lang->line('home_page'); ?></span>
                     </a>
                     <ul class="sub"  style="<?php if($this->uri->segment(1) == 'view_proj') { echo "display: block"; } ?>">
                         <li class="<?php if($this->uri->segment(1) == 'view_proj') { echo "active open"; } ?>"><a href="<?php echo base_url()?>view_proj"><?php echo $this->lang->line('project_partners'); ?></a></li>
+                        <li><a href="<?php echo base_url();?>feature_nep"><?php echo $this->lang->line('featured_datasets'); ?></a></li>
+                    </ul>
+                </li> -->
+
+                <li class="sub-menu">
+                    <a href="javascript:;" class="<?php if($this->uri->segment(1) == '') { echo "dcjq-parent active"; } ?>">
+                        <i class="fa fa-laptop"></i>
+                        <span>Home Page</span>
+                    </a>
+                    <ul class="sub" style="<?php if($this->uri->segment(1) == 'view_proj') { echo "display: block"; } ?>">
+                        <li class="<?php if($this->uri->segment(1) == 'view_proj') { echo "active"; } ?>"><a href="<?php echo base_url()?>view_proj"><?php echo $this->lang->line('project_partners'); ?></a></li>
                         <!-- <li><a href="<?php echo base_url()?>emergency_contact">Emergency Contact</a></li> -->
                         <!-- <li><a href="<?php echo base_url()?>background">Background Image</a></li> -->
-                        <li><a href="<?php echo base_url();?>feature_nep"><?php echo $this->lang->line('featured_datasets'); ?></a></li>
+
+                        <?php
+
+                        if($this->session->userdata('Language')==NULL){
+                            $this->session->set_userdata('Language','nep');
+                        }
+                        $lang=$this->session->get_userdata('Language');
+                        if($lang['Language']=='en'){ ?>
+                        <li class="<?php if($this->uri->segment(1) == 'feature') { echo "active"; } ?>"><a href="<?php echo base_url();?>feature"><?php echo $this->lang->line('featured_datasets'); ?></a></li>
+                      <?php }else{ ?>
+<li class="<?php if($this->uri->segment(1) == 'feature_nep') { echo "active"; } ?>"><a href="<?php echo base_url();?>feature_nep"><?php echo $this->lang->line('featured_datasets'); ?></a></li>
+                          <?php } ?>
                     </ul>
                 </li>
 

@@ -10,11 +10,7 @@
           <section class="panel">
             <header class="panel-heading">
               <?php echo $this->lang->line('categories'); ?>
-
-
-
               <span class="tools pull-right">
-
                 <a href="<?php echo base_url()?>create_categories"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-plus"></i> <?php echo $this->lang->line('add_category'); ?></button></a>
                 <a href="<?php echo base_url()?>admin_category?tbl=" target="_blank"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-map-marker"></i> <?php echo $this->lang->line('view_in_map'); ?></button></a>
                 </span>
@@ -44,14 +40,9 @@
               <?php }else{ ?>
                 <table class="table table-hover" id="tb3">
                   <thead>
-
-
-
-
-
                     <tr>
-
-                      <?php foreach($data[0] as $key => $value){
+                      <?php //echo "<pre>";print_r($data);die;
+                       foreach($data[0] as $key => $value){
 
                         if($key == 'summary_list'){   ?>
 
@@ -61,6 +52,8 @@
 
                           <td>Style</td>
 
+                        <?php }elseif($key == 'column_control'){?>
+                              <td>Manage Column</td>
                         <?php }elseif($key == 'popup_content'){?>
 
                           <td>Popup</td>
@@ -116,19 +109,17 @@
                         <tr>
 
                           <?php foreach($v as $key => $value) {
-
-
-
-
                             if($key == 'summary_list'){   ?>
-
                               <td><a href="<?php echo base_url()?>update_summary?tbl=<?php echo $v['category_table'];?>"><button type="submit" class="btn-sm btn-success">Summary</button></a></td>
 
                             <?php }elseif($key == 'style'){?>
 
                               <td><a href="<?php echo base_url()?>manage_style?tbl=<?php echo $v['category_table'];?>"><button type="submit" class="btn-sm btn-info">Style</button></a> </td>
-
-                            <?php }elseif($key == 'popup_content'){?>
+                            <?php }elseif($key == 'column_control'){ ?>
+                              <td>
+                                <a href="<?php echo base_url()?>manage_column_control?tbl=<?php echo $v['category_table'];?>"><button type="submit" class="btn-sm btn-primary">Manage Column</button></a>
+                              </td>
+                            <?php }elseif($key == 'popup_content'){ ?>
 
                               <td><a href="<?php echo base_url()?>manage_popup?tbl=<?php echo $v['category_table'];?>"><button type="submit" class="btn-sm btn-primary">Popup</button></a></td>
 
@@ -136,29 +127,21 @@
 
                               <td><a href="<?php echo base_url()?>sub_categories?tbl=<?php echo $v['category_table'];?>"><button type="submit" class="btn-sm btn-warning">sub-categories</button></a></td>
 
-
                             <?php }elseif($key == 'default_load'){?>
 
                               <?php if($v['default_load']=='1'){  ?>
 
                                 <td><label class="switch"><input type="checkbox" id="<?php echo $v['id'] ?>" class="default_switch" checked><span class="slider round"></span></label></td>
-
-
-
                               <?php }else{ ?>
 
                                 <td><label class="switch"><input type="checkbox" id="<?php echo $v['id'] ?>" class="default_switch" ><span class="slider round"></span></label></td>
 
                               <?php  } ?>
-
                             <?php }elseif($key == 'public_view'){?>
 
                               <?php if($v['public_view']=='1'){  ?>
 
                                 <td><label class="switch"><input type="checkbox" id="<?php echo $v['id'] ?>" class="public_view" checked <?php echo $disable ?>><span class="slider round"></span></label></td>
-
-
-
                               <?php }else{ ?>
 
                                 <td><label class="switch"><input type="checkbox" id="<?php echo $v['id'] ?>" class="public_view" <?php echo $disable ?>><span class="slider round"></span></label></td>
@@ -171,24 +154,17 @@
                               <?php if($v['allow_download']=='1'){  ?>
 
                                 <td><label class="switch"><input type="checkbox" id="<?php echo $v['id'] ?>" class="allow_download" checked <?php echo $disable ?>><span class="slider round"></span></label></td>
-
-
-
                               <?php }else{ ?>
 
                                 <td><label class="switch"><input type="checkbox" id="<?php echo $v['id'] ?>" class="allow_download" <?php echo $disable ?>><span class="slider round"></span></label></td>
 
                               <?php  } ?>
                               <!-- download control -->
-
                             <?php }elseif($key == 'summary'){?>
 
                             <?php }elseif($key == 'marker_type'){?>
 
                             <?php }elseif($key == 'sub_col'){?>
-
-
-
 
                             <?php }elseif($key == 'category_table'){?>
 
@@ -197,16 +173,15 @@
                             <?php }elseif($key == 'ordering'){?>
 
                             <?php }else{?>
-
-
                               <td><?php echo $value;?></td>
                             <?php } } ?>
+
                             <td><a href="<?php echo base_url()?>data_tables?tbl_name=<?php echo base64_encode($v['category_table']);?>"><?php echo $this->lang->line('view'); ?></a> /
                               <a href="<?php echo base_url()?>edit_categories?id=<?php echo base64_encode($v['id']);?>&& tbl=<?php echo base64_encode($v['category_table']);?>"><?php echo $this->lang->line('edit'); ?></a> /
                               <a onclick="return confirm('Are you sure you want to delete?')" href="<?php echo base_url()?>delete_data?id=<?php echo  $v['id'];?>&& tbl=<?php echo ($tbl_name);?>&& cat_tbl=<?php echo $v['category_table']  ?>"><?php echo $this->lang->line('delete'); ?></a>
                             </td>
 
-                          </tr>
+                        </tr>
 
 
                           <!-- modal start -->

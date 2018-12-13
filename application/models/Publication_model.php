@@ -40,7 +40,7 @@ public function do_upload($filename,$name)
 
   $field_name                     ='proj_pic';
   $config['upload_path']          = './uploads/publication/';
-  $config['allowed_types']        = 'gif|jpg|png';
+  $config['allowed_types']        = 'gif|jpg|jpeg|png';
   $config['max_size']             = 7000;
   $config['overwrite']            = TRUE;
   $config['file_name']           = $name;
@@ -59,6 +59,7 @@ public function do_upload($filename,$name)
 
 
     $data = array('upload_data' => $this->upload->data());
+      $data['status']=1;
 
     return $data;
 

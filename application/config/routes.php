@@ -61,6 +61,8 @@ $route['nep'] ='Lang/nep';
 
 $route['main'] ='MainController/default_page';
 $route['datasets'] ='MainController/dataset_page';
+$route['categorydatasets'] ='MainController/dataset_page_new';
+
 $route['about'] ='MainController/about_page';
 $route['publication'] ='MainController/publication';
 $route['inventory'] ='MainController/inventory';
@@ -82,6 +84,10 @@ $route['news_register'] ='NewsletterController/register';
 
 $route['site_setting'] ='Admin/SiteController/site_setting';
 $route['site_setting_nep'] ='Admin/SiteController/site_setting_nep';
+
+$route['manage_column_control'] ='MapController/manage_column_control';
+$route['manage_column_update'] ='MapController/manage_column_update';
+
 
 
 
@@ -181,3 +187,4 @@ $route['edit_map'] ='Admin/MapDownload/edit_map';
 $route['delete_map'] ='Admin/MapDownload/delete_map';
 
 $route['dashboard'] ='Admin/DashController/dashboard';
+$route['view_table'] ='MapController/view_table';

@@ -17,6 +17,7 @@ class Test extends CI_Controller
     $this->load->dbforge();
     $this->load->helper('url');
     $this->load->model('Dash_model');
+    $this->load->model('Test_model');
     $this->load->library('form_validation');
   }
 
@@ -627,6 +628,19 @@ echo $e;
 
 
 
+}
+
+public function data_control(){
+
+  $data='{"a":[{"col":"a0","name":"SN"},{"col":"a1","name":"Wards"}]}';
+$data_array=json_decode($data,TRUE);
+$data_tbl=$this->Test_model->get_data_con($data_array,'pharm');
+//   for($i=0; sizeof($data_array['a'])>$i; $i++){
+//     echo $i;
+//   }
+// var_dump($data_array['a'][0]);
+// die;
+var_dump($data_tbl);
 }
 
 public function test_preg(){

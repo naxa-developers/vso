@@ -1,6 +1,5 @@
 <style>
-
-  .nav-tabs,
+ .nav-tabs,
   .nav-pills {
     position: relative;
   }
@@ -300,12 +299,12 @@ $heading_nep='<th><strong>क्र.स</strong></th>
     </thead>
     <?php
 if($chairpersons){
+  $i=1;
     foreach ($chairpersons as $chairpersons) {
-      // code...
      ?>
 
      <tr class="tr_tbl">
-       <td id="<?php echo $chairpersons['id'] ?>idchairpersons"><?php echo $chairpersons['id'] ?></td>
+       <td id="<?php echo $chairpersons['id'] ?>idchairpersons"><?php echo $i; ?><!-- <?php //echo $chairpersons['id'] ?> --></td>
       <!-- <?php if($chairpersons['photo']==NULL){ ?>
           <td id="<?php echo $chairpersons['id'] ?>photochairpersons" ><img src="<?php echo base_url()?>/assets/img/profile_person.png" height="50" width="50"></td>
       <?php }else{ ?>
@@ -320,7 +319,7 @@ if($chairpersons){
 
      </tr>
 
-   <?php }} ?>
+   <?php $i++; } }  ?>
   </table>
 </div>
   <div class="text-center mb-3">
@@ -346,12 +345,13 @@ if($chairpersons){
     </thead>
     <?php
 if($chief){
+   $i=1;
     foreach ($chief as $chief) {
       // code...
      ?>
 
      <tr class="tr_tbl">
-       <td id="<?php echo $chief['id'] ?>idcheif"><?php echo $chief['id'] ?></td>
+       <td id="<?php echo $chief['id'] ?>idcheif"><?php echo $i; ?></td>
 
        <!-- <?php if($chief['photo']==NULL){ ?>
        <td id="<?php echo $chief['id'] ?>photocheif" ><img src="<?php echo base_url()?>/assets/img/profile_person.png" height="50" width="50"></td>
@@ -371,7 +371,7 @@ if($chief){
 
      </tr>
 
-   <?php }} ?>
+   <?php $i++; }} ?>
   </table>
 </div>
 <div class="text-center mb-3">
@@ -398,12 +398,13 @@ if($chief){
     </thead>
     <?php
 if($elected){
+  $i=1;
     foreach ($elected as $elected) {
       // code...
      ?>
 
      <tr class="tr_tbl">
-       <td id="<?php echo $elected['id'] ?>idelected"><?php echo $elected['id'] ?></td>
+       <td id="<?php echo $elected['id'] ?>idelected"><?php echo $i; ?></td>
 
        <!-- <?php if($elected['photo']==NULL){ ?>
        <td id="<?php echo $elected['id'] ?>photoelected" ><img src="<?php echo base_url()?>/assets/img/profile_person.png" height="50" width="50"></td>
@@ -422,7 +423,7 @@ if($elected){
 
      </tr>
 
-   <?php }} ?>
+   <?php $i++; }} ?>
   </table>
 </div>
 <div class="text-center mb-3">
@@ -449,12 +450,13 @@ if($elected){
     </thead>
     <?php
 if($municipal_ex){
+  $i=1;
     foreach ($municipal_ex as $municipal_ex) {
       // code...
      ?>
 
      <tr class="tr_tbl">
-       <td id="<?php echo $municipal_ex['id'] ?>idmunicipal_ex"><?php echo $municipal_ex['id'] ?></td>
+       <td id="<?php echo $municipal_ex['id'] ?>idmunicipal_ex"><?php echo $i; ?></td>
 
        <!-- <?php if($municipal_ex['photo']==NULL){ ?>
        <td id="<?php echo $municipal_ex['id'] ?>photomunicipal_ex" ><img src="<?php echo base_url()?>/assets/img/profile_person.png" height="50" width="50"></td>
@@ -475,7 +477,7 @@ if($municipal_ex){
 
      </tr>
 
-   <?php }} ?>
+   <?php $i++; } } ?>
   </table>
 </div>
 <div class="text-center mb-3">
@@ -504,12 +506,13 @@ if($municipal_ex){
     </thead>
     <?php
 if($disaster){
+  $i=1;
     foreach ($disaster as $disaster) {
       // code...
      ?>
 
      <tr class="tr_tbl">
-       <td id="<?php echo $disaster['id'] ?>iddisaster"><?php echo $disaster['id'] ?></td>
+       <td id="<?php echo $disaster['id'] ?>iddisaster"><?php echo $i; ?></td>
 
        <!-- <?php if($disaster['photo']==NULL){ ?>
        <td id="<?php echo $disaster['id'] ?>photodisaster" ><img src="<?php echo base_url()?>/assets/img/profile_person.png" height="50" width="50"></td>
@@ -531,7 +534,7 @@ if($disaster){
 
      </tr>
 
-   <?php }} ?>
+   <?php $i++; } } ?>
   </table>
 </div>
 </div>
@@ -554,12 +557,13 @@ if($disaster){
     </thead>
     <?php
     if($nntds){
+      $i=1;
     foreach ($nntds as $nntds) {
       // code...
      ?>
 
      <tr class="tr_tbl">
-       <td id="<?php echo $nntds['id'] ?>idnntds"><?php echo $nntds['id'] ?></td>
+       <td id="<?php echo $nntds['id'] ?>idnntds"><?php echo $i; ?></td>
 
        <!-- <?php if($nntds['photo']==NULL){ ?>
        <td id="<?php echo $nntds['id'] ?>photonntds" ><img src="<?php echo base_url()?>/assets/img/profile_person.png" height="50" width="50"></td>
@@ -577,7 +581,7 @@ if($disaster){
 
      </tr>
 
-   <?php }} ?>
+   <?php $i++; } } ?>
   </table>
 </div>
 <div class="text-center mb-3">
@@ -618,12 +622,13 @@ if($disaster){
        <?php
 
 if($health){
+      $i=1;
        foreach ($health as  $health) {
 
         ?>
 
         <tr class="tr_tbl">
-          <td id="<?php echo $health['id'] ?>idhealth"><?php echo $health['id'] ?></td>
+          <td id="<?php echo $health['id'] ?>idhealth"><?php echo $i; ?></td>
           <td id="<?php echo $health['id'] ?>organizationhealth"><?php echo $health['organization'] ?></td>
           <td id="<?php echo $health['id'] ?>addresshealth"><?php echo $health['address'] ?></td>
           <td id="<?php echo $health['id'] ?>phone_nohealth"><?php echo $health['phone_no'] ?></td>
@@ -635,7 +640,7 @@ if($health){
           <td id="<?php echo $health['id'] ?>websitehealth"><?php echo $health['website'] ?></td>
 
         </tr>
- <?php } }?>
+ <?php $i++; } }?>
 
       </table>
     </div>
@@ -664,12 +669,13 @@ if($health){
 
   <?php
 if($responders){
+  $i=1;
   foreach ($responders as $responders) {
     // code...
    ?>
 
       <tr class="tr_tbl">
-        <td id="<?php echo $responders['id'] ?>idresponders"><?php echo $responders['id'] ?></td>
+        <td id="<?php echo $responders['id'] ?>idresponders"><?php echo $i; ?></td>
         <td id="<?php echo $responders['id'] ?>organizationresponders"><?php echo $responders['organization'] ?></td>
         <td id="<?php echo $responders['id'] ?>addressresponders"><?php echo $responders['address'] ?></td>
         <td id="<?php echo $responders['id'] ?>phone_noresponders"><?php echo $responders['phone_no'] ?></td>
@@ -682,7 +688,7 @@ if($responders){
 
       </tr>
 
- <?php }} ?>
+ <?php $i++; } } ?>
 
     </table>
   </div>
@@ -711,11 +717,12 @@ if($responders){
 
     <?php
 if($security){
+    $i=1;
     foreach ($security as $security) {
       // code...
      ?>
     <tr class="tr_tbl">
-    <td id="<?php echo $security['id'] ?>idSecurity"><?php echo $security['id'] ?></td>
+    <td id="<?php echo $security['id'] ?>idSecurity"><?php echo $i; ?></td>
     <td id="<?php echo $security['id'] ?>organizationSecurity"><?php echo $security['organization'] ?></td>
     <td id="<?php echo $security['id'] ?>addressSecurity"><?php echo $security['address'] ?></td>
     <td id="<?php echo $security['id'] ?>phone_noSecurity"><?php echo $security['phone_no'] ?></td>
@@ -726,7 +733,7 @@ if($security){
     <td id="<?php echo $security['id'] ?>emailSecurity"><?php echo $security['email'] ?></td>
     <td id="<?php echo $security['id'] ?>websiteSecurity"><?php echo $security['website'] ?></td>
   </tr>
-<?php }} ?>
+<?php $i++; } } ?>
   </table>
 </div>
 <div class="text-center mb-3">
@@ -752,12 +759,13 @@ if($security){
     </thead>
     <?php
 if($ngo){
+  $i=1;
     foreach ($ngo as $ngo) {
       // code...
      ?>
 
         <tr class="tr_tbl">
-          <td id="<?php echo $ngo['id'] ?>idngo"><?php echo $ngo['id'] ?></td>
+          <td id="<?php echo $ngo['id'] ?>idngo"><?php echo $i; ?></td>
           <td id="<?php echo $ngo['id'] ?>organizationngo"><?php echo $ngo['organization'] ?></td>
           <td id="<?php echo $ngo['id'] ?>addressngo"><?php echo $ngo['address'] ?></td>
           <td id="<?php echo $ngo['id'] ?>phone_nongo"><?php echo $ngo['phone_no'] ?></td>
@@ -769,7 +777,7 @@ if($ngo){
 
         </tr>
 
-   <?php }} ?>
+   <?php $i++; } } ?>
   </table>
 </div>
 <div class="text-center mb-3">
@@ -795,12 +803,13 @@ if($ngo){
     </thead>
     <?php
 if($ddr){
+  $i=1;
     foreach ($ddr as $ddr) {
       // code...
      ?>
 
      <tr class="tr_tbl">
-       <td id="<?php echo $ddr['id'] ?>idddr"><?php echo $ddr['id'] ?></td>
+       <td id="<?php echo $ddr['id'] ?>idddr"><?php echo $i; ?></td>
 
        <!-- <?php if($ddr['photo']==NULL){ ?>
            <td id="<?php echo $ddr['id'] ?>photoddr" ><img src="<?php echo base_url()?>/assets/img/profile_person.png" height="50" width="50"></td>
@@ -819,7 +828,7 @@ if($ddr){
 
      </tr>
 
-   <?php }} ?>
+   <?php $i++; } } ?>
   </table>
 </div>
 <div class="text-center mb-3">
@@ -845,12 +854,13 @@ if($ddr){
     </thead>
     <?php
 if($personnel){
+  $i=1;
     foreach ($personnel as $personnel) {
 
      ?>
 
      <tr class="tr_tbl">
-       <td id="<?php echo $personnel['id'] ?>idpersonnel"><?php echo $personnel['id'] ?></td>
+       <td id="<?php echo $personnel['id'] ?>idpersonnel"><?php echo $i; ?></td>
 
        <!-- <?php if($personnel['photo']==NULL){ ?>
            <td id="<?php echo $personnel['id'] ?>photopersonnel" ><img src="<?php echo base_url()?>/assets/img/profile_person.png" height="50" width="50"></td>
@@ -868,7 +878,7 @@ if($personnel){
 
      </tr>
 
-   <?php }} ?>
+   <?php $i++; } } ?>
   </table>
 </div>
 <div class="text-center mb-3">
@@ -894,12 +904,13 @@ if($personnel){
     </thead>
     <?php
 if($members){
+  $i=1;
     foreach ($members as $members) {
 
      ?>
 
         <tr class="tr_tbl">
-          <td id="<?php echo $members['id'] ?>idmembers"><?php echo $members['id'] ?></td>
+          <td id="<?php echo $members['id'] ?>idmembers"><?php echo $i; ?></td>
 
           <!-- <?php if($members['photo']==NULL){ ?>
               <td id="<?php echo $members['id'] ?>photomembers" ><img src="<?php echo base_url()?>/assets/img/profile_person.png" height="50" width="50"></td>
@@ -917,7 +928,7 @@ if($members){
 
         </tr>
 
-   <?php }} ?>
+   <?php $i++; } } ?>
   </table>
 </div>
 <div class="text-center mb-3">

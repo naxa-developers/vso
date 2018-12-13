@@ -238,6 +238,83 @@ class MainController extends CI_Controller
 
 
   }
+  public function get_category_table()
+  {
+    
+  }
+  public function dataset_page_new(){
+    //language
+    if($this->session->userdata('Language')==NULL){
+      $this->session->set_userdata('Language','nep');
+    }
+    $lang=$this->session->get_userdata('Language');
+    if($lang['Language']=='en'){
+       //datasetss english start
+      if(isset($_POST['submit_search'])){
+        $this->body['checked_data']=array();
+        $this->body['search']=$this->input->post('search');
+        $this->body['data']=$this->Main_model->get_category();
+        $this->body['data_panel']=$this->Main_model->get_category();
+        //echo "<pre>"; print_r($this->body['data_panel']);die;
+      }else{
+        $this->body['search']="";
+        $this->body['checked_data']=array();
+        $this->body['data']=$this->Main_model->get_category();
+        $this->body['data_panel']=$this->Main_model->get_category();
+       // echo "<pre>"; print_r($this->body['data_panel']);die;
+
+      }
+      if(isset($_POST['submit'])){
+        unset($_POST['submit']);
+        //var_dump($_POST);
+
+       if($_POST == NULL){
+           $this->body['checked_data']=array();
+           $this->body['data']=$this->Main_model->get_category();
+       }else{
+          $checked_dataset=$_POST['dataset'];
+          $this->body['data']=$this->Main_model->get_checked_dataset($checked_dataset);
+          $this->body['checked_data']=$checked_dataset;
+       }
+      $this->body['data_panel']=$this->Main_model->get_category();
+    }
+    //datasetss english end
+    $this->body['site_info']=$this->Main_model->site_setting_en();
+    }else{
+      //datasetss nepali start
+      if(isset($_POST['submit_search'])){
+        $this->body['checked_data']=array();
+        $this->body['search']=$this->input->post('search');
+        $this->body['data']=$this->Main_model->get_category_nep();
+        $this->body['data_panel']=$this->Main_model->get_category_nep();
+      }else{
+        $this->body['search']="";
+        $this->body['checked_data']=array();
+        $this->body['data']=$this->Main_model->get_category_nep();
+        $this->body['data_panel']=$this->Main_model->get_category_nep();
+      }
+      if(isset($_POST['submit'])){
+      unset($_POST['submit']);
+      //var_dump($_POST);
+       if($_POST == NULL){
+           $this->body['checked_data']=array();
+           $this->body['data']=$this->Main_model->get_category_nep();
+       }else{
+          $checked_dataset=$_POST['dataset'];
+          $this->body['data']=$this->Main_model->get_checked_dataset($checked_dataset);
+          $this->body['checked_data']=$checked_dataset;
+       }
+        $this->body['data_panel']=$this->Main_model->get_category();
+      }
+      //datasetss nepali end
+     $this->body['site_info']=$this->Main_model->site_setting_nep();
+    }
+    $this->body['urll']=$this->uri->segment(1);
+    //language
+    $this->load->view('header', $this->body);
+    $this->load->view('datasets_new',$this->body);
+    $this->load->view('footer', $this->body);
+  }
 
   //datasets view page
 
@@ -256,36 +333,36 @@ class MainController extends CI_Controller
     if($lang['Language']=='en'){
 
 
-  //datasetss english start
-  if(isset($_POST['submit_search'])){
+    //datasetss english start
+    if(isset($_POST['submit_search'])){
 
-    $this->body['checked_data']=array();
-    $this->body['search']=$this->input->post('search');
-    $this->body['data']=$this->Main_model->get_category();
-    $this->body['data_panel']=$this->Main_model->get_category();
+      $this->body['checked_data']=array();
+      $this->body['search']=$this->input->post('search');
+      $this->body['data']=$this->Main_model->get_category();
+      $this->body['data_panel']=$this->Main_model->get_category();
 
-  }else{
+    }else{
 
     $this->body['search']="";
     $this->body['checked_data']=array();
     $this->body['data']=$this->Main_model->get_category();
     $this->body['data_panel']=$this->Main_model->get_category();
 
-  }
-  if(isset($_POST['submit'])){
+    }
+    if(isset($_POST['submit'])){
 
-  unset($_POST['submit']);
-  //var_dump($_POST);
+    unset($_POST['submit']);
+    //var_dump($_POST);
 
-   if($_POST == NULL){
-       $this->body['checked_data']=array();
-       $this->body['data']=$this->Main_model->get_category();
-   }else{
-      $checked_dataset=$_POST['dataset'];
-      $this->body['data']=$this->Main_model->get_checked_dataset($checked_dataset);
-      $this->body['checked_data']=$checked_dataset;
+     if($_POST == NULL){
+         $this->body['checked_data']=array();
+         $this->body['data']=$this->Main_model->get_category();
+     }else{
+        $checked_dataset=$_POST['dataset'];
+        $this->body['data']=$this->Main_model->get_checked_dataset($checked_dataset);
+        $this->body['checked_data']=$checked_dataset;
 
-   }
+     }
 
 
 
@@ -294,11 +371,11 @@ class MainController extends CI_Controller
     $this->body['data_panel']=$this->Main_model->get_category();
 
 
-  }
+    }
 
-  //datasetss english end
+    //datasetss english end
 
-  $this->body['site_info']=$this->Main_model->site_setting_en();
+    $this->body['site_info']=$this->Main_model->site_setting_en();
 
 
     }else{
@@ -470,7 +547,7 @@ class MainController extends CI_Controller
     /*  pass it to db utility function  */
     $new_report = $this->dbutil->csv_from_result($report);
     //var_dump(mb_convert_encoding($new_report, 'UTF-8', 'auto'));
-  //  exit();
+    //  exit();
     $name = $namee.'.csv';
     /*  Now use it to write file. write_file helper function will do it */
     file_put_contents('uploads/emergency_personnel/file/'.$name,$new_report);

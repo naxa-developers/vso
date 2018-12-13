@@ -190,7 +190,15 @@ class Map_model extends CI_Model {
     $q=$this->db->get('tbl_lang');
     return $q->result_array();
   }
+ public function get_checkedcolumns_control($tbl){
 
+    $this->db->select('column_control');
+
+    $this->db->where('category_table',$tbl);
+    $q=$this->db->get('categories_tbl');
+    return  $q->row_array();
+
+  }
   public function get_checkedcolumns($tbl){
 
     $this->db->select('popup_content');
@@ -198,8 +206,6 @@ class Map_model extends CI_Model {
     $this->db->where('category_table',$tbl);
     $q=$this->db->get('categories_tbl');
     return  $q->row_array();
-
-
 
   }
   public function col_name($tbl){
