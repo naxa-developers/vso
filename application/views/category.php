@@ -2429,7 +2429,7 @@ if(popup_content_parsed[i]==0){
           }
 
 
-          var popUpContent = "<div class='p-header'>"+cat_tbl_array_name[i]+"</div>";
+          var popUpContent = "<div class='p-header'>"+cat_array_name[i]+"</div>";
 
           popUpContent += '<table id="District-popup" class="table table-striped table-hover">';
 
@@ -2441,6 +2441,12 @@ if(popup_content_parsed[i]==0){
             pop1 = pop.a[data].col;
             name = pop.a[data].name;
             popUpContent += "<tr>" + "<th><strong>"+name+"</strong></th>" + "<td>" +  feature.properties[pop1]  + "</td></tr>";
+
+            if(name == 'name' || name=='Name'){
+
+            layer.bindPopup(feature.properties[pop1]);
+
+          }
           }
 
 
@@ -2474,8 +2480,11 @@ if(popup_content_parsed[i]==0){
           // }).setContent(popUpContent);
 
         //feature.popup_div = popUpContent;
+
+
           layer.on('click',function(){
             console.log(popUpContent);
+
             $("#summary_container").css('display','none');
             $("#popup_container").css('display','block');
             $("#popup_container").html(popUpContent);
