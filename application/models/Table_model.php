@@ -47,8 +47,8 @@ public function get_tables_data($tbl){ //get data of table
 public function get_as($d,$tbl){
 
   foreach($d as $v){
-  //$this->db->select($v['eng_lang'].' AS '.pg_escape_string(preg_replace('/[^A-Za-z0-9\-]/', ' ', $v['nepali_lang'])));
-  $this->db->select($v['eng_lang'].' AS '. $v['nepali_lang']);
+  $this->db->select($v['eng_lang'].' AS '.pg_escape_string(preg_replace('/[^A-Za-z0-9\-]/', ' ', $v['nepali_lang'])));
+  //$this->db->select($v['eng_lang'].' AS '. $v['nepali_lang']);
   }
 
   $this->db->order_by('id','ASC');
