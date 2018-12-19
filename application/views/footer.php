@@ -111,7 +111,7 @@
                   <ul class="list-group">
                     <li><i class="la la-caret-right"></i><a href="<?php echo !empty(LINK_ONE)?LINK_ONE:'' ?>" target="_blank"><?php echo !empty(ONE_NAME)?ONE_NAME:'' ?></a></li>
                     <li><i class="la la-caret-right"></i><a href="<?php echo !empty(LINK_TWO)?LINK_TWO:'' ?>" target="_blank"><?php echo !empty(TWO_NAME)?TWO_NAME:'' ?></a></li>
-                    <li><i class="la la-caret-right"></i><a href="<?php echo !empty(NAME_THREE)?NAME_THREE:'' ?>" target="_blank"><?php echo !empty(NAME_THREE)?NAME_THREE:'' ?></a></li>
+                    <li><i class="la la-caret-right"></i><a href="<?php echo !empty(LINK_THREE)?LINK_THREE:'' ?>" target="_blank"><?php echo !empty(NAME_THREE)?NAME_THREE:'' ?></a></li>
                   </ul>
                 </div>
               </div>
