@@ -10,13 +10,13 @@
           <section class="panel">
             <header class="panel-heading">
 <!--              Categories Nepali-->
-                श्रेणी नेपाली
+                <?php echo $this->lang->line('categories'); ?>
 
 
 
               <span class="tools pull-right">
 
-                <a href="<?php echo base_url()?>create_categories_nep"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-plus"></i> श्रेणी थप्नुहोस</button></a>
+                <a href="<?php echo base_url()?>create_categories_nep"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-plus"></i> <?php echo $this->lang->line('add_category'); ?></button></a>
                 <a href="<?php echo base_url()?>admin_category?tbl=" target="_blank"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1fb5ad;border-color: #1fb5ad;margin-top: -7px;"><i class="fa fa-map-marker"></i> <?php echo $this->lang->line('view_in_map'); ?></button></a>
                 </span>
                 <span class="tools pull-right">

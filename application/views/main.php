@@ -49,9 +49,9 @@
               </div>
               <div class="col-md-2">
                 <div class="disaster-summary-item" data-mh="summary-item">
-                    <img src="<?php echo base_url()?>assets/icon/lightning1.png" height="64">
-                  <h6><?php echo LIGHTNING ?></h6>
-                  <h4><?php echo !empty($report_inci['Lightning'])?$report_inci['Lightning']:'0'?></h4>
+                    <img src="<?php echo base_url()?>assets/icon/road.png" height="64">
+                  <h6><?php echo ROAD ?></h6>
+                  <h4><?php echo !empty($report_inci['Road'])?$report_inci['Road']:'0'?></h4>
                 </div>
               </div>
               <div class="col-md-2">
@@ -185,7 +185,7 @@ if($baseline_data){
       </div>
     </div>
         <?php if($feat_lang=='en'){ ?>
-<a href="category?tbl=<?php echo $feature['table'] ?>">
+<a href="category?tbl=<?php echo $feature['table'] ?> && name=<?php echo $feature['title'] ?>">
     <div class="bg-white feature-section">
       <div class="container">
         <div class="featured-post clearfix">
@@ -200,7 +200,7 @@ if($baseline_data){
     </div>
 </a>
 <?php }else{ ?>
-  <a href="category?tbl=<?php echo $feature['table'] ?>">
+  <a href="category?tbl=<?php echo $feature['table'] ?>&& name=<?php echo $feature['nepali_title'] ?>">
       <div class="bg-white feature-section">
         <div class="container">
           <div class="featured-post clearfix">
