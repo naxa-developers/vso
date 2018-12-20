@@ -188,3 +188,6 @@ $route['delete_map'] ='Admin/MapDownload/delete_map';
 
 $route['dashboard'] ='Admin/DashController/dashboard';
 $route['view_table'] ='MapController/view_table';
+
+$route['change_order_caegory'] = 'Admin/CategoriesController/change_order_caegory';
+$route['ajax_change_order'] = 'Admin/CategoriesController/ajax_change_order';
