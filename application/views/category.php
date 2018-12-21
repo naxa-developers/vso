@@ -2881,7 +2881,7 @@ if(popup_content_parsed[i]==0){
                 //console.log(data);
                 pop1 = pop.a[data].col;
                 name = pop.a[data].name;
-                popUpContent += "<tr>" + "<th><strong>"+name+"</strong></th>" + "<td>" +  feature.properties[pop1]  + "</td></tr>";
+                popUpContent += "<tr>" + "<th><strong>"+name.replace('_',' ')+"</strong></th>" + "<td>" +  feature.properties[pop1]  + "</td></tr>";
               }
 
               popUpContent += '</table>';
@@ -3204,7 +3204,7 @@ window[qry_tbl+count_filter] =new L.GeoJSON(map_json,{
       //console.log(data);
       pop1 = pop.a[data].col;
       name = pop.a[data].name;
-      popUpContent += "<tr>" + "<td>"+name+"</td>" + "<td>" +  feature.properties[pop1]  + "</td></tr>";
+      popUpContent += "<tr>" + "<td>"+name.replace('_',' ')+"</td>" + "<td>" +  feature.properties[pop1]  + "</td></tr>";
     }
 
     popUpContent += '</table>';

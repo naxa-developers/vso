@@ -41,6 +41,7 @@
                 </div>
               </div>
               <div class="col-md-2">
+                <?php if($feat_lang=='en'){ ?>
                 <a href="category?tbl=land_slides&&name=Land Slides">
                 <div class="disaster-summary-item" data-mh="summary-item">
                     <img src="<?php echo base_url()?>assets/icon/landslide1.png" height="64">
@@ -48,6 +49,16 @@
                   <h4 style="color:black;">  106<?php //echo !empty($report_inci['Landslide'])?$report_inci['Landslide']:'0'?></h4>
                 </div>
                 </a>
+              <?php }else{?>
+                <a href="category?tbl=tbl_5bf5191f46de71542789407_tbl&&name=पहिरो">
+                <div class="disaster-summary-item" data-mh="summary-item">
+                    <img src="<?php echo base_url()?>assets/icon/landslide1.png" height="64">
+                  <h6 style="color:black;"><?php echo LANDSLIDE ?></h6>
+                  <h4 style="color:black;">  106<?php //echo !empty($report_inci['Landslide'])?$report_inci['Landslide']:'0'?></h4>
+                </div>
+                </a>
+
+                <?php }?>
               </div>
               <div class="col-md-2">
                 <div class="disaster-summary-item" data-mh="summary-item">
