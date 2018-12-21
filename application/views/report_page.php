@@ -571,7 +571,7 @@ $status_nep='<option value="0" selected>स्थिति छान्नुह
                   <div class="row">
                     <div class="col-md-3 blog-panel">
                       <a href="#" class="thumbnail">
-                        <img src="<?php echo $data['photo_thumb'] ;?>" alt="image">
+                        <img src="<?php echo $data['photo'] ;?>" alt="image">
                       </a>
                     </div>
                     <div class="fancy col-md-9">
