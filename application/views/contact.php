@@ -544,7 +544,7 @@ if($disaster){
    <!-- responsive table for displaying contact directory -->
    <table class="table table-striped table-bordered table-hover bg-white mt-3">
      <thead class="thead-light">
-      <th><span>S.N</span></th>
+      
       <?php if($con_lang=='en'){
 
         echo $heading_en_personnel;

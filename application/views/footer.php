@@ -26,7 +26,7 @@
                 <div class="fbox">
                   <h4><?php echo !empty(FOOTER_BIG_EN)?FOOTER_BIG_EN:''; ?></h4>
                   <p>
-                  <?php echo empty(FOOTER_SMALL)?FOOTER_SMALL:'' ?> &nbsp;
+                  <?php echo !empty(FOOTER_SMALL)?FOOTER_SMALL:'' ?> &nbsp;
                   </p>
                 </div>
               </div>

@@ -44,7 +44,7 @@
                 <div class="disaster-summary-item" data-mh="summary-item">
                     <img src="<?php echo base_url()?>assets/icon/landslide1.png" height="64">
                   <h6><?php echo LANDSLIDE ?></h6>
-                  <h4><?php echo !empty($report_inci['Landslide'])?$report_inci['Landslide']:'0'?></h4>
+                  <h4>  106<?php //echo !empty($report_inci['Landslide'])?$report_inci['Landslide']:'0'?></h4>
                 </div>
               </div>
               <div class="col-md-2">

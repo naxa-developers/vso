@@ -19,6 +19,7 @@
         $tbl=$this->input->get('tbl');
 
         //echo $tbl;
+
         $d=$this->Map_model->get_lang_map_data($tbl);
 
         $this->body['data']=$this->Map_model->get_as_map_data($d,$tbl);
@@ -70,6 +71,14 @@
         $this->body['data']='';
         $this->data['site_info']=$this->Report_model->site_setting();
         if($tbl){
+          //
+          // $data_jsn=$this->Map_model->get_jsn($tbl);
+          // $data_array=json_decode($data_jsn['column_control'],TRUE);
+          //  var_dump($data_jsn);
+          // $seected_col=$this->Map_model->get_data_con($data_array,$tbl);
+          // // var_dump($seected_col);
+          // // die;
+          // $this->body['data']=$seected_col;
             //echo $tbl;
         $d=$this->Map_model->get_lang_map_data($tbl);
         $this->body['data']=$this->Map_model->get_as_map_data($d,$tbl);
@@ -98,7 +107,7 @@
         //$name=str_replace("_"," ",$this->input->get('n'));
 
         $this->body['name']=ucwords($this->input->get('name'));
-        
+
 
         $this->load->view('header',$this->body);
         $this->load->view('datasets_new',$this->body);
@@ -516,7 +525,7 @@
     {
         if(isset($_POST['submit'])){
             if(isset($_POST['none'])){
-                echo "insdie none";echo "<pre>"; print_r($this->input->post());die; 
+                echo "insdie none";echo "<pre>"; print_r($this->input->post());die;
                 $table=$_POST['table'];
                 $data= array(
                   'column_control'=>0,
@@ -534,7 +543,7 @@
                 $table=$_POST['table'];
                 unset($_POST['submit']);
                 unset($_POST['table']);
-                //echo "inside insert";echo "<pre>"; print_r($this->input->post());die; 
+                //echo "inside insert";echo "<pre>"; print_r($this->input->post());die;
                 //var_dump($_POST); echo $table;exit();
                 $aa=array();
                 foreach($_POST as $row) {
@@ -585,10 +594,10 @@
         }
     }
     public function manage_column_control()
-    {   //echo "<pre>"; print_r($_POST['none']);die;  
+    {   //echo "<pre>"; print_r($_POST['none']);die;
         if(isset($_POST['submit'])){
             if(isset($_POST['none'])){
-                echo "insdie none";echo "<pre>"; print_r($this->input->post());die; 
+                echo "insdie none";echo "<pre>"; print_r($this->input->post());die;
                 $table=$_POST['table'];
                 $data= array(
                   'column_control'=>0,
@@ -606,7 +615,7 @@
                 $table=$_POST['table'];
                 unset($_POST['submit']);
                 unset($_POST['table']);
-                //echo "inside insert";echo "<pre>"; print_r($this->input->post());die; 
+                //echo "inside insert";echo "<pre>"; print_r($this->input->post());die;
                 //var_dump($_POST); echo $table;exit();
                 $aa=array();
                 foreach($_POST as $row) {
@@ -656,7 +665,7 @@
           $this->load->view('admin/footer');
         }
     }
-    //this is for selected column 
+    //this is for selected column
     public function manage_popup(){
         if(isset($_POST['submit'])){
 
@@ -759,7 +768,7 @@
       }
     public function getcolumnsselected() {  //show edit label page
         $tablename=$_GET['tbl'];
-        //echo "call"; die; 
+        //echo "call"; die;
         $result =  $fields=$this->db->list_fields($tablename);
         //$checked1 = $this->Map_model->get_checkedcolumns($tablename);
         $checked1 = $this->Map_model->get_checkedcolumns_control($tablename);
@@ -815,7 +824,7 @@
     }
     public function getcolumnss() {  //show edit label page
         $tablename=$_GET['tbl'];
-        //echo "call"; die; 
+        //echo "call"; die;
         $result =  $fields=$this->db->list_fields($tablename);
         //$checked1 = $this->Map_model->get_checkedcolumns($tablename);
         $checked1 = $this->Map_model->get_checkedcolumns_control($tablename);
