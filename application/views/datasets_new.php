@@ -229,7 +229,7 @@ margin: 0;
       <ul class="nav nav-tabs" role="tablist">
         <li class="basemap chevron1" id="close-panel-left">
           <!-- <img src="<?php echo base_url()?>assets/img/up-arrow.png" class="test-icon chevron"> -->
-          <i class="la la-bars"></i>
+          <!-- <i class="la la-bars"></i> -->
         </li>
         <li role="presentation" class="basemap "><a href="" ><span style="font-size: 16px;"><?php echo $site_info['map']?></span></a></li>
         <li role="presentation" class="basemap active"><a href="#" ><span  style="font-size: 16px;"><?php echo $site_info['nav_5']?></span></a></li>
@@ -245,7 +245,7 @@ margin: 0;
       <ul class="nav nav-tabs" role="tablist">
         <li class=" basemap chevron2 navbar-right" id="close-panel-right">
           <!-- <img src="<?php echo base_url()?>assets/img/up-arrow.png" class="test-icon chevron"> -->
-          <i class="la la-info-circle"></i>
+          <!-- <i class="la la-info-circle"></i> -->
         </li>
       </ul>
     </div>
