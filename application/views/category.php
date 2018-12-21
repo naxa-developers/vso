@@ -2535,8 +2535,8 @@ if(popup_content_parsed[i]==0){
 
 
           layer.on('click',function(){
-            console.log(popUpContent);
 
+              $('#right-panel-toggle').css('display','block');
             $("#summary_container").css('display','none');
             $("#popup_container").css('display','block');
             $("#popup_container").html(popUpContent);
@@ -3213,6 +3213,7 @@ window[qry_tbl+count_filter] =new L.GeoJSON(map_json,{
 
     layer.on('click',function(){
       console.log(popUpContent);
+        $('#right-panel-toggle').css('display','block');
       $("#summary_container").css('display','none');
       $("#popup_container").css('display','block');
       $("#popup_container").html(popUpContent);
