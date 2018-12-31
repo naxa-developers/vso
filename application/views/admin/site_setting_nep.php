@@ -369,6 +369,21 @@
                                 </div>
                               </div>
 
+                              <div class="panel panel-info class">
+                                  <form method="POST" action="Admin/SiteController/map_zoom">
+                                <div class="panel-heading">
+                                  Add Icons And Markers to LIbrary
+                                </div>
+                                <div class="panel-body space">
+
+
+                                  <div class="col-md-11">
+                                  <a href="add_icon">  <button type="submit" name="submit" class="btn btn-primary">Update</button></a>
+                                  </div>
+                                    </form>
+                                </div>
+                              </div>
+
 
                             </div>
 

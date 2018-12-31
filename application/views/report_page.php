@@ -521,8 +521,8 @@ $status_nep='<option value="0" selected>स्थिति छान्नुह
 
           <i class="la la-bars"></i>
         </li> -->
-        <li role="presentation" class="basemap active "><a href="report_page" ><span style="font-size: 16px;">Map</span></a></li>
-        <li role="presentation" class="basemap"><a href="map_reports" ><span  style="font-size: 16px;">Data</span></a></li>
+        <li role="presentation" class="basemap active "><a href="report_page" ><span style="font-size: 16px;"><?php echo $site_info['map']?></span></a></li>
+        <li role="presentation" class="basemap"><a href="map_reports" ><span  style="font-size: 16px;"><?php echo $site_info['data']?></span></a></li>
         <!-- <li role="presentation" class="basemap active"><a href="<?php echo base_url()?>map_download"> -->
           <!-- <img src="<?php echo base_url()?>assets/img/map-down.png" class="test-icon"> -->
           <!-- <span  style="font-size: 16px;"><?php echo $site_info['download']?> <?php echo $site_info['map']?></span></a></li> -->
@@ -767,7 +767,7 @@ $status_nep='<option value="0" selected>स्थिति छान्नुह
                 <div class="panel-content padding">
                   <div id="bar_graph" style="display:block;" >
                     <div class="holders">
-                      <h6 class="clearfix"><strong class="pull-left">Wards</strong>  <span class="indicator pull-right badge badge-primary" data-toggle="tooltip" data-placement="top" title="No. of reports per ward
+                      <h6 class="clearfix"><strong >Wards</strong>  <span class="indicator pull-right badge badge-primary" data-toggle="tooltip" data-placement="top" title="No. of reports per ward
 ">?</span></h6>
                       <div id="graphic"></div>
                     </div>

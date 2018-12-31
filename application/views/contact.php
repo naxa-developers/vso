@@ -184,34 +184,34 @@ $heading_nep='<th><strong>क्र.स</strong></th>
       <li class="nav-item">
         <a class="nav-link" id="municipal_ex-tab" data-toggle="tab" href="#municipal_ex" role="tab" aria-controls="municipal_ex" aria-selected="false">Municipal Executive Members</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" id="disaster-tab" data-toggle="tab" href="#disaster" role="tab" aria-controls="disaster" aria-selected="false">Municipality Level Disaster Management Committee,</a>
-      </li>
-      <li class="nav-item">
+      </li> -->
+      <!-- <li class="nav-item">
         <a class="nav-link" id="nntds-tab" data-toggle="tab" href="#nntds" role="tab" aria-controls="nntds" aria-selected="false">NNTDS's Executive Committee</a>
-      </li>
+      </li> -->
       <!-- break -->
       <li class="nav-item">
         <a class="nav-link" id="health-tab" data-toggle="tab" href="#health" role="tab" aria-controls="health" aria-selected="true">Health Institutions</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" id="emergency-tab" data-toggle="tab" href="#emergency" role="tab" aria-controls="emergency" aria-selected="false">Emergency Responders</a>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link" id="security-tab" data-toggle="tab" href="#security" role="tab" aria-controls="security" aria-selected="false">Security</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" id="ngo-tab" data-toggle="tab" href="#ngo" role="tab" aria-controls="ngo" aria-selected="false">NGOs and INGOs</a>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link" id="volunter-tab" data-toggle="tab" href="#volunter" role="tab" aria-controls="volunter" aria-selected="false">DRR Volunteers</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" id="person-tab" data-toggle="tab" href="#person" role="tab" aria-controls="person" aria-selected="false">Municipality Personnel</a>
-      </li>
-      <li class="nav-item">
+      </li> -->
+      <!-- <li class="nav-item">
         <a class="nav-link" id="member-tab" data-toggle="tab" href="#member" role="tab" aria-controls="member" aria-selected="false">Members of Municipal Assemblysss</a>
-      </li>
+      </li> -->
     </ul>
 
 
@@ -232,35 +232,35 @@ $heading_nep='<th><strong>क्र.स</strong></th>
       <li class="nav-item">
         <a class="nav-link" id="municipal_ex-tab" data-toggle="tab" href="#municipal_ex" role="tab" aria-controls="municipal_ex" aria-selected="false">पालिकाका कार्यकारी सदस्यहरु</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" id="disaster-tab" data-toggle="tab" href="#disaster" role="tab" aria-controls="disaster" aria-selected="false">नगरपालिका तहको प्रकोप व्यवस्थापन समिति,</a>
-      </li>
-      <li class="nav-item">
+      </li> -->
+      <!-- <li class="nav-item">
         <a class="nav-link" id="nntds-tab" data-toggle="tab" href="#nntds" role="tab" aria-controls="nntds" aria-selected="false">NNTDS को कार्यसमिति</a>
-      </li>
+      </li> -->
       <!-- break -->
       <li class="nav-item">
         <a class="nav-link" id="health-tab" data-toggle="tab" href="#health" role="tab" aria-controls="health" aria-selected="true">स्वास्थ्य संस्थाहरु</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" id="emergency-tab" data-toggle="tab" href="#emergency" role="tab" aria-controls="emergency" aria-selected="false">आपतकालिन परिचालकहरु</a>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link" id="security-tab" data-toggle="tab" href="#security" role="tab" aria-controls="security" aria-selected="false">सुरक्षा निकाय</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" id="ngo-tab" data-toggle="tab" href="#ngo" role="tab" aria-controls="ngo" aria-selected="false">गैर सरकारी संस्थाहरु & अन्तराष्ट्रिय गैर सरकारी संस्थाहरु
-</a>
-      </li>
+        </a>
+      </li> -->
       <li class="nav-item">
-        <a class="nav-link" id="volunter-tab" data-toggle="tab" href="#volunter" role="tab" aria-controls="volunter" aria-selected="false">प्रकोप जोखिम न्युनिकरणमा खटिएका स्वयंसेवकहरु</a>
+        <a class="nav-link" id="volunter-tab" data-toggle="tab" href="#volunter" role="tab" aria-controls="volunter" aria-selected="false">DDR स्वयंसेवकहरु</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" id="person-tab" data-toggle="tab" href="#person" role="tab" aria-controls="person" aria-selected="false">प्रकोप जोखिम न्युनिकरणमा खटिएका स्वयंसेवकहरु</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="member-tab" data-toggle="tab" href="#member" role="tab" aria-controls="member" aria-selected="false">प्रकोप जोखिम न्युनिकरणमा खटिएका स्वयंसेवकहरु</a>
-      </li>
+      </li> -->
     </ul>
 
 
@@ -544,7 +544,7 @@ if($disaster){
    <!-- responsive table for displaying contact directory -->
    <table class="table table-striped table-bordered table-hover bg-white mt-3">
      <thead class="thead-light">
-      
+
       <?php if($con_lang=='en'){
 
         echo $heading_en_personnel;

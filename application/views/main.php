@@ -73,6 +73,12 @@
                 </a>
               </div>
             </div>
+            <div class="banner-caption text-center mt-4">
+              <p>
+                Download a mobile app from play store to report hazards near you
+              </p>
+              <a href="https://play.google.com/store/apps/details?id=np.com.naxa.vso&hl=en" title="" target="_blank" class="btn btn-primary btn-lg">Download Now <img style="height: 32px;" src="<?php echo base_url()?>/uploads/icons/google.png"></i></a>
+            </div>
           </div>
         </div>
       </div>

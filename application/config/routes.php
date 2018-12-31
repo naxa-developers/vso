@@ -181,6 +181,12 @@ $route['download'] = 'Admin/PublicationController/download';
 $route['view_about'] = 'Admin/AboutController/view_about';
 $route['edit_about'] = 'Admin/AboutController/edit_about';
 
+$route['get_inventory'] = 'Admin/InventoryController/get_inventory';
+$route['get_inventory_nep'] = 'Admin/InventoryController/get_inventory_nep';
+$route['upload_csv_invent'] =  'Admin/InventoryController/upload_csv_emerg';
+$route['delete_inventory'] =  'Admin/InventoryController/delete_inventory';
+$route['edit_inventory'] =  'Admin/InventoryController/edit_inventory';
+
 $route['map_show'] ='Admin/MapDownload/map_show';
 $route['add_maps'] ='Admin/MapDownload/add_maps';
 $route['edit_map'] ='Admin/MapDownload/edit_map';

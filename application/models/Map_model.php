@@ -10,13 +10,10 @@ class Map_model extends CI_Model {
   }
 
 
-
-
-
   public function get_as_map_data($d,$tbl){
 
     foreach($d as $v){
-    $this->db->select($v['eng_lang'].' AS '. $v['nepali_lang']);
+    $this->db->select($v['eng_lang'].' AS '.pg_escape_string(str_replace(".","",$v['nepali_lang'])));
     }
 
     $this->db->order_by('id','ASC');
@@ -26,31 +23,6 @@ class Map_model extends CI_Model {
 
   }
 
-
-  public function get_jsn($tbl){
-
-
-
-    $this->db->select('column_control');
-    $this->db->where('category_table',$tbl);
-    $q=$this->db->get('categories_tbl');
-    return $q->row_array();
-  }
-
-
-  public function get_data_con($d,$tbl){
-
-    for($i=0; sizeof($d['a'])>$i; $i++){
-    $this->db->select($d['a'][$i]['col'].' AS '. $d['a'][$i]['name']);
-    }
-
-    $this->db->order_by('id','ASC');
-    $q=$this->db->get($tbl);
-
-    return $q->result_array();
-
-
-  }
 
 
 
@@ -58,7 +30,7 @@ class Map_model extends CI_Model {
     foreach($d as $v){
       //$this->db->select($v['eng_lang'].' AS '.pg_escape_string(preg_replace('/[^A-Za-z0-9\-]/', ' ', $v['nepali_lang'])));
 
-      $this->db->select($v['eng_lang'].' AS '. $v['nepali_lang']);
+      $this->db->select($v['eng_lang'].' AS '.pg_escape_string(str_replace(".","",$v['nepali_lang'])));
     }
    $this->db->where($query);
    $res=$this->db->get($tbl);
@@ -343,10 +315,11 @@ return $query->row_array();
 
 }
 
-public function get_icon(){
+public function get_icon($type){
 
  $this->db->select('*');
- $res=$this->db->get('map_marker');
+ $this->db->where('type',$type);
+ $res=$this->db->get('icons');
  return $res->result_array();
 
 

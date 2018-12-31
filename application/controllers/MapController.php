@@ -559,6 +559,9 @@
                 $data= array(
                     'column_control'=>json_encode($ab),
                 );
+
+                //var_dump($data);
+                //$die;
                 //echo "call";  die;
                 $this->Map_model->update_popup($table,$data);
                 $this->session->set_flashdata('msg',$table.' Manage Column Control was successfully updated');
@@ -618,6 +621,8 @@
                 //echo "inside insert";echo "<pre>"; print_r($this->input->post());die;
                 //var_dump($_POST); echo $table;exit();
                 $aa=array();
+                var_dump($_POST);
+                die;
                 foreach($_POST as $row) {
                     //var_dump(json_encode($row));
                     //array design
@@ -631,6 +636,8 @@
                 $data= array(
                     'column_control'=>json_encode($ab),
                 );
+              //  var_dump($data);
+
                 //echo "call";  die;
                 $this->Map_model->update_popup($table,$data);
                 $this->session->set_flashdata('msg',$table.' Manage Column Control was successfully updated');
@@ -1196,7 +1203,7 @@
 
           $this->body['style_array']=$style_array;
           $this->body['tbl']=$tbl;
-          $this->body['icons']=$this->Map_model->get_icon();
+          $this->body['icons']=$this->Map_model->get_icon('marker');
 
           //admin check
           $admin_type=$this->session->userdata('user_type');

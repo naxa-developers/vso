@@ -289,7 +289,7 @@ margin: 0;
 			      <div class="row" id="reportable">
 
 			       <!-- responsive table for displaying contact directory -->
-			       <table  class="table table-striped table-bordered table-hover"  id="hydropower">
+			       <table  class="table table-striped table-bordered table-hover"  id="hydropower2">
 			         <thead class='thead-light' >
 			        <tr>
 
