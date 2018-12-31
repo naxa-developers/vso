@@ -130,7 +130,7 @@
               </div>
               <div class="col-md-6 sec-center">
                 <p class="margin-top">
-                <a href="">Developed by: NAXA under PRAGATI Project</a>
+                Developed by: <a href="http://naxa.com.np/"> NAXA </a> under PRAGATI Project
                 </p>
               </div>
               <div class="col-md-6 sec-right">
