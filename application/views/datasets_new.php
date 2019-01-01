@@ -231,7 +231,7 @@ margin: 0;
           <!-- <img src="<?php echo base_url()?>assets/img/up-arrow.png" class="test-icon chevron"> -->
           <!-- <i class="la la-bars"></i> -->
         </li>
-        <li role="presentation" class="basemap "><a href="" ><span style="font-size: 16px;"><?php echo $site_info['map']?></span></a></li>
+        <li role="presentation" class="basemap "><a href="<?php echo base_url()?>category?tbl=0 && name=0" ><span style="font-size: 16px;"><?php echo $site_info['map']?></span></a></li>
         <li role="presentation" class="basemap active"><a href="#" ><span  style="font-size: 16px;"><?php echo $site_info['nav_5']?></span></a></li>
         <li role="presentation" class="basemap "><a href="<?php echo base_url()?>map_download">
           <!-- <img src="<?php echo base_url()?>assets/img/map-down.png" class="test-icon"> -->
