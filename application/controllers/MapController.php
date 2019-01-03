@@ -429,7 +429,7 @@
 
         //views add
         $count_dataset=$this->Dash_model->get_count_views_datasets($this->input->get('tbl'));
-        //var_dump($count_dataset);
+    
         $count=$this->Report_model->get_count_views('map');
 
         $add_count=$count['views_count']+1;

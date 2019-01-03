@@ -1197,7 +1197,7 @@ $(document).ready(function(){
 
                             if($data['style']==NULL){ //style null check
 
-                              $mark_div='<div style=" width:12px;height:12px;background-color:red;opacity: 0.5;display:inline-block;border:1px solid #907c7c;margin-left:5px;"> </div>';
+                              $mark_div='<div style=" width:12px;height:12px;background-color:blue;opacity: 0.5;display:inline-block;border:1px solid #907c7c;margin-left:5px;"> </div>';
 
 
 

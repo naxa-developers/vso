@@ -130,7 +130,7 @@
                  if($exposure_data){
                   foreach($exposure_data as $data){ ?>
                 <li class="col-md-3 col-lg-2">
-                  <a href="<?php echo base_url()?>category?tbl=<?php echo $data['category_table'] ?> && name=<?php echo $data['category_name'] ?> " class="dataset-item-wrap margin-top-large" data-mh="eq-item">
+                  <a href="<?php echo base_url()?>category?tbl=<?php echo $data['category_table']?>&&name=<?php echo $data['category_name'] ?>" class="dataset-item-wrap margin-top-large" data-mh="eq-item">
                     <img src="<?php echo $data['category_photo'] ?>">
                     <h6><?php echo  $data['category_name'] ?></h6>
                       <span class="count"><?php
@@ -155,7 +155,7 @@
     if($hazard_data) {
     foreach($hazard_data as $data){ ?>
             <li class="col-md-3 col-lg-2">
-              <a href="<?php echo base_url()?>category?tbl=<?php echo $data['category_table'] ?> && name=<?php echo $data['category_name'] ?> " class="dataset-item-wrap margin-top-large" data-mh="eq-item">
+              <a href="<?php echo base_url()?>category?tbl=<?php echo $data['category_table']?>&&name=<?php echo $data['category_name'] ?> " class="dataset-item-wrap margin-top-large" data-mh="eq-item">
                 <img src="<?php echo $data['category_photo'] ?>">
 
                 <h6><?php echo  $data['category_name'] ?></h6>
