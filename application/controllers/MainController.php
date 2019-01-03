@@ -9,11 +9,26 @@ class MainController extends CI_Controller
     $this->load->helper('url');
     $this->load->model('Main_model');
     $this->load->model('Upload_model');
+    $this->load->model('Report_model');
 
 
   }
 
   public function contact() {
+
+    //views add
+    $count=$this->Report_model->get_count_views('contact');
+
+    $add_count=$count['views_count']+1;
+
+    $data=array(
+      'views_count'=>$add_count,
+
+    );
+
+
+    $this->Report_model->update_views($count['id'],$data);
+    //count views end
     if($this->session->userdata('Language')==NULL){
 
       $this->session->set_userdata('Language','nep');
@@ -73,7 +88,19 @@ class MainController extends CI_Controller
 
     $this->load->model('Publication_model');
     $this->body['data']=$this->Publication_model->get_all_data();
+    //views add
+    $count=$this->Report_model->get_count_views('publication');
 
+    $add_count=$count['views_count']+1;
+
+    $data=array(
+      'views_count'=>$add_count,
+
+    );
+
+
+    $this->Report_model->update_views($count['id'],$data);
+    //count views end
     //language
     if($this->session->userdata('Language')==NULL){
 
@@ -208,6 +235,7 @@ class MainController extends CI_Controller
 
 
     $this->Report_model->update_views($count['id'],$data);
+    //count views end
     //language
     if($this->session->userdata('Language')==NULL){
 
@@ -319,7 +347,19 @@ class MainController extends CI_Controller
   //datasets view page
 
   public function dataset_page(){
+    //views add
+    $count=$this->Report_model->get_count_views('dataset');
 
+    $add_count=$count['views_count']+1;
+
+    $data=array(
+      'views_count'=>$add_count,
+
+    );
+
+
+    $this->Report_model->update_views($count['id'],$data);
+    //count views end
 
     //language
     if($this->session->userdata('Language')==NULL){
@@ -483,6 +523,20 @@ class MainController extends CI_Controller
   }
 
   public function inventory(){
+
+    //views add
+    $count=$this->Report_model->get_count_views('inventory');
+
+    $add_count=$count['views_count']+1;
+
+    $data=array(
+      'views_count'=>$add_count,
+
+    );
+
+
+    $this->Report_model->update_views($count['id'],$data);
+    //count views end
     //language
     if($this->session->userdata('Language')==NULL){
 
