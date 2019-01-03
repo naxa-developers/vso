@@ -1212,9 +1212,23 @@ $(document).ready(function(){
                               if($weight>'4'){
                                 $weight='4';
                               }
+                                      if($filcolor != ""||$filopacity!=""){
+                                          $rgb=$this->general->hex_to_rgb($filcolor,$filopacity);
 
-                              $rgb=$this->general->hex_to_rgb($filcolor,$filopacity);
-                              $rgb1=$this->general->hex_to_rgb($color,$opacity);
+                                      }else{
+
+                                        $rgb="rgba(51, 136, 255, 0.4)";
+                                      }
+
+                                      if($color != ""||$opacity!=""){
+                                          $rgb1=$this->general->hex_to_rgb($color,$opacity);
+
+                                      }else{
+
+                                        $rgb="rgba(51, 136, 255, 0.4)";
+                                      }
+
+
 
 
 
@@ -1623,8 +1637,23 @@ $(document).ready(function(){
                   $weight='4';
                 }
 
-                $rgb=$this->general->hex_to_rgb($filcolor,$filopacity);
-                $rgb1=$this->general->hex_to_rgb($color,$opacity);
+                if($filcolor != ""||$filopacity!=""){
+                    $rgb=$this->general->hex_to_rgb($filcolor,$filopacity);
+
+                }else{
+
+                  $rgb="rgba(51, 136, 255, 0.4)";
+                }
+
+                if($color != ""||$opacity!=""){
+                    $rgb1=$this->general->hex_to_rgb($color,$opacity);
+
+                }else{
+
+                  $rgb="rgba(51, 136, 255, 0.4)";
+                }
+
+
 
 
 
@@ -2036,8 +2065,23 @@ $(document).ready(function(){
                   $weight='4';
                 }
 
-                $rgb=$this->general->hex_to_rgb($filcolor,$filopacity);
-                $rgb1=$this->general->hex_to_rgb($color,$opacity);
+                if($filcolor != ""||$filopacity!=""){
+                    $rgb=$this->general->hex_to_rgb($filcolor,$filopacity);
+
+                }else{
+
+                  $rgb="rgba(51, 136, 255, 0.4)";
+                }
+
+                if($color != ""||$opacity!=""){
+                    $rgb1=$this->general->hex_to_rgb($color,$opacity);
+
+                }else{
+
+                  $rgb="rgba(51, 136, 255, 0.4)";
+                }
+
+
 
 
 
