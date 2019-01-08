@@ -634,7 +634,15 @@ public function data_control(){
 
   $data='{"a":[{"col":"a0","name":"SN"},{"col":"a1","name":"Wards"}]}';
 $data_array=json_decode($data,TRUE);
-$data_tbl=$this->Test_model->get_data_con($data_array,'pharm');
+
+
+// $data_tbl=$this->Test_model->get_data_con($data_array,'pharm');
+// $data_jsn=$this->Map_model->get_jsn($tbl);
+// $data_array=json_decode($data_jsn['column_control'],TRUE);
+//
+// $seected_col=$this->Map_model->get_data_con($data_array,$tbl);
+//
+// $this->body['data']=$seected_col;
 //   for($i=0; sizeof($data_array['a'])>$i; $i++){
 //     echo $i;
 //   }
