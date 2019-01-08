@@ -207,7 +207,7 @@
         <div class="col-md-12">
           <div class="p-4">
             <div class="row">
-                  <div class="col-md-9"><h4 class="text-uppercase m-0"><strong><?php echo $name ?> Data Table </strong></h4></div>
+                  <div class="col-md-9"><h4 class="text-uppercase m-0"><strong><?php echo $name ?>  </strong></h4></div>
                   <div class="col-md-3 clearfix">
                     <!-- <a href="get_csv_emergency?type=health&&name=Health_Institutions&&tbl=emergency_contact"><button type="submit" name="upload_data" class="btn btn-danger" style="background-color: #1f5cb2;border-color: #1f5cb2;margin-top: -7px; float: right;"><i class="fa fa-download"></i> Download</button></a> -->
                   </div>
