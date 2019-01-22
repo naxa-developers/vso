@@ -126,6 +126,33 @@
             stepsOrientation: "vertical"
         });
     });
+
+
+
+
+
+  $(document).off('click','.ChangeLanguage');
+  $(document).on('click','.ChangeLanguage',function(e)
+  {
+    var url  = window.location.href;
+    var language=$(this).data('language');
+    var action="<?php echo base_url()?>/Lang/admin_lang";
+    $.ajax({
+    type: "POST",
+    url: action,
+    dataType: 'html',
+        data: {language:language},
+        success: function(jsons)
+        {
+         data = jQuery.parseJSON(jsons);
+          if(data.status=='success'){
+            setTimeout(function(){
+            window.location.href = url;
+             }, 500);
+          }
+      }
+    });
+  });
 </script>
 
 

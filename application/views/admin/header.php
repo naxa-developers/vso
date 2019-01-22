@@ -98,22 +98,22 @@
             $lang=$this->session->get_userdata('Language');
             if($lang['Language']=='en'){ ?>
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="<?php echo base_url();?>nep?urll=<?php echo $urll ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="la la-language"></i> : En
                 <b class="caret"></b>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="<?php echo base_url();?>nep?urll=<?php echo $urll ?>">नेपाली</a>
+                <a class="dropdown-item ChangeLanguage"  data-language="nep" href="javascript:void(0)">नेपाली</a>
             </div>
         </li>
         <?php }else{ ?>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="<?php echo base_url();?>nep?urll=<?php echo $urll ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="la la-language"></i> : ने
                     <b class="caret"></b>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="<?php echo base_url();?>en?urll=<?php echo $urll ?>">English</a>
+                    <a class="dropdown-item ChangeLanguage" data-language="en" href="javascript:void(0)">English</a>
                 </div>
             </li>
         <?php } ?>
@@ -219,19 +219,19 @@
 
                         <!-- <li><a href="<?php echo base_url();?>create_categories_tbl">Create Database Tables</a></li>
                         <li><a href="<?php echo base_url();?>view_cat_tables">View Categories Data Tables</a></li> -->
-                          <li><a href="<?php echo base_url()?>emergency_contact_nep?name=Health Institutions&&cat=health"><?php echo $this->lang->line('health_institution'); ?></a></li>
-                          <li><a href="<?php echo base_url()?>emergency_contact_nep?name=Emergency Responders&&cat=responders"><?php echo $this->lang->line('emergency_responder'); ?></a></li>
-                          <li><a href="<?php echo base_url()?>emergency_contact_nep?name=Security&&cat=security"><?php echo $this->lang->line('security'); ?></a></li>
-                          <li><a href="<?php echo base_url()?>emergency_contact_nep?name=NGOs and INGOs&&cat=ngo"><?php echo $this->lang->line('ngos_ingos'); ?></a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=DRR Volunteers&&cat=ddr"><?php echo $this->lang->line('drr_volunteers'); ?></a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Municipality Personnel&&cat=personnel"><?php echo $this->lang->line('municipality_personnel'); ?></a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Members of Municipal Assemblysss&&cat=members"><?php echo $this->lang->line('member_of_municipal'); ?></a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Chairpersons of Local Units&&cat=chairpersons"><?php echo $this->lang->line('chairperson_of_local'); ?></a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Chief of local level offices&&cat=chief"><?php echo $this->lang->line('chief_of_local'); ?></a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Elected Representatives&&cat=elected"><?php echo $this->lang->line('elected_representative'); ?></a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Municipal Executive Members&&cat=municipal_ex"><?php echo $this->lang->line('municipal_executive_members'); ?></a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Municipality Level Disaster Management Committee&&cat=disaster"><?php echo $this->lang->line('municipal_disaster'); ?></a></li>
-                          <li><a href="<?php echo base_url()?>emergency_personnel_nep?name=Municipality Level Disaster Management Committee&&cat=nntds"><?php echo $this->lang->line('nntds_executive'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_contact?name=Health Institutions&&cat=health"><?php echo $this->lang->line('health_institution'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_contact?name=Emergency Responders&&cat=responders"><?php echo $this->lang->line('emergency_responder'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_contact?name=Security&&cat=security"><?php echo $this->lang->line('security'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_contact?name=NGOs and INGOs&&cat=ngo"><?php echo $this->lang->line('ngos_ingos'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel?name=DRR Volunteers&&cat=ddr"><?php echo $this->lang->line('drr_volunteers'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Municipality Personnel&&cat=personnel"><?php echo $this->lang->line('municipality_personnel'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Members of Municipal Assemblysss&&cat=members"><?php echo $this->lang->line('member_of_municipal'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Chairpersons of Local Units&&cat=chairpersons"><?php echo $this->lang->line('chairperson_of_local'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Chief of local level offices&&cat=chief"><?php echo $this->lang->line('chief_of_local'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Elected Representatives&&cat=elected"><?php echo $this->lang->line('elected_representative'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Municipal Executive Members&&cat=municipal_ex"><?php echo $this->lang->line('municipal_executive_members'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Municipality Level Disaster Management Committee&&cat=disaster"><?php echo $this->lang->line('municipal_disaster'); ?></a></li>
+                          <li><a href="<?php echo base_url()?>emergency_personnel?name=Municipality Level Disaster Management Committee&&cat=nntds"><?php echo $this->lang->line('nntds_executive'); ?></a></li>
 
                     </ul>
                 </li>
