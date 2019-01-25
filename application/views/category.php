@@ -1294,7 +1294,7 @@ $(document).ready(function(){
                               }
 
 
-                                      if($filcolor != "0"||$filopacity!="0"){
+                                      if($filcolor !== "0"){
                                           $rgb=$this->general->hex_to_rgb($filcolor,$filopacity);
 
                                       }else{
@@ -1302,7 +1302,7 @@ $(document).ready(function(){
                                         $rgb="rgba(51, 136, 255, 0.4)";
                                       }
 
-                                      if($color != "0"||$opacity!="0"){
+                                      if($color !== "0"){
                                           $rgb1=$this->general->hex_to_rgb($color,$opacity);
 
                                       }else{
@@ -1716,19 +1716,23 @@ $(document).ready(function(){
                 $opacity=$poly['opacity'];
                 $color=ltrim($poly['color'],'#');
                 $weight=$poly['weight'];
+
+
                 if($weight>'4'){
                   $weight='4';
                 }
 
-                if($filcolor != "0"||$filopacity!="0"){
+                if($filcolor !== "0"){
                     $rgb=$this->general->hex_to_rgb($filcolor,$filopacity);
+
 
                 }else{
 
                   $rgb="rgba(51, 136, 255, 0.4)";
+
                 }
 
-                if($color != "0"||$opacity!="0"){
+                if($color !== "0"){
                     $rgb1=$this->general->hex_to_rgb($color,$opacity);
 
                 }else{
@@ -2145,19 +2149,23 @@ $(document).ready(function(){
                 $opacity=$poly['opacity'];
                 $color=ltrim($poly['color'],'#');
                 $weight=$poly['weight'];
+
                 if($weight>'4'){
                   $weight='4';
                 }
 
-                if($filcolor != "0"||$filopacity!="0"){
+
+
+                if($filcolor !== "0"){
                     $rgb=$this->general->hex_to_rgb($filcolor,$filopacity);
+
 
                 }else{
 
                   $rgb="rgba(51, 136, 255, 0.4)";
                 }
 
-                if($color != "0"||$opacity!="0"){
+                if($color !== "0"){
                     $rgb1=$this->general->hex_to_rgb($color,$opacity);
 
                 }else{
