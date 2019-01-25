@@ -2159,6 +2159,7 @@ $(document).ready(function(){
                 if($filcolor !== "0"){
                     $rgb=$this->general->hex_to_rgb($filcolor,$filopacity);
 
+                    //exit()
 
                 }else{
 
