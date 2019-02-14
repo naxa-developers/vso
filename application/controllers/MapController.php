@@ -606,7 +606,7 @@
     {   //echo "<pre>"; print_r($_POST['none']);die;
         if(isset($_POST['submit'])){
             if(isset($_POST['none'])){
-                echo "insdie none";echo "<pre>"; print_r($this->input->post());die;
+              //  echo "insdie none";echo "<pre>"; print_r($this->input->post());die;
                 $table=$_POST['table'];
                 $data= array(
                   'column_control'=>0,

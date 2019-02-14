@@ -3476,7 +3476,7 @@ info.onAdd = function (map) {
 
 // method that we will use to update the control based on feature properties passed
 info.update = function (props) {
-    this._div.innerHTML = '<div id="info_head"><i class="la la-close"></i><h7><b>Applied Filters</b></h7></div><div id="info_body">  </div>';
+    this._div.innerHTML = '<div id="info_head"><i class="la la-close info_close_btn"></i><h7><b>Applied Filters</b></h7></div><div id="info_body">  </div>';
 
 };
 info.addTo(map);
@@ -3731,7 +3731,7 @@ $('#map').LoadingOverlay("hide", true);
 
 //deleting filter info function
 function deletefilterinfo(id,mapLayerId,classs,deleted_tr_id){
-//  console.log($("#"+id));
+ console.log(classs);
   $("#"+id).remove();
 $('.applied-list > .'+classs).remove();
   map.removeLayer(window[mapLayerId]);
@@ -3740,8 +3740,10 @@ $('.applied-list > .'+classs).remove();
   if(jQuery.inArray(deleted_tr_id, applied_filter_tbl_list) !== -1){
     var index_id = jQuery.inArray(deleted_tr_id, applied_filter_tbl_list);
     applied_filter_tbl_list.splice(index_id,1);
+    console.log(applied_filter_tbl_list);
     if(jQuery.inArray(deleted_tr_id, applied_filter_tbl_list) == -1){ console.log("entereeeeeeeeeeeeeeeeeeeeed");
       $('#'+deleted_tr_id+'_filtericon').find('img')[0].src='<?php echo base_url()?>assets/img/filter.png';
+      $('.info').hide();
     }
   }
 //  console.log(applied_filter_tbl_list.length);
@@ -3751,6 +3753,33 @@ if(applied_filter_tbl_list.length == 0){
 
 }
 //end
+
+//close btn
+$('.info_close_btn').on('click',function(){
+  // console.log('btn-close');
+  //   //$('.info').hide();
+  //   var id = $('.delete_filter')[0].id+"filter";
+  //   var classs = $('.delete_filter').closest('tr')[0].className;
+  //    var mapLayerId = $('.delete_filter')[0].id;
+  //   var deleted_tr_id = $('.delete_filter').closest('tr')[0].id;
+  //
+
+  //   console.log(applied_filter_tbl_list);
+  //   console.log(id);
+  //   console.log(applied_filter_tbl_list.length);
+
+var length_list = applied_filter_tbl_list.length;
+for(var i=0;i<length_list;i++){
+  var id = $('.delete_filter')[i].id+"filter";
+  var classs = $('.delete_filter').closest('tr')[i].className;
+   var mapLayerId = $('.delete_filter')[i].id;
+  var deleted_tr_id = $('.delete_filter').closest('tr')[i].id;
+  
+  deletefilterinfo(id,mapLayerId,classs,deleted_tr_id);
+}
+
+
+});
 
   //deleting the row  of filter list
   $('.applied-list').on('click','tr > td > .delete_filter',function(){
