@@ -33,6 +33,7 @@ class UploadController extends CI_Controller
     $this->body['admin']=$admin_type;
     //admin check
     //admin check
+    //admin check
 
 
     $this->load->view('admin/header',$this->body);
