@@ -869,7 +869,7 @@ $(document).ready(function(){
     var report_map = new L.GeoJSON(report_layer, {
 
       pointToLayer: function(feature, latlng) {
-        if(feature.properties.incident_type=='Fire'){
+        if(feature.properties.incident_type=='Flood'){
 
        icon_url='https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon.png';
 
